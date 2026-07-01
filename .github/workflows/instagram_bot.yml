@@ -1,0 +1,76 @@
+name: Bot Instagram Automático
+
+on:
+  schedule:
+    # Roda a cada hora no minuto 0
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      tipo_post:
+        description: 'Tipo de postagem para rodar manualmente'
+        required: true
+        type: choice
+        options:
+          - story
+          - story_manha
+          - story_tarde
+          - carousel
+          - reels
+          - pexels_story
+          - test
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Instalar Dependências (APT)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Instalar Dependências (PIP)
+        run: pip install -r requirements.txt
+
+      - name: Executar Bot (Agendado)
+        if: github.event_name == 'schedule'
+        env:
+          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        run: python rodar_via_cron.py
+
+      - name: Executar Bot (Manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
+          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        run: python rodar_via_cron.py --manual ${{ github.event.inputs.tipo_post }}
+
+      - name: Salvar Estado do Bot
+        if: always()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add estado.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: atualizar estado.json [skip ci]"
+          git push

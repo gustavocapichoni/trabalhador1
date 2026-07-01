@@ -1,0 +1,22 @@
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Local generated media
+*.jpg
+*.mp4
+reels_base.jpg
+reels_pronto.mp4
+reels_pronto_*.mp4
+story_pronto.jpg
+post_pronto.jpg
+carousel_*.jpg
+carousel_*.png
+post_teste.jpg

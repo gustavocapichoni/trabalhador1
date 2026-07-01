@@ -1,0 +1,7 @@
+schedule
+requests
+pillow
+google-genai
+python-dotenv
+moviepy
+edge-tts

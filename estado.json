@@ -1,0 +1,41 @@
+{
+    "historico": [
+        {
+            "data": "2026-06-28 22:02:32",
+            "dia": "2026-06-28",
+            "tipo": "reels",
+            "tema": "superacao",
+            "post_id": "18360942508241055"
+        },
+        {
+            "data": "2026-06-30 19:09:32",
+            "dia": "2026-06-30",
+            "tipo": "pexels_story_narrado",
+            "tema": "superacao",
+            "estilo_copy": "contraste brutal: mostre a diferença entre quem age e quem fica na intenção",
+            "post_id": "17934096618292721"
+        },
+        {
+            "data": "2026-06-30 19:31:07",
+            "dia": "2026-06-30",
+            "tipo": "pexels_story",
+            "tema": "superacao",
+            "estilo_copy": "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente",
+            "post_id": "17894851728546775"
+        },
+        {
+            "data": "2026-07-01 13:53:03",
+            "dia": "2026-07-01",
+            "tipo": "story_manha",
+            "tema": "superacao",
+            "estilo_copy": "opinião polêmica: defenda um ponto de vista que a maioria evita dizer",
+            "post_id": "18057331484581729"
+        }
+    ],
+    "ultimos_temas": [
+        "superacao"
+    ],
+    "ultimo_carousel": 3,
+    "tema_do_dia": "psicologia",
+    "data_tema_do_dia": "2026-07-01"
+}
