@@ -304,11 +304,11 @@ def gerar_conteudo_gemini(tipo):
     
     for key_index, current_key in enumerate(GEMINI_KEYS):
         print(f"🔑 Tentando usar chave Gemini {key_index + 1}/{len(GEMINI_KEYS)}...")
-        model = genai_client.Client(api_key=current_key)
+        client = genai.Client(api_key=current_key)
         
         for tentativa in range(max_tentativas_por_chave):
             try:
-                resposta = model.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+                resposta = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
                 texto_limpo = response_text = resposta.text.replace("```json", "").replace("```", "").strip()
                 dados = json.loads(texto_limpo)
                 
