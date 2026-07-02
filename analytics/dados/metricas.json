@@ -1,0 +1,41 @@
+{
+    "posts": {
+        "18360942508241055": {
+            "info_post": {
+                "data": "2026-06-28 22:02:32",
+                "dia": "2026-06-28",
+                "tipo": "reels",
+                "tema": "superacao",
+                "post_id": "18360942508241055"
+            },
+            "metricas": {
+                "likes": 3,
+                "comments": 0,
+                "reach": 161,
+                "saved": 0,
+                "shares": 0,
+                "views": 170
+            },
+            "ultima_atualizacao": "2026-07-02 04:22:18"
+        },
+        "17894851728546775": {
+            "info_post": {
+                "data": "2026-06-30 19:31:07",
+                "dia": "2026-06-30",
+                "tipo": "pexels_story",
+                "tema": "superacao",
+                "estilo_copy": "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente",
+                "post_id": "17894851728546775"
+            },
+            "metricas": {
+                "likes": 0,
+                "comments": 0,
+                "reach": 3,
+                "saved": 0,
+                "shares": 0,
+                "views": 2
+            },
+            "ultima_atualizacao": "2026-07-02 04:22:18"
+        }
+    }
+}
