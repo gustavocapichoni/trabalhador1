@@ -2,6 +2,10 @@ import sys
 import time
 import datetime
 import subprocess
+import io
+
+# Forçar UTF-8 no Windows para suportar emojis no print
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def rodar_agora():
     # Calcula a hora no Brasil (UTC-3)
@@ -25,7 +29,7 @@ def rodar_agora():
     elif hora == 7:
         if dia_semana == 0:
             print("🚀 Executando: Analytics Semanal")
-            subprocess.run(["python", "-c", "from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
+            subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
         print("🚀 Executando: Pexels Story")
         subprocess.run(["python", "main.py", "--type", "pexels_story"])
 
@@ -65,7 +69,7 @@ if __name__ == "__main__":
             subprocess.run(["python", "core/analytics/rodar_analytics.py"])
         elif tipo == "weekly_report":
             print("🚀 Executando manualmente: Relatório Semanal")
-            subprocess.run(["python", "-c", "from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
+            subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
             subprocess.run(["python", "core/reports/weekly.py"])
         elif tipo:
             print(f"🚀 Executando manualmente: {tipo}")
