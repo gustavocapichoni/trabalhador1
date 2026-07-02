@@ -211,6 +211,7 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             'video_url': url_publica,
             'caption': legenda,
             'share_to_feed': 'true',
+            'thumb_offset': '2000',
             'access_token': IG_ACCESS_TOKEN
         }
         res_container = requests.post(url_container, data=payload, timeout=25)
