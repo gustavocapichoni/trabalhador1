@@ -137,3 +137,59 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             except Exception:
                 pass
 
+def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="story_pronto.mp4"):
+    print(f"🎬 Convertendo Story {caminho_imagem} em vídeo com música...")
+    if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
+        raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Stories em vídeo.")
+
+    audio_clip = None
+    video_clip = None
+    try:
+        audio_clip = AudioFileClip(caminho_audio)
+        duracao_total = min(audio_clip.duration, 10)  # máximo 10 segundos por slide de story
+        
+        try:
+            audio_clip = audio_clip.subclipped(0, duracao_total)
+        except AttributeError:
+            audio_clip = audio_clip.subclip(0, duracao_total)
+
+        clip = ImageClip(caminho_imagem).set_duration(duracao_total)
+        
+        try:
+            video_clip = clip.with_audio(audio_clip)
+        except AttributeError:
+            video_clip = clip.set_audio(audio_clip)
+
+        print(f"⚙️ Renderizando vídeo Story ({duracao_total:.1f}s)...")
+        
+        try:
+            video_clip.write_videofile(
+                caminho_saida,
+                fps=24,
+                codec="libx264",
+                audio_codec="aac",
+                logger=None
+            )
+        except TypeError:
+            video_clip.write_videofile(
+                caminho_saida,
+                fps=24,
+                codec="libx264",
+                audio_codec="aac"
+            )
+        print(f"✅ Vídeo Story gerado com sucesso como {caminho_saida}")
+        return caminho_saida
+    except Exception as e:
+        print(f"❌ Erro ao converter story para vídeo: {e}")
+        raise e
+    finally:
+        if video_clip is not None:
+            try:
+                video_clip.close()
+            except Exception:
+                pass
+        if audio_clip is not None:
+            try:
+                audio_clip.close()
+            except Exception:
+                pass

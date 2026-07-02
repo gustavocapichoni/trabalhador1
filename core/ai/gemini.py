@@ -113,6 +113,7 @@ def gerar_conteudo_gemini(tipo):
         - Cada frase será um slide diferente, então elas devem formar uma linha de raciocínio.
         - Máximo de 12 palavras por frase.
         - Não use ponto de exclamação.
+        - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo da intensidade da mensagem.
         
         Responda APENAS em formato JSON válido assim:
         {{
@@ -120,7 +121,8 @@ def gerar_conteudo_gemini(tipo):
             "Frase 1 aqui",
             "Frase 2 aqui",
             "Frase 3 aqui"
-          ]
+          ],
+          "usar_musica": true
         }}
         """
     elif tipo == "story_tarde":
@@ -134,13 +136,15 @@ def gerar_conteudo_gemini(tipo):
         - A segunda frase deve complementar ou quebrar a expectativa da primeira de forma surpreendente.
         - Máximo de 12 palavras por frase.
         - Não use ponto de exclamação.
+        - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo do impacto da mensagem.
         
         Responda APENAS em formato JSON válido assim:
         {{
           "frase": [
             "Frase 1 aqui",
             "Frase 2 aqui"
-          ]
+          ],
+          "usar_musica": false
         }}
         """
     elif tipo == "carousel":

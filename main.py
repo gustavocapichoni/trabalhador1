@@ -81,6 +81,28 @@ def main():
             else:
                 audio_path = garantir_audio_reels()
                 midia = gerar_video_reels(midia, audio_path, caminho_saida=nome_saida_reels)
+                
+        # Passo 3.5: Se for Story e usar_musica for verdadeiro, converte JPGs para MP4s
+        if args.type in ["story_manha", "story_tarde"] and conteudo.get("usar_musica") == True:
+            from core.media.reels import gerar_video_story_individual, garantir_audio_reels
+            print("🎵 IA escolheu usar música no story! Convertendo slides para vídeo...")
+            midias_em_video = []
+            for i, caminho_jpg in enumerate(midia):
+                ts = int(time.time())
+                nome_saida = f"story_video_{i}_{ts}.mp4"
+                if args.dry_run:
+                    try:
+                        audio_path = garantir_audio_reels()
+                        gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida)
+                        midias_em_video.append(nome_saida)
+                    except Exception as e:
+                        print(f"⚠️ [DRY-RUN] Pulando geração de story em vídeo: {e}")
+                        midias_em_video.append(caminho_jpg) # fallback
+                else:
+                    audio_path = garantir_audio_reels()
+                    novo_caminho = gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida)
+                    midias_em_video.append(novo_caminho)
+            midia = midias_em_video
             
         # Passo 4: Publicação no Instagram
         legenda = conteudo.get("legenda", "")

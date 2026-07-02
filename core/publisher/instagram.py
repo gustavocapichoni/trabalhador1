@@ -94,10 +94,13 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             
             url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
             payload = {
-                'image_url': url_publica,
                 'media_type': 'STORIES',
                 'access_token': IG_ACCESS_TOKEN
             }
+            if caminho_story.lower().endswith('.mp4'):
+                payload['video_url'] = url_publica
+            else:
+                payload['image_url'] = url_publica
             res_container = requests.post(url_container, data=payload, timeout=25)
             res_container_json = res_container.json()
             
