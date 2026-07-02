@@ -42,7 +42,7 @@ def main():
         conteudo, tema_escolhido, estilo_escolhido = gerar_conteudo_gemini(args.type)
         if args.type == "carousel":
             print(f"✨ Título do Carrossel: \"{conteudo.get('titulo')}\"")
-        elif args.type in ["reels", "pexels_story"]:
+        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite"]:
             slides = conteudo.get('slides', [])
             for i, s in enumerate(slides):
                 print(f"✨ Slide {i+1}: \"{s}\"")
@@ -50,7 +50,7 @@ def main():
             print(f"✨ Frase Gerada: \"{conteudo.get('frase')}\"")
             
         # Passo 2: Cria a mídia (imagem, sequência ou vídeo)
-        if args.type == "pexels_story":
+        if args.type in ["pexels_story", "pexels_story_noite"]:
             from core.media.pexels_story import gerar_pexels_story
             ts = int(time.time())
             _saida = f"pexels_story_{ts}.mp4"
@@ -67,7 +67,7 @@ def main():
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)
         
         # Passo 3: Se for Reels, gera o vídeo MP4
-        if args.type == "reels":
+        if args.type in ["reels", "reels_noite"]:
             from core.media.reels import gerar_video_reels, garantir_audio_reels
             ts = int(time.time())
             nome_saida_reels = f"reels_pronto_{ts}.mp4"

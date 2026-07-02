@@ -197,7 +197,7 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         return res_publish_json['id']
         
     # 3. Reels / Pexels Stories (vídeo)
-    elif tipo in ["reels", "pexels_story"]:
+    elif tipo in ["reels", "pexels_story", "reels_noite", "pexels_story_noite"]:
         if dry_run:
             print(f"[DRY-RUN] Enviaria vídeo Reels {midia} e publicaria.")
             return "DRY_RUN_REELS_ID"
