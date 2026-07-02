@@ -183,7 +183,12 @@ def gerar_conteudo_gemini(tipo):
 
         3. LEGENDA:
         - Reforce a provocação do carrossel em 3-4 linhas.
-        - CTA específico: diga EXATAMENTE o que você quer que o leitor faça (salvar, mandar pra alguém, comentar com uma palavra).
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: Sempre termine com uma das estratégias abaixo (escolha a mais adequada para o tema):
+          → "Comente 1 se você já viveu isso, ou 2 se ainda está nessa fase."
+          → "Você concorda com isso ou acha que é exagero? Comenta aqui embaixo."
+          → "Marca alguém que PRECISA ler isso antes de desistir."
+          → "Qual foi o slide que mais te pegou? Comenta o número."
+        - NUNCA termine com uma conclusão fechada. O leitor deve ter algo a dizer.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim:
@@ -231,7 +236,11 @@ def gerar_conteudo_gemini(tipo):
 
         LEGENDA:
         - Máximo 3 linhas. Tom de quem viveu aquilo, não de quem está ensinando.
-        - CTA emocional: peça para salvar ou marcar alguém que "precisa ver isso".
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: Sempre termine com uma pergunta polarizada que force o leitor a tomar partido. Use uma das abaixo como modelo:
+          → "Você concorda com isso ou acha que é papo de coach? Deixa aqui embaixo."
+          → "Qual desculpa você parou de usar? Me conta nos comentários."
+          → "Comente SIM se você já aplicou isso, ou NÃO se ainda tá adiando."
+        - NUNCA termine com uma frase bonita e fechada. Sempre com uma pergunta em aberto.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim:
@@ -280,7 +289,11 @@ def gerar_conteudo_gemini(tipo):
         
         LEGENDA:
         - Máximo 3 linhas. Tom próximo e pessoal, como uma mensagem de voz transcrita.
-        - CTA que cria reciprocidade: convide a pessoa a comentar o que ela sentiu, não o que ela pensa.
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta visceral que ataque diretamente a identidade do espectador. Use uma das abaixo como modelo:
+          → "O que esse vídeo te fez lembrar? Me fala nos comentários, vou ler todos."
+          → "Em qual frase você se viu? Comenta o número."
+          → "Você ficou com raiva de alguma parte? Ótimo. Qual foi?"
+        - NUNCA termine com uma mensagem positiva e fechada. Sempre com uma pergunta que exija resposta.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
