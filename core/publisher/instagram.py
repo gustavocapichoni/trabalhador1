@@ -5,6 +5,30 @@ import os
 from core.config.settings import IG_ACCESS_TOKEN, IG_ACCOUNT_ID
 from core.publisher.uploader import upload_temporario
 
+def aguardar_processamento_container(container_id, max_tentativas=10, intervalo=5):
+    """Aguarda o Instagram processar um container de mídia antes de publicar."""
+    url = f"https://graph.facebook.com/v19.0/{container_id}"
+    params = {
+        'fields': 'status_code',
+        'access_token': IG_ACCESS_TOKEN
+    }
+    for tentativa in range(1, max_tentativas + 1):
+        try:
+            res = requests.get(url, params=params, timeout=15)
+            status = res.json().get('status_code', '')
+            if status == 'FINISHED':
+                print(f"✅ Container {container_id} pronto!")
+                return True
+            elif status == 'ERROR':
+                raise Exception(f"Container {container_id} falhou com status ERROR.")
+            else:
+                print(f"⏳ Aguardando container {container_id} (tentativa {tentativa}/{max_tentativas}, status: {status})...")
+                time.sleep(intervalo)
+        except Exception as e:
+            print(f"⚠️ Erro ao consultar status do container: {e}")
+            time.sleep(intervalo)
+    raise Exception(f"Container {container_id} não ficou pronto após {max_tentativas} tentativas.")
+
 def postar_no_instagram(tipo, midia, legenda, dry_run=False):
     print(f"🚀 Iniciando postagem no Instagram ({tipo.upper()})...")
     if not IG_ACCESS_TOKEN or not IG_ACCOUNT_ID:
