@@ -19,6 +19,9 @@ on:
           - pexels_story
           - test
 
+permissions:
+  contents: write
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
