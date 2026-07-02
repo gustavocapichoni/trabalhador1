@@ -17,6 +17,8 @@ on:
           - carousel
           - reels
           - pexels_story
+          - reels_noite
+          - pexels_story_noite
           - analytics
           - weekly_report
           - test

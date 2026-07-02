@@ -310,8 +310,120 @@ def gerar_conteudo_gemini(tipo):
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
+    elif tipo == "reels_noite":
+        prompt = f"""
+        Você é um contador de histórias que entende que o final do dia é o momento mais emocional da jornada humana.
+        O seu Reels é o último do dia. A pessoa está voltando para casa ou já está deitada.
+        Estilo obrigatório para este Reels: {estilo_escolhido}
+
+        {instrucoes_copy}
+
+        CRIE UMA SEQUÊNCIA NARRATIVA DE 4 A 6 SLIDES que funcione como o CAPÍTULO FINAL de uma história que começou de manhã.
+        O tom deve ser: reflexivo, visceral, cinematográfico. Como um monólogo de quem olha para o dia e extrai o ouro.
+
+        SLIDE 1 — DIAGNÓSTICO DO DIA (Espelho da Realidade):
+        - Comece com uma observação sobre o dia que acabou. Algo que a maioria evita admitir.
+        - O leitor deve sentir: "é exatamente isso que aconteceu comigo hoje."
+        - Máximo 10 palavras. Pesado, honesto, sem filtro.
+
+        SLIDE 2 — A VIRADA QUE NINGUÉM FALA (O insight da noite):
+        - A sacada que só aparece quando a pressa do dia acaba.
+        - Apresente a perspectiva que muda tudo — a interpretação alternativa do que ele viveu.
+        - Máximo 12 palavras. Deve criar aquele silêncio mental de "nunca tinha pensado assim."
+
+        SLIDE 3 — O QUE LEVAR PARA AMANHÃ (Ancoragem de Identidade):
+        - Uma instrução prática e emocional para a manhã seguinte.
+        - Não é conselho barato. É uma promessa que o leitor faz para si mesmo.
+        - Máximo 12 palavras.
+
+        SLIDE 4 — FECHAMENTO PODEROSO (Plantio de Retorno):
+        - Termine com uma frase que ele vai dormir pensando.
+        - Algo que cria expectativa de acordar diferente amanhã.
+        - Não é motivacional clichê. É uma verdade que fica.
+        - Máximo 10 palavras.
+
+        (OPCIONAL) SLIDE 5 e 6 — Use se a narrativa pedir um desenvolvimento maior.
+
+        LEGENDA:
+        - Máximo 3 linhas. Tom de quem está sentado no escuro refletindo, não de quem está dando aula.
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta que force o leitor a fazer um balanço do dia:
+          → "Como foi o seu dia hoje, de verdade? Comenta embaixo."
+          → "Qual parte do dia você perdeu para o medo? Comenta 1 palavra."
+          → "Você vai dormir orgulhoso de algo hoje? Me conta."
+        - NUNCA termine com motivação positiva e fechada. Sempre com uma pergunta que exija reflexão.
+        - NÃO inclua hashtags.
+
+        Responda APENAS em formato JSON válido assim:
+        {{
+          "slides": [
+            "Slide 1 aqui",
+            "Slide 2 aqui",
+            "Slide 3 aqui",
+            "Slide 4 aqui"
+          ],
+          "legenda": "Sua legenda aqui sem hashtags"
+        }}
+        """
+    elif tipo == "pexels_story_noite":
+        prompt = f"""
+        Você é um diretor de cinema que cria micro-documentários noturnos para o Instagram.
+        Este é o vídeo B-roll do fim do dia. A pessoa está em modo de descanso, processando o que viveu.
+        Estilo obrigatório: {estilo_escolhido}
+
+        {instrucoes_copy}
+
+        CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que funcione como o EPÍLOGO do dia.
+        O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra, não grita.
+
+        FASE 1 — CENA DE ABERTURA NOTURNA (frases 1-2):
+        - Pinte uma cena mental de fim de dia. Algo que a pessoa vê ou sente quando para pela primeira vez.
+        - O espectador deve sentir o peso gostoso do dia terminando.
+        - Cada frase: máximo 10 palavras. Evocativa, sensorial, cinematográfica.
+
+        FASE 2 — O INVENTÁRIO DA ALMA (frases 3-4):
+        - O que ficou? O que passou? O que valeu?
+        - Faça o espectador fazer um balanço silencioso do próprio dia sem perceber.
+        - Crie o "loop aberto": uma verdade pela metade que só se fecha com reflexão.
+
+        FASE 3 — A ENTREGA FINAL (frases 5-6):
+        - Um insight de fechamento. A lição que o dia guardou para o final.
+        - Visceral e específico — não pode ser um clichê motivacional.
+        - Faça o espectador sentir que aquela frase foi escrita para ele.
+
+        FASE 4 — A SEMENTE DO AMANHÃ (frases 7-8):
+        - Termine plantando a semente de um recomeço.
+        - Uma frase que ele vai acordar querendo agir.
+        - Crie desejo de voltar ao perfil amanhã de manhã.
+
+        PEXELS QUERY: Escolha um clima visual noturno e contemplativo.
+        - Use buscas em inglês evocativas: night city lights rain, candle flame night silence, dark forest stars, person alone window night, sunset silhouette reflection.
+
+        LEGENDA:
+        - Máximo 3 linhas. Tom íntimo, como uma mensagem que um amigo manda à meia-noite.
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta de balanço noturno:
+          → "Qual foi a melhor parte do seu dia? Comenta aqui."
+          → "O que você vai fazer diferente amanhã? Me conta."
+          → "Em qual frase você se reconheceu? Comenta o número."
+        - NUNCA termine com uma mensagem positiva e fechada. Sempre com uma pergunta que convide ao diálogo.
+        - NÃO inclua hashtags.
+
+        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
+        {{
+          "slides": [
+            "Frase 1 aqui",
+            "Frase 2 aqui",
+            "Frase 3 aqui",
+            "Frase 4 aqui",
+            "Frase 5 aqui",
+            "Frase 6 aqui"
+          ],
+          "pexels_query": "your evocative night english search here",
+          "legenda": "Sua legenda aqui sem hashtags"
+        }}
+        """
     else:
         raise ValueError(f"Tipo inválido: {tipo}")
+
         
     max_tentativas_por_chave = 3
     

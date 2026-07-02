@@ -26,7 +26,7 @@ def registrar_postagem(tipo, tema, post_id, estilo):
 def main():
     parser = argparse.ArgumentParser(description="Bot de Instagram Automático 2.0")
     parser.add_argument("--type", type=str, required=True, 
-                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "test"],
+                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "reels_noite", "pexels_story_noite", "test"],
                         help="Tipo de postagem a gerar")
     parser.add_argument("--dry-run", action="store_true", help="Executa todo o processo sem postar no Instagram")
     
@@ -94,6 +94,8 @@ def main():
             "carousel": "Conteúdo aprofundado no ar! Seu Carrossel foi publicado com sucesso!",
             "reels": "Finalizando o dia: seu Reels em vídeo foi publicado com sucesso!",
             "pexels_story": "Video B-roll narrativo publicado com sucesso!",
+            "reels_noite": "Reels noturno com arco narrativo publicado com sucesso!",
+            "pexels_story_noite": "Pexels Story da noite publicado com sucesso!",
             "test": "Ambiente de automação testado com sucesso!"
         }
         
