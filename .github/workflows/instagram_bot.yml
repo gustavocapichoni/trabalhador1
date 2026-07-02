@@ -42,7 +42,7 @@ jobs:
       - name: Instalar Dependências (APT)
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          sudo apt-get install -y ffmpeg imagemagick
 
       - name: Instalar Dependências (PIP)
         run: pip install -r requirements.txt
