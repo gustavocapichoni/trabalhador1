@@ -74,7 +74,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 from moviepy.video.fx import FadeIn, FadeOut
                 clip = ImageClip(caminho).with_duration(duracao_por_slide)
                 clip = clip.with_effects([FadeIn(0.5), FadeOut(0.5)])
-            except AttributeError:
+            except (AttributeError, ImportError):
                 clip = ImageClip(caminho).set_duration(duracao_por_slide)
                 try:
                     import moviepy.video.fx.all as vfx  # type: ignore

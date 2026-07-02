@@ -1,6 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.header import Header
 from core.config.settings import SMTP_EMAIL, SMTP_PASSWORD, NOTIFY_EMAIL
 
 def enviar_email_notificacao(assunto, mensagem, dry_run=False):
