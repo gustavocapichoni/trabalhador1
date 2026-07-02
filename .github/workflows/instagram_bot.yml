@@ -17,6 +17,8 @@ on:
           - carousel
           - reels
           - pexels_story
+          - analytics
+          - weekly_report
           - test
 
 permissions:

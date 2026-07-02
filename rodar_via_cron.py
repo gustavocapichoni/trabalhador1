@@ -60,7 +60,14 @@ def rodar_agora():
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--manual":
         tipo = sys.argv[2] if len(sys.argv) > 2 else None
-        if tipo:
+        if tipo == "analytics":
+            print("🚀 Executando manualmente: Analytics Diário")
+            subprocess.run(["python", "core/analytics/rodar_analytics.py"])
+        elif tipo == "weekly_report":
+            print("🚀 Executando manualmente: Relatório Semanal")
+            subprocess.run(["python", "-c", "from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
+            subprocess.run(["python", "core/reports/weekly.py"])
+        elif tipo:
             print(f"🚀 Executando manualmente: {tipo}")
             subprocess.run(["python", "main.py", "--type", tipo])
         else:
