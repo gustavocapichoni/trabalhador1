@@ -22,37 +22,70 @@ def _carregar_fonte(tamanho=50):
     except:
         return ImageFont.load_default()
 
+def _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_px):
+    """Quebra o texto em linhas que cabem dentro de largura_max_px."""
+    palavras = texto.split()
+    linhas = []
+    linha_atual = ""
+
+    for palavra in palavras:
+        candidata = (linha_atual + " " + palavra).strip()
+        bbox = draw.textbbox((0, 0), candidata, font=fonte)
+        lw = bbox[2] - bbox[0]
+        if lw <= largura_max_px:
+            linha_atual = candidata
+        else:
+            if linha_atual:
+                linhas.append(linha_atual)
+            linha_atual = palavra
+    if linha_atual:
+        linhas.append(linha_atual)
+    return linhas
+
 def _adicionar_texto_frame(frame_array, texto, fonte):
     """Desenha texto centralizado com sombra/fundo em um frame (numpy array)."""
     img = Image.fromarray(frame_array)
     draw = ImageDraw.Draw(img)
     w, h = img.size
 
-    # Quebra o texto para caber na tela
-    linhas = textwrap.wrap(texto, width=28)
-    
-    # Calcula altura total do bloco de texto
-    alturas = [draw.textbbox((0, 0), l, font=fonte)[3] - draw.textbbox((0, 0), l, font=fonte)[1] for l in linhas]
-    espaco_entre = 12
-    total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + 40  # padding
-    total_w = max([draw.textbbox((0, 0), l, font=fonte)[2] - draw.textbbox((0, 0), l, font=fonte)[0] for l in linhas] or [w]) + 60
+    # Margem lateral: texto ocupa no máximo 85% da largura do frame
+    margem_px = int(w * 0.075)
+    largura_max_texto = w - (margem_px * 2)
 
-    # Fundo semitransparente atrás do texto
+    # Quebra o texto por pixels reais (não por número de caracteres)
+    linhas = _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_texto)
+    if not linhas:
+        return frame_array
+
+    # Mede cada linha em pixels
+    alturas = []
+    larguras = []
+    for l in linhas:
+        bb = draw.textbbox((0, 0), l, font=fonte)
+        alturas.append(bb[3] - bb[1])
+        larguras.append(bb[2] - bb[0])
+
+    espaco_entre = 14
+    padding_h = 24
+    padding_v = 20
+
+    total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + padding_v * 2
+    total_w = min(max(larguras) + padding_h * 2, w - margem_px * 2)
+
+    # Fundo semitransparente atrás do texto — sempre dentro da tela
     overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
     overlay_draw = ImageDraw.Draw(overlay)
-    bx0 = (w - total_w) // 2
+    bx0 = max((w - total_w) // 2, margem_px)
     by0 = (h - total_h) // 2
-    bx1 = bx0 + total_w
+    bx1 = min(bx0 + total_w, w - margem_px)
     by1 = by0 + total_h
     overlay_draw.rounded_rectangle([bx0, by0, bx1, by1], radius=18, fill=(0, 0, 0, 160))
     img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    # Desenha cada linha centralizada
-    y = by0 + 20
-    for linha, alt in zip(linhas, alturas):
-        bbox = draw.textbbox((0, 0), linha, font=fonte)
-        lw = bbox[2] - bbox[0]
+    # Desenha cada linha centralizada dentro do fundo
+    y = by0 + padding_v
+    for linha, alt, lw in zip(linhas, alturas, larguras):
         x = (w - lw) // 2
         # Sombra
         draw.text((x + 2, y + 2), linha, font=fonte, fill=(0, 0, 0, 200))
