@@ -12,7 +12,7 @@ UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 
 def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
     """Busca imagem no Unsplash ou retorna fundo escuro."""
-    if tipo in ["story", "reels", "test"]:
+    if tipo in ["story", "story_manha", "story_tarde", "reels", "reels_noite", "pexels_story", "pexels_story_noite", "test"]:
         W, H = 1080, 1920
         orientation = "portrait"
     else:

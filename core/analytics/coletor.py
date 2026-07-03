@@ -51,9 +51,16 @@ def buscar_metricas_api(post_id):
             metricas["comments"] = data.get("comments_count", 0)
             media_type = data.get("media_type")
         else:
+            try:
+                err_json = res_media.json()
+                err_msg = err_json.get("error", {}).get("message", "")
+                if "does not exist, cannot be loaded" in err_msg or "Unsupported get request" in err_msg:
+                    print(f"Aviso: Mídia {post_id} não acessível (pode ter expirado). Pulando...")
+                    return None
+            except:
+                pass
             print(f"Erro ao buscar campos diretos da mídia {post_id}: {res_media.text}")
             return None
-            
         # 2. Busca os insights (reach, saved, shares, views)
         # Os nomes das métricas mudaram recentemente na API do Facebook
         metrics_query = "reach,saved,shares,views"
@@ -104,8 +111,15 @@ def rodar_coleta():
         except:
             continue
             
-        # Pular posts com menos de 24h (métricas não estabilizadas)
-        if agora - post_dt < timedelta(hours=24):
+        # Verifica se o post é do tipo story
+        is_story = "story" in str(post.get('tipo', '')).lower()
+        
+        # Para stories, eles expiram após 24h, então não podemos buscar depois disso
+        if is_story and agora - post_dt > timedelta(hours=24):
+            continue
+            
+        # Pular posts (feed/reels) com menos de 24h (métricas não estabilizadas)
+        if not is_story and agora - post_dt < timedelta(hours=24):
             continue
             
         # Pular posts muito antigos (mais de 14 dias), para economizar chamadas de API

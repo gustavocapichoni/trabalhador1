@@ -48,23 +48,43 @@ def gerar_conteudo_gemini(tipo):
         recomendacoes_semanais_file = "core/analytics/dados/recomendacoes_semanais.json"
         recomendacoes_file = "core/analytics/dados/recomendacoes.json"
 
+        contexto_semanal = ""
+        contexto_diario = ""
+        rec_semanal = {}
+        
+        # 1. Lê a visão macro (semanal) - "O bot da semana toca"
         if os.path.exists(recomendacoes_semanais_file):
             with open(recomendacoes_semanais_file, "r", encoding="utf-8") as f:
                 rec_semanal = json.load(f)
-            contexto_analytics = rec_semanal.get("contexto_para_gemini", "")
-            tema_rec = rec_semanal.get("tema_recomendado")
-            if tema_rec and tema_rec in TEMAS_MAPEADOS:
-                tema_escolhido = tema_rec
-                print(f"📈 Analytics SEMANAL recomendou o tema: {tema_escolhido}")
-
-        elif os.path.exists(recomendacoes_file):
+            contexto_semanal = rec_semanal.get("contexto_para_gemini", "")
+            
+        # 2. Lê a visão micro (diária) - "O bot do dia dança"
+        if os.path.exists(recomendacoes_file):
             with open(recomendacoes_file, "r", encoding="utf-8") as f:
-                recomendacoes = json.load(f)
-            tema_rec = recomendacoes.get("tema_recomendado")
+                rec_diaria = json.load(f)
+            contexto_diario = rec_diaria.get("contexto_para_gemini", "")
+            
+            # O tema vem do diário (o que performou melhor ontem dita a execução de hoje)
+            tema_rec = rec_diaria.get("tema_recomendado")
             if tema_rec and tema_rec in TEMAS_MAPEADOS:
                 tema_escolhido = tema_rec
-                print(f"📈 Analytics diário recomendou o tema: {tema_escolhido}")
-            contexto_analytics = recomendacoes.get("contexto_para_gemini", "")
+                print(f"📈 Analytics DIÁRIO recomendou o tema para hoje: {tema_escolhido}")
+        else:
+            # Se não tiver diário, usa o tema do semanal como fallback
+            if rec_semanal:
+                tema_rec = rec_semanal.get("tema_recomendado")
+                if tema_rec and tema_rec in TEMAS_MAPEADOS:
+                    tema_escolhido = tema_rec
+                    print(f"📈 Analytics SEMANAL recomendou o tema fallback: {tema_escolhido}")
+
+        # Junta os dois contextos:
+        partes_contexto = []
+        if contexto_semanal:
+            partes_contexto.append("ESTRATÉGIA DA SEMANA (Visão Macro):\n" + contexto_semanal)
+        if contexto_diario:
+            partes_contexto.append("AJUSTE DE HOJE (Visão Micro):\n" + contexto_diario)
+            
+        contexto_analytics = "\n\n".join(partes_contexto)
 
     except Exception as e:
         print(f"⚠️ Erro ao ler recomendações do analytics: {e}")
