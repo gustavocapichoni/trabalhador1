@@ -1,6 +1,7 @@
 import os
 import glob
 import random
+import moviepy.editor
 from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
 
 def garantir_audio_reels():

@@ -54,8 +54,6 @@ def gerar_conteudo_gemini(tipo):
         
         # 1. Lê a visão macro (semanal) - "O bot da semana toca"
         if os.path.exists(recomendacoes_semanais_file):
-            import time
-            from datetime import datetime, timedelta
             # Verifica se o arquivo semanal tem menos de 7 dias de idade
             idade_segundos = time.time() - os.path.getmtime(recomendacoes_semanais_file)
             
