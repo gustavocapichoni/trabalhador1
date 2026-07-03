@@ -54,9 +54,17 @@ def gerar_conteudo_gemini(tipo):
         
         # 1. Lê a visão macro (semanal) - "O bot da semana toca"
         if os.path.exists(recomendacoes_semanais_file):
-            with open(recomendacoes_semanais_file, "r", encoding="utf-8") as f:
-                rec_semanal = json.load(f)
-            contexto_semanal = rec_semanal.get("contexto_para_gemini", "")
+            import time
+            from datetime import datetime, timedelta
+            # Verifica se o arquivo semanal tem menos de 7 dias de idade
+            idade_segundos = time.time() - os.path.getmtime(recomendacoes_semanais_file)
+            
+            if idade_segundos <= (7 * 24 * 60 * 60):  # 7 dias
+                with open(recomendacoes_semanais_file, "r", encoding="utf-8") as f:
+                    rec_semanal = json.load(f)
+                contexto_semanal = rec_semanal.get("contexto_para_gemini", "")
+            else:
+                print("⚠️ Analytics semanal tem mais de 7 dias (desatualizado). Ignorando visão macro.")
             
         # 2. Lê a visão micro (diária) - "O bot do dia dança"
         if os.path.exists(recomendacoes_file):
