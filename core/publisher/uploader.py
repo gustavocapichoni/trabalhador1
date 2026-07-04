@@ -15,6 +15,9 @@ def upload_temporario(caminho_arquivo):
                 # Converte em link de download direto
                 url_download_direto = url_visualizador.replace("https://tmpfiles.org/", "https://tmpfiles.org/dl/")
                 print(f"🔗 Link direto de acesso gerado: {url_download_direto}")
+                # Aguarda o servidor disponibilizar o arquivo antes do Instagram tentar acessá-lo
+                print("⏳ Aguardando 10s para o arquivo ficar disponível no servidor...")
+                time.sleep(10)
                 return url_download_direto
             else:
                 raise Exception(f"Falha na API tmpfiles: {data}")
