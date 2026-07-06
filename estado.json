@@ -51,6 +51,13 @@
             "tipo": "reels",
             "tema": "superacao",
             "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
+        },
+        {
+            "post_id": "18047114780629919",
+            "data": "2026-07-06 09:10:52",
+            "tipo": "story_manha",
+            "tema": "superacao",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
         }
     ],
     "ultimos_temas": [
@@ -63,17 +70,20 @@
     "historico_angulos": [
         "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão",
         "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz",
-        "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega"
+        "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega",
+        "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo"
     ],
     "historico_ganchos": [
         "Como isso influencia a sua vida de uma forma que você nunca percebeu.",
         "Por que não te contaram isso antes?",
-        "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:"
+        "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
+        "A diferença entre quem constrói riqueza de verdade e quem apenas parece rico é um único hábito que a maioria ignora por puro orgulho:"
     ],
     "historico_estilos": [
         "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
         "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
+        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
     ],
     "historico_midia": [
         "20100166"
