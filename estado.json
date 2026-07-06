@@ -65,35 +65,42 @@
             "tipo": "pexels_story",
             "tema": "superacao",
             "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')"
+        },
+        {
+            "post_id": "18108207979976301",
+            "data": "2026-07-06 12:03:30",
+            "tipo": "carousel",
+            "tema": "superacao",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
         }
     ],
     "ultimos_temas": [
         "superacao"
     ],
-    "ultimo_carousel": 5,
+    "ultimo_carousel": 3,
     "tema_do_dia": "superacao",
     "data_tema_do_dia": "2026-07-06",
     "index_conquistador": 2,
     "historico_angulos": [
-        "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão",
         "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz",
         "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega",
         "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo",
-        "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata"
+        "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata",
+        "Escolha as suas batalhas: ser forte não é apanhar de tudo, é saber qual guerra vale a pena lutar até o fim"
     ],
     "historico_ganchos": [
-        "Como isso influencia a sua vida de uma forma que você nunca percebeu.",
         "Por que não te contaram isso antes?",
         "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
         "A diferença entre quem constrói riqueza de verdade e quem apenas parece rico é um único hábito que a maioria ignora por puro orgulho:",
-        "Leia isto com muito cuidado se você não aguenta mais ver outras pessoas avançando enquanto você sente que está parado no mesmo lugar:"
+        "Leia isto com muito cuidado se você não aguenta mais ver outras pessoas avançando enquanto você sente que está parado no mesmo lugar:",
+        "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:"
     ],
     "historico_estilos": [
-        "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
         "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
         "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
         "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')"
+        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
     ],
     "historico_midia": [
         "37230071",
