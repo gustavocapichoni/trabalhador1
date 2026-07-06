@@ -44,6 +44,13 @@
             "tipo": "reels_conquistador",
             "tema": "filosofia",
             "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')"
+        },
+        {
+            "post_id": "18104022773515921",
+            "data": "2026-07-06 09:02:59",
+            "tipo": "reels",
+            "tema": "superacao",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
         }
     ],
     "ultimos_temas": [
@@ -51,19 +58,22 @@
     ],
     "ultimo_carousel": 5,
     "tema_do_dia": "superacao",
-    "data_tema_do_dia": "2026-07-05",
+    "data_tema_do_dia": "2026-07-06",
     "index_conquistador": 2,
     "historico_angulos": [
         "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão",
-        "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz"
+        "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz",
+        "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega"
     ],
     "historico_ganchos": [
         "Como isso influencia a sua vida de uma forma que você nunca percebeu.",
-        "Por que não te contaram isso antes?"
+        "Por que não te contaram isso antes?",
+        "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:"
     ],
     "historico_estilos": [
         "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-        "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')"
+        "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
     ],
     "historico_midia": [
         "20100166"
