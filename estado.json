@@ -72,6 +72,13 @@
             "tipo": "carousel",
             "tema": "superacao",
             "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
+        },
+        {
+            "post_id": "18086709767185334",
+            "data": "2026-07-06 15:03:09",
+            "tipo": "reels",
+            "tema": "superacao",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')"
         }
     ],
     "ultimos_temas": [
@@ -82,25 +89,25 @@
     "data_tema_do_dia": "2026-07-06",
     "index_conquistador": 2,
     "historico_angulos": [
-        "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz",
         "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega",
         "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo",
         "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata",
-        "Escolha as suas batalhas: ser forte não é apanhar de tudo, é saber qual guerra vale a pena lutar até o fim"
+        "Escolha as suas batalhas: ser forte não é apanhar de tudo, é saber qual guerra vale a pena lutar até o fim",
+        "O ciclo da derrota: um gatilho te estressa, você foge para um hábito destrutivo e depois se culpa"
     ],
     "historico_ganchos": [
-        "Por que não te contaram isso antes?",
         "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
         "A diferença entre quem constrói riqueza de verdade e quem apenas parece rico é um único hábito que a maioria ignora por puro orgulho:",
         "Leia isto com muito cuidado se você não aguenta mais ver outras pessoas avançando enquanto você sente que está parado no mesmo lugar:",
-        "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:"
+        "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:",
+        "Você não precisa de mais conselhos bonitos. Precisa de um choque de realidade. E o primeiro passo é parar de fingir que..."
     ],
     "historico_estilos": [
-        "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
         "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
         "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
         "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
+        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+        "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')"
     ],
     "historico_midia": [
         "37230071",
