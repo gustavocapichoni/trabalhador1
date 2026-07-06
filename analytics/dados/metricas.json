@@ -11,15 +11,12 @@
             "metricas": {
                 "likes": 3,
                 "comments": 0,
-                "media_type": "VIDEO",
-                "views": 170,
-                "ig_reels_avg_watch_time": 4324,
-                "ig_reels_video_view_total_time": 700621,
                 "reach": 161,
                 "saved": 0,
-                "shares": 0
+                "shares": 0,
+                "views": 170
             },
-            "ultima_atualizacao": "2026-07-05 23:04:35"
+            "ultima_atualizacao": "2026-07-05 07:01:17"
         },
         "17894851728546775": {
             "info_post": {
@@ -39,36 +36,6 @@
                 "views": 3
             },
             "ultima_atualizacao": "2026-07-03 07:01:02"
-        },
-        "18458492563117466": {
-            "info_post": {
-                "post_id": "18458492563117466",
-                "data": "2026-07-05 22:44:47",
-                "tipo": "pexels_story_noite",
-                "tema": "superacao",
-                "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')"
-            },
-            "metricas": {
-                "likes": 0,
-                "comments": 0,
-                "media_type": "VIDEO"
-            },
-            "ultima_atualizacao": "2026-07-05 23:04:35"
-        },
-        "17945645493227497": {
-            "info_post": {
-                "post_id": "17945645493227497",
-                "data": "2026-07-05 22:53:34",
-                "tipo": "story_manha",
-                "tema": "superacao",
-                "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
-            },
-            "metricas": {
-                "likes": 0,
-                "comments": 0,
-                "media_type": "VIDEO"
-            },
-            "ultima_atualizacao": "2026-07-05 23:04:35"
         }
     }
 }
