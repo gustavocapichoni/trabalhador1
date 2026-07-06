@@ -1,16 +1,98 @@
 {
-    "atualizado_em": "2026-07-05 07:01:20 UTC",
-    "contexto_para_gemini": "CONTEXTO DE PERFORMANCE: Seus últimos posts tiveram alcance médio de 82 contas e 0 salvamentos em média. O formato 'reels' é atualmente o que traz mais resultados. O público está respondendo extremamente bem à abordagem de estilo de copy: 'pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente'. \nINSTRUÇÃO DE AUTO-AJUSTE: Leve essas métricas em consideração. Tente incorporar a energia do formato e tema que estão dando certo, evite abordagens que não estão convertendo. Se for escrever sobre o tema de melhor performance, tente extrair um ângulo inédito.",
-    "tema_recomendado": "superacao",
-    "formato_recomendado": "reels",
-    "estilo_recomendado": "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente",
-    "metricas_resumo": {
-        "melhor_tema": "superacao",
-        "pior_tema": "superacao",
-        "melhor_formato": "reels",
-        "melhor_estilo": "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente",
-        "alcance_medio": 82.5,
-        "saves_medio": 0.0,
-        "total_posts_analisados": 2
+    "atualizado_em": "2026-07-06 07:02:07 UTC",
+    "contexto_para_gemini": "🎯 CONTEXTO DE PERFORMANCE (MACRO VS MICRO):\nSua estratégia fundamental de LONGO PRAZO é ditada pelo panorama ANUAL.\nNo entanto, sua tática de CURTO PRAZO é ditada pelo panorama SEMANAL.\n\n⚖️ DISTRIBUIÇÃO PROPORCIONAL DE TEMAS (ROLETA VICIADA):\n- superacao: 100.0%\n\nINSTRUÇÃO DE AUTO-AJUSTE: Leve essa distribuição em consideração. Quando for escolher o tema, baseie-se nas proporções acima para manter o mix de conteúdo perfeito, garantindo que o tema macro vencedor domine o grid, mas que outros temas continuem sendo testados.",
+    "distribuicoes": {
+        "temas": {
+            "superacao": 1.0
+        },
+        "formatos": {
+            "reels": 0.982,
+            "pexels_story": 0.018
+        },
+        "estilos": {
+            "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+        }
+    },
+    "analises_raw": {
+        "semanal": {
+            "periodo_dias": 7,
+            "distribuicao_temas": {
+                "superacao": 1.0
+            },
+            "distribuicao_formatos": {
+                "reels": 0.982,
+                "pexels_story": 0.018
+            },
+            "distribuicao_estilos": {
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            },
+            "alcance_medio": 82.5,
+            "saves_medio": 0.0,
+            "total_posts_analisados": 2
+        },
+        "mensal": {
+            "periodo_dias": 30,
+            "distribuicao_temas": {
+                "superacao": 1.0
+            },
+            "distribuicao_formatos": {
+                "reels": 0.982,
+                "pexels_story": 0.018
+            },
+            "distribuicao_estilos": {
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            },
+            "alcance_medio": 82.5,
+            "saves_medio": 0.0,
+            "total_posts_analisados": 2
+        },
+        "trimestral": {
+            "periodo_dias": 90,
+            "distribuicao_temas": {
+                "superacao": 1.0
+            },
+            "distribuicao_formatos": {
+                "reels": 0.982,
+                "pexels_story": 0.018
+            },
+            "distribuicao_estilos": {
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            },
+            "alcance_medio": 82.5,
+            "saves_medio": 0.0,
+            "total_posts_analisados": 2
+        },
+        "semestral": {
+            "periodo_dias": 180,
+            "distribuicao_temas": {
+                "superacao": 1.0
+            },
+            "distribuicao_formatos": {
+                "reels": 0.982,
+                "pexels_story": 0.018
+            },
+            "distribuicao_estilos": {
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            },
+            "alcance_medio": 82.5,
+            "saves_medio": 0.0,
+            "total_posts_analisados": 2
+        },
+        "anual": {
+            "periodo_dias": 365,
+            "distribuicao_temas": {
+                "superacao": 1.0
+            },
+            "distribuicao_formatos": {
+                "reels": 0.982,
+                "pexels_story": 0.018
+            },
+            "distribuicao_estilos": {
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            },
+            "alcance_medio": 82.5,
+            "saves_medio": 0.0,
+            "total_posts_analisados": 2
+        }
     }
 }
