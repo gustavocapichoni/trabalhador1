@@ -5,7 +5,7 @@ import random
 from io import BytesIO
 from PIL import Image, ImageDraw
 
-from .efeitos import aplicar_mesh_gradient, draw_text_with_shadow
+from .efeitos import aplicar_mesh_gradient, draw_text_with_shadow, desenhar_elementos_premium
 from .templates import carregar_fontes, CORES
 from core.config.state import verificar_midia_recente, registrar_midia_usada
 
@@ -19,7 +19,10 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
     Nível 3: Biblioteca Local (Modo Offline)
     Nível 4: Fundo Sólido Escuro (Emergência Catastrófica)
     """
-    if tipo in ["story", "story_manha", "story_tarde", "reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite", "test"]:
+    if tipo == "carousel":
+        W, H = 2160, 1080
+        orientation = "landscape"
+    elif tipo in ["story", "story_manha", "story_tarde", "reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite", "test"]:
         W, H = 1080, 1920
         orientation = "portrait"
     else:
@@ -139,46 +142,58 @@ def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     else:
         return _gerar_estatico(img, W, H, tipo, dados, tema_escolhido, TEMAS_MAPEADOS)
 
-def _gerar_carrossel(img, W, H, dados):
+def _gerar_carrossel(img, W_full, H, dados):
     caminhos_arquivos = []
     slides_conteudo = [dados["titulo"]] + dados["slides"] + ["CTA"]
     
+    # Tamanho de cada slide
+    slide_W, slide_H = 1080, 1080
+    num_slides = len(slides_conteudo)
+    
+    # Calcula o deslocamento do fundo (panning) para criar o efeito panorâmico contínuo
+    step = (W_full - slide_W) / (num_slides - 1) if num_slides > 1 else 0
+    
     # FIX: Fontes maiores para garantir legibilidade no carrossel 1080x1080
-    # Aumentamos o tamanho_body (usado nos slides) de 58 para 72!
     font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26)
     font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30)[0]
     
     for idx, texto in enumerate(slides_conteudo):
-        slide_img = img.copy().convert("RGB")
+        x_offset = int(idx * step)
+        
+        # Recorta a porção do fundo exata para este slide (Rampa de Deslizamento)
+        slide_bg = img.crop((x_offset, 0, x_offset + slide_W, slide_H))
+        
+        slide_img = slide_bg.convert("RGB")
         draw = ImageDraw.Draw(slide_img)
         
+        # Elementos de Agência Premium
+        desenhar_elementos_premium(draw, slide_W, slide_H)
+        
         # Marca d'água
-        draw_text_with_shadow(draw, (W/2, H - 80), "⚜ @gustavo_8k_ ⚜", font_marca, fill=CORES["destaque"], anchor="ms")
+        draw_text_with_shadow(draw, (slide_W/2, slide_H - 80), "@gustavo_8k_", font_marca, fill=CORES["destaque"], anchor="ms")
         
         if idx == 0:  # Capa (Playfair Display)
             # FIX: width menor = menos chars por linha = texto maior e mais legível
             linhas = textwrap.wrap(texto, width=15)
-            y_inicial = (H - (len(linhas) * 105)) / 2 - 40
+            y_inicial = (slide_H - (len(linhas) * 105)) / 2 - 40
             for i, linha in enumerate(linhas):
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 105), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
-            draw_text_with_shadow(draw, (W/2, H - 175), "Arrasta para o lado  ▶", font_sub, fill=CORES["destaque"], anchor="ms")
+                draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 105), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
+            draw_text_with_shadow(draw, (slide_W/2, slide_H - 175), "Arrasta para o lado  ▶", font_sub, fill=CORES["destaque"], anchor="ms")
             
         elif texto == "CTA":  # Slide Final
-            draw.line([(W*0.15, H*0.35), (W*0.85, H*0.35)], fill=CORES["destaque"], width=2)
-            linhas_cta = ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!", "", "✦ @gustavo_8k_ ✦"]
-            y_inicial = H * 0.38
+            draw.line([(slide_W*0.15, slide_H*0.35), (slide_W*0.85, slide_H*0.35)], fill=CORES["destaque"], width=2)
+            linhas_cta = ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!", "", "@gustavo_8k_"]
+            y_inicial = slide_H * 0.38
             for i, linha in enumerate(linhas_cta):
                 cor = CORES["destaque"] if "@" in linha else CORES["texto_principal"]
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 78), linha, font_slides, fill=cor, anchor="ms")
-            draw.line([(W*0.15, H*0.76), (W*0.85, H*0.76)], fill=CORES["destaque"], width=2)
+                draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=cor, anchor="ms")
                 
-        else:  # Slides de conteúdo (Montserrat)
-            # FIX: width=15 e fonte 72 garante fonte enorme e perfeitamente legível
-            linhas = textwrap.wrap(texto, width=15)
-            y_inicial = (H - (len(linhas) * 88)) / 2
+        else:  # Slides internos (Inter/Montserrat)
+            linhas = textwrap.wrap(texto, width=20)
+            y_inicial = (slide_H - (len(linhas) * 90)) / 2
             for i, linha in enumerate(linhas):
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 88), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
-                
+                draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 90), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
+            
         caminho = f"carousel_{idx}.jpg"
         slide_img.save(caminho, "JPEG", quality=95)
         caminhos_arquivos.append(caminho)
@@ -193,6 +208,9 @@ def _gerar_reels(img, W, H, dados):
     for idx, frase in enumerate(frases):
         slide = img.copy().convert("RGB")
         draw = ImageDraw.Draw(slide)
+        
+        # Elementos de Agência Premium
+        desenhar_elementos_premium(draw, W, H)
         
         draw_text_with_shadow(draw, (W/2, H - 150), "— @gustavo_8k_ —", font_marca, fill=CORES["texto_secundario"], anchor="ms")
         draw_text_with_shadow(draw, (W/2, H - 220), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
@@ -237,6 +255,9 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
         else:
             slide = img.copy().convert("RGB")
         draw = ImageDraw.Draw(slide)
+        
+        # Elementos de Agência Premium
+        desenhar_elementos_premium(draw, W, H)
         
         y_watermark = H - 150 if tipo in ["story", "story_manha", "story_tarde", "test"] else H - 80
         draw_text_with_shadow(draw, (W/2, y_watermark), "@gustavo_8k_", font_marca, fill=CORES["texto_secundario"], anchor="ms")

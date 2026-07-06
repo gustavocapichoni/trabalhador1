@@ -71,10 +71,11 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo="Mont
         
     return font_display, font_body, font_detalhe
 
-# Cores Premium
+# Paleta Oficial de Branding da Marca
 CORES = {
-    "texto_principal": (255, 255, 255),    # Branco
-    "texto_secundario": (220, 220, 220),   # Prata claro
-    "destaque": (212, 175, 55),            # Dourado
-    "sombra": (0, 0, 0, 180)               # Preto difuso
+    "texto_principal": (255, 255, 255),    # Branco Neve
+    "texto_secundario": (180, 175, 170),   # Cinza Quente / Prata
+    "destaque": (212, 175, 55),            # Dourado Champagne (Premium)
+    "fundo_tint": (15, 18, 25),            # Deep Charcoal (Preto/Azul Profundo) para filtros
+    "sombra": (0, 0, 0, 200)               # Preto difuso para legibilidade
 }

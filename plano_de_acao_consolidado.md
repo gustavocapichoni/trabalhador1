@@ -96,14 +96,13 @@ graph LR
 **Meta:** Conteúdo que prende, visual que impressiona, voz que retém.
 
 #### 2.1 — Motor Visual Premium
-- [ ] **Gradientes modernos** (glassmorphism, blur parcial no fundo em vez de overlay flat)
+- [x] **Gradientes modernos** (glassmorphism, blur parcial no fundo em vez de overlay flat)
 - [x] **Tipografia hierárquica**: Playfair Display (títulos) + Montserrat (corpo) *(4 fontes premium baixadas automaticamente)*
-- [ ] **Templates variados** com branding consistente (paleta de 3-4 cores fixas)
-- [ ] **Bordas e molduras sutis**, separadores visuais premium
+- [x] **Templates variados** com branding consistente (paleta de 3-4 cores fixas)
+- [x] **Bordas e molduras sutis**, separadores visuais premium
+- [x] **Carrossel "Rampa de Deslizamento"**: cortar imagem larga em slides contínuos (efeito panorâmico)
 
-
-- [ ] **Carrossel "Rampa de Deslizamento"**: cortar imagem larga em slides contínuos (efeito panorâmico)
-- [ ] **A/B visual automático**: Analytics rastreia qual layout gera mais saves → foca no vencedor
+- [x] **A/B visual automático**: Analytics rastreia qual layout gera mais saves → foca no vencedor
              armazernar os horarios que as postagens tiveram melhores resultados views likes salvamentos
 #### 2.2 — Voz da Autoridade (TTS)
 - [ ] Integrar **ElevenLabs** ou **edge-tts** para narração nos Reels e Pexels Stories
