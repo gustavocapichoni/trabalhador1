@@ -20,7 +20,7 @@ def verificar_expiracao_token():
 def verificar_duplicidade_hoje(tipo):
     return False
 
-def registrar_postagem(tipo, tema, post_id, estilo):
+def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda=""):
     from core.config.state import carregar_estado, salvar_estado
     from datetime import datetime, timezone
     if not post_id or post_id.startswith("DRY_RUN"):
@@ -35,7 +35,9 @@ def registrar_postagem(tipo, tema, post_id, estilo):
         "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
         "tipo": tipo,
         "tema": tema,
-        "estilo_copy": estilo
+        "estilo_copy": estilo,
+        "frase_visual": frase_visual,
+        "legenda": legenda
     }
     estado["historico"].append(novo_post)
     salvar_estado(estado)
@@ -109,31 +111,55 @@ def main():
         # Passo 3.5: Se for Story, converte obrigatoriamente JPGs para MP4s com música
         if args.type in ["story_manha", "story_tarde"]:
             from core.media.reels import gerar_video_story_individual, garantir_audio_reels
-            print("🎵 Convertendo slides de Story para vídeo com música de fundo...")
+            print("🎵 Convertendo slides de Story para vídeo com música de fundo contínua...")
             midias_em_video = []
             ts = int(time.time())
+            
+            # 1. Sorteia UMA música que será tocada do início ao fim
+            audio_path = None
+            try:
+                audio_path = garantir_audio_reels()
+            except Exception as e:
+                print(f"⚠️ Erro ao buscar áudio: {e}")
+                
             for i, caminho_jpg in enumerate(midia):
                 nome_saida = f"story_video_{i}_{ts}.mp4"
                 if args.dry_run:
                     try:
-                        audio_path = garantir_audio_reels()
-                        gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida)
+                        if audio_path:
+                            # 2. Faz a música continuar de onde parou (0s, 10s, 20s...)
+                            gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida, tempo_inicio=i*10.0)
                         midias_em_video.append(nome_saida)
                     except Exception as e:
                         print(f"⚠️ [DRY-RUN] Pulando geração de story em vídeo: {e}")
                         midias_em_video.append(caminho_jpg) # fallback
                 else:
-                    audio_path = garantir_audio_reels()
-                    novo_caminho = gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida)
-                    midias_em_video.append(novo_caminho)
+                    if audio_path:
+                        novo_caminho = gerar_video_story_individual(caminho_jpg, audio_path, caminho_saida=nome_saida, tempo_inicio=i*10.0)
+                        midias_em_video.append(novo_caminho)
+                    else:
+                        midias_em_video.append(caminho_jpg)
             midia = midias_em_video
             
         # Passo 4: Publicação no Instagram
         legenda = conteudo.get("legenda", "")
+        
+        # Extrair a frase visual para fins de log e relatório
+        frase_visual = ""
+        if args.type == "carousel":
+            frase_visual = conteudo.get("titulo", "")
+        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador"]:
+            slides = conteudo.get('slides', [])
+            frase_visual = " | ".join(slides) if isinstance(slides, list) else str(slides)
+        else:
+            frase_visual = conteudo.get("frase", "")
+            if isinstance(frase_visual, list):
+                frase_visual = " | ".join(frase_visual)
+
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
         
         if post_id:
-            registrar_postagem(args.type, tema_escolhido, post_id, estilo_escolhido)
+            registrar_postagem(args.type, tema_escolhido, post_id, estilo_escolhido, frase_visual=frase_visual, legenda=legenda)
         
         # Passo 5: Envia E-mail de Sucesso
         mensagens_sucesso = {

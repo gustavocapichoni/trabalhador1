@@ -11,7 +11,7 @@ from core.config.state import verificar_midia_recente, registrar_midia_usada
 
 UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 
-def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
+def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None):
     """
     Busca de imagem em Cascata (Fase 2):
     Nível 1: Pollinations AI (Originalidade 100%)
@@ -30,12 +30,17 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
     if tema_escolhido and tema_escolhido in TEMAS_MAPEADOS:
         query_termo = TEMAS_MAPEADOS[tema_escolhido].get("query_unsplash", query_termo)
 
+    # Se o Gemini gerou um prompt específico, usamos ele! Se não, usamos o fallback do tema.
+    termo_final_ia = prompt_imagem if prompt_imagem else query_termo
+
     # --- NÍVEL 1: INTELIGÊNCIA ARTIFICIAL (Pollinations) ---
     try:
-        print(f"🧠 [NÍVEL 1] Tentando gerar imagem exclusiva via IA (Pollinations): '{query_termo}'")
+        print(f"🧠 [NÍVEL 1] Tentando gerar imagem exclusiva via IA (Pollinations): '{termo_final_ia}'")
         # Substitui vírgulas por espaços para o prompt da IA fluir melhor
-        ai_prompt = query_termo.replace(",", " ")
-        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt}?width={W}&height={H}&nologo=true"
+        ai_prompt = termo_final_ia.replace(",", " ")
+        # Seed aleatório garante imagem diferente a cada chamada
+        seed_aleatorio = random.randint(1, 999999)
+        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}"
         
         # Timeout de 20s porque IA pode demorar um pouquinho para "pensar"
         response_ia = requests.get(url_pollinations, timeout=20)
@@ -49,17 +54,21 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
     except Exception as e:
         print(f"⚠️ Erro na geração de IA: {e}. Tentando Nível 2 (Unsplash)...")
 
-    # --- NÍVEL 2: BANCO DE FOTOS REAIS (Unsplash) ---
-    if not UNSPLASH_ACCESS_KEY:
-        print("⚠️ UNSPLASH_ACCESS_KEY ausente. Tentando Nível 3 (Biblioteca Local)...")
-    else:
-        print(f"📸 [NÍVEL 2] Buscando foto real no Unsplash: '{query_termo}'")
-        url_unsplash = f"https://api.unsplash.com/photos/random?query={query_termo}&orientation={orientation}&client_id={UNSPLASH_ACCESS_KEY}"
+    # --- NÍVEL 2: BANCO DE IMAGENS REAL (Unsplash) ---
+    print(f"📸 [NÍVEL 2] Buscando foto real no Unsplash: '{termo_final_ia}'")
+    try:
+        if UNSPLASH_ACCESS_KEY:
+            # Usa a primeira metade do prompt_imagem (ou o termo todo se for curto) para a API do Unsplash não bugar com strings longas
+            unsplash_query = termo_final_ia.split(",")[0][:40] 
+            url_unsplash = f"https://api.unsplash.com/photos/random?query={unsplash_query}&orientation={orientation}&client_id={UNSPLASH_ACCESS_KEY}"
+        else:
+            print("⚠️ UNSPLASH_ACCESS_KEY ausente. Tentando Nível 3 (Biblioteca Local)...")
+            url_unsplash = None
         
         tentativas = 0
         img_valida_url = None
         
-        while tentativas < 3:
+        while tentativas < 3 and url_unsplash:
             try:
                 response = requests.get(url_unsplash, timeout=15)
                 if response.status_code == 200:
@@ -90,6 +99,8 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
                 return img.resize((W, H), Image.Resampling.LANCZOS), W, H
             except Exception as e:
                 print(f"⚠️ Erro ao baixar imagem validada do Unsplash: {e}")
+    except Exception as e:
+        print(f"⚠️ Erro geral no nível 2 (Unsplash): {e}")
 
     # --- FALLBACK: Biblioteca Local de Emergência ---
     tema_pasta = tema_escolhido if tema_escolhido else "geral"
@@ -115,7 +126,8 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
 def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     print(f"🎨 Desenhando arte ({tipo.upper()}) com Design Premium...")
     
-    img, W, H = buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS)
+    prompt_imagem = dados.get("prompt_imagem")
+    img, W, H = buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=prompt_imagem)
     
     # Aplica Gradient Inteligente em vez de overlay preto sólido
     img = aplicar_mesh_gradient(img)
@@ -125,13 +137,15 @@ def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     elif tipo in ["reels", "reels_noite", "reels_conquistador"]:
         return _gerar_reels(img, W, H, dados)
     else:
-        return _gerar_estatico(img, W, H, tipo, dados)
+        return _gerar_estatico(img, W, H, tipo, dados, tema_escolhido, TEMAS_MAPEADOS)
 
 def _gerar_carrossel(img, W, H, dados):
     caminhos_arquivos = []
     slides_conteudo = [dados["titulo"]] + dados["slides"] + ["CTA"]
     
-    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=62, tamanho_body=46, tamanho_detalhe=22)
+    # FIX: Fontes maiores para garantir legibilidade no carrossel 1080x1080
+    # Aumentamos o tamanho_body (usado nos slides) de 58 para 72!
+    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26)
     font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30)[0]
     
     for idx, texto in enumerate(slides_conteudo):
@@ -142,10 +156,11 @@ def _gerar_carrossel(img, W, H, dados):
         draw_text_with_shadow(draw, (W/2, H - 80), "⚜ @gustavo_8k_ ⚜", font_marca, fill=CORES["destaque"], anchor="ms")
         
         if idx == 0:  # Capa (Playfair Display)
-            linhas = textwrap.wrap(texto, width=20)
-            y_inicial = (H - (len(linhas) * 75)) / 2 - 40
+            # FIX: width menor = menos chars por linha = texto maior e mais legível
+            linhas = textwrap.wrap(texto, width=15)
+            y_inicial = (H - (len(linhas) * 105)) / 2 - 40
             for i, linha in enumerate(linhas):
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 75), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
+                draw_text_with_shadow(draw, (W/2, y_inicial + i * 105), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
             draw_text_with_shadow(draw, (W/2, H - 175), "Arrasta para o lado  ▶", font_sub, fill=CORES["destaque"], anchor="ms")
             
         elif texto == "CTA":  # Slide Final
@@ -154,14 +169,15 @@ def _gerar_carrossel(img, W, H, dados):
             y_inicial = H * 0.38
             for i, linha in enumerate(linhas_cta):
                 cor = CORES["destaque"] if "@" in linha else CORES["texto_principal"]
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 58), linha, font_slides, fill=cor, anchor="ms")
-            draw.line([(W*0.15, H*0.72), (W*0.85, H*0.72)], fill=CORES["destaque"], width=2)
+                draw_text_with_shadow(draw, (W/2, y_inicial + i * 78), linha, font_slides, fill=cor, anchor="ms")
+            draw.line([(W*0.15, H*0.76), (W*0.85, H*0.76)], fill=CORES["destaque"], width=2)
                 
         else:  # Slides de conteúdo (Montserrat)
-            linhas = textwrap.wrap(texto, width=24)
-            y_inicial = (H - (len(linhas) * 62)) / 2
+            # FIX: width=15 e fonte 72 garante fonte enorme e perfeitamente legível
+            linhas = textwrap.wrap(texto, width=15)
+            y_inicial = (H - (len(linhas) * 88)) / 2
             for i, linha in enumerate(linhas):
-                draw_text_with_shadow(draw, (W/2, y_inicial + i * 62), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
+                draw_text_with_shadow(draw, (W/2, y_inicial + i * 88), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
                 
         caminho = f"carousel_{idx}.jpg"
         slide_img.save(caminho, "JPEG", quality=95)
@@ -191,7 +207,7 @@ def _gerar_reels(img, W, H, dados):
         caminhos.append(caminho)
     return caminhos
 
-def _gerar_estatico(img, W, H, tipo, dados):
+def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
     layout_style = random.choice(["classic", "bottom", "quote"])
     print(f"🎨 Usando estilo de layout: {layout_style.upper()}")
     
@@ -211,7 +227,15 @@ def _gerar_estatico(img, W, H, tipo, dados):
     caminhos = []
     
     for idx, frase in enumerate(frases):
-        slide = img.copy().convert("RGB")
+        # FIX: Para Stories com múltiplos slides, busca imagem diferente por slide
+        tipo_story = tipo in ["story_manha", "story_tarde"]
+        if tipo_story and idx > 0 and tema_escolhido and TEMAS_MAPEADOS:
+            prompt_secundario = dados.get("prompt_imagem")
+            nova_img, _, _ = buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=prompt_secundario)
+            nova_img = aplicar_mesh_gradient(nova_img)
+            slide = nova_img.convert("RGB")
+        else:
+            slide = img.copy().convert("RGB")
         draw = ImageDraw.Draw(slide)
         
         y_watermark = H - 150 if tipo in ["story", "story_manha", "story_tarde", "test"] else H - 80

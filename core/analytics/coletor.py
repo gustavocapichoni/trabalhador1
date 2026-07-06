@@ -73,7 +73,7 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
         # --- Passo 1: Dados básicos da mídia (likes, comentários, tipo) ---
         url_media = (
             f"https://graph.facebook.com/v19.0/{post_id}"
-            f"?fields=like_count,comments_count,media_type"
+            f"?fields=like_count,comments_count,media_type,caption,permalink,media_url"
             f"&access_token={IG_ACCESS_TOKEN}"
         )
         res_media = requests.get(url_media, timeout=15)
@@ -82,6 +82,9 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
             metricas["likes"]      = data.get("like_count", 0)
             metricas["comments"]   = data.get("comments_count", 0)
             metricas["media_type"] = data.get("media_type", "UNKNOWN")
+            metricas["caption"]    = data.get("caption", "")
+            metricas["permalink"]  = data.get("permalink", "")
+            metricas["media_url"]  = data.get("media_url", "")
         else:
             try:
                 err_json = res_media.json()

@@ -50,6 +50,7 @@ def gerar_conteudo_gemini(tipo):
     else:
         # Lógica padrão da Roleta Viciada (para os outros posts)
         recomendacoes_file = "analytics/dados/recomendacoes.json"
+        tema_anterior = estado.get("tema_do_dia") if estado.get("data_tema_do_dia") != dia_hoje_str else None
         
         try:
             if os.path.exists(recomendacoes_file):
@@ -65,11 +66,16 @@ def gerar_conteudo_gemini(tipo):
                     tema_escolhido = estado["tema_do_dia"]
                 else:
                     if dist_temas:
-                        temas = list(dist_temas.keys())
-                        pesos = list(dist_temas.values())
+                        # Exclui o tema do dia anterior se houver outras opções
+                        temas_filtrados = {t: p for t, p in dist_temas.items() if t != tema_anterior}
+                        if not temas_filtrados:
+                            temas_filtrados = dist_temas
+                        
+                        temas = list(temas_filtrados.keys())
+                        pesos = list(temas_filtrados.values())
                         # Sorteia com base no peso (Roleta Viciada)
                         tema_escolhido = random.choices(temas, weights=pesos, k=1)[0]
-                        logger.info(f"🎲 Tema sorteado pela Roleta Viciada do Analytics: {tema_escolhido}")
+                        logger.info(f"🎲 Tema sorteado pela Roleta Viciada do Analytics: {tema_escolhido} (Tema anterior: {tema_anterior})")
         except Exception as e:
             logger.warning(f"⚠️ Erro ao ler recomendações do analytics cruzado: {e}")
 
@@ -79,10 +85,17 @@ def gerar_conteudo_gemini(tipo):
                 tema_escolhido = estado["tema_do_dia"]
             else:
                 if dia_da_semana == 6:  # Domingo
-                    tema_escolhido = random.choice(["superacao", "proposito"])
+                    opcoes = [t for t in ["superacao", "proposito"] if t != tema_anterior]
+                    tema_escolhido = random.choice(opcoes if opcoes else ["superacao", "proposito"])
                 else:
-                    tema_escolhido = TEMAS_POR_DIA[dia_da_semana]
-                logger.info(f"🎲 Tema fallback (padrão) selecionado: {tema_escolhido}")
+                    tema_padrao = TEMAS_POR_DIA[dia_da_semana]
+                    if tema_padrao != tema_anterior:
+                        tema_escolhido = tema_padrao
+                    else:
+                        # Se o tema padrão cair no tema de ontem, sorteia um diferente dos mapeados
+                        opcoes = [t for t in TEMAS_MAPEADOS.keys() if t != tema_anterior]
+                        tema_escolhido = random.choice(opcoes if opcoes else list(TEMAS_MAPEADOS.keys()))
+                logger.info(f"🎲 Tema fallback (padrão) selecionado: {tema_escolhido} (Tema anterior: {tema_anterior})")
 
         # Salva o tema do dia (mesmo se foi pela roleta ou fallback)
         if estado.get("data_tema_do_dia") != dia_hoje_str or estado.get("tema_do_dia") != tema_escolhido:
@@ -546,6 +559,16 @@ def gerar_conteudo_gemini(tipo):
         # Tenta parsear
         return json.loads(texto)
 
+    # Adiciona exigência do prompt de imagem para variar as artes do Pollinations
+    if tipo in ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite"]:
+        prompt += """
+        IMPORTANTE FINAL: Adicione OBRIGATORIAMENTE no seu JSON de resposta um campo extra chamado "prompt_imagem".
+        - O valor deve ter MÁXIMO 15 PALAVRAS EM INGLÊS.
+        - Deve descrever uma cena visual fotorealística, premium e cinemática que sirva de fundo para a mensagem.
+        - Não coloque pessoas de frente, use silhuetas, paisagens, ambientes místicos ou abstratos ricos.
+        - Exemplo: "dark stormy ocean cinematic lightning, premium, highly detailed" ou "mystical ancient ruins glowing light rays, epic".
+        """
+
     # LOOP DE TENTATIVAS (Múltiplas chaves)
     max_tentativas_por_chave = 3
     
@@ -583,6 +606,44 @@ def gerar_conteudo_gemini(tipo):
                 else:
                     logger.error(f"❌ Falha ao obter resposta na chave {key_index + 1} após {max_tentativas_por_chave} tentativas.")
                     
-    # Se sair do loop externo, todas as chaves falharam
+    # Se sair do loop externo, todas as chaves falharam. Entramos no modo Saída de Emergência!
+    logger.warning("🚨 [SAÍDA DE EMERGÊNCIA] Todas as chaves falharam. Carregando post estático de contingência...")
+    try:
+        emergencia_file = "core/ai/mensagens_emergencia.json"
+        if os.path.exists(emergencia_file):
+            with open(emergencia_file, "r", encoding="utf-8") as f:
+                emergencias = json.load(f)
+            
+            # Identifica o tema e normaliza
+            tema_key = tema_escolhido.lower() if tema_escolhido else "superacao"
+            if tema_key not in emergencias:
+                tema_key = "superacao"
+                
+            # Mapeia os tipos de postagens para as chaves principais do JSON (story, reels, carousel)
+            tipo_key = "story"
+            if tipo in ["reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite"]:
+                tipo_key = "reels"
+            elif tipo == "carousel":
+                tipo_key = "carousel"
+            
+            # Sorteia uma das mensagens prontas
+            lista_opcoes = emergencias.get(tema_key, {}).get(tipo_key, [])
+            if lista_opcoes:
+                import copy
+                # Faz cópia para não alterar o dicionário original carregado em memória
+                dados = copy.deepcopy(random.choice(lista_opcoes))
+                
+                # Injeta as hashtags específicas do tema na legenda se houver legenda
+                if "legenda" in dados:
+                    tags = " ".join(detalhes_tema["hashtags"])
+                    if not any(tag in dados["legenda"] for tag in detalhes_tema["hashtags"]):
+                        dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                
+                logger.success(f"🛡️ [SAÍDA DE EMERGÊNCIA] Mensagem de contingência recuperada para Tema: {tema_key.upper()} | Formato: {tipo_key.upper()}")
+                return dados, tema_escolhido, estilo_escolhido
+                
+    except Exception as e_emergencia:
+        logger.error(f"❌ Erro grave no sistema de emergência: {e_emergencia}")
+
     raise ValueError(f"❌ Falha crítica: Todas as {len(GEMINI_KEYS)} chaves do Gemini falharam ou estão sem cota.")
 

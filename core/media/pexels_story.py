@@ -306,8 +306,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         duracao = min(clip.duration, 15)
         clip = clip.subclip(0, duracao)
         
-        fonte_normal = _carregar_fonte(tamanho=52)
-        fonte_cta    = _carregar_fonte(tamanho=62)  # CTA maior
+        # FIX: Fonte reduzida de 52 para 42px — evita que frases longas ocupem
+        # a tela inteira. A quebra de linha já funciona por pixels, mas o
+        # tamanho da fonte determinava o tamanho final de cada linha.
+        fonte_normal = _carregar_fonte(tamanho=42)
+        fonte_cta    = _carregar_fonte(tamanho=52)  # CTA um pouco maior que o texto normal
 
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")

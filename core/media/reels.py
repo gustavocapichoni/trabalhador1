@@ -139,21 +139,27 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             except Exception:
                 pass
 
-def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="story_pronto.mp4"):
-    logger.info(f"🎬 Convertendo Story {caminho_imagem} em vídeo com música...")
+def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="story_pronto.mp4", tempo_inicio=0.0):
+    logger.info(f"🎬 Convertendo Story {caminho_imagem} em vídeo com música (inicio: {tempo_inicio}s)...")
     if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
         raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Stories em vídeo.")
 
     audio_clip = None
     video_clip = None
     try:
+        from moviepy.editor import afx
+        
         audio_clip = AudioFileClip(caminho_audio)
-        duracao_total = min(audio_clip.duration, 10)  # máximo 10 segundos por slide de story
+        duracao_total = 10.0  # fixo em 10 segundos por slide
+        
+        # Faz um loop na música caso ela seja curta demais para o tempo_inicio + 10s
+        if audio_clip.duration < tempo_inicio + duracao_total:
+            audio_clip = afx.audio_loop(audio_clip, duration=tempo_inicio + duracao_total + 5)
         
         try:
-            audio_clip = audio_clip.subclipped(0, duracao_total)
+            audio_clip = audio_clip.subclipped(tempo_inicio, tempo_inicio + duracao_total)
         except AttributeError:
-            audio_clip = audio_clip.subclip(0, duracao_total)
+            audio_clip = audio_clip.subclip(tempo_inicio, tempo_inicio + duracao_total)
 
         clip = ImageClip(caminho_imagem).set_duration(duracao_total)
         

@@ -67,26 +67,26 @@ graph LR
 > Esta fase não adiciona nada novo visível. Ela torna o que existe **inquebrantável** e cria a base de inteligência para tudo que vem depois.
 
 #### 1.1 — Resiliência (Anti-Falha)
-- [ ] **Retry com Backoff Exponencial** em todas as chamadas de API (Instagram, Pexels, Gemini, tmpfiles)
+- [x] **Retry com Backoff Exponencial** em todas as chamadas de API (Instagram, Pexels, Gemini, tmpfiles)
   - 1ª tentativa → espera 5s → 2ª → espera 15s → 3ª → espera 60s → desiste
-- [ ] **Fallback em Cascata**: Pexels falhou → vídeo local → imagem estática → alerta
-- [ ] **Mapa de Erros Conhecidos**: tabela de códigos de erro com ação automática
+- [x] **Fallback em Cascata**: Pexels falhou → vídeo local → imagem estática → alerta *(Pixabay → Pexels → Biblioteca Local → Cor sólida)*
+- [x] **Mapa de Erros Conhecidos**: tabela de códigos de erro com ação automática
   - `2207027` → retry 15s | `9007` → pular | `190` → email urgente | `503 Gemini` → trocar chave
-- [ ] **Health Check** antes de cada postagem (token válido? API respondendo? espaço em disco?)
-- [ ] **Validação rigorosa do JSON** retornado pelo Gemini (limpeza de alucinações)
-- [ ] **Limpeza automática** com `finally:` em todos os blocos de geração de mídia
+- [x] **Health Check** antes de cada postagem (token válido? API respondendo? espaço em disco?)
+- [x] **Validação rigorosa do JSON** retornado pelo Gemini (limpeza de alucinações)
+- [x] **Limpeza automática** com `finally:` em todos os blocos de geração de mídia *(pexels_story.py e reels.py)*
 
 #### 1.2 — Logs Profissionais
-- [ ] Substituir todos os `print()` por `loguru` ou `logging`
-- [ ] Gerar arquivo `bot_diario.log` com timestamps e níveis (INFO, WARNING, ERROR)
-- [ ] Log separado de performance por postagem (tema, horário, formato, resultado)
+- [x] Substituir todos os `print()` por `loguru` ou `logging` *(ativo em gemini.py, instagram.py, pexels_story.py, reels.py, coletor.py, analisador.py)*
+- [x] Gerar arquivo `bot_diario.log` com timestamps e níveis (INFO, WARNING, ERROR)
+- [x] Log separado de performance por postagem (tema, horário, formato, resultado)
 
 #### 1.3 — Evolução do Analytics (Knowledge Engine)
-- [ ] Migrar dados de JSONs para **SQLite** (histórico de meses, não apenas semanas)
-- [ ] Criar **score de performance** por combinação: tema × horário × formato × CTA × música
-- [ ] Implementar **ranking automático** com notas (ex: Bitcoin/18h/Reels → Nota 9.2)
-- [ ] Salvar prompt utilizado em cada post para correlacionar com resultado
-- [ ] O bot passa a usar automaticamente as **melhores combinações** com mais frequência
+- [x] Migrar dados de JSONs para **SQLite** (histórico de meses, não apenas semanas)
+- [x] Criar **score de performance** por combinação: tema × horário × formato *(fórmula ponderada: Saves×3, Shares×2)*
+- [x] Implementar **ranking automático** com notas *(Roleta Viciada — distribui temas proporcionalmente ao score)*
+- [x] Salvar prompt utilizado em cada post para correlacionar com resultado
+- [x] O bot passa a usar automaticamente as **melhores combinações** com mais frequência *(Roleta Viciada)*
 
 **Entregável:** Bot rodando 24/7 sem intervenção, gerando logs legíveis e acumulando inteligência.
 
@@ -97,16 +97,17 @@ graph LR
 
 #### 2.1 — Motor Visual Premium
 - [ ] **Gradientes modernos** (glassmorphism, blur parcial no fundo em vez de overlay flat)
-- [ ] **Tipografia hierárquica**: Playfair Display (títulos) + Montserrat (corpo)
+- [x] **Tipografia hierárquica**: Playfair Display (títulos) + Montserrat (corpo) *(4 fontes premium baixadas automaticamente)*
 - [ ] **Templates variados** com branding consistente (paleta de 3-4 cores fixas)
 - [ ] **Bordas e molduras sutis**, separadores visuais premium
+
+
 - [ ] **Carrossel "Rampa de Deslizamento"**: cortar imagem larga em slides contínuos (efeito panorâmico)
 - [ ] **A/B visual automático**: Analytics rastreia qual layout gera mais saves → foca no vencedor
              armazernar os horarios que as postagens tiveram melhores resultados views likes salvamentos
 #### 2.2 — Voz da Autoridade (TTS)
 - [ ] Integrar **ElevenLabs** ou **edge-tts** para narração nos Reels e Pexels Stories
-- [ ] Estratégia de custo: narração premium apenas 2x/semana (Qua e Dom)
-- [ ] **Efeitos sonoros** ("whoosh", batida) nas transições de texto dos Reels (padrão de interrupção)
+
 
 #### 2.3 — Estratégia de Conteúdo Inteligente
 - [ ] **Arcos Narrativos Semanais** (Mini-Séries):
@@ -114,7 +115,7 @@ graph LR
 - [ ] **Story Serial** (B-roll noturno Seg/Qua/Sex 20h, 3 partes)
 - [ ] **Proporção de conteúdo**: 70% útil / 20% histórias / 10% oferta
 - [ ] **Módulo de Tendências**: buscar diariamente hashtags, músicas e assuntos em alta
-- [ ] **CTAs de Micro-Comprometimento**: "Comente FOGO e eu mando no Direct"
+- [x] **CTAs de Micro-Comprometimento**: "Comente FOGO e eu mando no Direct" *(6 CTAs variados e sorteados no Reels Conquistador)*
 
 #### 2.4 — Auto-Reply Inteligente (`core/engagement/`)
 - [ ] Módulo para ler comentários recentes via Graph API

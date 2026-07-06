@@ -117,7 +117,7 @@ def carregar_historico_recente():
     return posts_recentes
 
 def analisar_melhores_horarios():
-    """Lê os dados de métricas locais e calcula os 3 horários com maior média de views."""
+    """Lê os dados de métricas locais e calcula os 6 horários com maior média de views e detalha formatos, temas e abordagens campeãs."""
     metricas_file = "analytics/dados/metricas.json"
     if not os.path.exists(metricas_file):
         return None
@@ -145,21 +145,107 @@ def analisar_melhores_horarios():
             views = metricas.get("views") or metricas.get("impressions") or metricas.get("plays") or 0
             
             if hora not in horarios:
-                horarios[hora] = {"total_views": 0, "count": 0}
+                horarios[hora] = {
+                    "total_views": 0, 
+                    "count": 0,
+                    "tipos": {},
+                    "temas": {},
+                    "estilos": {}
+                }
                 
             horarios[hora]["total_views"] += views
             horarios[hora]["count"] += 1
+            
+            tipo = info_post.get("tipo", "desconhecido").upper()
+            tema = info_post.get("tema", "desconhecido").lower()
+            estilo = info_post.get("estilo_copy", "padrão")
+            if estilo and ":" in estilo:
+                estilo = estilo.split(":")[0]
+            
+            horarios[hora]["tipos"][tipo] = horarios[hora]["tipos"].get(tipo, 0) + views
+            horarios[hora]["temas"][tema] = horarios[hora]["temas"].get(tema, 0) + views
+            horarios[hora]["estilos"][estilo] = horarios[hora]["estilos"].get(estilo, 0) + views
             
         ranking = []
         for h, stats in horarios.items():
             if stats["count"] > 0:
                 media = stats["total_views"] / stats["count"]
-                ranking.append({"hora": h, "media": media, "posts": stats["count"]})
+                
+                melhor_tipo = max(stats["tipos"], key=stats["tipos"].get) if stats["tipos"] else "N/A"
+                melhor_tema = max(stats["temas"], key=stats["temas"].get) if stats["temas"] else "N/A"
+                melhor_estilo = max(stats["estilos"], key=stats["estilos"].get) if stats["estilos"] else "N/A"
+                
+                ranking.append({
+                    "hora": h, 
+                    "media": media, 
+                    "posts": stats["count"],
+                    "melhor_tipo": melhor_tipo,
+                    "melhor_tema": melhor_tema,
+                    "melhor_estilo": melhor_estilo
+                })
                 
         ranking.sort(key=lambda x: x["media"], reverse=True)
         return ranking[:6]
     except Exception as e:
         print(f"⚠️ Erro ao analisar horários: {e}")
+        return None
+
+def obter_top_posts_semanais():
+    metricas_file = "analytics/dados/metricas.json"
+    if not os.path.exists(metricas_file):
+        return None
+        
+    try:
+        with open(metricas_file, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+            
+        posts = dados.get("posts", {})
+        posts_semanais = []
+        limite_data = datetime.now(timezone.utc) - timedelta(days=7)
+        
+        for post_id, info in posts.items():
+            info_post = info.get("info_post", {})
+            metricas = info.get("metricas", {})
+            
+            data_str = info_post.get("data")
+            if not data_str:
+                continue
+                
+            try:
+                post_dt = datetime.strptime(data_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
+            except:
+                continue
+                
+            if post_dt >= limite_data:
+                posts_semanais.append({
+                    "post_id": post_id,
+                    "data": data_str,
+                    "tipo": info_post.get("tipo", "desconhecido"),
+                    "tema": info_post.get("tema", "desconhecido"),
+                    "estilo": info_post.get("estilo_copy", "padrão"),
+                    "likes": metricas.get("likes", 0),
+                    "comments": metricas.get("comments", 0),
+                    "shares": metricas.get("shares", 0),
+                    "saved": metricas.get("saved", 0),
+                    "views": metricas.get("views") or metricas.get("impressions") or metricas.get("plays") or 0,
+                    "caption": metricas.get("caption", "") or info_post.get("legenda", ""),
+                    "frase_visual": info_post.get("frase_visual", ""),
+                    "permalink": metricas.get("permalink", "")
+                })
+        
+        top_views = sorted(posts_semanais, key=lambda x: x["views"], reverse=True)[:5]
+        top_likes = sorted(posts_semanais, key=lambda x: x["likes"], reverse=True)[:5]
+        top_shares = sorted(posts_semanais, key=lambda x: x["shares"], reverse=True)[:5]
+        top_saves = sorted(posts_semanais, key=lambda x: x["saved"], reverse=True)[:5]
+        
+        return {
+            "top_views": top_views,
+            "top_likes": top_likes,
+            "top_shares": top_shares,
+            "top_saves": top_saves
+        }
+    except Exception as e:
+        print(f"⚠️ Erro ao obter top posts semanais: {e}")
         return None
 
 def gerar_e_enviar_relatorio():
@@ -194,6 +280,59 @@ def gerar_e_enviar_relatorio():
     else:
         corpo.append("Nenhum post registrado nos últimos 7 dias no arquivo de estado.")
         
+    # --- Nova Seção: Top Destaques da Semana ---
+    corpo.append("\n" + "="*40)
+    corpo.append("🏆 DESTAQUES DA SEMANA (TOP 5) 🏆")
+    corpo.append("="*40)
+    
+    top_posts = obter_top_posts_semanais()
+    if top_posts and any(top_posts.values()):
+        # 1. Mais Visualizados
+        corpo.append("\n🎬 REELS/POSTS MAIS VISUALIZADOS:")
+        for idx, post in enumerate(top_posts["top_views"], 1):
+            caption_resumida = post["caption"][:60].replace("\n", " ") + "..." if post["caption"] else "Sem legenda"
+            frase_visual = f"\"{post['frase_visual']}\"" if post['frase_visual'] else "Não gravada"
+            corpo.append(f"   #{idx} - {post['views']} views | Tema: {post['tema']} | Tipo: {post['tipo']}")
+            corpo.append(f"       Frase Visual (Na tela): {frase_visual}")
+            corpo.append(f"       Legenda (Texto do Post): \"{caption_resumida}\"")
+            if post["permalink"]:
+                corpo.append(f"       Ver no Instagram: {post['permalink']}")
+                
+        # 2. Mais Curtidos
+        corpo.append("\n❤️ REELS/POSTS MAIS CURTIDOS:")
+        for idx, post in enumerate(top_posts["top_likes"], 1):
+            caption_resumida = post["caption"][:60].replace("\n", " ") + "..." if post["caption"] else "Sem legenda"
+            frase_visual = f"\"{post['frase_visual']}\"" if post['frase_visual'] else "Não gravada"
+            corpo.append(f"   #{idx} - {post['likes']} curtidas | Tema: {post['tema']} | Tipo: {post['tipo']}")
+            corpo.append(f"       Frase Visual (Na tela): {frase_visual}")
+            corpo.append(f"       Legenda (Texto do Post): \"{caption_resumida}\"")
+            if post["permalink"]:
+                corpo.append(f"       Ver no Instagram: {post['permalink']}")
+                
+        # 3. Mais Compartilhados
+        corpo.append("\n✈️ REELS/POSTS MAIS COMPARTILHADOS:")
+        for idx, post in enumerate(top_posts["top_shares"], 1):
+            caption_resumida = post["caption"][:60].replace("\n", " ") + "..." if post["caption"] else "Sem legenda"
+            frase_visual = f"\"{post['frase_visual']}\"" if post['frase_visual'] else "Não gravada"
+            corpo.append(f"   #{idx} - {post['shares']} envios | Tema: {post['tema']} | Tipo: {post['tipo']}")
+            corpo.append(f"       Frase Visual (Na tela): {frase_visual}")
+            corpo.append(f"       Legenda (Texto do Post): \"{caption_resumida}\"")
+            if post["permalink"]:
+                corpo.append(f"       Ver no Instagram: {post['permalink']}")
+                
+        # 4. Mais Salvos
+        corpo.append("\n📌 REELS/POSTS MAIS SALVOS (SAVES):")
+        for idx, post in enumerate(top_posts["top_saves"], 1):
+            caption_resumida = post["caption"][:60].replace("\n", " ") + "..." if post["caption"] else "Sem legenda"
+            frase_visual = f"\"{post['frase_visual']}\"" if post['frase_visual'] else "Não gravada"
+            corpo.append(f"   #{idx} - {post['saved']} salvamentos | Tema: {post['tema']} | Tipo: {post['tipo']}")
+            corpo.append(f"       Frase Visual (Na tela): {frase_visual}")
+            corpo.append(f"       Legenda (Texto do Post): \"{caption_resumida}\"")
+            if post["permalink"]:
+                corpo.append(f"       Ver no Instagram: {post['permalink']}")
+    else:
+        corpo.append("Ainda não há dados de métricas suficientes para listar os posts mais populares.")
+
     # --- Nova Seção: Horários de Ouro ---
     corpo.append("\n" + "="*40)
     corpo.append("⏰ TOP 6 MELHORES HORÁRIOS (Média de Views/Plays)")
@@ -203,7 +342,10 @@ def gerar_e_enviar_relatorio():
     if melhores_horarios:
         for idx, item in enumerate(melhores_horarios, 1):
             hora_str = f"{item['hora']:02d}:00"
-            corpo.append(f"🏆 #{idx} - {hora_str} | Média: {int(item['media'])} views ({item['posts']} posts analisados)")
+            corpo.append(
+                f"🏆 #{idx} - {hora_str} | Média: {int(item['media'])} views ({item['posts']} posts)\n"
+                f"       Melhor Formato: {item['melhor_tipo']} | Tema Vencedor: {item['melhor_tema']} | Abordagem: {item['melhor_estilo']}"
+            )
         corpo.append("\n💡 Dica: Ajuste o agendamento no github actions (cron) para priorizar estes horários!")
     else:
         corpo.append("Ainda não há dados suficientes para determinar os melhores horários.")

@@ -79,12 +79,31 @@
             "tipo": "reels",
             "tema": "superacao",
             "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')"
+        },
+        {
+            "post_id": "18097790654226555",
+            "data": "2026-07-06 18:19:07",
+            "tipo": "pexels_story",
+            "tema": "espiritualidade",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "frase_visual": "Você repete rituais vazios. | Sua vida segue a mesma. | A sabedoria antiga é brutal. | Não sobre rezas, mas atos. | Você age para ser visto. | Quem entende isso, avança. | A colheita vem do seu secreto. | O que você constrói na sombra?",
+            "legenda": "Essa é uma daquelas verdades que quase ninguém quer ouvir.\nMas você chegou até aqui porque busca algo real.\nVocê sentiu um incômodo em qual frase? Me fala nos comentários, quero saber.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao"
+        },
+        {
+            "post_id": "17881591038671402",
+            "data": "2026-07-06 18:27:05",
+            "tipo": "reels",
+            "tema": "espiritualidade",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "frase_visual": "O ódio alheio? É a sua muleta. | Descubra como o maior deles virou o jogo. | Desvie o foco do veneno. Conecte com o propósito. | Parar por ódio? Essa desculpa é pra amadores. Você não é.",
+            "legenda": "O que você faz com o veneno que te jogam é o que define seu futuro. O maior mestre não se abalava, ele tinha um propósito maior. Será que o ódio alheio é sua desculpa preferida? Comenta SIM ou NÃO.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao"
         }
     ],
     "ultimos_temas": [
         "superacao"
     ],
     "ultimo_carousel": 3,
+<<<<<<< HEAD
     "tema_do_dia": "superacao",
     "data_tema_do_dia": "2026-07-06",
     "index_conquistador": 2,
@@ -112,5 +131,42 @@
     "historico_midia": [
         "37230071",
         "20100166"
+=======
+    "tema_do_dia": "espiritualidade",
+    "data_tema_do_dia": "2026-07-06",
+    "index_conquistador": 3,
+    "historico_angulos": [
+        "O silêncio absoluto que você evita é onde as respostas da sabedoria milenar estão guardadas",
+        "A diferença entre religiosidade de fachada e a sabedoria brutal e prática dos provérbios antigos",
+        "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão",
+        "A hipocrisia de quem usa a fé como escudo para esconder um caráter corrompido nos bastidores",
+        "O paradoxo de exigir milagres divinos enquanto você foge da disciplina de fazer a sua parte"
+    ],
+    "historico_ganchos": [
+        "Você não precisa de mais conselhos bonitos. Precisa de um choque de realidade. E o primeiro passo é parar de fingir que...",
+        "Leia isto com muito cuidado se você não aguenta mais ver outras pessoas avançando enquanto você sente que está parado no mesmo lugar:",
+        "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
+        "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:",
+        "Tem maturidade suficiente para ler isto sem se ofender? O que você chama de 'esperar o momento certo' é apenas o seu medo de..."
+    ],
+    "historico_estilos": [
+        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+        "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+        "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
+    ],
+    "historico_midia": [
+        "S-_tOhD4ymI",
+        "3MSW86_Cv78",
+        "qEoPI9PDDg4",
+        "258796",
+        "pjwlwjmNSsM",
+        "c4jPsiAApAY",
+        "-thnQRRKsA0",
+        "YqWEKXPsOvA",
+        "DZBthDKXPHM",
+        "22686"
+>>>>>>> 570d462 (feat: Correcao de fontes, audio continuo nos Stories e prompt IA exclusivo)
     ]
 }

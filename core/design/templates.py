@@ -8,9 +8,8 @@ _FONTES_URLS = {
         "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/static/Oswald-Bold.ttf",
     ],
     "Inter": [
-        "https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip",
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/static/Inter_18pt-Bold.ttf",
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+        "https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2",
+        "https://raw.githubusercontent.com/rsms/inter/master/docs/font/Inter-Bold.ttf"
     ],
     "Playfair": [
         "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
