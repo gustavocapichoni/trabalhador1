@@ -340,6 +340,7 @@ def gerar_conteudo_gemini(tipo):
 
         Responda APENAS em formato JSON válido assim:
         {{
+          "pexels_query": "3 palavras em INGLÊS descrevendo um vídeo de fundo escuro e cinematic (ex: dark stormy city)",
           "slides": [
             "Conteúdo do slide 1",
             "Conteúdo do slide 2",

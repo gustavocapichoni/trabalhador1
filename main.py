@@ -72,7 +72,7 @@ def main():
             print(f"✨ Frase Gerada: \"{conteudo.get('frase')}\"")
             
         # Passo 2: Cria a mídia (imagem, sequência ou vídeo)
-        if args.type in ["pexels_story", "pexels_story_noite"]:
+        if args.type in ["pexels_story", "pexels_story_noite", "reels_conquistador"]:
             from core.media.pexels_story import gerar_pexels_story
             ts = int(time.time())
             _saida = f"pexels_story_{ts}.mp4"
@@ -83,13 +83,14 @@ def main():
                 midia = gerar_pexels_story(
                     conteudo.get("pexels_query", "nature calm"),
                     conteudo.get("slides", []),
-                    caminho_saida=_saida
+                    caminho_saida=_saida,
+                    tema=tema_escolhido
                 )
         else:
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)
         
         # Passo 3: Se for Reels, gera o vídeo MP4
-        if args.type in ["reels", "reels_noite", "reels_conquistador"]:
+        if args.type in ["reels", "reels_noite"]:
             from core.media.reels import gerar_video_reels, garantir_audio_reels
             ts = int(time.time())
             nome_saida_reels = f"reels_pronto_{ts}.mp4"

@@ -26,7 +26,7 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS):
         W, H = 1080, 1080
         orientation = "squarish"
 
-    query_termo = "dark,dramatic,cinematic,abstract"
+    query_termo = "premium,inspiring,cinematic,aesthetic"
     if tema_escolhido and tema_escolhido in TEMAS_MAPEADOS:
         query_termo = TEMAS_MAPEADOS[tema_escolhido].get("query_unsplash", query_termo)
 
