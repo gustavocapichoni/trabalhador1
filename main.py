@@ -84,7 +84,8 @@ def main():
                     conteudo.get("pexels_query", "nature calm"),
                     conteudo.get("slides", []),
                     caminho_saida=_saida,
-                    tema=tema_escolhido
+                    tema=tema_escolhido,
+                    is_conquistador=(args.type == "reels_conquistador")
                 )
         else:
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)

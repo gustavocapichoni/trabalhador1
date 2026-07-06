@@ -297,60 +297,73 @@ def gerar_conteudo_gemini(tipo):
         }}
         """
     elif tipo == "reels_conquistador":
+        # Sorteia um estilo de CTA variado para cada vídeo
+        import random as _r
+        cta_opcoes = [
+            "Siga o perfil. Informação assim ninguém te entrega de graça.",
+            "Comenta QUERO abaixo e te mando o próximo passo.",
+            "Clica no link da bio antes que essa janela feche.",
+            "Salva esse vídeo. Você vai precisar disso mais tarde.",
+            "Segue o perfil agora. O sistema não quer que você saiba disso.",
+            "Compartilha com quem ainda está preso nessa armadilha.",
+        ]
+        cta_escolhido = _r.choice(cta_opcoes)
+
         prompt = f"""
-        Você é um copywriter de elite especializado em VSL (Video Sales Letter) de topo de funil para o Instagram.
-        Sua missão é criar um roteiro em slides que seja puro sangue: direto, magnético e que faça o usuário agir (seguir/clicar).
+        Você é um copywriter de elite especializado em VSL (Video Sales Letter) para o Instagram.
+        Sua missão é criar um roteiro para um vídeo de 15 segundos que conta uma história completa
+        e termina com uma chamada para ação irresistível.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
         {instrucoes_copy}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA IMPLACÁVEL seguindo EXATAMENTE este funil de 5 a 6 slides:
+        CRIE EXATAMENTE 5 CENAS para o vídeo, seguindo esta estrutura de funil:
 
-        SLIDE 1 — DOR / PROBLEMA (O Gancho Forçado):
-        - Você OBRIGATORIAMENTE deve usar o "Gancho narrativo" recebido nas instruções. Pode completá-re, mas comece com ele.
-        - Imediatamente, mostre a dor de forma clara: o que o leitor está perdendo, o dinheiro que está na mesa, o tempo jogado no lixo.
-        - Ex: "Isso te atrapalha. Isso te custa caro."
-        - Máximo 15 palavras.
+        CENA 1 — DOR / PROBLEMA (O Gancho):
+        - Use o "Gancho narrativo" das instruções como ponto de partida.
+        - Mostre claramente o que o leitor está perdendo, sofrendo ou pagando caro.
+        - Faça ele se identificar: "Isso me atrapalha. Isso me custa."
+        - Máximo 15 palavras. Direto. Sem enrolação.
 
-        SLIDE 2 — A CAUSA RAIZ (O Inimigo Oculto):
-        - Explique brevemente *por que* ele sofre dessa dor. Qual é o erro invisível?
-        - Máximo 15 palavras.
-
-        SLIDE 3 — A SOLUÇÃO DIRETA (A Revelação):
-        - Apresente o que resolve a dor. Prático. Imediato. Sem filosofias genéricas.
+        CENA 2 — SOLUÇÃO (A Revelação):
+        - Apresente o que resolve a dor de forma direta e prática.
+        - Mostre que a solução é aplicável imediatamente.
         - Máximo 12 palavras.
 
-        SLIDE 4 — O BENEFÍCIO (A Terra Prometida):
-        - Deixe explícito o que o cliente ganha ao agir (poder, tempo, status, dinheiro, paz mental).
+        CENA 3 — BENEFÍCIO / RESULTADO (A Terra Prometida):
+        - Deixe explícito o que o leitor GANHA ao agir: poder, tempo, dinheiro, paz, status.
+        - Seja concreto. Evite abstrações.
         - Máximo 12 palavras.
 
-        SLIDE 5 — A PROVA / AUTORIDADE (Oxe, mas quem é você?):
-        - Prove que a solução funciona. Demonstre experiência, tecnologia ou que a inteligência artificial é a autoridade máxima nisso.
+        CENA 4 — PROVA / AUTORIDADE (Credibilidade):
+        - Demonstre que isso funciona. Use dados, tecnologia, experiência ou lógica poderosa.
+        - Ex: "Nossa IA processa mais dados em 1s do que um departamento inteiro."
         - Máximo 12 palavras.
 
-        (OPCIONAL) SLIDE 6 — Se precisar estender a prova ou benefício.
+        CENA 5 — CTA FINAL (Ação Imediata):
+        - Esta é a cena mais importante. Ela aparece no final do vídeo em DESTAQUE VISUAL.
+        - Use EXATAMENTE este CTA sorteado: "{cta_escolhido}"
+        - Pode adaptar levemente mas mantenha a essência e a urgência.
+        - Máximo 10 palavras.
 
-        LEGENDA (A Ação - CTA FINAL FORTE):
-        - Máximo 3 linhas. Direta e objetiva como um míssil.
-        - CTA OBRIGATÓRIO PARA AÇÃO: Use botões mentais claros. Variações sugeridas (escolha 1):
-          → "Clique no Link da Bio e pare de perder tempo."
-          → "Digite X nos comentários e eu te mando o acesso/metodologia."
-          → "Siga o perfil se você quer parar de ser feito de bobo pelo sistema."
-        - NÃO use hashtags. NUNCA faça perguntas reflexivas aqui. A legenda é APENAS para CLIQUE/AÇÃO.
+        LEGENDA DO POST (separada das cenas do vídeo):
+        - Máximo 3 linhas. Reforce a dor e o CTA.
+        - NÃO use hashtags. Apenas ação direta.
 
         Responda APENAS em formato JSON válido assim:
         {{
-          "pexels_query": "3 palavras em INGLÊS descrevendo um vídeo de fundo escuro e cinematic (ex: dark stormy city)",
+          "pexels_query": "3 palavras em INGLÊS para buscar vídeo de fundo inspirador e premium (ex: golden city sunrise)",
           "slides": [
-            "Conteúdo do slide 1",
-            "Conteúdo do slide 2",
-            "Conteúdo do slide 3",
-            "Conteúdo do slide 4",
-            "Conteúdo do slide 5"
+            "Texto da CENA 1 — Dor/Problema",
+            "Texto da CENA 2 — Solução",
+            "Texto da CENA 3 — Benefício/Resultado",
+            "Texto da CENA 4 — Prova/Autoridade",
+            "Texto da CENA 5 — CTA Final"
           ],
-          "legenda": "Sua legenda com CTA agressivo aqui sem hashtags"
+          "legenda": "Legenda do post com CTA forte sem hashtags"
         }}
         """
+
     elif tipo == "pexels_story":
         prompt = f"""
         Você é um mestre de storytelling cinematográfico aplicado ao Instagram.

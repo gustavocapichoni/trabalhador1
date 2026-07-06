@@ -50,16 +50,13 @@ def _adicionar_texto_frame(frame_array, texto, fonte):
     draw = ImageDraw.Draw(img)
     w, h = img.size
 
-    # Margem lateral: texto ocupa no máximo 85% da largura do frame
     margem_px = int(w * 0.075)
     largura_max_texto = w - (margem_px * 2)
 
-    # Quebra o texto por pixels reais (não por número de caracteres)
     linhas = _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_texto)
     if not linhas:
         return frame_array
 
-    # Mede cada linha em pixels
     alturas = []
     larguras = []
     for l in linhas:
@@ -74,7 +71,6 @@ def _adicionar_texto_frame(frame_array, texto, fonte):
     total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + padding_v * 2
     total_w = min(max(larguras) + padding_h * 2, w - margem_px * 2)
 
-    # Fundo semitransparente atrás do texto — sempre dentro da tela
     overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
     overlay_draw = ImageDraw.Draw(overlay)
     bx0 = max((w - total_w) // 2, margem_px)
@@ -85,14 +81,69 @@ def _adicionar_texto_frame(frame_array, texto, fonte):
     img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    # Desenha cada linha centralizada dentro do fundo
     y = by0 + padding_v
     for linha, alt, lw in zip(linhas, alturas, larguras):
         x = (w - lw) // 2
-        # Sombra
         draw.text((x + 2, y + 2), linha, font=fonte, fill=(0, 0, 0, 200))
-        # Texto principal
         draw.text((x, y), linha, font=fonte, fill=(255, 255, 255))
+        y += alt + espaco_entre
+
+    return np.array(img)
+
+
+def _adicionar_texto_cta(frame_array, texto, fonte_cta):
+    """Desenha o CTA final com visual dourado e destacado — maior impacto visual."""
+    img = Image.fromarray(frame_array)
+
+    # Escurece levemente o fundo para o CTA se destacar mais
+    escurece = Image.new("RGBA", img.size, (0, 0, 0, 120))
+    img = Image.alpha_composite(img.convert("RGBA"), escurece).convert("RGB")
+
+    draw = ImageDraw.Draw(img)
+    w, h = img.size
+
+    margem_px = int(w * 0.08)
+    largura_max_texto = w - (margem_px * 2)
+
+    linhas = _quebrar_texto_por_pixels(draw, texto, fonte_cta, largura_max_texto)
+    if not linhas:
+        return frame_array
+
+    alturas = []
+    larguras = []
+    for l in linhas:
+        bb = draw.textbbox((0, 0), l, font=fonte_cta)
+        alturas.append(bb[3] - bb[1])
+        larguras.append(bb[2] - bb[0])
+
+    espaco_entre = 18
+    padding_h = 36
+    padding_v = 28
+
+    total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + padding_v * 2
+    total_w = min(max(larguras) + padding_h * 2, w - margem_px * 2)
+
+    # Fundo dourado semitransparente para o CTA
+    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    overlay_draw = ImageDraw.Draw(overlay)
+    bx0 = max((w - total_w) // 2, margem_px)
+    by0 = (h - total_h) // 2
+    bx1 = min(bx0 + total_w, w - margem_px)
+    by1 = by0 + total_h
+    # Borda dourada + fundo escuro
+    overlay_draw.rounded_rectangle([bx0 - 4, by0 - 4, bx1 + 4, by1 + 4], radius=22, fill=(212, 175, 55, 200))
+    overlay_draw.rounded_rectangle([bx0, by0, bx1, by1], radius=18, fill=(10, 10, 10, 210))
+    img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    draw = ImageDraw.Draw(img)
+
+    # Texto em dourado vibrante com sombra
+    y = by0 + padding_v
+    for linha, alt, lw in zip(linhas, alturas, larguras):
+        x = (w - lw) // 2
+        # Sombra preta
+        draw.text((x + 3, y + 3), linha, font=fonte_cta, fill=(0, 0, 0))
+        # Texto dourado
+        draw.text((x, y), linha, font=fonte_cta, fill=(255, 215, 0))
         y += alt + espaco_entre
 
     return np.array(img)
@@ -119,7 +170,7 @@ def _aplicar_efeito_cinematico(frame_array, efeito):
         
     return np.array(img)
 
-def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None):
+def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False):
     from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
     import urllib.parse
     logger.info(f"🎥 Buscando vídeo com query: '{query}'")
@@ -255,25 +306,31 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         duracao = min(clip.duration, 15)
         clip = clip.subclip(0, duracao)
         
-        fonte = _carregar_fonte(tamanho=52)
-        
+        fonte_normal = _carregar_fonte(tamanho=52)
+        fonte_cta    = _carregar_fonte(tamanho=62)  # CTA maior
+
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
-            tempo_por_slide = duracao / len(slides)
-            
+            total_slides = len(slides)
+            tempo_por_slide = duracao / total_slides
+            idx_cta = total_slides - 1  # Última cena = CTA
+
             efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
             efeito_escolhido = random.choice(efeitos)
             if efeito_escolhido != "none":
                 logger.info(f"✨ Aplicando efeito de vídeo: {efeito_escolhido.upper()}")
-            
+
             def make_frame(t):
-                # Descobre qual slide mostrar baseado no tempo
-                idx = min(int(t / tempo_por_slide), len(slides) - 1)
+                idx = min(int(t / tempo_por_slide), total_slides - 1)
                 frame = clip.get_frame(t)
-                frame = _adicionar_texto_frame(frame, slides[idx], fonte)
                 frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
+                # Última cena = CTA em destaque dourado
+                if is_conquistador and idx == idx_cta:
+                    frame = _adicionar_texto_cta(frame, slides[idx], fonte_cta)
+                else:
+                    frame = _adicionar_texto_frame(frame, slides[idx], fonte_normal)
                 return frame
-            
+
             final_clip = VideoClip(make_frame, duration=duracao)
             final_clip = final_clip.set_fps(clip.fps or 24)
         else:
