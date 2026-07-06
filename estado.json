@@ -30,6 +30,13 @@
             "tema": "superacao",
             "estilo_copy": "opinião polêmica: defenda um ponto de vista que a maioria evita dizer",
             "post_id": "18057331484581729"
+        },
+        {
+            "post_id": "17895866655483972",
+            "data": "2026-07-06 04:00:53",
+            "tipo": "reels_conquistador",
+            "tema": "espiritualidade",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')"
         }
     ],
     "ultimos_temas": [
@@ -37,5 +44,15 @@
     ],
     "ultimo_carousel": 5,
     "tema_do_dia": "superacao",
-    "data_tema_do_dia": "2026-07-05"
+    "data_tema_do_dia": "2026-07-05",
+    "index_conquistador": 1,
+    "historico_angulos": [
+        "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão"
+    ],
+    "historico_ganchos": [
+        "Como isso influencia a sua vida de uma forma que você nunca percebeu."
+    ],
+    "historico_estilos": [
+        "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')"
+    ]
 }
