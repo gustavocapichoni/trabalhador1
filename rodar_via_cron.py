@@ -58,6 +58,10 @@ def rodar_agora():
         print("🚀 Executando: Pexels Story da noite (cinematógrafico)")
         subprocess.run(["python", "main.py", "--type", "pexels_story_noite"])
 
+    elif hora == 22:
+        print("🚀 Executando: Reels Conquistador (Atração de Público)")
+        subprocess.run(["python", "main.py", "--type", "reels_conquistador"])
+
     else:
         print(f"💤 Nenhuma tarefa agendada para as {hora}:00 BRT.")
 

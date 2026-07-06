@@ -4,107 +4,119 @@ import time
 import os
 from google import genai
 from google.genai import types
+from datetime import datetime, timezone
 
 from core.config.settings import GEMINI_KEYS
 from core.ai.prompts import TEMAS_MAPEADOS, TEMAS_POR_DIA, montar_instrucoes_copy
 from core.ai.styles import sortear_estilo
 from core.config.state import carregar_estado, salvar_estado
+from loguru import logger
 
 def gerar_conteudo_gemini(tipo):
     if tipo == "test":
-        print("🤖 Gerando conteúdo de teste estático...")
+        logger.info("🤖 Gerando conteúdo de teste estático...")
         return {
             "frase": "Seja forte e corajoso. Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.",
             "legenda": "Ambiente de automação inicializado com sucesso no GitHub Actions! 🚀\n\nEste é um teste integrado disparado pelo bot para validar as permissões e notificações do sistema.\n\n#bot #instagram #automacao #dev"
         }, "espiritualidade", "teste"
         
-    print(f"🤖 Solicitando texto ao Gemini para post do tipo: {tipo.upper()}...")
+    logger.info(f"🤖 Solicitando texto ao Gemini para post do tipo: {tipo.upper()}...")
     if not GEMINI_KEYS:
         raise ValueError("Nenhuma variável GEMINI_API_KEY_X está configurada! Por favor, adicione-as ao arquivo .env ou Secrets.")
         
-    # Lógica de tema diário fixo
-    from datetime import datetime, timezone
-    dia_hoje_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    dia_da_semana = datetime.now(timezone.utc).weekday()
-    
+    # --- INTEGRAÇÃO COM ANALYTICS CRUZADO (ROLETA VICIADA) E CONQUISTADOR ---
     estado = carregar_estado()
-    
-    if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
-        tema_escolhido = estado["tema_do_dia"]
-    else:
-        if dia_da_semana == 6:  # Domingo
-            tema_escolhido = random.choice(["superacao", "proposito"])
-        else:
-            tema_escolhido = TEMAS_POR_DIA[dia_da_semana]
-            
-        estado["tema_do_dia"] = tema_escolhido
-        estado["data_tema_do_dia"] = dia_hoje_str
-        salvar_estado(estado)
-        
-    # --- INTEGRAÇÃO COM ANALYTICS (AUTO-AJUSTE) ---
+    tema_escolhido = None
     contexto_analytics = ""
-    try:
-        # Prioridade 1: Recomendações semanais (7 dias de dados - mais ricas)
-        recomendacoes_semanais_file = "core/analytics/dados/recomendacoes_semanais.json"
-        recomendacoes_file = "core/analytics/dados/recomendacoes.json"
+    
+    agora = datetime.now(timezone.utc)
+    dia_hoje_str = agora.strftime("%Y-%m-%d")
+    dia_da_semana = agora.weekday()
 
-        contexto_semanal = ""
-        contexto_diario = ""
-        rec_semanal = {}
+    is_conquistador = (tipo == "reels_conquistador")
+    
+    if is_conquistador:
+        # Loop Cego: Ignora o Analytics e roda pelos 8 temas em sequência
+        temas_lista = list(TEMAS_MAPEADOS.keys())
+        idx = estado.get("index_conquistador", 0)
+        if idx >= len(temas_lista): idx = 0
+            
+        tema_escolhido = temas_lista[idx]
         
-        # 1. Lê a visão macro (semanal) - "O bot da semana toca"
-        if os.path.exists(recomendacoes_semanais_file):
-            # Verifica se o arquivo semanal tem menos de 7 dias de idade
-            idade_segundos = time.time() - os.path.getmtime(recomendacoes_semanais_file)
-            
-            if idade_segundos <= (7 * 24 * 60 * 60):  # 7 dias
-                with open(recomendacoes_semanais_file, "r", encoding="utf-8") as f:
-                    rec_semanal = json.load(f)
-                contexto_semanal = rec_semanal.get("contexto_para_gemini", "")
+        # Avança pro próximo dia
+        estado["index_conquistador"] = (idx + 1) % len(temas_lista)
+        salvar_estado(estado)
+        logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
+    else:
+        # Lógica padrão da Roleta Viciada (para os outros posts)
+        recomendacoes_file = "analytics/dados/recomendacoes.json"
+        
+        try:
+            if os.path.exists(recomendacoes_file):
+                with open(recomendacoes_file, "r", encoding="utf-8") as f:
+                    rec_cruzada = json.load(f)
+                
+                contexto_analytics = rec_cruzada.get("contexto_para_gemini", "")
+                distribuicoes = rec_cruzada.get("distribuicoes", {})
+                dist_temas = distribuicoes.get("temas", {})
+                
+                # Se for o primeiro post do dia, sorteia o tema do dia usando a Roleta Viciada
+                if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
+                    tema_escolhido = estado["tema_do_dia"]
+                else:
+                    if dist_temas:
+                        temas = list(dist_temas.keys())
+                        pesos = list(dist_temas.values())
+                        # Sorteia com base no peso (Roleta Viciada)
+                        tema_escolhido = random.choices(temas, weights=pesos, k=1)[0]
+                        logger.info(f"🎲 Tema sorteado pela Roleta Viciada do Analytics: {tema_escolhido}")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao ler recomendações do analytics cruzado: {e}")
+
+        # Fallback caso não tenha analytics ou algo dê errado
+        if not tema_escolhido:
+            if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
+                tema_escolhido = estado["tema_do_dia"]
             else:
-                print("⚠️ Analytics semanal tem mais de 7 dias (desatualizado). Ignorando visão macro.")
-            
-        # 2. Lê a visão micro (diária) - "O bot do dia dança"
-        if os.path.exists(recomendacoes_file):
-            with open(recomendacoes_file, "r", encoding="utf-8") as f:
-                rec_diaria = json.load(f)
-            contexto_diario = rec_diaria.get("contexto_para_gemini", "")
-            
-            # O tema vem do diário (o que performou melhor ontem dita a execução de hoje)
-            tema_rec = rec_diaria.get("tema_recomendado")
-            if tema_rec and tema_rec in TEMAS_MAPEADOS:
-                tema_escolhido = tema_rec
-                print(f"📈 Analytics DIÁRIO recomendou o tema para hoje: {tema_escolhido}")
-        else:
-            # Se não tiver diário, usa o tema do semanal como fallback
-            if rec_semanal:
-                tema_rec = rec_semanal.get("tema_recomendado")
-                if tema_rec and tema_rec in TEMAS_MAPEADOS:
-                    tema_escolhido = tema_rec
-                    print(f"📈 Analytics SEMANAL recomendou o tema fallback: {tema_escolhido}")
+                if dia_da_semana == 6:  # Domingo
+                    tema_escolhido = random.choice(["superacao", "proposito"])
+                else:
+                    tema_escolhido = TEMAS_POR_DIA[dia_da_semana]
+                logger.info(f"🎲 Tema fallback (padrão) selecionado: {tema_escolhido}")
 
-        # Junta os dois contextos:
-        partes_contexto = []
-        if contexto_semanal:
-            partes_contexto.append("ESTRATÉGIA DA SEMANA (Visão Macro):\n" + contexto_semanal)
-        if contexto_diario:
-            partes_contexto.append("AJUSTE DE HOJE (Visão Micro):\n" + contexto_diario)
-            
-        contexto_analytics = "\n\n".join(partes_contexto)
-
-    except Exception as e:
-        print(f"⚠️ Erro ao ler recomendações do analytics: {e}")
-    # ----------------------------------------------
+        # Salva o tema do dia (mesmo se foi pela roleta ou fallback)
+        if estado.get("data_tema_do_dia") != dia_hoje_str or estado.get("tema_do_dia") != tema_escolhido:
+            estado["tema_do_dia"] = tema_escolhido
+            estado["data_tema_do_dia"] = dia_hoje_str
+            salvar_estado(estado)
         
     detalhes_tema = TEMAS_MAPEADOS[tema_escolhido]
-    print(f"✨ Tema selecionado: {detalhes_tema['nome']} (Fixo para o dia de hoje)")
+    logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
+    
+    # ---------------- ANTI-REPETIÇÃO ----------------
+    hist_angulos = estado.get("historico_angulos", [])
+    hist_ganchos = estado.get("historico_ganchos", [])
+    hist_estilos = estado.get("historico_estilos", [])
 
-    # Monta instrucoes de copy via conteudo.py (com sub-ângulo e gancho sorteados)
-    instrucoes_copy, sub_angulo = montar_instrucoes_copy(detalhes_tema, contexto_analytics)
+    # Monta instrucoes de copy (com anti-repetição)
+    instrucoes_copy, sub_angulo, gancho = montar_instrucoes_copy(
+        detalhes_tema, contexto_analytics, hist_angulos, hist_ganchos, is_conquistador=is_conquistador
+    )
 
-    # Estilo de abordagem sorteado do conteudo.py
-    estilo_escolhido = sortear_estilo()
-    print(f"🎭 Estilo de abordagem sorteado: {estilo_escolhido.split(':')[0].upper()}")
+    # Estilo de abordagem sorteado (com anti-repetição)
+    estilo_escolhido = sortear_estilo(hist_estilos)
+    logger.info(f"🎭 Estilo de abordagem sorteado: {estilo_escolhido.split(':')[0].upper()}")
+    
+    # Atualiza as listas (mantém os últimos 5 para não lotar o arquivo)
+    hist_angulos.append(sub_angulo)
+    hist_ganchos.append(gancho)
+    hist_estilos.append(estilo_escolhido)
+    
+    estado["historico_angulos"] = hist_angulos[-5:]
+    estado["historico_ganchos"] = hist_ganchos[-5:]
+    estado["historico_estilos"] = hist_estilos[-5:]
+    salvar_estado(estado)
+    # ------------------------------------------------
 
 
     if tipo == "story":
@@ -284,6 +296,60 @@ def gerar_conteudo_gemini(tipo):
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
+    elif tipo == "reels_conquistador":
+        prompt = f"""
+        Você é um copywriter de elite especializado em VSL (Video Sales Letter) de topo de funil para o Instagram.
+        Sua missão é criar um roteiro em slides que seja puro sangue: direto, magnético e que faça o usuário agir (seguir/clicar).
+        Estilo obrigatório para este Reels: {estilo_escolhido}
+
+        {instrucoes_copy}
+
+        CRIE UMA SEQUÊNCIA NARRATIVA IMPLACÁVEL seguindo EXATAMENTE este funil de 5 a 6 slides:
+
+        SLIDE 1 — DOR / PROBLEMA (O Gancho Forçado):
+        - Você OBRIGATORIAMENTE deve usar o "Gancho narrativo" recebido nas instruções. Pode completá-re, mas comece com ele.
+        - Imediatamente, mostre a dor de forma clara: o que o leitor está perdendo, o dinheiro que está na mesa, o tempo jogado no lixo.
+        - Ex: "Isso te atrapalha. Isso te custa caro."
+        - Máximo 15 palavras.
+
+        SLIDE 2 — A CAUSA RAIZ (O Inimigo Oculto):
+        - Explique brevemente *por que* ele sofre dessa dor. Qual é o erro invisível?
+        - Máximo 15 palavras.
+
+        SLIDE 3 — A SOLUÇÃO DIRETA (A Revelação):
+        - Apresente o que resolve a dor. Prático. Imediato. Sem filosofias genéricas.
+        - Máximo 12 palavras.
+
+        SLIDE 4 — O BENEFÍCIO (A Terra Prometida):
+        - Deixe explícito o que o cliente ganha ao agir (poder, tempo, status, dinheiro, paz mental).
+        - Máximo 12 palavras.
+
+        SLIDE 5 — A PROVA / AUTORIDADE (Oxe, mas quem é você?):
+        - Prove que a solução funciona. Demonstre experiência, tecnologia ou que a inteligência artificial é a autoridade máxima nisso.
+        - Máximo 12 palavras.
+
+        (OPCIONAL) SLIDE 6 — Se precisar estender a prova ou benefício.
+
+        LEGENDA (A Ação - CTA FINAL FORTE):
+        - Máximo 3 linhas. Direta e objetiva como um míssil.
+        - CTA OBRIGATÓRIO PARA AÇÃO: Use botões mentais claros. Variações sugeridas (escolha 1):
+          → "Clique no Link da Bio e pare de perder tempo."
+          → "Digite X nos comentários e eu te mando o acesso/metodologia."
+          → "Siga o perfil se você quer parar de ser feito de bobo pelo sistema."
+        - NÃO use hashtags. NUNCA faça perguntas reflexivas aqui. A legenda é APENAS para CLIQUE/AÇÃO.
+
+        Responda APENAS em formato JSON válido assim:
+        {{
+          "slides": [
+            "Conteúdo do slide 1",
+            "Conteúdo do slide 2",
+            "Conteúdo do slide 3",
+            "Conteúdo do slide 4",
+            "Conteúdo do slide 5"
+          ],
+          "legenda": "Sua legenda com CTA agressivo aqui sem hashtags"
+        }}
+        """
     elif tipo == "pexels_story":
         prompt = f"""
         Você é um mestre de storytelling cinematográfico aplicado ao Instagram.
@@ -454,18 +520,35 @@ def gerar_conteudo_gemini(tipo):
     else:
         raise ValueError(f"Tipo inválido: {tipo}")
 
-        
+    # Função auxiliar para extrair JSON de markdown
+    def extrair_json(texto):
+        # Remove blocos markdown (```json ... ```) e eventuais espaços
+        import re
+        texto = texto.strip()
+        padrao = r'```(?:json)?\s*(.*?)\s*```'
+        match = re.search(padrao, texto, re.DOTALL)
+        if match:
+            texto = match.group(1)
+        # Tenta parsear
+        return json.loads(texto)
+
+    # LOOP DE TENTATIVAS (Múltiplas chaves)
     max_tentativas_por_chave = 3
     
     for key_index, current_key in enumerate(GEMINI_KEYS):
-        print(f"🔑 Tentando usar chave Gemini {key_index + 1}/{len(GEMINI_KEYS)}...")
+        logger.info(f"🔑 Tentando usar chave Gemini {key_index + 1}/{len(GEMINI_KEYS)}...")
         client = genai.Client(api_key=current_key)
         
         for tentativa in range(max_tentativas_por_chave):
             try:
                 resposta = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
-                texto_limpo = response_text = resposta.text.replace("```json", "").replace("```", "").strip()
-                dados = json.loads(texto_limpo)
+                
+                # Extração e parse robusto
+                try:
+                    dados = extrair_json(resposta.text)
+                except Exception as e:
+                    logger.error(f"❌ Erro ao parsear JSON na Tentativa {tentativa+1}. Texto bruto: {resposta.text}")
+                    raise Exception(f"Gemini não retornou um JSON válido: {e}")
                 
                 # Injeta as hashtags específicas do tema na legenda
                 if "legenda" in dados:
@@ -473,17 +556,18 @@ def gerar_conteudo_gemini(tipo):
                     dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
                     
                 return dados, tema_escolhido, estilo_escolhido
+                
             except Exception as e:
                 err_msg = str(e).lower()
                 if "429" in err_msg or "resource_exhausted" in err_msg or "quota" in err_msg:
-                    print(f"⚠️ Cota esgotada na chave {key_index + 1} (429). Passando para a próxima chave...")
+                    logger.warning(f"⚠️ Cota esgotada na chave {key_index + 1} (429). Passando para a próxima chave...")
                     break # Sai do loop de tentativas e vai para a próxima chave
                 
                 if tentativa < max_tentativas_por_chave - 1:
-                    print(f"⚠️ Erro ao chamar Gemini (Chave {key_index + 1}, Tentativa {tentativa+1}/{max_tentativas_por_chave}): {e}. Tentando novamente em 5 segundos...")
+                    logger.warning(f"⚠️ Erro ao chamar Gemini (Chave {key_index + 1}, Tentativa {tentativa+1}/{max_tentativas_por_chave}): {e}. Tentando novamente em 5 segundos...")
                     time.sleep(5)
                 else:
-                    print(f"❌ Falha ao obter resposta na chave {key_index + 1} após {max_tentativas_por_chave} tentativas.")
+                    logger.error(f"❌ Falha ao obter resposta na chave {key_index + 1} após {max_tentativas_por_chave} tentativas.")
                     
     # Se sair do loop externo, todas as chaves falharam
     raise ValueError(f"❌ Falha crítica: Todas as {len(GEMINI_KEYS)} chaves do Gemini falharam ou estão sem cota.")

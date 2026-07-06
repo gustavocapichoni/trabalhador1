@@ -3,10 +3,11 @@ import glob
 import random
 import moviepy.editor
 from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips, TextClip, CompositeVideoClip
+from loguru import logger
 
 def garantir_audio_reels():
     try:
-        pastas = ["musicas", "."]
+        pastas = [os.path.join("biblioteca_local", "musicas"), "musicas", "."]
         mp3_files = []
         for pasta in pastas:
             if os.path.exists(pasta):
@@ -15,16 +16,16 @@ def garantir_audio_reels():
                         mp3_files.append(os.path.join(pasta, f))
         if mp3_files:
             escolhido = random.choice(mp3_files)
-            print(f"--- Audio selecionado aleatoriamente para o Reels/Story: '{escolhido}'")
+            logger.info(f"🎵 Audio selecionado aleatoriamente para o vídeo: '{escolhido}'")
             return escolhido
     except Exception as e:
-        print(f"--- Erro ao listar arquivos de audio: {e}")
+        logger.warning(f"⚠️ Erro ao listar arquivos de audio: {e}")
         
     audio_path = "background.mp3"
     if os.path.exists(audio_path):
         return audio_path
         
-    print("--- Nenhum arquivo MP3 encontrado. Tentando gerar silencio temporario...")
+    logger.info("🎵 Nenhum arquivo MP3 encontrado. Tentando gerar silêncio temporário...")
     import subprocess
     try:
         cmd = [
@@ -42,7 +43,7 @@ def garantir_audio_reels():
         pass
     return None
 def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pronto.mp4"):
-    print("🎬 Montando slideshow 9:16 com música de fundo...")
+    logger.info("🎬 Montando slideshow 9:16 com música de fundo...")
     if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
         raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Reels.")
 
@@ -93,14 +94,14 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
         except AttributeError:
             video_clip = video_clip.set_audio(audio_clip)
 
-        print(f"⚙️ Renderizando slideshow de {len(caminhos_imagens)} slides ({duracao_total:.1f}s)...")
+        logger.info(f"⚙️ Renderizando slideshow de {len(caminhos_imagens)} slides ({duracao_total:.1f}s)...")
 
         # Remove arquivos temporários residuais do moviepy que possam bloquear a renderização
         import glob
         for temp_file in glob.glob("*TEMP_MPY*"):
             try:
                 os.remove(temp_file)
-                print(f"🧹 Arquivo temporário residual removido: {temp_file}")
+                logger.info(f"🧹 Arquivo temporário residual removido: {temp_file}")
             except Exception:
                 pass
 
@@ -120,10 +121,10 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 codec="libx264",
                 audio_codec="aac"
             )
-        print(f"✅ Vídeo gerado com sucesso como {caminho_saida}")
+        logger.success(f"✅ Vídeo gerado com sucesso como {caminho_saida}")
         return caminho_saida
     except Exception as e:
-        print(f"❌ Erro ao converter imagem para vídeo com moviepy: {e}")
+        logger.error(f"❌ Erro ao converter imagem para vídeo com moviepy: {e}")
         raise e
     finally:
         # Garante liberação dos recursos mesmo em caso de erro (evita WinError 32)
@@ -139,7 +140,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 pass
 
 def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="story_pronto.mp4"):
-    print(f"🎬 Convertendo Story {caminho_imagem} em vídeo com música...")
+    logger.info(f"🎬 Convertendo Story {caminho_imagem} em vídeo com música...")
     if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
         raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Stories em vídeo.")
 
@@ -161,7 +162,7 @@ def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="s
         except AttributeError:
             video_clip = clip.set_audio(audio_clip)
 
-        print(f"⚙️ Renderizando vídeo Story ({duracao_total:.1f}s)...")
+        logger.info(f"⚙️ Renderizando vídeo Story ({duracao_total:.1f}s)...")
         
         try:
             video_clip.write_videofile(
@@ -178,10 +179,10 @@ def gerar_video_story_individual(caminho_imagem, caminho_audio, caminho_saida="s
                 codec="libx264",
                 audio_codec="aac"
             )
-        print(f"✅ Vídeo Story gerado com sucesso como {caminho_saida}")
+        logger.success(f"✅ Vídeo Story gerado com sucesso como {caminho_saida}")
         return caminho_saida
     except Exception as e:
-        print(f"❌ Erro ao converter story para vídeo: {e}")
+        logger.error(f"❌ Erro ao converter story para vídeo: {e}")
         raise e
     finally:
         if video_clip is not None:

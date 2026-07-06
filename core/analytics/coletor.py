@@ -3,14 +3,16 @@ import json
 import time
 import requests
 from datetime import datetime, timezone, timedelta
+from loguru import logger
 from dotenv import load_dotenv
+from core.analytics.db import get_db
 
 load_dotenv()
 
 IG_ACCESS_TOKEN = os.getenv("IG_ACCESS_TOKEN")
 IG_ACCOUNT_ID = os.getenv("IG_ACCOUNT_ID")
 ESTADO_FILE = "estado.json"
-METRICAS_FILE = "analytics/dados/metricas.json"
+METRICAS_FILE = "analytics/dados/metricas.json"  # mantido como fallback local
 
 def carregar_estado():
     if os.path.exists(ESTADO_FILE):
@@ -18,130 +20,173 @@ def carregar_estado():
             with open(ESTADO_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"Erro ao ler estado.json: {e}")
+            logger.warning(f"Erro ao ler estado.json: {e}")
     return {"historico": []}
 
-def carregar_metricas():
+def carregar_metricas_local():
     if os.path.exists(METRICAS_FILE):
         try:
             with open(METRICAS_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"Erro ao ler metricas.json: {e}")
+            logger.warning(f"Erro ao ler metricas.json: {e}")
     return {"posts": {}}
 
-def salvar_metricas(metricas):
+def salvar_metricas_local(metricas):
     os.makedirs(os.path.dirname(METRICAS_FILE), exist_ok=True)
     with open(METRICAS_FILE, "w", encoding="utf-8") as f:
         json.dump(metricas, f, indent=4, ensure_ascii=False)
 
-def buscar_metricas_api(post_id):
+def salvar_metricas_firebase(post_id, info_post, metricas):
+    """Salva os dados do post e métricas no Firebase Firestore."""
+    db = get_db()
+    if db is None:
+        logger.warning("Firebase indisponível. Dados salvos apenas localmente.")
+        return
+
+    try:
+        doc_ref = db.collection("metricas_posts").document(post_id)
+        doc_ref.set({
+            "post_id": post_id,
+            "info_post": info_post,
+            "metricas": metricas,
+            "ultima_atualizacao": datetime.now(timezone.utc).isoformat(),
+        }, merge=True)
+        logger.info(f"🔥 Métricas do post {post_id} salvas no Firebase!")
+    except Exception as e:
+        logger.error(f"❌ Erro ao salvar métricas no Firebase: {e}")
+
+def buscar_metricas_api(post_id, tipo_post="feed"):
+    """
+    Coleta métricas da API do Instagram de forma inteligente por tipo de post.
+    
+    Tipos de post e métricas exclusivas:
+    - Feed/Carrossel: impressions, reach, saved, likes, comments, shares, profile_visits, follows
+    - Reels:          plays, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reach, saved, shares
+    - Stories:        impressions, reach, taps_forward, taps_back, exits, replies, follows
+    """
     if not IG_ACCESS_TOKEN or post_id.startswith("DRY_RUN") or post_id == "ID_TESTE_LOCAL":
         return None
-        
+
     metricas = {}
-    
     try:
-        # 1. Busca os campos diretos da mídia (likes e comentários)
-        url_media = f"https://graph.facebook.com/v19.0/{post_id}?fields=like_count,comments_count,media_type&access_token={IG_ACCESS_TOKEN}"
+        # --- Passo 1: Dados básicos da mídia (likes, comentários, tipo) ---
+        url_media = (
+            f"https://graph.facebook.com/v19.0/{post_id}"
+            f"?fields=like_count,comments_count,media_type"
+            f"&access_token={IG_ACCESS_TOKEN}"
+        )
         res_media = requests.get(url_media, timeout=15)
         if res_media.status_code == 200:
             data = res_media.json()
-            metricas["likes"] = data.get("like_count", 0)
-            metricas["comments"] = data.get("comments_count", 0)
-            media_type = data.get("media_type")
+            metricas["likes"]      = data.get("like_count", 0)
+            metricas["comments"]   = data.get("comments_count", 0)
+            metricas["media_type"] = data.get("media_type", "UNKNOWN")
         else:
             try:
                 err_json = res_media.json()
                 err_msg = err_json.get("error", {}).get("message", "")
-                if "does not exist, cannot be loaded" in err_msg or "Unsupported get request" in err_msg:
-                    print(f"Aviso: Mídia {post_id} não acessível (pode ter expirado). Pulando...")
+                if "does not exist" in err_msg or "Unsupported get request" in err_msg:
+                    logger.warning(f"Mídia {post_id} não acessível (pode ter expirado). Pulando...")
                     return None
             except:
                 pass
-            print(f"Erro ao buscar campos diretos da mídia {post_id}: {res_media.text}")
+            logger.error(f"Erro ao buscar mídia {post_id}: {res_media.text}")
             return None
-        # 2. Busca os insights (reach, saved, shares, views)
-        # Os nomes das métricas mudaram recentemente na API do Facebook
-        metrics_query = "reach,saved,shares,views"
-            
-        url_insights = f"https://graph.facebook.com/v19.0/{post_id}/insights?metric={metrics_query}&access_token={IG_ACCESS_TOKEN}"
-        res_insights = requests.get(url_insights, timeout=15)
+
+        # --- Passo 2: Insights expandidos por tipo de post ---
+        tipo_lower = tipo_post.lower()
         
+        if "reel" in tipo_lower or "pexels" in tipo_lower:
+            # Reels: métricas de retenção e tempo assistido
+            metrics_query = "views,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reach,saved,shares"
+            logger.info(f"🎬 Coletando métricas de REELS para {post_id}")
+        elif "story" in tipo_lower:
+            # Stories: métricas de navegação e retenção
+            metrics_query = "impressions,reach,navigation,replies,follows"
+            logger.info(f"📱 Coletando métricas de STORY para {post_id}")
+        else:
+            # Feed e Carrossel: métricas de engajamento e descoberta
+            metrics_query = "impressions,reach,saved,shares,profile_visits,follows"
+            logger.info(f"🖼️ Coletando métricas de FEED para {post_id}")
+
+        url_insights = (
+            f"https://graph.facebook.com/v19.0/{post_id}/insights"
+            f"?metric={metrics_query}"
+            f"&access_token={IG_ACCESS_TOKEN}"
+        )
+        res_insights = requests.get(url_insights, timeout=15)
+
         if res_insights.status_code == 200:
             data = res_insights.json()
             for insight in data.get("data", []):
-                name = insight.get("name")
-                # Pega o total_value se existir (pode estar dentro de values[0])
+                name   = insight.get("name")
                 values = insight.get("values", [])
                 if values:
-                    val = values[0].get("value", 0)
-                    metricas[name] = val
+                    metricas[name] = values[0].get("value", 0)
+                elif "value" in insight:
+                    # Alguns insights retornam valor direto (sem array)
+                    metricas[name] = insight.get("value", 0)
         else:
-            print(f"Aviso: Não foi possível obter insights para {post_id}. Pode ser uma mídia muito recente, expirada (stories) ou erro: {res_insights.text}")
-            
+            logger.warning(f"Não foi possível obter insights para {post_id}: {res_insights.text}")
+
+        logger.info(f"📊 Métricas coletadas para {post_id}: {list(metricas.keys())}")
         return metricas
+
     except Exception as e:
-        print(f"Erro ao coletar métricas para o post {post_id}: {e}")
+        logger.error(f"Erro ao coletar métricas para o post {post_id}: {e}")
         return None
 
 def rodar_coleta():
-    print("Iniciando coleta de métricas...")
+    logger.info("📊 Iniciando coleta de métricas...")
     estado = carregar_estado()
     historico = estado.get("historico", [])
-    metricas_salvas = carregar_metricas()
-    
+    metricas_salvas = carregar_metricas_local()
+
     agora = datetime.now(timezone.utc)
     posts_processados = 0
-    
+
     for post in historico:
         post_id = post.get("post_id")
         data_str = post.get("data")
-        
+
         if not post_id or post_id == "ID_TESTE_LOCAL" or post_id.startswith("DRY_RUN"):
             continue
-            
-        # Pular se já tem métricas atualizadas hoje
-        # Na prática, num sistema mais completo, poderíamos verificar há quanto tempo a métrica foi atualizada
-        # Mas aqui, como vamos rodar 1x por dia, vamos sempre atualizar os posts dos últimos 7 dias.
-        
+
         try:
-            # Data está salva como "YYYY-MM-DD HH:MM:SS" local, vamos assumir como UTC ou converter.
             post_dt = datetime.strptime(data_str, "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
         except:
             continue
-            
-        # Verifica se o post é do tipo story
+
         is_story = "story" in str(post.get('tipo', '')).lower()
-        
-        # Para stories, eles expiram após 24h, então não podemos buscar depois disso
+
         if is_story and agora - post_dt > timedelta(hours=24):
             continue
-            
-        # Pular posts (feed/reels) com menos de 24h (métricas não estabilizadas)
         if not is_story and agora - post_dt < timedelta(hours=24):
             continue
-            
-        # Pular posts muito antigos (mais de 14 dias), para economizar chamadas de API
         if agora - post_dt > timedelta(days=14):
             continue
-            
-        print(f"Coletando métricas para o post {post_id} ({post.get('tipo')} - {post.get('tema')})...")
-        novas_metricas = buscar_metricas_api(post_id)
-        
+
+        tipo_post = post.get("tipo", "feed")
+        logger.info(f"📥 Coletando métricas: post {post_id} ({tipo_post} - {post.get('tema')})...")
+        novas_metricas = buscar_metricas_api(post_id, tipo_post=tipo_post)
+
         if novas_metricas:
+            # Salva localmente (fallback)
             if post_id not in metricas_salvas["posts"]:
                 metricas_salvas["posts"][post_id] = {}
-                
             metricas_salvas["posts"][post_id]["info_post"] = post
             metricas_salvas["posts"][post_id]["metricas"] = novas_metricas
             metricas_salvas["posts"][post_id]["ultima_atualizacao"] = agora.strftime("%Y-%m-%d %H:%M:%S")
+
+            # Salva no Firebase (principal)
+            salvar_metricas_firebase(post_id, post, novas_metricas)
             posts_processados += 1
-            
-        time.sleep(2) # Respeitar limites da API
-        
-    salvar_metricas(metricas_salvas)
-    print(f"Coleta finalizada. {posts_processados} posts atualizados.")
+
+        time.sleep(2)
+
+    salvar_metricas_local(metricas_salvas)
+    logger.success(f"✅ Coleta finalizada. {posts_processados} posts atualizados.")
     return metricas_salvas
 
 if __name__ == "__main__":

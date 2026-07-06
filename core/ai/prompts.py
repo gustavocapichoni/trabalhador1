@@ -7,114 +7,114 @@ from core.ai.styles import REGRAS_COPY_BASE, sortear_gancho
 TEMAS_MAPEADOS = {
     "espiritualidade": {
         "nome": "Espiritualidade e Fé",
-        "inspira": "sabedoria bíblica, ensinamentos de Jesus Cristo, filosofia de Salomão e Provérbios",
-        "query_unsplash": "cross,ancient,temple,monastery,light",
-        "hashtags": ["#sabedoria", "#fe", "#proposito", "#espiritualidade", "#gratidao"],
+        "inspira": "Evangelhos de Mateus e João, Provérbios de Salomão, Cantares, O Homem Mais Inteligente da História (gestão de emoções de Jesus)",
+        "query_unsplash": "dark ancient temple,mystical ethereal fog,moody sacred geometry,cinematic holy light ray,dramatic stone ruins",
+        "hashtags": ["#sabedoria", "#fe", "#proposito", "#espiritualidade", "#reflexao"],
         "sub_angulos": [
-            "O silêncio como forma de escuta espiritual — quando parar de pedir e começar a ouvir",
-            "A diferença entre religiosidade de fachada e uma fé que transforma por dentro",
-            "Por que gratidão real muda a perspectiva antes de mudar a situação",
-            "O paradoxo da fé: confiar no processo sem entender o plano",
-            "Quando a oração muda quem ora, não apenas o que é pedido",
-            "A armadilha de buscar sinais e ignorar o que já está na sua frente",
+            "O silêncio absoluto que você evita é onde as respostas da sabedoria milenar estão guardadas",
+            "Como o maior mestre da história não se abalava com o ódio, focando apenas na sua missão",
+            "O paradoxo de exigir milagres divinos enquanto você foge da disciplina de fazer a sua parte",
+            "A diferença entre religiosidade de fachada e a sabedoria brutal e prática dos provérbios antigos",
+            "A hipocrisia de quem usa a fé como escudo para esconder um caráter corrompido nos bastidores",
+            "Por que perdoar não é fraqueza, mas uma gestão de emoções avançada para não ser refém do passado"
         ]
     },
     "filosofia": {
         "nome": "Filosofia e Autoconhecimento",
-        "inspira": "pensamento de Platão, estoicismo, a ideia socrática de conhecer a si mesmo",
-        "query_unsplash": "philosophy,ancient,wisdom,sculpture,monument,column",
+        "inspira": "A Arte da Guerra (estratégia mental), O Vendedor de Sonhos (desconstrução do sistema), Estoicismo, PNL",
+        "query_unsplash": "stoic marble statue,dramatic solitary chess piece,dark philosophical abstract,shattered mirror,cinematic thought",
         "hashtags": ["#autoconhecimento", "#filosofia", "#sabedoria", "#estoicismo", "#reflexao"],
         "sub_angulos": [
-            "O que é realmente seu: separar o que você controla do que apenas te afeta",
-            "A ilusão do ego — por que defendemos opiniões que nem são nossas",
-            "Memento Mori: usar a ideia da morte para viver com mais intenção hoje",
-            "Por que pessoas inteligentes se sabotam com excesso de análise",
-            "A diferença entre ser sábio e simplesmente acumular informação",
-            "Como a filosofia estoica lida com o medo que disfarçamos de precaução",
+            "O sistema tenta te vender sonhos enlatados para que você nunca acorde para a sua verdadeira força",
+            "Toda batalha é vencida ou perdida na sua própria mente muito antes do primeiro passo no mundo real",
+            "A ilusão de ler dezenas de livros e não ter a coragem de aplicar uma única linha no caos da vida real",
+            "Como o sistema educacional formatou a maioria para ter medo de pensar fora da caixa",
+            "A verdadeira liberdade é não se importar com o tribunal do julgamento alheio enquanto constrói o seu império",
+            "Por que tentar controlar o que está fora do seu alcance é a maneira mais rápida de destruir sua paz"
         ]
     },
     "psicologia": {
         "nome": "Psicologia e Comportamento Humano",
-        "inspira": "vieses cognitivos, psicologia comportamental, como a mente racionaliza o que já decidiu por impulso",
-        "query_unsplash": "abstract,mind,fog,psychology,puzzle",
+        "inspira": "Rápido e Devagar (Sistema 1 e 2), Blink, Armadilhas da Mente, Neurociência aplicada",
+        "query_unsplash": "neon brain cybernetic,neural pathways glowing,dark abstract mind maze,psychological shadow silhouette,dramatic dual face",
         "hashtags": ["#psicologia", "#decisao", "#mentalidade", "#comportamento", "#habito"],
         "sub_angulos": [
-            "Síndrome do impostor: por que quanto mais você sabe, mais sente que não sabe nada",
-            "O viés de confirmação — como só enxergamos o que já acreditamos",
-            "Trauma que virou identidade: quando o sofrimento passa mas a gente fica preso nele",
-            "Por que o cérebro prefere o sofrimento familiar ao prazer desconhecido",
-            "A psicologia por trás da procrastinação: não é preguiça, é regulação emocional",
-            "Como o ambiente molda comportamento mais do que força de vontade",
+            "O seu cérebro prefere manter você preso no sofrimento conhecido do que arriscar a dor da mudança",
+            "As armadilhas da sua mente: como você cria problemas imaginários para não focar no que precisa ser feito",
+            "A farsa da 'falta de tempo': seu cérebro toma decisões em milissegundos para proteger seus vícios",
+            "Por que o excesso de planejamento é apenas o seu medo paralisante fantasiado de inteligência analítica",
+            "A síndrome do impostor: lá no fundo, você sabe que está entregando apenas uma fração do seu potencial",
+            "Como a neurociência explica o seu vício por dopamina rápida enquanto a sua vida real fica estagnada"
         ]
     },
     "financas": {
         "nome": "Mentalidade Financeira e Riqueza",
-        "inspira": "mentalidade de quem constrói riqueza com inteligência, ativos vs passivos, o preço da mediocridade financeira",
-        "query_unsplash": "city,finance,gold,wealth,architecture,office",
+        "inspira": "Pai Rico Pai Pobre (ativos vs passivos), Mais Esperto que o Diabo (alienação), PNL focada em negócios",
+        "query_unsplash": "dark wall street cinematic,monopoly board falling,luxury corporate skyscraper storm,moody gold vault,dramatic boardroom",
         "hashtags": ["#financas", "#riqueza", "#mentalidadefinanceira", "#sucesso", "#dinheiro"],
         "sub_angulos": [
-            "O que a classe média compra que a impede de sair da classe média",
-            "A diferença entre ganhar muito e ficar rico — e por que confundimos os dois",
-            "Por que pobres jogam na loteria e ricos investem na constância",
-            "Ativos vs passivos: o que a escola nunca ensinou sobre dinheiro",
-            "Como a identidade financeira sabotera pessoas que finalmente começam a ganhar",
-            "O custo invisível de adiar decisões financeiras por mais um ano",
+            "O passivo financeiro de luxo que as pessoas compram apenas para impressionar quem elas nem gostam",
+            "A alienação do sistema: o treinamento invisível para vender seu tempo valioso por uma segurança ilusória",
+            "Ativos reais vs brinquedos caros: a diferença brutal entre focar em parecer rico e focar em ser livre",
+            "O custo devastador de não arriscar criar um sistema de renda própria por puro medo do fracasso temporário",
+            "A mentira de achar que ganhar mais dinheiro resolve a falta de inteligência emocional para poupar",
+            "Como a mentalidade herdada de que 'o dinheiro é a raiz dos males' sabota suas chances de prosperar"
         ]
     },
     "liberdade": {
         "nome": "Liberdade, Sonhos e Coragem de Começar",
-        "inspira": "o espírito de quem não desiste do seu sonho, aceita os riscos, dá o primeiro passo mesmo sem garantia",
-        "query_unsplash": "ocean,freedom,adventure,sailing,climbing,mountain",
+        "inspira": "O Vendedor de Sonhos (liberdade mental), O Poder da Ação, Mais Esperto que o Diabo (quebrar a hipnose)",
+        "query_unsplash": "broken golden cage,dramatic cliff jump silhouette,lone wolf storm,epic mountain freedom,dark cinematic ocean waves",
         "hashtags": ["#liberdade", "#sonhos", "#jornada", "#perseveranca", "#foco"],
         "sub_angulos": [
-            "O medo de recomeçar do zero quando se tem muito a perder",
-            "A diferença entre planejar e usar o planejamento como desculpa para não começar",
-            "Por que a maioria desiste antes do ponto onde as coisas ficam interessantes",
-            "Liberdade real vs liberdade de aparência — o que parece livre mas é só conforto",
-            "Como saber quando é sabedoria desistir e quando é medo disfarçado",
-            "A coragem que ninguém vê: os sacrifícios silenciosos de quem está construindo",
+            "A dor insuportável de olhar para trás daqui a 10 anos e ver que não teve a coragem de vender seus próprios sonhos",
+            "A ilusão da segurança corporativa: o preço de vender sua energia vital para realizar a meta de outra pessoa",
+            "O alienado nunca age: por que a grande massa desiste exatamente no ponto em que o jogo começaria a virar",
+            "Tem poder quem age: não adianta ler todos os livros de sucesso se você treme perante o julgamento alheio",
+            "O sacrifício silencioso que ninguém curte no Instagram e que define quem realmente vai ter liberdade de tempo",
+            "Como saber se o seu cansaço é real ou é só a voz do medo te puxando de volta para a gaiola dourada"
         ]
     },
     "conexoes": {
         "nome": "Relacionamentos e Inteligência Emocional",
-        "inspira": "como a vulnerabilidade gera confiança, como ouvir é um ato de amor, o que une e o que separa pessoas de verdade",
-        "query_unsplash": "connection,dialogue,warmth,hands,friendship",
+        "inspira": "Como Fazer Amigos e Influenciar Pessoas, A Arte da Persuasão, construção de família e relacionamentos fortes",
+        "query_unsplash": "rain window dark,emotional shadow,melancholic person,dramatic warm light,lone figure city",
         "hashtags": ["#relacionamentos", "#conexao", "#empatia", "#inteligenciaemocional", "#amor"],
         "sub_angulos": [
-            "O que a maioria confunde com amor mas é só vício emocional",
-            "Por que somos mais honestos com estranhos do que com quem amamos",
-            "A solidão de estar rodeado de pessoas que não te entendem de verdade",
-            "Como o orgulho destrói silenciosamente o que o amor construiu com esforço",
-            "A diferença entre escutar para responder e escutar para entender",
-            "Por que relacionamentos que começam com intensidade costumam terminar com vazio",
+            "O que você chama de amor incondicional é muitas vezes apenas um medo patológico e doentio de ficar sozinho",
+            "Se você não consegue dizer 'não' aos outros, você está dizendo 'não' para a paz da sua própria família",
+            "O maior segredo da persuasão não é falar bonito, é calar a boca e realmente ouvir o que o outro esconde",
+            "Por que você tolera o desrespeito em silêncio achando que está sendo compreensivo, maduro e diplomático",
+            "A diferença entre acolher alguém na sua vida e se tornar a lata de lixo dos problemas emocionais alheios",
+            "O orgulho e a falta de diálogo direto destroem relações familiares de anos em um simples piscar de olhos"
         ]
     },
     "superacao": {
         "nome": "Superação e Autossabotagem",
-        "inspira": "o maior inimigo mora dentro da gente — crenças limitantes, conformismo, medo disfarçado de prudência",
-        "query_unsplash": "storm,path,silhouette,climbing,dark,run",
+        "inspira": "O Poder do Hábito (loop do hábito), O Poder da Ação, A Arte da Guerra (disciplina inclemente)",
+        "query_unsplash": "dark storm path,dramatic runner silhouette,gritty determination,moody climb,intense shadow",
         "hashtags": ["#superacao", "#foco", "#resiliencia", "#coragem", "#determinacao"],
         "sub_angulos": [
-            "Autossabotagem silenciosa: quando você atrapalha o que mais quer sem perceber",
-            "O conforto que te prende: por que a zona de conforto é tão boa e tão perigosa",
-            "Procrastinação vs execução: a diferença entre quem planeja e quem faz",
-            "Crenças herdadas: ideias que você nunca escolheu mas que governam suas decisões",
-            "Por que mudar de vida assusta mesmo quando a vida atual não está boa",
-            "A voz interna que sempre encontra uma razão para esperar mais um dia",
+            "O ciclo da derrota: um gatilho te estressa, você foge para um hábito destrutivo e depois se culpa",
+            "O seu maior inimigo é a voz interna que sempre te convence a descansar um pouco mais quando ninguém vê",
+            "A armadilha motivacional: o erro amador de esperar estar 'inspirado' em vez de usar a disciplina cega",
+            "Escolha as suas batalhas: ser forte não é apanhar de tudo, é saber qual guerra vale a pena lutar até o fim",
+            "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata",
+            "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo"
         ]
     },
     "proposito": {
         "nome": "Propósito e Legado",
-        "inspira": "viver com intenção, escolher conscientemente quem você quer ser, o que você deixa no mundo e nas pessoas",
-        "query_unsplash": "legacy,path,compass,forest,sunlight,sky",
+        "inspira": "Eclesiastes, Provérbios de Salomão, Mais Esperto que o Diabo (propósito vs alienação), PNL (visão)",
+        "query_unsplash": "epic forest light,dramatic compass,lone lighthouse dark,ancient tree roots,vast dark sky stars",
         "hashtags": ["#proposito", "#legado", "#vida", "#intencao", "#evoluir"],
         "sub_angulos": [
-            "A diferença entre ter objetivos e ter um propósito que te sustenta nos dias ruins",
-            "O que você está construindo que vai existir quando você não estiver mais aqui",
-            "Por que tantas pessoas bem-sucedidas se sentem vazias por dentro",
-            "Como saber se você está no caminho certo ou apenas no caminho seguro",
-            "A ilusão do futuro: por que adiamos viver com sentido para quando tiver dinheiro ou tempo",
-            "Quem você está se tornando enquanto persegue o que quer conquistar",
+            "A diferença colossal entre ter metas vazias para inflar o ego e construir um legado que proteja as próximas gerações",
+            "Por que o sucesso material e os aplausos sem um propósito claro são a forma mais rápida de se sentir vazio",
+            "Como saber se você está caminhando com intencionalidade ou apenas seguindo o rebanho hipnotizado para o abismo",
+            "O preço silencioso de adiar a sua grande missão de vida ano após ano, até que não te reste mais saúde",
+            "Quem você está se tornando no processo é infinitamente mais importante do que as conquistas temporárias",
+            "O seu legado invisível: as decisões brutais que você toma hoje no escuro mudarão o rumo da sua família"
         ]
     }
 }
@@ -132,10 +132,22 @@ TEMAS_POR_DIA = {
     # Domingo = sorteio entre superacao e proposito
 }
 
-def montar_instrucoes_copy(detalhes_tema, contexto_analytics=""):
-    """Monta o bloco de instrução de copy injetado em todos os prompts."""
-    sub_angulo = random.choice(detalhes_tema["sub_angulos"])
-    gancho = sortear_gancho()
+def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, historico_ganchos=None, is_conquistador=False):
+    """Monta o bloco de instrução de copy injetado em todos os prompts, evitando repetições."""
+    if historico_angulos is None: historico_angulos = []
+    
+    # Sorteia Ângulo (Roleta anti-repetição)
+    opcoes_angulos = [a for a in detalhes_tema["sub_angulos"] if a not in historico_angulos]
+    if not opcoes_angulos: # Reseta se todos já foram usados
+        opcoes_angulos = detalhes_tema["sub_angulos"]
+    sub_angulo = random.choice(opcoes_angulos)
+    
+    # Sorteia Gancho (passando histórico)
+    from core.ai.styles import sortear_gancho_conquistador, sortear_gancho
+    if is_conquistador:
+        gancho = sortear_gancho_conquistador(historico_ganchos)
+    else:
+        gancho = sortear_gancho(historico_ganchos)
 
     instrucoes = f"""
     {REGRAS_COPY_BASE}
@@ -148,4 +160,4 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics=""):
     
     {contexto_analytics}
     """
-    return instrucoes, sub_angulo
+    return instrucoes, sub_angulo, gancho

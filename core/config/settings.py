@@ -22,6 +22,7 @@ GEMINI_KEYS = [k for k in GEMINI_KEYS if k]
 # CHAVES DE API - MÍDIA E VOZ
 # ==========================================
 PEXELS_API_KEY = os.getenv("PEXELS_API_KEY")
+PIXABAY_API_KEY = os.getenv("PIXABAY_API_KEY")
 UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 # ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY") # Futuro
 

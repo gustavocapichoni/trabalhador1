@@ -30,12 +30,43 @@
             "tema": "superacao",
             "estilo_copy": "opinião polêmica: defenda um ponto de vista que a maioria evita dizer",
             "post_id": "18057331484581729"
+        },
+        {
+            "post_id": "18458492563117466",
+            "data": "2026-07-05 22:44:47",
+            "tipo": "pexels_story_noite",
+            "tema": "superacao",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')"
+        },
+        {
+            "post_id": "17945645493227497",
+            "data": "2026-07-05 22:53:34",
+            "tipo": "story_manha",
+            "tema": "superacao",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
+        },
+        {
+            "post_id": "17997472316976578",
+            "data": "2026-07-05 22:58:54",
+            "tipo": "reels",
+            "tema": "superacao",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')"
         }
     ],
     "ultimos_temas": [
         "superacao"
     ],
     "ultimo_carousel": 5,
-    "tema_do_dia": "liberdade",
-    "data_tema_do_dia": "2026-07-03"
+    "tema_do_dia": "superacao",
+    "data_tema_do_dia": "2026-07-05",
+    "index_conquistador": 1,
+    "historico_angulos": [
+        "Por que perdoar não é fraqueza, mas uma gestão de emoções avançada para não ser refém do passado"
+    ],
+    "historico_ganchos": [
+        "E se tudo o que você sabe sobre esse assunto estiver completamente errado?"
+    ],
+    "historico_estilos": [
+        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
+    ]
 }

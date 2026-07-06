@@ -1,0 +1,389 @@
+# 🎨 Biblioteca de Prompts — Imagens e Vídeos por Tema
+
+> **Como usar:** Gere os arquivos com qualquer ferramenta de IA (Midjourney, DALL-E, Kling, RunwayML, Pika) ou filme você mesmo.  
+> **Nomeie os arquivos com o prefixo do tema** para o sistema saber qual usar automaticamente.  
+> Ex: `espiritualidade_01.mp4`, `filosofia_02.jpg`, `superacao_03.mp4`
+
+---
+
+## 📁 Estrutura de Pastas Recomendada
+
+```
+biblioteca_local/
+    videos/
+        espiritualidade/
+        filosofia/
+        psicologia/
+        financas/
+        liberdade/
+        conexoes/
+        superacao/
+        proposito/
+    imagens/
+        espiritualidade/
+        filosofia/
+        psicologia/
+        financas/
+        liberdade/
+        conexoes/
+        superacao/
+        proposito/
+```
+
+---
+
+## 🙏 SEGUNDA — Espiritualidade e Fé
+
+**Paleta de cores:** Dourados, marfim, azul profundo, roxo escuro  
+**Mood:** Silêncio sagrado, luz divina, paz interior
+
+### Prompts para Imagens (Midjourney / DALL-E):
+```
+1. ancient stone temple at golden hour, soft light rays through columns, 
+   mystical fog, ultra cinematic, 9:16 vertical --ar 9:16
+
+2. open bible on a wooden table, single candle flame, warm bokeh background, 
+   moody dramatic lighting, photorealistic, 9:16
+
+3. hands clasped in prayer, backlit by sunset window, golden particles 
+   floating, emotional depth, --ar 9:16
+
+4. silhouette of a person kneeling in front of a massive glowing cross, 
+   foggy dark forest, cinematic --ar 9:16
+
+5. monastery hallway with arched windows, beams of morning light, 
+   stone floor, silence and peace, --ar 9:16
+```
+
+### Prompts para Vídeos Curtos (Kling / RunwayML / Pika):
+```
+1. slow zoom in on a candle flame flickering in a dark room, smoke rising, 
+   peaceful, cinematic, 5-8 seconds
+
+2. hands slowly opening to release golden light particles upward, 
+   spiritual, symbolic, slow motion
+
+3. sunrise over misty mountains seen through a church window, 
+   timelapse, golden hour, 8 seconds
+
+4. rain falling slowly on a stone window ledge, deep focus, melancholic peace, 
+   loop-friendly, 6 seconds
+
+5. old book pages turning slowly in soft wind, candlelight ambient, 
+   warm cinematic lighting
+```
+
+---
+
+## 🏛️ TERÇA — Filosofia e Autoconhecimento
+
+**Paleta:** Preto, branco, cinza chumbo, dourado envelhecido  
+**Mood:** Contemplação, peso intelectual, profundidade
+
+### Prompts para Imagens:
+```
+1. Greek marble statue bust, dramatic side lighting, dark background, 
+   deep shadows, timeless aesthetic --ar 9:16
+
+2. hourglass on a stone table, sand falling in slow motion, 
+   cinematic depth of field, dark mood --ar 9:16
+
+3. person sitting alone on a cliff edge at night, stars above, 
+   silhouette, thinking, existential mood --ar 9:16
+
+4. ancient library with dusty books, warm lamp light, 
+   wooden shelves to ceiling, no people, atmospheric --ar 9:16
+
+5. chess board close-up with dramatic lighting, one king standing alone, 
+   cinematic, metaphorical --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+1. slow pullback from a chess board in a dark room, dramatic, metaphorical, 
+   no people, 6 seconds
+
+2. hourglass sand falling in extreme close-up, black background, 
+   macro lens, slow motion, 8 seconds
+
+3. camera panning across old philosophical books on a shelf, 
+   dust particles in light beam, atmospheric, 7 seconds
+
+4. lone person sitting at edge of building rooftop at night, 
+   city lights below, cinematic, wide angle, 8 seconds
+```
+
+---
+
+## 🧠 QUARTA — Psicologia e Comportamento Humano
+
+**Paleta:** Tons de cinza, azul-aço, verde musgo, roxo neural  
+**Mood:** Introspectivo, inquieto, revelador
+
+### Prompts para Imagens:
+```
+1. human brain made of glowing neon circuits, dark background, 
+   cyber-organic aesthetic, 9:16 --ar 9:16
+
+2. person looking at their own reflection in a broken mirror, 
+   dramatic lighting, identity concept, --ar 9:16
+
+3. maze viewed from above, one small person at the center, 
+   cold blue tones, overhead drone shot, metaphorical --ar 9:16
+
+4. multiple clocks overlapping, time pressure concept, 
+   dark moody editorial, --ar 9:16
+
+5. two doors in a misty hallway, one bright one dark, 
+   choice concept, cinematic depth, --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+1. close-up of eyes looking left and right rapidly, then stopping and staring 
+   directly at camera, dramatic, slow motion, 6 seconds
+
+2. abstract brain neurons firing, glowing blue and purple, 
+   smooth animation, loopable, 8 seconds
+
+3. ripples spreading in still dark water from a single drop, 
+   metaphor for impact, ultra slow-motion, 6 seconds
+
+4. person's shadow walking in opposite direction of the person, 
+   surreal concept, cinematic, 7 seconds
+```
+
+---
+
+## 💰 QUINTA — Mentalidade Financeira e Riqueza
+
+**Paleta:** Preto, dourado, verde escuro, prata  
+**Mood:** Poder, ambição controlada, disciplina
+
+### Prompts para Imagens:
+```
+1. minimalist luxury office at night, city skyline through floor-to-ceiling 
+   windows, dark and gold tones, --ar 9:16
+
+2. single gold coin balanced on edge on a black marble surface, 
+   dramatic lighting, macro close-up --ar 9:16
+
+3. empty leather chair at a mahogany desk, power vacuum, 
+   cinematic, aspirational mood --ar 9:16
+
+4. skyscraper viewed from below, looking up, powerful perspective, 
+   dark clouds, ambition mood --ar 9:16
+
+5. stacks of books with titles about wealth and mindset on a 
+   minimalist white desk, clean aesthetic --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+1. slow zoom out from a city skyline at night from a penthouse window, 
+   luxury lifestyle feel, 8 seconds
+
+2. time-lapse of stock market charts moving upward, green tones, 
+   ambition and growth feeling, 6 seconds
+
+3. close-up of a pen signing a document, blurred luxury background, 
+   power and decision feel, slow motion, 5 seconds
+
+4. elevator doors opening to reveal a city penthouse view, 
+   aspirational, cinematic, 7 seconds
+```
+
+---
+
+## 🌊 SEXTA — Liberdade, Sonhos e Coragem
+
+**Paleta:** Laranja do pôr do sol, azul oceano, branco, verde natureza  
+**Mood:** Expansão, movimento, ousadia, esperança
+
+### Prompts para Imagens:
+```
+1. person standing on mountain peak with arms wide open, 
+   golden sunset behind, silhouette, freedom concept --ar 9:16
+
+2. open road disappearing into horizon at sunset, 
+   warm orange tones, adventure mood --ar 9:16
+
+3. lone sailboat on vast ocean, aerial view, 
+   tiny against the immensity, freedom metaphor --ar 9:16
+
+4. person jumping between two cliffs at sunrise, 
+   leap of faith concept, cinematic, --ar 9:16
+
+5. birds flying out of an open window, freedom concept, 
+   warm backlit light, poetic --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+**Paleta:** Laranja do pôr do sol, azul oceano, branco, verde natureza  
+**Mood:** Expansão, movimento, ousadia, esperança
+1. aerial drone shot flying over open ocean toward horizon at golden hour, 
+   freedom feeling, 8 seconds
+
+2. person walking alone on an empty beach at sunset, slow motion, 
+   waves to the side, cinematic, 8 seconds
+
+3. birds taking flight from a tree in slow motion, warm backlight, 
+   freedom metaphor, loopable, 6 seconds
+
+4. timelapse of clouds moving fast over a mountain range, 
+   dramatic, movement, possibility, 8 seconds
+```
+
+---
+
+## 🤝 SÁBADO — Relacionamentos e Inteligência Emocional
+
+**Paleta:** Tons quentes, terracota, bege, rosa antigo, verde-oliva  
+**Mood:** Conexão humana, emoção real, vulnerabilidade
+
+### Prompts para Imagens:
+```
+1.**Paleta:** Tons quentes, terracota, bege, rosa antigo, verde-oliva  
+**Mood:** Conexão humana, emoção real, vulnerabilidade
+ two people's hands almost touching but not quite, 
+   warm bokeh background, emotional, --ar 9:16
+
+2. empty park bench at sunset, one cup of coffee, 
+   melancholic but warm mood --ar 9:16
+
+3. person at a window in the rain, looking outside, 
+   reflection visible, emotional introspection --ar 9:16
+
+4. close-up of someone's eye with a tear forming, 
+   dramatic light, emotional, editorial --ar 9:16
+
+5. two empty chairs facing each other in a golden field, 
+   conversation and absence concept --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+
+1.**Paleta:** Tons quentes, terracota, bege, rosa antigo, verde-oliva  
+**Mood:** Conexão humana, emoção real, vulnerabilidade
+ rain falling on a window in close-up, city lights blurred behind, 
+   melancholic and beautiful, loopable, 6 seconds
+
+2. close-up of hands slowly reaching toward each other in warm light, 
+   connection metaphor, slow motion, 7 seconds
+
+3. person reading a letter by a window, warm afternoon light, 
+   nostalgic and emotional, slow pan, 8 seconds
+
+4. empty restaurant table with two untouched wine glasses, 
+   candle flickering, absence and longing, 6 seconds
+```
+
+---
+
+## 💪 DOMINGO (A) — Superação e Autossabotagem
+
+**Paleta:** Preto, vermelho, cinza escuro, branco intenso  
+**Mood:** Tensão interna, luta, determinação, vitória silenciosa
+
+### Prompts para Imagens:
+```
+1. 
+**Paleta:** Preto, vermelho, cinza escuro, branco intenso  
+**Mood:** Tensão interna, luta, determinação, vitória silenciosa
+athlete training alone in dark gym, single spotlight, 
+   sweat and effort, dramatic chiaroscuro --ar 9:16
+
+2. person pushing through a heavy storm on foot, 
+   alone on a dark road, resilience metaphor --ar 9:16
+
+3. cracked wall with light breaking through, 
+   breakthrough metaphor, dramatic contrast --ar 9:16
+
+4. someone getting up off the ground, 
+   low angle shot, determination, cinematic --ar 9:16
+
+5. boxing gloves hanging in an empty gym, 
+   moody light, training and sacrifice aesthetic --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+1.
+**Paleta:** Preto, vermelho, cinza escuro, branco intenso  
+**Mood:** Tensão interna, luta, determinação, vitória silenciosa
+ person running alone through dark misty forest path, 
+   determined, cinematic tracking shot, 8 seconds
+
+2. close-up of hands gripping a pull-up bar, then lifting, 
+   effort and determination, slow motion, 6 seconds
+
+3. dramatic storm clouds parting to reveal a single beam of light, 
+   metaphor for breakthrough, timelapse, 8 seconds
+
+4. heartbeat line (ECG) pulsing strongly on dark background, 
+   vitality and life force, loopable animation, 6 seconds
+```
+
+---
+
+## 🌟 DOMINGO (B) — Propósito e Legado
+
+**Paleta:** Dourado, azul-noite, prata, branco etéreo  
+**Mood:** Transcendência, profundidade, eternidade
+
+### Prompts para Imagens:
+```
+1. 
+**Paleta:** Dourado, azul-noite, prata, branco etéreo  
+**Mood:** Transcendência, profundidade, eternidade
+person standing on a mountain watching the Milky Way above, 
+   tiny against the cosmos, significance and smallness --ar 9:16
+
+2. old lighthouse beam cutting through night fog over the ocean, 
+   guidance and purpose metaphor --ar 9:16
+
+3. ancient tree with massive roots exposed, 
+   legacy and endurance, golden hour lighting --ar 9:16
+
+4. compass on a weathered map, purpose and direction concept, 
+   warm cinematic tones --ar 9:16
+
+5. footprints in sand going toward the ocean horizon, 
+   journey and legacy metaphor, aerial view --ar 9:16
+```
+
+### Prompts para Vídeos:
+```
+1. 
+**Paleta:** Dourado, azul-noite, prata, branco etéreo  
+**Mood:** Transcendência, profundidade, eternidade
+slow zoom out from a single flame to reveal it's part of thousands 
+   of candles, legacy and impact metaphor, 8 seconds
+
+2. timelapse of stars rotating above a lone figure, 
+   cosmic scale, purpose concept, 8 seconds
+
+3. ancient tree roots flowing in wind in slow motion, 
+   legacy, permanence, deep roots, 7 seconds
+
+4. lighthouse beam cutting through dark fog over ocean, 
+   loop-friendly, purpose and guidance, 8 seconds
+```
+
+---
+
+## 🛠️ Ferramentas Recomendadas
+
+| Tipo | Ferramenta | Preço |
+|---|---|---|
+| **Imagens IA** | Midjourney | ~$10/mês |
+| **Imagens IA** | DALL-E 3 (no ChatGPT Plus) | ~$20/mês |
+| **Imagens IA** | Adobe Firefly | Grátis (limitado) |
+| **Vídeos IA** | Kling AI | Grátis (limitado) |
+| **Vídeos IA** | RunwayML Gen-3 | ~$15/mês |
+| **Vídeos IA** | Pika Labs | Grátis (limitado) |
+| **Grátis 100%** | Pexels / Unsplash | Grátis ilimitado |
+
+> **💡 Dica de ouro:** O Kling AI e o Pika Labs têm planos gratuitos com qualidade excelente para começar. Gere 5-10 vídeos por tema e salve na pasta correspondente.

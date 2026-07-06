@@ -1,25 +1,63 @@
 import os
 import json
 from datetime import datetime
+from loguru import logger
 
 METRICAS_FILE = "analytics/dados/metricas.json"
 
-def calcular_score(metricas):
+def calcular_score(metricas, tipo_post="feed"):
     """
-    Calcula um score de performance usando pesos arbitrários, priorizando 
-    Saves e Comments sobre Likes, e Reach como multiplicador base.
+    Calcula um score de performance considerando métricas específicas por tipo.
+    Pesos: Retenção e Descoberta valem mais do que Likes simples.
     """
-    likes = metricas.get("likes", 0)
+    likes    = metricas.get("likes", 0)
     comments = metricas.get("comments", 0)
-    saved = metricas.get("saved", 0)
-    shares = metricas.get("shares", 0) # Pode não existir dependendo da API
-    reach = metricas.get("reach", metricas.get("impressions", 0))
-    
-    score = (saved * 3) + (shares * 2) + (comments * 2) + likes + (reach * 0.05)
-    return score
+    saved    = metricas.get("saved", 0)
+    shares   = metricas.get("shares", 0)
+    reach    = metricas.get("reach", metricas.get("impressions", 0))
 
-def analisar_padroes(dados_metricas):
-    print("Analisando padrões das métricas...")
+    # Score base (todos os tipos)
+    score = (saved * 3) + (shares * 2) + (comments * 2) + likes + (reach * 0.05)
+
+    tipo_lower = str(tipo_post).lower()
+
+    if "story" in tipo_lower:
+        # Stories: penaliza Exits (pessoas que saíram), valoriza Taps Back (quem voltou para reler)
+        taps_back    = metricas.get("taps_back", 0)
+        exits        = metricas.get("exits", 0)
+        replies      = metricas.get("replies", 0)
+        follows      = metricas.get("follows", 0)
+        score += (taps_back * 4) + (replies * 3) + (follows * 5) - (exits * 1)
+
+    elif "reel" in tipo_lower or "pexels" in tipo_lower:
+        # Reels: valoriza tempo assistido e repetições (plays > 1 = assistiu de novo)
+        plays            = metricas.get("plays", 0)
+        avg_watch_time   = metricas.get("ig_reels_avg_watch_time", 0)
+        total_watch_time = metricas.get("ig_reels_video_view_total_time", 0)
+        score += (plays * 2) + (avg_watch_time * 0.01) + (total_watch_time * 0.001)
+
+    else:
+        # Feed/Carrossel: valoriza visitas ao perfil e novos seguidores gerados
+        profile_visits = metricas.get("profile_visits", 0)
+        follows        = metricas.get("follows", 0)
+        score += (profile_visits * 2) + (follows * 5)
+
+    return round(score, 2)
+
+def _calcular_distribuicao(stats_dict):
+    """Transforma scores médios em uma distribuição percentual (roleta viciada)"""
+    soma_medias = sum(stat["media"] for stat in stats_dict.values() if stat["media"] > 0)
+    if soma_medias == 0:
+        return {}
+    
+    distribuicao = {}
+    for chave, stat in stats_dict.items():
+        if stat["media"] > 0:
+            distribuicao[chave] = round(stat["media"] / soma_medias, 3)
+    return distribuicao
+
+def analisar_padroes(dados_metricas, dias_limite=7):
+    logger.info(f"🧠 Analisando padrões das métricas (Últimos {dias_limite} dias)...")
     posts = dados_metricas.get("posts", {})
     
     if not posts:
@@ -33,15 +71,28 @@ def analisar_padroes(dados_metricas):
     total_saves = 0
     total_posts = 0
     
+    agora = datetime.now()
+    
     for post_id, dados in posts.items():
         info = dados.get("info_post", {})
         mets = dados.get("metricas", {})
         
+        # Filtro de data
+        data_str = info.get("data")
+        if not data_str: continue
+        try:
+            post_dt = datetime.strptime(data_str, "%Y-%m-%d %H:%M:%S")
+            dias_passados = (agora - post_dt).days
+            if dias_passados > dias_limite:
+                continue
+        except:
+            continue
+            
         tema = info.get("tema", "desconhecido")
         formato = info.get("tipo", "desconhecido")
         estilo = info.get("estilo_copy", "desconhecido")
         
-        score = calcular_score(mets)
+        score = calcular_score(mets, tipo_post=formato)
         reach = mets.get("reach", mets.get("impressions", 0))
         saves = mets.get("saved", 0)
         
@@ -65,51 +116,32 @@ def analisar_padroes(dados_metricas):
             estilos_stats[estilo]["score"] += score
             estilos_stats[estilo]["count"] += 1
             
+    if total_posts == 0:
+        return {"aviso": f"Nenhum post encontrado nos últimos {dias_limite} dias."}
+        
     # Calcula médias
-    melhor_tema = None
-    maior_media_tema = -1
-    pior_tema = None
-    menor_media_tema = float('inf')
-    
-    for tema, stat in temas_stats.items():
-        media = stat["score"] / stat["count"]
-        stat["media"] = media
-        if media > maior_media_tema:
-            maior_media_tema = media
-            melhor_tema = tema
-        if media < menor_media_tema:
-            menor_media_tema = media
-            pior_tema = tema
+    for stat in temas_stats.values():
+        stat["media"] = stat["score"] / stat["count"]
+    for stat in formatos_stats.values():
+        stat["media"] = stat["score"] / stat["count"]
+    for stat in estilos_stats.values():
+        stat["media"] = stat["score"] / stat["count"]
             
-    melhor_formato = None
-    maior_media_formato = -1
-    for formato, stat in formatos_stats.items():
-        media = stat["score"] / stat["count"]
-        stat["media"] = media
-        if media > maior_media_formato:
-            maior_media_formato = media
-            melhor_formato = formato
-            
-    melhor_estilo = None
-    maior_media_estilo = -1
-    for estilo, stat in estilos_stats.items():
-        media = stat["score"] / stat["count"]
-        stat["media"] = media
-        if media > maior_media_estilo:
-            maior_media_estilo = media
-            melhor_estilo = estilo
+    dist_temas = _calcular_distribuicao(temas_stats)
+    dist_formatos = _calcular_distribuicao(formatos_stats)
+    dist_estilos = _calcular_distribuicao(estilos_stats)
 
     resultado = {
-        "melhor_tema": melhor_tema,
-        "pior_tema": pior_tema,
-        "melhor_formato": melhor_formato,
-        "melhor_estilo": melhor_estilo,
-        "alcance_medio": total_reach / total_posts if total_posts > 0 else 0,
-        "saves_medio": total_saves / total_posts if total_posts > 0 else 0,
+        "periodo_dias": dias_limite,
+        "distribuicao_temas": dist_temas,
+        "distribuicao_formatos": dist_formatos,
+        "distribuicao_estilos": dist_estilos,
+        "alcance_medio": total_reach / total_posts,
+        "saves_medio": total_saves / total_posts,
         "total_posts_analisados": total_posts
     }
     
-    print(f"Padrões identificados: Melhor tema: {melhor_tema}, Melhor formato: {melhor_formato}")
+    logger.success(f"✅ Análise concluída ({dias_limite} dias). Posts: {total_posts}")
     return resultado
 
 if __name__ == "__main__":

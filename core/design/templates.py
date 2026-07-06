@@ -2,37 +2,72 @@ import os
 import urllib.request
 from PIL import ImageFont
 
+# URLs alternativas por fonte (tenta cada uma em ordem até conseguir)
+_FONTES_URLS = {
+    "Oswald": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/static/Oswald-Bold.ttf",
+    ],
+    "Inter": [
+        "https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip",
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/static/Inter_18pt-Bold.ttf",
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+    ],
+    "Playfair": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/static/PlayfairDisplay-Bold.ttf",
+    ],
+    "Montserrat": [
+        "https://raw.githubusercontent.com/JulietaUla/Montserrat/master/fonts/ttf/Montserrat-Bold.ttf",
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/static/Montserrat-Bold.ttf",
+    ],
+}
+
 def garantir_fontes():
-    """Usa as fontes locais que já estão na pasta."""
+    """Baixa e garante as fontes Premium na pasta, tentando múltiplas URLs."""
     if not os.path.exists("fontes"):
         os.makedirs("fontes")
-        
-    f_display = "fontes/MontserratBold.ttf"
-    f_body = "fontes/MontserratBold.ttf"
-            
-    # Fallback caso alguém delete a pasta no futuro
-    if not os.path.exists(f_display): f_display = "fontes/fonte.ttf"
-    if not os.path.exists(f_body): f_body = "fontes/fonte.ttf"
-    
-    return f_display, f_body
 
-def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe):
-    """Retorna os objetos ImageFont com os tamanhos corretos."""
-    f_display_path, f_body_path = garantir_fontes()
+    caminhos = {}
+    for nome, urls in _FONTES_URLS.items():
+        caminho = f"fontes/{nome}.ttf"
+        if not os.path.exists(caminho):
+            baixou = False
+            for url in urls:
+                try:
+                    print(f"[FONTE] Baixando {nome}...")
+                    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                    with urllib.request.urlopen(req, timeout=10) as resp, open(caminho, "wb") as out:
+                        out.write(resp.read())
+                    print(f"[FONTE] {nome} baixada com sucesso!")
+                    baixou = True
+                    break
+                except Exception as e:
+                    print(f"[FONTE] Falha na URL alternativa para {nome}: {e}")
+            if not baixou:
+                print(f"[FONTE] Nao foi possivel baixar {nome}. Usando fonte padrao.")
+        caminhos[nome] = caminho if os.path.exists(caminho) else None
+
+    return caminhos
+
+def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo="Montserrat"):
+    """Retorna os objetos ImageFont com os tamanhos corretos, baseados no estilo escolhido."""
+    caminhos = garantir_fontes()
+    f_principal = caminhos.get(estilo) or caminhos.get("Montserrat") or "arial.ttf"
+    f_body = caminhos.get("Inter") or caminhos.get("Montserrat") or "arial.ttf"
     
     try:
-        font_display = ImageFont.truetype(f_display_path, tamanho_display)
-    except:
+        font_display = ImageFont.truetype(f_principal, tamanho_display)
+    except Exception:
         font_display = ImageFont.load_default()
         
     try:
-        font_body = ImageFont.truetype(f_body_path, tamanho_body)
-    except:
+        font_body = ImageFont.truetype(f_body, tamanho_body)
+    except Exception:
         font_body = ImageFont.load_default()
         
     try:
-        font_detalhe = ImageFont.truetype(f_body_path, tamanho_detalhe)
-    except:
+        font_detalhe = ImageFont.truetype(f_body, tamanho_detalhe)
+    except Exception:
         font_detalhe = ImageFont.load_default()
         
     return font_display, font_body, font_detalhe

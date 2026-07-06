@@ -116,6 +116,52 @@ def carregar_historico_recente():
             print(f"⚠️ Erro ao carregar histórico: {e}")
     return posts_recentes
 
+def analisar_melhores_horarios():
+    """Lê os dados de métricas locais e calcula os 3 horários com maior média de views."""
+    metricas_file = "analytics/dados/metricas.json"
+    if not os.path.exists(metricas_file):
+        return None
+        
+    try:
+        with open(metricas_file, "r", encoding="utf-8") as f:
+            dados = json.load(f)
+            
+        posts = dados.get("posts", {})
+        horarios = {}
+        
+        for post_id, info in posts.items():
+            info_post = info.get("info_post", {})
+            metricas = info.get("metricas", {})
+            
+            data_str = info_post.get("data")
+            if not data_str:
+                continue
+                
+            try:
+                hora = datetime.strptime(data_str, "%Y-%m-%d %H:%M:%S").hour
+            except:
+                continue
+                
+            views = metricas.get("views") or metricas.get("impressions") or metricas.get("plays") or 0
+            
+            if hora not in horarios:
+                horarios[hora] = {"total_views": 0, "count": 0}
+                
+            horarios[hora]["total_views"] += views
+            horarios[hora]["count"] += 1
+            
+        ranking = []
+        for h, stats in horarios.items():
+            if stats["count"] > 0:
+                media = stats["total_views"] / stats["count"]
+                ranking.append({"hora": h, "media": media, "posts": stats["count"]})
+                
+        ranking.sort(key=lambda x: x["media"], reverse=True)
+        return ranking[:6]
+    except Exception as e:
+        print(f"⚠️ Erro ao analisar horários: {e}")
+        return None
+
 def gerar_e_enviar_relatorio():
     print("📋 Gerando relatório semanal do Bot Instagram...")
     ig_id = obter_id_conta_instagram()
@@ -147,6 +193,20 @@ def gerar_e_enviar_relatorio():
                 corpo.append(f"   ID: {post.get('post_id')}")
     else:
         corpo.append("Nenhum post registrado nos últimos 7 dias no arquivo de estado.")
+        
+    # --- Nova Seção: Horários de Ouro ---
+    corpo.append("\n" + "="*40)
+    corpo.append("⏰ TOP 6 MELHORES HORÁRIOS (Média de Views/Plays)")
+    corpo.append("="*40)
+    
+    melhores_horarios = analisar_melhores_horarios()
+    if melhores_horarios:
+        for idx, item in enumerate(melhores_horarios, 1):
+            hora_str = f"{item['hora']:02d}:00"
+            corpo.append(f"🏆 #{idx} - {hora_str} | Média: {int(item['media'])} views ({item['posts']} posts analisados)")
+        corpo.append("\n💡 Dica: Ajuste o agendamento no github actions (cron) para priorizar estes horários!")
+    else:
+        corpo.append("Ainda não há dados suficientes para determinar os melhores horários.")
         
     corpo.append("\n" + "="*40)
     corpo.append("Bot automático de postagens Instagram - Monitoramento Ativo")

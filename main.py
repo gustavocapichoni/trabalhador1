@@ -21,12 +21,29 @@ def verificar_duplicidade_hoje(tipo):
     return False
 
 def registrar_postagem(tipo, tema, post_id, estilo):
-    pass
+    from core.config.state import carregar_estado, salvar_estado
+    from datetime import datetime, timezone
+    if not post_id or post_id.startswith("DRY_RUN"):
+        return
+        
+    estado = carregar_estado()
+    if "historico" not in estado:
+        estado["historico"] = []
+        
+    novo_post = {
+        "post_id": post_id,
+        "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+        "tipo": tipo,
+        "tema": tema,
+        "estilo_copy": estilo
+    }
+    estado["historico"].append(novo_post)
+    salvar_estado(estado)
 
 def main():
     parser = argparse.ArgumentParser(description="Bot de Instagram Automático 2.0")
     parser.add_argument("--type", type=str, required=True, 
-                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "reels_noite", "pexels_story_noite", "test"],
+                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "test"],
                         help="Tipo de postagem a gerar")
     parser.add_argument("--dry-run", action="store_true", help="Executa todo o processo sem postar no Instagram")
     
@@ -38,11 +55,16 @@ def main():
         print("🧪 [MODO DRY-RUN ATIVADO]")
         
     try:
+        # Passo 0: Health Check
+        if not args.dry_run:
+            from core.utils.health import verificar_health
+            verificar_health()
+            
         # Passo 1: Solicita conteúdo ao Gemini
         conteudo, tema_escolhido, estilo_escolhido = gerar_conteudo_gemini(args.type)
         if args.type == "carousel":
             print(f"✨ Título do Carrossel: \"{conteudo.get('titulo')}\"")
-        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite"]:
+        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador"]:
             slides = conteudo.get('slides', [])
             for i, s in enumerate(slides):
                 print(f"✨ Slide {i+1}: \"{s}\"")
@@ -67,7 +89,7 @@ def main():
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)
         
         # Passo 3: Se for Reels, gera o vídeo MP4
-        if args.type in ["reels", "reels_noite"]:
+        if args.type in ["reels", "reels_noite", "reels_conquistador"]:
             from core.media.reels import gerar_video_reels, garantir_audio_reels
             ts = int(time.time())
             nome_saida_reels = f"reels_pronto_{ts}.mp4"
@@ -82,13 +104,13 @@ def main():
                 audio_path = garantir_audio_reels()
                 midia = gerar_video_reels(midia, audio_path, caminho_saida=nome_saida_reels)
                 
-        # Passo 3.5: Se for Story e usar_musica for verdadeiro, converte JPGs para MP4s
-        if args.type in ["story_manha", "story_tarde"] and conteudo.get("usar_musica") == True:
+        # Passo 3.5: Se for Story, converte obrigatoriamente JPGs para MP4s com música
+        if args.type in ["story_manha", "story_tarde"]:
             from core.media.reels import gerar_video_story_individual, garantir_audio_reels
-            print("🎵 IA escolheu usar música no story! Convertendo slides para vídeo...")
+            print("🎵 Convertendo slides de Story para vídeo com música de fundo...")
             midias_em_video = []
+            ts = int(time.time())
             for i, caminho_jpg in enumerate(midia):
-                ts = int(time.time())
                 nome_saida = f"story_video_{i}_{ts}.mp4"
                 if args.dry_run:
                     try:
@@ -108,6 +130,9 @@ def main():
         legenda = conteudo.get("legenda", "")
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
         
+        if post_id:
+            registrar_postagem(args.type, tema_escolhido, post_id, estilo_escolhido)
+        
         # Passo 5: Envia E-mail de Sucesso
         mensagens_sucesso = {
             "story": "Stories do dia publicado com sucesso para interagir com a audiência!",
@@ -118,6 +143,7 @@ def main():
             "pexels_story": "Video B-roll narrativo publicado com sucesso!",
             "reels_noite": "Reels noturno com arco narrativo publicado com sucesso!",
             "pexels_story_noite": "Pexels Story da noite publicado com sucesso!",
+            "reels_conquistador": "Reels Conquistador no ar! Público em expansão às 22h!",
             "test": "Ambiente de automação testado com sucesso!"
         }
         
@@ -132,7 +158,7 @@ def main():
         if not args.dry_run:
             try:
                 import glob
-                arquivos_lixo = glob.glob("*.jpg") + glob.glob("reels_pronto_*.mp4") + glob.glob("pexels_story_*.mp4")
+                arquivos_lixo = glob.glob("*.jpg") + glob.glob("reels_pronto_*.mp4") + glob.glob("pexels_story_*.mp4") + glob.glob("story_video_*.mp4")
                 if isinstance(midia, str) and os.path.exists(midia):
                     if midia not in arquivos_lixo:
                         arquivos_lixo.append(midia)

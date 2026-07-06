@@ -4,6 +4,8 @@ import requests
 import textwrap
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from loguru import logger
+from core.config.state import verificar_midia_recente, registrar_midia_usada
 
 def _carregar_fonte(tamanho=50):
     """Tenta carregar a fonte do projeto. Se falhar, usa a padrão do sistema."""
@@ -95,48 +97,154 @@ def _adicionar_texto_frame(frame_array, texto, fonte):
 
     return np.array(img)
 
-def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4"):
-    from core.config.settings import PEXELS_API_KEY
-    print(f"🎥 Buscando vídeo no Pexels com query: '{query}'")
-    if not PEXELS_API_KEY:
-        raise ValueError("PEXELS_API_KEY não configurada! Verifique seu .env")
-
-    url = f"https://api.pexels.com/videos/search?query={query}&orientation=portrait&size=medium&per_page=15"
-    headers = {"Authorization": PEXELS_API_KEY}
-    response = requests.get(url, headers=headers)
-    
-    if response.status_code != 200:
-        raise Exception(f"Erro na API do Pexels: {response.text}")
+def _aplicar_efeito_cinematico(frame_array, efeito):
+    """Aplica efeitos visuais no frame para variar o estilo."""
+    if efeito == "none":
+        return frame_array
         
-    data = response.json()
-    if not data.get("videos"):
-        print("⚠️ Nenhum vídeo encontrado, tentando fallback para 'nature'")
-        response = requests.get("https://api.pexels.com/videos/search?query=nature&orientation=portrait&per_page=15", headers=headers)
-        data = response.json()
-
-    if not data.get("videos"):
-        raise Exception("Nenhum vídeo retornado pelo Pexels.")
-
-    video = random.choice(data["videos"])
-    video_files = video.get("video_files", [])
+    img = Image.fromarray(frame_array)
+    w, h = img.size
+    draw = ImageDraw.Draw(img)
     
-    # Pega a melhor resolução HD vertical (720x1280 ou similar)
-    link = None
-    for f in video_files:
-        if f.get("quality") == "hd" and f.get("width", 0) < f.get("height", 0):
-            link = f["link"]
-            break
-    
-    if not link and len(video_files) > 0:
-        link = video_files[0]["link"]
+    if efeito == "cinematic_bars":
+        # Altura das tarjas (12% da altura)
+        bar_h = int(h * 0.12)
+        draw.rectangle([0, 0, w, bar_h], fill=(0, 0, 0))
+        draw.rectangle([0, h - bar_h, w, h], fill=(0, 0, 0))
+        
+    elif efeito == "vignette_dark":
+        # Escurece levemente a imagem inteira (moody)
+        overlay = Image.new("RGBA", (w, h), (0, 0, 0, 80))
+        img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+        
+    return np.array(img)
 
-    print("⬇️ Baixando vídeo do Pexels...")
-    vid_resp = requests.get(link)
-    temp_vid = "temp_pexels.mp4"
-    with open(temp_vid, "wb") as f:
-        f.write(vid_resp.content)
+def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None):
+    from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
+    import urllib.parse
+    logger.info(f"🎥 Buscando vídeo com query: '{query}'")
 
-    print("🎬 Processando vídeo com MoviePy + Pillow...")
+    temp_vid = None
+    query_encoded = urllib.parse.quote(query)
+
+    # --- NÍVEL 1: API DO PIXABAY ---
+    if PIXABAY_API_KEY and not temp_vid:
+        try:
+            logger.info("🔍 [NÍVEL 1] Tentando buscar vídeo no Pixabay...")
+            url_pixabay = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={query_encoded}&video_type=film"
+            res_pixabay = requests.get(url_pixabay, timeout=15)
+            
+            if res_pixabay.status_code == 200:
+                data = res_pixabay.json()
+                hits = data.get("hits", [])
+                
+                if hits:
+                    random.shuffle(hits)
+                    video_escolhido = None
+                    for hit in hits:
+                        vid_id = str(hit.get("id", ""))
+                        if not verificar_midia_recente(vid_id):
+                            video_escolhido = hit
+                            registrar_midia_usada(vid_id)
+                            break
+                            
+                    if not video_escolhido:
+                        video_escolhido = random.choice(hits)
+                        logger.info("🔄 Todos os vídeos do Pixabay já foram usados. Repetindo um aleatório.")
+
+                    videos_dict = video_escolhido.get("videos", {})
+                    
+                    # Tenta pegar versão vertical (tiny/small) ou grande
+                    link_download = None
+                    for size in ["large", "medium", "small", "tiny"]:
+                        if size in videos_dict and videos_dict[size].get("url"):
+                            link_download = videos_dict[size]["url"]
+                            # Preferimos vídeos verticais (altura > largura)
+                            if videos_dict[size].get("height", 0) > videos_dict[size].get("width", 0):
+                                break
+                    
+                    if link_download:
+                        logger.info("✅ Vídeo encontrado no Pixabay! Baixando...")
+                        vid_resp = requests.get(link_download, timeout=30)
+                        temp_vid = "temp_video.mp4"
+                        with open(temp_vid, "wb") as f:
+                            f.write(vid_resp.content)
+                else:
+                    logger.warning("⚠️ Nenhum vídeo encontrado no Pixabay para essa query.")
+            else:
+                logger.warning(f"⚠️ Pixabay retornou status {res_pixabay.status_code}.")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao acessar Pixabay: {e}")
+
+    # --- NÍVEL 2: API DO PEXELS ---
+    if PEXELS_API_KEY and not temp_vid:
+        try:
+            logger.info("🔍 [NÍVEL 2] Tentando buscar vídeo no Pexels...")
+            url_pexels = f"https://api.pexels.com/videos/search?query={query_encoded}&orientation=portrait&size=medium&per_page=15"
+            headers = {"Authorization": PEXELS_API_KEY}
+            response = requests.get(url_pexels, headers=headers, timeout=15)
+
+            if response.status_code == 200:
+                data = response.json()
+                if not data.get("videos"):
+                    logger.warning("⚠️ Nenhum vídeo encontrado no Pexels, tentando query coringa 'cinematic'")
+                    response = requests.get("https://api.pexels.com/videos/search?query=cinematic&orientation=portrait&per_page=15", headers=headers, timeout=15)
+                    data = response.json()
+
+                if data.get("videos"):
+                    videos = data["videos"]
+                    random.shuffle(videos)
+                    video = None
+                    for v in videos:
+                        vid_id = str(v.get("id", ""))
+                        if not verificar_midia_recente(vid_id):
+                            video = v
+                            registrar_midia_usada(vid_id)
+                            break
+                            
+                    if not video:
+                        video = random.choice(videos)
+                        logger.info("🔄 Todos os vídeos do Pexels já foram usados. Repetindo um aleatório.")
+                        
+                    video_files = video.get("video_files", [])
+                    link = None
+                    for f in video_files:
+                        if f.get("quality") == "hd" and f.get("width", 0) < f.get("height", 0):
+                            link = f["link"]
+                            break
+                    if not link and len(video_files) > 0:
+                        link = video_files[0]["link"]
+
+                    if link:
+                        logger.info("✅ Vídeo encontrado no Pexels! Baixando...")
+                        vid_resp = requests.get(link, timeout=30)
+                        temp_vid = "temp_video.mp4"
+                        with open(temp_vid, "wb") as f:
+                            f.write(vid_resp.content)
+            else:
+                logger.warning(f"⚠️ Pexels retornou status {response.status_code}.")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao acessar Pexels: {e}")
+
+    # --- FALLBACK: Biblioteca Local de Emergência ---
+    if not temp_vid:
+        tema_pasta = tema if tema else "geral"
+        pasta_tema = os.path.join("biblioteca_local", "videos", tema_pasta)
+        pasta_geral = os.path.join("biblioteca_local", "videos")
+
+        for pasta in [pasta_tema, pasta_geral]:
+            if os.path.exists(pasta):
+                arquivos = [f for f in os.listdir(pasta) if f.lower().endswith(".mp4")]
+                if arquivos:
+                    escolhido = os.path.join(pasta, random.choice(arquivos))
+                    logger.info(f"📂 [EMERGÊNCIA] Usando vídeo local: {escolhido}")
+                    temp_vid = escolhido
+                    break
+
+    if not temp_vid:
+        raise Exception("❌ Nenhum vídeo disponível: Pexels falhou e biblioteca local está vazia.")
+
+    logger.info("🎬 Processando vídeo com MoviePy + Pillow...")
     clip = None
     final_clip = None
     try:
@@ -150,14 +258,20 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4"):
         fonte = _carregar_fonte(tamanho=52)
         
         if slides:
-            print("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
+            logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
             tempo_por_slide = duracao / len(slides)
+            
+            efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
+            efeito_escolhido = random.choice(efeitos)
+            if efeito_escolhido != "none":
+                logger.info(f"✨ Aplicando efeito de vídeo: {efeito_escolhido.upper()}")
             
             def make_frame(t):
                 # Descobre qual slide mostrar baseado no tempo
                 idx = min(int(t / tempo_por_slide), len(slides) - 1)
                 frame = clip.get_frame(t)
                 frame = _adicionar_texto_frame(frame, slides[idx], fonte)
+                frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
                 return frame
             
             final_clip = VideoClip(make_frame, duration=duracao)
@@ -172,11 +286,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4"):
             if audio_path:
                 bg_audio = AudioFileClip(audio_path).subclip(0, duracao)
                 final_clip = final_clip.set_audio(bg_audio)
-                print("🎵 Áudio de fundo adicionado!")
+                logger.info("🎵 Áudio de fundo adicionado!")
         except Exception as e:
-            print(f"⚠️ Erro ao adicionar áudio de fundo: {e}")
+            logger.warning(f"⚠️ Erro ao adicionar áudio de fundo: {e}")
 
-        print(f"⚙️ Exportando vídeo final para {caminho_saida}...")
+        logger.info(f"⚙️ Exportando vídeo final para {caminho_saida}...")
         final_clip.write_videofile(
             caminho_saida, fps=24, codec="libx264",
             audio_codec="aac", logger=None, threads=4, preset="ultrafast"
@@ -184,7 +298,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4"):
         return caminho_saida
 
     except Exception as e:
-        print(f"⚠️ Erro ao processar o vídeo: {e}. Retornando vídeo original.")
+        logger.warning(f"⚠️ Erro ao processar o vídeo: {e}. Retornando vídeo original.")
         if os.path.exists(temp_vid):
             os.rename(temp_vid, caminho_saida)
             return caminho_saida
