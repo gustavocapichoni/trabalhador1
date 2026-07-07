@@ -313,12 +313,14 @@ def gerar_conteudo_gemini(tipo):
         # Sorteia um estilo de CTA variado para cada vídeo
         import random as _r
         cta_opcoes = [
+            # Foco em Seguidores
             "Siga o perfil. Informação assim ninguém te entrega de graça.",
-            "Comenta QUERO abaixo e te mando o próximo passo.",
-            "Clica no link da bio antes que essa janela feche.",
-            "Salva esse vídeo. Você vai precisar disso mais tarde.",
             "Segue o perfil agora. O sistema não quer que você saiba disso.",
-            "Compartilha com quem ainda está preso nessa armadilha.",
+            "Se você quer evoluir mais rápido, siga o perfil.",
+            # Foco em Comentários
+            "Comenta QUERO abaixo e te mando o próximo passo.",
+            "Comente FOGO se você também está nessa jornada.",
+            "Deixa sua opinião nos comentários. Você concorda?"
         ]
         cta_escolhido = _r.choice(cta_opcoes)
 
