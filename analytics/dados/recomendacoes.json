@@ -1,13 +1,13 @@
 {
-    "atualizado_em": "2026-07-06 07:02:07 UTC",
+    "atualizado_em": "2026-07-07 07:01:41 UTC",
     "contexto_para_gemini": "🎯 CONTEXTO DE PERFORMANCE (MACRO VS MICRO):\nSua estratégia fundamental de LONGO PRAZO é ditada pelo panorama ANUAL.\nNo entanto, sua tática de CURTO PRAZO é ditada pelo panorama SEMANAL.\n\n⚖️ DISTRIBUIÇÃO PROPORCIONAL DE TEMAS (ROLETA VICIADA):\n- superacao: 100.0%\n\nINSTRUÇÃO DE AUTO-AJUSTE: Leve essa distribuição em consideração. Quando for escolher o tema, baseie-se nas proporções acima para manter o mix de conteúdo perfeito, garantindo que o tema macro vencedor domine o grid, mas que outros temas continuem sendo testados.",
     "distribuicoes": {
         "temas": {
             "superacao": 1.0
         },
         "formatos": {
-            "reels": 0.982,
-            "pexels_story": 0.018
+            "reels": 1.0,
+            "pexels_story": 0.0
         },
         "estilos": {
             "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
@@ -20,15 +20,14 @@
                 "superacao": 1.0
             },
             "distribuicao_formatos": {
-                "reels": 0.982,
-                "pexels_story": 0.018
+                "pexels_story": 1.0
             },
             "distribuicao_estilos": {
                 "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
             },
-            "alcance_medio": 82.5,
+            "alcance_medio": 4.0,
             "saves_medio": 0.0,
-            "total_posts_analisados": 2
+            "total_posts_analisados": 1
         },
         "mensal": {
             "periodo_dias": 30,
@@ -36,8 +35,8 @@
                 "superacao": 1.0
             },
             "distribuicao_formatos": {
-                "reels": 0.982,
-                "pexels_story": 0.018
+                "reels": 1.0,
+                "pexels_story": 0.0
             },
             "distribuicao_estilos": {
                 "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
@@ -52,8 +51,8 @@
                 "superacao": 1.0
             },
             "distribuicao_formatos": {
-                "reels": 0.982,
-                "pexels_story": 0.018
+                "reels": 1.0,
+                "pexels_story": 0.0
             },
             "distribuicao_estilos": {
                 "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
@@ -68,8 +67,8 @@
                 "superacao": 1.0
             },
             "distribuicao_formatos": {
-                "reels": 0.982,
-                "pexels_story": 0.018
+                "reels": 1.0,
+                "pexels_story": 0.0
             },
             "distribuicao_estilos": {
                 "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
@@ -84,8 +83,8 @@
                 "superacao": 1.0
             },
             "distribuicao_formatos": {
-                "reels": 0.982,
-                "pexels_story": 0.018
+                "reels": 1.0,
+                "pexels_story": 0.0
             },
             "distribuicao_estilos": {
                 "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
