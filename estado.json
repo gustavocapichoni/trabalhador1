@@ -24,31 +24,32 @@
     "tema_do_dia": "superacao",
     "data_tema_do_dia": "2026-07-06",
     "historico_angulos": [
-        "O ciclo da derrota: um gatilho te estressa, você foge para um hábito destrutivo e depois se culpa",
         "O seu maior inimigo é a voz interna que sempre te convence a descansar um pouco mais quando ninguém vê",
         "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata",
         "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo",
-        "A diferença entre religiosidade de fachada e a sabedoria brutal e prática dos provérbios antigos"
+        "A diferença entre religiosidade de fachada e a sabedoria brutal e prática dos provérbios antigos",
+        "Toda batalha é vencida ou perdida na sua própria mente muito antes do primeiro passo no mundo real"
     ],
     "historico_ganchos": [
-        "Tem maturidade suficiente para ler isto sem se ofender? O que você chama de 'esperar o momento certo' é apenas o seu medo de...",
         "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:",
         "Neurocientistas passaram anos estudando a procrastinação. O relatório final prova que a sua 'falta de força de vontade' é uma mentira. Entenda:",
         "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
-        "Por que fazer isso assim é infinitamente melhor do que o jeito tradicional."
+        "Por que fazer isso assim é infinitamente melhor do que o jeito tradicional.",
+        "Você está fazendo isso de forma errada e eu posso provar."
     ],
     "historico_estilos": [
-        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
         "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
         "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
         "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
+        "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+        "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')"
     ],
     "historico_midia": [
+        "6134232",
         "36541192",
         "7252264",
         "6382073",
         "rOyaiDNvBBU"
     ],
-    "index_conquistador": 1
+    "index_conquistador": 2
 }
