@@ -440,10 +440,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             logger.warning(f"⚠️ Erro ao adicionar áudio de fundo: {e}")
 
         logger.info(f"⚙️ Exportando vídeo final para {caminho_saida}...")
-        final_clip.write_videofile(
-            caminho_saida, fps=24, codec="libx264",
+        # Para reels_leads (até 3 min), limita o bitrate para ~3000kbps
+        # Isso gera ~67MB para 3 minutos — bem abaixo do limite do catbox.moe (200MB).
+        # Sem limitação, o ultrafast preset pode gerar 300-500MB e o upload falha com 412.
+        write_kwargs = dict(
+            fps=24, codec="libx264",
             audio_codec="aac", logger=None, threads=4, preset="ultrafast"
         )
+        if is_reels_leads:
+            write_kwargs["bitrate"] = "3000k"
+            logger.info("📦 [reels_leads] Bitrate limitado a 3000kbps para manter o arquivo abaixo de 100MB.")
+        final_clip.write_videofile(caminho_saida, **write_kwargs)
         return caminho_saida
 
     except Exception as e:
