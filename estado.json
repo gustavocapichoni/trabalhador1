@@ -17,6 +17,15 @@
             "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
             "frase_visual": "Você cedeu à voz do 'depois eu faço'. | Essa pausa foi o 'não' que você deu para si mesmo. | Quando a voz sussurrar, aja. O sucesso é ação. | Você não está cansado. Você está cedendo de novo.",
             "legenda": "O dia se foi. As promessas adiadas pesam mais à noite.\nA verdade é que o seu pior inimigo mora na sua cabeça, sussurrando para você parar.\nQual foi a sua batalha interna mais difícil hoje?\n\n#superacao #foco #resiliencia #coragem #determinacao"
+        },
+        {
+            "post_id": "18158562481430972",
+            "data": "2026-07-07 01:02:55",
+            "tipo": "reels_conquistador",
+            "tema": "financas",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "frase_visual": "Acha que controla? Seu erro: comprar brinquedos caros pra parecer livre. Eles te prendem. | Liberdade é sobre ativos, não luxos. Construa máquinas de dinheiro. | Ganhe tempo, poder e controle. Sua vida, suas regras. | O sistema te quer refém de contas. Quem enriquece foca em ativos. | Segue o perfil. O sistema não quer que você saiba disso.",
+            "legenda": "O erro que impede sua liberdade real não são os gastos, mas onde você coloca sua energia.\nPare de comprar status e comece a construir ativos.\nSegue o perfil agora.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro"
         }
     ],
     "ultimos_temas": [],
@@ -24,27 +33,28 @@
     "tema_do_dia": "superacao",
     "data_tema_do_dia": "2026-07-06",
     "historico_angulos": [
-        "O conforto é uma anestesia lenta que destrói o seu potencial um pouco todos os dias, sem causar dor imediata",
         "Se você focar apenas na meta e não mudar a sua identidade diária, a sua autossabotagem vai vencer de novo",
         "A diferença entre religiosidade de fachada e a sabedoria brutal e prática dos provérbios antigos",
         "Toda batalha é vencida ou perdida na sua própria mente muito antes do primeiro passo no mundo real",
-        "A síndrome do impostor: lá no fundo, você sabe que está entregando apenas uma fração do seu potencial"
+        "A síndrome do impostor: lá no fundo, você sabe que está entregando apenas uma fração do seu potencial",
+        "Ativos reais vs brinquedos caros: a diferença brutal entre focar em parecer livre"
     ],
     "historico_ganchos": [
-        "Neurocientistas passaram anos estudando a procrastinação. O relatório final prova que a sua 'falta de força de vontade' é uma mentira. Entenda:",
         "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
         "Por que fazer isso assim é infinitamente melhor do que o jeito tradicional.",
         "Você está fazendo isso de forma errada e eu posso provar.",
-        "Será que você está caindo nessa mesma armadilha sem notar?"
+        "Será que você está caindo nessa mesma armadilha sem notar?",
+        "Então você acha que está no controle? Deixa eu te mostrar os bastidores."
     ],
     "historico_estilos": [
-        "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
         "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
         "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
         "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')"
+        "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+        "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')"
     ],
     "historico_midia": [
+        "7947464",
         "36545715",
         "6134232",
         "36541192",
@@ -52,5 +62,5 @@
         "6382073",
         "rOyaiDNvBBU"
     ],
-    "index_conquistador": 3
+    "index_conquistador": 4
 }
