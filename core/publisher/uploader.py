@@ -3,24 +3,21 @@ import time
 import os
 
 def upload_temporario(caminho_arquivo):
-    print(f"📤 Enviando {caminho_arquivo} para tmpfiles.org...")
+    print(f"📤 Enviando {caminho_arquivo} para catbox.moe...")
     try:
         with open(caminho_arquivo, 'rb') as f:
-            response = requests.post("https://tmpfiles.org/api/v1/upload", files={"file": f}, timeout=120)
+            response = requests.post("https://catbox.moe/user/api.php", data={'reqtype': 'fileupload'}, files={"fileToUpload": f}, timeout=120)
             
         if response.status_code == 200:
-            data = response.json()
-            if data.get("status") == "success":
-                url_visualizador = data["data"]["url"]
-                # Converte em link de download direto
-                url_download_direto = url_visualizador.replace("https://tmpfiles.org/", "https://tmpfiles.org/dl/")
+            url_download_direto = response.text.strip()
+            if url_download_direto.startswith("https://"):
                 print(f"🔗 Link direto de acesso gerado: {url_download_direto}")
                 # Aguarda o servidor disponibilizar o arquivo antes do Instagram tentar acessá-lo
                 print("⏳ Aguardando 10s para o arquivo ficar disponível no servidor...")
                 time.sleep(10)
                 return url_download_direto
             else:
-                raise Exception(f"Falha na API tmpfiles: {data}")
+                raise Exception(f"Falha na API catbox.moe (resposta inesperada): {url_download_direto}")
         else:
             raise Exception(f"Código HTTP inválido: {response.status_code}")
     except Exception as e:

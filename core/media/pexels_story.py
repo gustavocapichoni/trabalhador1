@@ -187,8 +187,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             
             if res_pixabay.status_code == 200:
                 data = res_pixabay.json()
-                hits = data.get("hits", [])
+                hits_originais = data.get("hits", [])
                 
+                # Foca apenas em vídeos que possuem resolução puramente vertical (evita recortes)
+                hits = []
+                for h in hits_originais:
+                    v_dict = h.get("videos", {})
+                    for size in ["large", "medium", "small", "tiny"]:
+                        if size in v_dict and v_dict[size].get("height", 0) > v_dict[size].get("width", 0):
+                            hits.append(h)
+                            break
+                            
                 if hits:
                     random.shuffle(hits)
                     video_escolhido = None
@@ -258,13 +267,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                         logger.info("🔄 Todos os vídeos do Pexels já foram usados. Repetindo um aleatório.")
                         
                     video_files = video.get("video_files", [])
+                    
+                    # Foca estritamente nos arquivos de vídeo verticais (altura > largura)
+                    arquivos_verticais = [f for f in video_files if f.get("height", 0) > f.get("width", 0)]
+                    
                     link = None
-                    for f in video_files:
-                        if f.get("quality") == "hd" and f.get("width", 0) < f.get("height", 0):
-                            link = f["link"]
-                            break
-                    if not link and len(video_files) > 0:
-                        link = video_files[0]["link"]
+                    if arquivos_verticais:
+                        # Pega a melhor resolução vertical disponível
+                        arquivos_verticais.sort(key=lambda x: x.get("width", 0), reverse=True)
+                        link = arquivos_verticais[0]["link"]
 
                     if link:
                         logger.info("✅ Vídeo encontrado no Pexels! Baixando...")
