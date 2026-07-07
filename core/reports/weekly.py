@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 from email.mime.text import MIMEText
 from email.header import Header
 from dotenv import load_dotenv
+from core.config.state import carregar_estado
 
 # Configura o terminal para aceitar UTF-8 (emojis) no Windows
 try:
@@ -94,26 +95,22 @@ def obter_metricas_instagram(ig_id):
 
 def carregar_historico_recente():
     posts_recentes = []
-    if os.path.exists(ESTADO_FILE):
+    estado = carregar_estado()
+    historico = estado.get("historico", [])
+    
+    # Filtra postagens dos últimos 7 dias
+    limite_data = datetime.now(timezone.utc) - timedelta(days=7)
+    for post in historico:
         try:
-            with open(ESTADO_FILE, "r", encoding="utf-8") as f:
-                estado = json.load(f)
-                historico = estado.get("historico", [])
-                
-                # Filtra postagens dos últimos 7 dias
-                limite_data = datetime.now(timezone.utc) - timedelta(days=7)
-                for post in historico:
-                    try:
-                        # post['data'] está em formato "%Y-%m-%d %H:%M:%S"
-                        post_dt = datetime.strptime(post.get("data"), "%Y-%m-%d %H:%M:%S")
-                        # Converter datetime ingênuo para ciente de UTC (assumindo UTC do runner)
-                        post_dt = post_dt.replace(tzinfo=timezone.utc)
-                        if post_dt >= limite_data:
-                            posts_recentes.append(post)
-                    except Exception:
-                        posts_recentes.append(post)
-        except Exception as e:
-            print(f"⚠️ Erro ao carregar histórico: {e}")
+            # post['data'] está em formato "%Y-%m-%d %H:%M:%S"
+            post_dt = datetime.strptime(post.get("data"), "%Y-%m-%d %H:%M:%S")
+            # Converter datetime ingênuo para ciente de UTC (assumindo UTC do runner)
+            post_dt = post_dt.replace(tzinfo=timezone.utc)
+            if post_dt >= limite_data:
+                posts_recentes.append(post)
+        except Exception:
+            posts_recentes.append(post)
+            
     return posts_recentes
 
 def analisar_melhores_horarios():

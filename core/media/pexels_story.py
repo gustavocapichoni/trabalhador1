@@ -3,15 +3,26 @@ import random
 import requests
 import textwrap
 import numpy as np
+import uuid
 from PIL import Image, ImageDraw, ImageFont
 from loguru import logger
 from core.config.state import verificar_midia_recente, registrar_midia_usada
 
-def _carregar_fonte(tamanho=50):
+def _carregar_fonte(tamanho=50, estilo=None):
     """Tenta carregar a fonte do projeto. Se falhar, usa a padrão do sistema."""
+    fontes_disponiveis = ["MontserratBold.ttf", "Montserrat.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
+    
+    if estilo is None:
+        estilo = random.choice(fontes_disponiveis)
+    else:
+        # Se passar apenas o nome, adiciona .ttf
+        if not estilo.endswith(".ttf"):
+            estilo += ".ttf"
+            
     caminhos = [
-        "fontes/MontserratBold.ttf",
-        "fontes/Montserrat-Bold.ttf",
+        f"fontes/{estilo}",
+        "fontes/MontserratBold.ttf", # Fallback 1
+        "fontes/Montserrat-Bold.ttf", # Fallback 2
     ]
     for c in caminhos:
         if os.path.exists(c):
@@ -44,7 +55,7 @@ def _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_px):
         linhas.append(linha_atual)
     return linhas
 
-def _adicionar_texto_frame(frame_array, texto, fonte):
+def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None):
     """Desenha texto centralizado com sombra/fundo em um frame (numpy array)."""
     img = Image.fromarray(frame_array)
     draw = ImageDraw.Draw(img)
@@ -71,27 +82,46 @@ def _adicionar_texto_frame(frame_array, texto, fonte):
     total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + padding_v * 2
     total_w = min(max(larguras) + padding_h * 2, w - margem_px * 2)
 
-    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    overlay_draw = ImageDraw.Draw(overlay)
-    bx0 = max((w - total_w) // 2, margem_px)
+    # Removido o overlay_draw.rounded_rectangle (caixa preta) para um visual mais limpo e premium
+    # overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    # overlay_draw = ImageDraw.Draw(overlay)
+    # bx0 = max((w - total_w) // 2, margem_px)
+    # by0 = (h - total_h) // 2
+    # bx1 = min(bx0 + total_w, w - margem_px)
+    # by1 = by0 + total_h
+    # overlay_draw.rounded_rectangle([bx0, by0, bx1, by1], radius=18, fill=(0, 0, 0, 160))
+    # img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+    
+    # Apenas calculamos by0 para posicionar o texto
     by0 = (h - total_h) // 2
-    bx1 = min(bx0 + total_w, w - margem_px)
-    by1 = by0 + total_h
-    overlay_draw.rounded_rectangle([bx0, by0, bx1, by1], radius=18, fill=(0, 0, 0, 160))
-    img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
     draw = ImageDraw.Draw(img)
 
     y = by0 + padding_v
+    chars_drawn = 0
     for linha, alt, lw in zip(linhas, alturas, larguras):
         x = (w - lw) // 2
-        draw.text((x + 2, y + 2), linha, font=fonte, fill=(0, 0, 0, 200))
-        draw.text((x, y), linha, font=fonte, fill=(255, 255, 255))
+        
+        if chars_to_show is not None:
+            if chars_drawn >= chars_to_show:
+                break
+            
+            linha_len = len(linha)
+            if chars_drawn + linha_len > chars_to_show:
+                linha_render = linha[:chars_to_show - chars_drawn]
+            else:
+                linha_render = linha
+            chars_drawn += linha_len + 1 # +1 for space between words
+        else:
+            linha_render = linha
+            
+        draw.text((x + 2, y + 2), linha_render, font=fonte, fill=(0, 0, 0, 200))
+        draw.text((x, y), linha_render, font=fonte, fill=(255, 255, 255))
         y += alt + espaco_entre
 
     return np.array(img)
 
 
-def _adicionar_texto_cta(frame_array, texto, fonte_cta):
+def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None):
     """Desenha o CTA final com visual dourado e destacado — maior impacto visual."""
     img = Image.fromarray(frame_array)
 
@@ -138,12 +168,27 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta):
 
     # Texto em dourado vibrante com sombra
     y = by0 + padding_v
+    chars_drawn = 0
     for linha, alt, lw in zip(linhas, alturas, larguras):
         x = (w - lw) // 2
+        
+        if chars_to_show is not None:
+            if chars_drawn >= chars_to_show:
+                break
+            
+            linha_len = len(linha)
+            if chars_drawn + linha_len > chars_to_show:
+                linha_render = linha[:chars_to_show - chars_drawn]
+            else:
+                linha_render = linha
+            chars_drawn += linha_len + 1
+        else:
+            linha_render = linha
+            
         # Sombra preta
-        draw.text((x + 3, y + 3), linha, font=fonte_cta, fill=(0, 0, 0))
+        draw.text((x + 3, y + 3), linha_render, font=fonte_cta, fill=(0, 0, 0))
         # Texto dourado
-        draw.text((x, y), linha, font=fonte_cta, fill=(255, 215, 0))
+        draw.text((x, y), linha_render, font=fonte_cta, fill=(255, 215, 0))
         y += alt + espaco_entre
 
     return np.array(img)
@@ -170,7 +215,7 @@ def _aplicar_efeito_cinematico(frame_array, efeito):
         
     return np.array(img)
 
-def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False):
+def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False, is_reels_leads=False):
     from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
     import urllib.parse
     logger.info(f"🎥 Buscando vídeo com query: '{query}'")
@@ -226,7 +271,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     if link_download:
                         logger.info("✅ Vídeo encontrado no Pixabay! Baixando...")
                         vid_resp = requests.get(link_download, timeout=30)
-                        temp_vid = "temp_video.mp4"
+                        temp_vid = f"temp_video_{uuid.uuid4().hex}.mp4"
                         with open(temp_vid, "wb") as f:
                             f.write(vid_resp.content)
                 else:
@@ -280,7 +325,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     if link:
                         logger.info("✅ Vídeo encontrado no Pexels! Baixando...")
                         vid_resp = requests.get(link, timeout=30)
-                        temp_vid = "temp_video.mp4"
+                        temp_vid = f"temp_video_{uuid.uuid4().hex}.mp4"
                         with open(temp_vid, "wb") as f:
                             f.write(vid_resp.content)
             else:
@@ -309,19 +354,39 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     logger.info("🎬 Processando vídeo com MoviePy + Pillow...")
     clip = None
     final_clip = None
+    bg_audio = None
     try:
         from moviepy.editor import VideoFileClip, AudioFileClip, VideoClip
         clip = VideoFileClip(temp_vid)
         
-        # Limita duração a 15 seg
-        duracao = min(clip.duration, 15)
-        clip = clip.subclip(0, duracao)
+        # Controle de duração
+        if is_reels_leads:
+            # Para o reels de venda (manual), precisamos de bastante tempo (até 3 mins)
+            # Como os vídeos do Pexels costumam ter 10-30s, faremos um loop (repetição)
+            duracao_original = clip.duration
+            if duracao_original < 120:
+                import moviepy.video.fx.all as vfx
+                loops = int(150 // duracao_original) + 1 # Garante pelo menos uns 2 minutos e meio
+                clip = clip.fx(vfx.loop, n=loops)
+            
+            duracao = min(clip.duration, 180) # Max 3 minutos
+            clip = clip.subclip(0, duracao)
+        else:
+            # Limita duração a 15 seg para stories e reels normais
+            duracao = min(clip.duration, 15)
+            clip = clip.subclip(0, duracao)
+        
+        # Sorteia uma fonte premium para este vídeo inteiro
+        fontes_premium = ["MontserratBold.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
+        estilo_sorteado = random.choice(fontes_premium)
+        logger.info(f"✨ Fonte sorteada para o vídeo: {estilo_sorteado}")
         
         # FIX: Fonte reduzida de 52 para 42px — evita que frases longas ocupem
         # a tela inteira. A quebra de linha já funciona por pixels, mas o
         # tamanho da fonte determinava o tamanho final de cada linha.
-        fonte_normal = _carregar_fonte(tamanho=42)
-        fonte_cta    = _carregar_fonte(tamanho=52)  # CTA um pouco maior que o texto normal
+        # Aumentada a fonte para 60px para melhor presença e impacto
+        fonte_normal = _carregar_fonte(tamanho=60, estilo=estilo_sorteado)
+        fonte_cta    = _carregar_fonte(tamanho=72, estilo=estilo_sorteado)  # CTA um pouco maior que o texto normal
 
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
@@ -336,13 +401,20 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
             def make_frame(t):
                 idx = min(int(t / tempo_por_slide), total_slides - 1)
+                t_slide = t - (idx * tempo_por_slide)
+                
+                # Efeito de Digitação: calcula quantos caracteres exibir, mas a matemática
+                # de posicionamento usa o texto completo para evitar "pulos" de linha.
+                chars_to_show = max(1, int(t_slide * 35))
+                texto_completo = slides[idx]
+                
                 frame = clip.get_frame(t)
                 frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
                 # Última cena = CTA em destaque dourado
                 if is_conquistador and idx == idx_cta:
-                    frame = _adicionar_texto_cta(frame, slides[idx], fonte_cta)
+                    frame = _adicionar_texto_cta(frame, texto_completo, fonte_cta, chars_to_show=chars_to_show)
                 else:
-                    frame = _adicionar_texto_frame(frame, slides[idx], fonte_normal)
+                    frame = _adicionar_texto_frame(frame, texto_completo, fonte_normal, chars_to_show=chars_to_show)
                 return frame
 
             final_clip = VideoClip(make_frame, duration=duracao)
@@ -353,9 +425,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         # Adicionar áudio de fundo
         try:
             from core.media.reels import garantir_audio_reels
+            import moviepy.audio.fx.all as afx
             audio_path = garantir_audio_reels()
             if audio_path:
-                bg_audio = AudioFileClip(audio_path).subclip(0, duracao)
+                bg_audio = AudioFileClip(audio_path)
+                # Loop no áudio se for menor que a duração do vídeo longo
+                if bg_audio.duration < duracao:
+                    bg_audio = afx.audio_loop(bg_audio, duration=duracao)
+                    
+                bg_audio = bg_audio.subclip(0, duracao)
                 final_clip = final_clip.set_audio(bg_audio)
                 logger.info("🎵 Áudio de fundo adicionado!")
         except Exception as e:
@@ -370,12 +448,22 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
     except Exception as e:
         logger.warning(f"⚠️ Erro ao processar o vídeo: {e}. Retornando vídeo original.")
+        # Libera os arquivos ANTES de tentar renomear
+        try:
+            if clip: clip.close()
+            if final_clip: final_clip.close()
+            if bg_audio: bg_audio.close()
+        except: pass
+
         if os.path.exists(temp_vid):
-            os.rename(temp_vid, caminho_saida)
+            try:
+                os.replace(temp_vid, caminho_saida)
+            except Exception as rename_err:
+                logger.error(f"Falha ao renomear arquivo temporário: {rename_err}")
             return caminho_saida
         raise e
     finally:
-        # Garante que os handles são fechados SEMPRE, mesmo em caso de erro
+        # Limpeza final
         try:
             if clip:
                 clip.close()
@@ -384,6 +472,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         try:
             if final_clip:
                 final_clip.close()
+        except:
+            pass
+        try:
+            if bg_audio:
+                bg_audio.close()
         except:
             pass
         if os.path.exists(temp_vid):

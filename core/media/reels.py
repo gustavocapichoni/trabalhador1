@@ -6,6 +6,7 @@ from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips, Tex
 from loguru import logger
 
 def garantir_audio_reels():
+    from core.config.state import carregar_estado, salvar_estado
     try:
         pastas = [os.path.join("biblioteca_local", "musicas"), "musicas", "."]
         mp3_files = []
@@ -15,8 +16,21 @@ def garantir_audio_reels():
                     if f.lower().endswith(".mp3") and os.path.isfile(os.path.join(pasta, f)):
                         mp3_files.append(os.path.join(pasta, f))
         if mp3_files:
-            escolhido = random.choice(mp3_files)
+            estado = carregar_estado()
+            ultimas_musicas = estado.get("ultimas_musicas", [])
+            
+            opcoes_validas = [f for f in mp3_files if os.path.basename(f) not in ultimas_musicas]
+            if not opcoes_validas:
+                logger.info("🔄 Todas as músicas recentes já foram tocadas. Resetando rodízio.")
+                opcoes_validas = mp3_files
+                
+            escolhido = random.choice(opcoes_validas)
             logger.info(f"🎵 Audio selecionado aleatoriamente para o vídeo: '{escolhido}'")
+            
+            ultimas_musicas.append(os.path.basename(escolhido))
+            estado["ultimas_musicas"] = ultimas_musicas[-5:]
+            salvar_estado(estado)
+            
             return escolhido
     except Exception as e:
         logger.warning(f"⚠️ Erro ao listar arquivos de audio: {e}")

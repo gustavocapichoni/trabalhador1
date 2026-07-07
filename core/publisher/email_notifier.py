@@ -2,7 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
-from core.config.settings import SMTP_EMAIL, SMTP_PASSWORD, NOTIFY_EMAIL
+import requests
+from core.config.settings import SMTP_EMAIL, SMTP_PASSWORD, NOTIFY_EMAIL, IG_ACCESS_TOKEN
 
 def enviar_email_notificacao(assunto, mensagem, dry_run=False):
     """Envia um e-mail de monitoramento SMTP se configurado."""

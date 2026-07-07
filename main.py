@@ -3,6 +3,7 @@ import sys
 import io
 import time
 import os
+import uuid
 
 # Forçar UTF-8 no Windows para suportar emojis no print
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -45,7 +46,7 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="")
 def main():
     parser = argparse.ArgumentParser(description="Bot de Instagram Automático 2.0")
     parser.add_argument("--type", type=str, required=True, 
-                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "test"],
+                        choices=["story", "story_manha", "story_tarde", "carousel", "reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads", "test"],
                         help="Tipo de postagem a gerar")
     parser.add_argument("--dry-run", action="store_true", help="Executa todo o processo sem postar no Instagram")
     
@@ -57,6 +58,7 @@ def main():
         print("🧪 [MODO DRY-RUN ATIVADO]")
         
     try:
+        arquivos_gerados = []
         # Passo 0: Health Check
         if not args.dry_run:
             from core.utils.health import verificar_health
@@ -66,7 +68,7 @@ def main():
         conteudo, tema_escolhido, estilo_escolhido = gerar_conteudo_gemini(args.type)
         if args.type == "carousel":
             print(f"✨ Título do Carrossel: \"{conteudo.get('titulo')}\"")
-        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador"]:
+        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"]:
             slides = conteudo.get('slides', [])
             for i, s in enumerate(slides):
                 print(f"✨ Slide {i+1}: \"{s}\"")
@@ -74,10 +76,11 @@ def main():
             print(f"✨ Frase Gerada: \"{conteudo.get('frase')}\"")
             
         # Passo 2: Cria a mídia (imagem, sequência ou vídeo)
-        if args.type in ["pexels_story", "pexels_story_noite", "reels_conquistador"]:
+        if args.type in ["pexels_story", "pexels_story_noite", "reels_conquistador", "reels_leads"]:
             from core.media.pexels_story import gerar_pexels_story
-            ts = int(time.time())
-            _saida = f"pexels_story_{ts}.mp4"
+            req_id = uuid.uuid4().hex
+            _saida = f"pexels_story_{req_id}.mp4"
+            arquivos_gerados.append(_saida)
             if args.dry_run:
                 print("[DRY-RUN] Pulando geracao real de Pexels Story.")
                 midia = _saida
@@ -87,16 +90,20 @@ def main():
                     conteudo.get("slides", []),
                     caminho_saida=_saida,
                     tema=tema_escolhido,
-                    is_conquistador=(args.type == "reels_conquistador")
+                    is_conquistador=(args.type == "reels_conquistador"),
+                    is_reels_leads=(args.type == "reels_leads")
                 )
         else:
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)
+            if isinstance(midia, list): arquivos_gerados.extend(midia)
+            elif isinstance(midia, str): arquivos_gerados.append(midia)
         
         # Passo 3: Se for Reels, gera o vídeo MP4
         if args.type in ["reels", "reels_noite"]:
             from core.media.reels import gerar_video_reels, garantir_audio_reels
-            ts = int(time.time())
-            nome_saida_reels = f"reels_pronto_{ts}.mp4"
+            req_id = uuid.uuid4().hex
+            nome_saida_reels = f"reels_pronto_{req_id}.mp4"
+            arquivos_gerados.append(nome_saida_reels)
             if args.dry_run:
                 try:
                     audio_path = garantir_audio_reels()
@@ -113,7 +120,7 @@ def main():
             from core.media.reels import gerar_video_story_individual, garantir_audio_reels
             print("🎵 Convertendo slides de Story para vídeo com música de fundo contínua...")
             midias_em_video = []
-            ts = int(time.time())
+            req_id = uuid.uuid4().hex
             
             # 1. Sorteia UMA música que será tocada do início ao fim
             audio_path = None
@@ -123,7 +130,8 @@ def main():
                 print(f"⚠️ Erro ao buscar áudio: {e}")
                 
             for i, caminho_jpg in enumerate(midia):
-                nome_saida = f"story_video_{i}_{ts}.mp4"
+                nome_saida = f"story_video_{i}_{req_id}.mp4"
+                arquivos_gerados.append(nome_saida)
                 if args.dry_run:
                     try:
                         if audio_path:
@@ -185,15 +193,13 @@ def main():
         # Passo 6: Limpeza de arquivos temporários
         if not args.dry_run:
             try:
-                import glob
-                arquivos_lixo = glob.glob("*.jpg") + glob.glob("reels_pronto_*.mp4") + glob.glob("pexels_story_*.mp4") + glob.glob("story_video_*.mp4")
-                if isinstance(midia, str) and os.path.exists(midia):
-                    if midia not in arquivos_lixo:
-                        arquivos_lixo.append(midia)
-                for f in arquivos_lixo:
+                for f in set(arquivos_gerados):
                     if os.path.exists(f):
-                        os.remove(f)
-                print("🧹 Arquivos de mídia temporários apagados da raiz.")
+                        try:
+                            os.remove(f)
+                        except:
+                            pass
+                print("🧹 Arquivos de mídia gerados nesta execução foram apagados (Lixo isolado).")
             except Exception as e:
                 print(f"⚠️ Erro leve ao limpar arquivos temporários: {e}")
 

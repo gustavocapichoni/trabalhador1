@@ -2,6 +2,7 @@ import os
 import requests
 import textwrap
 import random
+import uuid
 from io import BytesIO
 from PIL import Image, ImageDraw
 
@@ -153,9 +154,13 @@ def _gerar_carrossel(img, W_full, H, dados):
     # Calcula o deslocamento do fundo (panning) para criar o efeito panorâmico contínuo
     step = (W_full - slide_W) / (num_slides - 1) if num_slides > 1 else 0
     
-    # FIX: Fontes maiores para garantir legibilidade no carrossel 1080x1080
-    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26)
-    font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30)[0]
+    # Sorteia um estilo de fonte premium para o Carrossel
+    estilo_sorteado = random.choice(["Montserrat", "Oswald", "Inter", "Playfair"])
+    print(f"🎨 Usando estilo de fonte no Carrossel: {estilo_sorteado}")
+    
+    # FIX: Fontes maiores para garantir legibilidade no carrossel 1080x1080 e fontes diversificadas
+    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
+    font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30, estilo=estilo_sorteado)[0]
     
     for idx, texto in enumerate(slides_conteudo):
         x_offset = int(idx * step)
@@ -194,7 +199,7 @@ def _gerar_carrossel(img, W_full, H, dados):
             for i, linha in enumerate(linhas):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 90), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
             
-        caminho = f"carousel_{idx}.jpg"
+        caminho = f"carousel_{uuid.uuid4().hex}_{idx}.jpg"
         slide_img.save(caminho, "JPEG", quality=95)
         caminhos_arquivos.append(caminho)
         
@@ -203,7 +208,10 @@ def _gerar_carrossel(img, W_full, H, dados):
 def _gerar_reels(img, W, H, dados):
     caminhos = []
     frases = dados.get("slides", [dados.get("frase", "...")])
-    font_display, font_body, font_marca = carregar_fontes(52, 22, 24)
+    
+    estilo_sorteado = random.choice(["Montserrat", "Oswald", "Inter", "Playfair"])
+    print(f"🎨 Usando estilo de fonte no Reels: {estilo_sorteado}")
+    font_display, font_body, font_marca = carregar_fontes(52, 22, 24, estilo=estilo_sorteado)
     
     for idx, frase in enumerate(frases):
         slide = img.copy().convert("RGB")
@@ -220,7 +228,7 @@ def _gerar_reels(img, W, H, dados):
         for i, linha in enumerate(linhas):
             draw_text_with_shadow(draw, (W/2, y_inicial + i * 70), linha, font_display, fill=CORES["texto_principal"], anchor="ms")
             
-        caminho = f"reels_slide_{idx}.jpg"
+        caminho = f"reels_slide_{uuid.uuid4().hex}_{idx}.jpg"
         slide.save(caminho, "JPEG", quality=95)
         caminhos.append(caminho)
     return caminhos
@@ -281,7 +289,8 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
             for i, linha in enumerate(linhas):
                 draw_text_with_shadow(draw, (W/2, y_inicial + i * 60), linha, font_display, fill=CORES["texto_principal"], anchor="ms")
             
-        caminho_imagem = f"story_pronto_{idx}.jpg" if tipo in ["story", "story_manha", "story_tarde", "test"] else f"post_pronto_{idx}.jpg"
+        _uid = uuid.uuid4().hex
+        caminho_imagem = f"story_pronto_{_uid}_{idx}.jpg" if tipo in ["story", "story_manha", "story_tarde", "test"] else f"post_pronto_{_uid}_{idx}.jpg"
         slide.save(caminho_imagem, "JPEG", quality=95)
         caminhos.append(caminho_imagem)
         

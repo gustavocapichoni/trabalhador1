@@ -48,60 +48,34 @@ def gerar_conteudo_gemini(tipo):
         salvar_estado(estado)
         logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
     else:
-        # Lógica padrão da Roleta Viciada (para os outros posts)
+        # NOVO FLUXO: Ciclo sequencial diário
         recomendacoes_file = "analytics/dados/recomendacoes.json"
-        tema_anterior = estado.get("tema_do_dia") if estado.get("data_tema_do_dia") != dia_hoje_str else None
         
+        # Lê o contexto do analytics cruzado (importante para o conteúdo das legendas)
         try:
             if os.path.exists(recomendacoes_file):
                 with open(recomendacoes_file, "r", encoding="utf-8") as f:
                     rec_cruzada = json.load(f)
-                
                 contexto_analytics = rec_cruzada.get("contexto_para_gemini", "")
-                distribuicoes = rec_cruzada.get("distribuicoes", {})
-                dist_temas = distribuicoes.get("temas", {})
-                
-                # Se for o primeiro post do dia, sorteia o tema do dia usando a Roleta Viciada
-                if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
-                    tema_escolhido = estado["tema_do_dia"]
-                else:
-                    if dist_temas:
-                        # Exclui o tema do dia anterior se houver outras opções
-                        temas_filtrados = {t: p for t, p in dist_temas.items() if t != tema_anterior}
-                        if not temas_filtrados:
-                            temas_filtrados = dist_temas
-                        
-                        temas = list(temas_filtrados.keys())
-                        pesos = list(temas_filtrados.values())
-                        # Sorteia com base no peso (Roleta Viciada)
-                        tema_escolhido = random.choices(temas, weights=pesos, k=1)[0]
-                        logger.info(f"🎲 Tema sorteado pela Roleta Viciada do Analytics: {tema_escolhido} (Tema anterior: {tema_anterior})")
         except Exception as e:
-            logger.warning(f"⚠️ Erro ao ler recomendações do analytics cruzado: {e}")
+            logger.warning(f"⚠️ Erro ao ler contexto do analytics cruzado: {e}")
 
-        # Fallback caso não tenha analytics ou algo dê errado
-        if not tema_escolhido:
-            if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
-                tema_escolhido = estado["tema_do_dia"]
-            else:
-                if dia_da_semana == 6:  # Domingo
-                    opcoes = [t for t in ["superacao", "proposito"] if t != tema_anterior]
-                    tema_escolhido = random.choice(opcoes if opcoes else ["superacao", "proposito"])
-                else:
-                    tema_padrao = TEMAS_POR_DIA[dia_da_semana]
-                    if tema_padrao != tema_anterior:
-                        tema_escolhido = tema_padrao
-                    else:
-                        # Se o tema padrão cair no tema de ontem, sorteia um diferente dos mapeados
-                        opcoes = [t for t in TEMAS_MAPEADOS.keys() if t != tema_anterior]
-                        tema_escolhido = random.choice(opcoes if opcoes else list(TEMAS_MAPEADOS.keys()))
-                logger.info(f"🎲 Tema fallback (padrão) selecionado: {tema_escolhido} (Tema anterior: {tema_anterior})")
-
-        # Salva o tema do dia (mesmo se foi pela roleta ou fallback)
-        if estado.get("data_tema_do_dia") != dia_hoje_str or estado.get("tema_do_dia") != tema_escolhido:
+        # Se for o primeiro post do dia, rotaciona o tema sequencialmente
+        if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
+            tema_escolhido = estado["tema_do_dia"]
+            logger.info(f"🎲 Tema do dia continuado: {tema_escolhido}")
+        else:
+            temas_lista = list(TEMAS_MAPEADOS.keys())
+            idx = estado.get("index_tema_diario", 0)
+            if idx >= len(temas_lista): idx = 0
+            
+            tema_escolhido = temas_lista[idx]
+            
             estado["tema_do_dia"] = tema_escolhido
             estado["data_tema_do_dia"] = dia_hoje_str
+            estado["index_tema_diario"] = (idx + 1) % len(temas_lista)
             salvar_estado(estado)
+            logger.info(f"🎲 Novo tema sequencial diário ativado: {tema_escolhido}")
         
     detalhes_tema = TEMAS_MAPEADOS[tema_escolhido]
     logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
@@ -546,6 +520,66 @@ def gerar_conteudo_gemini(tipo):
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
+    elif tipo == "reels_leads":
+        prompt = f"""
+        Você é um estrategista de vendas e mestre em copywriting focado em conversão e geração de leads.
+        Sua missão é criar um vídeo longo (2:30 a 3:00) focado em capturar leads através da entrega de um "Manual Prático" em PDF 100% gratuito.
+        O roteiro usará a Técnica Psicológica do Usopp (10 fases).
+        Estilo obrigatório: {estilo_escolhido}
+
+        {instrucoes_copy}
+
+        CRIE UM ROTEIRO LONGO COM 25 A 35 SLIDES seguindo OBRIGATORIAMENTE este funil de 10 Fases:
+
+        FASE 1 — INTERRUPÇÃO DO PADRÃO (Pattern Interrupt) - Slides 1 a 3:
+        Comece com algo impossível de ignorar. Não venda. Não fale do PDF. Choque a audiência.
+
+        FASE 2 — CURIOSIDADE (Curiosity Gap) - Slides 4 a 6:
+        Crie tensão e deixe perguntas sem resposta. Aumente o mistério.
+
+        FASE 3 — AUMENTO DA TENSÃO - Slides 7 a 9:
+        Não entregue a resposta cedo. Aumente a expectativa. A dor começa a se formar.
+
+        FASE 4 — CRIAÇÃO DO PROBLEMA - Slides 10 a 12:
+        Mostre uma dor oculta e profunda da audiência. Eles não sabiam que precisavam de algo, agora precisam.
+
+        FASE 5 — SOLUÇÃO - Slides 13 a 15:
+        Apresente a ideia da solução no momento de maior tensão. O alívio imediato.
+
+        FASE 6 — DEMONSTRAÇÃO - Slides 16 a 18:
+        Demonstre visualmente (em palavras) como essa solução age na vida prática. Elimine objeções.
+
+        FASE 7 — AUTORIDADE - Slides 19 a 21:
+        Explique o porquê de funcionar. Só explique depois de demonstrar. Seja o especialista.
+
+        FASE 8 — PROVA SOCIAL - Slides 22 a 24:
+        Mostre que pessoas normais estão alcançando resultados. Reduza o risco e o medo da mudança.
+
+        FASE 9 — DESEJO - Slides 25 a 27:
+        Foque na transformação de vida. A pessoa não quer o PDF, ela quer o resultado que o PDF traz.
+
+        FASE 10 — OFERTA E CTA - Últimos Slides:
+        Faça a oferta irresistível. É 100% gratuito.
+        O CTA FINAL DEVE SER EXATAMENTE (divida em 2 slides se necessário): "Comente 'MANUAL' aqui embaixo e eu vou te mandar no direct o link gratuito."
+
+        PEXELS QUERY: Escolha um clima visual cinematográfico. Ex: 'cinematic mysterious city', 'dark elegant texture'.
+        
+        LEGENDA:
+        - Máximo 3 linhas. Focada na urgência e no escassez (ex: não sei por quanto tempo vou deixar de graça).
+        - CTA OBRIGATÓRIO DE COMENTÁRIO: "Comente MANUAL que eu envio no seu direct o acesso gratuito."
+        - NÃO inclua hashtags.
+
+        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 25 a 35 frases curtas):
+        {{
+          "slides": [
+            "Frase 1 aqui",
+            "...",
+            "Frase 35 aqui"
+          ],
+          "pexels_query": "your evocative english search here",
+          "legenda": "Sua legenda aqui sem hashtags"
+        }}
+        """
     else:
         raise ValueError(f"Tipo inválido: {tipo}")
 
@@ -623,7 +657,7 @@ def gerar_conteudo_gemini(tipo):
                 
             # Mapeia os tipos de postagens para as chaves principais do JSON (story, reels, carousel)
             tipo_key = "story"
-            if tipo in ["reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite"]:
+            if tipo in ["reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite", "reels_leads"]:
                 tipo_key = "reels"
             elif tipo == "carousel":
                 tipo_key = "carousel"

@@ -6,6 +6,7 @@ from datetime import datetime, timezone, timedelta
 from loguru import logger
 from dotenv import load_dotenv
 from core.analytics.db import get_db
+from core.config.state import carregar_estado
 
 load_dotenv()
 
@@ -13,15 +14,6 @@ IG_ACCESS_TOKEN = os.getenv("IG_ACCESS_TOKEN")
 IG_ACCOUNT_ID = os.getenv("IG_ACCOUNT_ID")
 ESTADO_FILE = "estado.json"
 METRICAS_FILE = "analytics/dados/metricas.json"  # mantido como fallback local
-
-def carregar_estado():
-    if os.path.exists(ESTADO_FILE):
-        try:
-            with open(ESTADO_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception as e:
-            logger.warning(f"Erro ao ler estado.json: {e}")
-    return {"historico": []}
 
 def carregar_metricas_local():
     if os.path.exists(METRICAS_FILE):
