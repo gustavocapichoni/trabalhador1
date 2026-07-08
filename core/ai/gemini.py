@@ -294,19 +294,6 @@ def gerar_conteudo_gemini(tipo):
         }}
         """
     elif tipo == "reels_conquistador":
-        # Sorteia um estilo de CTA variado para cada vídeo
-        import random as _r
-        cta_opcoes = [
-            # Foco em Seguidores
-            "Siga o perfil. Informação assim ninguém te entrega de graça.",
-            "Segue o perfil agora. O sistema não quer que você saiba disso.",
-            "Se você quer evoluir mais rápido, siga o perfil.",
-            # Foco em Comentários
-            "Comenta QUERO abaixo e te mando o próximo passo.",
-            "Comente FOGO se você também está nessa jornada.",
-            "Deixa sua opinião nos comentários. Você concorda?"
-        ]
-        cta_escolhido = _r.choice(cta_opcoes)
 
         prompt = f"""
         Você é um copywriter de elite especializado em VSL (Video Sales Letter) para o Instagram.
@@ -339,11 +326,11 @@ def gerar_conteudo_gemini(tipo):
         - Ex: "Nossa IA processa mais dados em 1s do que um departamento inteiro."
         - Máximo 12 palavras.
 
-        CENA 5 — CTA FINAL (Ação Imediata):
-        - Esta é a cena mais importante. Ela aparece no final do vídeo em DESTAQUE VISUAL.
-        - Use EXATAMENTE este CTA sorteado: "{cta_escolhido}"
-        - Pode adaptar levemente mas mantenha a essência e a urgência.
-        - Máximo 10 palavras.
+        CENA 5 — CTA FINAL (Ação Imediata Contextual):
+        - O CTA DEVE ESTAR CONECTADO COESAMENTE COM A HISTÓRIA. Não jogue um CTA genérico.
+        - Se a mensagem for de revelação, peça para seguir: "Se quiser continuar descobrindo a verdade, siga o perfil."
+        - Se a mensagem for um método, peça comentário: "Quer o método completo? Comenta 'QUERO'."
+        - Máximo 12 palavras. O tom deve ser imperativo e inegociável.
 
         LEGENDA DO POST (separada das cenas do vídeo):
         - Máximo 3 linhas. Reforce a dor e o CTA.
@@ -428,38 +415,37 @@ def gerar_conteudo_gemini(tipo):
         {instrucoes_copy}
 
         CRIE UMA SEQUÊNCIA NARRATIVA DE 4 A 6 SLIDES que funcione como o CAPÍTULO FINAL de uma história que começou de manhã.
-        O tom deve ser: reflexivo, visceral, cinematográfico. Como um monólogo de quem olha para o dia e extrai o ouro.
+        A mensagem deve colocar quem assiste dentro da história: identifique a dor, gere empatia real e ofereça a solução.
 
-        SLIDE 1 — DIAGNÓSTICO DO DIA (Espelho da Realidade):
-        - Comece com uma observação sobre o dia que acabou. Algo que a maioria evita admitir.
-        - O leitor deve sentir: "é exatamente isso que aconteceu comigo hoje."
-        - Máximo 10 palavras. Pesado, honesto, sem filtro.
+        SLIDE 1 — A DOR E A EMPATIA (A Fisgada da Noite):
+        - Comece espelhando uma dor solitária que bate forte à noite. 
+        - O tom deve ser: "Eu já passei por isso à noite, sozinho, e sei exatamente como dói."
+        - Coloque o espectador dentro da narrativa. Máximo 10 palavras.
 
-        SLIDE 2 — A VIRADA QUE NINGUÉM FALA (O insight da noite):
-        - A sacada que só aparece quando a pressa do dia acaba.
-        - Apresente a perspectiva que muda tudo — a interpretação alternativa do que ele viveu.
-        - Máximo 12 palavras. Deve criar aquele silêncio mental de "nunca tinha pensado assim."
-
-        SLIDE 3 — O QUE LEVAR PARA AMANHÃ (Ancoragem de Identidade):
-        - Uma instrução prática e emocional para a manhã seguinte.
-        - Não é conselho barato. É uma promessa que o leitor faz para si mesmo.
+        SLIDE 2 — O FUNDO DO POÇO (A História Continua):
+        - Aprofunde o que acontece quando a pessoa cede a essa dor ou medo.
+        - Não julgue, apenas narre o cenário que ele conhece muito bem.
         - Máximo 12 palavras.
 
-        SLIDE 4 — FECHAMENTO PODEROSO (Plantio de Retorno):
-        - Termine com uma frase que ele vai dormir pensando.
+        SLIDE 3 — A RUPTURA E A SOLUÇÃO (O "Mas eu superei fazendo isso"):
+        - Apresente a virada. Mostre o que você (ou quem tem o controle) fez para sair desse ciclo.
+        - Entregue o método prático ou a perspectiva que quebra o feitiço da dor.
+        - Máximo 12 palavras.
+
+        SLIDE 4 — FECHAMENTO E BENEFÍCIO (A Promessa do Amanhã):
+        - Termine com a promessa de como a vida muda quando essa chave vira.
         - Algo que cria expectativa de acordar diferente amanhã.
-        - Não é motivacional clichê. É uma verdade que fica.
         - Máximo 10 palavras.
 
-        (OPCIONAL) SLIDE 5 e 6 — Use se a narrativa pedir um desenvolvimento maior.
+        (OPCIONAL) SLIDE 5 e 6 — Use se a narrativa pedir um desenvolvimento maior da história.
 
         LEGENDA:
-        - Máximo 3 linhas. Tom de quem está sentado no escuro refletindo, não de quem está dando aula.
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta que force o leitor a fazer um balanço do dia:
-          → "Como foi o seu dia hoje, de verdade? Comenta embaixo."
-          → "Qual parte do dia você perdeu para o medo? Comenta 1 palavra."
-          → "Você vai dormir orgulhoso de algo hoje? Me conta."
-        - NUNCA termine com motivação positiva e fechada. Sempre com uma pergunta que exija reflexão.
+        - Máximo 3 linhas. Tom íntimo e intrusivo.
+        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): NUNCA faça perguntas bobas como "Como foi seu dia?". Use CTAs focados em AÇÃO e COMUNIDADE.
+        - Modelos obrigatórios (use variações baseadas nisso):
+          → "Se isso faz sentido para o momento que você está vivendo, já me segue para continuarmos evoluindo juntos."
+          → "Você já passou por isso? Me conte aqui como você superou e ajude quem está lendo a passar por essa noite."
+          → "Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde."
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim:
@@ -481,39 +467,36 @@ def gerar_conteudo_gemini(tipo):
 
         {instrucoes_copy}
 
-        CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que funcione como o EPÍLOGO do dia.
-        O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra, não grita.
+        CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que coloque o espectador dentro de uma história de dor e superação.
+        O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra "eu te entendo, eu também passei por isso".
 
-        FASE 1 — CENA DE ABERTURA NOTURNA (frases 1-2):
-        - Pinte uma cena mental de fim de dia. Algo que a pessoa vê ou sente quando para pela primeira vez.
-        - O espectador deve sentir o peso gostoso do dia terminando.
-        - Cada frase: máximo 10 palavras. Evocativa, sensorial, cinematográfica.
+        FASE 1 — O RECONHECIMENTO DA DOR (frases 1-2):
+        - Descreva exatamente o sentimento pesado ou a frustração que bate quando a pessoa deita a cabeça no travesseiro.
+        - O espectador deve sentir que você invadiu a mente dele. Empatia visceral.
+        - Cada frase: máximo 10 palavras.
 
-        FASE 2 — O INVENTÁRIO DA ALMA (frases 3-4):
-        - O que ficou? O que passou? O que valeu?
-        - Faça o espectador fazer um balanço silencioso do próprio dia sem perceber.
-        - Crie o "loop aberto": uma verdade pela metade que só se fecha com reflexão.
+        FASE 2 — A PROFUNDIDADE DA HISTÓRIA (frases 3-4):
+        - Mostre como manter essa dor vai destruir o futuro dele. 
+        - Uma narrativa de "se continuar assim, a vida passa e nada muda".
 
-        FASE 3 — A ENTREGA FINAL (frases 5-6):
-        - Um insight de fechamento. A lição que o dia guardou para o final.
-        - Visceral e específico — não pode ser um clichê motivacional.
-        - Faça o espectador sentir que aquela frase foi escrita para ele.
+        FASE 3 — A SOLUÇÃO (frases 5-6):
+        - O alívio. "Mas eu descobri que a chave é fazer isso...".
+        - Entregue o método ou insight que resolve essa dor oculta da noite.
 
-        FASE 4 — A SEMENTE DO AMANHÃ (frases 7-8):
-        - Termine plantando a semente de um recomeço.
-        - Uma frase que ele vai acordar querendo agir.
-        - Crie desejo de voltar ao perfil amanhã de manhã.
+        FASE 4 — O FECHAMENTO E BENEFÍCIO (frases 7-8):
+        - A promessa. Como o amanhã será diferente porque ele aprendeu isso agora.
+        - Termine com um soco no estômago que exija uma tomada de posição.
 
         PEXELS QUERY: Escolha um clima visual noturno e contemplativo.
         - Use buscas em inglês evocativas: night city lights rain, candle flame night silence, dark forest stars, person alone window night, sunset silhouette reflection.
 
         LEGENDA:
-        - Máximo 3 linhas. Tom íntimo, como uma mensagem que um amigo manda à meia-noite.
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta de balanço noturno:
-          → "Qual foi a melhor parte do seu dia? Comenta aqui."
-          → "O que você vai fazer diferente amanhã? Me conta."
-          → "Em qual frase você se reconheceu? Comenta o número."
-        - NUNCA termine com uma mensagem positiva e fechada. Sempre com uma pergunta que convide ao diálogo.
+        - Máximo 3 linhas. Tom íntimo e persuasivo.
+        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): Focado em envolver e converter.
+        - Modelos obrigatórios (use variações baseadas nisso):
+          → "Se você quer parar de acordar com o mesmo sentimento de ontem, já me segue para mudar esse jogo."
+          → "Você também já sentiu isso à noite? Me conte como você lidou com essa dor e ajude alguém aqui nos comentários."
+          → "O algoritmo vai tentar esconder esse perfil de você. Siga agora se quiser continuar recebendo a verdade sem filtro."
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
