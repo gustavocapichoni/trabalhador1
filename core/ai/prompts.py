@@ -8,7 +8,7 @@ TEMAS_MAPEADOS = {
     "espiritualidade": {
         "nome": "Espiritualidade e Fé",
         "inspira": "Evangelhos de Mateus e João, Provérbios de Salomão, Cantares, O Homem Mais Inteligente da História (gestão de emoções de Jesus)",
-        "query_unsplash": "ancient temple golden hour,mystical ethereal light,sacred geometry bright,cinematic holy light ray,majestic stone ruins sunshine",
+        "query_unsplash": "dark cinematic aesthetic,solitary silhouette against massive cosmos,subtle glowing aura,deep shadows,8k resolution,minimalist",
         "hashtags": ["#sabedoria", "#fe", "#proposito", "#espiritualidade", "#reflexao"],
         "sub_angulos": [
             "O silêncio absoluto que você evita é onde as respostas da sabedoria milenar estão guardadas",
@@ -22,7 +22,7 @@ TEMAS_MAPEADOS = {
     "filosofia": {
         "nome": "Filosofia e Autoconhecimento",
         "inspira": "A Arte da Guerra (estratégia mental), O Vendedor de Sonhos (desconstrução do sistema), Estoicismo, PNL",
-        "query_unsplash": "stoic marble statue bright,solitary chess piece golden hour,philosophical abstract light,shattered mirror reflection,cinematic thought clear sky",
+        "query_unsplash": "dark surrealism,shattered glass floating in deep abyss,neon edge lighting,highly detailed texture,hyperrealistic,void",
         "hashtags": ["#autoconhecimento", "#filosofia", "#sabedoria", "#estoicismo", "#reflexao"],
         "sub_angulos": [
             "O sistema tenta te vender sonhos enlatados para que você nunca acorde para a sua verdadeira força",
@@ -36,7 +36,7 @@ TEMAS_MAPEADOS = {
     "psicologia": {
         "nome": "Psicologia e Comportamento Humano",
         "inspira": "Rápido e Devagar (Sistema 1 e 2), Blink, Armadilhas da Mente, Neurociência aplicada",
-        "query_unsplash": "neon brain glowing,neural pathways bright,abstract mind maze light,psychological silhouette sunrise,premium dual face",
+        "query_unsplash": "abstract dark matter,glowing neural pathways inside dark fog,macro photography,cybernetic aesthetics,deep contrast",
         "hashtags": ["#psicologia", "#decisao", "#mentalidade", "#comportamento", "#habito"],
         "sub_angulos": [
             "O seu cérebro prefere manter você preso no sofrimento conhecido do que arriscar a dor da mudança",
@@ -50,7 +50,7 @@ TEMAS_MAPEADOS = {
     "financas": {
         "nome": "Mentalidade Financeira e Riqueza",
         "inspira": "Pai Rico Pai Pobre (ativos vs passivos), Mais Esperto que o Diabo (alienação), PNL focada em negócios",
-        "query_unsplash": "luxury wall street cinematic,monopoly board golden,luxury corporate skyscraper sun,premium gold vault,bright modern boardroom",
+        "query_unsplash": "luxury dark modern architecture,sleek black marble texture,subtle purple neon accent,premium minimalist boardroom,wealthy aesthetic,8k",
         "hashtags": ["#financas", "#riqueza", "#mentalidadefinanceira", "#sucesso", "#dinheiro"],
         "sub_angulos": [
             "O passivo financeiro de luxo que as pessoas compram apenas para impressionar quem elas nem gostam",
@@ -64,7 +64,7 @@ TEMAS_MAPEADOS = {
     "liberdade": {
         "nome": "Liberdade, Sonhos e Coragem de Começar",
         "inspira": "O Vendedor de Sonhos (liberdade mental), O Poder da Ação, Mais Esperto que o Diabo (quebrar a hipnose)",
-        "query_unsplash": "broken golden cage bright sky,cliff jump silhouette sunrise,lone wolf mountain top,epic mountain freedom bright,cinematic ocean waves sun",
+        "query_unsplash": "vast endless dark ocean,single glowing boat far away,cinematic lighting,moody atmosphere,ultra HD,profound isolation",
         "hashtags": ["#liberdade", "#sonhos", "#jornada", "#perseveranca", "#foco"],
         "sub_angulos": [
             "A dor insuportável de olhar para trás daqui a 10 anos e ver que não teve a coragem de vender seus próprios sonhos",
@@ -78,7 +78,7 @@ TEMAS_MAPEADOS = {
     "conexoes": {
         "nome": "Relacionamentos e Inteligência Emocional",
         "inspira": "Como Fazer Amigos e Influenciar Pessoas, A Arte da Persuasão, construção de família e relacionamentos fortes",
-        "query_unsplash": "rain window cozy light,emotional connection,melancholic beautiful person,warm light embrace,city lights beautiful",
+        "query_unsplash": "two hands barely touching in the dark,cyber neon backlight,emotional dark cinematic,deep focus,blurred background,intimacy",
         "hashtags": ["#relacionamentos", "#conexao", "#empatia", "#inteligenciaemocional", "#amor"],
         "sub_angulos": [
             "O que você chama de amor incondicional é muitas vezes apenas um medo patológico e doentio de ficar sozinho",
@@ -92,7 +92,7 @@ TEMAS_MAPEADOS = {
     "superacao": {
         "nome": "Superação e Autossabotagem",
         "inspira": "O Poder do Hábito (loop do hábito), O Poder da Ação, A Arte da Guerra (disciplina inclemente)",
-        "query_unsplash": "storm path clearing sun,runner silhouette sunrise,gritty determination bright,mountain climb peak,intense morning light",
+        "query_unsplash": "heavy rain dark alleyway,intense glowing purple neon sign reflection,gritty cinematic photography,urban night,determination",
         "hashtags": ["#superacao", "#foco", "#resiliencia", "#coragem", "#determinacao"],
         "sub_angulos": [
             "O ciclo da derrota: um gatilho te estressa, você foge para um hábito destrutivo e depois se culpa",
@@ -106,7 +106,7 @@ TEMAS_MAPEADOS = {
     "proposito": {
         "nome": "Propósito e Legado",
         "inspira": "Eclesiastes, Provérbios de Salomão, Mais Esperto que o Diabo (propósito vs alienação), PNL (visão)",
-        "query_unsplash": "epic forest sunlight ray,golden compass,lighthouse bright day,ancient tree roots glowing,vast sky stars bright",
+        "query_unsplash": "monolithic structure in deep dark desert,starry night sky glowing,ancient futuristic hybrid,imposing,masterpiece lighting",
         "hashtags": ["#proposito", "#legado", "#vida", "#intencao", "#evoluir"],
         "sub_angulos": [
             "A diferença colossal entre ter metas vazias para inflar o ego e construir um legado que proteja as próximas gerações",
@@ -152,7 +152,12 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     instrucoes = f"""
     {REGRAS_COPY_BASE}
     
-    Tema de inspiração (NÃO cite nomes, use apenas a essência): {detalhes_tema['inspira']}
+    ESTRATÉGIA DE CONTEÚDO BASEADA EM LIVROS:
+    Você tem acesso ao conhecimento dos seguintes livros para este tema: {detalhes_tema['inspira']}
+    Sua missão é:
+    1. Buscar um princípio, método prático ou lição valiosa presente em algum destes livros.
+    2. Usar esse método exato para formular uma mensagem, roteiro ou história altamente persuasiva para resolver a dor do usuário.
+    3. ENTREGUE COMO SE O CONHECIMENTO FOSSE SEU. É ESTRITAMENTE PROIBIDO citar o nome do livro, do autor ou dar créditos. Pegue a genialidade da obra e passe como conteúdo original do nosso perfil.
     
     Ângulo específico para esta postagem: {sub_angulo}
     

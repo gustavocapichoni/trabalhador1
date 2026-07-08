@@ -7,7 +7,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 
 from .efeitos import aplicar_mesh_gradient, draw_text_with_shadow, desenhar_elementos_premium
-from .templates import carregar_fontes, CORES
+from .templates import carregar_fontes, obter_fonte_do_dia, CORES
 from core.config.state import verificar_midia_recente, registrar_midia_usada
 
 UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
@@ -23,7 +23,7 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
     if tipo == "carousel":
         W, H = 2160, 1080
         orientation = "landscape"
-    elif tipo in ["story", "story_manha", "story_tarde", "reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite", "test"]:
+    elif tipo in ["story", "story_manha", "story_tarde", "reels", "reels_noite", "reels_conquistador", "pexels_story", "pexels_story_noite", "test", "reels_leads"]:
         W, H = 1080, 1920
         orientation = "portrait"
     else:
@@ -154,11 +154,11 @@ def _gerar_carrossel(img, W_full, H, dados):
     # Calcula o deslocamento do fundo (panning) para criar o efeito panorâmico contínuo
     step = (W_full - slide_W) / (num_slides - 1) if num_slides > 1 else 0
     
-    # Sorteia um estilo de fonte premium para o Carrossel
-    estilo_sorteado = random.choice(["Montserrat", "Oswald", "Inter", "Playfair"])
-    print(f"🎨 Usando estilo de fonte no Carrossel: {estilo_sorteado}")
+    # Usa a fonte do dia da semana (sistema de identidade visual diária)
+    estilo_sorteado = obter_fonte_do_dia()
+    print(f"🎨 Usando fonte do dia no Carrossel: {estilo_sorteado}")
     
-    # FIX: Fontes maiores para garantir legibilidade no carrossel 1080x1080 e fontes diversificadas
+    # Fontes maiores para garantir legibilidade no carrossel 1080x1080
     font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
     font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30, estilo=estilo_sorteado)[0]
     
@@ -209,9 +209,9 @@ def _gerar_reels(img, W, H, dados):
     caminhos = []
     frases = dados.get("slides", [dados.get("frase", "...")])
     
-    estilo_sorteado = random.choice(["Montserrat", "Oswald", "Inter", "Playfair"])
-    print(f"🎨 Usando estilo de fonte no Reels: {estilo_sorteado}")
-    font_display, font_body, font_marca = carregar_fontes(52, 22, 24, estilo=estilo_sorteado)
+    estilo_sorteado = obter_fonte_do_dia()
+    print(f"🎨 Usando fonte do dia no Reels: {estilo_sorteado}")
+    font_display, font_body, font_marca = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
     
     for idx, frase in enumerate(frases):
         slide = img.copy().convert("RGB")
@@ -237,12 +237,8 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
     layout_style = random.choice(["classic", "bottom", "quote"])
     print(f"🎨 Usando estilo de layout: {layout_style.upper()}")
     
-    if layout_style == "classic":
-        estilo_fonte = "Montserrat"
-    elif layout_style == "bottom":
-        estilo_fonte = "Oswald"
-    else:
-        estilo_fonte = "Playfair"
+    # Usa a fonte do dia independente do layout
+    estilo_fonte = obter_fonte_do_dia()
         
     font_display, _, font_marca = carregar_fontes(48, 24, 24, estilo=estilo_fonte)
     

@@ -50,15 +50,25 @@ def gerar_conteudo_gemini(tipo):
     else:
         # NOVO FLUXO: Ciclo sequencial diário
         recomendacoes_file = "analytics/dados/recomendacoes.json"
+        recomendacoes_semanais_file = "core/analytics/dados/recomendacoes_semanais.json"
         
-        # Lê o contexto do analytics cruzado (importante para o conteúdo das legendas)
+        # Lê o contexto do analytics cruzado (diário/múltiplos períodos)
         try:
             if os.path.exists(recomendacoes_file):
                 with open(recomendacoes_file, "r", encoding="utf-8") as f:
                     rec_cruzada = json.load(f)
-                contexto_analytics = rec_cruzada.get("contexto_para_gemini", "")
+                contexto_analytics += rec_cruzada.get("contexto_para_gemini", "") + "\n\n"
         except Exception as e:
             logger.warning(f"⚠️ Erro ao ler contexto do analytics cruzado: {e}")
+            
+        # Lê o contexto do analytics semanal (tendências)
+        try:
+            if os.path.exists(recomendacoes_semanais_file):
+                with open(recomendacoes_semanais_file, "r", encoding="utf-8") as f:
+                    rec_semanal = json.load(f)
+                contexto_analytics += rec_semanal.get("contexto_para_gemini", "") + "\n\n"
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao ler contexto do analytics semanal: {e}")
 
         # Se for o primeiro post do dia, rotaciona o tema sequencialmente
         if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
@@ -560,13 +570,17 @@ def gerar_conteudo_gemini(tipo):
 
         FASE 10 — OFERTA E CTA - Últimos Slides:
         Faça a oferta irresistível. É 100% gratuito.
-        O CTA FINAL DEVE SER EXATAMENTE (divida em 2 slides se necessário): "Comente 'MANUAL' aqui embaixo e eu vou te mandar no direct o link gratuito."
+        O CTA FINAL DEVE ENVIAR PARA O LINK DA BIO: Crie uma frase persuasiva (pode dividir em 2 slides) que direcione o usuário para clicar no link da Bio.
+        - Deixe EXTREMAMENTE claro que estará disponível "SÓ ESSA SEMANA".
+        - Deixe claro que o material é totalmente gratuito.
+        - Varie os termos (ex: baixe o manual, pegue seu guia, acesse o PDF, veja o material).
+        - Conecte a ação de baixar com o resultado/transformação que a pessoa quer ter.
 
         PEXELS QUERY: Escolha um clima visual cinematográfico. Ex: 'cinematic mysterious city', 'dark elegant texture'.
         
         LEGENDA:
-        - Máximo 3 linhas. Focada na urgência e no escassez (ex: não sei por quanto tempo vou deixar de graça).
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: "Comente MANUAL que eu envio no seu direct o acesso gratuito."
+        - Máximo 3 linhas. Focada na urgência e na escassez (ex: "só essa semana").
+        - CTA OBRIGATÓRIO NA LEGENDA: Crie uma frase chamando para acessar o Link na Bio (ex: "Link na bio só essa semana, vai lá garantir o seu antes que saia do ar").
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 25 a 35 frases curtas):

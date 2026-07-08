@@ -15,14 +15,23 @@ ESTILOS_COPY = [
 # GANCHOS NARRATIVOS (para abrir posts e vídeos)
 # ==========================================
 GANCHOS_NARRATIVOS = [
-    "Neurocientistas passaram anos estudando a procrastinação. O relatório final prova que a sua 'falta de força de vontade' é uma mentira. Entenda:",
-    "Em 1920, um experimento de psicologia revelou uma verdade desconfortável que explica exatamente por que você ainda não chegou onde queria:",
-    "Você não precisa de mais conselhos bonitos. Precisa de um choque de realidade. E o primeiro passo é parar de fingir que...",
-    "Tem maturidade suficiente para ler isto sem se ofender? O que você chama de 'esperar o momento certo' é apenas o seu medo de...",
+    # --- Segredo / Autoridade (Conexão direta com os métodos dos livros) ---
+    "Existe um método não ensinado nas escolas que as pessoas do topo usam. E ele funciona assim:",
+    "O que vou te mostrar agora foi retirado da rotina de pessoas que já chegaram onde você quer chegar. Preste atenção:",
+    "Você está perdendo anos da sua vida tentando resolver isso do jeito difícil. Existe um atalho prático que ninguém fala:",
     "O segredo que as pessoas que têm resultados guardam a sete chaves não é sobre trabalhar mais. É sobre algo muito mais simples:",
-    "A maior mentira que te contaram sobre produtividade e foco é que você precisa de disciplina. A verdade é muito mais dura:",
+    
+    # --- Quebra Absoluta / Aversão à Perda ---
+    "Nos próximos 30 segundos, eu vou te provar por que a sua estratégia atual está destruindo os seus resultados.",
+    "Se você continuar fazendo isso, vai olhar para trás daqui a 5 anos e se arrepender profundamente.",
+    "Pare o que está fazendo. Esse é o erro mais silencioso e destrutivo que você está cometendo todos os dias sem perceber:",
     "Leia isto com muito cuidado se você não aguenta mais ver outras pessoas avançando enquanto você sente que está parado no mesmo lugar:",
-    "A diferença entre quem constrói riqueza de verdade e quem apenas parece rico é um único hábito que a maioria ignora por puro orgulho:",
+    
+    # --- Polarização (Nós vs Eles) ---
+    "Apenas 1% das pessoas vai ter coragem de ouvir a verdade dolorosa que estou prestes a dizer. A maioria vai pular esse vídeo:",
+    "Enquanto a grande massa foca no que é bonito, quem tem resultados de verdade foca apenas neste único princípio:",
+    "A verdade nua e crua que a indústria esconde de você para continuar vendendo ilusões:",
+    "Tem maturidade suficiente para ler isto sem se ofender? O que você chama de 'esperar o momento certo' é apenas o seu medo de...",
 ]
 
 # ==========================================

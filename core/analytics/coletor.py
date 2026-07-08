@@ -12,7 +12,6 @@ load_dotenv()
 
 IG_ACCESS_TOKEN = os.getenv("IG_ACCESS_TOKEN")
 IG_ACCOUNT_ID = os.getenv("IG_ACCOUNT_ID")
-ESTADO_FILE = "estado.json"
 METRICAS_FILE = "analytics/dados/metricas.json"  # mantido como fallback local
 
 def carregar_metricas_local():

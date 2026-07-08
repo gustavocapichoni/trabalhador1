@@ -267,21 +267,6 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         published_id = res_publish_json['id']
         logger.success(f"🎉 REELS PUBLICADO! ID: {published_id}")
         
-        # Se for o Reels de Venda/Leads, posta o comentário logo em seguida
-        if tipo == "reels_leads":
-            logger.info("💬 Adicionando o primeiro comentário com o CTA do Manual...")
-            # O link ficará salvo no .env, se não existir, usa um genérico de aviso
-            link_manual = os.getenv("LINK_MANUAL_PRATICO", "https://seu-link-aqui.com/manual")
-            texto_comentario = f"Baixe o Manual Prático gratuitamente aqui:\\n👉 {link_manual}\\n\\n(Lembre-se de fixar este comentário no aplicativo do Instagram!)"
-            url_comment = f"https://graph.facebook.com/v19.0/{published_id}/comments"
-            payload_comment = {'message': texto_comentario, 'access_token': IG_ACCESS_TOKEN}
-            try:
-                res_comment = requests.post(url_comment, data=payload_comment, timeout=20)
-                if 'id' in res_comment.json():
-                    logger.success(f"✅ Comentário do Lead Magnet postado com sucesso! ID: {res_comment.json()['id']}")
-                else:
-                    logger.warning(f"⚠️ Falha ao postar comentário: {res_comment.json()}")
-            except Exception as e:
-                logger.error(f"❌ Erro na requisição do comentário: {e}")
+
 
         return published_id

@@ -3,7 +3,7 @@ import json
 from loguru import logger
 from core.analytics.db import get_db
 
-ESTADO_FILE = "estado.json"
+ESTADO_FILE = "estado_migrado.json"
 MIGRADO_FILE = "estado_migrado.json"
 DEFAULT_STATE = {"historico": [], "ultimos_temas": [], "ultimo_carousel": 3}
 
@@ -28,7 +28,7 @@ def carregar_estado():
         else:
             # Migração local -> nuvem
             if os.path.exists(ESTADO_FILE):
-                logger.info("Migrando estado.json local para o Firebase...")
+                logger.info("Migrando estado_migrado.json local para o Firebase...")
                 with open(ESTADO_FILE, "r", encoding="utf-8") as f:
                     local_state = json.load(f)
                 

@@ -6,19 +6,19 @@ import numpy as np
 import uuid
 from PIL import Image, ImageDraw, ImageFont
 from loguru import logger
+from core.design.templates import obter_fonte_do_dia
 from core.config.state import verificar_midia_recente, registrar_midia_usada
 
 def _carregar_fonte(tamanho=50, estilo=None):
     """Tenta carregar a fonte do projeto. Se falhar, usa a padrão do sistema."""
-    fontes_disponiveis = ["MontserratBold.ttf", "Montserrat.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
-    
     if estilo is None:
-        estilo = random.choice(fontes_disponiveis)
-    else:
-        # Se passar apenas o nome, adiciona .ttf
-        if not estilo.endswith(".ttf"):
-            estilo += ".ttf"
-            
+        estilo = obter_fonte_do_dia()
+    fontes_disponiveis = [estilo + ".ttf", "MontserratBold.ttf", "Montserrat.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
+    
+    # Garante que o nome da fonte tenha a extensão .ttf
+    if not estilo.endswith(".ttf"):
+        estilo += ".ttf"
+        
     caminhos = [
         f"fontes/{estilo}",
         "fontes/MontserratBold.ttf", # Fallback 1
@@ -61,6 +61,11 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None):
     draw = ImageDraw.Draw(img)
     w, h = img.size
 
+    # Adiciona marca d'água no topo
+    marca = "@conquistador.ai"
+    fonte_marca = _carregar_fonte(24, "Montserrat")
+    draw.text((20, 20), marca, font=fonte_marca, fill=(255, 255, 255, 150))
+
     margem_px = int(w * 0.075)
     largura_max_texto = w - (margem_px * 2)
 
@@ -80,21 +85,9 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None):
     padding_v = 20
 
     total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) + padding_v * 2
-    total_w = min(max(larguras) + padding_h * 2, w - margem_px * 2)
-
-    # Removido o overlay_draw.rounded_rectangle (caixa preta) para um visual mais limpo e premium
-    # overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    # overlay_draw = ImageDraw.Draw(overlay)
-    # bx0 = max((w - total_w) // 2, margem_px)
-    # by0 = (h - total_h) // 2
-    # bx1 = min(bx0 + total_w, w - margem_px)
-    # by1 = by0 + total_h
-    # overlay_draw.rounded_rectangle([bx0, by0, bx1, by1], radius=18, fill=(0, 0, 0, 160))
-    # img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
     
     # Apenas calculamos by0 para posicionar o texto
     by0 = (h - total_h) // 2
-    draw = ImageDraw.Draw(img)
 
     y = by0 + padding_v
     chars_drawn = 0
@@ -114,8 +107,9 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None):
         else:
             linha_render = linha
             
-        draw.text((x + 2, y + 2), linha_render, font=fonte, fill=(0, 0, 0, 200))
-        draw.text((x, y), linha_render, font=fonte, fill=(255, 255, 255))
+        # Efeito de contorno (stroke) mais estilo premium em vez de apenas sombra
+        draw.text((x + 3, y + 3), linha_render, font=fonte, fill=(0, 0, 0, 150)) # Sombra suave
+        draw.text((x, y), linha_render, font=fonte, fill=(255, 255, 255), stroke_width=2, stroke_fill=(0, 0, 0)) # Contorno forte
         y += alt + espaco_entre
 
     return np.array(img)
@@ -124,6 +118,12 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None):
 def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None):
     """Desenha o CTA final com visual dourado e destacado — maior impacto visual."""
     img = Image.fromarray(frame_array)
+
+    # Adiciona marca d'água no topo
+    marca = "@conquistador.ai"
+    fonte_marca = _carregar_fonte(24, "Montserrat")
+    draw_marca = ImageDraw.Draw(img)
+    draw_marca.text((20, 20), marca, font=fonte_marca, fill=(255, 255, 255, 150))
 
     # Escurece levemente o fundo para o CTA se destacar mais
     escurece = Image.new("RGBA", img.size, (0, 0, 0, 120))
@@ -376,17 +376,13 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             duracao = min(clip.duration, 15)
             clip = clip.subclip(0, duracao)
         
-        # Sorteia uma fonte premium para este vídeo inteiro
-        fontes_premium = ["MontserratBold.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
-        estilo_sorteado = random.choice(fontes_premium)
-        logger.info(f"✨ Fonte sorteada para o vídeo: {estilo_sorteado}")
+        # Usa a fonte do dia da semana (identidade visual unificada)
+        estilo_do_dia = obter_fonte_do_dia()
+        logger.info(f"✨ Fonte do dia para o vídeo: {estilo_do_dia}")
         
-        # FIX: Fonte reduzida de 52 para 42px — evita que frases longas ocupem
-        # a tela inteira. A quebra de linha já funciona por pixels, mas o
-        # tamanho da fonte determinava o tamanho final de cada linha.
-        # Aumentada a fonte para 60px para melhor presença e impacto
-        fonte_normal = _carregar_fonte(tamanho=60, estilo=estilo_sorteado)
-        fonte_cta    = _carregar_fonte(tamanho=72, estilo=estilo_sorteado)  # CTA um pouco maior que o texto normal
+        # Tamanhos iguais ao Reels de imagem (86px texto, 72px CTA)
+        fonte_normal = _carregar_fonte(tamanho=86, estilo=estilo_do_dia)
+        fonte_cta    = _carregar_fonte(tamanho=72, estilo=estilo_do_dia)
 
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")

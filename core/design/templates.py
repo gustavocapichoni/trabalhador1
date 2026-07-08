@@ -1,6 +1,7 @@
 import os
 import urllib.request
 from PIL import ImageFont
+from datetime import datetime, timezone
 
 # URLs alternativas por fonte (tenta cada uma em ordem até conseguir)
 _FONTES_URLS = {
@@ -8,18 +9,51 @@ _FONTES_URLS = {
         "https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/static/Oswald-Bold.ttf",
     ],
     "Inter": [
+        "https://raw.githubusercontent.com/rsms/inter/master/docs/font/Inter-Bold.ttf",
         "https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2",
-        "https://raw.githubusercontent.com/rsms/inter/master/docs/font/Inter-Bold.ttf"
     ],
     "Playfair": [
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
         "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/static/PlayfairDisplay-Bold.ttf",
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/PlayfairDisplay%5Bwght%5D.ttf",
     ],
     "Montserrat": [
         "https://raw.githubusercontent.com/JulietaUla/Montserrat/master/fonts/ttf/Montserrat-Bold.ttf",
         "https://raw.githubusercontent.com/google/fonts/main/ofl/montserrat/static/Montserrat-Bold.ttf",
     ],
+    # --- Novas fontes modernas ---
+    "BebasNeue": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/bebasneue/BebasNeue-Regular.ttf",
+    ],
+    "Raleway": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/Raleway%5Bwght%5D.ttf",
+    ],
+    "Exo2": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/exo2/Exo2%5Bwght%5D.ttf",
+    ],
+    "Righteous": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/righteous/Righteous-Regular.ttf",
+    ],
 }
+
+# ==========================================
+# FONTE POR DIA DA SEMANA (0=Segunda ... 6=Domingo)
+# ==========================================
+FONTE_POR_DIA = {
+    0: "BebasNeue",   # Segunda — Cinematográfico, impactante
+    1: "Oswald",      # Terça   — Forte, compacto e agressivo
+    2: "Raleway",     # Quarta  — Elegante e sofisticado
+    3: "Exo2",        # Quinta  — Futurista, tecnológico
+    4: "Montserrat",  # Sexta   — Versátil e premium
+    5: "Playfair",    # Sábado  — Editorial de luxo
+    6: "Righteous",   # Domingo — Vibrante e humano
+}
+
+def obter_fonte_do_dia():
+    """Retorna o nome da fonte programada para o dia de hoje."""
+    dia = datetime.now(timezone.utc).weekday()
+    fonte = FONTE_POR_DIA.get(dia, "Montserrat")
+    print(f"[FONTE] Fonte do dia ({['Seg','Ter','Qua','Qui','Sex','Sab','Dom'][dia]}): {fonte}")
+    return fonte
 
 def garantir_fontes():
     """Baixa e garante as fontes Premium na pasta, tentando múltiplas URLs."""
@@ -48,11 +82,15 @@ def garantir_fontes():
 
     return caminhos
 
-def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo="Montserrat"):
-    """Retorna os objetos ImageFont com os tamanhos corretos, baseados no estilo escolhido."""
+def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo=None):
+    """Retorna os objetos ImageFont com os tamanhos corretos.
+    Se estilo=None, usa automaticamente a fonte do dia da semana."""
+    if estilo is None:
+        estilo = obter_fonte_do_dia()
+
     caminhos = garantir_fontes()
     f_principal = caminhos.get(estilo) or caminhos.get("Montserrat") or "arial.ttf"
-    f_body = caminhos.get("Inter") or caminhos.get("Montserrat") or "arial.ttf"
+    f_body = caminhos.get("Montserrat") or caminhos.get("Inter") or "arial.ttf"
     
     try:
         font_display = ImageFont.truetype(f_principal, tamanho_display)
@@ -75,7 +113,8 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo="Mont
 CORES = {
     "texto_principal": (255, 255, 255),    # Branco Neve
     "texto_secundario": (180, 175, 170),   # Cinza Quente / Prata
-    "destaque": (212, 175, 55),            # Dourado Champagne (Premium)
-    "fundo_tint": (15, 18, 25),            # Deep Charcoal (Preto/Azul Profundo) para filtros
+    "destaque": (235, 160, 40),            # Dourado Brilhante / Âmbar Metálico (Premium)
+    "fundo_tint_inicio": (110, 15, 20),    # Vermelho Borgonha / Vinho para início do filtro
+    "fundo_tint_fim": (15, 10, 10),        # Preto / Grafite Profundo para fim do filtro
     "sombra": (0, 0, 0, 200)               # Preto difuso para legibilidade
 }

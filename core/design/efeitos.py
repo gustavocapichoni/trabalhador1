@@ -9,17 +9,25 @@ def aplicar_mesh_gradient(img):
     overlay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
     
-    r, g, b = CORES["fundo_tint"]
+    r_ini, g_ini, b_ini = CORES["fundo_tint_inicio"]
+    r_fim, g_fim, b_fim = CORES["fundo_tint_fim"]
     
     # Degradê
     for y in range(H):
+        # Interpolação linear da cor
+        ratio = y / H
+        r = int(r_ini + (r_fim - r_ini) * ratio)
+        g = int(g_ini + (g_fim - g_ini) * ratio)
+        b = int(b_ini + (b_fim - b_ini) * ratio)
+        
+        # Opacidade (Alpha) inteligente para legibilidade
         if y < H * 0.3:
-            alpha = 60
+            alpha = 85
         elif y < H * 0.7:
             progress = (y - H * 0.3) / (H * 0.4)
-            alpha = int(60 + progress * 130)
+            alpha = int(85 + progress * 110)
         else:
-            alpha = 190
+            alpha = 195
             
         draw.line([(0, y), (W, y)], fill=(r, g, b, alpha))
         

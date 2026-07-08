@@ -28,7 +28,7 @@ def analisar_semana():
     sete_dias_atras = datetime.now(timezone.utc) - timedelta(days=7)
     posts_semana = {}
     for post_id, dados_post in posts.items():
-        data_str = dados_post.get("info_post", {}).get("data_postagem", "")
+        data_str = dados_post.get("info_post", {}).get("data", "")
         if data_str:
             try:
                 data_post = datetime.fromisoformat(data_str.replace("Z", "+00:00"))
@@ -64,7 +64,7 @@ def analisar_semana():
         tema = info.get("tema", "desconhecido")
         formato = info.get("tipo", "desconhecido")
         estilo = info.get("estilo_copy", "desconhecido")
-        data_str = info.get("data_postagem", "")
+        data_str = info.get("data", "")
 
         likes = mets.get("likes", 0)
         comments = mets.get("comments", 0)

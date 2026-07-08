@@ -156,7 +156,7 @@ def main():
         frase_visual = ""
         if args.type == "carousel":
             frase_visual = conteudo.get("titulo", "")
-        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador"]:
+        elif args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"]:
             slides = conteudo.get('slides', [])
             frase_visual = " | ".join(slides) if isinstance(slides, list) else str(slides)
         else:
@@ -180,6 +180,7 @@ def main():
             "reels_noite": "Reels noturno com arco narrativo publicado com sucesso!",
             "pexels_story_noite": "Pexels Story da noite publicado com sucesso!",
             "reels_conquistador": "Reels Conquistador no ar! Público em expansão às 22h!",
+            "reels_leads": "Lead Magnet Reels publicado! O funil de vendas está ativo!",
             "test": "Ambiente de automação testado com sucesso!"
         }
         
