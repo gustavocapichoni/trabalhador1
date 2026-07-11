@@ -28,10 +28,23 @@ REPOSITORIO_PDFS = os.path.join(os.path.dirname(__file__), "repositorio_pdfs")
 def _inicializar_firebase():
     """Inicializa o Firebase Admin SDK para usar apenas o Firestore."""
     if not firebase_admin._apps:
-        chave_path = os.getenv("FIREBASE_KEY_PATH", os.path.join(BOT_PATH, "firebase-key.json"))
-        cred = credentials.Certificate(chave_path)
+        firebase_creds_str = os.getenv("FIREBASE_CREDENTIALS")
+        
+        if firebase_creds_str:
+            # Se estiver rodando na nuvem (GitHub Actions)
+            import json
+            if firebase_creds_str.startswith("'") and firebase_creds_str.endswith("'"):
+                firebase_creds_str = firebase_creds_str[1:-1]
+            cred_dict = json.loads(firebase_creds_str)
+            cred = credentials.Certificate(cred_dict)
+            print("✅ [Uploader] Firebase Firestore inicializado via Secrets do GitHub.")
+        else:
+            # Se estiver rodando localmente
+            chave_path = os.getenv("FIREBASE_KEY_PATH", os.path.join(BOT_PATH, "firebase-key.json"))
+            cred = credentials.Certificate(chave_path)
+            print("✅ [Uploader] Firebase Firestore inicializado via arquivo local.")
+            
         firebase_admin.initialize_app(cred)
-        print("✅ [Uploader] Firebase Firestore inicializado com sucesso.")
 
 
 def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
