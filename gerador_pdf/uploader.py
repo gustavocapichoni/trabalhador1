@@ -52,6 +52,8 @@ def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
     
     try:
         # 2. Executa os comandos do git dentro da pasta repositorio_pdfs
+        subprocess.run(["git", "config", "--local", "user.email", "github-actions[bot]@users.noreply.github.com"], cwd=REPOSITORIO_PDFS, check=True)
+        subprocess.run(["git", "config", "--local", "user.name", "github-actions[bot]"], cwd=REPOSITORIO_PDFS, check=True)
         subprocess.run(["git", "add", nome_no_git], cwd=REPOSITORIO_PDFS, check=True)
         subprocess.run(["git", "commit", "-m", f"Adiciona PDF da semana {semana_str}: {titulo_pdf}"], cwd=REPOSITORIO_PDFS, check=True)
         # Tenta criar a branch main e dar push (importante se for repositório vazio)
