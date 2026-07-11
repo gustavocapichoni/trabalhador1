@@ -1,0 +1,137 @@
+import random
+
+# =====================================================================
+# BIBLIOTECA DE ELEMENTOS CINEMATOGRÁFICOS (Baseada na sua sugestão)
+# =====================================================================
+
+CENARIOS = [
+    "ancient stone temple", "massive library with high ceilings", "abandoned medieval castle",
+    "serene sunlit desert", "mystical ancient forest", "futuristic cyberpunk city skyline",
+    "secluded mountaintop monastery", "grand cathedral with stained glass", "ancient roman ruins",
+    "suspension bridge over foggy canyon", "vast open ocean", "coastal cliff side",
+    "deep cavern with glowing crystals", "green sunlit valley", "golden wheat field under sun",
+    "pristine snow plains", "zen japanese garden with bonsai", "state of the art modern laboratory",
+    "luxurious executive office", "empty subway station", "old vintage railway station"
+]
+
+PERSONAGENS = [
+    "old wise monk", "wanderer traveler", "child looking up", "focused writer at work",
+    "thoughtful philosopher", "archaeologist inspecting artifact", "creative artist painting",
+    "loving couple walking", "elderly woman smiling", "elegant man in suit",
+    "scientist looking at device", "carpenter working wood", "sculptor chisel in hand",
+    "painter at easel", "explorer holding map", "musician holding instrument",
+    "teacher explaining", "pilot in thought", "photographer taking picture"
+]
+
+OBJETOS = [
+    "ancient leather book", "vintage pocket watch", "old brass compass", "glowing wax candle",
+    "antique hand mirror", "writing quill and ink", "single white rose", "glowing golden key",
+    "glass hourglass", "partially open wooden door", "old stone bridge", "wooden ladder going up",
+    "large glass window", "ornate crown on table", "ancient sword", "majestic old oak tree",
+    "winding river flow", "old brass lantern", "small wooden boat", "classic wooden violin"
+]
+
+CLIMAS = [
+    "light mist", "gentle rain", "dramatic storm clouds", "crystal clear blue sky",
+    "falling snow flakes", "soft wind blowing", "bright golden dawn sunrise",
+    "warm glowing sunset", "glowing full moon", "starry night sky"
+]
+
+ENQUADRAMENTOS = [
+    "Close-up shot of", "Medium shot of", "Wide angle shot of", "Aerial view of",
+    "Low angle view of", "High angle view of", "Macro shot of", "Silhouette shot of"
+]
+
+ESTILOS = [
+    "cinematic lighting", "soft volumetric light", "HDR", "editorial photography",
+    "ultra realistic", "shot on Sony A7R V", "35mm lens", "anamorphic style", "warm color palette"
+]
+
+# =====================================================================
+# MAPEAMENTO DE SÍMBOLOS POR TEMA
+# =====================================================================
+TEMAS_SIMBOLOS = {
+    "espiritualidade": {
+        "personagens": ["old wise monk", "wanderer traveler", "child looking up"],
+        "objetos": ["glowing wax candle", "single white rose", "old brass lantern", "wooden ladder going up"],
+        "cenarios": ["secluded mountaintop monastery", "grand cathedral with stained glass", "ancient stone temple", "zen japanese garden with bonsai"]
+    },
+    "filosofia": {
+        "personagens": ["thoughtful philosopher", "focused writer at work", "old wise monk"],
+        "objetos": ["ancient leather book", "glass hourglass", "writing quill and ink"],
+        "cenarios": ["massive library with high ceilings", "ancient roman ruins", "secluded mountaintop monastery"]
+    },
+    "psicologia": {
+        "personagens": ["thoughtful philosopher", "focused writer at work", "scientist looking at device"],
+        "objetos": ["antique hand mirror", "glass hourglass", "partially open wooden door", "large glass window"],
+        "cenarios": ["massive library with high ceilings", "serene sunlit desert", "zen japanese garden with bonsai"]
+    },
+    "financas": {
+        "personagens": ["elegant man in suit", "focused writer at work", "scientist looking at device"],
+        "objetos": ["vintage pocket watch", "glowing golden key", "large glass window"],
+        "cenarios": ["luxurious executive office", "state of the art modern laboratory", "futuristic cyberpunk city skyline"]
+    },
+    "liberdade": {
+        "personagens": ["wanderer traveler", "explorer holding map", "photographer taking picture"],
+        "objetos": ["old brass compass", "small wooden boat", "glowing golden key"],
+        "cenarios": ["vast open ocean", "coastal cliff side", "green sunlit valley", "suspension bridge over foggy canyon", "old vintage railway station"]
+    },
+    "conexoes": {
+        "personagens": ["loving couple walking", "elderly woman smiling", "child looking up"],
+        "objetos": ["single white rose", "classic wooden violin", "glowing wax candle"],
+        "cenarios": ["zen japanese garden with bonsai", "cozy warm room", "green sunlit valley"]
+    },
+    "superacao": {
+        "personagens": ["carpenter working wood", "sculptor chisel in hand", "wanderer traveler"],
+        "objetos": ["ancient sword", "old brass lantern", "old stone bridge"],
+        "cenarios": ["abandoned medieval castle", "pristine snow plains", "deep cavern with glowing crystals", "coastal cliff side"]
+    },
+    "proposito": {
+        "personagens": ["creative artist painting", "painter at easel", "musician holding instrument", "focused writer at work"],
+        "objetos": ["old brass compass", "majestic old oak tree", "glowing golden key", "writing quill and ink"],
+        "cenarios": ["green sunlit valley", "massive library with high ceilings", "secluded mountaintop monastery"]
+    }
+}
+
+def gerar_prompt_cinematografico(tema: str) -> str:
+    """
+    Gera um prompt de imagem em inglês combinando proceduralmente enquadramento,
+    personagem, cenário, objeto, clima e estilo visual baseados no tema.
+    """
+    tema = tema.lower()
+    
+    # Fallback se o tema não estiver mapeado
+    if tema not in TEMAS_SIMBOLOS:
+        tema = "espiritualidade"
+        
+    simbolos = TEMAS_SIMBOLOS[tema]
+    
+    # Sorteio dos elementos correspondentes ao tema
+    personagem = random.choice(simbolos["personagens"])
+    objeto = random.choice(simbolos["objetos"])
+    cenario = random.choice(simbolos["cenarios"])
+    
+    # Sorteio dos elementos gerais para mistura
+    enquadramento = random.choice(ENQUADRAMENTOS)
+    clima = random.choice(CLIMAS)
+    
+    # Sorteia 2 a 3 estilos para riqueza de detalhes
+    estilos_escolhidos = random.sample(ESTILOS, k=random.randint(2, 3))
+    estilo_str = ", ".join(estilos_escolhidos)
+    
+    # Ajuste de pré-posição para o enquadramento fluir melhor em inglês
+    # Ex: "Close-up shot of a old wise monk with a ancient leather book..."
+    art_pers = "an" if personagem[0] in "aeiou" else "a"
+    art_obj = "an" if objeto[0] in "aeiou" else "a"
+    
+    prompt = (
+        f"{enquadramento} {art_pers} {personagem} interacting with {art_obj} {objeto}, "
+        f"inside {cenario}, {clima}, {estilo_str}"
+    )
+    
+    return prompt
+
+if __name__ == "__main__":
+    # Teste rápido de geração
+    for t in TEMAS_SIMBOLOS.keys():
+        print(f"[{t.upper()}]: {gerar_prompt_cinematografico(t)}\n")

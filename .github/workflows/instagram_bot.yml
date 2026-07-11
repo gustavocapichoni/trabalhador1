@@ -18,8 +18,13 @@ on:
           - pexels_story_noite
           - reels_conquistador
           - reels_leads
+          - gerador_pdf
           - analytics
           - weekly_report
+          - mensal
+          - trimestral
+          - semestral
+          - anual
           - test
 
 
@@ -33,6 +38,13 @@ jobs:
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
+
+      - name: Checkout do Repositório de PDFs (gustavo_8k)
+        uses: actions/checkout@v4
+        with:
+          repository: gustavocapichoni/gustavo_8k
+          token: ${{ secrets.GH_PAT_PDF_UPLOAD }}
+          path: gerador_pdf/repositorio_pdfs
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -61,7 +73,11 @@ jobs:
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
           GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
@@ -69,6 +85,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python rodar_via_cron.py
 
       - name: Executar Bot (Manual)
@@ -79,7 +96,11 @@ jobs:
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
           GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
           GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
@@ -87,6 +108,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python rodar_via_cron.py --manual ${{ github.event.inputs.tipo_post }}
 
       - name: Salvar Estado do Bot
@@ -94,7 +116,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add estado_migrado.json analytics/dados/ || true
+          git add estado_migrado.json analytics/dados/ gerador_pdf/output/ultimo_conteudo.json || true
           git diff --quiet && git diff --staged --quiet || git commit -m "chore: atualizar estado.json [skip ci]"
           git pull --rebase origin main || true
           git push

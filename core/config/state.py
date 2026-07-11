@@ -24,18 +24,21 @@ def carregar_estado():
         doc_ref = db.collection("bot_config").document("app_state")
         doc = doc_ref.get()
         if doc.exists:
-            return doc.to_dict()
+            # Sincroniza estado da nuvem para o local para manter relatórios atualizados
+            local_state = doc.to_dict()
+            with open(ESTADO_FILE, "w", encoding="utf-8") as f:
+                json.dump(local_state, f, indent=4, ensure_ascii=False)
+            return local_state
         else:
-            # Migração local -> nuvem
+            # Migração local -> nuvem (Se a nuvem estiver vazia)
             if os.path.exists(ESTADO_FILE):
-                logger.info("Migrando estado_migrado.json local para o Firebase...")
+                logger.info("Enviando estado_migrado.json local para o Firebase pela primeira vez...")
                 with open(ESTADO_FILE, "r", encoding="utf-8") as f:
                     local_state = json.load(f)
                 
                 # Faz o save no firebase
                 doc_ref.set(local_state, merge=True)
-                os.rename(ESTADO_FILE, MIGRADO_FILE)
-                logger.success("Migração do estado concluída com sucesso!")
+                logger.success("Primeira sincronização com Firebase concluída!")
                 return local_state
             
             return DEFAULT_STATE.copy()
@@ -46,26 +49,25 @@ def carregar_estado():
         if os.path.exists(ESTADO_FILE):
              with open(ESTADO_FILE, "r", encoding="utf-8") as f:
                   return json.load(f)
-        elif os.path.exists(MIGRADO_FILE):
-             with open(MIGRADO_FILE, "r", encoding="utf-8") as f:
-                  return json.load(f)
         return DEFAULT_STATE.copy()
 
 def salvar_estado(estado):
     db = get_db()
-    if not db:
-        try:
-            with open(ESTADO_FILE, "w", encoding="utf-8") as f:
-                json.dump(estado, f, indent=4, ensure_ascii=False)
-        except Exception as e:
-            logger.warning(f"Erro ao salvar {ESTADO_FILE}: {e}")
-        return
-
+    
+    # SALVA SEMPRE LOCALMENTE (Porque os relatórios no GitHub Actions dependem disso)
     try:
-        doc_ref = db.collection("bot_config").document("app_state")
-        doc_ref.set(estado, merge=True)
+        with open(ESTADO_FILE, "w", encoding="utf-8") as f:
+            json.dump(estado, f, indent=4, ensure_ascii=False)
     except Exception as e:
-        logger.error(f"Erro ao salvar estado no Firebase: {e}")
+        logger.warning(f"Erro ao salvar {ESTADO_FILE}: {e}")
+
+    # SALVA NO FIREBASE (Backup em nuvem e proteção contra concorrência)
+    if db:
+        try:
+            doc_ref = db.collection("bot_config").document("app_state")
+            doc_ref.set(estado, merge=True)
+        except Exception as e:
+            logger.error(f"Erro ao salvar estado no Firebase: {e}")
 
 def verificar_midia_recente(midia_id):
     """Verifica se uma mídia (URL ou ID) foi usada recentemente (últimas 15 postagens)."""

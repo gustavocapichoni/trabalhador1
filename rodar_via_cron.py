@@ -19,24 +19,34 @@ def rodar_agora():
     if hora == 4:
         print("🚀 Executando: Analytics Diário")
         subprocess.run(["python", "core/analytics/rodar_analytics.py"])
+        
+        if dia_semana == 6:  # Domingo
+            print("🚀 [DOMINGO] Executando: Fechamento Semanal, Relatório")
+            subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
+            subprocess.run(["python", "core/reports/weekly.py"])
+
+    elif hora == 5:
+        if dia_semana == 6:  # Domingo
+            print("🚀 [DOMINGO] Executando: Geração do PDF da Semana")
+            # Roda o gerador de PDF
+            subprocess.run(["python", "gerador_pdf/gerador.py"])
 
     elif hora == 6:
-        print("🚀 Executando: Reels e Story da Manhã")
-        subprocess.run(["python", "main.py", "--type", "reels"])
-        time.sleep(10)
-        subprocess.run(["python", "main.py", "--type", "story_manha"])
+        if dia_semana == 6:  # Domingo
+            print("🚀 [DOMINGO] Executando: Reels Leads (Captura de Leads com base no PDF gerado às 4h)")
+            subprocess.run(["python", "main.py", "--type", "reels_leads"])
+        else:
+            print("🚀 Executando: Reels e Story da Manhã")
+            subprocess.run(["python", "main.py", "--type", "reels"])
+            time.sleep(10)
+            subprocess.run(["python", "main.py", "--type", "story_manha"])
 
     elif hora == 7:
-        if dia_semana == 0:
-            print("🚀 Executando: Analytics Semanal")
-            subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
         print("🚀 Executando: Pexels Story")
         subprocess.run(["python", "main.py", "--type", "pexels_story"])
 
     elif hora == 8:
-        if dia_semana == 0:
-            print("🚀 Executando: Relatório Semanal")
-            subprocess.run(["python", "core/reports/weekly.py"])
+        print("💤 Nenhuma tarefa específica agendada para as 8:00 BRT.")
 
     elif hora == 9:
         print("🚀 Executando: Carousel")
@@ -72,13 +82,19 @@ if __name__ == "__main__":
             print("🚀 Executando manualmente: Analytics Diário")
             subprocess.run(["python", "core/analytics/rodar_analytics.py"])
         elif tipo == "weekly_report":
-            print("🚀 Executando manualmente: Relatório Semanal")
+            print("Executando manualmente: Relatorio Semanal")
             subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
             subprocess.run(["python", "core/reports/weekly.py"])
+        elif tipo in ("mensal", "trimestral", "semestral", "anual"):
+            print(f"Executando manualmente: Relatorio {tipo.upper()}")
+            subprocess.run(["python", "core/reports/periodic.py", tipo])
+        elif tipo == "gerador_pdf":
+            print("🚀 Executando manualmente: Gerador de PDF Semanal")
+            subprocess.run(["python", "gerador_pdf/gerador.py"])
         elif tipo:
-            print(f"🚀 Executando manualmente: {tipo}")
+            print(f"Executando manualmente: {tipo}")
             subprocess.run(["python", "main.py", "--type", tipo])
         else:
-            print("⚠️ Tipo de post não especificado para execução manual.")
+            print("Tipo de post nao especificado para execucao manual.")
     else:
         rodar_agora()

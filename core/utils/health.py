@@ -17,7 +17,7 @@ def verificar_health():
     # 2. Verifica Espaço em Disco (mínimo 1GB para geração de vídeos pesados)
     # Pega o caminho do diretório atual
     caminho = os.getcwd()
-    total, used, free = shutil.disk_usage(caminho)
+    _, _, free = shutil.disk_usage(caminho)
     free_gb = free / (1024 ** 3)
     
     if free_gb < 1.0:

@@ -1,0 +1,85 @@
+name: Gerador de PDF Semanal
+
+on:
+  # Roda todo domingo às 03:00 UTC (meia-noite no horário de Brasília)
+  # Depois que o ajustador.py já processou os dados da semana
+  schedule:
+    - cron: '0 3 * * 0'
+
+  # Permite rodar manualmente para testar
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry Run (gera o PDF mas NÃO sobe para o Firebase)?'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  gerar-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório do Bot
+        uses: actions/checkout@v4
+        with:
+          path: my-bot-instagram-main
+
+      - name: Checkout do Repositório do Gerador de PDF
+        uses: actions/checkout@v4
+        with:
+          repository: gustavocapichoni/gerador_pdf
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: gerador_pdf
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Instalar Dependências do Gerador de PDF
+        run: |
+          cd gerador_pdf
+          pip install -r requirements.txt
+
+      - name: Criar arquivo de Credenciais do Firebase
+        env:
+          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
+        run: |
+          echo "$FIREBASE_CREDENTIALS" > my-bot-instagram-main/firebase-key.json
+
+      - name: Rodar o Gerador de PDF (Agendado)
+        if: github.event_name == 'schedule'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_1 }}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          cd gerador_pdf
+          python gerador.py
+
+      - name: Rodar o Gerador de PDF (Manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY_1 }}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          cd gerador_pdf
+          if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+            python gerador.py --dry-run
+          else
+            python gerador.py
+          fi
+
+      - name: Salvar PDF gerado como Artefato (para download e verificação)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-da-semana
+          path: gerador_pdf/output/*.pdf
+          retention-days: 30

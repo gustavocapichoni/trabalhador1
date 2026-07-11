@@ -2,8 +2,8 @@ import os
 import json
 from datetime import datetime, timezone, timedelta
 
-METRICAS_FILE = "core/analytics/dados/metricas.json"
-RECOMENDACOES_SEMANAIS_FILE = "core/analytics/dados/recomendacoes_semanais.json"
+METRICAS_FILE = "analytics/dados/metricas.json"
+RECOMENDACOES_SEMANAIS_FILE = "analytics/dados/recomendacoes_semanais.json"
 
 def analisar_semana():
     """
@@ -53,6 +53,7 @@ def analisar_semana():
     formatos = {}
     estilos = {}
     horarios = {}  # hora do dia → performance
+    dias_semana = {} # dia da semana → performance
     total_reach = 0
     total_saves = 0
     total_comments = 0
@@ -87,16 +88,29 @@ def analisar_semana():
                 bucket[key]["saves"] += saved
                 bucket[key]["reach"] += reach
 
-        # Horário de melhor performance
+        # Horário e Dia de melhor performance
         if data_str:
             try:
-                hora = datetime.fromisoformat(data_str.replace("Z", "+00:00")).hour
+                dt_obj = datetime.fromisoformat(data_str.replace("Z", "+00:00"))
+                hora = dt_obj.hour
+                dia_idx = dt_obj.weekday() # 0 = Segunda, 6 = Domingo
+                
+                # Mapeamento para nomes em português
+                nomes_dias = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+                dia_nome = nomes_dias[dia_idx]
+
                 if hora not in horarios:
                     horarios[hora] = {"score": 0, "count": 0}
                 horarios[hora]["score"] += score
                 horarios[hora]["count"] += 1
+
+                if dia_nome not in dias_semana:
+                    dias_semana[dia_nome] = {"score": 0, "count": 0}
+                dias_semana[dia_nome]["score"] += score
+                dias_semana[dia_nome]["count"] += 1
             except Exception:
                 pass
+
 
     # ==========================================
     # RANKINGS
@@ -114,12 +128,17 @@ def analisar_semana():
         [(h, v["score"] / v["count"]) for h, v in horarios.items() if v["count"] > 0],
         key=lambda x: x[1], reverse=True
     )
+    rank_dias = sorted(
+        [(d, v["score"] / v["count"]) for d, v in dias_semana.items() if v["count"] > 0],
+        key=lambda x: x[1], reverse=True
+    )
 
     melhor_tema = rank_temas[0][0] if rank_temas else None
     pior_tema = rank_temas[-1][0] if len(rank_temas) > 1 else None
     melhor_formato = rank_formatos[0][0] if rank_formatos else None
     melhor_estilo = rank_estilos[0][0] if rank_estilos else None
     melhor_horario = rank_horarios[0][0] if rank_horarios else None
+    melhor_dia = rank_dias[0][0] if rank_dias else None
 
     # ==========================================
     # CONTEXTO ESTRATÉGICO PARA O GEMINI
@@ -148,6 +167,9 @@ def analisar_semana():
 
     if melhor_horario is not None:
         contexto += f"- Horário de pico de engajamento: {melhor_horario}h.\n"
+
+    if melhor_dia is not None:
+        contexto += f"- Melhor dia da semana para engajamento: {melhor_dia}.\n"
 
     contexto += (
         "\nINSTRUÇÃO ESTRATÉGICA: Com base nesses 7 dias de dados reais, "

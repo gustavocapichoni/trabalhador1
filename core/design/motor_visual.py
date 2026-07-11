@@ -171,11 +171,57 @@ def _gerar_carrossel(img, W_full, H, dados):
         slide_img = slide_bg.convert("RGB")
         draw = ImageDraw.Draw(slide_img)
         
+def desenhar_marca_dagua_ouro(draw, posicao, texto, fonte):
+    """Desenha a assinatura da marca com efeito glow dourado imitando o logo original."""
+    x, y = posicao
+    # Efeito de brilho dourado translúcido por trás (glow)
+    cor_brilho = (235, 160, 40, 50)
+    for ox in [-2, -1, 0, 1, 2]:
+        for oy in [-2, -1, 0, 1, 2]:
+            if ox != 0 or oy != 0:
+                draw.text((x + ox, y + oy), texto, font=fonte, fill=cor_brilho, anchor="ms")
+                
+    # Sombra preta para dar leitura e contraste
+    draw.text((x + 2, y + 2), texto, font=fonte, fill=(0, 0, 0, 220), anchor="ms")
+    
+    # Texto principal em Dourado Ouro Metálico
+    cor_ouro = (250, 185, 55)
+    draw.text((x, y), texto, font=fonte, fill=cor_ouro, anchor="ms")
+
+def _gerar_carrossel(img, W_full, H, dados):
+    caminhos_arquivos = []
+    slides_conteudo = [dados["titulo"]] + dados["slides"] + ["CTA"]
+    
+    # Tamanho de cada slide
+    slide_W, slide_H = 1080, 1080
+    num_slides = len(slides_conteudo)
+    
+    # Calcula o deslocamento do fundo (panning) para criar o efeito panorâmico contínuo
+    step = (W_full - slide_W) / (num_slides - 1) if num_slides > 1 else 0
+    
+    # Usa a fonte do dia da semana (sistema de identidade visual diária)
+    estilo_sorteado = obter_fonte_do_dia()
+    print(f"🎨 Usando fonte do dia no Carrossel: {estilo_sorteado}")
+    
+    # Fontes maiores para garantir legibilidade no carrossel 1080x1080
+    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
+    font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30, estilo=estilo_sorteado)[0]
+    
+    for idx, texto in enumerate(slides_conteudo):
+        x_offset = int(idx * step)
+        
+        # Recorta a porção do fundo exata para este slide (Rampa de Deslizamento)
+        slide_bg = img.crop((x_offset, 0, x_offset + slide_W, slide_H))
+        
+        slide_img = slide_bg.convert("RGB")
+        draw = ImageDraw.Draw(slide_img)
+        
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, slide_W, slide_H)
         
-        # Marca d'água
-        draw_text_with_shadow(draw, (slide_W/2, slide_H - 80), "@gustavo_8k_", font_marca, fill=CORES["destaque"], anchor="ms")
+        # Marca d'água com a fonte do logo em Dourado Ouro e Caixa Alta (tamanho reduzido em 40%)
+        font_marca_serif, _, _ = carregar_fontes(50, 72, 26, estilo="Playfair")
+        desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 80), "GUSTAVO_8K_", font_marca_serif)
         
         if idx == 0:  # Capa (Playfair Display)
             # FIX: width menor = menos chars por linha = texto maior e mais legível
@@ -187,11 +233,10 @@ def _gerar_carrossel(img, W_full, H, dados):
             
         elif texto == "CTA":  # Slide Final
             draw.line([(slide_W*0.15, slide_H*0.35), (slide_W*0.85, slide_H*0.35)], fill=CORES["destaque"], width=2)
-            linhas_cta = ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!", "", "@gustavo_8k_"]
+            linhas_cta = ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!"]
             y_inicial = slide_H * 0.38
             for i, linha in enumerate(linhas_cta):
-                cor = CORES["destaque"] if "@" in linha else CORES["texto_principal"]
-                draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=cor, anchor="ms")
+                draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
                 
         else:  # Slides internos (Inter/Montserrat)
             linhas = textwrap.wrap(texto, width=20)
@@ -220,7 +265,9 @@ def _gerar_reels(img, W, H, dados):
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, W, H)
         
-        draw_text_with_shadow(draw, (W/2, H - 150), "— @gustavo_8k_ —", font_marca, fill=CORES["texto_secundario"], anchor="ms")
+        # Assinatura com a fonte do logo em Dourado Ouro e Caixa Alta
+        font_marca_serif, _, _ = carregar_fontes(86, 22, 24, estilo="Playfair")
+        desenhar_marca_dagua_ouro(draw, (W/2, H - 150), "GUSTAVO_8K_", font_marca_serif)
         draw_text_with_shadow(draw, (W/2, H - 220), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
         
         linhas = textwrap.wrap(frase, width=22)
@@ -263,8 +310,10 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, W, H)
         
+        # Assinatura com a fonte serifada do logo em Dourado Ouro e Caixa Alta
+        font_marca_serif, _, _ = carregar_fontes(48, 24, 24, estilo="Playfair")
         y_watermark = H - 150 if tipo in ["story", "story_manha", "story_tarde", "test"] else H - 80
-        draw_text_with_shadow(draw, (W/2, y_watermark), "@gustavo_8k_", font_marca, fill=CORES["texto_secundario"], anchor="ms")
+        desenhar_marca_dagua_ouro(draw, (W/2, y_watermark), "GUSTAVO_8K_", font_marca_serif)
         
         linhas = textwrap.wrap(frase, width=24)
         

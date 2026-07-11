@@ -13,6 +13,8 @@ def principal():
     print("=== INICIANDO SISTEMA DE ANALYTICS CRUZADO E AUTO-AJUSTE ===")
     
     # 1. Coleta e Carrega os Dados
+    print("Iniciando coleta de dados frescos da API do Instagram...")
+    rodar_coleta()
     metricas = carregar_metricas_local()
     
     # 2. Analisar por Períodos

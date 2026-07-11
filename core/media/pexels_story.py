@@ -13,7 +13,6 @@ def _carregar_fonte(tamanho=50, estilo=None):
     """Tenta carregar a fonte do projeto. Se falhar, usa a padrão do sistema."""
     if estilo is None:
         estilo = obter_fonte_do_dia()
-    fontes_disponiveis = [estilo + ".ttf", "MontserratBold.ttf", "Montserrat.ttf", "Inter.ttf", "Oswald.ttf", "Playfair.ttf"]
     
     # Garante que o nome da fonte tenha a extensão .ttf
     if not estilo.endswith(".ttf"):

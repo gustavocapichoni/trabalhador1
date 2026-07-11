@@ -3,26 +3,31 @@ import random
 import time
 import os
 from google import genai
-from google.genai import types
 from datetime import datetime, timezone
 
-from core.config.settings import GEMINI_KEYS
-from core.ai.prompts import TEMAS_MAPEADOS, TEMAS_POR_DIA, montar_instrucoes_copy
+from core.config.settings import GEMINI_KEYS, GROQ_KEYS, OPENROUTER_KEY
+from core.ai.prompts import TEMAS_MAPEADOS, montar_instrucoes_copy
 from core.ai.styles import sortear_estilo
+from core.ai.olhos_da_rede import gerar_contexto_mundo_real
 from core.config.state import carregar_estado, salvar_estado
+from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
+from core.design.gerador_prompts import gerar_prompt_cinematografico
 from loguru import logger
 
 def gerar_conteudo_gemini(tipo):
     if tipo == "test":
-        logger.info("🤖 Gerando conteúdo de teste estático...")
+        logger.info("Gerando conteudo de teste estatico...")
+        prompt_visual = gerar_prompt_cinematografico("espiritualidade")
+        logger.info(f"Cena cinematografica (test): {prompt_visual}")
         return {
-            "frase": "Seja forte e corajoso. Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.",
-            "legenda": "Ambiente de automação inicializado com sucesso no GitHub Actions! 🚀\n\nEste é um teste integrado disparado pelo bot para validar as permissões e notificações do sistema.\n\n#bot #instagram #automacao #dev"
+            "frase": "Seja forte e corajoso. Nao se apavore nem desanime, pois o Senhor, o seu Deus, estara com voce por onde voce andar.",
+            "legenda": "Ambiente de automacao inicializado com sucesso no GitHub Actions!\n\nEste e um teste integrado disparado pelo bot para validar as permissoes e notificacoes do sistema.\n\n#bot #instagram #automacao #dev",
+            "prompt_imagem": prompt_visual
         }, "espiritualidade", "teste"
         
     logger.info(f"🤖 Solicitando texto ao Gemini para post do tipo: {tipo.upper()}...")
-    if not GEMINI_KEYS:
-        raise ValueError("Nenhuma variável GEMINI_API_KEY_X está configurada! Por favor, adicione-as ao arquivo .env ou Secrets.")
+    if not GEMINI_KEYS and not GROQ_KEYS and not OPENROUTER_KEY:
+        raise ValueError("Nenhuma chave de API (Gemini, Groq ou OpenRouter) está configurada! Por favor, adicione-as ao arquivo .env ou Secrets.")
         
     # --- INTEGRAÇÃO COM ANALYTICS CRUZADO (ROLETA VICIADA) E CONQUISTADOR ---
     estado = carregar_estado()
@@ -31,7 +36,6 @@ def gerar_conteudo_gemini(tipo):
     
     agora = datetime.now(timezone.utc)
     dia_hoje_str = agora.strftime("%Y-%m-%d")
-    dia_da_semana = agora.weekday()
 
     is_conquistador = (tipo == "reels_conquistador")
     
@@ -50,7 +54,7 @@ def gerar_conteudo_gemini(tipo):
     else:
         # NOVO FLUXO: Ciclo sequencial diário
         recomendacoes_file = "analytics/dados/recomendacoes.json"
-        recomendacoes_semanais_file = "core/analytics/dados/recomendacoes_semanais.json"
+        recomendacoes_semanais_file = "analytics/dados/recomendacoes_semanais.json"
         
         # Lê o contexto do analytics cruzado (diário/múltiplos períodos)
         try:
@@ -69,6 +73,16 @@ def gerar_conteudo_gemini(tipo):
                 contexto_analytics += rec_semanal.get("contexto_para_gemini", "") + "\n\n"
         except Exception as e:
             logger.warning(f"⚠️ Erro ao ler contexto do analytics semanal: {e}")
+            
+        # [NOVO] Adiciona a visão externa (Olhos da Rede)
+        try:
+            # Pega o nome do tema escolhido para fazer uma busca cirúrgica no YouTube
+            nome_do_tema_atual = TEMAS_MAPEADOS[tema_escolhido]['nome'] if tema_escolhido in TEMAS_MAPEADOS else None
+            mundo_real = gerar_contexto_mundo_real(dias=7, tema_especifico=nome_do_tema_atual)
+            if mundo_real:
+                contexto_analytics += "\n====================\n" + mundo_real + "\n====================\n\n"
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao coletar Olhos da Rede: {e}")
 
         # Se for o primeiro post do dia, rotaciona o tema sequencialmente
         if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
@@ -190,38 +204,46 @@ def gerar_conteudo_gemini(tipo):
         salvar_estado(estado)
 
         if tamanho_atual == 3:
-            regras_slides = """        2. SLIDES DE CONTEÚDO (exatamente 3 slides):
-        - Cada slide: frase de no máximo 10 palavras. Curta e impactante.
-        - Slide 1: identifica o problema de um ângulo DIFERENTE do óbvio.
-        - Slide 2: a virada — o insight que muda a perspectiva completamente.
-        - Slide 3: a consequência real de aplicar (ou ignorar) esse insight."""
-            formato_slides = '            "Conteúdo do slide 1 aqui",\n            "Conteúdo do slide 2 aqui",\n            "Conteúdo do slide 3 aqui"'
+            regras_slides = """        2. ESTRUTURA DOS SLIDES DE CONTEÚDO (exatamente 3 slides):
+        - Cada slide: frase curtíssima e cirúrgica de no MÁXIMO 12 palavras. Evite rodeios.
+        - Slide 1 (Contraste ou Quebra de expectativa): Uma afirmação provocativa que coloca duas ideias opostas em choque.
+          * Exemplo: "Nem todo afastamento é perda. Alguns é só livramento."
+        - Slide 2 (O Soco de realidade / Insight): Desmonte uma desculpa comum do leitor de forma cortante.
+          * Exemplo: "Pra você cobrar o topo, você não pode entregar o mínimo."
+        - Slide 3 (A Regra de ouro final): Uma lição crua e madura sobre a vida, sem moralismo barato.
+          * Exemplo: "Uma chance muda tudo, se você estiver pronto." """
+            formato_slides = '            "Frase do slide 1 (Contraste)",\n            "Frase do slide 2 (Insight)",\n            "Frase do slide 3 (Regra)"'
         else:
-            regras_slides = """        2. SLIDES DE CONTEÚDO (exatamente 5 slides):
-        - Cada slide: frase de no máximo 10 palavras. Curta e impactante.
-        - Slide 1: identifica o problema de um ângulo DIFERENTE do óbvio.
-        - Slide 2: a ilusão — a mentira que contamos a nós mesmos.
-        - Slide 3: a virada — o insight que muda a perspectiva completamente.
-        - Slide 4: a prática — o que muda no dia a dia com esse insight.
-        - Slide 5: a consequência real de aplicar (ou ignorar) esse insight."""
-            formato_slides = '            "Conteúdo do slide 1 aqui",\n            "Conteúdo do slide 2 aqui",\n            "Conteúdo do slide 3 aqui",\n            "Conteúdo do slide 4 aqui",\n            "Conteúdo do slide 5 aqui"'
+            regras_slides = """        2. ESTRUTURA DOS SLIDES DE CONTEÚDO (exatamente 5 slides):
+        - Cada slide: frase curtíssima e cirúrgica de no MÁXIMO 12 palavras.
+        - Slide 1 (Quebra de expectativa): A verdade incômoda que destrói o senso comum.
+        - Slide 2 (O Oposto da mentira): Expõe a ilusão que o leitor usa para se anestesiar.
+        - Slide 3 (A Virada de perspectiva): O insight psicológico profundo que muda a regra do jogo.
+        - Slide 4 (A Regra prática do topo): A lição de alta performance baseada em contraste.
+          * Exemplo: "Pra cobrar de 10 a 10, você não pode ser nove e meio."
+        - Slide 5 (O Legado ou Consequência real): Um xeque-mate reflexivo para o leitor digerir silenciosamente. """
+            formato_slides = '            "Slide 1 (Verdade incômoda)",\n            "Slide 2 (Ilusão exposta)",\n            "Slide 3 (Virada de perspectiva)",\n            "Slide 4 (Regra prática)",\n            "Slide 5 (Xeque-mate)"'
 
         prompt = f"""
-        Você cria Carrosséis de Instagram que as pessoas salvam e mandam para amigos.
+        Você cria Carrosséis de Instagram com ganchos magnéticos, quebras de expectativas e contrastes polidos.
         Estilo obrigatório para este carrossel: {estilo_escolhido}
 
         {instrucoes_copy}
 
-        1. TÍTULO DA CAPA (máximo 7 palavras):
-        - Deve gerar curiosidade imediata ou provocar discordância.
-        - Formatos que funcionam: "O que ninguém te conta sobre...", "Por que você ainda...",
-          "Pare de acreditar que...", "A diferença entre quem... e quem...", "Isso que você chama de X é na verdade Y"
-        - PROIBIDO: títulos com "5 dicas", "aprenda a", "como ser melhor".
+        1. TÍTULO DA CAPA (máximo 6 palavras):
+        - Deve gerar curiosidade e forçar o clique (gancho de interrupção de padrão).
+        - Use formatos que desafiem o leitor ou usem títulos diretos/provocativos:
+          * "Vou alugar um triplex na sua cabeça com isso:"
+          * "Regra do jogo para você:"
+          * "Lição do dia."
+          * "O custo invisível de..."
+          * "Por que você sabota o seu..."
+        - PROIBIDO: títulos com "dicas", "aprenda a", "como fazer", "passos para".
 
 {regras_slides}
 
         3. LEGENDA:
-        - Reforce a provocação do carrossel em 3-4 linhas.
+        - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta, madura e sem enrolação.
         - CTA OBRIGATÓRIO DE COMENTÁRIO: Sempre termine com uma das estratégias abaixo (escolha a mais adequada para o tema):
           → "Comente 1 se você já viveu isso, ou 2 se ainda está nessa fase."
           → "Você concorda com isso ou acha que é exagero? Comenta aqui embaixo."
@@ -514,6 +536,8 @@ def gerar_conteudo_gemini(tipo):
         }}
         """
     elif tipo == "reels_leads":
+        resumo_pdf = ler_resumo_ultimo_pdf() or "Nenhum PDF anterior encontrado. Crie um roteiro genérico focando em 'Hábitos Inquebráveis'."
+        
         prompt = f"""
         Você é um estrategista de vendas e mestre em copywriting focado em conversão e geração de leads.
         Sua missão é criar um vídeo longo (2:30 a 3:00) focado em capturar leads através da entrega de um "Manual Prático" em PDF 100% gratuito.
@@ -521,6 +545,13 @@ def gerar_conteudo_gemini(tipo):
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}
+
+        ==== CONTEÚDO BASE PARA O VÍDEO (EXTRAÍDO DO ÚLTIMO PDF GERADO) ====
+        {resumo_pdf}
+        ======================================================================
+        
+        INSTRUÇÃO CRUCIAL: O gancho inicial (Fase 1) DEVE atacar diretamente a dor/problema citada no resumo acima. O vídeo inteiro é um "trailer magnético" para as pessoas desejarem desesperadamente baixar este PDF específico para resolverem esse problema.
+
 
         CRIE UM ROTEIRO LONGO COM 25 A 35 SLIDES seguindo OBRIGATORIAMENTE este funil de 10 Fases:
 
@@ -553,11 +584,27 @@ def gerar_conteudo_gemini(tipo):
 
         FASE 10 — OFERTA E CTA - Últimos Slides:
         Faça a oferta irresistível. É 100% gratuito.
-        O CTA FINAL DEVE ENVIAR PARA O LINK DA BIO: Crie uma frase persuasiva (pode dividir em 2 slides) que direcione o usuário para clicar no link da Bio.
-        - Deixe EXTREMAMENTE claro que estará disponível "SÓ ESSA SEMANA".
-        - Deixe claro que o material é totalmente gratuito.
-        - Varie os termos (ex: baixe o manual, pegue seu guia, acesse o PDF, veja o material).
-        - Conecte a ação de baixar com o resultado/transformação que a pessoa quer ter.
+        O CTA deve ter DUAS PARTES obrigatórias, distribuídas nos últimos slides:
+
+        PARTE 1 — ENTREGA DE VALOR (1 slide): Use uma das frases abaixo, escolhendo a palavra que melhor casa com o conteúdo do vídeo:
+        - "Eu preparei um guia completo para você."
+        - "Eu preparei um método passo a passo para você."
+        - "Eu preparei um material exclusivo para você."
+        - "Eu preparei uma estratégia pronta para você aplicar."
+        - "Eu preparei um plano de ação para você."
+        - "Eu preparei um e-book gratuito para você."
+        - "Eu preparei uma técnica que poucos conhecem."
+        - "Eu preparei um kit completo para você."
+        - "Eu preparei um checklist para facilitar sua jornada."
+        NUNCA use os termos: "manual prático", "baixe o PDF", "pegue seu guia", "acesse o PDF".
+
+        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Após a entrega de valor, adicione a urgência. Use UMA das frases abaixo:
+        - "Link na bio. Só essa semana. Vai lá antes que saia do ar."
+        - "É gratuito. É só essa semana. O link tá na bio. Vai lá."
+        - "Clica no link da bio agora. Depois que a semana acabar, fecha."
+        - "Vai no link da bio agora. Esse conteúdo não fica pra sempre."
+        - Conecte a ação de acessar com a transformação que a narrativa promoveu.
+
 
         PEXELS QUERY: Escolha um clima visual cinematográfico. Ex: 'cinematic mysterious city', 'dark elegant texture'.
         
@@ -592,21 +639,11 @@ def gerar_conteudo_gemini(tipo):
         # Tenta parsear
         return json.loads(texto)
 
-    # Adiciona exigência do prompt de imagem para variar as artes do Pollinations
-    if tipo in ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite"]:
-        prompt += """
-        IMPORTANTE FINAL: Adicione OBRIGATORIAMENTE no seu JSON de resposta um campo extra chamado "prompt_imagem".
-        - O valor deve ter MÁXIMO 15 PALAVRAS EM INGLÊS.
-        - Deve descrever uma cena visual fotorealística, premium e cinemática que sirva de fundo para a mensagem.
-        - Não coloque pessoas de frente, use silhuetas, paisagens, ambientes místicos ou abstratos ricos.
-        - Exemplo: "dark stormy ocean cinematic lightning, premium, highly detailed" ou "mystical ancient ruins glowing light rays, epic".
-        """
-
     # LOOP DE TENTATIVAS (Múltiplas chaves)
     max_tentativas_por_chave = 3
     
     for key_index, current_key in enumerate(GEMINI_KEYS):
-        logger.info(f"🔑 Tentando usar chave Gemini {key_index + 1}/{len(GEMINI_KEYS)}...")
+        logger.info(f"Tentando usar chave Gemini {key_index + 1}/{len(GEMINI_KEYS)}...")
         client = genai.Client(api_key=current_key)
         
         for tentativa in range(max_tentativas_por_chave):
@@ -617,8 +654,16 @@ def gerar_conteudo_gemini(tipo):
                 try:
                     dados = extrair_json(resposta.text)
                 except Exception as e:
-                    logger.error(f"❌ Erro ao parsear JSON na Tentativa {tentativa+1}. Texto bruto: {resposta.text}")
-                    raise Exception(f"Gemini não retornou um JSON válido: {e}")
+                    logger.error(f"Erro ao parsear JSON na Tentativa {tentativa+1}. Texto bruto: {resposta.text}")
+                    raise Exception(f"Gemini nao retornou um JSON valido: {e}")
+                
+                # Injeta o prompt cinematografico procedural para a Pollinations
+                # (gerado localmente, sem depender de cliches da IA de texto)
+                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
+                if tipo in tipos_imagem:
+                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
+                    dados["prompt_imagem"] = prompt_visual
+                    logger.info(f"Cena cinematografica gerada (Gemini): {prompt_visual}")
                 
                 # Injeta as hashtags específicas do tema na legenda
                 if "legenda" in dados:
@@ -639,8 +684,75 @@ def gerar_conteudo_gemini(tipo):
                 else:
                     logger.error(f"❌ Falha ao obter resposta na chave {key_index + 1} após {max_tentativas_por_chave} tentativas.")
                     
-    # Se sair do loop externo, todas as chaves falharam. Entramos no modo Saída de Emergência!
-    logger.warning("🚨 [SAÍDA DE EMERGÊNCIA] Todas as chaves falharam. Carregando post estático de contingência...")
+    # Se sair do loop do Gemini, todas as chaves falharam.
+    logger.warning("⚠️ Gemini esgotado. Tentando GROQ (llama-3.3-70b)...")
+
+    # ─── FALLBACK 1: GROQ ───
+    for groq_index, groq_key in enumerate(GROQ_KEYS):
+        logger.info(f"🔑 Tentando usar chave Groq {groq_index + 1}/{len(GROQ_KEYS)}...")
+        try:
+            import requests as _req
+            groq_resp = _req.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
+                json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": prompt}], "max_tokens": 4096, "temperature": 0.9},
+                timeout=60
+            )
+            if groq_resp.status_code == 200:
+                texto_groq = groq_resp.json()["choices"][0]["message"]["content"]
+                dados = extrair_json(texto_groq)
+                # Injeta o prompt cinematografico procedural para a Pollinations
+                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
+                if tipo in tipos_imagem:
+                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
+                    dados["prompt_imagem"] = prompt_visual
+                    logger.info(f"Cena cinematografica gerada (Groq): {prompt_visual}")
+                
+                if "legenda" in dados:
+                    tags = " ".join(detalhes_tema["hashtags"])
+                    dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                logger.success(f"✅ [GROQ] Conteúdo gerado com sucesso pela chave {groq_index + 1}!")
+                return dados, tema_escolhido, estilo_escolhido
+            elif groq_resp.status_code == 429:
+                logger.warning(f"⚠️ Groq chave {groq_index + 1}: cota esgotada. Tentando próxima...")
+            else:
+                logger.warning(f"⚠️ Groq chave {groq_index + 1}: erro HTTP {groq_resp.status_code}.")
+        except Exception as e:
+            logger.warning(f"⚠️ Groq chave {groq_index + 1} falhou: {str(e)[:100]}")
+
+    # ─── FALLBACK 2: OPENROUTER ───
+    if OPENROUTER_KEY:
+        logger.warning("⚠️ Groq esgotado. Tentando OpenRouter (GPT-4o-mini)...")
+        try:
+            import requests as _req
+            or_resp = _req.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={"Authorization": f"Bearer {OPENROUTER_KEY}", "Content-Type": "application/json"},
+                json={"model": "openai/gpt-4o-mini", "messages": [{"role": "user", "content": prompt}], "max_tokens": 4096},
+                timeout=60
+            )
+            if or_resp.status_code == 200:
+                texto_or = or_resp.json()["choices"][0]["message"]["content"]
+                dados = extrair_json(texto_or)
+                # Injeta o prompt cinematografico procedural para a Pollinations
+                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
+                if tipo in tipos_imagem:
+                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
+                    dados["prompt_imagem"] = prompt_visual
+                    logger.info(f"Cena cinematografica gerada (OpenRouter): {prompt_visual}")
+                
+                if "legenda" in dados:
+                    tags = " ".join(detalhes_tema["hashtags"])
+                    dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                logger.success("✅ [OPENROUTER] Conteúdo gerado com sucesso!")
+                return dados, tema_escolhido, estilo_escolhido
+            else:
+                logger.warning(f"⚠️ OpenRouter falhou: HTTP {or_resp.status_code} - {or_resp.text[:100]}")
+        except Exception as e:
+            logger.warning(f"⚠️ OpenRouter falhou: {str(e)[:100]}")
+
+    # ─── FALLBACK FINAL: MENSAGENS DE EMERGÊNCIA ───
+    logger.warning("🚨 [SAÍDA DE EMERGÊNCIA] Todos os provedores falharam. Carregando post estático de contingência...")
     try:
         emergencia_file = "core/ai/mensagens_emergencia.json"
         if os.path.exists(emergencia_file):
@@ -665,6 +777,13 @@ def gerar_conteudo_gemini(tipo):
                 import copy
                 # Faz cópia para não alterar o dicionário original carregado em memória
                 dados = copy.deepcopy(random.choice(lista_opcoes))
+                
+                # Injeta o prompt cinematografico procedural para a Pollinations
+                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
+                if tipo in tipos_imagem:
+                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
+                    dados["prompt_imagem"] = prompt_visual
+                    logger.info(f"Cena cinematografica gerada (Emergencia): {prompt_visual}")
                 
                 # Injeta as hashtags específicas do tema na legenda se houver legenda
                 if "legenda" in dados:

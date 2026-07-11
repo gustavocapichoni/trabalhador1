@@ -1,6 +1,5 @@
 import smtplib
 from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from email.header import Header
 import requests
 from core.config.settings import SMTP_EMAIL, SMTP_PASSWORD, NOTIFY_EMAIL, IG_ACCESS_TOKEN

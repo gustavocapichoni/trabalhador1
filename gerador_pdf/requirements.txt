@@ -1,0 +1,8 @@
+# Dependências do Gerador de PDF Semanal
+fpdf2==2.7.9
+firebase-admin==6.5.0
+google-generativeai==0.5.4
+python-dotenv==1.0.1
+requests==2.31.0
+feedparser==6.0.11
+loguru==0.7.2

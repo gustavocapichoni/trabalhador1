@@ -20,3 +20,13 @@ post_pronto.jpg
 carousel_*.jpg
 carousel_*.png
 post_teste.jpg
+
+# Credenciais sensíveis - NUNCA subir para o GitHub
+firebase-key.json
+
+# Repositório clonado localmente do gustavo_8k (tem .git próprio)
+gerador_pdf/repositorio_pdfs/
+
+# PDF gerado localmente (sobe via git push do uploader.py para o gustavo_8k)
+gerador_pdf/output/*.pdf
+

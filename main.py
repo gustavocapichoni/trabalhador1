@@ -14,13 +14,6 @@ from core.design.motor_visual import criar_arte
 from core.publisher.instagram import postar_no_instagram
 from core.publisher.email_notifier import enviar_email_notificacao
 
-# Mock functions for verification and state that were in code.py
-def verificar_expiracao_token():
-    pass
-
-def verificar_duplicidade_hoje(tipo):
-    return False
-
 def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda=""):
     from core.config.state import carregar_estado, salvar_estado
     from datetime import datetime, timezone

@@ -1,5 +1,5 @@
 # Efeitos Visuais Premium
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 from .templates import CORES
 
@@ -20,14 +20,14 @@ def aplicar_mesh_gradient(img):
         g = int(g_ini + (g_fim - g_ini) * ratio)
         b = int(b_ini + (b_fim - b_ini) * ratio)
         
-        # Opacidade (Alpha) inteligente para legibilidade
+        # Opacidade (Alpha) inteligente reduzida para dar mais transparência ao fundo
         if y < H * 0.3:
-            alpha = 85
+            alpha = 15  # Quase invisível no topo
         elif y < H * 0.7:
             progress = (y - H * 0.3) / (H * 0.4)
-            alpha = int(85 + progress * 110)
+            alpha = int(15 + progress * 25)  # Suave transição no meio de 15 a 40
         else:
-            alpha = 195
+            alpha = 40  # Sutil na base
             
         draw.line([(0, y), (W, y)], fill=(r, g, b, alpha))
         
