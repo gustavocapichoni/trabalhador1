@@ -73,8 +73,9 @@ def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
         subprocess.run(["git", "branch", "-M", "main"], cwd=REPOSITORIO_PDFS, check=False)
         subprocess.run(["git", "push", "-u", "origin", "main"], cwd=REPOSITORIO_PDFS, check=True)
         
-        # 3. Monta a URL pública usando a CDN jsDelivr (Garante que o PDF abra na tela e não faça download forçado)
-        url_publica = f"https://cdn.jsdelivr.net/gh/gustavocapichoni/gustavo_8k@main/{nome_no_git}"
+        # 3. Pega o hash único do commit para quebrar o cache do jsDelivr
+        commit_hash = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPOSITORIO_PDFS).decode().strip()
+        url_publica = f"https://cdn.jsdelivr.net/gh/gustavocapichoni/gustavo_8k@{commit_hash}/{nome_no_git}"
         print(f"✅ [Uploader] Upload para o GitHub concluído! URL: {url_publica}")
         return url_publica
         
@@ -104,11 +105,11 @@ def registrar_campanha_no_firestore(titulo: str, url_pdf: str, briefing: dict):
         "ativa": True
     }
 
-    # Salva com ID único por semana (substitui se rodar duas vezes na mesma semana)
-    doc_ref = db.collection("campanhas").document(f"semana_{semana_str}")
+    # Salva com ID único auto-gerado para manter histórico completo de todas as execuções
+    doc_ref = db.collection("campanhas").document()
     doc_ref.set(campanha)
 
-    print(f"✅ [Uploader] Campanha registrada no Firestore: 'semana_{semana_str}'")
+    print(f"✅ [Uploader] Campanha registrada no Firestore: '{doc_ref.id}'")
     print(f"   Título: {titulo}")
     print(f"   URL: {url_pdf}")
     return doc_ref.id
