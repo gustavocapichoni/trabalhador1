@@ -1,82 +1,180 @@
 {
-    "atualizado_em": "2026-07-11 07:01:18 UTC",
-    "contexto_para_gemini": "🎯 CONTEXTO DE PERFORMANCE (MACRO VS MICRO):\nSua estratégia fundamental de LONGO PRAZO é ditada pelo panorama ANUAL.\nNo entanto, sua tática de CURTO PRAZO é ditada pelo panorama MENSAL.\n\n⚖️ DISTRIBUIÇÃO PROPORCIONAL DE TEMAS (ROLETA VICIADA):\n- superacao: 100.0%\n\nINSTRUÇÃO DE AUTO-AJUSTE: Leve essa distribuição em consideração. Quando for escolher o tema, baseie-se nas proporções acima para manter o mix de conteúdo perfeito, garantindo que o tema macro vencedor domine o grid, mas que outros temas continuem sendo testados.",
+    "atualizado_em": "2026-07-12 07:02:55 UTC",
+    "contexto_para_gemini": "🎯 CONTEXTO DE PERFORMANCE (MACRO VS MICRO):\nSua estratégia fundamental de LONGO PRAZO é ditada pelo panorama ANUAL.\nNo entanto, sua tática de CURTO PRAZO é ditada pelo panorama SEMANAL.\n\n⚖️ DISTRIBUIÇÃO PROPORCIONAL DE TEMAS (ROLETA VICIADA):\n- superacao: 15.6%\n- espiritualidade: 25.2%\n- filosofia: 14.4%\n- liberdade: 3.0%\n- psicologia: 20.2%\n- conexoes: 21.6%\n\nINSTRUÇÃO DE AUTO-AJUSTE: Leve essa distribuição em consideração. Quando for escolher o tema, baseie-se nas proporções acima para manter o mix de conteúdo perfeito, garantindo que o tema macro vencedor domine o grid, mas que outros temas continuem sendo testados.",
     "distribuicoes": {
         "temas": {
-            "superacao": 1.0
+            "superacao": 0.156,
+            "espiritualidade": 0.252,
+            "filosofia": 0.144,
+            "liberdade": 0.03,
+            "psicologia": 0.202,
+            "conexoes": 0.216
         },
         "formatos": {
-            "reels": 1.0,
-            "pexels_story": 0.0
+            "reels": 0.357,
+            "pexels_story": 0.0,
+            "reels_noite": 0.392,
+            "carousel": 0.001,
+            "reels_conquistador": 0.251
         },
         "estilos": {
-            "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+            "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 0.0,
+            "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+            "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+            "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+            "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+            "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+            "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
         }
     },
     "analises_raw": {
+        "semanal": {
+            "periodo_dias": 7,
+            "distribuicao_temas": {
+                "superacao": 0.187,
+                "espiritualidade": 0.243,
+                "filosofia": 0.139,
+                "liberdade": 0.029,
+                "psicologia": 0.194,
+                "conexoes": 0.208
+            },
+            "distribuicao_formatos": {
+                "reels_noite": 0.398,
+                "reels": 0.347,
+                "carousel": 0.001,
+                "reels_conquistador": 0.254
+            },
+            "distribuicao_estilos": {
+                "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+                "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+                "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+                "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+                "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
+            },
+            "alcance_medio": 86.76923076923077,
+            "saves_medio": 0.23076923076923078,
+            "total_posts_analisados": 13
+        },
         "mensal": {
             "periodo_dias": 30,
             "distribuicao_temas": {
-                "superacao": 1.0
+                "superacao": 0.156,
+                "espiritualidade": 0.252,
+                "filosofia": 0.144,
+                "liberdade": 0.03,
+                "psicologia": 0.202,
+                "conexoes": 0.216
             },
             "distribuicao_formatos": {
-                "reels": 1.0,
-                "pexels_story": 0.0
+                "reels": 0.357,
+                "pexels_story": 0.0,
+                "reels_noite": 0.392,
+                "carousel": 0.001,
+                "reels_conquistador": 0.251
             },
             "distribuicao_estilos": {
-                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 0.0,
+                "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+                "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+                "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+                "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+                "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
             },
-            "alcance_medio": 82.5,
-            "saves_medio": 0.0,
-            "total_posts_analisados": 2
+            "alcance_medio": 86.2,
+            "saves_medio": 0.2,
+            "total_posts_analisados": 15
         },
         "trimestral": {
             "periodo_dias": 90,
             "distribuicao_temas": {
-                "superacao": 1.0
+                "superacao": 0.156,
+                "espiritualidade": 0.252,
+                "filosofia": 0.144,
+                "liberdade": 0.03,
+                "psicologia": 0.202,
+                "conexoes": 0.216
             },
             "distribuicao_formatos": {
-                "reels": 1.0,
-                "pexels_story": 0.0
+                "reels": 0.357,
+                "pexels_story": 0.0,
+                "reels_noite": 0.392,
+                "carousel": 0.001,
+                "reels_conquistador": 0.251
             },
             "distribuicao_estilos": {
-                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 0.0,
+                "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+                "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+                "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+                "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+                "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
             },
-            "alcance_medio": 82.5,
-            "saves_medio": 0.0,
-            "total_posts_analisados": 2
+            "alcance_medio": 86.2,
+            "saves_medio": 0.2,
+            "total_posts_analisados": 15
         },
         "semestral": {
             "periodo_dias": 180,
             "distribuicao_temas": {
-                "superacao": 1.0
+                "superacao": 0.156,
+                "espiritualidade": 0.252,
+                "filosofia": 0.144,
+                "liberdade": 0.03,
+                "psicologia": 0.202,
+                "conexoes": 0.216
             },
             "distribuicao_formatos": {
-                "reels": 1.0,
-                "pexels_story": 0.0
+                "reels": 0.357,
+                "pexels_story": 0.0,
+                "reels_noite": 0.392,
+                "carousel": 0.001,
+                "reels_conquistador": 0.251
             },
             "distribuicao_estilos": {
-                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 0.0,
+                "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+                "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+                "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+                "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+                "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
             },
-            "alcance_medio": 82.5,
-            "saves_medio": 0.0,
-            "total_posts_analisados": 2
+            "alcance_medio": 86.2,
+            "saves_medio": 0.2,
+            "total_posts_analisados": 15
         },
         "anual": {
             "periodo_dias": 365,
             "distribuicao_temas": {
-                "superacao": 1.0
+                "superacao": 0.156,
+                "espiritualidade": 0.252,
+                "filosofia": 0.144,
+                "liberdade": 0.03,
+                "psicologia": 0.202,
+                "conexoes": 0.216
             },
             "distribuicao_formatos": {
-                "reels": 1.0,
-                "pexels_story": 0.0
+                "reels": 0.357,
+                "pexels_story": 0.0,
+                "reels_noite": 0.392,
+                "carousel": 0.001,
+                "reels_conquistador": 0.251
             },
             "distribuicao_estilos": {
-                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 1.0
+                "pergunta perturbadora: faça uma pergunta que o leitor não consegue responder facilmente": 0.0,
+                "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')": 0.127,
+                "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')": 0.157,
+                "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.205,
+                "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')": 0.252,
+                "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')": 0.093,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.166
             },
-            "alcance_medio": 82.5,
-            "saves_medio": 0.0,
-            "total_posts_analisados": 2
+            "alcance_medio": 86.2,
+            "saves_medio": 0.2,
+            "total_posts_analisados": 15
         }
     }
 }
