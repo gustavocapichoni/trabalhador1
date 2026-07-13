@@ -225,8 +225,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     bg_audio = None
     query_encoded = urllib.parse.quote(query)
     
-    # Define quantos vídeos baixar: 4 para reels_leads (vídeos longos) e 1 para posts normais
-    num_videos_necessarios = 4 if is_reels_leads else 1
+    # Define quantos vídeos baixar de forma adaptativa:
+    # Para reels_leads, calcula com base no número de slides para evitar repetição visual.
+    # Assume ~5s por slide (leitura confortável) e ~20s por vídeo de fundo (estimativa conservadora).
+    if is_reels_leads:
+        num_slides_estimado = len(slides) if slides else 30
+        duracao_necessaria_reels = min(num_slides_estimado * 5, 180)  # max 3 min
+        num_videos_necessarios = min(12, max(6, int(duracao_necessaria_reels / 20) + 1))
+        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
+    else:
+        num_videos_necessarios = 1
+        duracao_necessaria_reels = 15
 
     # --- NÍVEL 1: API DO PIXABAY ---
     if PIXABAY_API_KEY and len(temp_vids) < num_videos_necessarios:
@@ -378,15 +387,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         
         # Controle de duração
         if is_reels_leads:
-            # Para o reels de venda (manual), precisamos de bastante tempo (até 3 mins)
-            # Como a soma dos vídeos baixados pode ser menor que 3 min, fazemos um loop do conjunto costurado
+            # Usa a duração calculada dinamicamente (baseada nos slides), com max de 3 min
             duracao_original = clip.duration
-            if duracao_original < 180:
+            logger.info(f"⏱️ Duração total dos vídeos baixados: {duracao_original:.1f}s | Necessário: {duracao_necessaria_reels:.0f}s")
+            if duracao_original < duracao_necessaria_reels:
+                # Só loopeia se ainda falta duração (último recurso)
                 import moviepy.video.fx.all as vfx
-                loops = int(180 // duracao_original) + 1 
+                loops = int(duracao_necessaria_reels // duracao_original) + 1
                 clip = clip.fx(vfx.loop, n=loops)
+                logger.warning(f"⚠️ Vídeos baixados insuficientes ({duracao_original:.1f}s). Aplicando loop x{loops} como fallback.")
             
-            duracao = min(clip.duration, 180) # Max 3 minutos
+            duracao = min(clip.duration, duracao_necessaria_reels)  # Usa duração calculada
             clip = clip.subclip(0, duracao)
         else:
             # Limita duração a 15 seg para stories e reels normais
