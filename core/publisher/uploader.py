@@ -59,7 +59,7 @@ def _upload_file_io(caminho_arquivo):
 def _upload_tmpfiles(caminho_arquivo):
     """
     Fallback 4: tmpfiles.org (arquivo temporário, link direto de download).
-    Retorna um link que modificamos para '/dl/' para servir o arquivo bruto.
+    Faz o upload, lê a página de visualização e extrai o link direto com o token dinâmico.
     """
     with open(caminho_arquivo, 'rb') as f:
         files = {'file': f}
@@ -71,9 +71,23 @@ def _upload_tmpfiles(caminho_arquivo):
         res_json = response.json()
         if res_json.get("status") == "success":
             url_original = res_json.get("data", {}).get("url")
-            # Converte 'https://tmpfiles.org/123/arq' em 'https://tmpfiles.org/dl/123/arq'
-            if url_original and "tmpfiles.org/" in url_original:
-                return url_original.replace("tmpfiles.org/", "tmpfiles.org/dl/")
+            if url_original:
+                try:
+                    import re
+                    # Faz uma requisição GET na página de visualização para extrair o link de download direto com token
+                    page_res = requests.get(url_original, headers=HEADERS, timeout=20)
+                    if page_res.status_code == 200:
+                        # Busca href="https://tmpfiles.org/dl/...
+                        match = re.search(r'href="(https://tmpfiles.org/dl/[^"]+)"', page_res.text)
+                        if match:
+                            url_direta = match.group(1)
+                            return url_direta
+                except Exception as ex:
+                    print(f"⚠️ Erro ao tentar extrair link direto do tmpfiles: {ex}")
+                
+                # Fallback antigo caso o regex falhe
+                if "tmpfiles.org/" in url_original:
+                    return url_original.replace("tmpfiles.org/", "tmpfiles.org/dl/")
     raise Exception(f"tmpfiles.org falhou (HTTP {response.status_code}): {response.text.strip()[:200]}")
 
 def _upload_transfer_sh(caminho_arquivo):
