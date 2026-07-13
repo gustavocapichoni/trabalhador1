@@ -338,11 +338,16 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             logger.warning(f"⚠️ Erro ao acessar Pexels: {e}")
 
     # --- FALLBACK: Biblioteca Local de Emergência ---
-    if not temp_vids:
+    # Ativa se: não tiver NENHUM vídeo (emergência total) OU se tiver menos do que o necessário (complemento parcial)
+    if len(temp_vids) < num_videos_necessarios:
+        if temp_vids:
+            logger.warning(f"⚠️ APIs retornaram apenas {len(temp_vids)}/{num_videos_necessarios} vídeos. Complementando com biblioteca local...")
+        
         tema_pasta = tema if tema else "geral"
         pasta_tema = os.path.join("biblioteca_local", "videos", tema_pasta)
         pasta_geral = os.path.join("biblioteca_local", "videos")
 
+        vids_ja_usados = set(os.path.abspath(v) for v in temp_vids)
         for pasta in [pasta_tema, pasta_geral]:
             if os.path.exists(pasta):
                 arquivos = [f for f in os.listdir(pasta) if f.lower().endswith(".mp4")]
@@ -352,9 +357,13 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                         if len(temp_vids) >= num_videos_necessarios:
                             break
                         escolhido = os.path.join(pasta, arq)
-                        logger.info(f"📂 [EMERGÊNCIA] Usando vídeo local: {escolhido}")
-                        temp_vids.append(escolhido)
-                    break
+                        # Evita duplicar vídeos que já estão na lista
+                        if os.path.abspath(escolhido) not in vids_ja_usados:
+                            logger.info(f"📂 [EMERGÊNCIA] Usando vídeo local: {escolhido}")
+                            temp_vids.append(escolhido)
+                            vids_ja_usados.add(os.path.abspath(escolhido))
+                    if len(temp_vids) >= num_videos_necessarios:
+                        break
 
     if not temp_vids:
         raise Exception("❌ Nenhum vídeo disponível: Pexels falhou e biblioteca local está vazia.")
