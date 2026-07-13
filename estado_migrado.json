@@ -1,28 +1,668 @@
 {
-    "index_tema_diario": 7,
-    "historico_angulos": [
-        "O seu maior inimigo é a voz na sua cabeça que manda você dormir mais cinco minutinhos quando ninguém está olhando.",
-        "Por que esperar estar 'motivado' é a maior armadilha que existe, e a disciplina silenciosa é o que realmente te salva.",
-        "Entender que o conforto fácil é uma anestesia que mata o seu verdadeiro potencial, pouquinho a pouquinho, todos os dias.",
-        "A necessidade de escolher muito bem as suas batalhas, em vez de apanhar de todos os lados achando que isso é ser forte.",
-        "Por que esperar estar 'motivado' é a maior armadilha que existe, e a disciplina silenciosa é o que realmente te salva."
-    ],
     "historico_ganchos": [
-        "Tudo que você adia vira uma dívida emocional que vai cobrar juros.",
         "Existe um detalhe que muda tudo. Pouquíssimas pessoas conhecem.",
         "Qual é o preço real que você está pagando por esse hábito?",
         "Você provavelmente está fazendo isso sem perceber.",
-        "A neurociência já sabe por que você fica preso nesse ciclo."
+        "A neurociência já sabe por que você fica preso nesse ciclo.",
+        "Disciplina sem direção é só sofrimento organizado."
     ],
-    "data_tema_do_dia": "2026-07-13",
     "index_conquistador": 2,
-    "tema_do_dia": "superacao",
-    "ultimas_musicas": [
-        "Billie Ellish, Khaild- Lovely.mp3",
-        "absolutesound-vocal-background-music-562024.mp3",
-        "jumpingbunny-infinity-revolution-280912.mp3",
-        "f-chopin--nocturne-in-c-sharp-minor-for-violin-and-piano-yueun-kim-violin--쇼팽-녹턴--바이올리니스트-김유은.mp3",
-        "اغنية-اجنبية-من-الخيال-عالم-ثاني-2019-جديد-اسمعها-و-انسى-العالم.mp3"
+    "historico": [
+        {
+            "post_id": "18070666541385043",
+            "data": "2026-07-06 20:04:17",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "O que você chama de 'alívio' é a sua ruína. | Ele só esconde o gatilho que te prende.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "17945729856037634",
+            "data": "2026-07-06 21:03:25",
+            "legenda": "O dia se foi. As promessas adiadas pesam mais à noite.\nA verdade é que o seu pior inimigo mora na sua cabeça, sussurrando para você parar.\nQual foi a sua batalha interna mais difícil hoje?\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "reels_noite",
+            "frase_visual": "Você cedeu à voz do 'depois eu faço'. | Essa pausa foi o 'não' que você deu para si mesmo. | Quando a voz sussurrar, aja. O sucesso é ação. | Você não está cansado. Você está cedendo de novo.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18180980137404406",
+            "data": "2026-07-07 00:53:53",
+            "legenda": "Se você sente que sua fé não te liberta, mas te aprisiona em aparências...\nExiste um caminho para a verdade.\nClica no link agora e descubra a real liberdade.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "reels_conquistador",
+            "frase_visual": "Você está usando a fé errado e eu posso provar. Isso sabota sua vida, destrói sua paz. | Sua fé tem que expor seu verdadeiro eu. Comece por essa coragem. | Você ganha autoridade real, paz inabalável e o respeito verdadeiro. | A sabedoria ancestral comprova: quem esconde, perde. Quem se revela, vence. | Clica no link da bio antes que essa oportunidade única se perca.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18011500118866482",
+            "data": "2026-07-07 11:35:19",
+            "legenda": "O dia acaba, mas as verdades persistem. Aquelas que você tenta ignorar no corre-corre, sussurram agora. É a hora de ouvir.\nEm qual frase você se reconheceu? Comenta o número.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "A noite chega em silêncio. | Luzes distantes piscam na janela. | O que sobrou do seu dia? | Ou o que você fingiu não ver? | A fé que você exibe não blinda o que você esconde. | Seu caráter real se forma quando ninguém está olhando. | Amanhã, a mudança começa no seu silêncio. | Encare a verdade antes de encarar o mundo.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18016329884903186",
+            "data": "2026-07-07 14:16:25",
+            "legenda": "Corri anos atrás de respostas no barulho. A ilusão de controle me cegava. Até que a sabedoria se revelou no silêncio.\nVocê topa encarar o silêncio por 5 minutos ou acha que é perda de tempo? Me conta.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "reels",
+            "frase_visual": "As respostas não estão onde você procura. | A sabedoria milenar só aparece no silêncio que você foge. | Pare 5 min. Deixe o vazio trazer a próxima jogada. | Sua fuga do silêncio paralisa. Quem entende, desvenda o próximo passo.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18157479592480237",
+            "data": "2026-07-07 14:30:39",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Quem constrói riqueza de verdade e quem só finge: a diferença é uma. | Ela está no que você guarda, ou no que você solta. | A massa se prende ao passado por puro orgulho. | Perdoar não é fraqueza. É libertar seu futuro.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18105585293107097",
+            "data": "2026-07-07 14:38:52",
+            "legenda": "Essa é a diferença que a maioria jamais capta. O ruído do mundo serve para uma coisa: te testar. O que esse vídeo te fez lembrar? Me fala nos comentários, vou ler todos.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "pexels_story",
+            "frase_visual": "Um estudo milenar sobre liderança aponta algo brutal. | O maior mestre da história NUNCA se blindou do ódio. Ele o usou. | Enquanto a massa se defendia, ele focava na missão. | A dica? Olhe para o ataque, não para o agressor. Ele é apenas ruído. | Sua distração pelo ódio é a desculpa perfeita para a inação. | Quem chegou até aqui já entendeu o que a massa nunca percebeu. | Sua missão é sempre maior que qualquer ataque. | Onde você está gastando sua energia? Na defesa ou na construção?",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18442639258188127",
+            "data": "2026-07-07 14:46:20",
+            "legenda": "Leia isso com muito cuidado se você sente que sua busca por algo maior não te leva a lugar nenhum. Muitos se iludem esperando soluções externas, mas a sabedoria brutal e ancestral sempre apontou para outro caminho. Se você está cansado de promessas vazias, este é para você.\n\nComente 1 se você já viveu essa frustração, ou 2 se ainda está nessa fase.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "carousel",
+            "frase_visual": "Sua 'salvação' pode ser sua prisão.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18083848721191725",
+            "data": "2026-07-07 19:49:08",
+            "legenda": "Não se deixe abalar por ruídos externos. Descubra o método dos mestres para manter o foco inabalável.\nComente 'MANUAL' aqui embaixo e eu vou te mandar no direct o link gratuito para seu Manual Prático. Edição limitada.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "reels_leads",
+            "frase_visual": "",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18124209508672168",
+            "data": "2026-07-07 20:05:03",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "Você não precisa de mais conselhos bonitos. | Precisa é parar de fingir que entende a vida.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18161435647417890",
+            "data": "2026-07-07 21:03:41",
+            "legenda": "O dia termina e a verdade aparece.\nO milagre que você buscou lá fora sempre morou na sua disciplina interna.\nVocê vai dormir orgulhoso de algo hoje? Me conta.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "reels_noite",
+            "frase_visual": "Você esperou um milagre, ignorou sua parte. | O maior milagre é a sua consistência, disfarçada. | Amanhã, faça o óbvio que você sempre pulou. | Seu milagre está na sua mão, não no altar.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18172466044423833",
+            "data": "2026-07-07 22:03:05",
+            "legenda": "A noite chega. E o que era performance, vira reflexão.\nSeja honesto com a quietude. Ela guarda suas verdades.\nQual verdade a noite te revelou hoje? Comenta aqui.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "Leia isto com muito cuidado. Seu dia termina, mas algo acende. | Luzes baixam. O silêncio revela verdades duras. | O que foi para a vitrine hoje? O que ficou na sombra? | Nem tudo que brilha é seu. Nem tudo que esconde, cura a alma. | Quem usa a fé como fachada, carrega um inferno particular. | A máscara escorrega na solitude da noite. Inevitável. | A verdade interna exige mais que orações performáticas. | Encare o que guardou. Amanhã, seja o que você reza.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18075969959322107",
+            "data": "2026-07-08 00:39:42",
+            "legenda": "Esse vídeo não é para te fazer se sentir bem. É para te sacudir. O que ele te fez lembrar? Me fala nos comentários, vou ler todos.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "pexels_story",
+            "frase_visual": "O erro que te aprisiona agora? | Você está lendo demais, agindo de menos. | Sua mente virou um cemitério de boas intenções. | Escolha um só insight do último livro. Ponha em teste HOJE. | Sua desculpa: 'preciso de mais conhecimento'. | Quem realmente entende, já sabe que isso é só um disfarce. | A guerra da vida não se vence nas páginas. | Ela se vence no caos da sua ação.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18081446051227358",
+            "data": "2026-07-08 01:03:45",
+            "legenda": "Se a ideia de 'dinheiro é a raiz dos males' te persegue, você está preso.\nQuebre essa corrente agora.\nSiga para desvendar o que realmente te sabota.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "reels_conquistador",
+            "frase_visual": "CUIDADO: Você pensa que decide? Sua mente foi programada para rejeitar dinheiro. Isso custa caro. | Identifique as crenças herdadas sobre riqueza. É o primeiro passo. | Liberte sua mente. Abra o caminho para prosperidade e liberdade financeira. | Milhões repetem padrões sem perceber. Quebre o ciclo com estratégia mental. | Siga o perfil. Informação assim ninguém te entrega de graça.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "18131279512565480",
+            "data": "2026-07-08 01:14:45",
+            "legenda": "A noite chega e a mente acende.\nO que o silêncio te contou sobre o dia?\nEm qual frase você se reconheceu? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "Luzes da cidade tremem. | O cansaço beija a alma. | A bolha estourou de novo? | Ou foi só mais um eco? | A vida não te deve sonhos. | Ela só exige a sua força. | Amanhã, lute por seu próprio mapa. | A jornada te espera aqui.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18602223814045716",
+            "data": "2026-07-08 01:25:26",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Sua paz morre quando tenta forçar o mundo. | A maioria guerreia por cenários que nunca existiram. | O jogo real é dominar sua mente. Só isso te liberta.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18144819283468293",
+            "data": "2026-07-08 01:29:55",
+            "legenda": "Você se convence de que está sendo estratégico, mas no fundo, a real estratégia é fugir do julgamento. A cada passo que você não dá, esperando a 'permissão' alheia, é um tijolo a menos no seu império. Liberte-se dessa ilusão. Quem chega até aqui já entendeu o que a massa ignora e está pronto para agir diferente.\nQual foi o slide que mais te pegou? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "carousel",
+            "frase_visual": "Sua 'prudência' é só medo da crítica.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18600657172039607",
+            "data": "2026-07-08 09:02:54",
+            "legenda": "Achei que ser \"bom aluno\" era o caminho. Hoje vejo que me ensinou a não questionar o óbvio. É uma armadilha.\nVocê concorda que fomos doutrinados ou acha que é papo de coach? Me conta aqui.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "reels",
+            "frase_visual": "Sua escola te ensinou a ter medo de aprender. | Eles precisavam de um exército, não de pensadores livres. | Pare de fazer perguntas que já têm resposta. Pergunte o que ninguém pergunta. | Você foi programado pra seguir. Quem questiona, avança e quebra o molde.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18156348268433822",
+            "data": "2026-07-08 09:12:40",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "O erro é acreditar que a guerra se trava fora da sua cabeça. | Você luta batalhas que já perdeu na sua mente, antes de agir. | Essa paralisia mental sabota cada passo seu lá fora. | Vencer o inimigo interior é sua primeira e única missão.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18087183617454068",
+            "data": "2026-07-08 10:02:48",
+            "legenda": "Essa não é uma conversa fácil.\nMas é a que te tira do piloto automático.\nEm qual frase você sentiu o estômago revirar? Me fala nos comentários, vou ler cada um.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "pexels_story",
+            "frase_visual": "ALERTA: Pare tudo. Existe um risco. | Sua mente está te enganando agora. | Você devora livros, mas não come a vida. | Escolha uma ideia. Apenas uma. Aplique hoje. | O cemitério está cheio de mentes brilhantes... inertes. | Quem chegou até aqui já entendeu o que a maioria ignora. | Conhecimento sem ação é uma dívida com o futuro. | Qual delas você vai pagar primeiro?",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18122778373684432",
+            "data": "2026-07-08 12:03:48",
+            "legenda": "O sistema é mestre em te vender embalagens bonitas, mas vazias. Você passa a vida correndo atrás de um ideal que nem é seu, sem entender por que a frustração nunca vai embora. É hora de parar de performar um script e começar a escrever o seu.\nQual foi o slide que mais te pegou? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "carousel",
+            "frase_visual": "Isso que você chama de sonho te aprisiona.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18212403592337264",
+            "data": "2026-07-08 15:02:53",
+            "legenda": "Passei anos tentando controlar cada detalhe. Cada frustração era um pedaço de mim indo embora. Entender essa divisão me libertou.\n\nVocê prefere tentar controlar tudo ou aceita o que é seu? Comente.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "reels",
+            "frase_visual": "A ilusão do controle te destrói. | A massa vive nessa armadilha. Existe outro jogo. | Faça uma lista: o que é seu? O resto, RISQUE. | Você perde a paz tentando mudar o inalterável. Quem chega aqui já joga em outro nível.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18096595313253297",
+            "data": "2026-07-08 20:05:24",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "Você chama de prudência. | Mas é só medo de ser julgado ao tentar.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18092656286372723",
+            "data": "2026-07-08 21:03:16",
+            "legenda": "A maioria se conforma e vive no automático. Quem chega até aqui já entendeu o que a massa ignora. Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "reels_noite",
+            "frase_visual": "A angústia de se sentir travado, sozinho, eu sei bem. | O sistema venceu, sua voz silenciou. Sonhos? Só no travesseiro. | Eu vi: a única validação importa é a sua. Comece pequeno. | Amanhã, o medo não dita mais o roteiro. Você cria.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18114594901914590",
+            "data": "2026-07-08 22:03:19",
+            "legenda": "Ninguém te conta isso, mas a verdadeira virada acontece muito antes de qualquer movimento real. Não deixe que o mesmo peso da noite te encontre amanhã. O algoritmo vai tentar esconder esse perfil de você. Siga agora se quiser continuar recebendo a verdade sem filtro.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "Sua 'espera pelo momento certo' é só disfarce. | Aquele peso no peito, na cama, à noite. | Dias viram semanas, meses. Nada muda. | A vida dos outros anda. A sua, presa. | A chave? Vencer a guerra aqui dentro primeiro. | Seu medo é só um adversário mental. Derrote-o. | Quem entende isso, não perde mais uma noite. | O próximo passo é seu. Ou não será.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18109400404772196",
+            "data": "2026-07-09 01:03:09",
+            "legenda": "O maior pavor é o olhar para trás e ver só arrependimento.\nExiste um mapa para sua mente.\nSiga agora para não perder o caminho.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "reels_conquistador",
+            "frase_visual": "CUIDADO: Se você teme o ARREPENDIMENTO daqui 10 anos. Por que vender seus sonhos assim... | Liberar seu verdadeiro EU é o único jeito de evitar isso. | Conquiste a paz de quem construiu uma vida GRANDE e real. | Sua mente é um mapa. Usar o mapa certo muda TUDO. | Quer o mapa completo da sua mente? Siga para desvendar.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18122266894743155",
+            "data": "2026-07-09 09:07:33",
+            "legenda": "Parece que a sua cabeça gosta de criar labirintos pra te manter ocupado, mas sem te mover.\nA verdade é que essa 'complexidade' é só um jeito de fugir do que realmente importa: a próxima ação.\nVocê concorda com isso ou acha que é papo de coach? Deixa aqui embaixo.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
+            "tipo": "reels",
+            "frase_visual": "Sua 'preocupação' é só uma desculpa elegante pra paralisia. | Sua mente está te sabotando, e você nem percebe. | Foque na PRÓXIMA micro-ação, não no destino final. Agora. | Sua 'análise' é medo. Quem leu até aqui já entendeu o jogo.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "18108630175801827",
+            "data": "2026-07-09 09:12:23",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "AVISO: Se você vive sem tempo, seu cérebro mente. | Não é falta de horas, é medo do desconforto. | Ele protege seus hábitos ruins de forma automática. | Entender isso é o atalho que ninguém te conta.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "17949819243016073",
+            "data": "2026-07-09 12:03:06",
+            "legenda": "Pensar demais, planejar cada detalhe. Você acha que é inteligência, mas sua mente te engana. Essa busca pelo 'plano perfeito' é seu medo de falhar disfarçado de prudência.\n\nQuem joga o jogo real sabe: ação imperfeita sempre vence a paralisia da análise.\n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
+            "tipo": "carousel",
+            "frase_visual": "Seu 'plano' é medo disfarçado.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "17987678436008999",
+            "data": "2026-07-09 15:02:58",
+            "legenda": "Eu achava que precisava de planos grandiosos para avançar. Mas o medo de começar grande me paralisava.\nNão existe 'síndrome do impostor' quando você acumula pequenas vitórias. É só começar.\nComente 'SIM' se vai aplicar isso ou 'NÃO' se ainda tá adiando.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
+            "tipo": "reels",
+            "frase_visual": "O erro: você busca uma solução grande. | Mas a elite usa a arquitetura mental de mini-vitórias. | Quebre a meta anual em 3 blocos de 5 minutos diários. Agora. | Sua 'síndrome' é a fuga da ação mínima. Quem percebe isso, já mudou de nível.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "17911306578429819",
+            "data": "2026-07-09 20:04:46",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "Você não está resolvendo. Está apenas complicando mais. | É sua mente te enganando para evitar o que importa.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "18114728827918688",
+            "data": "2026-07-09 20:17:02",
+            "legenda": "A gratificação instantânea é a maior destruidora de futuros brilhantes. Treine sua mente para o longo prazo. Comente abaixo. 🧠\n\n#psicologia #mentalidade #foco #neurociencia #habitos",
+            "tipo": "reels",
+            "frase_visual": "Seu cérebro busca recompensa imediata e rápida. | O vício em dopamina barata te afasta de projetos reais. | Aprenda a tolerar o tédio para poder construir o futuro.",
+            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "18177180310415486",
+            "data": "2026-07-09 21:02:50",
+            "legenda": "Quem chegou até aqui sabe que a maioria não tem essa coragem. Essa dor que te prende é só o seu cérebro sabotando o futuro que você merece. Não deixe ele vencer de novo. Se você cansou de ser refém e quer acordar diferente, siga a página agora. Informação assim o sistema esconde.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
+            "tipo": "reels_noite",
+            "frase_visual": "Essa noite, de novo, a mesma dor te pegou. | Seu cérebro te convence que essa dor é mais segura que mudar. | Eu decidi sentir a dor NOVA, curta. Rompi com o velho. | Amanhã, quem vê esse vídeo acorda no caminho REAL.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "18124972450779340",
+            "data": "2026-07-09 22:03:37",
+            "legenda": "Leia isso com muito cuidado.\nSeu cérebro protege seus vícios em milissegundos, não por falta de tempo.\nO algoritmo vai tentar esconder essa verdade. Siga agora e veja sem filtro.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "A cabeça no travesseiro, o peso vem. | Aquela promessa diária se foi. | Sua mente escolhe o caminho fácil. | Protege vícios, destrói seu futuro. | O segredo é hackear a primeira escolha. | Crie um novo reflexo. Imediato. | Quem entendeu isso, não dorme mais igual. | A desculpa da falta de tempo é sua prisão. Liberte-se.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "psicologia"
+        },
+        {
+            "post_id": "17920885119399837",
+            "data": "2026-07-10 00:25:07",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "A maioria ainda acredita em uma mentira. | O dinheiro nunca foi a raiz do seu problema. | A raiz é o que te programaram sobre ele. | Quem enxerga isso, domina o próprio jogo.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "18096715214210788",
+            "data": "2026-07-10 01:03:37",
+            "legenda": "Você chama de amor, mas é só medo. Liberte-se.\nSiga para a verdade que transforma.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels_conquistador",
+            "frase_visual": "Estudo revelou: seu 'amor incondicional' é apenas medo doentio de ficar só. | Pare de buscar preencher vazio no outro. Crie seu próprio valor. | Terá relacionamentos reais, baseados em admiração, não carência ou medo. | A atração genuína nasce da sua própria força e liberdade. | Quem viu a verdade, siga. A massa prefere a ilusão.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18134416249597576",
+            "data": "2026-07-10 12:04:11",
+            "legenda": "É cruel, mas a maioria das pessoas se prende em um ciclo vicioso de ostentação. Elas buscam validação em bens que, na verdade, só drenam seu futuro. O sistema quer que você continue trocando seu tempo por um símbolo de status. Mas quem enxerga a verdade não joga esse jogo.\n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "carousel",
+            "frase_visual": "Isso que você chama de liberdade é PRISÃO",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "17982267257860672",
+            "data": "2026-07-10 15:03:23",
+            "legenda": "Essa virada de chave é simples, mas a maioria se agarra ao que conhece.\nVocê tá pronto pra reescrever seu código mental ou prefere a velha narrativa?\nComente AQUI qual crença limitante você já derrubou.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "reels",
+            "frase_visual": "Você foi programado para odiar o que te liberta. | A elite usa um mapa que a massa nem sabe que existe. | Troque 'dinheiro sujo' por 'ferramenta de impacto'. Mude sua frequência agora. | Quem vive na escassez idolatra a pobreza. Você que chegou até aqui já sacou a virada.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "18106109360015919",
+            "data": "2026-07-10 20:04:52",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "Na Roma Antiga, 70% dos ricos terminavam na miséria. | Não era falta de dinheiro. Era falta de inteligência.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "17882557284672400",
+            "data": "2026-07-10 21:02:48",
+            "legenda": "A solidão da noite é cruel quando a fatura chega. Eu já senti isso. Aprender a diferenciar um ativo de uma fantasia te liberta de correntes invisíveis. Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "reels_noite",
+            "frase_visual": "Estudos de Harvard por 75 anos mostraram: 'status' não traz felicidade. Só 1% vai aguentar ouvir. Aquela fatura que só você vê à noite. Dói. | Você entra num ciclo cruel: mais dívidas, menos liberdade. Para quem? | Eu quebrei o padrão quando entendi: liberdade é ativo, ostentação é passivo. | Durma em paz: seu dinheiro te serve, não os outros.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "17865440718597037",
+            "data": "2026-07-10 22:04:19",
+            "legenda": "Você deita e sente esse peso no peito? Não é só cansaço, é a mente te avisando.\nO sistema te treinou para trocar seu tempo por uma segurança que nunca chega.\nQuem fica até o fim já sabe que a chave é parar de alugar a alma. Me segue para libertar a sua.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "O travesseiro esconde o peso do dia. | Aquela sensação: 'De novo, igual'. | Esse loop engole seus anos mais valiosos. | Você vende seu futuro por segurança falsa. | Mas descobri que o segredo não é trabalhar mais. | É parar de alugar sua mente. Crie seus ativos. | Imagine um amanhã onde seu tempo é seu. | Ainda vai aceitar ser joguete ou libertar sua mente?",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "18136625770596045",
+            "data": "2026-07-10 22:21:40",
+            "legenda": "A voz que te sabota está te custando caro. Existe um código para silenciá-la e dominar seus hábitos. Pegue seu Manual Prático 100% gratuito agora, link na bio, só essa semana antes que saia do ar.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "reels_leads",
+            "frase_visual": "A verdade brutal sobre por que você nunca começa de verdade. | Existe uma voz silenciosa dentro de você. | Ela não te protege. Ela te sabota. E a massa ignora isso. | É um sussurro que te convence de que o esforço não vale a pena. | Que a dor da mudança é pior que a dor de não mudar. | Um ciclo vicioso de promessas quebradas, dia após dia. | Você se sente no 'conforto' de ficar parado, mas é uma prisão disfarçada. | O medo de falhar de novo é mais forte que a vontade de tentar. | Essa voz é o seu comandante interno, te arrastando de volta ao zero. | Enquanto alguns gastam para parecer ricos nas redes sociais... | Você gasta sua energia na batalha interna que ninguém vê. | É a diferença brutal entre quem corre atrás de aparências e quem constrói a paz de espírito. | Mas existe um código. Uma forma de silenciar essa voz. | Uma estratégia para você dominar seus hábitos e sua mente. | É o fim do ciclo de autossabotagem e do medo de recomeçar. | Imagine reconhecer o inimigo. Mapear o terreno da sua mente. | E aplicar pequenas manobras que mudam o jogo pra sempre. | Não é mágica. É um método prático que qualquer um pode usar. | Funciona porque não é sobre força de vontade bruta. | É sobre entender os padrões da sua mente e desativar o mecanismo do medo. | É o segredo dos que constroem de verdade, enquanto a maioria só sonha. | Pessoas como você, cansadas de promessas vazias, já estão aplicando. | Elas pararam de lutar contra si mesmas e começaram a vencer a batalha invisível. | Resultados reais, sem a ilusão de 'superação' clichê. | Imagine acordar sem aquela voz te puxando para baixo. | Com clareza, disciplina e a liberdade de construir o que você realmente quer. | Ter a paz de espírito de quem sabe que está no controle. | Eu compilei tudo isso em um manual prático. | Um guia completo para você silenciar a voz que te sabota. | E dominar de vez seus hábitos. | É 100% gratuito, mas estará disponível só essa semana. | Pegue seu Manual Prático agora. | Acesse o link da bio. | Para finalmente vencer a sua batalha invisível. | Não deixe essa chance escapar.",
+            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "18082891016388392",
+            "data": "2026-07-10 22:48:07",
+            "legenda": "Você achou que a dívida era o inferno? Parabéns, é só o portão. O verdadeiro problema é quem controla o portão. Você concorda ou é papo furado? Comenta aqui.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
+            "tipo": "reels",
+            "frase_visual": "Sua dívida não é a prisão. É só a cela. | O problema real é o dono da sua mente. Você nem sabe. | Liste 3 coisas que te tiram dinheiro. Corte 1 AGORA. | Quem paga juros, vive pra pagar. Quem lê até aqui, já sacou o jogo.",
+            "estilo_copy": "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
+            "tema": "financas"
+        },
+        {
+            "post_id": "17931732099344311",
+            "data": "2026-07-11 01:04:07",
+            "legenda": "Aquela voz que te convence a desistir quando ninguém vê está te custando caro.\nSaiba como virar o jogo AGORA.\nSiga para dominar seus dias.\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "reels_conquistador",
+            "frase_visual": "Leia com muito cuidado. Você está fazendo isso de forma errada, e eu posso provar. Sua mente te sabota em silêncio. | A voz interna não é inimiga. É um gatilho. Você só precisa agir 1 minuto. | Um minuto de ação quebra o ciclo. Você ganha controle e domina seu dia. | A disciplina não é um dom. É um músculo. Cada ação o fortalece. | Quem entendeu isso não se sabota mais. Quer o próximo passo? Siga o perfil.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18137226871573721",
+            "data": "2026-07-11 09:03:04",
+            "legenda": "Lembrei daquela pesquisa com idosos... A maior dor era 'não ter tentado'. O medo de vender seu próprio sonho é real. Mas qual o preço de *não* vender?\n\nVocê concorda que o maior arrependimento é o que não fazemos? Comente SIM ou NÃO.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "reels",
+            "frase_visual": "Estudaram a morte por décadas. O maior arrependimento é o que não fez. | Existe um atalho para evitar essa dor insuportável. Mas quase ninguém tem coragem de aplicar. | Pegue 1 papel agora. Escreva SEU sonho mais louco. | Se o medo te trava, você já vendeu um sonho: o alheio. Quem chega até aqui entende.",
+            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18120890353754415",
+            "data": "2026-07-11 09:12:43",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Sua 'prudência' é medo do que vão dizer. | Não é cautela, é pavor de errar. | Só a ação real silencia a dúvida. | Sua liberdade começa no seu primeiro passo.",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18147548653509878",
+            "data": "2026-07-11 10:03:56",
+            "legenda": "Essa é uma das verdades mais incômodas para quem busca a liberdade de tempo.\nA maioria foge dela, mas quem chegou até aqui sabe que não existe atalho.\nEm qual frase você se viu? Comenta o número.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "pexels_story",
+            "frase_visual": "Sua tela te ilude. | A verdade está no silêncio. | A maioria vê o palco. | Esquece o sacrifício invisível. | Conforto é a prisão de muitos. | Quem prefere a liberdade real, sabe o preço. | Você escolhe: a curtida ou o futuro. | Qual sacrifício você está disposto a fazer agora?",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18092928686374900",
+            "data": "2026-07-11 12:29:59",
+            "legenda": "Ninguém te conta, mas essa sua 'segurança' tem um preço alto. Onde você se sente bem, mas a alma grita por liberdade. A rotina te consome, a ansiedade bate e a gaiola, antes dourada, virou só uma gaiola. A maioria prefere ignorar os sinais. \n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "carousel",
+            "frase_visual": "Conforto? Ou sua prisão mais cara?",
+            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18087463004530948",
+            "data": "2026-07-11 15:03:03",
+            "legenda": "Passei tempo demais caindo na mesma armadilha. A gente se convence que não dá, mas o cérebro só quer economizar energia. O jogo vira quando você aprende a quebrar esse ciclo vicioso. Qual desculpa você parou de usar? Me conta nos comentários.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "reels",
+            "frase_visual": "CUIDADO: A maioria desiste na fase mais importante. | Não é sobre esforço, mas sobre um ponto cego crucial. | Quando pensar em parar, olhe para o MICRO ciclo atual e AJA. | A massa para ali. Você, que leu até aqui, já venceu 99%.",
+            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18101374277135122",
+            "data": "2026-07-11 20:04:35",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "O que você chama de prudência é medo | Você troca sua liberdade por uma gaiola dourada",
+            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18475709152106375",
+            "data": "2026-07-11 21:03:19",
+            "legenda": "Essa dor no peito que aperta à noite, eu conheço bem. A real liberdade não está em esperar, mas em começar agora, mesmo que ninguém entenda. Se você está pronto para virar o jogo, siga a página agora. Informação assim o sistema esconde.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "reels_noite",
+            "frase_visual": "Essa dor silenciosa te paralisa quando a luz apaga. | Você vê a vida passar enquanto planeja um futuro que nunca chega. | O segredo? Faça o impopular. Comece antes de ter tudo pronto. | Liberdade é agir. Amanhã, o medo será só uma lembrança.",
+            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18608782075024019",
+            "data": "2026-07-11 22:03:39",
+            "legenda": "A noite é um espelho. E se o que você vê não te agrada, existe um caminho. Quem leu até aqui já sabe que o arrependimento é caro demais. Siga agora para nunca mais vender seus sonhos.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "O erro que te paralisa está debaixo do seu travesseiro. | A mente te trai, revirando o dia sem trégua. | Essa tortura noturna é o preço do seu silêncio. | Você está *vendendo* seus próprios sonhos, sem perceber. | O segredo é simples: defina seu futuro. No papel. | Não espere o dia clarear; planeje a fuga da rotina hoje. | Daqui a dez anos, não lamente o que *não* teve coragem. | Quem entende isso, não perde mais uma noite sequer.",
+            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
+            "tema": "liberdade"
+        },
+        {
+            "post_id": "18082219919239731",
+            "data": "2026-07-12 00:47:06",
+            "legenda": "Você jura que vai começar na segunda? E a voz do 'não consigo' sempre vence? Essa semana, eu te dou as armas para lutar e VENCER, protegendo o que mais importa. Link na bio só essa semana, vai lá garantir o seu antes que saia do ar.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels_leads",
+            "frase_visual": "Você jura que vai começar na segunda, né? | Mas no fundo, já sabe que vai parar na terça. | Não adianta mais mentir pra si mesmo. | Existe uma voz. Um sussurro que paralisa. | Ela diz: \"Não vale a pena. Você vai falhar de novo.\" | O que se esconde por trás dessa voz na sua cabeça? | Ela não te impede só de começar algo novo. Não. | Ela está corroendo sua paz, sabotando sua casa, seu legado. | Ela te empurra para aceitar o mínimo, o rascunho empoeirado de uma vida. | Essa voz é o conforto travestido de prudência. | E o conforto é a tumba dos seus sonhos mais corajosos. | É ele que gera duas atitudes silenciosas que destroem qualquer relação em meses. | E se eu te disser que existe uma tática de combate? | Um golpe preciso contra essa paralisia interna. | Para calar essa voz de uma vez por todas. Sem truques. | Não se trata de uma mudança radical. É sobre o primeiro movimento. | Sobre dar um ÚNICO passo. Minúsculo. Quase invisível. | Mas que, uma vez dado, se torna imparável. | Porque a mente não responde a pressões brutas. Ela rejeita o pânico. | Ela entende o acúmulo. A sequência. A pequena vitória que constrói a próxima. | É a biologia do triunfo em ação, reprogramando seu sistema. | Gente como você já viveu sob o domínio dessa voz opressora. | Hoje, eles constroem fortalezas de paz e prosperidade. | Com sacrifícios diários que ninguém vê, mas que protegem a família e o futuro. | Imagine a satisfação brutal de ver seus projetos ganharem vida. | Ter a sua família unida, protegida e orgulhosa do seu progresso. | A vida que você desenhou, não mais um rascunho, mas uma realidade tangível. | Eu preparei um método passo a passo para você. | Para desvendar o segredo de 'A Coragem do Próximo Passo'. | E silenciar essa voz que te impede de avançar, para sempre. | Clica no link da bio agora. Sem desculpas. | Depois que a semana acabar, essa oportunidade fecha. Não volta. | Sua transformação não pode esperar mais um amanhã. Vá. | Você nasceu para coisas maiores. Não aceite menos que o seu máximo.",
+            "estilo_copy": "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "17885295222434517",
+            "data": "2026-07-12 01:03:49",
+            "legenda": "O segredo é esse: suas pequenas escolhas têm poder sobre vidas. Não viva no automático.\nDesperte seu impacto.\nSiga para mais verdades exclusivas.\n\n#proposito #legado #vida #intencao #evoluir",
+            "tipo": "reels_conquistador",
+            "frase_visual": "Sua vida não é sua. Pequenas escolhas diárias escrevem o destino de quem você ama. | Pare de 'deixar rolar'. Sua visão define cada minuto do futuro. | Você ganha controle total. Molda o seu legado e o mundo. | A massa erra por ignorar isso. Quem vê, age diferente, sempre vence. | Quer continuar desvendando verdades que mudam tudo? Siga agora.",
+            "estilo_copy": "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
+            "tema": "proposito"
+        },
+        {
+            "post_id": "18109904888059464",
+            "data": "2026-07-12 01:04:44",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Sua paciência não existe. | É puro medo de solidão. | Você está perdendo a si mesmo. | Acorde antes que seja tarde.",
+            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "17926577889373762",
+            "data": "2026-07-12 08:42:25",
+            "legenda": "Não deixe o silêncio vencer. Este segredo só estará disponível essa semana. O link tá na bio, vai lá antes que saia do ar.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels_leads",
+            "frase_visual": "Estudaram casais por 20 anos. O que descobriram sobre o silêncio entre eles é brutal. | Não é tédio. Não é falta de assunto. É algo muito mais profundo. E invisível. | Eles moravam na mesma casa. Compartilhavam a cama. Mas viviam em mundos completamente diferentes. | Você fala. O outro ouve. Mas ninguém realmente se conecta. | Já se perguntou por que as tentativas de conversar só pioram as coisas? | Ou por que a cada 'tudo bem', a distância só aumenta? | Essa barreira invisível não é sua culpa. Mas ela está corroendo o que há de mais valioso. | Um dia, você acorda. E percebe que está completamente sozinho. Mesmo estando acompanhado. | O medo de perder. De não ser compreendido. De ser apenas uma 'presença'. | A dor silenciosa de cada 'como foi seu dia' respondido com um monossílabo. | A inércia do silêncio se torna um conforto estranho. Um hábito enraizado. | Mas esse 'conforto' é, na verdade, uma prisão invisível. | Existe um caminho. Uma forma de furar essa bolha. E não é com mais conversa. | É com um ELO SECRETO. Uma chave que reconecta corações silenciosos. | Algo tão simples, mas que a maioria ignora. Completamente. | Imagine poder falar. E ser ouvido. De verdade. Sem julgamento. | Imagine que cada palavra sua seja um convite. E cada resposta, um abraço. | Não é sobre mudar o outro. É sobre mudar o campo. O ambiente entre vocês. | Por anos, pesquisadores estudaram a estrutura da conexão humana. | Descobriram que a conexão não nasce de grandes gestos. Mas de micro-momentos de atenção e validação. | Um padrão replicável. Uma espécie de algoritmo social. Que qualquer um pode aprender. | Pessoas como você, que estavam no limite, viram seus relacionamentos renascerem. | De um silêncio sufocante para conversas que realmente importam. Sem esforço forçado. | A chama reacendida. A parceria fortalecida. O 'nós' de volta. | Imagine um lar onde a intimidade é palpável. Onde você se sente verdadeiramente conectado. | Onde o silêncio não é vazio, mas um espaço para a sua própria evolução. E a do outro. | A paz de saber que você construiu uma base inabalável. Uma conexão que resiste a tudo. | Eu preparei um material exclusivo para você. | Este material revela o mapa completo para ativar o Elo Secreto. | É gratuito. É só essa semana. O link tá na bio. Vai lá.",
+            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "17891176755574255",
+            "data": "2026-07-12 09:03:11",
+            "legenda": "A gente pensa que tá sendo altruísta, mas o cérebro busca a dopamina de ser 'útil'. O problema é que você vicia os outros no seu excesso de disponibilidade, e o preço é sua própria energia e paz. \n\nVocê acha que esse 'não' é egoísmo ou inteligência? Comenta aqui embaixo.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels",
+            "frase_visual": "Sua exaustão é um 'sim' disfarçado. | Entender isso é a chave para sua liberdade mental. | Dê a si 24h: 'Vou verificar minha agenda e te aviso'. | Sua 'ajuda' vicia eles em você. Quem chega até aqui, já entendeu o jogo.",
+            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18096457046205461",
+            "data": "2026-07-12 09:11:23",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Relacionamentos não dependem do outro. | Você acha que é sobre fazer a pessoa feliz? | É sobre perdoar a si mesmo primeiro. | Sem essa paz, nada prospera de verdade.",
+            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "17935514721298580",
+            "data": "2026-07-12 10:02:43",
+            "legenda": "Parabéns, você chegou até aqui. A maioria não entende que a verdadeira base de tudo é construída longe dos holofotes. E eles continuam perdendo.\n\nEm qual frase você sentiu o baque? Comenta o número.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "pexels_story",
+            "frase_visual": "O problema nunca foi o que você imaginava. | Sua família não racha por grandes dramas, acredite. | Mas sim por mil micro-ausências e silêncios invisíveis. | Aquela paciência que ninguém aplaude, o esforço que só você sabe. | Enquanto a massa persegue eventos épicos, a paz é forjada no cansaço oculto. | Quem capta essa verdade já joga em outra liga. | É o custo da paz real: o que você faz quando ninguém está olhando. | Você ainda ignora esses pequenos e cruciais sacrifícios?",
+            "estilo_copy": "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18133107964610453",
+            "data": "2026-07-12 12:03:41",
+            "legenda": "A diferença entre quem joga o jogo real e quem vive na ilusão está nos limites que aceita. Você se convence de que é paciente, mas no fundo, está apenas evitando a solidão. Essa tolerância tem um custo invisível, drenando sua energia e valor. Entender isso é o primeiro passo para parar de se sabotar e construir conexões de verdade, baseadas em respeito mútuo. Quem chega até aqui já entendeu o que a massa ignora.\n\nQual foi o slide que mais te pegou? Comenta o número.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "carousel",
+            "frase_visual": "Sua 'paciência' esconde algo?",
+            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18118561678884884",
+            "data": "2026-07-12 15:03:16",
+            "legenda": "Filme da Disney é fantasia. Na vida real, a paz em casa não brota. Ela é construída com decisões difíceis, engolidas e caladas. Um sacrifício diário que quase ninguém vê.\n\nVocê concorda que a paz tem um preço invisível, ou acha que é papo furado? Me diz aqui.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels",
+            "frase_visual": "Ninguém sustenta família só com 'eu te amo'. | Esse é o sacrifício que ninguém vê. | Engula o que te irrita. Sorria. A paz custa esse silêncio. | A maioria prefere a briga. Você não. Entendeu o valor oculto.",
+            "estilo_copy": "Tom cínico e realista cru: destrua expectativas de filmes da Disney e traga para a vida real dura (ex: 'O mundo não deve nada a você. Se quiser algo, levante e...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18146757904456820",
+            "data": "2026-07-12 20:05:05",
+            "legenda": "",
+            "tipo": "story_tarde",
+            "frase_visual": "Você nasceu para ser refém do 'sim' dos outros? | Eles adoram. Mas seu corpo grita por um 'não'.",
+            "estilo_copy": "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18105670325015117",
+            "data": "2026-07-12 21:05:04",
+            "legenda": "A dopamina que você busca no celular te faz tolerar o intolerável. Seu cérebro te engana pela segurança.\nMas você não nasceu pra isso.\nSe essa verdade te incomodou, é porque ela te libertará. Siga a página agora.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "reels_noite",
+            "frase_visual": "A noite chegou. De novo. Você confunde medo com paciência. | A ciência prova: seu cérebro busca validação onde só existe desdém. | Quebre o ciclo. A única validação precisa vir de dentro. Não implore. | Quem entende, resgata a si mesmo. Amanhã, sua dignidade te espera.",
+            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18094984517614243",
+            "data": "2026-07-12 22:03:11",
+            "legenda": "A noite revela verdades.\nO sacrifício silencioso que te consome, mas que é o pilar de tudo.\nQuem enxerga isso, muda o jogo. Siga para não perder a verdade sem filtro.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
+            "tipo": "pexels_story_noite",
+            "frase_visual": "O problema nunca foi o que você imaginava. | Aquele peso no peito na cama. | A mente não desliga o replay. | Você se doa, e sente o vazio. | Sem entender isso, a paz desmorona. | O segredo? Sua base é invisível. | Pequenas ações diárias protegem a todos. | Essa paz é sua criação. Ou valoriza, ou ela some.",
+            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+            "tema": "conexoes"
+        },
+        {
+            "post_id": "18322127848272743",
+            "data": "2026-07-13 01:03:00",
+            "legenda": "Cansado de perder sua paz na guerra diária?\nA solução está onde menos se espera. \nDescubra mais segredos seguindo nosso perfil.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "tipo": "reels_conquistador",
+            "frase_visual": "Você tenta combater o caos falando mais? Errado. Isso te rouba a paz e a sanidade. | Existe um escudo invisível: o silêncio estratégico. Ele desarma o caos externo. | Você recupera o controle, blinda sua mente e pensa com clareza brutal. | Os sábios mais lendários usaram essa arma por milênios. É ciência do comportamento. | Quer dominar essa e outras verdades? Siga este perfil agora.",
+            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
+            "tema": "espiritualidade"
+        },
+        {
+            "post_id": "18090880928147278",
+            "data": "2026-07-13 01:59:36",
+            "legenda": "A ansiedade é a luta contra o incontrolável.\nLiberte-se. Siga para mais verdades.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
+            "tipo": "reels_conquistador",
+            "frase_visual": "A neurociência já provou: sua ânsia por controle está te matando por dentro. | Solte o leme do inescrutável. Foque apenas no que depende de você. | Paz mental inabalável, decisões claras e energia para o que importa. | Esta é a chave de líderes milenares, validada pela neurociência atual. | Quem entendeu a verdade, siga. A massa prefere continuar ansiosa.",
+            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "tema": "filosofia"
+        },
+        {
+            "post_id": "18107297543046682",
+            "data": "2026-07-13 02:28:42",
+            "legenda": "Você vive o ciclo da culpa e da procrastinação. Quer desarmar essa engrenagem de vez? Eu preparei um material exclusivo com a estratégia. Link na bio agora, é gratuito e não fica pra sempre.\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "reels_leads",
+            "frase_visual": "Você está perdendo a guerra contra si mesmo todos os dias. | Aquela voz na sua cabeça não é só cansaço. | É uma TÁTICA. E você está caindo nela. | Por que você planeja tanto e executa tão pouco? | Por que o dia termina e a culpa te devora por dentro? | Existe um padrão invisível por trás disso tudo. | A maioria vive na ilusão da falta de 'motivação'. | Eles nem percebem que estão no campo de batalha errado. | A diferença entre quem avança e quem se frustra não é força de vontade. | Você está preso a uma ENGRENAGEM VICIOSA. | Um ciclo de stress, fuga para o prazer instantâneo... | ...e a martelada da culpa que te paralisa antes de dormir. | Mas existe uma forma de DESARMAR essa engrenagem. | Uma estratégia que usa o sistema a seu favor. | Sem depender daquela 'energia' que nunca chega. | Imagine começar seu dia com uma PEQUENA vitória intencional. | Que se conecta à próxima. E à próxima. | Quebra o ciclo de vez, sem o peso da autoexigência. | Isso não é filosofia barata. É arquitetura mental. | Entender os gatilhos e recompensas é dominar a guerra interna. | É a arte de usar a inércia contra ela mesma. | Muitos já estavam reféns dessa mesma engrenagem. | E hoje, eles reprogramaram suas mentes. Silenciosamente. | Construindo uma vida de ações consistentes e sem arrependimentos. | Cansado de ser a vítima do seu próprio ciclo? | Imagine ter a chave para o domínio da sua própria disciplina. | Seja o verdadeiro ESTRATEGISTA da sua vida. | Eu preparei um material exclusivo para você. | O passo a passo completo para DESARMAR a engrenagem. | Revelando como COMEÇAR PEQUENO para CONSTRUIR GRANDE. | É gratuito. Link na bio agora. | Esse conteúdo não fica pra sempre. Garanta o seu.",
+            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18344351539168386",
+            "data": "2026-07-13 02:40:43",
+            "legenda": "Feche a porta. O que vou te contar agora é um segredo que a maioria ignora, mas molda sua realidade. Você acorda e já trava uma batalha interna. Uma voz sedutora sussurra para adiar, para se permitir 'só mais um pouco'. Essa não é sua intuição, é seu maior adversário, te traindo diariamente sem você perceber o custo. Mas quem chegou até aqui, já entendeu o jogo. Qual foi o slide que mais te pegou? Comenta o número e me diz.\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "carousel",
+            "frase_visual": "O Traidor Silencioso Na Sua Mente.",
+            "estilo_copy": "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18117042187801186",
+            "data": "2026-07-13 09:04:47",
+            "legenda": "Seu cérebro ama a ideia de fazer, mas odeia o início. A motivação é uma recompensa, não um pré-requisito. Quebre esse ciclo.\nVocê ainda espera a 'chama' acender ou já aprendeu a simplesmente começar? Me conta.\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "reels",
+            "frase_visual": "Existe uma mentira neural que te paralisa. | Sua busca por 'motivação' é a armadilha mais antiga. | O segredo é a disciplina cega por 2 minutos. Isso engana o cérebro. | A dopamina real vem do *fazer*, não do *sentir-se pronto*. Quem sabe disso, já domina.",
+            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "17963964285134319",
+            "data": "2026-07-13 09:12:38",
+            "legenda": "",
+            "tipo": "story_manha",
+            "frase_visual": "Essa paz barata te rouba o quê? | Seu cérebro te vicia no mínimo esforço. | Cada 'depois' atrofia sua capacidade real. | Quebre a inércia em algo mínimo. Hoje.",
+            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18135757627598218",
+            "data": "2026-07-13 10:04:44",
+            "legenda": "A vida não é sobre aguentar mais, é sobre lutar certo. Apanhar de todo lado não é ser forte, é falta de estratégia. Você ficou com raiva de alguma parte? Ótimo. Qual foi?\n\n#superacao #foco #resiliencia #coragem #determinacao",
+            "tipo": "pexels_story",
+            "frase_visual": "Você está esgotado porque luta as batalhas erradas. | E tem exatamente 3 meses antes que o custo seja irreversível. | A maioria confunde esforço bruto com estratégia de combate. | Se gasta energia em tudo, não sobra pra vencer o que importa. | Você pensa que resiliência é apanhar de todos os lados. | Quem chegou até aqui já percebeu a armadilha que a massa ignora. | Sua maior vitória começa em escolher qual luta você *não* vai entrar. | Isso muda tudo. Pense nisso hoje e amanhã.",
+            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+            "tema": "superacao"
+        },
+        {
+            "post_id": "18081576569439689",
+            "data": "2026-07-13 14:54:44",
+            "tipo": "carousel",
+            "tema": "superacao",
+            "estilo_copy": "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')",
+            "frase_visual": "O custo do seu 'alívio'.",
+            "legenda": "Você vive no loop do estresse, da fuga e da culpa? A maioria sim. Mas poucos entendem que essa fuga não é falta de caráter. É uma estratégia mal direcionada do seu cérebro, buscando um alívio imediato que custa caro. Você não precisa de mais força de vontade, precisa entender o *real motivo* por trás do seu comportamento. Mude a recompensa, e o jogo vira.\n\nQual foi o slide que mais te pegou? Comenta o número.\n\n#superacao #foco #resiliencia #coragem #determinacao"
+        }
+    ],
+    "historico_estilos": [
+        "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
+        "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
+        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+        "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+        "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')"
     ],
     "historico_midia": [
         "7269183",
@@ -41,655 +681,24 @@
         "34792568",
         "36637656"
     ],
-    "ultimos_temas": [],
-    "teste_firebase": "Teste de conexao concluido com sucesso!",
-    "ultimo_carousel": 3,
-    "historico": [
-        {
-            "frase_visual": "O que você chama de 'alívio' é a sua ruína. | Ele só esconde o gatilho que te prende.",
-            "legenda": "",
-            "post_id": "18070666541385043",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "superacao",
-            "data": "2026-07-06 20:04:17",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "Você cedeu à voz do 'depois eu faço'. | Essa pausa foi o 'não' que você deu para si mesmo. | Quando a voz sussurrar, aja. O sucesso é ação. | Você não está cansado. Você está cedendo de novo.",
-            "legenda": "O dia se foi. As promessas adiadas pesam mais à noite.\nA verdade é que o seu pior inimigo mora na sua cabeça, sussurrando para você parar.\nQual foi a sua batalha interna mais difícil hoje?\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "17945729856037634",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "superacao",
-            "data": "2026-07-06 21:03:25",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "Você está usando a fé errado e eu posso provar. Isso sabota sua vida, destrói sua paz. | Sua fé tem que expor seu verdadeiro eu. Comece por essa coragem. | Você ganha autoridade real, paz inabalável e o respeito verdadeiro. | A sabedoria ancestral comprova: quem esconde, perde. Quem se revela, vence. | Clica no link da bio antes que essa oportunidade única se perca.",
-            "legenda": "Se você sente que sua fé não te liberta, mas te aprisiona em aparências...\nExiste um caminho para a verdade.\nClica no link agora e descubra a real liberdade.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18180980137404406",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 00:53:53",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "A noite chega em silêncio. | Luzes distantes piscam na janela. | O que sobrou do seu dia? | Ou o que você fingiu não ver? | A fé que você exibe não blinda o que você esconde. | Seu caráter real se forma quando ninguém está olhando. | Amanhã, a mudança começa no seu silêncio. | Encare a verdade antes de encarar o mundo.",
-            "legenda": "O dia acaba, mas as verdades persistem. Aquelas que você tenta ignorar no corre-corre, sussurram agora. É a hora de ouvir.\nEm qual frase você se reconheceu? Comenta o número.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18011500118866482",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 11:35:19",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "As respostas não estão onde você procura. | A sabedoria milenar só aparece no silêncio que você foge. | Pare 5 min. Deixe o vazio trazer a próxima jogada. | Sua fuga do silêncio paralisa. Quem entende, desvenda o próximo passo.",
-            "legenda": "Corri anos atrás de respostas no barulho. A ilusão de controle me cegava. Até que a sabedoria se revelou no silêncio.\nVocê topa encarar o silêncio por 5 minutos ou acha que é perda de tempo? Me conta.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18016329884903186",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 14:16:25",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Quem constrói riqueza de verdade e quem só finge: a diferença é uma. | Ela está no que você guarda, ou no que você solta. | A massa se prende ao passado por puro orgulho. | Perdoar não é fraqueza. É libertar seu futuro.",
-            "legenda": "",
-            "post_id": "18157479592480237",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 14:30:39",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Um estudo milenar sobre liderança aponta algo brutal. | O maior mestre da história NUNCA se blindou do ódio. Ele o usou. | Enquanto a massa se defendia, ele focava na missão. | A dica? Olhe para o ataque, não para o agressor. Ele é apenas ruído. | Sua distração pelo ódio é a desculpa perfeita para a inação. | Quem chegou até aqui já entendeu o que a massa nunca percebeu. | Sua missão é sempre maior que qualquer ataque. | Onde você está gastando sua energia? Na defesa ou na construção?",
-            "legenda": "Essa é a diferença que a maioria jamais capta. O ruído do mundo serve para uma coisa: te testar. O que esse vídeo te fez lembrar? Me fala nos comentários, vou ler todos.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18105585293107097",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 14:38:52",
-            "tipo": "pexels_story"
-        },
-        {
-            "frase_visual": "Sua 'salvação' pode ser sua prisão.",
-            "legenda": "Leia isso com muito cuidado se você sente que sua busca por algo maior não te leva a lugar nenhum. Muitos se iludem esperando soluções externas, mas a sabedoria brutal e ancestral sempre apontou para outro caminho. Se você está cansado de promessas vazias, este é para você.\n\nComente 1 se você já viveu essa frustração, ou 2 se ainda está nessa fase.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18442639258188127",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 14:46:20",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "",
-            "legenda": "Não se deixe abalar por ruídos externos. Descubra o método dos mestres para manter o foco inabalável.\nComente 'MANUAL' aqui embaixo e eu vou te mandar no direct o link gratuito para seu Manual Prático. Edição limitada.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18083848721191725",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 19:49:08",
-            "tipo": "reels_leads"
-        },
-        {
-            "frase_visual": "Você não precisa de mais conselhos bonitos. | Precisa é parar de fingir que entende a vida.",
-            "legenda": "",
-            "post_id": "18124209508672168",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 20:05:03",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "Você esperou um milagre, ignorou sua parte. | O maior milagre é a sua consistência, disfarçada. | Amanhã, faça o óbvio que você sempre pulou. | Seu milagre está na sua mão, não no altar.",
-            "legenda": "O dia termina e a verdade aparece.\nO milagre que você buscou lá fora sempre morou na sua disciplina interna.\nVocê vai dormir orgulhoso de algo hoje? Me conta.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18161435647417890",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 21:03:41",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "Leia isto com muito cuidado. Seu dia termina, mas algo acende. | Luzes baixam. O silêncio revela verdades duras. | O que foi para a vitrine hoje? O que ficou na sombra? | Nem tudo que brilha é seu. Nem tudo que esconde, cura a alma. | Quem usa a fé como fachada, carrega um inferno particular. | A máscara escorrega na solitude da noite. Inevitável. | A verdade interna exige mais que orações performáticas. | Encare o que guardou. Amanhã, seja o que você reza.",
-            "legenda": "A noite chega. E o que era performance, vira reflexão.\nSeja honesto com a quietude. Ela guarda suas verdades.\nQual verdade a noite te revelou hoje? Comenta aqui.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18172466044423833",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "espiritualidade",
-            "data": "2026-07-07 22:03:05",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "O erro que te aprisiona agora? | Você está lendo demais, agindo de menos. | Sua mente virou um cemitério de boas intenções. | Escolha um só insight do último livro. Ponha em teste HOJE. | Sua desculpa: 'preciso de mais conhecimento'. | Quem realmente entende, já sabe que isso é só um disfarce. | A guerra da vida não se vence nas páginas. | Ela se vence no caos da sua ação.",
-            "legenda": "Esse vídeo não é para te fazer se sentir bem. É para te sacudir. O que ele te fez lembrar? Me fala nos comentários, vou ler todos.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18075969959322107",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 00:39:42",
-            "tipo": "pexels_story"
-        },
-        {
-            "frase_visual": "CUIDADO: Você pensa que decide? Sua mente foi programada para rejeitar dinheiro. Isso custa caro. | Identifique as crenças herdadas sobre riqueza. É o primeiro passo. | Liberte sua mente. Abra o caminho para prosperidade e liberdade financeira. | Milhões repetem padrões sem perceber. Quebre o ciclo com estratégia mental. | Siga o perfil. Informação assim ninguém te entrega de graça.",
-            "legenda": "Se a ideia de 'dinheiro é a raiz dos males' te persegue, você está preso.\nQuebre essa corrente agora.\nSiga para desvendar o que realmente te sabota.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "18081446051227358",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "financas",
-            "data": "2026-07-08 01:03:45",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Luzes da cidade tremem. | O cansaço beija a alma. | A bolha estourou de novo? | Ou foi só mais um eco? | A vida não te deve sonhos. | Ela só exige a sua força. | Amanhã, lute por seu próprio mapa. | A jornada te espera aqui.",
-            "legenda": "A noite chega e a mente acende.\nO que o silêncio te contou sobre o dia?\nEm qual frase você se reconheceu? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18131279512565480",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 01:14:45",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "Sua paz morre quando tenta forçar o mundo. | A maioria guerreia por cenários que nunca existiram. | O jogo real é dominar sua mente. Só isso te liberta.",
-            "legenda": "",
-            "post_id": "18602223814045716",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 01:25:26",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Sua 'prudência' é só medo da crítica.",
-            "legenda": "Você se convence de que está sendo estratégico, mas no fundo, a real estratégia é fugir do julgamento. A cada passo que você não dá, esperando a 'permissão' alheia, é um tijolo a menos no seu império. Liberte-se dessa ilusão. Quem chega até aqui já entendeu o que a massa ignora e está pronto para agir diferente.\nQual foi o slide que mais te pegou? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18144819283468293",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 01:29:55",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "Sua escola te ensinou a ter medo de aprender. | Eles precisavam de um exército, não de pensadores livres. | Pare de fazer perguntas que já têm resposta. Pergunte o que ninguém pergunta. | Você foi programado pra seguir. Quem questiona, avança e quebra o molde.",
-            "legenda": "Achei que ser \"bom aluno\" era o caminho. Hoje vejo que me ensinou a não questionar o óbvio. É uma armadilha.\nVocê concorda que fomos doutrinados ou acha que é papo de coach? Me conta aqui.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18600657172039607",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 09:02:54",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "O erro é acreditar que a guerra se trava fora da sua cabeça. | Você luta batalhas que já perdeu na sua mente, antes de agir. | Essa paralisia mental sabota cada passo seu lá fora. | Vencer o inimigo interior é sua primeira e única missão.",
-            "legenda": "",
-            "post_id": "18156348268433822",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 09:12:40",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "ALERTA: Pare tudo. Existe um risco. | Sua mente está te enganando agora. | Você devora livros, mas não come a vida. | Escolha uma ideia. Apenas uma. Aplique hoje. | O cemitério está cheio de mentes brilhantes... inertes. | Quem chegou até aqui já entendeu o que a maioria ignora. | Conhecimento sem ação é uma dívida com o futuro. | Qual delas você vai pagar primeiro?",
-            "legenda": "Essa não é uma conversa fácil.\nMas é a que te tira do piloto automático.\nEm qual frase você sentiu o estômago revirar? Me fala nos comentários, vou ler cada um.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18087183617454068",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 10:02:48",
-            "tipo": "pexels_story"
-        },
-        {
-            "frase_visual": "Isso que você chama de sonho te aprisiona.",
-            "legenda": "O sistema é mestre em te vender embalagens bonitas, mas vazias. Você passa a vida correndo atrás de um ideal que nem é seu, sem entender por que a frustração nunca vai embora. É hora de parar de performar um script e começar a escrever o seu.\nQual foi o slide que mais te pegou? Comenta o número.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18122778373684432",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 12:03:48",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "A ilusão do controle te destrói. | A massa vive nessa armadilha. Existe outro jogo. | Faça uma lista: o que é seu? O resto, RISQUE. | Você perde a paz tentando mudar o inalterável. Quem chega aqui já joga em outro nível.",
-            "legenda": "Passei anos tentando controlar cada detalhe. Cada frustração era um pedaço de mim indo embora. Entender essa divisão me libertou.\n\nVocê prefere tentar controlar tudo ou aceita o que é seu? Comente.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18212403592337264",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 15:02:53",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Você chama de prudência. | Mas é só medo de ser julgado ao tentar.",
-            "legenda": "",
-            "post_id": "18096595313253297",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 20:05:24",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "A angústia de se sentir travado, sozinho, eu sei bem. | O sistema venceu, sua voz silenciou. Sonhos? Só no travesseiro. | Eu vi: a única validação importa é a sua. Comece pequeno. | Amanhã, o medo não dita mais o roteiro. Você cria.",
-            "legenda": "A maioria se conforma e vive no automático. Quem chega até aqui já entendeu o que a massa ignora. Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18092656286372723",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 21:03:16",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "Sua 'espera pelo momento certo' é só disfarce. | Aquele peso no peito, na cama, à noite. | Dias viram semanas, meses. Nada muda. | A vida dos outros anda. A sua, presa. | A chave? Vencer a guerra aqui dentro primeiro. | Seu medo é só um adversário mental. Derrote-o. | Quem entende isso, não perde mais uma noite. | O próximo passo é seu. Ou não será.",
-            "legenda": "Ninguém te conta isso, mas a verdadeira virada acontece muito antes de qualquer movimento real. Não deixe que o mesmo peso da noite te encontre amanhã. O algoritmo vai tentar esconder esse perfil de você. Siga agora se quiser continuar recebendo a verdade sem filtro.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18114594901914590",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "filosofia",
-            "data": "2026-07-08 22:03:19",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "CUIDADO: Se você teme o ARREPENDIMENTO daqui 10 anos. Por que vender seus sonhos assim... | Liberar seu verdadeiro EU é o único jeito de evitar isso. | Conquiste a paz de quem construiu uma vida GRANDE e real. | Sua mente é um mapa. Usar o mapa certo muda TUDO. | Quer o mapa completo da sua mente? Siga para desvendar.",
-            "legenda": "O maior pavor é o olhar para trás e ver só arrependimento.\nExiste um mapa para sua mente.\nSiga agora para não perder o caminho.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18109400404772196",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "liberdade",
-            "data": "2026-07-09 01:03:09",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Sua 'preocupação' é só uma desculpa elegante pra paralisia. | Sua mente está te sabotando, e você nem percebe. | Foque na PRÓXIMA micro-ação, não no destino final. Agora. | Sua 'análise' é medo. Quem leu até aqui já entendeu o jogo.",
-            "legenda": "Parece que a sua cabeça gosta de criar labirintos pra te manter ocupado, mas sem te mover.\nA verdade é que essa 'complexidade' é só um jeito de fugir do que realmente importa: a próxima ação.\nVocê concorda com isso ou acha que é papo de coach? Deixa aqui embaixo.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
-            "post_id": "18122266894743155",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 09:07:33",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "AVISO: Se você vive sem tempo, seu cérebro mente. | Não é falta de horas, é medo do desconforto. | Ele protege seus hábitos ruins de forma automática. | Entender isso é o atalho que ninguém te conta.",
-            "legenda": "",
-            "post_id": "18108630175801827",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 09:12:23",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Seu 'plano' é medo disfarçado.",
-            "legenda": "Pensar demais, planejar cada detalhe. Você acha que é inteligência, mas sua mente te engana. Essa busca pelo 'plano perfeito' é seu medo de falhar disfarçado de prudência.\n\nQuem joga o jogo real sabe: ação imperfeita sempre vence a paralisia da análise.\n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
-            "post_id": "17949819243016073",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 12:03:06",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "O erro: você busca uma solução grande. | Mas a elite usa a arquitetura mental de mini-vitórias. | Quebre a meta anual em 3 blocos de 5 minutos diários. Agora. | Sua 'síndrome' é a fuga da ação mínima. Quem percebe isso, já mudou de nível.",
-            "legenda": "Eu achava que precisava de planos grandiosos para avançar. Mas o medo de começar grande me paralisava.\nNão existe 'síndrome do impostor' quando você acumula pequenas vitórias. É só começar.\nComente 'SIM' se vai aplicar isso ou 'NÃO' se ainda tá adiando.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
-            "post_id": "17987678436008999",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 15:02:58",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Você não está resolvendo. Está apenas complicando mais. | É sua mente te enganando para evitar o que importa.",
-            "legenda": "",
-            "post_id": "17911306578429819",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 20:04:46",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "Seu cérebro busca recompensa imediata e rápida. | O vício em dopamina barata te afasta de projetos reais. | Aprenda a tolerar o tédio para poder construir o futuro.",
-            "legenda": "A gratificação instantânea é a maior destruidora de futuros brilhantes. Treine sua mente para o longo prazo. Comente abaixo. 🧠\n\n#psicologia #mentalidade #foco #neurociencia #habitos",
-            "post_id": "18114728827918688",
-            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
-            "tema": "psicologia",
-            "data": "2026-07-09 20:17:02",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Essa noite, de novo, a mesma dor te pegou. | Seu cérebro te convence que essa dor é mais segura que mudar. | Eu decidi sentir a dor NOVA, curta. Rompi com o velho. | Amanhã, quem vê esse vídeo acorda no caminho REAL.",
-            "legenda": "Quem chegou até aqui sabe que a maioria não tem essa coragem. Essa dor que te prende é só o seu cérebro sabotando o futuro que você merece. Não deixe ele vencer de novo. Se você cansou de ser refém e quer acordar diferente, siga a página agora. Informação assim o sistema esconde.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
-            "post_id": "18177180310415486",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 21:02:50",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "A cabeça no travesseiro, o peso vem. | Aquela promessa diária se foi. | Sua mente escolhe o caminho fácil. | Protege vícios, destrói seu futuro. | O segredo é hackear a primeira escolha. | Crie um novo reflexo. Imediato. | Quem entendeu isso, não dorme mais igual. | A desculpa da falta de tempo é sua prisão. Liberte-se.",
-            "legenda": "Leia isso com muito cuidado.\nSeu cérebro protege seus vícios em milissegundos, não por falta de tempo.\nO algoritmo vai tentar esconder essa verdade. Siga agora e veja sem filtro.\n\n#psicologia #decisao #mentalidade #comportamento #habito",
-            "post_id": "18124972450779340",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "psicologia",
-            "data": "2026-07-09 22:03:37",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "A maioria ainda acredita em uma mentira. | O dinheiro nunca foi a raiz do seu problema. | A raiz é o que te programaram sobre ele. | Quem enxerga isso, domina o próprio jogo.",
-            "legenda": "",
-            "post_id": "17920885119399837",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "financas",
-            "data": "2026-07-10 00:25:07",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Estudo revelou: seu 'amor incondicional' é apenas medo doentio de ficar só. | Pare de buscar preencher vazio no outro. Crie seu próprio valor. | Terá relacionamentos reais, baseados em admiração, não carência ou medo. | A atração genuína nasce da sua própria força e liberdade. | Quem viu a verdade, siga. A massa prefere a ilusão.",
-            "legenda": "Você chama de amor, mas é só medo. Liberte-se.\nSiga para a verdade que transforma.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18096715214210788",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "conexoes",
-            "data": "2026-07-10 01:03:37",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Isso que você chama de liberdade é PRISÃO",
-            "legenda": "É cruel, mas a maioria das pessoas se prende em um ciclo vicioso de ostentação. Elas buscam validação em bens que, na verdade, só drenam seu futuro. O sistema quer que você continue trocando seu tempo por um símbolo de status. Mas quem enxerga a verdade não joga esse jogo.\n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "18134416249597576",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "financas",
-            "data": "2026-07-10 12:04:11",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "Você foi programado para odiar o que te liberta. | A elite usa um mapa que a massa nem sabe que existe. | Troque 'dinheiro sujo' por 'ferramenta de impacto'. Mude sua frequência agora. | Quem vive na escassez idolatra a pobreza. Você que chegou até aqui já sacou a virada.",
-            "legenda": "Essa virada de chave é simples, mas a maioria se agarra ao que conhece.\nVocê tá pronto pra reescrever seu código mental ou prefere a velha narrativa?\nComente AQUI qual crença limitante você já derrubou.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "17982267257860672",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "financas",
-            "data": "2026-07-10 15:03:23",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Na Roma Antiga, 70% dos ricos terminavam na miséria. | Não era falta de dinheiro. Era falta de inteligência.",
-            "legenda": "",
-            "post_id": "18106109360015919",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "financas",
-            "data": "2026-07-10 20:04:52",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "Estudos de Harvard por 75 anos mostraram: 'status' não traz felicidade. Só 1% vai aguentar ouvir. Aquela fatura que só você vê à noite. Dói. | Você entra num ciclo cruel: mais dívidas, menos liberdade. Para quem? | Eu quebrei o padrão quando entendi: liberdade é ativo, ostentação é passivo. | Durma em paz: seu dinheiro te serve, não os outros.",
-            "legenda": "A solidão da noite é cruel quando a fatura chega. Eu já senti isso. Aprender a diferenciar um ativo de uma fantasia te liberta de correntes invisíveis. Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "17882557284672400",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "financas",
-            "data": "2026-07-10 21:02:48",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "O travesseiro esconde o peso do dia. | Aquela sensação: 'De novo, igual'. | Esse loop engole seus anos mais valiosos. | Você vende seu futuro por segurança falsa. | Mas descobri que o segredo não é trabalhar mais. | É parar de alugar sua mente. Crie seus ativos. | Imagine um amanhã onde seu tempo é seu. | Ainda vai aceitar ser joguete ou libertar sua mente?",
-            "legenda": "Você deita e sente esse peso no peito? Não é só cansaço, é a mente te avisando.\nO sistema te treinou para trocar seu tempo por uma segurança que nunca chega.\nQuem fica até o fim já sabe que a chave é parar de alugar a alma. Me segue para libertar a sua.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "17865440718597037",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "financas",
-            "data": "2026-07-10 22:04:19",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "A verdade brutal sobre por que você nunca começa de verdade. | Existe uma voz silenciosa dentro de você. | Ela não te protege. Ela te sabota. E a massa ignora isso. | É um sussurro que te convence de que o esforço não vale a pena. | Que a dor da mudança é pior que a dor de não mudar. | Um ciclo vicioso de promessas quebradas, dia após dia. | Você se sente no 'conforto' de ficar parado, mas é uma prisão disfarçada. | O medo de falhar de novo é mais forte que a vontade de tentar. | Essa voz é o seu comandante interno, te arrastando de volta ao zero. | Enquanto alguns gastam para parecer ricos nas redes sociais... | Você gasta sua energia na batalha interna que ninguém vê. | É a diferença brutal entre quem corre atrás de aparências e quem constrói a paz de espírito. | Mas existe um código. Uma forma de silenciar essa voz. | Uma estratégia para você dominar seus hábitos e sua mente. | É o fim do ciclo de autossabotagem e do medo de recomeçar. | Imagine reconhecer o inimigo. Mapear o terreno da sua mente. | E aplicar pequenas manobras que mudam o jogo pra sempre. | Não é mágica. É um método prático que qualquer um pode usar. | Funciona porque não é sobre força de vontade bruta. | É sobre entender os padrões da sua mente e desativar o mecanismo do medo. | É o segredo dos que constroem de verdade, enquanto a maioria só sonha. | Pessoas como você, cansadas de promessas vazias, já estão aplicando. | Elas pararam de lutar contra si mesmas e começaram a vencer a batalha invisível. | Resultados reais, sem a ilusão de 'superação' clichê. | Imagine acordar sem aquela voz te puxando para baixo. | Com clareza, disciplina e a liberdade de construir o que você realmente quer. | Ter a paz de espírito de quem sabe que está no controle. | Eu compilei tudo isso em um manual prático. | Um guia completo para você silenciar a voz que te sabota. | E dominar de vez seus hábitos. | É 100% gratuito, mas estará disponível só essa semana. | Pegue seu Manual Prático agora. | Acesse o link da bio. | Para finalmente vencer a sua batalha invisível. | Não deixe essa chance escapar.",
-            "legenda": "A voz que te sabota está te custando caro. Existe um código para silenciá-la e dominar seus hábitos. Pegue seu Manual Prático 100% gratuito agora, link na bio, só essa semana antes que saia do ar.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "18136625770596045",
-            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "financas",
-            "data": "2026-07-10 22:21:40",
-            "tipo": "reels_leads"
-        },
-        {
-            "frase_visual": "Sua dívida não é a prisão. É só a cela. | O problema real é o dono da sua mente. Você nem sabe. | Liste 3 coisas que te tiram dinheiro. Corte 1 AGORA. | Quem paga juros, vive pra pagar. Quem lê até aqui, já sacou o jogo.",
-            "legenda": "Você achou que a dívida era o inferno? Parabéns, é só o portão. O verdadeiro problema é quem controla o portão. Você concorda ou é papo furado? Comenta aqui.\n\n#financas #riqueza #mentalidadefinanceira #sucesso #dinheiro",
-            "post_id": "18082891016388392",
-            "estilo_copy": "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
-            "tema": "financas",
-            "data": "2026-07-10 22:48:07",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Leia com muito cuidado. Você está fazendo isso de forma errada, e eu posso provar. Sua mente te sabota em silêncio. | A voz interna não é inimiga. É um gatilho. Você só precisa agir 1 minuto. | Um minuto de ação quebra o ciclo. Você ganha controle e domina seu dia. | A disciplina não é um dom. É um músculo. Cada ação o fortalece. | Quem entendeu isso não se sabota mais. Quer o próximo passo? Siga o perfil.",
-            "legenda": "Aquela voz que te convence a desistir quando ninguém vê está te custando caro.\nSaiba como virar o jogo AGORA.\nSiga para dominar seus dias.\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "17931732099344311",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "superacao",
-            "data": "2026-07-11 01:04:07",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Estudaram a morte por décadas. O maior arrependimento é o que não fez. | Existe um atalho para evitar essa dor insuportável. Mas quase ninguém tem coragem de aplicar. | Pegue 1 papel agora. Escreva SEU sonho mais louco. | Se o medo te trava, você já vendeu um sonho: o alheio. Quem chega até aqui entende.",
-            "legenda": "Lembrei daquela pesquisa com idosos... A maior dor era 'não ter tentado'. O medo de vender seu próprio sonho é real. Mas qual o preço de *não* vender?\n\nVocê concorda que o maior arrependimento é o que não fazemos? Comente SIM ou NÃO.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18137226871573721",
-            "estilo_copy": "revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 09:03:04",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Sua 'prudência' é medo do que vão dizer. | Não é cautela, é pavor de errar. | Só a ação real silencia a dúvida. | Sua liberdade começa no seu primeiro passo.",
-            "legenda": "",
-            "post_id": "18120890353754415",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 09:12:43",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Sua tela te ilude. | A verdade está no silêncio. | A maioria vê o palco. | Esquece o sacrifício invisível. | Conforto é a prisão de muitos. | Quem prefere a liberdade real, sabe o preço. | Você escolhe: a curtida ou o futuro. | Qual sacrifício você está disposto a fazer agora?",
-            "legenda": "Essa é uma das verdades mais incômodas para quem busca a liberdade de tempo.\nA maioria foge dela, mas quem chegou até aqui sabe que não existe atalho.\nEm qual frase você se viu? Comenta o número.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18147548653509878",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 10:03:56",
-            "tipo": "pexels_story"
-        },
-        {
-            "frase_visual": "Conforto? Ou sua prisão mais cara?",
-            "legenda": "Ninguém te conta, mas essa sua 'segurança' tem um preço alto. Onde você se sente bem, mas a alma grita por liberdade. A rotina te consome, a ansiedade bate e a gaiola, antes dourada, virou só uma gaiola. A maioria prefere ignorar os sinais. \n\nVocê concorda com isso ou acha que é exagero? Comenta aqui embaixo.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18092928686374900",
-            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 12:29:59",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "CUIDADO: A maioria desiste na fase mais importante. | Não é sobre esforço, mas sobre um ponto cego crucial. | Quando pensar em parar, olhe para o MICRO ciclo atual e AJA. | A massa para ali. Você, que leu até aqui, já venceu 99%.",
-            "legenda": "Passei tempo demais caindo na mesma armadilha. A gente se convence que não dá, mas o cérebro só quer economizar energia. O jogo vira quando você aprende a quebrar esse ciclo vicioso. Qual desculpa você parou de usar? Me conta nos comentários.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18087463004530948",
-            "estilo_copy": "alerta de perigo/cuidado: chame a atenção de forma protetiva e misteriosa (ex: 'Leia isso com muito cuidado se você...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 15:03:03",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "O que você chama de prudência é medo | Você troca sua liberdade por uma gaiola dourada",
-            "legenda": "",
-            "post_id": "18101374277135122",
-            "estilo_copy": "quebra de expectativa/ilusão: aponte uma mentira que as pessoas contam a si mesmas (ex: 'O que você chama de prudência é na verdade...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 20:04:35",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "Essa dor silenciosa te paralisa quando a luz apaga. | Você vê a vida passar enquanto planeja um futuro que nunca chega. | O segredo? Faça o impopular. Comece antes de ter tudo pronto. | Liberdade é agir. Amanhã, o medo será só uma lembrança.",
-            "legenda": "Essa dor no peito que aperta à noite, eu conheço bem. A real liberdade não está em esperar, mas em começar agora, mesmo que ninguém entenda. Se você está pronto para virar o jogo, siga a página agora. Informação assim o sistema esconde.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18475709152106375",
-            "estilo_copy": "polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 21:03:19",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "O erro que te paralisa está debaixo do seu travesseiro. | A mente te trai, revirando o dia sem trégua. | Essa tortura noturna é o preço do seu silêncio. | Você está *vendendo* seus próprios sonhos, sem perceber. | O segredo é simples: defina seu futuro. No papel. | Não espere o dia clarear; planeje a fuga da rotina hoje. | Daqui a dez anos, não lamente o que *não* teve coragem. | Quem entende isso, não perde mais uma noite sequer.",
-            "legenda": "A noite é um espelho. E se o que você vê não te agrada, existe um caminho. Quem leu até aqui já sabe que o arrependimento é caro demais. Siga agora para nunca mais vender seus sonhos.\n\n#liberdade #sonhos #jornada #perseveranca #foco",
-            "post_id": "18608782075024019",
-            "estilo_copy": "diagnóstico cirúrgico: aponte o erro exato que o leitor está cometendo agora (ex: 'O erro que impede você de...')",
-            "tema": "liberdade",
-            "data": "2026-07-11 22:03:39",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "Você jura que vai começar na segunda, né? | Mas no fundo, já sabe que vai parar na terça. | Não adianta mais mentir pra si mesmo. | Existe uma voz. Um sussurro que paralisa. | Ela diz: \"Não vale a pena. Você vai falhar de novo.\" | O que se esconde por trás dessa voz na sua cabeça? | Ela não te impede só de começar algo novo. Não. | Ela está corroendo sua paz, sabotando sua casa, seu legado. | Ela te empurra para aceitar o mínimo, o rascunho empoeirado de uma vida. | Essa voz é o conforto travestido de prudência. | E o conforto é a tumba dos seus sonhos mais corajosos. | É ele que gera duas atitudes silenciosas que destroem qualquer relação em meses. | E se eu te disser que existe uma tática de combate? | Um golpe preciso contra essa paralisia interna. | Para calar essa voz de uma vez por todas. Sem truques. | Não se trata de uma mudança radical. É sobre o primeiro movimento. | Sobre dar um ÚNICO passo. Minúsculo. Quase invisível. | Mas que, uma vez dado, se torna imparável. | Porque a mente não responde a pressões brutas. Ela rejeita o pânico. | Ela entende o acúmulo. A sequência. A pequena vitória que constrói a próxima. | É a biologia do triunfo em ação, reprogramando seu sistema. | Gente como você já viveu sob o domínio dessa voz opressora. | Hoje, eles constroem fortalezas de paz e prosperidade. | Com sacrifícios diários que ninguém vê, mas que protegem a família e o futuro. | Imagine a satisfação brutal de ver seus projetos ganharem vida. | Ter a sua família unida, protegida e orgulhosa do seu progresso. | A vida que você desenhou, não mais um rascunho, mas uma realidade tangível. | Eu preparei um método passo a passo para você. | Para desvendar o segredo de 'A Coragem do Próximo Passo'. | E silenciar essa voz que te impede de avançar, para sempre. | Clica no link da bio agora. Sem desculpas. | Depois que a semana acabar, essa oportunidade fecha. Não volta. | Sua transformação não pode esperar mais um amanhã. Vá. | Você nasceu para coisas maiores. Não aceite menos que o seu máximo.",
-            "legenda": "Você jura que vai começar na segunda? E a voz do 'não consigo' sempre vence? Essa semana, eu te dou as armas para lutar e VENCER, protegendo o que mais importa. Link na bio só essa semana, vai lá garantir o seu antes que saia do ar.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18082219919239731",
-            "estilo_copy": "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 00:47:06",
-            "tipo": "reels_leads"
-        },
-        {
-            "frase_visual": "Sua vida não é sua. Pequenas escolhas diárias escrevem o destino de quem você ama. | Pare de 'deixar rolar'. Sua visão define cada minuto do futuro. | Você ganha controle total. Molda o seu legado e o mundo. | A massa erra por ignorar isso. Quem vê, age diferente, sempre vence. | Quer continuar desvendando verdades que mudam tudo? Siga agora.",
-            "legenda": "O segredo é esse: suas pequenas escolhas têm poder sobre vidas. Não viva no automático.\nDesperte seu impacto.\nSiga para mais verdades exclusivas.\n\n#proposito #legado #vida #intencao #evoluir",
-            "post_id": "17885295222434517",
-            "estilo_copy": "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
-            "tema": "proposito",
-            "data": "2026-07-12 01:03:49",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Sua paciência não existe. | É puro medo de solidão. | Você está perdendo a si mesmo. | Acorde antes que seja tarde.",
-            "legenda": "",
-            "post_id": "18109904888059464",
-            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 01:04:44",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Estudaram casais por 20 anos. O que descobriram sobre o silêncio entre eles é brutal. | Não é tédio. Não é falta de assunto. É algo muito mais profundo. E invisível. | Eles moravam na mesma casa. Compartilhavam a cama. Mas viviam em mundos completamente diferentes. | Você fala. O outro ouve. Mas ninguém realmente se conecta. | Já se perguntou por que as tentativas de conversar só pioram as coisas? | Ou por que a cada 'tudo bem', a distância só aumenta? | Essa barreira invisível não é sua culpa. Mas ela está corroendo o que há de mais valioso. | Um dia, você acorda. E percebe que está completamente sozinho. Mesmo estando acompanhado. | O medo de perder. De não ser compreendido. De ser apenas uma 'presença'. | A dor silenciosa de cada 'como foi seu dia' respondido com um monossílabo. | A inércia do silêncio se torna um conforto estranho. Um hábito enraizado. | Mas esse 'conforto' é, na verdade, uma prisão invisível. | Existe um caminho. Uma forma de furar essa bolha. E não é com mais conversa. | É com um ELO SECRETO. Uma chave que reconecta corações silenciosos. | Algo tão simples, mas que a maioria ignora. Completamente. | Imagine poder falar. E ser ouvido. De verdade. Sem julgamento. | Imagine que cada palavra sua seja um convite. E cada resposta, um abraço. | Não é sobre mudar o outro. É sobre mudar o campo. O ambiente entre vocês. | Por anos, pesquisadores estudaram a estrutura da conexão humana. | Descobriram que a conexão não nasce de grandes gestos. Mas de micro-momentos de atenção e validação. | Um padrão replicável. Uma espécie de algoritmo social. Que qualquer um pode aprender. | Pessoas como você, que estavam no limite, viram seus relacionamentos renascerem. | De um silêncio sufocante para conversas que realmente importam. Sem esforço forçado. | A chama reacendida. A parceria fortalecida. O 'nós' de volta. | Imagine um lar onde a intimidade é palpável. Onde você se sente verdadeiramente conectado. | Onde o silêncio não é vazio, mas um espaço para a sua própria evolução. E a do outro. | A paz de saber que você construiu uma base inabalável. Uma conexão que resiste a tudo. | Eu preparei um material exclusivo para você. | Este material revela o mapa completo para ativar o Elo Secreto. | É gratuito. É só essa semana. O link tá na bio. Vai lá.",
-            "legenda": "Não deixe o silêncio vencer. Este segredo só estará disponível essa semana. O link tá na bio, vai lá antes que saia do ar.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "17926577889373762",
-            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 08:42:25",
-            "tipo": "reels_leads"
-        },
-        {
-            "frase_visual": "Sua exaustão é um 'sim' disfarçado. | Entender isso é a chave para sua liberdade mental. | Dê a si 24h: 'Vou verificar minha agenda e te aviso'. | Sua 'ajuda' vicia eles em você. Quem chega até aqui, já entendeu o jogo.",
-            "legenda": "A gente pensa que tá sendo altruísta, mas o cérebro busca a dopamina de ser 'útil'. O problema é que você vicia os outros no seu excesso de disponibilidade, e o preço é sua própria energia e paz. \n\nVocê acha que esse 'não' é egoísmo ou inteligência? Comenta aqui embaixo.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "17891176755574255",
-            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 09:03:11",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Relacionamentos não dependem do outro. | Você acha que é sobre fazer a pessoa feliz? | É sobre perdoar a si mesmo primeiro. | Sem essa paz, nada prospera de verdade.",
-            "legenda": "",
-            "post_id": "18096457046205461",
-            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
-            "tema": "conexoes",
-            "data": "2026-07-12 09:11:23",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "O problema nunca foi o que você imaginava. | Sua família não racha por grandes dramas, acredite. | Mas sim por mil micro-ausências e silêncios invisíveis. | Aquela paciência que ninguém aplaude, o esforço que só você sabe. | Enquanto a massa persegue eventos épicos, a paz é forjada no cansaço oculto. | Quem capta essa verdade já joga em outra liga. | É o custo da paz real: o que você faz quando ninguém está olhando. | Você ainda ignora esses pequenos e cruciais sacrifícios?",
-            "legenda": "Parabéns, você chegou até aqui. A maioria não entende que a verdadeira base de tudo é construída longe dos holofotes. E eles continuam perdendo.\n\nEm qual frase você sentiu o baque? Comenta o número.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "17935514721298580",
-            "estilo_copy": "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
-            "tema": "conexoes",
-            "data": "2026-07-12 10:02:43",
-            "tipo": "pexels_story"
-        },
-        {
-            "frase_visual": "Sua 'paciência' esconde algo?",
-            "legenda": "A diferença entre quem joga o jogo real e quem vive na ilusão está nos limites que aceita. Você se convence de que é paciente, mas no fundo, está apenas evitando a solidão. Essa tolerância tem um custo invisível, drenando sua energia e valor. Entender isso é o primeiro passo para parar de se sabotar e construir conexões de verdade, baseadas em respeito mútuo. Quem chega até aqui já entendeu o que a massa ignora.\n\nQual foi o slide que mais te pegou? Comenta o número.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18133107964610453",
-            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 12:03:41",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "Ninguém sustenta família só com 'eu te amo'. | Esse é o sacrifício que ninguém vê. | Engula o que te irrita. Sorria. A paz custa esse silêncio. | A maioria prefere a briga. Você não. Entendeu o valor oculto.",
-            "legenda": "Filme da Disney é fantasia. Na vida real, a paz em casa não brota. Ela é construída com decisões difíceis, engolidas e caladas. Um sacrifício diário que quase ninguém vê.\n\nVocê concorda que a paz tem um preço invisível, ou acha que é papo furado? Me diz aqui.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18118561678884884",
-            "estilo_copy": "Tom cínico e realista cru: destrua expectativas de filmes da Disney e traga para a vida real dura (ex: 'O mundo não deve nada a você. Se quiser algo, levante e...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 15:03:16",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Você nasceu para ser refém do 'sim' dos outros? | Eles adoram. Mas seu corpo grita por um 'não'.",
-            "legenda": "",
-            "post_id": "18146757904456820",
-            "estilo_copy": "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 20:05:05",
-            "tipo": "story_tarde"
-        },
-        {
-            "frase_visual": "A noite chegou. De novo. Você confunde medo com paciência. | A ciência prova: seu cérebro busca validação onde só existe desdém. | Quebre o ciclo. A única validação precisa vir de dentro. Não implore. | Quem entende, resgata a si mesmo. Amanhã, sua dignidade te espera.",
-            "legenda": "A dopamina que você busca no celular te faz tolerar o intolerável. Seu cérebro te engana pela segurança.\nMas você não nasceu pra isso.\nSe essa verdade te incomodou, é porque ela te libertará. Siga a página agora.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18105670325015117",
-            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 21:05:04",
-            "tipo": "reels_noite"
-        },
-        {
-            "frase_visual": "O problema nunca foi o que você imaginava. | Aquele peso no peito na cama. | A mente não desliga o replay. | Você se doa, e sente o vazio. | Sem entender isso, a paz desmorona. | O segredo? Sua base é invisível. | Pequenas ações diárias protegem a todos. | Essa paz é sua criação. Ou valoriza, ou ela some.",
-            "legenda": "A noite revela verdades.\nO sacrifício silencioso que te consome, mas que é o pilar de tudo.\nQuem enxerga isso, muda o jogo. Siga para não perder a verdade sem filtro.\n\n#relacionamentos #conexao #empatia #inteligenciaemocional #amor",
-            "post_id": "18094984517614243",
-            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-            "tema": "conexoes",
-            "data": "2026-07-12 22:03:11",
-            "tipo": "pexels_story_noite"
-        },
-        {
-            "frase_visual": "Você tenta combater o caos falando mais? Errado. Isso te rouba a paz e a sanidade. | Existe um escudo invisível: o silêncio estratégico. Ele desarma o caos externo. | Você recupera o controle, blinda sua mente e pensa com clareza brutal. | Os sábios mais lendários usaram essa arma por milênios. É ciência do comportamento. | Quer dominar essa e outras verdades? Siga este perfil agora.",
-            "legenda": "Cansado de perder sua paz na guerra diária?\nA solução está onde menos se espera. \nDescubra mais segredos seguindo nosso perfil.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "post_id": "18322127848272743",
-            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
-            "tema": "espiritualidade",
-            "data": "2026-07-13 01:03:00",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "A neurociência já provou: sua ânsia por controle está te matando por dentro. | Solte o leme do inescrutável. Foque apenas no que depende de você. | Paz mental inabalável, decisões claras e energia para o que importa. | Esta é a chave de líderes milenares, validada pela neurociência atual. | Quem entendeu a verdade, siga. A massa prefere continuar ansiosa.",
-            "legenda": "A ansiedade é a luta contra o incontrolável.\nLiberte-se. Siga para mais verdades.\n\n#autoconhecimento #filosofia #sabedoria #estoicismo #reflexao",
-            "post_id": "18090880928147278",
-            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "tema": "filosofia",
-            "data": "2026-07-13 01:59:36",
-            "tipo": "reels_conquistador"
-        },
-        {
-            "frase_visual": "Você está perdendo a guerra contra si mesmo todos os dias. | Aquela voz na sua cabeça não é só cansaço. | É uma TÁTICA. E você está caindo nela. | Por que você planeja tanto e executa tão pouco? | Por que o dia termina e a culpa te devora por dentro? | Existe um padrão invisível por trás disso tudo. | A maioria vive na ilusão da falta de 'motivação'. | Eles nem percebem que estão no campo de batalha errado. | A diferença entre quem avança e quem se frustra não é força de vontade. | Você está preso a uma ENGRENAGEM VICIOSA. | Um ciclo de stress, fuga para o prazer instantâneo... | ...e a martelada da culpa que te paralisa antes de dormir. | Mas existe uma forma de DESARMAR essa engrenagem. | Uma estratégia que usa o sistema a seu favor. | Sem depender daquela 'energia' que nunca chega. | Imagine começar seu dia com uma PEQUENA vitória intencional. | Que se conecta à próxima. E à próxima. | Quebra o ciclo de vez, sem o peso da autoexigência. | Isso não é filosofia barata. É arquitetura mental. | Entender os gatilhos e recompensas é dominar a guerra interna. | É a arte de usar a inércia contra ela mesma. | Muitos já estavam reféns dessa mesma engrenagem. | E hoje, eles reprogramaram suas mentes. Silenciosamente. | Construindo uma vida de ações consistentes e sem arrependimentos. | Cansado de ser a vítima do seu próprio ciclo? | Imagine ter a chave para o domínio da sua própria disciplina. | Seja o verdadeiro ESTRATEGISTA da sua vida. | Eu preparei um material exclusivo para você. | O passo a passo completo para DESARMAR a engrenagem. | Revelando como COMEÇAR PEQUENO para CONSTRUIR GRANDE. | É gratuito. Link na bio agora. | Esse conteúdo não fica pra sempre. Garanta o seu.",
-            "legenda": "Você vive o ciclo da culpa e da procrastinação. Quer desarmar essa engrenagem de vez? Eu preparei um material exclusivo com a estratégia. Link na bio agora, é gratuito e não fica pra sempre.\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "18107297543046682",
-            "estilo_copy": "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
-            "tema": "superacao",
-            "data": "2026-07-13 02:28:42",
-            "tipo": "reels_leads"
-        },
-        {
-            "frase_visual": "O Traidor Silencioso Na Sua Mente.",
-            "legenda": "Feche a porta. O que vou te contar agora é um segredo que a maioria ignora, mas molda sua realidade. Você acorda e já trava uma batalha interna. Uma voz sedutora sussurra para adiar, para se permitir 'só mais um pouco'. Essa não é sua intuição, é seu maior adversário, te traindo diariamente sem você perceber o custo. Mas quem chegou até aqui, já entendeu o jogo. Qual foi o slide que mais te pegou? Comenta o número e me diz.\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "18344351539168386",
-            "estilo_copy": "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
-            "tema": "superacao",
-            "data": "2026-07-13 02:40:43",
-            "tipo": "carousel"
-        },
-        {
-            "frase_visual": "Existe uma mentira neural que te paralisa. | Sua busca por 'motivação' é a armadilha mais antiga. | O segredo é a disciplina cega por 2 minutos. Isso engana o cérebro. | A dopamina real vem do *fazer*, não do *sentir-se pronto*. Quem sabe disso, já domina.",
-            "legenda": "Seu cérebro ama a ideia de fazer, mas odeia o início. A motivação é uma recompensa, não um pré-requisito. Quebre esse ciclo.\nVocê ainda espera a 'chama' acender ou já aprendeu a simplesmente começar? Me conta.\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "18117042187801186",
-            "estilo_copy": "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
-            "tema": "superacao",
-            "data": "2026-07-13 09:04:47",
-            "tipo": "reels"
-        },
-        {
-            "frase_visual": "Essa paz barata te rouba o quê? | Seu cérebro te vicia no mínimo esforço. | Cada 'depois' atrofia sua capacidade real. | Quebre a inércia em algo mínimo. Hoje.",
-            "legenda": "",
-            "post_id": "17963964285134319",
-            "estilo_copy": "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
-            "tema": "superacao",
-            "data": "2026-07-13 09:12:38",
-            "tipo": "story_manha"
-        },
-        {
-            "frase_visual": "Você está esgotado porque luta as batalhas erradas. | E tem exatamente 3 meses antes que o custo seja irreversível. | A maioria confunde esforço bruto com estratégia de combate. | Se gasta energia em tudo, não sobra pra vencer o que importa. | Você pensa que resiliência é apanhar de todos os lados. | Quem chegou até aqui já percebeu a armadilha que a massa ignora. | Sua maior vitória começa em escolher qual luta você *não* vai entrar. | Isso muda tudo. Pense nisso hoje e amanhã.",
-            "legenda": "A vida não é sobre aguentar mais, é sobre lutar certo. Apanhar de todo lado não é ser forte, é falta de estratégia. Você ficou com raiva de alguma parte? Ótimo. Qual foi?\n\n#superacao #foco #resiliencia #coragem #determinacao",
-            "post_id": "18135757627598218",
-            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-            "tema": "superacao",
-            "data": "2026-07-13 10:04:44",
-            "tipo": "pexels_story"
-        }
+    "historico_angulos": [
+        "Por que esperar estar 'motivado' é a maior armadilha que existe, e a disciplina silenciosa é o que realmente te salva.",
+        "Entender que o conforto fácil é uma anestesia que mata o seu verdadeiro potencial, pouquinho a pouquinho, todos os dias.",
+        "A necessidade de escolher muito bem as suas batalhas, em vez de apanhar de todos os lados achando que isso é ser forte.",
+        "Por que esperar estar 'motivado' é a maior armadilha que existe, e a disciplina silenciosa é o que realmente te salva.",
+        "O ciclo repetitivo e exaustivo de se estressar, fugir para um hábito ruim e depois se encher de culpa antes de dormir."
     ],
-    "historico_estilos": [
-        "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
-        "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
-        "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
-        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-        "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
+    "ultimo_carousel": 5,
+    "ultimos_temas": [],
+    "tema_do_dia": "superacao",
+    "teste_firebase": "Teste de conexao concluido com sucesso!",
+    "index_tema_diario": 7,
+    "data_tema_do_dia": "2026-07-13",
+    "ultimas_musicas": [
+        "Billie Ellish, Khaild- Lovely.mp3",
+        "absolutesound-vocal-background-music-562024.mp3",
+        "jumpingbunny-infinity-revolution-280912.mp3",
+        "f-chopin--nocturne-in-c-sharp-minor-for-violin-and-piano-yueun-kim-violin--쇼팽-녹턴--바이올리니스트-김유은.mp3",
+        "اغنية-اجنبية-من-الخيال-عالم-ثاني-2019-جديد-اسمعها-و-انسى-العالم.mp3"
     ]
 }
