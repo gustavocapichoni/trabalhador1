@@ -14,6 +14,23 @@ from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
 from core.design.gerador_prompts import gerar_prompt_cinematografico
 from loguru import logger
 
+def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor):
+    """
+    Função auxiliar para centralizar o pós-processamento dos dados gerados (IA ou Contingência).
+    Injeta o prompt de imagem procedural (Pollinations) e as hashtags correspondentes na legenda.
+    """
+    tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
+    if tipo in tipos_imagem:
+        prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
+        dados["prompt_imagem"] = prompt_visual
+        logger.info(f"Cena cinematografica gerada ({provedor}): {prompt_visual}")
+    
+    if "legenda" in dados and detalhes_tema and "hashtags" in detalhes_tema:
+        tags = " ".join(detalhes_tema["hashtags"])
+        if not any(tag in dados["legenda"] for tag in detalhes_tema["hashtags"]):
+            dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+    return dados
+
 def gerar_conteudo_gemini(tipo):
     if tipo == "test":
         logger.info("Gerando conteudo de teste estatico...")
@@ -693,18 +710,8 @@ def gerar_conteudo_gemini(tipo):
                     logger.error(f"Erro ao parsear JSON na Tentativa {tentativa+1}. Texto bruto: {resposta.text}")
                     raise Exception(f"Gemini nao retornou um JSON valido: {e}")
                 
-                # Injeta o prompt cinematografico procedural para a Pollinations
-                # (gerado localmente, sem depender de cliches da IA de texto)
-                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
-                if tipo in tipos_imagem:
-                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
-                    dados["prompt_imagem"] = prompt_visual
-                    logger.info(f"Cena cinematografica gerada (Gemini): {prompt_visual}")
-                
-                # Injeta as hashtags específicas do tema na legenda
-                if "legenda" in dados:
-                    tags = " ".join(detalhes_tema["hashtags"])
-                    dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                # Pós-processamento centralizado
+                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Gemini")
                     
                 return dados, tema_escolhido, estilo_escolhido
                 
@@ -737,16 +744,8 @@ def gerar_conteudo_gemini(tipo):
             if groq_resp.status_code == 200:
                 texto_groq = groq_resp.json()["choices"][0]["message"]["content"]
                 dados = extrair_json(texto_groq)
-                # Injeta o prompt cinematografico procedural para a Pollinations
-                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
-                if tipo in tipos_imagem:
-                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
-                    dados["prompt_imagem"] = prompt_visual
-                    logger.info(f"Cena cinematografica gerada (Groq): {prompt_visual}")
-                
-                if "legenda" in dados:
-                    tags = " ".join(detalhes_tema["hashtags"])
-                    dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                # Pós-processamento centralizado
+                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Groq")
                 logger.success(f"✅ [GROQ] Conteúdo gerado com sucesso pela chave {groq_index + 1}!")
                 return dados, tema_escolhido, estilo_escolhido
             elif groq_resp.status_code == 429:
@@ -770,16 +769,8 @@ def gerar_conteudo_gemini(tipo):
             if or_resp.status_code == 200:
                 texto_or = or_resp.json()["choices"][0]["message"]["content"]
                 dados = extrair_json(texto_or)
-                # Injeta o prompt cinematografico procedural para a Pollinations
-                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
-                if tipo in tipos_imagem:
-                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
-                    dados["prompt_imagem"] = prompt_visual
-                    logger.info(f"Cena cinematografica gerada (OpenRouter): {prompt_visual}")
-                
-                if "legenda" in dados:
-                    tags = " ".join(detalhes_tema["hashtags"])
-                    dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                # Pós-processamento centralizado
+                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "OpenRouter")
                 logger.success("✅ [OPENROUTER] Conteúdo gerado com sucesso!")
                 return dados, tema_escolhido, estilo_escolhido
             else:
@@ -814,18 +805,8 @@ def gerar_conteudo_gemini(tipo):
                 # Faz cópia para não alterar o dicionário original carregado em memória
                 dados = copy.deepcopy(random.choice(lista_opcoes))
                 
-                # Injeta o prompt cinematografico procedural para a Pollinations
-                tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
-                if tipo in tipos_imagem:
-                    prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
-                    dados["prompt_imagem"] = prompt_visual
-                    logger.info(f"Cena cinematografica gerada (Emergencia): {prompt_visual}")
-                
-                # Injeta as hashtags específicas do tema na legenda se houver legenda
-                if "legenda" in dados:
-                    tags = " ".join(detalhes_tema["hashtags"])
-                    if not any(tag in dados["legenda"] for tag in detalhes_tema["hashtags"]):
-                        dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+                # Pós-processamento centralizado
+                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Emergencia")
                 
                 logger.success(f"🛡️ [SAÍDA DE EMERGÊNCIA] Mensagem de contingência recuperada para Tema: {tema_key.upper()} | Formato: {tipo_key.upper()}")
                 return dados, tema_escolhido, estilo_escolhido

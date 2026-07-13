@@ -454,7 +454,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 texto_completo = slides[idx]
                 
                 # SLIDE 0 (CAPA/GANCHO) e ÚLTIMO SLIDE (CTA): sempre estáticos para garantir leitura
-                if idx == 0 or (is_conquistador and idx == idx_cta):
+                if idx == 0 or idx == idx_cta:
                     chars_to_show = None
                     fade_alpha = 1.0
                     deslocamento_y = 0
