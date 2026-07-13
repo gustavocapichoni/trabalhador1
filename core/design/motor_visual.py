@@ -40,13 +40,15 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
     # --- NÍVEL 1: INTELIGÊNCIA ARTIFICIAL (Pollinations) ---
     try:
         print(f"🧠 [NÍVEL 1] Tentando gerar imagem exclusiva via IA (Pollinations): '{termo_final_ia}'")
-        # Substitui vírgulas por espaços para o prompt da IA fluir melhor
-        ai_prompt = termo_final_ia.replace(",", " ")
+        # Preserva as vírgulas — são essenciais para separar termos positivos e negativos no prompt
+        ai_prompt = termo_final_ia
         # Seed aleatório garante imagem diferente a cada chamada
         seed_aleatorio = random.randint(1, 999999)
         import urllib.parse
         ai_prompt_encoded = urllib.parse.quote(ai_prompt)
-        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt_encoded}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}&model=flux"
+        # flux-realism: modelo específico para fotos realistas (não o flux genérico que gera arte)
+        # enhance=false: impede que a Pollinations reescreva o prompt com palavras de estilo artístico
+        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt_encoded}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}&model=flux-realism&enhance=false"
         
         # Timeout de 20s porque IA pode demorar um pouquinho para "pensar"
         response_ia = requests.get(url_pollinations, timeout=20)
