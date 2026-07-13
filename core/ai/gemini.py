@@ -52,6 +52,23 @@ def gerar_conteudo_gemini(tipo):
         salvar_estado(estado)
         logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
     else:
+        # Se for o primeiro post do dia, rotaciona o tema sequencialmente
+        if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
+            tema_escolhido = estado["tema_do_dia"]
+            logger.info(f"🎲 Tema do dia continuado: {tema_escolhido}")
+        else:
+            temas_lista = list(TEMAS_MAPEADOS.keys())
+            idx = estado.get("index_tema_diario", 0)
+            if idx >= len(temas_lista): idx = 0
+            
+            tema_escolhido = temas_lista[idx]
+            
+            estado["tema_do_dia"] = tema_escolhido
+            estado["data_tema_do_dia"] = dia_hoje_str
+            estado["index_tema_diario"] = (idx + 1) % len(temas_lista)
+            salvar_estado(estado)
+            logger.info(f"🎲 Novo tema sequencial diário ativado: {tema_escolhido}")
+
         # NOVO FLUXO: Ciclo sequencial diário
         recomendacoes_file = "analytics/dados/recomendacoes.json"
         recomendacoes_semanais_file = "analytics/dados/recomendacoes_semanais.json"
@@ -83,23 +100,6 @@ def gerar_conteudo_gemini(tipo):
                 contexto_analytics += "\n====================\n" + mundo_real + "\n====================\n\n"
         except Exception as e:
             logger.warning(f"⚠️ Erro ao coletar Olhos da Rede: {e}")
-
-        # Se for o primeiro post do dia, rotaciona o tema sequencialmente
-        if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
-            tema_escolhido = estado["tema_do_dia"]
-            logger.info(f"🎲 Tema do dia continuado: {tema_escolhido}")
-        else:
-            temas_lista = list(TEMAS_MAPEADOS.keys())
-            idx = estado.get("index_tema_diario", 0)
-            if idx >= len(temas_lista): idx = 0
-            
-            tema_escolhido = temas_lista[idx]
-            
-            estado["tema_do_dia"] = tema_escolhido
-            estado["data_tema_do_dia"] = dia_hoje_str
-            estado["index_tema_diario"] = (idx + 1) % len(temas_lista)
-            salvar_estado(estado)
-            logger.info(f"🎲 Novo tema sequencial diário ativado: {tema_escolhido}")
         
     detalhes_tema = TEMAS_MAPEADOS[tema_escolhido]
     logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
@@ -382,10 +382,18 @@ def gerar_conteudo_gemini(tipo):
 
         CRIE UMA NARRATIVA MAGNÉTICA em 6 a 8 frases curtas seguindo esta arquitetura OBRIGATÓRIA:
 
-        FASE 1 — GANCHO INICIAL (frases 1-2):
-        - Quebre o padrão imediatamente. Uma observação perturbadora, uma cena do cotidiano vista de ângulo diferente.
-        - O espectador deve pensar: "isso é diferente de tudo que vi hoje".
-        - Cada frase: máximo 10 palavras. Simples, direta, visceral.
+        FRASE 1 — GANCHO DE PARADA DE FEED (OBRIGATÓRIA):
+        Esta é a frase mais importante de todo o vídeo. É ela que aparece NA TELA assim que o vídeo começa.
+        - REGRA DE OURO: O espectador PRECISA parar de rolar o feed. Use UMA das fórmulas abaixo:
+          * Afirmação polêmica: "A maioria das pessoas faz isso completamente errado."
+          * Identificação visceral: "Você acorda todo dia repetindo o mesmo erro sem perceber."
+          * Pergunta perturbadora: "Sabe qual é a coisa que mais sabota o que você quer?"
+          * Contradição inesperada: "Trabalhar mais não é a resposta. E você já sabia disso."
+        - Máximo 10 palavras. CURTA, DIRETA, SEM RODEIOS. O choque primeiro, a explicação depois.
+
+        FRASE 2 — APROFUNDAMENTO (sustenta o gancho):
+        - Aprofunde a provocação da frase 1. Cria o loop de curiosidade — a pessoa precisa continuar assistindo.
+        - Máximo 10 palavras.
 
         FASE 2 — ABERTURA DE POSSIBILIDADES (frases 3-4):
         - Expanda o universo. Mostre que existe um caminho, um padrão, uma verdade oculta.
@@ -492,9 +500,17 @@ def gerar_conteudo_gemini(tipo):
         CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que coloque o espectador dentro de uma história de dor e superação.
         O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra "eu te entendo, eu também passei por isso".
 
-        FASE 1 — O RECONHECIMENTO DA DOR (frases 1-2):
-        - Descreva exatamente o sentimento pesado ou a frustração que bate quando a pessoa deita a cabeça no travesseiro.
-        - O espectador deve sentir que você invadiu a mente dele. Empatia visceral.
+        FASE 1 — GANCHO DE PARADA DE FEED (frase 1 - OBRIGATÓRIA):
+        Esta é a frase mais importante de todo o vídeo. É ela que aparece NA TELA NO MOMENTO EM QUE A PESSOA BATE O OLHO.
+        - REGRA DE OURO: O espectador PRECISA parar de rolar. Use UMA das fórmulas abaixo:
+          * Frase polêmica que divide opiniões: "A maioria das pessoas acha que [X], mas a realidade é o contrário."
+          * Frase que provoca identificação visceral: "Todo mundo finge que [dor comum] não existe. Mas você sabe que existe."
+          * Afirmação perturbadora e inesperada: "A coisa que mais te sabota não é o que você acha."
+          * Pergunta que obriga concordância ou discordância: "Você já reparou que quanto mais você tenta, mais parece que nada muda?"
+        - Máximo 10 palavras. Direta, visceral. SEM explicação ainda — só o choque.
+
+        FRASE 2 — APROFUNDAMENTO DO GANCHO:
+        - Aprofunde a provocação da frase 1. Mostre que você entende a dor melhor do que ninguém.
         - Cada frase: máximo 10 palavras.
 
         FASE 2 — A PROFUNDIDADE DA HISTÓRIA (frases 3-4):
@@ -538,6 +554,22 @@ def gerar_conteudo_gemini(tipo):
     elif tipo == "reels_leads":
         resumo_pdf = ler_resumo_ultimo_pdf() or "Nenhum PDF anterior encontrado. Crie um roteiro genérico focando em 'Hábitos Inquebráveis'."
         
+        # Puxa dados isolados para enriquecer a instrução direta no prompt
+        titulo_pdf_limpo = "Material Exclusivo"
+        solucao_pdf_limpo = "Método Prático"
+        
+        bot_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+        caminho_arquivo = os.path.join(bot_path, "gerador_pdf", "output", "ultimo_conteudo.json")
+        if os.path.exists(caminho_arquivo):
+            try:
+                with open(caminho_arquivo, "r", encoding="utf-8") as f:
+                    dados_pdf = json.load(f)
+                titulo_pdf_limpo = dados_pdf.get("titulo_pdf", "Material Exclusivo")
+                plano = dados_pdf.get("plano_acao", {})
+                solucao_pdf_limpo = plano.get("subtitulo", "Método Prático")
+            except Exception as e:
+                logger.warning(f"Erro ao obter titulo e solucao do PDF: {e}")
+
         prompt = f"""
         Você é um estrategista de vendas e mestre em copywriting focado em conversão e geração de leads.
         Sua missão é criar um vídeo longo (2:30 a 3:00) focado em capturar leads através da entrega de um "Manual Prático" em PDF 100% gratuito.
@@ -550,7 +582,11 @@ def gerar_conteudo_gemini(tipo):
         {resumo_pdf}
         ======================================================================
         
-        INSTRUÇÃO CRUCIAL: O gancho inicial (Fase 1) DEVE atacar diretamente a dor/problema citada no resumo acima. O vídeo inteiro é um "trailer magnético" para as pessoas desejarem desesperadamente baixar este PDF específico para resolverem esse problema.
+        INSTRUÇÃO CRUCIAL:
+        1. O vídeo inteiro funciona estritamente como um "trailer cinematográfico e magnético" para o PDF gerado. O título do PDF é "{titulo_pdf_limpo}" e a solução principal é "{solucao_pdf_limpo}".
+        2. O gancho inicial (Fase 1) DEVE atacar de forma visceral a dor/problema citada no resumo.
+        3. FASE 9 (Desejo) e FASE 10 (Oferta e CTA) DEVEM se conectar de forma cirúrgica e direta com o tema e a promessa do PDF. O espectador precisa sentir que a única forma de obter as respostas completas sobre "{solucao_pdf_limpo}" é obtendo o material gratuito "{titulo_pdf_limpo}".
+        4. O CTA deve deixar claro que preparamos um material exclusivo contendo o passo a passo completo discutido no vídeo, direcionando o usuário para o link na bio.
 
 
         CRIE UM ROTEIRO LONGO COM 25 A 35 SLIDES seguindo OBRIGATORIAMENTE este funil de 10 Fases:

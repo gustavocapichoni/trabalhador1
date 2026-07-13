@@ -43,8 +43,9 @@ ENQUADRAMENTOS = [
 ]
 
 ESTILOS = [
-    "cinematic lighting", "soft volumetric light", "HDR", "editorial photography",
-    "ultra realistic", "shot on Sony A7R V", "35mm lens", "anamorphic style", "warm color palette"
+    "raw photograph, photo", "candid photography", "captured on 35mm film", 
+    "shot on DSLR camera", "natural skin texture with pores and imperfections", 
+    "kodak portra 400 style", "authentic daylight", "real life documentary style"
 ]
 
 # =====================================================================
@@ -120,13 +121,12 @@ def gerar_prompt_cinematografico(tema: str) -> str:
     estilo_str = ", ".join(estilos_escolhidos)
     
     # Ajuste de pré-posição para o enquadramento fluir melhor em inglês
-    # Ex: "Close-up shot of a old wise monk with a ancient leather book..."
     art_pers = "an" if personagem[0] in "aeiou" else "a"
     art_obj = "an" if objeto[0] in "aeiou" else "a"
     
     prompt = (
-        f"{enquadramento} {art_pers} {personagem} interacting with {art_obj} {objeto}, "
-        f"inside {cenario}, {clima}, {estilo_str}"
+        f"An authentic realistic photograph, {enquadramento} {art_pers} {personagem} interacting with {art_obj} {objeto}, "
+        f"inside {cenario}, {clima}, {estilo_str}. Real life, photojournalism, realistic skin texture. Avoid digital art, 3d render, painting, CGI, illustration, cartoon, drawing, vector, anime, artwork."
     )
     
     return prompt

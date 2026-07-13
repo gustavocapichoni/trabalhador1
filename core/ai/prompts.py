@@ -1,5 +1,5 @@
 import random
-from core.ai.styles import REGRAS_COPY_BASE, sortear_gancho
+from core.ai.styles import REGRAS_COPY_BASE, sortear_gancho, GANCHOS_POR_CATEGORIA
 
 # ==========================================
 # TEMAS E SUB-ÂNGULOS APROFUNDADOS
@@ -128,6 +128,21 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     else:
         gancho = sortear_gancho(historico_ganchos)
 
+    # Encontra a categoria do gancho sorteado para orientar o Gemini
+    categoria_gancho = "afirmacao_que_choca"  # fallback
+    descricoes_categoria = {
+        "pergunta_que_agride":     "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+        "afirmacao_que_choca":     "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.",
+        "declaracao_segunda_pessoa": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtissima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
+        "segredo_revelacao":       "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
+        "dado_estatistica":        "DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.",
+    }
+    for cat, ganchos in GANCHOS_POR_CATEGORIA.items():
+        if gancho in ganchos:
+            categoria_gancho = cat
+            break
+    descricao_categoria = descricoes_categoria.get(categoria_gancho, "")
+
     instrucoes = f"""
     {REGRAS_COPY_BASE}
     
@@ -138,10 +153,23 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     2. Usar esse método exato para formular uma mensagem, roteiro ou história altamente persuasiva para resolver a dor do usuário.
     3. ENTREGUE COMO SE O CONHECIMENTO FOSSE SEU. É ESTRITAMENTE PROIBIDO citar o nome do livro, do autor ou dar créditos. Pegue a genialidade da obra e passe como conteúdo original do nosso perfil.
     
-    Ângulo específico para esta postagem: {sub_angulo}
+    DIRETRIZ DE CONTEÚDO (Ângulo de Inspiração):
+    Ângulo específico sugerido: "{sub_angulo}"
     
-    Gancho narrativo: {gancho}
+    ===== ESTRUTURA OBRIGATÓRIA DO GANCHO (SLIDE 1) =====
+    Formato sorteado para ESTA postagem: {descricao_categoria}
+    Gancho de referência para o tom: "{gancho}" (adapte a ideia para o tema de hoje, mas MANTENHA o formato acima)
+    IMPORTANTE: NÃO comece todas as postagens com afirmações do tipo 'A maioria faz errado'. Use o formato indicado acima.
+    =====================================================
     
+    ESTRUTURA DE ESCRITA DE SUCESSO (Feedback do Analytics):
+    - Estude as métricas de performance recentes no bloco abaixo. Identifique quais estilos e estruturas de copy (ex: diagnóstico cirúrgico, perguntas perturbadoras, alertas de perigo) estão trazendo os maiores scores de engajamento e salvamentos no perfil. Adapte a sua forma de escrever para focar nessa estrutura de sucesso!
+    
+    TENDÊNCIAS EM TEMPO REAL (Olhos da Rede):
+    - Leia as notícias da semana, os vídeos mais vistos no YouTube deste tema e as buscas no Google Trends descritas no bloco abaixo.
+    - FUSÃO OBRIGATÓRIA: Não use o ângulo sugerido de forma literal e repetitiva. Em vez disso, junte a lição teórica do livro/ângulo sugerido com a "vibe" ou assunto quente que as pessoas estão buscando e discutindo na internet agora (trazido pelos Olhos da Rede). Use a dor atual coletada nas redes como o cenário prático para ilustrar a lição.
+    
+    DADOS DE PERFORMANCE E CONTEXTO ATUAL:
     {contexto_analytics}
     """
     return instrucoes, sub_angulo, gancho

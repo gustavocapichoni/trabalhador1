@@ -19,28 +19,55 @@ ESTILOS_COPY = [
 ]
 
 # ==========================================
-# GANCHOS NARRATIVOS (para abrir posts e vídeos)
+# GANCHOS NARRATIVOS (divididos por ESTRUTURA)
+# O sistema sorteia a CATEGORIA antes do gancho para garantir
+# que cada postagem abra com um FORMATO diferente.
 # ==========================================
-GANCHOS_NARRATIVOS = [
-    "Você provavelmente está fazendo isso sem perceber.",
-    "Ninguém fala sobre isso, mas deveria.",
-    "O maior erro é justamente esse.",
-    "Existe um detalhe que muda tudo.",
-    "Quase todo mundo acredita nisso... e está errado.",
-    "Se você entender isso hoje, muita coisa vai fazer sentido.",
-    "A maioria das pessoas só percebe isso quando já é tarde.",
-    "O problema nunca foi o que você imaginava.",
-    "Poucas pessoas conhecem isso, mas faz toda a diferença.",
-    "Esse pequeno hábito pode transformar completamente seus resultados.",
-    "Antes de continuar, você precisa saber disso.",
-    "O que vou mostrar agora muda a forma como você enxerga isso.",
-    "Você já parou para pensar por que isso sempre acontece?",
-    "A resposta é muito diferente do que você imagina.",
-    "Você não precisa fazer mais. Precisa fazer diferente.",
-    "Será que tudo isso que você sente é amor ou só medo de ficar sozinho?",
-    "Você está acordando exausto todos os dias por causa disso.",
-    "2 atitudes silenciosas que destroem qualquer relação em meses."
-]
+GANCHOS_POR_CATEGORIA = {
+    "pergunta_que_agride": [
+        "Você já parou pra pensar por que isso sempre acontece com você?",
+        "Por que a maioria das pessoas entrega o mínimo e espera o máximo?",
+        "Qual é o preço real que você está pagando por esse hábito?",
+        "Será que tudo isso que você sente é amor ou só medo de ficar sozinho?",
+        "Você está construído para vencer ou só para sobreviver?",
+        "Por que você trata qualquer um melhor do que trata a si mesmo?",
+    ],
+    "afirmacao_que_choca": [
+        "Quase todo mundo acredita nisso... e está completamente errado.",
+        "A maioria das pessoas só percebe isso quando já é tarde demais.",
+        "O problema nunca foi o que você imaginava.",
+        "O seu maior inimigo está dentro da sua própria cabeça.",
+        "Disciplina sem direção é só sofrimento organizado.",
+        "Tudo que você adia vira uma dívida emocional que vai cobrar juros.",
+    ],
+    "declaracao_segunda_pessoa": [
+        "Você provavelmente está fazendo isso sem perceber.",
+        "Você está acordando exausto todos os dias por causa disso.",
+        "Você não precisa fazer mais. Precisa fazer diferente.",
+        "Você tolera demais quem não te respeita nem um pouco.",
+        "Você confunde lealdade com medo de decepcionar.",
+        "Você sabe a resposta. Só tem medo de agir sobre ela.",
+    ],
+    "segredo_revelacao": [
+        "Ninguém fala sobre isso, mas deveria.",
+        "Existe um detalhe que muda tudo. Pouquíssimas pessoas conhecem.",
+        "Antes de continuar, você precisa saber disso.",
+        "O que vou mostrar agora muda a forma como você enxerga isso.",
+        "2 atitudes silenciosas que destroem qualquer relação em meses.",
+        "Há um padrão nos seus erros que você não foi treinado pra ver.",
+    ],
+    "dado_estatistica": [
+        "Estudos mostram que a maioria abandona o seu sonho exatamente aqui.",
+        "7 em cada 10 pessoas fazem isso e nunca chegam onde querem.",
+        "Pesquisas revelam que esse único hábito muda completamente os resultados.",
+        "Existe um padrão científico por trás do que você está sentindo agora.",
+        "O seu cérebro faz isso automaticamente. E isso pode estar destruindo você.",
+        "A neurociência já sabe por que você fica preso nesse ciclo.",
+    ]
+}
+
+# Lista plana mantida para compatibilidade com outros usos
+GANCHOS_NARRATIVOS = [g for categoria in GANCHOS_POR_CATEGORIA.values() for g in categoria]
 
 # ==========================================
 # GANCHOS CONQUISTADOR (Específicos para atração agressiva Topo de Funil)
@@ -100,8 +127,31 @@ def sortear_estilo(historico_estilos=None):
     return random.choice(opcoes)
 
 def sortear_gancho(historico_ganchos=None):
+    """Sorteia um gancho de uma CATEGORIA diferente da última usada para variar a estrutura de abertura."""
     if historico_ganchos is None: historico_ganchos = []
-    opcoes = [g for g in GANCHOS_NARRATIVOS if g not in historico_ganchos]
+    
+    # Extrai categorias já usadas recentemente (os últimos 3 itens do histórico)
+    recentes = historico_ganchos[-3:]
+    categorias_recentes = []
+    for g_recente in recentes:
+        for cat, ganchos in GANCHOS_POR_CATEGORIA.items():
+            if g_recente in ganchos:
+                categorias_recentes.append(cat)
+                break
+    
+    # Sorteia uma categoria que não foi usada recentemente
+    todas_categorias = list(GANCHOS_POR_CATEGORIA.keys())
+    categorias_disponiveis = [c for c in todas_categorias if c not in categorias_recentes]
+    if not categorias_disponiveis:
+        categorias_disponiveis = todas_categorias
+    
+    categoria_escolhida = random.choice(categorias_disponiveis)
+    ganchos_da_categoria = GANCHOS_POR_CATEGORIA[categoria_escolhida]
+    
+    # Dentro da categoria, evita repetir o mesmo gancho
+    opcoes = [g for g in ganchos_da_categoria if g not in historico_ganchos]
     if not opcoes:
-        opcoes = GANCHOS_NARRATIVOS
-    return random.choice(opcoes)
+        opcoes = ganchos_da_categoria
+    
+    gancho = random.choice(opcoes)
+    return gancho

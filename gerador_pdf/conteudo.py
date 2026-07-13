@@ -64,7 +64,7 @@ ESTRUTURA OBRIGATÓRIA (retorne em formato JSON):
       "numero": 1,
       "titulo": "A Névoa do Cotidiano",
       "paragrafos": [
-        "Parágrafo 1 — Apresenta a cena do personagem (Arthur ou outro nome) no momento de maior dor. Seja altamente cinematográfico e detalhado. Mínimo 80 palavras e sem pular linha.",
+        "Parágrafo 1 — Apresenta a cena do personagem ({nome_personagem}) no momento de maior dor. Seja altamente cinematográfico e detalhado. Mínimo 80 palavras e sem pular linha.",
         "Parágrafo 2 — Aprofunda a dor. Uma reflexão profunda em itálico que é o pensamento interno do personagem. Mínimo 60 palavras e sem pular linha.",
         "Parágrafo 3 — Contextualiza e amplia: essa não é só a dor dele, é a dor de milhões. Mostre o peso da realidade. Mínimo 80 palavras e sem pular linha."
       ]
@@ -107,6 +107,7 @@ ESTRUTURA OBRIGATÓRIA (retorne em formato JSON):
     }}
   ],
   "citacao_destaque": "Uma citação poderosa e original (não do livro) que resume a transformação. 2-3 linhas.",
+  "titulo_citacao": "Um título curto e impactante para a página de citação (ex: A Verdade Inabalável). Máximo 4 palavras.",
   "plano_acao": {{
     "titulo_secao": "Plano de Ação Diário",
     "subtitulo": "Comece pequeno. Construa grande.",
@@ -118,6 +119,7 @@ ESTRUTURA OBRIGATÓRIA (retorne em formato JSON):
     ]
   }},
   "fechamento": "O parágrafo final inspiracional. A hora é agora. Deixe sua luz brilhar. 4-5 linhas.",
+  "titulo_fechamento": "Um título curto e altamente inspirador para a página final de fechamento (ex: Agora é a sua vez). Máximo 5 palavras.",
   "rodape": "Produzido com zelo, fé e propósito."
 }}
 
@@ -128,11 +130,17 @@ Retorne APENAS o JSON, sem texto antes ou depois.
 def gerar_conteudo_pdf(briefing: dict) -> dict:
     print("[Conteudo] Chamando Gemini AI para gerar o conteudo do PDF...")
 
+    import random
+    nomes_possiveis = ["Lucas", "Mateus", "Gabriel", "Thiago", "Felipe", "Daniel", "Andre", "Rafael", "Samuel", "Bruno", "Vitor", "Diego", "Guilherme", "Gustavo", "Leonardo"]
+    nome_sorteado = random.choice(nomes_possiveis)
+    print(f"[Conteudo] Nome do personagem sorteado para esta edicao: {nome_sorteado}")
+
     prompt = PROMPT_TEMPLATE.format(
         nome_display=briefing["nome_display"],
         livro_base=briefing["livro_base"],
         dor_central=briefing["dor_central"],
-        contexto_semana=briefing["contexto_semana"]
+        contexto_semana=briefing["contexto_semana"],
+        nome_personagem=nome_sorteado
     )
 
     for num_chave in range(1, 11):

@@ -94,8 +94,8 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 try:
                     import moviepy.video.fx.all as vfx  # type: ignore
                     clip = clip.fx(vfx.fadein, 0.5).fx(vfx.fadeout, 0.5)
-                except:
-                    pass
+                except Exception as e:
+                    logger.warning(f"⚠️ Não foi possível aplicar efeito de fade no slide: {e}")
             clips.append(clip)
 
         # Concatena todos os slides

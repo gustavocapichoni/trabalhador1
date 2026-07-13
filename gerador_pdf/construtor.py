@@ -94,9 +94,10 @@ def escolher_tema() -> dict:
 
 class PDFBuilder(FPDF):
 
-    def __init__(self, tema: dict):
+    def __init__(self, tema: dict, rodape: str = "Produzido com zelo, fe e proposito."):
         super().__init__(orientation="P", unit="mm", format="A4")
         self.tema = tema
+        self.rodape = rodape
         self.set_auto_page_break(auto=False)
         self.set_font("Helvetica", size=11)
 
@@ -214,7 +215,7 @@ class PDFBuilder(FPDF):
         self.set_font("Helvetica", "", 8)
         self.set_text_color(200, 220, 255)
         self.set_xy(20, 280)
-        self.cell(170, 6, "Produzido com zelo, fe e proposito.", align="C")
+        self.cell(170, 6, sanitizar(self.rodape), align="C")
 
     def construir_capitulo(self, capitulo: dict, indice_pagina: int):
         """Página de capítulo com fundo degradê único e texto narrativo arejado."""
@@ -249,7 +250,7 @@ class PDFBuilder(FPDF):
             )
             y_atual += 12  # espaço entre parágrafos
 
-    def construir_pagina_citacao(self, citacao: str, indice_pagina: int):
+    def construir_pagina_citacao(self, citacao: str, titulo: str, indice_pagina: int):
         """Página de citação de destaque num card grande centralizado."""
         self.add_page()
         t = self.tema
@@ -257,7 +258,7 @@ class PDFBuilder(FPDF):
         r1, g1, b1, r2, g2, b2 = cores
         self._fundo_degradê(r1, g1, b1, r2, g2, b2)
 
-        self._titulo("A Verdade Inabalavel", 30, tamanho=18)
+        self._titulo(sanitizar(titulo), 30, tamanho=18)
 
         # Card semi-transparente: usa cor de destaque bem escura (30% da cor original)
         rd, gd, bd = t["cor_destaque"]
@@ -340,9 +341,9 @@ class PDFBuilder(FPDF):
         self.set_draw_color(200, 220, 255)
         self.set_line_width(0.1)
         self.line(20, 278, 190, 278)
-        self.cell(170, 6, "Produzido com zelo, fe e proposito.", align="C")
+        self.cell(170, 6, sanitizar(self.rodape), align="C")
 
-    def construir_fechamento(self, fechamento: str, rodape: str, indice_pagina: int):
+    def construir_fechamento(self, fechamento: str, titulo: str, rodape: str, indice_pagina: int):
         """Última página: fechamento sóbrio e inspiracional."""
         self.add_page()
         t = self.tema
@@ -350,7 +351,7 @@ class PDFBuilder(FPDF):
         r1, g1, b1, r2, g2, b2 = cores
         self._fundo_degradê(r1, g1, b1, r2, g2, b2)
 
-        self._titulo("Agora e a sua vez.", 55, tamanho=22, negrito=True)
+        self._titulo(sanitizar(titulo), 55, tamanho=22, negrito=True)
 
         # Linha divisora elegante
         cr, cg, cb = t["cor_destaque"]
@@ -372,7 +373,8 @@ def construir_pdf(conteudo: dict, caminho_saida: str) -> str:
     print("[Construtor] Montando o PDF visual...")
 
     tema = escolher_tema()
-    pdf = PDFBuilder(tema)
+    rodape_texto = conteudo.get("rodape", "Produzido com zelo, fe e proposito.")
+    pdf = PDFBuilder(tema, rodape=rodape_texto)
 
     pdf.construir_capa(conteudo)
     print("   Capa gerada.")
@@ -381,7 +383,11 @@ def construir_pdf(conteudo: dict, caminho_saida: str) -> str:
         pdf.construir_capitulo(capitulo, indice_pagina=i + 1)
         print(f"   Capitulo {capitulo['numero']} ({capitulo['titulo']}) gerado.")
 
-    pdf.construir_pagina_citacao(conteudo.get("citacao_destaque", ""), indice_pagina=4)
+    pdf.construir_pagina_citacao(
+        conteudo.get("citacao_destaque", ""),
+        conteudo.get("titulo_citacao", "A Verdade Inabalavel"),
+        indice_pagina=4
+    )
     print("   Pagina de citacao gerada.")
 
     pdf.construir_plano_acao(conteudo.get("plano_acao", {}), indice_pagina=5)
@@ -389,7 +395,8 @@ def construir_pdf(conteudo: dict, caminho_saida: str) -> str:
 
     pdf.construir_fechamento(
         conteudo.get("fechamento", ""),
-        conteudo.get("rodape", "Produzido com zelo, fe e proposito."),
+        conteudo.get("titulo_fechamento", "Agora e a sua vez."),
+        rodape_texto,
         indice_pagina=6
     )
     print("   Fechamento gerado.")

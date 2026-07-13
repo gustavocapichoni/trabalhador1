@@ -44,7 +44,9 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
         ai_prompt = termo_final_ia.replace(",", " ")
         # Seed aleatório garante imagem diferente a cada chamada
         seed_aleatorio = random.randint(1, 999999)
-        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}"
+        import urllib.parse
+        ai_prompt_encoded = urllib.parse.quote(ai_prompt)
+        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt_encoded}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}&model=flux"
         
         # Timeout de 20s porque IA pode demorar um pouquinho para "pensar"
         response_ia = requests.get(url_pollinations, timeout=20)
@@ -59,42 +61,65 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
         print(f"⚠️ Erro na geração de IA: {e}. Tentando Nível 2 (Unsplash)...")
 
     # --- NÍVEL 2: BANCO DE IMAGENS REAL (Unsplash) ---
+    # Queries de fallback por tema: termos curtos e genéricos que sempre retornam fotos reais no Unsplash
+    UNSPLASH_FALLBACKS = {
+        "espiritualidade": ["spiritual light candle", "church prayer light", "serene temple"],
+        "filosofia":       ["ancient library books", "dark moody philosophy", "dramatic reading"],
+        "psicologia":      ["human mind brain", "person thinking window", "emotional psychology"],
+        "financas":        ["luxury business city", "gold money wealth", "executive office"],
+        "liberdade":       ["open road freedom", "mountain sunrise horizon", "person walking alone"],
+        "conexoes":        ["couple holding hands", "friends warm moment", "emotional hug"],
+        "superacao":       ["person climbing mountain", "athlete determination", "running sunrise"],
+        "proposito":       ["path to light forest", "inspiring nature horizon", "person journey"],
+    }
+    UNSPLASH_QUERY_CORINGA = "cinematic dark moody portrait"
+
     print(f"📸 [NÍVEL 2] Buscando foto real no Unsplash: '{termo_final_ia}'")
     try:
         if UNSPLASH_ACCESS_KEY:
-            # Usa a primeira metade do prompt_imagem (ou o termo todo se for curto) para a API do Unsplash não bugar com strings longas
-            unsplash_query = termo_final_ia.split(",")[0][:40] 
-            url_unsplash = f"https://api.unsplash.com/photos/random?query={unsplash_query}&orientation={orientation}&client_id={UNSPLASH_ACCESS_KEY}"
+            # Usa a primeira parte do prompt (até a primeira vírgula, máx 40 chars) como query principal
+            unsplash_query_principal = termo_final_ia.split(",")[0][:40]
+            
+            # Monta a lista de queries a tentar: principal + fallbacks do tema + coringa
+            tema_key = tema_escolhido if tema_escolhido else "superacao"
+            queries_fallback = UNSPLASH_FALLBACKS.get(tema_key, [UNSPLASH_QUERY_CORINGA])
+            queries_a_tentar = [unsplash_query_principal] + queries_fallback + [UNSPLASH_QUERY_CORINGA]
         else:
             print("⚠️ UNSPLASH_ACCESS_KEY ausente. Tentando Nível 3 (Biblioteca Local)...")
-            url_unsplash = None
+            queries_a_tentar = []
         
-        tentativas = 0
         img_valida_url = None
-        
-        while tentativas < 3 and url_unsplash:
+
+        for query_atual in queries_a_tentar:
+            if not UNSPLASH_ACCESS_KEY:
+                break
+            url_unsplash = f"https://api.unsplash.com/photos/random?query={query_atual}&orientation={orientation}&client_id={UNSPLASH_ACCESS_KEY}"
             try:
                 response = requests.get(url_unsplash, timeout=15)
                 if response.status_code == 200:
                     data = response.json()
                     img_url = data['urls']['regular']
                     img_id = data.get('id', img_url)
-                    
+
                     if verificar_midia_recente(img_id):
-                        print(f"🔄 Imagem já usada recentemente ({img_id}). Tentando outra...")
-                        tentativas += 1
+                        print(f"🔄 Imagem já usada recentemente. Tentando próxima query...")
                         continue
-                        
+
                     img_valida_url = img_url
                     registrar_midia_usada(img_id)
+                    if query_atual != queries_a_tentar[0]:
+                        print(f"✅ Unsplash encontrou foto com query de fallback: '{query_atual}'")
                     break
+                elif response.status_code == 404:
+                    print(f"⚠️ Unsplash: nenhuma foto para '{query_atual}'. Tentando query alternativa...")
+                    continue
                 else:
-                    print(f"⚠️ Unsplash retornou status {response.status_code}. Tentando Nível 3...")
+                    print(f"⚠️ Unsplash retornou status {response.status_code}. Abandonando Nível 2...")
                     break
             except Exception as e:
                 print(f"⚠️ Erro ao acessar Unsplash: {e}. Tentando Nível 3...")
                 break
-                
+
         if img_valida_url:
             try:
                 img_response = requests.get(img_valida_url, timeout=15)
@@ -139,38 +164,10 @@ def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     if tipo == "carousel":
         return _gerar_carrossel(img, W, H, dados)
     elif tipo in ["reels", "reels_noite", "reels_conquistador"]:
-        return _gerar_reels(img, W, H, dados)
+        return _gerar_reels(img, W, H, dados, tema_escolhido, TEMAS_MAPEADOS)
     else:
         return _gerar_estatico(img, W, H, tipo, dados, tema_escolhido, TEMAS_MAPEADOS)
 
-def _gerar_carrossel(img, W_full, H, dados):
-    caminhos_arquivos = []
-    slides_conteudo = [dados["titulo"]] + dados["slides"] + ["CTA"]
-    
-    # Tamanho de cada slide
-    slide_W, slide_H = 1080, 1080
-    num_slides = len(slides_conteudo)
-    
-    # Calcula o deslocamento do fundo (panning) para criar o efeito panorâmico contínuo
-    step = (W_full - slide_W) / (num_slides - 1) if num_slides > 1 else 0
-    
-    # Usa a fonte do dia da semana (sistema de identidade visual diária)
-    estilo_sorteado = obter_fonte_do_dia()
-    print(f"🎨 Usando fonte do dia no Carrossel: {estilo_sorteado}")
-    
-    # Fontes maiores para garantir legibilidade no carrossel 1080x1080
-    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
-    font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30, estilo=estilo_sorteado)[0]
-    
-    for idx, texto in enumerate(slides_conteudo):
-        x_offset = int(idx * step)
-        
-        # Recorta a porção do fundo exata para este slide (Rampa de Deslizamento)
-        slide_bg = img.crop((x_offset, 0, x_offset + slide_W, slide_H))
-        
-        slide_img = slide_bg.convert("RGB")
-        draw = ImageDraw.Draw(slide_img)
-        
 def desenhar_marca_dagua_ouro(draw, posicao, texto, fonte):
     """Desenha a assinatura da marca com efeito glow dourado imitando o logo original."""
     x, y = posicao
@@ -225,7 +222,7 @@ def _gerar_carrossel(img, W_full, H, dados):
         
         if idx == 0:  # Capa (Playfair Display)
             # FIX: width menor = menos chars por linha = texto maior e mais legível
-            linhas = textwrap.wrap(texto, width=15)
+            linhas = textwrap.wrap(texto, width=18)
             y_inicial = (slide_H - (len(linhas) * 105)) / 2 - 40
             for i, linha in enumerate(linhas):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 105), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
@@ -233,7 +230,14 @@ def _gerar_carrossel(img, W_full, H, dados):
             
         elif texto == "CTA":  # Slide Final
             draw.line([(slide_W*0.15, slide_H*0.35), (slide_W*0.85, slide_H*0.35)], fill=CORES["destaque"], width=2)
-            linhas_cta = ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!"]
+            ctas_disponiveis = [
+                ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!"],
+                ["A mente precisa de", "constante evolução.", "", "Siga para não estagnar!"],
+                ["O conhecimento inútil", "sem a prática.", "", "Salva esse post agora."],
+                ["Se você leu até aqui,", "você já está na frente.", "", "Siga para continuar crescendo."],
+                ["Não perca mais tempo", "com conteúdos vazios.", "", "Acompanhe nossa jornada!"]
+            ]
+            linhas_cta = random.choice(ctas_disponiveis)
             y_inicial = slide_H * 0.38
             for i, linha in enumerate(linhas_cta):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
@@ -250,7 +254,7 @@ def _gerar_carrossel(img, W_full, H, dados):
         
     return caminhos_arquivos
 
-def _gerar_reels(img, W, H, dados):
+def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
     caminhos = []
     frases = dados.get("slides", [dados.get("frase", "...")])
     
@@ -259,7 +263,13 @@ def _gerar_reels(img, W, H, dados):
     font_display, font_body, font_marca = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
     
     for idx, frase in enumerate(frases):
-        slide = img.copy().convert("RGB")
+        if idx > 0 and tema_escolhido and TEMAS_MAPEADOS:
+            prompt_secundario = dados.get("prompt_imagem")
+            nova_img, _, _ = buscar_imagem_fundo("reels", tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=prompt_secundario)
+            nova_img = aplicar_mesh_gradient(nova_img)
+            slide = nova_img.convert("RGB")
+        else:
+            slide = img.copy().convert("RGB")
         draw = ImageDraw.Draw(slide)
         
         # Elementos de Agência Premium
@@ -267,8 +277,8 @@ def _gerar_reels(img, W, H, dados):
         
         # Assinatura com a fonte do logo em Dourado Ouro e Caixa Alta
         font_marca_serif, _, _ = carregar_fontes(86, 22, 24, estilo="Playfair")
-        desenhar_marca_dagua_ouro(draw, (W/2, H - 150), "GUSTAVO_8K_", font_marca_serif)
-        draw_text_with_shadow(draw, (W/2, H - 220), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
+        desenhar_marca_dagua_ouro(draw, (W/2, H - 200), "GUSTAVO_8K_", font_marca_serif)
+        draw_text_with_shadow(draw, (W/2, H - 280), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
         
         linhas = textwrap.wrap(frase, width=22)
         y_inicial = (H - (len(linhas) * 70)) / 2

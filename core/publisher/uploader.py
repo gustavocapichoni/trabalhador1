@@ -122,19 +122,8 @@ def upload_temporario(caminho_arquivo):
     except Exception as e:
         print(f"⚠️ litterbox falhou: {e}")
 
-    # 3. File.io
-    print("🔄 Tentando fallback 2: file.io...")
-    try:
-        url = _upload_file_io(caminho_arquivo)
-        print(f"🔗 Link direto gerado (file.io): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
-        return url
-    except Exception as e:
-        print(f"⚠️ file.io falhou: {e}")
-
-    # 4. Tmpfiles.org
-    print("🔄 Tentando fallback 3: tmpfiles.org...")
+    # 3. Tmpfiles.org
+    print("🔄 Tentando fallback 2: tmpfiles.org...")
     try:
         url = _upload_tmpfiles(caminho_arquivo)
         print(f"🔗 Link direto gerado (tmpfiles.org): {url}")
@@ -143,6 +132,17 @@ def upload_temporario(caminho_arquivo):
         return url
     except Exception as e:
         print(f"⚠️ tmpfiles.org falhou: {e}")
+
+    # 4. File.io (Uso único - apenas 1 download permitido)
+    print("🔄 Tentando fallback 3: file.io...")
+    try:
+        url = _upload_file_io(caminho_arquivo)
+        print(f"🔗 Link direto gerado (file.io): {url}")
+        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
+        time.sleep(10)
+        return url
+    except Exception as e:
+        print(f"⚠️ file.io falhou: {e}")
 
     # 5. Transfer.sh
     print("🔄 Tentando fallback 4: transfer.sh...")

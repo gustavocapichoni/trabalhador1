@@ -520,7 +520,8 @@ def draw_all_page_backgrounds(canvas, doc):
     elif page_num == num_capitulos + 2:
         # Página de citação / fechamento
         draw_page_gradient(canvas, "#0f172a", "#172554")
-        draw_chapter_header(canvas, "A Verdade Inabalável", "", subtitle_color="#bfdbfe")
+        titulo_citacao = conteudo.get("titulo_citacao", "A Verdade Inabalável") if conteudo else "A Verdade Inabalável"
+        draw_chapter_header(canvas, titulo_citacao, "", subtitle_color="#bfdbfe")
         draw_page_number(canvas, page_num, total_paginas)
         
     elif page_num == num_capitulos + 3:
@@ -654,9 +655,10 @@ def gerar_pdf(filename="O_Fio_de_Ouro_Restauracao.pdf", conteudo=None):
             
         # --- Bento Quote Box (Citação de Destaque) ---
         citacao_texto = conteudo.get("citacao_destaque", "A restauração genuína começa no coração.")
+        titulo_citacao = conteudo.get("titulo_citacao", "A Verdade Inabalável")
         
         card_content = [
-            [Paragraph("A Verdade Inabalável", quote_title_style)],
+            [Paragraph(titulo_citacao, quote_title_style)],
             [Paragraph(f'"{citacao_texto}"', quote_text_style)],
             [Paragraph('"Se o Senhor não edificar a casa, em vão trabalham os que a edificam."<br/><font color="#ffffff" size="9"><b>— Salmos 127:1</b></font>', bible_verse_style)]
         ]
@@ -799,7 +801,8 @@ def gerar_pdf(filename="O_Fio_de_Ouro_Restauracao.pdf", conteudo=None):
             alignment=TA_CENTER,
             spaceBefore=15
         )
-        story.append(Paragraph("PRODUZIDO COM ZELO, FÉ E PROPÓSITO.", footer_style))
+        rodape_texto = conteudo.get("rodape", "PRODUZIDO COM ZELO, FÉ E PROPÓSITO.")
+        story.append(Paragraph(rodape_texto.upper(), footer_style))
         
     else:
         # --- MODO ESTÁTICO (FALLBACK ORIGINAL) ---

@@ -264,6 +264,10 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         payload_publish = {'creation_id': reels_id, 'access_token': IG_ACCESS_TOKEN}
         res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Reels")
 
+        if res_publish_json is None:
+            logger.info("⏭️ Reels pulado (falha não fatal ignorada).")
+            return None
+
         published_id = res_publish_json['id']
         logger.success(f"🎉 REELS PUBLICADO! ID: {published_id}")
         
