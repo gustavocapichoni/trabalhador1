@@ -238,8 +238,16 @@ def _gerar_carrossel(img, W_full, H, dados):
                 ["Não perca mais tempo", "com conteúdos vazios.", "", "Acompanhe nossa jornada!"]
             ]
             linhas_cta = random.choice(ctas_disponiveis)
+            # Expande linhas longas para evitar corte nas bordas
+            linhas_finais = []
+            for linha in linhas_cta:
+                if linha.strip():
+                    partes = textwrap.wrap(linha, width=18)
+                    linhas_finais.extend(partes if partes else [linha])
+                else:
+                    linhas_finais.append("")  # mantém linha vazia (espaçamento)
             y_inicial = slide_H * 0.38
-            for i, linha in enumerate(linhas_cta):
+            for i, linha in enumerate(linhas_finais):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
                 
         else:  # Slides internos (Inter/Montserrat)
