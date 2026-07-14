@@ -446,27 +446,55 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             logger.info(f"🎬 Animação de texto selecionada: {animacao.upper()}")
 
             def _desenhar_assinatura_rodape(frame_array, fator_escala=1.0):
-                """Desenha a assinatura GUSTAVO_8K_ em dourado no rodapé do vídeo."""
-                img = Image.fromarray(frame_array).convert("RGB")
-                draw = ImageDraw.Draw(img)
+                """Desenha o logo PNG ou a assinatura GUSTAVO_8K_ no rodapé do vídeo."""
+                img = Image.fromarray(frame_array).convert("RGBA")
                 w, h = img.size
-                tamanho_marca = max(22, int(36 * fator_escala))
-                fonte_rodape = _carregar_fonte(tamanho_marca, "Montserrat")
-                texto_marca = "GUSTAVO_8K_"
-                bb = draw.textbbox((0, 0), texto_marca, font=fonte_rodape)
-                tw = bb[2] - bb[0]
-                x_marca = (w - tw) // 2
-                y_marca = h - int(60 * fator_escala)
-                # Efeito de brilho dourado (glow)
-                cor_brilho = (235, 160, 40, 50)
-                for ox in [-2, -1, 0, 1, 2]:
-                    for oy in [-2, -1, 0, 1, 2]:
-                        if ox != 0 or oy != 0:
-                            draw.text((x_marca + ox, y_marca + oy), texto_marca, font=fonte_rodape, fill=cor_brilho)
-                # Sombra e texto dourado
-                draw.text((x_marca + 2, y_marca + 2), texto_marca, font=fonte_rodape, fill=(0, 0, 0, 200))
-                draw.text((x_marca, y_marca), texto_marca, font=fonte_rodape, fill=(250, 185, 55))
-                return np.array(img)
+
+                logo_aplicado = False
+                logo_dir = os.path.join("biblioteca_local", "logo")
+                path_logo = ""
+                if os.path.exists(logo_dir):
+                    for f in os.listdir(logo_dir):
+                        if f.lower().endswith(".png"):
+                            path_logo = os.path.join(logo_dir, f)
+                            break
+                if os.path.exists(path_logo):
+                    try:
+                        logo_img = Image.open(path_logo)
+                        # Tamanho da logo escalado proporcionalmente
+                        largura_desejada = max(150, int(400 * fator_escala))
+                        aspect_ratio = logo_img.height / logo_img.width
+                        altura_desejada = int(largura_desejada * aspect_ratio)
+                        logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+
+                        x_pos = int((w - largura_desejada) / 2)
+                        y_pos = h - altura_desejada - int(60 * fator_escala)
+
+                        img.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
+                        logo_aplicado = True
+                    except Exception as e:
+                        logger.warning(f"⚠️ Erro ao aplicar imagem de logo no rodapé do vídeo ({e}). Usando fallback de texto.")
+
+                if not logo_aplicado:
+                    draw = ImageDraw.Draw(img)
+                    tamanho_marca = max(22, int(36 * fator_escala))
+                    fonte_rodape = _carregar_fonte(tamanho_marca, "Montserrat")
+                    texto_marca = "GUSTAVO_8K_"
+                    bb = draw.textbbox((0, 0), texto_marca, font=fonte_rodape)
+                    tw = bb[2] - bb[0]
+                    x_marca = (w - tw) // 2
+                    y_marca = h - int(60 * fator_escala)
+                    # Efeito de brilho dourado (glow)
+                    cor_brilho = (235, 160, 40, 50)
+                    for ox in [-2, -1, 0, 1, 2]:
+                        for oy in [-2, -1, 0, 1, 2]:
+                            if ox != 0 or oy != 0:
+                                draw.text((x_marca + ox, y_marca + oy), texto_marca, font=fonte_rodape, fill=cor_brilho)
+                    # Sombra e texto dourado
+                    draw.text((x_marca + 2, y_marca + 2), texto_marca, font=fonte_rodape, fill=(0, 0, 0, 200))
+                    draw.text((x_marca, y_marca), texto_marca, font=fonte_rodape, fill=(250, 185, 55))
+
+                return np.array(img.convert("RGB"))
 
             def make_frame(t):
                 idx = min(int(t / tempo_por_slide), total_slides - 1)

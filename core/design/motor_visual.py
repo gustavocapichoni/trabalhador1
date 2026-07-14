@@ -318,9 +318,37 @@ def _gerar_carrossel(img, W_full, H, dados):
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, slide_W, slide_H)
         
-        # Marca d'água com a fonte do logo em Dourado Ouro e Caixa Alta (tamanho reduzido em 40%)
-        font_marca_serif, _, _ = carregar_fontes(50, 72, 26, estilo="Playfair")
-        desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 80), "GUSTAVO_8K_", font_marca_serif)
+        # Marca d'água / Logo no rodapé
+        logo_aplicado = False
+        logo_dir = os.path.join("biblioteca_local", "logo")
+        path_logo = ""
+        if os.path.exists(logo_dir):
+            for f in os.listdir(logo_dir):
+                if f.lower().endswith(".png"):
+                    path_logo = os.path.join(logo_dir, f)
+                    break
+        if os.path.exists(path_logo):
+            try:
+                logo_img = Image.open(path_logo)
+                largura_desejada = 400
+                aspect_ratio = logo_img.height / logo_img.width
+                altura_desejada = int(largura_desejada * aspect_ratio)
+                logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+
+                x_pos = int((slide_W - largura_desejada) / 2)
+                y_pos = int(slide_H - altura_desejada - 70)
+
+                slide_rgba = slide_img.convert("RGBA")
+                slide_rgba.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
+                slide_img = slide_rgba.convert("RGB")
+                draw = ImageDraw.Draw(slide_img)
+                logo_aplicado = True
+            except Exception as e:
+                print(f"⚠️ Erro ao aplicar logo no carrossel: {e}")
+
+        if not logo_aplicado:
+            font_marca_serif, _, _ = carregar_fontes(50, 72, 26, estilo="Playfair")
+            desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 80), "GUSTAVO_8K_", font_marca_serif)
         
         if idx == 0:  # Capa (Playfair Display)
             # FIX: width menor = menos chars por linha = texto maior e mais legível
@@ -475,10 +503,38 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, W, H)
         
-        # Assinatura com a fonte serifada do logo em Dourado Ouro e Caixa Alta
-        font_marca_serif, _, _ = carregar_fontes(48, 24, 24, estilo="Playfair")
+        # Assinatura / Logo no rodapé
         y_watermark = H - 150 if tipo in ["story", "story_manha", "story_tarde", "test"] else H - 80
-        desenhar_marca_dagua_ouro(draw, (W/2, y_watermark), "GUSTAVO_8K_", font_marca_serif)
+        logo_aplicado = False
+        logo_dir = os.path.join("biblioteca_local", "logo")
+        path_logo = ""
+        if os.path.exists(logo_dir):
+            for f in os.listdir(logo_dir):
+                if f.lower().endswith(".png"):
+                    path_logo = os.path.join(logo_dir, f)
+                    break
+        if os.path.exists(path_logo):
+            try:
+                logo_img = Image.open(path_logo)
+                largura_desejada = 400
+                aspect_ratio = logo_img.height / logo_img.width
+                altura_desejada = int(largura_desejada * aspect_ratio)
+                logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+
+                x_pos = int((W - largura_desejada) / 2)
+                y_pos = int(y_watermark - (altura_desejada / 2))
+
+                slide_rgba = slide.convert("RGBA")
+                slide_rgba.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
+                slide = slide_rgba.convert("RGB")
+                draw = ImageDraw.Draw(slide)
+                logo_aplicado = True
+            except Exception as e:
+                print(f"⚠️ Erro ao aplicar logo no post estático/story: {e}")
+
+        if not logo_aplicado:
+            font_marca_serif, _, _ = carregar_fontes(48, 24, 24, estilo="Playfair")
+            desenhar_marca_dagua_ouro(draw, (W/2, y_watermark), "GUSTAVO_8K_", font_marca_serif)
         
         linhas = textwrap.wrap(frase, width=24)
         
