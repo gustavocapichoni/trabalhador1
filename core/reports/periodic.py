@@ -51,6 +51,13 @@ def enviar_email(assunto, mensagem):
 
 
 def carregar_metricas():
+    # Sincroniza com o Firebase Firestore antes de carregar o arquivo local
+    try:
+        from core.analytics.coletor import carregar_metricas as sincronizar_firebase
+        return sincronizar_firebase()
+    except Exception as e:
+        print(f"Erro ao sincronizar com Firebase: {e}. Usando arquivo local como fallback.")
+
     if not os.path.exists(METRICAS_FILE):
         print(f"Arquivo de metricas nao encontrado: {METRICAS_FILE}")
         return {}

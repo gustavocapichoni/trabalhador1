@@ -1,6 +1,14 @@
 import os
+import sys
 import json
 from datetime import datetime, timezone, timedelta
+
+# Garante que importações da raiz do projeto funcionem
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(ROOT_DIR)
+
+from core.analytics.coletor import carregar_metricas
+from core.analytics.analisador import calcular_score
 
 METRICAS_FILE = "analytics/dados/metricas.json"
 RECOMENDACOES_SEMANAIS_FILE = "analytics/dados/recomendacoes_semanais.json"
@@ -11,6 +19,9 @@ def analisar_semana():
     Diferente do analisador diário, este olha padrões de tendência, não só o melhor do dia.
     """
     print("=== ANALYTICS SEMANAL: Iniciando análise dos últimos 7 dias ===")
+
+    # Sincroniza com as métricas do Firebase Firestore
+    carregar_metricas()
 
     if not os.path.exists(METRICAS_FILE):
         print("⚠️ Arquivo de métricas não encontrado. Pulando analytics semanal.")
@@ -32,6 +43,8 @@ def analisar_semana():
         if data_str:
             try:
                 data_post = datetime.fromisoformat(data_str.replace("Z", "+00:00"))
+                if data_post.tzinfo is None:
+                    data_post = data_post.replace(tzinfo=timezone.utc)
                 if data_post >= sete_dias_atras:
                     posts_semana[post_id] = dados_post
             except Exception:
@@ -73,7 +86,7 @@ def analisar_semana():
         shares = mets.get("shares", 0)
         reach = mets.get("reach", mets.get("impressions", 0))
 
-        score = (saved * 3) + (shares * 2) + (comments * 2) + likes + (reach * 0.05)
+        score = calcular_score(mets, tipo_post=formato)
 
         total_reach += reach
         total_saves += saved

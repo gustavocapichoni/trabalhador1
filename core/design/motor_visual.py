@@ -10,15 +10,17 @@ from .efeitos import aplicar_mesh_gradient, draw_text_with_shadow, desenhar_elem
 from .templates import carregar_fontes, obter_fonte_do_dia, CORES
 from core.config.state import verificar_midia_recente, registrar_midia_usada
 
-UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
+from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY, UNSPLASH_ACCESS_KEY
 
 def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None):
     """
     Busca de imagem em Cascata (Fase 2):
-    Nível 1: Pollinations AI (Originalidade 100%)
-    Nível 2: Unsplash API (Fotos Reais)
-    Nível 3: Biblioteca Local (Modo Offline)
-    Nível 4: Fundo Sólido Escuro (Emergência Catastrófica)
+    Nível 1: Unsplash API (Fotos Reais)
+    Nível 2: Pexels API (Fotos Reais)
+    Nível 3: Pixabay API (Fotos Reais)
+    Nível 4: Pollinations AI (Geração por IA - Último caso online)
+    Nível 5: Biblioteca Local (Modo Offline)
+    Nível 6: Fundo Sólido Escuro (Emergência Catastrófica)
     """
     if tipo == "carousel":
         W, H = 2160, 1080
@@ -34,106 +36,203 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
     if tema_escolhido and tema_escolhido in TEMAS_MAPEADOS:
         query_termo = TEMAS_MAPEADOS[tema_escolhido].get("query_unsplash", query_termo)
 
-    # Se o Gemini gerou um prompt específico, usamos ele! Se não, usamos o fallback do tema.
-    termo_final_ia = prompt_imagem if prompt_imagem else query_termo
 
-    # --- NÍVEL 1: INTELIGÊNCIA ARTIFICIAL (Pollinations) ---
-    try:
-        print(f"🧠 [NÍVEL 1] Tentando gerar imagem exclusiva via IA (Pollinations): '{termo_final_ia}'")
-        # Preserva as vírgulas — são essenciais para separar termos positivos e negativos no prompt
-        ai_prompt = termo_final_ia
-        # Seed aleatório garante imagem diferente a cada chamada
-        seed_aleatorio = random.randint(1, 999999)
-        import urllib.parse
-        ai_prompt_encoded = urllib.parse.quote(ai_prompt)
-        # flux-realism: modelo específico para fotos realistas (não o flux genérico que gera arte)
-        # enhance=false: impede que a Pollinations reescreva o prompt com palavras de estilo artístico
-        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt_encoded}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}&model=flux-realism&enhance=false"
-        
-        # Timeout de 20s porque IA pode demorar um pouquinho para "pensar"
-        response_ia = requests.get(url_pollinations, timeout=20)
-        
-        if response_ia.status_code == 200:
-            print("✅ Imagem gerada por IA com sucesso!")
-            img = Image.open(BytesIO(response_ia.content)).convert("RGBA")
-            return img.resize((W, H), Image.Resampling.LANCZOS), W, H
-        else:
-            print(f"⚠️ IA (Pollinations) falhou com status {response_ia.status_code}. Tentando Nível 2...")
-    except Exception as e:
-        print(f"⚠️ Erro na geração de IA: {e}. Tentando Nível 2 (Unsplash)...")
-
-    # --- NÍVEL 2: BANCO DE IMAGENS REAL (Unsplash) ---
-    # Queries de fallback por tema: termos curtos e genéricos que sempre retornam fotos reais no Unsplash
+    # Palavras-chave simples e coloridas por tema — usadas EXCLUSIVAMENTE no Unsplash e Pexels
     UNSPLASH_FALLBACKS = {
-        "espiritualidade": ["spiritual light candle", "church prayer light", "serene temple"],
-        "filosofia":       ["ancient library books", "dark moody philosophy", "dramatic reading"],
-        "psicologia":      ["human mind brain", "person thinking window", "emotional psychology"],
-        "financas":        ["luxury business city", "gold money wealth", "executive office"],
-        "liberdade":       ["open road freedom", "mountain sunrise horizon", "person walking alone"],
-        "conexoes":        ["couple holding hands", "friends warm moment", "emotional hug"],
-        "superacao":       ["person climbing mountain", "athlete determination", "running sunrise"],
-        "proposito":       ["path to light forest", "inspiring nature horizon", "person journey"],
+        "espiritualidade": ["candle light church warm", "sunrise spiritual nature", "peaceful golden temple light", "prayer hands warm light"],
+        "filosofia":       ["ancient library warm light", "person reading sunlight", "sunset philosophy nature", "dramatic golden books"],
+        "psicologia":      ["person thinking window sunlight", "colorful emotional portrait", "vibrant mind concept", "warm human connection"],
+        "financas":        ["luxury city skyline sunset", "golden business executive", "vibrant wealth success", "colorful financial growth"],
+        "liberdade":       ["colorful sunset open road", "person hiking mountain sunrise", "vibrant ocean freedom", "golden horizon adventure"],
+        "conexoes":        ["couple sunset warm light", "friends laughing colorful", "warm hug golden hour", "vibrant family moment"],
+        "superacao":       ["athlete sunrise training", "person climbing mountain golden", "colorful running determination", "vibrant victory winner"],
+        "proposito":       ["colorful path forest sunlight", "inspiring sunrise horizon vibrant", "person journey golden light", "purpose light nature"],
     }
-    UNSPLASH_QUERY_CORINGA = "cinematic dark moody portrait"
+    QUERY_CORINGA = "vibrant colorful inspiring portrait golden light"
+    
+    tema_key = tema_escolhido if tema_escolhido else "superacao"
+    queries_fallback = UNSPLASH_FALLBACKS.get(tema_key, [QUERY_CORINGA])
+    
+    # Para buscas em APIs de fotos reais: começa pelos fallbacks temáticos coloridos (NÃO usa o prompt cinematográfico da IA)
+    queries_a_tentar = queries_fallback + [QUERY_CORINGA]
 
-    print(f"📸 [NÍVEL 2] Buscando foto real no Unsplash: '{termo_final_ia}'")
-    try:
-        if UNSPLASH_ACCESS_KEY:
-            # Usa a primeira parte do prompt (até a primeira vírgula, máx 40 chars) como query principal
-            unsplash_query_principal = termo_final_ia.split(",")[0][:40]
-            
-            # Monta a lista de queries a tentar: principal + fallbacks do tema + coringa
-            tema_key = tema_escolhido if tema_escolhido else "superacao"
-            queries_fallback = UNSPLASH_FALLBACKS.get(tema_key, [UNSPLASH_QUERY_CORINGA])
-            queries_a_tentar = [unsplash_query_principal] + queries_fallback + [UNSPLASH_QUERY_CORINGA]
-        else:
-            print("⚠️ UNSPLASH_ACCESS_KEY ausente. Tentando Nível 3 (Biblioteca Local)...")
-            queries_a_tentar = []
-        
+    # --- NÍVEL 1: UNSPLASH (Fotos Reais) ---
+    if UNSPLASH_ACCESS_KEY:
+        print(f"📸 [NÍVEL 1] Buscando foto real no Unsplash (tema: {tema_key})...")
         img_valida_url = None
-
+        img_id_valido = None
+        
         for query_atual in queries_a_tentar:
-            if not UNSPLASH_ACCESS_KEY:
-                break
             url_unsplash = f"https://api.unsplash.com/photos/random?query={query_atual}&orientation={orientation}&client_id={UNSPLASH_ACCESS_KEY}"
             try:
                 response = requests.get(url_unsplash, timeout=15)
                 if response.status_code == 200:
                     data = response.json()
                     img_url = data['urls']['regular']
-                    img_id = data.get('id', img_url)
-
+                    img_id = f"unsplash_{data.get('id', img_url)}"
+                    
                     if verificar_midia_recente(img_id):
-                        print(f"🔄 Imagem já usada recentemente. Tentando próxima query...")
+                        print(f"🔄 Imagem Unsplash {img_id} já usada recentemente. Tentando próxima query...")
                         continue
-
+                        
                     img_valida_url = img_url
-                    registrar_midia_usada(img_id)
-                    if query_atual != queries_a_tentar[0]:
-                        print(f"✅ Unsplash encontrou foto com query de fallback: '{query_atual}'")
+                    img_id_valido = img_id
                     break
-                elif response.status_code == 404:
-                    print(f"⚠️ Unsplash: nenhuma foto para '{query_atual}'. Tentando query alternativa...")
-                    continue
-                else:
-                    print(f"⚠️ Unsplash retornou status {response.status_code}. Abandonando Nível 2...")
+                elif response.status_code == 401:
+                    print("⚠️ Unsplash: Chave de API inválida (401). Pulando Unsplash...")
+                    break
+                elif response.status_code == 403:
+                    print("⚠️ Unsplash: Limite de requisições excedido (403). Pulando Unsplash...")
                     break
             except Exception as e:
-                print(f"⚠️ Erro ao acessar Unsplash: {e}. Tentando Nível 3...")
-                break
-
+                print(f"⚠️ Erro ao acessar Unsplash para '{query_atual}': {e}")
+                
         if img_valida_url:
             try:
                 img_response = requests.get(img_valida_url, timeout=15)
-                img = Image.open(BytesIO(img_response.content)).convert("RGBA")
-                print("✅ Foto do Unsplash carregada com sucesso e é inédita!")
-                return img.resize((W, H), Image.Resampling.LANCZOS), W, H
+                if img_response.status_code == 200:
+                    img = Image.open(BytesIO(img_response.content)).convert("RGBA")
+                    registrar_midia_usada(img_id_valido)
+                    print(f"✅ Foto do Unsplash carregada com sucesso e é inédita! ID: {img_id_valido}")
+                    return img.resize((W, H), Image.Resampling.LANCZOS), W, H
             except Exception as e:
-                print(f"⚠️ Erro ao baixar imagem validada do Unsplash: {e}")
-    except Exception as e:
-        print(f"⚠️ Erro geral no nível 2 (Unsplash): {e}")
+                print(f"⚠️ Erro ao baixar imagem do Unsplash: {e}")
+    else:
+        print("⚠️ UNSPLASH_ACCESS_KEY ausente. Pulando Nível 1...")
 
-    # --- FALLBACK: Biblioteca Local de Emergência ---
+    # --- NÍVEL 2: PEXELS (Fotos Reais) ---
+    if PEXELS_API_KEY:
+        print(f"📸 [NÍVEL 2] Buscando foto real no Pexels (tema: {tema_key})...")
+        pex_orientation = "square" if orientation == "squarish" else orientation
+        headers = {"Authorization": PEXELS_API_KEY}
+        img_valida_url = None
+        img_id_valido = None
+        
+        for query_atual in queries_a_tentar:
+            import urllib.parse
+            query_encoded = urllib.parse.quote(query_atual)
+            url_pexels = f"https://api.pexels.com/v1/search?query={query_encoded}&orientation={pex_orientation}&per_page=15"
+            try:
+                response = requests.get(url_pexels, headers=headers, timeout=15)
+                if response.status_code == 200:
+                    data = response.json()
+                    photos = data.get("photos", [])
+                    if photos:
+                        random.shuffle(photos)
+                        for photo in photos:
+                            img_id = f"pexels_{photo['id']}"
+                            if verificar_midia_recente(img_id):
+                                print(f"🔄 Imagem Pexels {img_id} já usada recentemente. Tentando próxima...")
+                                continue
+                            
+                            img_url = photo['src'].get('large2x') or photo['src'].get('large') or photo['src'].get('original')
+                            if img_url:
+                                img_valida_url = img_url
+                                img_id_valido = img_id
+                                break
+                        if img_valida_url:
+                            if query_atual != queries_a_tentar[0]:
+                                print(f"✅ Pexels encontrou foto com query de fallback: '{query_atual}'")
+                            break
+                elif response.status_code == 401:
+                    print("⚠️ Pexels: Chave de API inválida (401). Pulando Pexels...")
+                    break
+            except Exception as e:
+                print(f"⚠️ Erro ao acessar Pexels para '{query_atual}': {e}")
+                
+        if img_valida_url:
+            try:
+                img_response = requests.get(img_valida_url, timeout=15)
+                if img_response.status_code == 200:
+                    img = Image.open(BytesIO(img_response.content)).convert("RGBA")
+                    registrar_midia_usada(img_id_valido)
+                    print(f"✅ Foto do Pexels carregada com sucesso e é inédita! ID: {img_id_valido}")
+                    return img.resize((W, H), Image.Resampling.LANCZOS), W, H
+            except Exception as e:
+                print(f"⚠️ Erro ao baixar imagem do Pexels: {e}")
+    else:
+        print("⚠️ PEXELS_API_KEY ausente. Pulando Nível 2...")
+
+    # --- NÍVEL 3: PIXABAY (Fotos Reais) ---
+    if PIXABAY_API_KEY:
+        print(f"📸 [NÍVEL 3] Buscando foto real no Pixabay (tema: {tema_key})...")
+        if orientation == "portrait":
+            pixa_orientation = "vertical"
+        elif orientation == "landscape":
+            pixa_orientation = "horizontal"
+        else:
+            pixa_orientation = "all"
+            
+        img_valida_url = None
+        img_id_valido = None
+        
+        for query_atual in queries_a_tentar:
+            import urllib.parse
+            query_encoded = urllib.parse.quote(query_atual)
+            url_pixabay = f"https://pixabay.com/api/?key={PIXABAY_API_KEY}&q={query_encoded}&image_type=photo&orientation={pixa_orientation}&per_page=15"
+            try:
+                response = requests.get(url_pixabay, timeout=15)
+                if response.status_code == 200:
+                    data = response.json()
+                    hits = data.get("hits", [])
+                    if hits:
+                        random.shuffle(hits)
+                        for hit in hits:
+                            img_id = f"pixabay_{hit['id']}"
+                            if verificar_midia_recente(img_id):
+                                print(f"🔄 Imagem Pixabay {img_id} já usada recentemente. Tentando próxima...")
+                                continue
+                            
+                            img_url = hit.get('largeImageURL') or hit.get('webformatURL')
+                            if img_url:
+                                img_valida_url = img_url
+                                img_id_valido = img_id
+                                break
+                        if img_valida_url:
+                            if query_atual != queries_a_tentar[0]:
+                                print(f"✅ Pixabay encontrou foto com query de fallback: '{query_atual}'")
+                            break
+            except Exception as e:
+                print(f"⚠️ Erro ao acessar Pixabay para '{query_atual}': {e}")
+                
+        if img_valida_url:
+            try:
+                img_response = requests.get(img_valida_url, timeout=15)
+                if img_response.status_code == 200:
+                    img = Image.open(BytesIO(img_response.content)).convert("RGBA")
+                    registrar_midia_usada(img_id_valido)
+                    print(f"✅ Foto do Pixabay carregada com sucesso e é inédita! ID: {img_id_valido}")
+                    return img.resize((W, H), Image.Resampling.LANCZOS), W, H
+            except Exception as e:
+                print(f"⚠️ Erro ao baixar imagem do Pixabay: {e}")
+    else:
+        print("⚠️ PIXABAY_API_KEY ausente. Pulando Nível 3...")
+
+    # --- NÍVEL 4: INTELIGÊNCIA ARTIFICIAL (Pollinations - Último Caso Online) ---
+    try:
+        ai_prompt = prompt_imagem
+        if not ai_prompt:
+            from core.design.gerador_prompts import gerar_prompt_cinematografico
+            ai_prompt = gerar_prompt_cinematografico(tema_key)
+
+        print(f"🧠 [NÍVEL 4] Tentando gerar imagem exclusiva via IA (Pollinations) em último caso online: '{ai_prompt}'")
+        seed_aleatorio = random.randint(1, 999999)
+        import urllib.parse
+        ai_prompt_encoded = urllib.parse.quote(ai_prompt)
+        url_pollinations = f"https://image.pollinations.ai/prompt/{ai_prompt_encoded}?width={W}&height={H}&nologo=true&seed={seed_aleatorio}&model=flux-realism&enhance=false"
+        
+        response_ia = requests.get(url_pollinations, timeout=45)
+        
+        if response_ia.status_code == 200:
+            print("✅ Imagem gerada por IA com sucesso!")
+            img = Image.open(BytesIO(response_ia.content)).convert("RGBA")
+            return img.resize((W, H), Image.Resampling.LANCZOS), W, H
+        else:
+            print(f"⚠️ IA (Pollinations) falhou com status {response_ia.status_code}. Tentando Nível 5...")
+    except Exception as e:
+        print(f"⚠️ Erro na geração de IA: {e}. Tentando Nível 5 (Local)...")
+
+    # --- NÍVEL 5: Biblioteca Local de Emergência ---
     tema_pasta = tema_escolhido if tema_escolhido else "geral"
     pasta_tema = os.path.join("biblioteca_local", "imagens", tema_pasta)
     pasta_geral = os.path.join("biblioteca_local", "imagens")
@@ -151,6 +250,7 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
                 except Exception as e2:
                     print(f"⚠️ Erro ao carregar imagem local: {e2}")
 
+    # --- NÍVEL 6: Fundo Escuro Sólido ---
     print("⚠️ Sem imagens locais disponíveis. Usando fundo escuro sólido.")
     return Image.new('RGBA', (W, H), color=(20, 20, 20, 255)), W, H
 
@@ -265,13 +365,28 @@ def _gerar_carrossel(img, W_full, H, dados):
     return caminhos_arquivos
 
 def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
-    caminhos = []
+    """Gera os fundos dos slides do Reels (sem texto baked) e retorna as frases separadas para animação."""
+    caminhos_fundos = []
     frases = dados.get("slides", [dados.get("frase", "...")])
-    
+
     estilo_sorteado = obter_fonte_do_dia()
     print(f"🎨 Usando fonte do dia no Reels: {estilo_sorteado}")
+
+    # Determina o caminho e tamanho da fonte para passar ao motor de animação
+    nome_fonte = estilo_sorteado if estilo_sorteado.endswith(".ttf") else estilo_sorteado + ".ttf"
+    caminhos_fonte = [
+        os.path.join("fontes", nome_fonte),
+        os.path.join("fontes", "BebasNeue.ttf"),
+        os.path.join("fontes", "MontserratBold.ttf"),
+    ]
+    caminho_fonte_valido = None
+    for cf in caminhos_fonte:
+        if os.path.exists(cf):
+            caminho_fonte_valido = cf
+            break
+
     font_display, font_body, font_marca = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
-    
+
     for idx, frase in enumerate(frases):
         if idx > 0 and tema_escolhido and TEMAS_MAPEADOS:
             prompt_secundario = dados.get("prompt_imagem")
@@ -281,24 +396,54 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
         else:
             slide = img.copy().convert("RGB")
         draw = ImageDraw.Draw(slide)
-        
+
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, W, H)
-        
-        # Assinatura com a fonte do logo em Dourado Ouro e Caixa Alta
-        font_marca_serif, _, _ = carregar_fontes(86, 22, 24, estilo="Playfair")
-        desenhar_marca_dagua_ouro(draw, (W/2, H - 200), "GUSTAVO_8K_", font_marca_serif)
-        draw_text_with_shadow(draw, (W/2, H - 280), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
-        
-        linhas = textwrap.wrap(frase, width=22)
-        y_inicial = (H - (len(linhas) * 70)) / 2
-        for i, linha in enumerate(linhas):
-            draw_text_with_shadow(draw, (W/2, y_inicial + i * 70), linha, font_display, fill=CORES["texto_principal"], anchor="ms")
-            
+
+        # Logo da marca no rodapé (sem texto de conteúdo)
+        logo_aplicado = False
+        logo_dir = os.path.join("biblioteca_local", "logo")
+        path_logo = ""
+        if os.path.exists(logo_dir):
+            for f in os.listdir(logo_dir):
+                if f.lower().endswith(".png"):
+                    path_logo = os.path.join(logo_dir, f)
+                    break
+        if os.path.exists(path_logo):
+            try:
+                logo_img = Image.open(path_logo)
+                largura_desejada = 400
+                aspect_ratio = logo_img.height / logo_img.width
+                altura_desejada = int(largura_desejada * aspect_ratio)
+                logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+
+                x_pos = int((W - largura_desejada) / 2)
+                y_pos = H - altura_desejada - 240
+
+                slide_rgba = slide.convert("RGBA")
+                slide_rgba.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
+                slide = slide_rgba.convert("RGB")
+                draw = ImageDraw.Draw(slide)
+
+                # Número do slide abaixo do logo
+                y_num_slide = y_pos + altura_desejada + 40
+                draw_text_with_shadow(draw, (W/2, y_num_slide), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
+                logo_aplicado = True
+            except Exception as e:
+                print(f"⚠️ Erro ao aplicar imagem de logo ({e}). Usando fallback de texto.")
+
+        if not logo_aplicado:
+            font_marca_serif, _, _ = carregar_fontes(86, 22, 24, estilo="Playfair")
+            desenhar_marca_dagua_ouro(draw, (W/2, H - 200), "GUSTAVO_8K_", font_marca_serif)
+            draw_text_with_shadow(draw, (W/2, H - 280), f"{idx+1} / {len(frases)}", font_body, fill=CORES["texto_secundario"], anchor="ms")
+
+        # Salva o fundo SEM o texto de conteúdo (o texto será animado no reels.py)
         caminho = f"reels_slide_{uuid.uuid4().hex}_{idx}.jpg"
         slide.save(caminho, "JPEG", quality=95)
-        caminhos.append(caminho)
-    return caminhos
+        caminhos_fundos.append(caminho)
+
+    # Retorna tuple: (fundos sem texto, frases para animar, caminho fonte, tamanho fonte)
+    return (caminhos_fundos, frases, caminho_fonte_valido, 86)
 
 def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
     layout_style = random.choice(["classic", "bottom", "quote"])

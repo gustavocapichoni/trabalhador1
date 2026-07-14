@@ -90,6 +90,7 @@ def main():
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)
             if isinstance(midia, list): arquivos_gerados.extend(midia)
             elif isinstance(midia, str): arquivos_gerados.append(midia)
+            elif isinstance(midia, tuple): arquivos_gerados.extend(midia[0])
         
         # Passo 3: Se for Reels, gera o vídeo MP4
         if args.type in ["reels", "reels_noite"]:
@@ -97,16 +98,35 @@ def main():
             req_id = uuid.uuid4().hex
             nome_saida_reels = f"reels_pronto_{req_id}.mp4"
             arquivos_gerados.append(nome_saida_reels)
+
+            # midia agora é um tuple (caminhos_fundos, frases, caminho_fonte, tamanho_fonte)
+            if isinstance(midia, tuple):
+                caminhos_fundos, frases_reels, fonte_path, fonte_size = midia
+            else:
+                caminhos_fundos, frases_reels, fonte_path, fonte_size = midia, [], None, 86
+
             if args.dry_run:
                 try:
                     audio_path = garantir_audio_reels()
-                    midia = gerar_video_reels(midia, audio_path, caminho_saida=nome_saida_reels)
+                    midia = gerar_video_reels(
+                        caminhos_fundos, audio_path,
+                        caminho_saida=nome_saida_reels,
+                        textos=frases_reels,
+                        fonte_path=fonte_path,
+                        fonte_size=fonte_size
+                    )
                 except Exception as e:
                     print(f"⚠️ [DRY-RUN] Pulando geração real de vídeo do Reels: {e}")
                     midia = nome_saida_reels
             else:
                 audio_path = garantir_audio_reels()
-                midia = gerar_video_reels(midia, audio_path, caminho_saida=nome_saida_reels)
+                midia = gerar_video_reels(
+                    caminhos_fundos, audio_path,
+                    caminho_saida=nome_saida_reels,
+                    textos=frases_reels,
+                    fonte_path=fonte_path,
+                    fonte_size=fonte_size
+                )
                 
         # Passo 3.5: Se for Story, converte obrigatoriamente JPGs para MP4s com música
         if args.type in ["story_manha", "story_tarde"]:

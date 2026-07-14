@@ -28,6 +28,37 @@ def salvar_metricas_local(metricas):
     with open(METRICAS_FILE, "w", encoding="utf-8") as f:
         json.dump(metricas, f, indent=4, ensure_ascii=False)
 
+def carregar_metricas():
+    """
+    Carrega as métricas de postagens. Tenta buscar do Firebase Firestore
+    para obter todo o histórico acumulado e atualiza o arquivo local.
+    Se o Firebase estiver indisponível, faz o fallback para o arquivo local.
+    """
+    db = get_db()
+    if db is not None:
+        try:
+            logger.info("📥 Baixando métricas históricas do Firebase Firestore...")
+            docs = db.collection("metricas_posts").stream()
+            posts = {}
+            for doc in docs:
+                data = doc.to_dict()
+                post_id = doc.id
+                posts[post_id] = {
+                    "info_post": data.get("info_post", {}),
+                    "metricas": data.get("metricas", {}),
+                    "ultima_atualizacao": data.get("ultima_atualizacao", "")
+                }
+            metricas = {"posts": posts}
+            salvar_metricas_local(metricas)
+            logger.success(f"✅ Sincronização concluída: {len(posts)} posts carregados do Firebase!")
+            return metricas
+        except Exception as e:
+            logger.error(f"❌ Erro ao sincronizar métricas do Firebase: {e}")
+
+    # Fallback local se o Firebase não estiver configurado/disponível
+    logger.info("⚠️ Buscando métricas apenas do arquivo local...")
+    return carregar_metricas_local()
+
 def salvar_metricas_firebase(post_id, info_post, metricas):
     """Salva os dados do post e métricas no Firebase Firestore."""
     db = get_db()
@@ -135,7 +166,7 @@ def rodar_coleta():
     logger.info("📊 Iniciando coleta de métricas...")
     estado = carregar_estado()
     historico = estado.get("historico", [])
-    metricas_salvas = carregar_metricas_local()
+    metricas_salvas = carregar_metricas()
 
     agora = datetime.now(timezone.utc)
     posts_processados = 0

@@ -8,7 +8,13 @@ from datetime import datetime, timedelta, timezone
 from email.mime.text import MIMEText
 from email.header import Header
 from dotenv import load_dotenv
+
+# Garante que importações da raiz do projeto funcionem
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(ROOT_DIR)
+
 from core.config.state import carregar_estado
+from core.publisher.email_notifier import enviar_email_notificacao
 
 # Configura o terminal para aceitar UTF-8 (emojis) no Windows
 try:
@@ -26,23 +32,7 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 NOTIFY_EMAIL = os.getenv("NOTIFY_EMAIL")
 ESTADO_FILE = "estado.json"
 
-def enviar_email_notificacao(assunto, mensagem):
-    if not SMTP_EMAIL or not SMTP_PASSWORD or not NOTIFY_EMAIL:
-        print("⚠️ Configurações de e-mail SMTP incompletas. Pulando envio de e-mail.")
-        return
-    try:
-        msg = MIMEText(mensagem, 'plain', 'utf-8')
-        msg['Subject'] = Header(assunto, 'utf-8')
-        msg['From'] = SMTP_EMAIL
-        msg['To'] = NOTIFY_EMAIL
 
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=15)
-        server.login(SMTP_EMAIL, SMTP_PASSWORD)
-        server.sendmail(SMTP_EMAIL, [NOTIFY_EMAIL], msg.as_string())
-        server.quit()
-        print("✅ E-mail enviado com sucesso!")
-    except Exception as e:
-        print(f"❌ Erro ao enviar e-mail: {e}")
 
 def obter_id_conta_instagram():
     """Tenta descobrir o ID da conta do Instagram se não estiver explicitamente configurado."""

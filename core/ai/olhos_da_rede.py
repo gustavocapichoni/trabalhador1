@@ -32,7 +32,7 @@ def coletar_rss(dias=7):
                     dt_pub = datetime.fromtimestamp(mktime(entry.published_parsed), tz=timezone.utc)
                     if dt_pub < limite_data:
                         continue
-                except:
+                except Exception:
                     pass
                 
                 # Verifica se a notícia é relevante para o nicho (tem termos ou é destaque)

@@ -11,20 +11,13 @@ from core.ai.styles import sortear_estilo
 from core.ai.olhos_da_rede import gerar_contexto_mundo_real
 from core.config.state import carregar_estado, salvar_estado
 from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
-from core.design.gerador_prompts import gerar_prompt_cinematografico
 from loguru import logger
 
 def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor):
     """
     Função auxiliar para centralizar o pós-processamento dos dados gerados (IA ou Contingência).
-    Injeta o prompt de imagem procedural (Pollinations) e as hashtags correspondentes na legenda.
+    Injeta as hashtags correspondentes na legenda.
     """
-    tipos_imagem = ["story", "story_manha", "story_tarde", "carousel", "reels", "reels_noite", "reels_conquistador", "reels_leads", "test"]
-    if tipo in tipos_imagem:
-        prompt_visual = gerar_prompt_cinematografico(tema_escolhido or "espiritualidade")
-        dados["prompt_imagem"] = prompt_visual
-        logger.info(f"Cena cinematografica gerada ({provedor}): {prompt_visual}")
-    
     if "legenda" in dados and detalhes_tema and "hashtags" in detalhes_tema:
         tags = " ".join(detalhes_tema["hashtags"])
         if not any(tag in dados["legenda"] for tag in detalhes_tema["hashtags"]):
@@ -34,7 +27,7 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor):
 def gerar_conteudo_gemini(tipo):
     if tipo == "test":
         logger.info("Gerando conteudo de teste estatico...")
-        prompt_visual = gerar_prompt_cinematografico("espiritualidade")
+        prompt_visual = "A serene sunset reflecting on a calm lake, warm golden hour, realistic photograph"
         logger.info(f"Cena cinematografica (test): {prompt_visual}")
         return {
             "frase": "Seja forte e corajoso. Nao se apavore nem desanime, pois o Senhor, o seu Deus, estara com voce por onde voce andar.",
@@ -127,7 +120,7 @@ def gerar_conteudo_gemini(tipo):
     hist_estilos = estado.get("historico_estilos", [])
 
     # Monta instrucoes de copy (com anti-repetição)
-    instrucoes_copy, sub_angulo, gancho = montar_instrucoes_copy(
+    instrucoes_copy, sub_angulo, gancho, descricao_categoria = montar_instrucoes_copy(
         detalhes_tema, contexto_analytics, hist_angulos, hist_ganchos, is_conquistador=is_conquistador
     )
 
@@ -135,14 +128,14 @@ def gerar_conteudo_gemini(tipo):
     estilo_escolhido = sortear_estilo(hist_estilos)
     logger.info(f"🎭 Estilo de abordagem sorteado: {estilo_escolhido.split(':')[0].upper()}")
     
-    # Atualiza as listas (mantém os últimos 5 para não lotar o arquivo)
+    # Atualiza as listas (mantém as últimas 25 para não lotar o arquivo)
     hist_angulos.append(sub_angulo)
     hist_ganchos.append(gancho)
     hist_estilos.append(estilo_escolhido)
     
-    estado["historico_angulos"] = hist_angulos[-5:]
-    estado["historico_ganchos"] = hist_ganchos[-5:]
-    estado["historico_estilos"] = hist_estilos[-5:]
+    estado["historico_angulos"] = hist_angulos[-25:]
+    estado["historico_ganchos"] = hist_ganchos[-25:]
+    estado["historico_estilos"] = hist_estilos[-25:]
     salvar_estado(estado)
     # ------------------------------------------------
 
@@ -156,11 +149,8 @@ def gerar_conteudo_gemini(tipo):
 
         CRIE UMA FRASE CURTÍSSIMA E PODEROSA:
         - Máximo de 10 palavras.
-        - Deve funcionar como um soco no estômago ou uma pergunta que incomoda.
-        - Formatos que funcionam bem em Stories:
-          → Uma afirmação ousada que a maioria discorda na superfície mas concorda no fundo.
-          → Uma pergunta que o leitor nunca se fez mas deveria.
-          → Uma verdade dita de um jeito que parece errado mas faz sentido.
+        - Como este é um Story de frase única, ela DEVE ser o próprio gancho sorteado adaptado ao sub-ângulo sugerido. Use a estrutura de: {descricao_categoria} com base na referência: '{gancho}'.
+        - Ela deve funcionar como um soco no estômago ou uma pergunta que incomoda, fundindo o gancho com o sub-ângulo.
         - NÃO use ponto de exclamação. Frases com ponto final ou interrogação têm mais peso.
 
         Responda APENAS em formato JSON válido assim:
@@ -177,6 +167,9 @@ def gerar_conteudo_gemini(tipo):
 
         CRIE UMA SEQUÊNCIA DE 3 OU 4 FRASES CURTAS CONECTADAS:
         - Cada frase será um slide diferente, então elas devem formar uma linha de raciocínio.
+        - Slide 1 (Gancho): Deve focar estritamente na estrutura da categoria de gancho sorteada ({descricao_categoria}) com base na referência: '{gancho}' para parar o scroll.
+        - Slides 2 e 3 (Corpo): Devem desdobrar e detalhar a ideia prática sugerida pelo sub-ângulo: "{sub_angulo}".
+        - Slide Final (Conclusão): Fecha o raciocínio de forma madura e profunda.
         - Máximo de 12 palavras por frase.
         - Não use ponto de exclamação.
         - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo da intensidade da mensagem.
@@ -199,7 +192,8 @@ def gerar_conteudo_gemini(tipo):
         {instrucoes_copy}
 
         CRIE UMA SEQUÊNCIA DE 2 FRASES CURTAS CONECTADAS:
-        - A segunda frase deve complementar ou quebrar a expectativa da primeira de forma surpreendente.
+        - Slide 1 (Gancho): Abre a sequência usando a estrutura do gancho sorteado ({descricao_categoria}) com base na referência: '{gancho}'.
+        - Slide 2 (Desfecho/Impacto): Dá a quebra de expectativa ou o desfecho reflexivo baseado no sub-ângulo sugerido: "{sub_angulo}".
         - Máximo de 12 palavras por frase.
         - Não use ponto de exclamação.
         - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo do impacto da mensagem.
@@ -286,31 +280,18 @@ def gerar_conteudo_gemini(tipo):
 
         {instrucoes_copy}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA DE 4 A 6 SLIDES seguindo OBRIGATORIAMENTE esta estrutura:
+        CRIE UMA SEQUÊNCIA NARRATIVA DINÂMICA DE 8 A 12 SLIDES (o número exato deve flutuar livremente entre 8 e 12 a cada execução dependendo da necessidade da história) seguindo esta estrutura fluida:
 
-        SLIDE 1 — QUEBRA DE PADRÃO (Interrupção de Estado - PNL):
-        - Comece com algo INESPERADO. Uma contradição, um dado perturbador, ou uma observação que ninguém verbaliza.
-        - O leitor deve sentir: "espera, isso não é o que eu esperava."
-        - Máximo 10 palavras. Sem explicação ainda — só o choque inicial.
+        - Slide 1: O Gancho/Quebra de Padrão (Pattern Interrupt) — Frase super provocativa e inesperada para parar o scroll.
+        - Slides 2 a 4: Abertura de loop, mistério e detalhamento da dor (o problema no cotidiano do leitor).
+        - Slides 5 a 8: A entrega de valor prática e a explicação do porquê funciona (o insight/segredo revelado).
+        - Slides 9 a 11: Choque de realidade, quebra de desculpas comuns e validação/elogio da inteligência de quem leu até aqui.
+        - Slide Final: Xeque-mate reflexivo, frase curta de forte impacto para o leitor guardar mentalmente.
 
-        SLIDE 2 — ABERTURA DE LOOP (Efeito Zeigarnik):
-        - Apresente a possibilidade de um "outro lado" que o leitor desconhece.
-        - Prometa implicitamente uma sacada prática e real. Não entregue ainda.
-        - Máximo 12 palavras. Deve criar curiosidade irresistível para o próximo slide.
-
-        SLIDE 3 — ENTREGA DE VALOR (Dopamina e Recompensa):
-        - Dê uma dica ABSURDAMENTE PRÁTICA que o leitor pode aplicar hoje, em 5 minutos.
-        - Deve parecer que você entregou um segredo de graça que valeria um curso pago.
-        - Máximo 14 palavras.
-
-        SLIDE 4 — CHOQUE DE REALIDADE + VALIDAÇÃO POSITIVA (Ancoragem de Identidade):
-        - Primeiro: bata na ferida. Um choque que destrua a desculpa favorita do leitor.
-        - Depois IMEDIATAMENTE: elogie a inteligência dele por estar lendo até ali.
-        - Faça-o sentir especial, acima da média. Isso cria laço emocional com o seu perfil.
-        - Ex: "Quem chega até aqui entende o que a maioria nunca vai perceber."
-        - Máximo 16 palavras.
-
-        (OPCIONAL) SLIDE 5 e 6 — Use se a história pedir. Aprofunde a narrativa ou adicione uma virada extra.
+        REGRAS DE ESCUTA E RITMO VISUAL:
+        * Misture o comprimento das frases! Algumas devem ser extremamente curtas e cortantes (ex: 4 a 8 palavras) para acelerar o ritmo de leitura. Outras devem ser um pouco mais longas e explicativas (até 25 palavras) para dar profundidade.
+        * LIMITE MÁXIMO ESTRITO: Nenhuma frase pode passar de 25 palavras sob hipótese alguma.
+        * NÃO use pontos de exclamação.
 
         LEGENDA:
         - Máximo 3 linhas. Tom de quem viveu aquilo, não de quem está ensinando.
@@ -324,10 +305,14 @@ def gerar_conteudo_gemini(tipo):
         Responda APENAS em formato JSON válido assim:
         {{
           "slides": [
-            "Slide 1 aqui",
-            "Slide 2 aqui",
-            "Slide 3 aqui",
-            "Slide 4 aqui"
+            "Frase do slide 1 (Gancho rápido)",
+            "Frase do slide 2 (Abertura de loop)",
+            "Frase do slide 3 (Um pouco mais longa explicando a dor e a realidade)",
+            "Frase do slide 4 (Frase curta de transição)",
+            "Frase do slide 5 (Entrega do método prático e segredo)",
+            "Frase do slide 6 (Mais longa detalhando a solução)",
+            "Frase do slide 7 (Elogio a inteligência do leitor)",
+            "Frase do slide 8 (Xeque-mate final cortante)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
@@ -456,40 +441,28 @@ def gerar_conteudo_gemini(tipo):
     elif tipo == "reels_noite":
         prompt = f"""
         Você é um contador de histórias que entende que o final do dia é o momento mais emocional da jornada humana.
-        O seu Reels é o último do dia. A pessoa está voltando para casa ou já está deitada.
+        O seu Reels é o último do dia. A pessoa está voltando para casa ou já está deitada na cama.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
         {instrucoes_copy}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA DE 4 A 6 SLIDES que funcione como o CAPÍTULO FINAL de uma história que começou de manhã.
+        CRIE UMA SEQUÊNCIA NARRATIVA DINÂMICA DE 8 A 12 SLIDES (o número exato deve flutuar livremente entre 8 e 12 a cada execução dependendo da necessidade da história) que funcione como o CAPÍTULO FINAL de uma história que começou de manhã.
         A mensagem deve colocar quem assiste dentro da história: identifique a dor, gere empatia real e ofereça a solução.
 
-        SLIDE 1 — A DOR E A EMPATIA (A Fisgada da Noite):
-        - Comece espelhando uma dor solitária que bate forte à noite. 
-        - O tom deve ser: "Eu já passei por isso à noite, sozinho, e sei exatamente como dói."
-        - Coloque o espectador dentro da narrativa. Máximo 10 palavras.
+        - Slide 1: A Dor e Empatia da Noite (A Fisgada da Noite) — Comece espelhando uma dor silenciosa ou solidão que bate forte ao deitar.
+        - Slides 2 a 4: Diagnóstico íntimo do que acontece na mente da pessoa à noite (o ciclo de pensamentos destrutivos ou insônia mental).
+        - Slides 5 a 8: A virada de perspectiva e a solução (o que mudou na sua atitude ou o método prático que quebrou esse ciclo de autossabotagem).
+        - Slides 9 a 11: A promessa e o benefício do amanhã (como acordar diferente a partir de hoje se ele tomar a atitude proposta).
+        - Slide Final: Frase curta e profunda para ficar martelando na cabeça do leitor durante a noite.
 
-        SLIDE 2 — O FUNDO DO POÇO (A História Continua):
-        - Aprofunde o que acontece quando a pessoa cede a essa dor ou medo.
-        - Não julgue, apenas narre o cenário que ele conhece muito bem.
-        - Máximo 12 palavras.
-
-        SLIDE 3 — A RUPTURA E A SOLUÇÃO (O "Mas eu superei fazendo isso"):
-        - Apresente a virada. Mostre o que você (ou quem tem o controle) fez para sair desse ciclo.
-        - Entregue o método prático ou a perspectiva que quebra o feitiço da dor.
-        - Máximo 12 palavras.
-
-        SLIDE 4 — FECHAMENTO E BENEFÍCIO (A Promessa do Amanhã):
-        - Termine com a promessa de como a vida muda quando essa chave vira.
-        - Algo que cria expectativa de acordar diferente amanhã.
-        - Máximo 10 palavras.
-
-        (OPCIONAL) SLIDE 5 e 6 — Use se a narrativa pedir um desenvolvimento maior da história.
+        REGRAS DE RITMO VISUAL:
+        * Misture o comprimento das frases! Algumas devem ser curtas e diretas (ex: 4 a 8 palavras) para dinâmica rápida. Outras devem ser um pouco mais detalhadas e íntimas (até 25 palavras) para dar profundidade à conversa de travesseiro.
+        * LIMITE MÁXIMO ESTRITO: Nenhuma frase pode passar de 25 palavras sob hipótese alguma.
+        * NÃO use pontos de exclamação.
 
         LEGENDA:
-        - Máximo 3 linhas. Tom íntimo e intrusivo.
-        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): NUNCA faça perguntas bobas como "Como foi seu dia?". Use CTAs focados em AÇÃO e COMUNIDADE.
-        - Modelos obrigatórios (use variações baseadas nisso):
+        - Máximo 3 linhas. Tom íntimo, persuasivo e introspectivo.
+        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): NUNCA faça perguntas bobas como "Como foi seu dia?". Use CTAs focados em AÇÃO e COMUNIDADE. Use uma das abaixo como modelo:
           → "Se isso faz sentido para o momento que você está vivendo, já me segue para continuarmos evoluindo juntos."
           → "Você já passou por isso? Me conte aqui como você superou e ajude quem está lendo a passar por essa noite."
           → "Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde."
@@ -498,10 +471,14 @@ def gerar_conteudo_gemini(tipo):
         Responda APENAS em formato JSON válido assim:
         {{
           "slides": [
-            "Slide 1 aqui",
-            "Slide 2 aqui",
-            "Slide 3 aqui",
-            "Slide 4 aqui"
+            "Frase do slide 1 (Gancho reflexivo e íntimo)",
+            "Frase do slide 2 (Sentimento comum ao deitar)",
+            "Frase do slide 3 (Um pouco mais longa detalhando o conflito mental da noite)",
+            "Frase do slide 4 (Frase curta de impacto)",
+            "Frase do slide 5 (Revelação da atitude ou técnica para quebrar a dor)",
+            "Frase do slide 6 (Detalhe da solução prática)",
+            "Frase do slide 7 (Elogio a busca por crescimento do leitor)",
+            "Frase do slide 8 (Xeque-mate reflexivo final)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
