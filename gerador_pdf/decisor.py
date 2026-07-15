@@ -24,7 +24,7 @@ LIVROS_POR_TEMA = {
     },
     "filosofia": {
         "nome_display": "Filosofia e Autoconhecimento",
-        "livros": ["A Arte da Guerra", "O Vendedor de Sonhos", "Estoicismo - A Arte da Vida"],
+        "livros": ["A Arte da Guerra", "O Vendedor de Sonhos"],
         "dor_central": "tentar agradar a todos enquanto se perde de si mesmo"
     },
     "psicologia": {

@@ -24,9 +24,39 @@ post_teste.jpg
 # Credenciais sensíveis - NUNCA subir para o GitHub
 firebase-key.json
 
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Local generated media
+*.jpg
+*.mp4
+reels_base.jpg
+reels_pronto.mp4
+reels_pronto_*.mp4
+story_pronto.jpg
+post_pronto.jpg
+carousel_*.jpg
+carousel_*.png
+post_teste.jpg
+
+# Credenciais sensíveis - NUNCA subir para o GitHub
+firebase-key.json
+
 # Repositório clonado localmente do gustavo_8k (tem .git próprio)
 gerador_pdf/repositorio_pdfs/
 
 # PDF gerado localmente (sobe via git push do uploader.py para o gustavo_8k)
 gerador_pdf/output/*.pdf
 
+# Arquivos de dados de uso estritamente local (não sobem para o GitHub)
+estado_migrado.bkp.json
+analytics/dados/metricas.json
+analytics/dados/metricas.bkp.json

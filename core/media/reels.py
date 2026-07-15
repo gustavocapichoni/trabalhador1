@@ -92,7 +92,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
     video_clip = None
     try:
         audio_clip = AudioFileClip(caminho_audio)
-        duracao_por_slide = 3.0
+        duracao_por_slide = 4.0
         DURACAO_ULTIMO_SLIDE = 7.0  # Último slide (CTA) tem mais tempo para leitura
         n_slides = len(caminhos_imagens)
 
@@ -185,7 +185,8 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             txt_layer = PILImage.new("RGBA", (W, H), (0, 0, 0, 0))
             draw = PILDraw.Draw(txt_layer)
 
-            progresso = min(t / duracao, 1.0)
+            tempo_ativo = max(1.0, duracao - 1.5)
+            progresso = min(t / tempo_ativo, 1.0)
 
             # Quebra o texto em linhas que cabem na tela
             palavras = texto.split()

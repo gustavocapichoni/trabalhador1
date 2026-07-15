@@ -211,8 +211,9 @@ def rodar_coleta():
         time.sleep(2)
 
     salvar_metricas_local(metricas_salvas)
-    logger.success(f"✅ Coleta finalizada. {posts_processados} posts atualizados.")
+    logger.success(f"Coleta finalizada. {posts_processados} posts atualizados.")
     return metricas_salvas
 
 if __name__ == "__main__":
     rodar_coleta()
+

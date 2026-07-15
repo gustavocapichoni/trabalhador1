@@ -6,7 +6,7 @@ from loguru import logger
 from urllib.parse import quote
 
 # Termos principais de busca para focar a visão do bot no nosso nicho
-TERMOS_NICHOS = ["desenvolvimento pessoal", "finanças", "estoicismo", "disciplina", "psicologia", "hábitos"]
+TERMOS_NICHOS = ["desenvolvimento pessoal", "finanças", "disciplina", "psicologia", "hábitos"]
 
 def coletar_rss(dias=7):
     """
@@ -83,7 +83,7 @@ def coletar_youtube(dias=7, tema_especifico=None):
     # Cobre todos os 8 temas do projeto + o tema específico do dia (se houver)
     # para capturar o que está bombando em qualquer um dos nossos nichos nesta semana
     query_base = (
-        "desenvolvimento pessoal OR estoicismo OR disciplina OR autossabotagem OR "
+        "desenvolvimento pessoal OR disciplina OR autossabotagem OR "
         "mentalidade financeira OR liberdade financeira OR relacionamentos OR "
         "proposito de vida OR psicologia comportamental OR habitos OR "
         "superacao pessoal OR inteligencia emocional OR "

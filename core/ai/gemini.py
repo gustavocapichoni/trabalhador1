@@ -13,15 +13,21 @@ from core.config.state import carregar_estado, salvar_estado
 from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
 from loguru import logger
 
-def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor):
+def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor, gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", tom_emocional=""):
     """
-    Função auxiliar para centralizar o pós-processamento dos dados gerados (IA ou Contingência).
-    Injeta as hashtags correspondentes na legenda.
+    Funcao auxiliar para centralizar o pos-processamento dos dados gerados (IA ou Contingencia).
+    Injeta as hashtags correspondentes na legenda e os metadados de analytics no dicionario.
     """
     if "legenda" in dados and detalhes_tema and "hashtags" in detalhes_tema:
         tags = " ".join(detalhes_tema["hashtags"])
         if not any(tag in dados["legenda"] for tag in detalhes_tema["hashtags"]):
             dados["legenda"] = f"{dados['legenda'].strip()}\n\n{tags}"
+    # Metadados internos para o sistema de analytics (prefixo _ indica uso interno)
+    dados["_gancho_categoria"] = gancho_categoria
+    dados["_tipo_cta"]         = tipo_cta
+    dados["_duracao_video"]    = duracao_video
+    dados["_subtema"]          = subtema
+    dados["_tom_emocional"]    = tom_emocional
     return dados
 
 def gerar_conteudo_gemini(tipo):
@@ -89,9 +95,33 @@ def gerar_conteudo_gemini(tipo):
                 with open(recomendacoes_file, "r", encoding="utf-8") as f:
                     rec_cruzada = json.load(f)
                 contexto_analytics += rec_cruzada.get("contexto_para_gemini", "") + "\n\n"
+
+                # --- Fase 6: Injeção de Growth Score, ICC e Hipóteses Confirmadas ---
+                gs_ref = rec_cruzada.get("growth_score_referencia", 0)
+                if gs_ref > 0:
+                    contexto_analytics += f"GROWTH SCORE DE REFERENCIA DA CONTA: {gs_ref:.4f}\n"
+                    contexto_analytics += "  (Este e o benchmark atual. Posts acima deste valor impulsionam crescimento real.)\n\n"
+
+                icc = rec_cruzada.get("icc_por_tema", {})
+                if icc:
+                    tema_icc_lider = max(icc, key=icc.get)
+                    contexto_analytics += f"TEMA COM MAIOR ICC (converte curiosidade em seguidores): {tema_icc_lider.upper()} ({icc[tema_icc_lider]:.1%})\n\n"
+
         except Exception as e:
-            logger.warning(f"⚠️ Erro ao ler contexto do analytics cruzado: {e}")
-            
+            logger.warning(f"Erro ao ler contexto do analytics cruzado: {e}")
+
+        # Injeta hipóteses confirmadas da Memória Estratégica
+        try:
+            from core.analytics.motor_hipoteses import obter_hipoteses_confirmadas
+            hipoteses = obter_hipoteses_confirmadas()
+            if hipoteses:
+                contexto_analytics += "CONHECIMENTO ESTRATEGICO VALIDADO (hipoteses confirmadas com dados reais):\n"
+                for h in hipoteses[:5]:  # Limita a 5 para não inflar o prompt
+                    contexto_analytics += f"  - {h['hipotese']} (Confianca: {h.get('confianca', 0):.0%}, Amostra: {h.get('amostra', 0)} posts)\n"
+                contexto_analytics += "\n"
+        except Exception:
+            pass  # Motor ainda não rodou; ignora silenciosamente
+
         # Lê o contexto do analytics semanal (tendências)
         try:
             if os.path.exists(recomendacoes_semanais_file):
@@ -99,8 +129,8 @@ def gerar_conteudo_gemini(tipo):
                     rec_semanal = json.load(f)
                 contexto_analytics += rec_semanal.get("contexto_para_gemini", "") + "\n\n"
         except Exception as e:
-            logger.warning(f"⚠️ Erro ao ler contexto do analytics semanal: {e}")
-            
+            logger.warning(f"Erro ao ler contexto do analytics semanal: {e}")
+
         # [NOVO] Adiciona a visão externa (Olhos da Rede)
         try:
             # Pega o nome do tema escolhido para fazer uma busca cirúrgica no YouTube
@@ -109,35 +139,54 @@ def gerar_conteudo_gemini(tipo):
             if mundo_real:
                 contexto_analytics += "\n====================\n" + mundo_real + "\n====================\n\n"
         except Exception as e:
-            logger.warning(f"⚠️ Erro ao coletar Olhos da Rede: {e}")
+            logger.warning(f"Erro ao coletar Olhos da Rede: {e}")
         
     detalhes_tema = TEMAS_MAPEADOS[tema_escolhido]
     logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
     
-    # ---------------- ANTI-REPETIÇÃO ----------------
+    # ---------------- CICLO SEQUENCIAL DE GANCHOS E CTAs ----------------
     hist_angulos = estado.get("historico_angulos", [])
-    hist_ganchos = estado.get("historico_ganchos", [])
     hist_estilos = estado.get("historico_estilos", [])
 
-    # Monta instrucoes de copy (com anti-repetição)
-    instrucoes_copy, sub_angulo, gancho, descricao_categoria = montar_instrucoes_copy(
-        detalhes_tema, contexto_analytics, hist_angulos, hist_ganchos, is_conquistador=is_conquistador
+    # Índices sequenciais: avançam 1 por postagem
+    indice_gancho             = estado.get("indice_gancho", 0)
+    indice_gancho_conquistador = estado.get("indice_gancho_conquistador", 0)
+    indice_cta                = estado.get("indice_cta", 0)
+
+    # Seleciona o índice correto de gancho conforme o modo da postagem
+    idx_atual = indice_gancho_conquistador if is_conquistador else indice_gancho
+
+    # Monta instrucoes de copy (gancho sequencial + cta sequencial + ângulo anti-repetição)
+    instrucoes_copy, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta = montar_instrucoes_copy(
+        detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, is_conquistador=is_conquistador
     )
 
     # Estilo de abordagem sorteado (com anti-repetição)
     estilo_escolhido = sortear_estilo(hist_estilos)
     logger.info(f"🎭 Estilo de abordagem sorteado: {estilo_escolhido.split(':')[0].upper()}")
-    
-    # Atualiza as listas (mantém as últimas 25 para não lotar o arquivo)
+    logger.info(f"🎣 Gancho sequencial #{idx_atual}: [{gancho[:50]}...]")
+
+    # Atualiza histórico de ângulos e estilos (mantém os últimos 25)
     hist_angulos.append(sub_angulo)
-    hist_ganchos.append(gancho)
     hist_estilos.append(estilo_escolhido)
-    
+
     estado["historico_angulos"] = hist_angulos[-25:]
-    estado["historico_ganchos"] = hist_ganchos[-25:]
     estado["historico_estilos"] = hist_estilos[-25:]
+
+    # Avança o índice do gancho no estado (separado por modo)
+    if is_conquistador:
+        estado["indice_gancho_conquistador"] = novo_indice
+    else:
+        estado["indice_gancho"] = novo_indice
+
+    # Define se esta postagem consome e avança o índice de CTA
+    tipos_com_cta = ["carousel", "reels", "reels_conquistador", "pexels_story", "reels_noite", "pexels_story_noite"]
+    if tipo in tipos_com_cta:
+        estado["indice_cta"] = novo_indice_cta
+        logger.info(f"📣 CTA sequencial #{indice_cta}: [{categoria_cta.upper()}] -> '{referencia_cta}'")
+
     salvar_estado(estado)
-    # ------------------------------------------------
+    # --------------------------------------------------------------------
 
 
     if tipo == "story":
@@ -255,11 +304,7 @@ def gerar_conteudo_gemini(tipo):
 
         3. LEGENDA:
         - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta, madura e sem enrolação.
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: Sempre termine com uma das estratégias abaixo (escolha a mais adequada para o tema):
-          → "Comente 1 se você já viveu isso, ou 2 se ainda está nessa fase."
-          → "Você concorda com isso ou acha que é exagero? Comenta aqui embaixo."
-          → "Marca alguém que PRECISA ler isso antes de desistir."
-          → "Qual foi o slide que mais te pegou? Comenta o número."
+        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NUNCA termine com uma conclusão fechada. O leitor deve ter algo a dizer.
         - NÃO inclua hashtags.
 
@@ -295,10 +340,7 @@ def gerar_conteudo_gemini(tipo):
 
         LEGENDA:
         - Máximo 3 linhas. Tom de quem viveu aquilo, não de quem está ensinando.
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: Sempre termine com uma pergunta polarizada que force o leitor a tomar partido. Use uma das abaixo como modelo:
-          → "Você concorda com isso ou acha que é papo de coach? Deixa aqui embaixo."
-          → "Qual desculpa você parou de usar? Me conta nos comentários."
-          → "Comente SIM se você já aplicou isso, ou NÃO se ainda tá adiando."
+        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NUNCA termine com uma frase bonita e fechada. Sempre com uma pergunta em aberto.
         - NÃO inclua hashtags.
 
@@ -357,7 +399,7 @@ def gerar_conteudo_gemini(tipo):
         - Máximo 12 palavras. O tom deve ser imperativo e inegociável.
 
         LEGENDA DO POST (separada das cenas do vídeo):
-        - Máximo 3 linhas. Reforce a dor e o CTA.
+        - Máximo 3 linhas. Reforce a dor e use obrigatoriamente a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NÃO use hashtags. Apenas ação direta.
 
         Responda APENAS em formato JSON válido assim:
@@ -417,10 +459,7 @@ def gerar_conteudo_gemini(tipo):
         
         LEGENDA:
         - Máximo 3 linhas. Tom próximo e pessoal, como uma mensagem de voz transcrita.
-        - CTA OBRIGATÓRIO DE COMENTÁRIO: Termine com uma pergunta visceral que ataque diretamente a identidade do espectador. Use uma das abaixo como modelo:
-          → "O que esse vídeo te fez lembrar? Me fala nos comentários, vou ler todos."
-          → "Em qual frase você se viu? Comenta o número."
-          → "Você ficou com raiva de alguma parte? Ótimo. Qual foi?"
+        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NUNCA termine com uma mensagem positiva e fechada. Sempre com uma pergunta que exija resposta.
         - NÃO inclua hashtags.
 
@@ -462,10 +501,7 @@ def gerar_conteudo_gemini(tipo):
 
         LEGENDA:
         - Máximo 3 linhas. Tom íntimo, persuasivo e introspectivo.
-        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): NUNCA faça perguntas bobas como "Como foi seu dia?". Use CTAs focados em AÇÃO e COMUNIDADE. Use uma das abaixo como modelo:
-          → "Se isso faz sentido para o momento que você está vivendo, já me segue para continuarmos evoluindo juntos."
-          → "Você já passou por isso? Me conte aqui como você superou e ajude quem está lendo a passar por essa noite."
-          → "Se você quer que essa realidade mude antes de amanhã, siga a página agora. Informação assim o sistema esconde."
+        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim:
@@ -524,11 +560,7 @@ def gerar_conteudo_gemini(tipo):
 
         LEGENDA:
         - Máximo 3 linhas. Tom íntimo e persuasivo.
-        - CTA ESTRATÉGICO E SEDUTOR (OBRIGATÓRIO): Focado em envolver e converter.
-        - Modelos obrigatórios (use variações baseadas nisso):
-          → "Se você quer parar de acordar com o mesmo sentimento de ontem, já me segue para mudar esse jogo."
-          → "Você também já sentiu isso à noite? Me conte como você lidou com essa dor e ajude alguém aqui nos comentários."
-          → "O algoritmo vai tentar esconder esse perfil de você. Siga agora se quiser continuar recebendo a verdade sem filtro."
+        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
@@ -657,6 +689,16 @@ def gerar_conteudo_gemini(tipo):
     else:
         raise ValueError(f"Tipo inválido: {tipo}")
 
+    # [NOVO] Adiciona a exigência dos 5 novos metadados na raiz do JSON, independente do tipo de post
+    prompt += """
+    MUITO IMPORTANTE: Além da estrutura exigida acima, você DEVE retornar as seguintes 5 chaves NA RAIZ do seu JSON:
+    - "objetivo": O objetivo principal deste post (ex: "Educar", "Vender", "Inspirar", "Entreter")
+    - "categoria_imagem": A estética visual sugerida (ex: "Minimalista", "Cores Quentes", "Texto Dinâmico", "B-roll")
+    - "categoria_musica": A vibração sonora sugerida (ex: "Lofi", "Phonk", "Acústico", "Misterioso", "Sem Música")
+    - "estrutura_narrativa": A forma como a história é contada (ex: "Problema-Solução", "Lista", "Storytelling", "Ameaça-Alívio")
+    - "complexidade": O nível intelectual do conteúdo ("Baixa", "Média", "Alta")
+    """
+
     # Função auxiliar para extrair JSON de markdown
     def extrair_json(texto):
         # Remove blocos markdown (```json ... ```) e eventuais espaços
@@ -687,8 +729,12 @@ def gerar_conteudo_gemini(tipo):
                     logger.error(f"Erro ao parsear JSON na Tentativa {tentativa+1}. Texto bruto: {resposta.text}")
                     raise Exception(f"Gemini nao retornou um JSON valido: {e}")
                 
-                # Pós-processamento centralizado
-                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Gemini")
+                # Pos-processamento centralizado
+                dados = _pos_processar_dados(
+                    dados, tipo, tema_escolhido, detalhes_tema, "Gemini",
+                    gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
+                    subtema=sub_angulo, tom_emocional=estilo_escolhido
+                )
                     
                 return dados, tema_escolhido, estilo_escolhido
                 
@@ -721,8 +767,12 @@ def gerar_conteudo_gemini(tipo):
             if groq_resp.status_code == 200:
                 texto_groq = groq_resp.json()["choices"][0]["message"]["content"]
                 dados = extrair_json(texto_groq)
-                # Pós-processamento centralizado
-                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Groq")
+                # Pos-processamento centralizado
+                dados = _pos_processar_dados(
+                    dados, tipo, tema_escolhido, detalhes_tema, "Groq",
+                    gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
+                    subtema=sub_angulo, tom_emocional=estilo_escolhido
+                )
                 logger.success(f"✅ [GROQ] Conteúdo gerado com sucesso pela chave {groq_index + 1}!")
                 return dados, tema_escolhido, estilo_escolhido
             elif groq_resp.status_code == 429:
@@ -746,8 +796,12 @@ def gerar_conteudo_gemini(tipo):
             if or_resp.status_code == 200:
                 texto_or = or_resp.json()["choices"][0]["message"]["content"]
                 dados = extrair_json(texto_or)
-                # Pós-processamento centralizado
-                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "OpenRouter")
+                # Pos-processamento centralizado
+                dados = _pos_processar_dados(
+                    dados, tipo, tema_escolhido, detalhes_tema, "OpenRouter",
+                    gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
+                    subtema=sub_angulo, tom_emocional=estilo_escolhido
+                )
                 logger.success("✅ [OPENROUTER] Conteúdo gerado com sucesso!")
                 return dados, tema_escolhido, estilo_escolhido
             else:
@@ -782,8 +836,12 @@ def gerar_conteudo_gemini(tipo):
                 # Faz cópia para não alterar o dicionário original carregado em memória
                 dados = copy.deepcopy(random.choice(lista_opcoes))
                 
-                # Pós-processamento centralizado
-                dados = _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, "Emergencia")
+                # Pos-processamento centralizado
+                dados = _pos_processar_dados(
+                    dados, tipo, tema_escolhido, detalhes_tema, "Emergencia",
+                    gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
+                    subtema=sub_angulo, tom_emocional=estilo_escolhido
+                )
                 
                 logger.success(f"🛡️ [SAÍDA DE EMERGÊNCIA] Mensagem de contingência recuperada para Tema: {tema_key.upper()} | Formato: {tipo_key.upper()}")
                 return dados, tema_escolhido, estilo_escolhido

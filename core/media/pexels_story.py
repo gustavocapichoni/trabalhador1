@@ -409,8 +409,9 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             duracao = min(clip.duration, duracao_necessaria_reels)  # Usa duração calculada
             clip = clip.subclip(0, duracao)
         else:
-            # Limita duração a 15 seg para stories e reels normais
-            duracao = min(clip.duration, 15)
+            # Limita a duração baseado no número de slides (4s por slide) para leitura confortável
+            duracao_necessaria_reels = len(slides) * 4.0 if slides else 15.0
+            duracao = min(clip.duration, duracao_necessaria_reels)
             clip = clip.subclip(0, duracao)
         
         # Usa a fonte do dia da semana (identidade visual unificada)
@@ -514,8 +515,10 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     
                     # Executa a lógica de cada animação
                     if animacao == "typewriter":
-                        # Digitação mais suave e lenta: 20 caracteres por segundo
-                        chars_to_show = max(1, int(t_slide * 20))
+                        # Termina a digitação 1.5 segundos antes do fim do slide para tempo de leitura
+                        tempo_ativo = max(1.0, tempo_por_slide - 1.5)
+                        progresso = min(t_slide / tempo_ativo, 1.0)
+                        chars_to_show = int(progresso * len(texto_completo))
                     elif animacao == "fade":
                         # Esmaecimento suave nos primeiros 0.8 segundos
                         fade_alpha = min(1.0, t_slide / 0.8)

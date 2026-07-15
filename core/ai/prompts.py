@@ -1,5 +1,5 @@
 import random
-from core.ai.styles import REGRAS_COPY_BASE, sortear_gancho, GANCHOS_POR_CATEGORIA
+from core.ai.styles import REGRAS_COPY_BASE, proximo_gancho, proximo_gancho_conquistador, GANCHOS_POR_CATEGORIA, proximo_cta
 
 # ==========================================
 # TEMAS E SUB-ÂNGULOS APROFUNDADOS
@@ -40,9 +40,9 @@ TEMAS_MAPEADOS = {
     },
     "filosofia": {
         "nome": "Filosofia e Autoconhecimento",
-        "inspira": "A Arte da Guerra (estratégia mental), O Vendedor de Sonhos (desconstrução do sistema), Estoicismo, PNL",
+        "inspira": "A Arte da Guerra (estratégia mental), O Vendedor de Sonhos (desconstrução do sistema), PNL",
         "query_unsplash": "massive ancient library with golden light, tall bookshelves, warm sunlight through window, editorial photography, ultra realistic",
-        "hashtags": ["#autoconhecimento", "#filosofia", "#sabedoria", "#estoicismo", "#reflexao"],
+        "hashtags": ["#autoconhecimento", "#filosofia", "#sabedoria", "#reflexao"],
         "sub_angulos": [
             "O desgaste exaustivo de tentar agradar a todos enquanto você lentamente se perde de si mesmo.",
             "Quando você percebe que parar de se importar com o tribunal do julgamento alheio é a maior liberdade possível.",
@@ -256,11 +256,7 @@ TEMAS_MAPEADOS = {
             "A clareza de saber pelo que vale a pena morrer é o que dá sentido real para a forma como você escolhe viver.",
             "A dor de uma vida sem direção: acordar todos os dias apenas para pagar contas e esperar o final de semana.",
             "Seu propósito se revela quando você coloca a sua maior habilidade a serviço de curar a dor de outras pessoas.",
-            "A morte limpa todas as vaidades; construa apenas o que resistirá ao teste do tempo e do esquecimento.",
-            "Você está correndo atrás do sucesso que a sociedade desenhou, ou do propósito que a sua alma exige?",
-            "O preço do silêncio: calar os ruídos das redes para conseguir escutar a sua voz interna e o seu chamado.",
-            "Seu legado começa hoje, na paciência com que você educa, constrói e atende a quem precisa da sua força.",
-            "O perigo de se perder na corrida pelo acúmulo infinito, esquecendo de viver o presente que você já conquistou.",
+            "A morte limpa as vaidades; construa apenas o que resistirá ao teste do tempo e do esquecimento.",
             "A sabedoria milenar de plantar árvores sob cujas sombras você sabe que nunca se sentará.",
             "Não seja apenas uma estatística de consumo: crie, ensine, construa e deixe o mundo melhor do que encontrou.",
             "O propósito maduro suporta o tédio, a dor e o cansaço porque a causa é maior do que o seu humor do dia.",
@@ -271,7 +267,7 @@ TEMAS_MAPEADOS = {
     }
 }
 
-def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, historico_ganchos=None, is_conquistador=False):
+def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, indice_gancho=0, indice_cta=0, is_conquistador=False):
     """Monta o bloco de instrução de copy injetado em todos os prompts, evitando repetições."""
     if historico_angulos is None: historico_angulos = []
     
@@ -285,55 +281,90 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
         opcoes_angulos = detalhes_tema["sub_angulos"]
     sub_angulo = random.choice(opcoes_angulos)
     
-    # Sorteia Gancho (passando histórico)
-    from core.ai.styles import sortear_gancho_conquistador, sortear_gancho
+    # Avança o gancho na sequência linear (um por postagem, cicla ao chegar no último)
     if is_conquistador:
-        gancho = sortear_gancho_conquistador(historico_ganchos)
+        gancho, novo_indice = proximo_gancho_conquistador(indice_gancho)
+        categoria_gancho = "conflito"  # conquistador usa tom de desafio/conflito
     else:
-        gancho = sortear_gancho(historico_ganchos)
+        gancho, novo_indice, categoria_gancho = proximo_gancho(indice_gancho)
 
-    # Encontra a categoria do gancho sorteado para orientar o Gemini
-    categoria_gancho = "afirmacao_que_choca"  # fallback
+    # Avança o CTA na sequência linear (intercalando categorias de engajamento)
+    categoria_cta, referencia_cta, novo_indice_cta = proximo_cta(indice_cta)
+
+    # Descrições de cada categoria — orientam a IA sobre o FORMATO do Slide 1
     descricoes_categoria = {
-        "pergunta_que_agride":     "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
-        "afirmacao_que_choca":     "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.",
-        "declaracao_segunda_pessoa": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtissima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
-        "segredo_revelacao":       "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
-        "dado_estatistica":        "DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.",
+        "pergunta_que_agride":       "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+        "afirmacao_que_choca":       "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.",
+        "declaracao_segunda_pessoa": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
+        "segredo_revelacao":         "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
+        "dado_estatistica":          "DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.",
+        "desafio":                   "DESAFIO — Convide o leitor a participar ativamente, como se fosse um teste ou uma aposta. Provoque-o a provar algo a si mesmo.",
+        "curiosidade":               "CURIOSIDADE — Sugira que existe um detalhe oculto e valioso que pouquíssimas pessoas conhecem. Crie uma lacuna de informação irresistível.",
+        "quebra_de_expectativa":     "QUEBRA DE EXPECTATIVA — Contrarie uma crença amplamente aceita. O leitor espera uma coisa e você entrega o oposto exato.",
+        "reflexao":                  "REFLEXÃO — Faça o leitor olhar para dentro de si e questionar suas próprias escolhas. A pergunta ou frase deve ser perturbadoramente pessoal.",
+        "paradoxo":                  "PARADOXO — Abra com uma contradição aparente que desafie a lógica. Quanto mais o leitor tenta resolver o paradoxo, mais fica preso no conteúdo.",
+        "identidade":                "IDENTIDADE — Divida o mundo em dois grupos. O leitor instintivamente se pergunta: 'Em qual grupo estou?' Isso gera engajamento profundo.",
+        "conflito":                  "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.",
+        "comparacao":                "COMPARAÇÃO — Mostre um contraste 'antes vs. depois' ou 'jeito antigo vs. jeito novo'. A transformação implícita atrai o leitor a descobrir o que mudou.",
     }
-    for cat, ganchos in GANCHOS_POR_CATEGORIA.items():
-        if gancho in ganchos:
-            categoria_gancho = cat
-            break
-    descricao_categoria = descricoes_categoria.get(categoria_gancho, "")
+    descricao_categoria = descricoes_categoria.get(categoria_gancho, "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.")
 
     instrucoes = f"""
     {REGRAS_COPY_BASE}
-    
+
     ESTRATÉGIA DE CONTEÚDO BASEADA EM LIVROS:
     Você tem acesso ao conhecimento dos seguintes livros para este tema: {detalhes_tema['inspira']}
     Sua missão é:
     1. Buscar um princípio, método prático ou lição valiosa presente em algum destes livros.
     2. Usar esse método exato para formular uma mensagem, roteiro ou história altamente persuasiva para resolver a dor do usuário.
     3. ENTREGUE COMO SE O CONHECIMENTO FOSSE SEU. É ESTRITAMENTE PROIBIDO citar o nome do livro, do autor ou dar créditos. Pegue a genialidade da obra e passe como conteúdo original do nosso perfil.
-    
+
     DIRETRIZ DE CONTEÚDO (Ângulo de Inspiração):
     Ângulo específico sugerido: "{sub_angulo}"
+
+    ===== ARQUITETURA OBRIGATÓRIA DOS 4 ATOS (PERSUASÃO SEQUENCIAL) =====
+    Esta é a espinha dorsal de TODA postagem principal. Você é livre para criar o conteúdo
+    de cada ato, mas a ORDEM e a FUNÇÃO de cada parte são absolutamente inegociáveis.
+
+    ATO 1 — SLIDE 1 (INTERRUPÇÃO DE PADRÃO / GANCHO):
+    Formato desta postagem: {descricao_categoria}
+    Gancho de referência: "{gancho}"
+    → Adapte este gancho ao tema e ao ângulo sugerido, mantendo a ESTRUTURA fiel ao formato acima.
+    → Máximo 12 palavras. Curto, cortante. SEM explicação ainda — apenas o choque inicial.
+
+    ATO 2 — SLIDES 2-3 (EFEITO ZEIGARNIK — Abertura de Loop de Curiosidade):
+    → Abra um ciclo de curiosidade sem fechá-lo. Faça uma promessa implícita que só será resolvida no final do post.
+    → O leitor PRECISA continuar para descobrir. Ex: "Existe uma razão que pouquíssimos percebem..." / "O que acontece depois disso mudou tudo."
+    → PROIBIDO entregar a solução aqui. Só aumente a tensão e o mistério.
+
+    ATO 3 — SLIDES 4-5 (PROBLEMA DO COTIDIANO — Identificação Visceral):
+    → Mostre a dor concreta e reconhecível do dia a dia do leitor. Sem solução ainda.
+    → O leitor deve pensar: "É exatamente isso que acontece comigo."
+    → Seja específico e cotidiano. Nada de generalidades filosóficas. Aprofunde a ferida antes de curar.
+
+    ATO 4 — SLIDES 6 EM DIANTE (DOPAMINA E RECOMPENSA — Entrega de Valor):
+    → Entregue o insight, atalho ou segredo prático de alto valor percebido.
+    → O leitor deve sentir que valeria dinheiro saber disso. Seja concreto e aplicável.
+    → Trate quem chegou até aqui como alguém acima da média (ex: "Quem lê até aqui já entendeu o que a massa ignora").
+    =====================================================================
+
+    ===== DIRETRIZ OBRIGATÓRIA DE CTA (LEGENDA E FECHAMENTO) =====
+    Para esta postagem, você DEVE construir a chamada para ação (CTA) na legenda focando no objetivo de: {categoria_cta.upper()}.
     
-    ===== ESTRUTURA OBRIGATÓRIA DO GANCHO (SLIDE 1) =====
-    Formato sorteado para ESTA postagem: {descricao_categoria}
-    Gancho de referência para o tom: "{gancho}" (adapte a ideia para o tema de hoje, mas MANTENHA o formato acima)
-    IMPORTANTE: NÃO comece todas as postagens com afirmações do tipo 'A maioria faz errado'. Use o formato indicado acima.
-    =====================================================
+    Frase de referência para o tom: "{referencia_cta}"
     
+    → Adapte esta referência de forma orgânica e inteligente para se fundir com o assunto do post de hoje.
+    → O CTA da legenda deve obrigatoriamente seguir este formato e direcionamento estratégico.
+    ==============================================================
+
     ESTRUTURA DE ESCRITA DE SUCESSO (Feedback do Analytics):
     - Estude as métricas de performance recentes no bloco abaixo. Identifique quais estilos e estruturas de copy (ex: diagnóstico cirúrgico, perguntas perturbadoras, alertas de perigo) estão trazendo os maiores scores de engajamento e salvamentos no perfil. Adapte a sua forma de escrever para focar nessa estrutura de sucesso!
-    
+
     TENDÊNCIAS EM TEMPO REAL (Olhos da Rede):
     - Leia as notícias da semana, os vídeos mais vistos no YouTube deste tema e as buscas no Google Trends descritas no bloco abaixo.
     - FUSÃO OBRIGATÓRIA: Não use o ângulo sugerido de forma literal e repetitiva. Em vez disso, junte a lição teórica do livro/ângulo sugerido com a "vibe" ou assunto quente que as pessoas estão buscando e discutindo na internet agora (trazido pelos Olhos da Rede). Use a dor atual coletada nas redes como o cenário prático para ilustrar a lição.
-    
+
     DADOS DE PERFORMANCE E CONTEXTO ATUAL:
     {contexto_analytics}
     """
-    return instrucoes, sub_angulo, gancho, descricao_categoria
+    return instrucoes, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta

@@ -15,17 +15,17 @@ on:
           - anual
 
   schedule:
-    # Mensal: todo dia 1 de cada mes as 08:00 UTC (05:00 BRT)
-    - cron: '0 8 1 * *'
+    # Mensal: todo dia 1 de cada mes as 11:30 UTC (08:30 BRT)
+    - cron: '30 11 1 * *'
 
-    # Trimestral: dia 1 de janeiro, abril, julho e outubro as 08:30 UTC (05:30 BRT)
-    - cron: '30 8 1 1,4,7,10 *'
+    # Trimestral: dia 1 de janeiro, abril, julho e outubro as 11:35 UTC (08:35 BRT)
+    - cron: '35 11 1 1,4,7,10 *'
 
-    # Semestral: dia 1 de janeiro e julho as 09:00 UTC (06:00 BRT)
-    - cron: '0 9 1 1,7 *'
+    # Semestral: dia 1 de janeiro e julho as 11:40 UTC (08:40 BRT)
+    - cron: '40 11 1 1,7 *'
 
-    # Anual: dia 1 de janeiro as 09:30 UTC (06:30 BRT)
-    - cron: '30 9 1 1 *'
+    # Anual: dia 1 de janeiro as 11:45 UTC (08:45 BRT)
+    - cron: '45 11 1 1 *'
 
 permissions:
   contents: read
@@ -77,24 +77,28 @@ jobs:
               print(f"Hoje nao e dia 1 (dia={dia}). Nenhum relatorio necessario.")
               exit(0)
 
-          # Anual: janeiro, hora 09:30 UTC
-          if mes == 1 and hora == 9:
+          # Anual: janeiro, hora 11 UTC
+          if mes == 1 and hora == 11:
               print("Rodando: ANUAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "anual"], check=True)
               subprocess.run(["python", "core/reports/periodic.py", "anual"], check=True)
 
-          # Semestral: janeiro e julho, hora 09:00 UTC
-          if mes in (1, 7) and hora == 9:
+          # Semestral: janeiro e julho, hora 11 UTC
+          if mes in (1, 7) and hora == 11:
               print("Rodando: SEMESTRAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "semestral"], check=True)
               subprocess.run(["python", "core/reports/periodic.py", "semestral"], check=True)
 
-          # Trimestral: jan, abr, jul, out, hora 08:30 UTC
-          if mes in (1, 4, 7, 10) and hora == 8:
+          # Trimestral: jan, abr, jul, out, hora 11 UTC
+          if mes in (1, 4, 7, 10) and hora == 11:
               print("Rodando: TRIMESTRAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "trimestral"], check=True)
               subprocess.run(["python", "core/reports/periodic.py", "trimestral"], check=True)
 
-          # Mensal: todo dia 1, hora 08:00 UTC
-          if hora == 8:
+          # Mensal: todo dia 1, hora 11 UTC
+          if hora == 11:
               print("Rodando: MENSAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "mensal"], check=True)
               subprocess.run(["python", "core/reports/periodic.py", "mensal"], check=True)
 
           EOF
@@ -114,4 +118,6 @@ jobs:
           SMTP_PASSWORD:    ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_EMAIL:     ${{ secrets.NOTIFY_EMAIL }}
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
-        run: python core/reports/periodic.py ${{ github.event.inputs.tipo_relatorio }}
+        run: |
+          python core/analytics/rodar_analytics.py --ciclo ${{ github.event.inputs.tipo_relatorio }}
+          python core/reports/periodic.py ${{ github.event.inputs.tipo_relatorio }}

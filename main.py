@@ -14,7 +14,7 @@ from core.design.motor_visual import criar_arte
 from core.publisher.instagram import postar_no_instagram
 from core.publisher.email_notifier import enviar_email_notificacao
 
-def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda=""):
+def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade=""):
     from core.config.state import carregar_estado, salvar_estado
     from datetime import datetime, timezone
     if not post_id or post_id.startswith("DRY_RUN"):
@@ -29,9 +29,19 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="")
         "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
         "tipo": tipo,
         "tema": tema,
+        "subtema": subtema,
+        "objetivo": objetivo,
         "estilo_copy": estilo,
+        "tom_emocional": tom_emocional,
+        "estrutura_narrativa": estrutura_narrativa,
+        "complexidade": complexidade,
+        "categoria_imagem": categoria_imagem,
+        "categoria_musica": categoria_musica,
         "frase_visual": frase_visual,
-        "legenda": legenda
+        "legenda": legenda,
+        "gancho_categoria": gancho_categoria,
+        "tipo_cta": tipo_cta,
+        "duracao_video": duracao_video
     }
     estado["historico"].append(novo_post)
     salvar_estado(estado)
@@ -75,8 +85,19 @@ def main():
             _saida = f"pexels_story_{req_id}.mp4"
             arquivos_gerados.append(_saida)
             if args.dry_run:
-                print("[DRY-RUN] Pulando geracao real de Pexels Story.")
-                midia = _saida
+                try:
+                    print("🧪 [DRY-RUN] Gerando vídeo local do Pexels Story para teste...")
+                    midia = gerar_pexels_story(
+                        conteudo.get("pexels_query", "nature calm"),
+                        conteudo.get("slides", []),
+                        caminho_saida=_saida,
+                        tema=tema_escolhido,
+                        is_conquistador=(args.type == "reels_conquistador"),
+                        is_reels_leads=(args.type == "reels_leads")
+                    )
+                except Exception as e:
+                    print(f"⚠️ [DRY-RUN] Erro ao gerar vídeo do Pexels Story: {e}")
+                    midia = _saida
             else:
                 midia = gerar_pexels_story(
                     conteudo.get("pexels_query", "nature calm"),
@@ -180,7 +201,25 @@ def main():
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
         
         if post_id:
-            registrar_postagem(args.type, tema_escolhido, post_id, estilo_escolhido, frase_visual=frase_visual, legenda=legenda)
+            gancho_cat = conteudo.get("_gancho_categoria", "")
+            tipo_cta_val = conteudo.get("_tipo_cta", "")
+            dur_video = conteudo.get("_duracao_video", 0)
+            subtema_val = conteudo.get("_subtema", "")
+            tom_val = conteudo.get("_tom_emocional", "")
+            objetivo_val = conteudo.get("objetivo", "")
+            cat_imagem_val = conteudo.get("categoria_imagem", "")
+            cat_musica_val = conteudo.get("categoria_musica", "")
+            est_narrativa_val = conteudo.get("estrutura_narrativa", "")
+            complexidade_val = conteudo.get("complexidade", "")
+            
+            registrar_postagem(
+                args.type, tema_escolhido, post_id, estilo_escolhido,
+                frase_visual=frase_visual, legenda=legenda,
+                gancho_categoria=gancho_cat, tipo_cta=tipo_cta_val, duracao_video=dur_video,
+                subtema=subtema_val, objetivo=objetivo_val, categoria_imagem=cat_imagem_val,
+                categoria_musica=cat_musica_val, tom_emocional=tom_val,
+                estrutura_narrativa=est_narrativa_val, complexidade=complexidade_val
+            )
         
         # Passo 5: Envia E-mail de Sucesso
         mensagens_sucesso = {

@@ -17,13 +17,20 @@ def rodar_agora():
     print(f"🕒 Hora atual no Brasil: {brt_now.strftime('%Y-%m-%d %H:%M:%S')} (Dia da semana: {dia_semana})")
 
     if hora == 4:
-        print("🚀 Executando: Analytics Diário")
-        subprocess.run(["python", "core/analytics/rodar_analytics.py"])
-        
+        dia_mes = brt_now.day
+        mes = brt_now.month
+
+        # --- INGESTÃO DIÁRIA (todo dia) ---
+        # Coleta métricas do Instagram e salva no Firebase. Não altera recomendações.
+        print("📥 Executando: Ingestão Diária de Métricas (coleta pura)")
+        subprocess.run(["python", "core/analytics/rodar_analytics.py", "--only-collect"])
+
+        # Fechamento semanal (relatório) continua no Domingo
         if dia_semana == 6:  # Domingo
             print("🚀 [DOMINGO] Executando: Fechamento Semanal, Relatório")
             subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
             subprocess.run(["python", "core/reports/weekly.py"])
+
 
     elif hora == 5:
         if dia_semana == 6:  # Domingo
@@ -83,6 +90,7 @@ if __name__ == "__main__":
             subprocess.run(["python", "core/analytics/rodar_analytics.py"])
         elif tipo == "weekly_report":
             print("Executando manualmente: Relatorio Semanal")
+            subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "semanal"])
             subprocess.run(["python", "-c", "import sys, io; sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8'); from core.analytics.analisador_semanal import analisar_semana; analisar_semana()"])
             subprocess.run(["python", "core/reports/weekly.py"])
         elif tipo in ("mensal", "trimestral", "semestral", "anual"):
