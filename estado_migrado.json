@@ -1,51 +1,59 @@
 {
+    "historico_estilos": [
+        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+        "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')"
+    ],
+    "index_conquistador": 0,
+    "historico_angulos": [
+        "A gratidão silenciosa muda mais a química do seu cérebro do que qualquer reclamação em voz alta.",
+        "Falar sobre amor na internet é fácil; difícil é tolerar quem testa sua paciência no cotidiano."
+    ],
+    "indice_gancho_conquistador": 0,
+    "indice_gancho": 2,
+    "data_tema_do_dia": "2026-07-15",
     "historico": [
         {
-            "post_id": "17897420391486134",
-            "data": "2026-07-15 02:50:20",
             "tipo": "reels_noite",
-            "tema": "espiritualidade",
-            "subtema": "A gratidão silenciosa muda mais a química do seu cérebro do que qualquer reclamação em voz alta.",
-            "objetivo": "Inspirar",
-            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-            "tom_emocional": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-            "estrutura_narrativa": "Problema-Solução",
-            "complexidade": "Média",
-            "categoria_imagem": "Texto Dinâmico",
-            "categoria_musica": "Misterioso",
-            "frase_visual": "Você sabe por que a noite sempre te pega de surpresa? | Existe um ciclo mental que poucos percebem. | Ele rouba seu descanso, seu foco e seu amanhã. | Quando o dia cala, a mente grita. Com o que te incomoda. | As cobranças silenciosas pesam mais que qualquer barulho externo. | Você não precisa lutar contra essas vozes. Há um outro caminho. | Mova sua atenção para o que você *já tem*, sem falar uma palavra. | Isso muda a química do seu cérebro mais que qualquer lamento alto. | Quem entende isso não perde mais noites. Acorda como líder. | Sua próxima escolha define seu próximo despertar.",
-            "legenda": "A noite é o campo de batalha da sua mente. Você pode deixar ela te dominar ou aprender a comandar suas emoções no silêncio.\nSe você sente que este perfil fala com a sua busca por domínio próprio, siga para desvendar mais segredos.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "gancho_categoria": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
             "tipo_cta": "seguir",
+            "estilo_copy": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+            "categoria_imagem": "Texto Dinâmico",
+            "legenda": "A noite é o campo de batalha da sua mente. Você pode deixar ela te dominar ou aprender a comandar suas emoções no silêncio.\nSe você sente que este perfil fala com a sua busca por domínio próprio, siga para desvendar mais segredos.\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "objetivo": "Inspirar",
+            "complexidade": "Média",
+            "data": "2026-07-15 02:50:20",
+            "tema": "espiritualidade",
+            "gancho_categoria": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+            "subtema": "A gratidão silenciosa muda mais a química do seu cérebro do que qualquer reclamação em voz alta.",
+            "estrutura_narrativa": "Problema-Solução",
+            "post_id": "17897420391486134",
+            "duracao_video": 0,
+            "frase_visual": "Você sabe por que a noite sempre te pega de surpresa? | Existe um ciclo mental que poucos percebem. | Ele rouba seu descanso, seu foco e seu amanhã. | Quando o dia cala, a mente grita. Com o que te incomoda. | As cobranças silenciosas pesam mais que qualquer barulho externo. | Você não precisa lutar contra essas vozes. Há um outro caminho. | Mova sua atenção para o que você *já tem*, sem falar uma palavra. | Isso muda a química do seu cérebro mais que qualquer lamento alto. | Quem entende isso não perde mais noites. Acorda como líder. | Sua próxima escolha define seu próximo despertar.",
+            "tom_emocional": "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+            "categoria_musica": "Misterioso"
+        },
+        {
+            "post_id": "18107067278085645",
+            "data": "2026-07-15 03:15:13",
+            "tipo": "reels",
+            "tema": "espiritualidade",
+            "subtema": "Falar sobre amor na internet é fácil; difícil é tolerar quem testa sua paciência no cotidiano.",
+            "objetivo": "Inspirar",
+            "estilo_copy": "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')",
+            "tom_emocional": "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')",
+            "estrutura_narrativa": "Ameaça-Alívio",
+            "complexidade": "Média",
+            "categoria_imagem": "Minimalista",
+            "categoria_musica": "Misterioso",
+            "frase_visual": "Por que seu 'amor' morre na primeira irritação diária? | Existe um motivo profundo para isso. | Não é sobre o que você sente, mas sobre o que você não vê em si. | Essa cegueira te aprisiona em ciclos de frustração. | Você idealiza a paciência, mas se irrita no trânsito e nas filas. | Seu chefe te ignora, seu parceiro esquece algo. A farsa da sua calma desmorona. | Nós passamos a vida construindo gaiolas para nossa própria paz. | A gaiola é a expectativa de que o mundo se adapte à sua perfeição imaginada. | A verdadeira força não é reagir ao caos, mas escolher como você o absorve. | Pessoas impacientes e reativas criam mais problemas para si mesmas, não para os outros. | Quem chegou até aqui sabe: não se trata de amor, mas de maestria interna sobre si. | Pare de construir gaiolas.",
+            "legenda": "Sempre questionei por que era tão fácil falar de paciência, e tão difícil senti-la no dia a dia. A resposta não estava fora, mas na minha própria percepção. Qual gaiola você está pronto para desmantelar?\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "gancho_categoria": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+            "tipo_cta": "comentario",
             "duracao_video": 0
         }
     ],
-    "index_conquistador": 0,
-    "historico_estilos": [
-        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')"
-    ],
-    "indice_cta": 1,
-    "indice_gancho_conquistador": 0,
-    "historico_midia": [
-        "unsplash_LaHUkFE1a4w",
-        "unsplash_ejfq2JvHggo",
-        "unsplash_fKNnS7rL7is",
-        "unsplash_j3PB-yMoyWQ",
-        "unsplash_FoklrjCDICw",
-        "unsplash_WrL6kj_HVgo",
-        "unsplash_C1oAE25kQxs",
-        "unsplash_9dk6b8SQaZA",
-        "unsplash_iS1aw7ERTHw",
-        "unsplash_KBeJZOCzwUY"
-    ],
-    "indice_gancho": 1,
     "tema_do_dia": "espiritualidade",
-    "data_tema_do_dia": "2026-07-15",
-    "historico_angulos": [
-        "A gratidão silenciosa muda mais a química do seu cérebro do que qualquer reclamação em voz alta."
-    ],
+    "index_tema_diario": 1,
     "fila_musicas": [
-        "biblioteca_local/musicas/freemusiclab-charming-phonk-i-free-background-music-i-free-music-lab-release-513626.mp3",
         "biblioteca_local/musicas/absolutesound-background-music-2-559843.mp3",
         "biblioteca_local/musicas/the_mountain-background-music-159125.mp3",
         "biblioteca_local/musicas/prefedida.mp3",
@@ -87,5 +95,22 @@
         "biblioteca_local/musicas/Serhat-Durmus-Hislerim-_feat.-Zerrin_-__.mp3",
         "biblioteca_local/musicas/46851258-cordes-de-piano-cinema-337464.mp3"
     ],
-    "index_tema_diario": 1
+    "indice_cta": 2,
+    "historico_midia": [
+        "unsplash_0BeVLtILHbc",
+        "unsplash_9pKyyxTOUwE",
+        "unsplash_8GcunBC0m80",
+        "unsplash_k82ouMdYsew",
+        "unsplash_1Mkd9J5QQS4",
+        "unsplash_NRHfSX_5KeA",
+        "unsplash_-dGL93tkNLc",
+        "unsplash_XnZ2TkyrVSo",
+        "unsplash_PFRtZrFW03Q",
+        "unsplash_ErqTYvUEftw",
+        "unsplash__6P0Pm3JPbU",
+        "unsplash_tSdx11WNglA",
+        "unsplash_LaHUkFE1a4w",
+        "unsplash_ejfq2JvHggo",
+        "unsplash_fKNnS7rL7is"
+    ]
 }
