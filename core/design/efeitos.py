@@ -33,12 +33,21 @@ def aplicar_mesh_gradient(img):
         
     return Image.alpha_composite(img.convert('RGBA'), overlay)
 
-def draw_text_with_shadow(draw, position, text, font, fill=(255, 255, 255), shadow_color=(0, 0, 0, 200), anchor="ms"):
-    """Desenha texto com uma sombra projetada (Drop Shadow) para maior legibilidade."""
+def draw_text_with_shadow(draw, position, text, font, fill=(255, 255, 255), shadow_color=(0, 0, 0, 220), anchor="ms"):
+    """Desenha texto com um contorno suave e sombra projetada forte para legibilidade máxima."""
     x, y = position
-    # Offset da sombra
-    offset = max(2, int(font.size * 0.05))
-    draw.text((x + offset, y + offset), text, font=font, fill=shadow_color, anchor=anchor)
+    offset = max(1, int(font.size * 0.03))
+    
+    # Contorno suave (Stroke em 8 direções)
+    for dx in [-offset, 0, offset]:
+        for dy in [-offset, 0, offset]:
+            if dx != 0 or dy != 0:
+                draw.text((x + dx, y + dy), text, font=font, fill=(0, 0, 0, 140), anchor=anchor)
+                
+    # Sombra direcional forte
+    draw.text((x + offset*2, y + offset*2), text, font=font, fill=shadow_color, anchor=anchor)
+    
+    # Texto principal
     draw.text((x, y), text, font=font, fill=fill, anchor=anchor)
 
 def desenhar_elementos_premium(draw, W, H):
@@ -53,6 +62,4 @@ def desenhar_elementos_premium(draw, W, H):
     draw.line([(margem, margem), (margem, H - margem)], fill=cor_moldura, width=1)
     draw.line([(W - margem, margem), (W - margem, H - margem)], fill=cor_moldura, width=1)
     
-    # Linha separadora elegante (cross-hair style)
-    # Fica próxima do centro/topo
-    draw.line([(W/2 - 100, margem + 80), (W/2 + 100, margem + 80)], fill=cor_moldura, width=2)
+

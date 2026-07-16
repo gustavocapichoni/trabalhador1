@@ -116,7 +116,7 @@ def gerar_recomendacoes_cruzadas(analises_por_periodo):
     icc_combinado       = _combinar_icc(analises_por_periodo)
     gs_referencia       = _growth_score_referencia(analises_por_periodo)
 
-    tema_lider, ganchos_lider = _melhor_por_growth(analises_por_periodo, "ganchos_stats")
+    _, ganchos_lider = _melhor_por_growth(analises_por_periodo, "ganchos_stats")
     _, ctas_lider = _melhor_por_growth(analises_por_periodo, "ctas_stats")
 
     # --- Identifica o tema com maior ICC (melhor conversor de seguidores) ---

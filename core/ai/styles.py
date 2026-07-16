@@ -160,8 +160,6 @@ LISTA_GANCHOS_SEQUENCIAL = [
     gancho for categoria in GANCHOS_POR_CATEGORIA.values() for gancho in categoria
 ]
 
-# Alias para compatibilidade com módulos antigos
-GANCHOS_NARRATIVOS = LISTA_GANCHOS_SEQUENCIAL
 
 # ==========================================
 # GANCHOS CONQUISTADOR — ciclo sequencial próprio
@@ -176,8 +174,6 @@ LISTA_GANCHOS_CONQUISTADOR = [
     "Então você acha que está no controle? Deixa eu te mostrar os bastidores.",
 ]
 
-# Alias para compatibilidade
-GANCHOS_CONQUISTADOR = LISTA_GANCHOS_CONQUISTADOR
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -231,7 +227,7 @@ REGRAS ABSOLUTAS DE COPY (violá-las é inaceitável):
 - "O sucesso é para quem corre atrás", "A vida é uma jornada"
 - "Faça acontecer", "Você tem o poder", "Hoje é o dia"
 - NUNCA use tom professoral, arrogante ou com palavras difíceis. Fale de igual para igual.
-- NUNCA cite autores, livros, filmes, séries, marcas ou personagens pelo nome (exceto figuras públicas icônicas como Elon Musk em contextos específicos de curiosidade).
+- Você tem total liberdade para citar livros, filósofos, teorias e autores para dar peso de autoridade à mensagem.
 
 ✅ OBRIGATÓRIO — o tom agressivo e atraente:
 - O primeiro slide deve ser um gancho forte, curto e cortante. Ele DEVE quebrar o padrão e parar o scroll.
@@ -257,18 +253,6 @@ def sortear_estilo(historico_estilos=None):
         opcoes = ESTILOS_COPY
     return random.choice(opcoes)
 
-
-# ── Aliases para compatibilidade com chamadas legadas ─────────────────
-def sortear_gancho(historico_ganchos=None):
-    """Compatibilidade: retorna o gancho do índice 0 sem avançar o estado."""
-    gancho, _, _ = proximo_gancho(0)
-    return gancho
-
-
-def sortear_gancho_conquistador(historico=None):
-    """Compatibilidade: retorna o gancho conquistador do índice 0."""
-    gancho, _ = proximo_gancho_conquistador(0)
-    return gancho
 
 
 # ==========================================

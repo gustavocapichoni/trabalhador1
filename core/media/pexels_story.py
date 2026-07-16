@@ -101,12 +101,12 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
             
             linha_len = len(linha)
             if chars_drawn + linha_len > chars_to_show:
-                linha_render = text_render = linha[:chars_to_show - chars_drawn]
+                linha_render = linha[:chars_to_show - chars_drawn]
             else:
-                linha_render = text_render = linha
+                linha_render = linha
             chars_drawn += linha_len + 1 # +1 for space between words
         else:
-            linha_render = text_render = linha
+            linha_render = linha
             
         # Efeito de contorno (stroke) mais estilo premium em vez de apenas sombra
         draw.text((x + 3, y + 3), linha_render, font=fonte, fill=(0, 0, 0, int(150 * fade_alpha))) # Sombra suave
@@ -234,8 +234,10 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         num_videos_necessarios = min(12, max(6, int(duracao_necessaria_reels / 20) + 1))
         logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
     else:
-        num_videos_necessarios = 1
-        duracao_necessaria_reels = 15
+        num_slides_estimado = len(slides) if slides else 3
+        duracao_necessaria_reels = num_slides_estimado * 5.5
+        num_videos_necessarios = min(5, max(3, num_slides_estimado))
+        logger.info(f"📊 [PEXELS_STORY] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
 
     # --- NÍVEL 1: API DO PIXABAY ---
     if PIXABAY_API_KEY and len(temp_vids) < num_videos_necessarios:
@@ -380,7 +382,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if len(clip_candidatos) == 1:
             clip = clip_candidatos[0]
         else:
-            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes para o reels_leads...")
+            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes para o fundo...")
             # Força que todos os vídeos tenham o mesmo tamanho/escala antes de juntar
             width_target = min(c.w for c in clip_candidatos)
             height_target = min(c.h for c in clip_candidatos)
@@ -394,32 +396,25 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     
             clip = concatenate_videoclips(clips_redimensionados, method="compose")
         
-        # Controle de duração
-        if is_reels_leads:
-            # Usa a duração calculada dinamicamente (baseada nos slides), com max de 3 min
-            duracao_original = clip.duration
-            logger.info(f"⏱️ Duração total dos vídeos baixados: {duracao_original:.1f}s | Necessário: {duracao_necessaria_reels:.0f}s")
-            if duracao_original < duracao_necessaria_reels:
-                # Só loopeia se ainda falta duração (último recurso)
-                import moviepy.video.fx.all as vfx
-                loops = int(duracao_necessaria_reels // duracao_original) + 1
-                clip = clip.fx(vfx.loop, n=loops)
-                logger.warning(f"⚠️ Vídeos baixados insuficientes ({duracao_original:.1f}s). Aplicando loop x{loops} como fallback.")
-            
-            duracao = min(clip.duration, duracao_necessaria_reels)  # Usa duração calculada
-            clip = clip.subclip(0, duracao)
-        else:
-            # Limita a duração baseado no número de slides (4s por slide) para leitura confortável
-            duracao_necessaria_reels = len(slides) * 4.0 if slides else 15.0
-            duracao = min(clip.duration, duracao_necessaria_reels)
-            clip = clip.subclip(0, duracao)
+        # Controle de duração (agora usado para ambos: reels_leads e pexels_story)
+        duracao_original = clip.duration
+        logger.info(f"⏱️ Duração total dos vídeos baixados: {duracao_original:.1f}s | Necessário: {duracao_necessaria_reels:.0f}s")
+        if duracao_original < duracao_necessaria_reels:
+            # Só loopeia se ainda falta duração (último recurso)
+            import moviepy.video.fx.all as vfx
+            loops = int(duracao_necessaria_reels // duracao_original) + 1
+            clip = clip.fx(vfx.loop, n=loops)
+            logger.warning(f"⚠️ Vídeos baixados insuficientes ({duracao_original:.1f}s). Aplicando loop x{loops} como fallback.")
+        
+        duracao = min(clip.duration, duracao_necessaria_reels)
+        clip = clip.subclip(0, duracao)
         
         # Usa a fonte do dia da semana (identidade visual unificada)
         estilo_do_dia = obter_fonte_do_dia()
         logger.info(f"✨ Fonte do dia para o vídeo: {estilo_do_dia}")
         
         # Resolução do vídeo original
-        video_w, video_h = clip.size
+        video_w, _ = clip.size
         # Fator de escala baseado na largura padrão de 1080
         fator_escala = video_w / 1080.0
         
@@ -463,7 +458,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     try:
                         logo_img = Image.open(path_logo)
                         # Tamanho da logo escalado proporcionalmente
-                        largura_desejada = max(150, int(400 * fator_escala))
+                        largura_desejada = max(150, int(320 * fator_escala))
                         aspect_ratio = logo_img.height / logo_img.width
                         altura_desejada = int(largura_desejada * aspect_ratio)
                         logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")

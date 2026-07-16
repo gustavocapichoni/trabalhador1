@@ -21,8 +21,36 @@ DIFERENCA_MINIMA = 0.15      # 15% de diferença entre grupos A e B para confirm
 CONFIANCA_CONFIRMACAO = 0.75 # Confiança mínima para marcar como "confirmada"
 
 
+def _get_db():
+    """Obtém a conexão com o Firebase de forma segura."""
+    try:
+        from core.analytics.db import get_db
+        return get_db()
+    except Exception:
+        return None
+
+
 def _carregar_memoria():
-    """Carrega o arquivo de memória estratégica. Retorna estrutura vazia se não existir."""
+    """Carrega a memória estratégica. Prioriza Firebase; usa arquivo local como fallback."""
+    db = _get_db()
+    if db:
+        try:
+            doc = db.collection("memoria_estrategica").document("hipoteses").get()
+            if doc.exists:
+                memoria = doc.to_dict()
+                # Garante a estrutura correta
+                if "hipoteses" not in memoria:
+                    memoria["hipoteses"] = []
+                # Sincroniza com o local
+                os.makedirs(os.path.dirname(MEMORIA_FILE), exist_ok=True)
+                with open(MEMORIA_FILE, "w", encoding="utf-8") as f:
+                    json.dump(memoria, f, indent=4, ensure_ascii=False)
+                logger.info(f"Memória Estratégica carregada do Firebase ({len(memoria.get('hipoteses',[]))} hipóteses).")
+                return memoria
+        except Exception as e:
+            logger.warning(f"Erro ao carregar memória do Firebase: {e}. Usando arquivo local.")
+
+    # Fallback: arquivo local
     if os.path.exists(MEMORIA_FILE):
         try:
             with open(MEMORIA_FILE, "r", encoding="utf-8") as f:
@@ -33,10 +61,20 @@ def _carregar_memoria():
 
 
 def _salvar_memoria(memoria):
-    """Salva a memória estratégica atualizada no arquivo local."""
+    """Salva a memória estratégica no arquivo local E no Firebase."""
+    # Salva localmente
     os.makedirs(os.path.dirname(MEMORIA_FILE), exist_ok=True)
     with open(MEMORIA_FILE, "w", encoding="utf-8") as f:
         json.dump(memoria, f, indent=4, ensure_ascii=False)
+
+    # Sincroniza com o Firebase
+    db = _get_db()
+    if db:
+        try:
+            db.collection("memoria_estrategica").document("hipoteses").set(memoria, merge=True)
+            logger.info("Memória Estratégica sincronizada com o Firebase.")
+        except Exception as e:
+            logger.warning(f"Erro ao sincronizar memória com Firebase: {e}")
 
 
 def _calcular_confianca(grupo_a_gs, grupo_b_gs, n_a, n_b):

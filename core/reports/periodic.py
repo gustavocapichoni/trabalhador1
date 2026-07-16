@@ -170,7 +170,7 @@ def calcular_estatisticas(posts: list) -> dict:
     }
 
 
-def montar_relatorio(tipo_periodo: str, stats: dict, total_posts_periodo: int) -> str:
+def montar_relatorio(tipo_periodo: str, stats: dict) -> str:
     cfg = PERIODOS[tipo_periodo]
     label = cfg["label"]
     dias  = cfg["dias"]
@@ -287,7 +287,7 @@ def gerar_relatorio_periodico(tipo_periodo: str):
     dados    = carregar_metricas()
     posts    = filtrar_posts_por_periodo(dados.get("posts", {}), dias)
     stats    = calcular_estatisticas(posts)
-    relatorio = montar_relatorio(tipo_periodo, stats, len(posts))
+    relatorio = montar_relatorio(tipo_periodo, stats)
 
     print(relatorio)
 

@@ -1,27 +1,4 @@
 {
-    "data_tema_do_dia": "2026-07-15",
-    "historico": [
-        {
-            "duracao_video": 0,
-            "objetivo": "Educar",
-            "categoria_musica": "Misterioso",
-            "data": "2026-07-15 21:07:12",
-            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "post_id": "18100656176272553",
-            "estrutura_narrativa": "Problema-Solução",
-            "legenda": "No silêncio da noite, a gente confronta as verdades mais duras. Reflita sobre o que você construiu hoje.\nPara onde suas ações te levariam amanhã?\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
-            "gancho_categoria": "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.",
-            "tipo_cta": "comentario",
-            "frase_visual": "Estudos recentes provam que sua fé não basta para o amanhã. | Mas sim uma armadilha sutil disfarçada de esperança. | Ela te paralisa e rouba seu futuro, enquanto você dorme tranquilo e sonha. | Você se deita exausto, sonhando com milagres sem mover um músculo. | Repete orações, visualiza vitórias, mas a pilha de tarefas só cresce. | Quem entende o sistema sabe: a fé genuína te lança para a ação imediata. | Aquele que apenas ora e não planta, colherá só o que o acaso trouxer. | A verdade é: o destino abençoa as sementes que você escolhe semear, não as que você só deseja. | É a mão que trabalha com propósito que transforma a oração em realidade tangível. | Quem leu até aqui já decifrou o atalho que a multidão ainda ignora e sofre. | Amanhã, não peça um milagre. Seja o milagre em cada passo que der. | Durma com a certeza de que a fé move montanhas, mas seus pés precisam andar.",
-            "tipo": "reels_noite",
-            "tema": "espiritualidade",
-            "complexidade": "Média",
-            "subtema": "Orar sem trabalhar é só uma desculpa espiritualizada para justificar a preguiça.",
-            "tom_emocional": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-            "categoria_imagem": "Texto Dinâmico"
-        }
-    ],
-    "tema_do_dia": "espiritualidade",
     "historico_estilos": [
         "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')",
         "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')",
@@ -35,27 +12,10 @@
         "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
         "Tom de polarização direta: divida o público entre quem sabe algo e a massa ignorante (ex: 'A diferença entre quem joga o jogo real e quem fica na ilusão é...')",
         "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')",
-        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')"
+        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
+        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')",
+        "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')"
     ],
-    "indice_gancho": 13,
-    "historico_midia": [
-        "154401",
-        "unsplash_SSMbj0y99tU",
-        "unsplash_i0x0mS6Nuoc",
-        "unsplash_Zmfz5jqgSiI",
-        "unsplash_5V7TT6zzK5Y",
-        "unsplash_tO4WQR5hlcc",
-        "unsplash_kjcBfeFQPfE",
-        "unsplash_4IdF0A7KMJQ",
-        "unsplash_1zDMIZrinm8",
-        "unsplash_gpN1E_MsSJc",
-        "unsplash_UGQpaq08Igw",
-        "unsplash_ty8F6a-i8cQ",
-        "unsplash_EzB0uMC-mw8",
-        "unsplash_magL15sqGS0",
-        "unsplash_eiOGvQSUlQY"
-    ],
-    "indice_gancho_conquistador": 0,
     "fila_musicas": [
         "biblioteca_local/musicas/grand_project-wonders-of-the-earth-550792.mp3",
         "biblioteca_local/musicas/thriller-suspense-536629 (1).mp3",
@@ -97,7 +57,30 @@
         "biblioteca_local/musicas/Billie Ellish, Khaild- Lovely.mp3",
         "biblioteca_local/musicas/atlasaudio-background-inspiring-519617.mp3"
     ],
-    "index_conquistador": 0,
+    "indice_gancho_conquistador": 0,
+    "historico": [
+        {
+            "tom_emocional": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "categoria_musica": "Misterioso",
+            "subtema": "Orar sem trabalhar é só uma desculpa espiritualizada para justificar a preguiça.",
+            "duracao_video": 0,
+            "tema": "espiritualidade",
+            "objetivo": "Educar",
+            "frase_visual": "Estudos recentes provam que sua fé não basta para o amanhã. | Mas sim uma armadilha sutil disfarçada de esperança. | Ela te paralisa e rouba seu futuro, enquanto você dorme tranquilo e sonha. | Você se deita exausto, sonhando com milagres sem mover um músculo. | Repete orações, visualiza vitórias, mas a pilha de tarefas só cresce. | Quem entende o sistema sabe: a fé genuína te lança para a ação imediata. | Aquele que apenas ora e não planta, colherá só o que o acaso trouxer. | A verdade é: o destino abençoa as sementes que você escolhe semear, não as que você só deseja. | É a mão que trabalha com propósito que transforma a oração em realidade tangível. | Quem leu até aqui já decifrou o atalho que a multidão ainda ignora e sofre. | Amanhã, não peça um milagre. Seja o milagre em cada passo que der. | Durma com a certeza de que a fé move montanhas, mas seus pés precisam andar.",
+            "legenda": "No silêncio da noite, a gente confronta as verdades mais duras. Reflita sobre o que você construiu hoje.\nPara onde suas ações te levariam amanhã?\n\n#sabedoria #fe #proposito #espiritualidade #reflexao",
+            "gancho_categoria": "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.",
+            "complexidade": "Média",
+            "post_id": "18100656176272553",
+            "categoria_imagem": "Texto Dinâmico",
+            "data": "2026-07-15 21:07:12",
+            "tipo_cta": "comentario",
+            "tipo": "reels_noite",
+            "estilo_copy": "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
+            "estrutura_narrativa": "Problema-Solução"
+        }
+    ],
+    "indice_gancho": 15,
+    "data_tema_do_dia": "2026-07-15",
     "historico_angulos": [
         "A ansiedade pelo amanhã revela apenas o quanto você acha que controla a vida sozinho.",
         "Você não precisa de um grande sinal divino, precisa de coragem para obedecer ao que já sabe.",
@@ -111,8 +94,29 @@
         "O silêncio e a paciência como as armas mais fortes para blindar a sua paz mental contra o caos.",
         "O peso da culpa passada consome o hoje. A aceitação e o recomeço são atos de fé.",
         "A sabedoria bíblica ensina: quem muito fala, muito erra. O silêncio poupa a alma.",
-        "Julgar o erro alheio é o passatempo favorito de quem tem pavor de olhar no espelho."
+        "Julgar o erro alheio é o passatempo favorito de quem tem pavor de olhar no espelho.",
+        "O orgulho te faz defender o seu erro; a humildade é o único caminho para a evolução real.",
+        "Sua fé madura é provada quando a sensação de abandono parece insuportável."
     ],
-    "index_tema_diario": 1,
-    "indice_cta": 9
+    "indice_cta": 11,
+    "tema_do_dia": "espiritualidade",
+    "historico_midia": [
+        "unsplash_9E_G4DSWIUU",
+        "unsplash_tNDvFkxkBHo",
+        "154401",
+        "unsplash_SSMbj0y99tU",
+        "unsplash_i0x0mS6Nuoc",
+        "unsplash_Zmfz5jqgSiI",
+        "unsplash_5V7TT6zzK5Y",
+        "unsplash_tO4WQR5hlcc",
+        "unsplash_kjcBfeFQPfE",
+        "unsplash_4IdF0A7KMJQ",
+        "unsplash_1zDMIZrinm8",
+        "unsplash_gpN1E_MsSJc",
+        "unsplash_UGQpaq08Igw",
+        "unsplash_ty8F6a-i8cQ",
+        "unsplash_EzB0uMC-mw8"
+    ],
+    "index_conquistador": 0,
+    "index_tema_diario": 1
 }

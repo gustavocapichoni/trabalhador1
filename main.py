@@ -113,8 +113,8 @@ def main():
             elif isinstance(midia, str): arquivos_gerados.append(midia)
             elif isinstance(midia, tuple): arquivos_gerados.extend(midia[0])
         
-        # Passo 3: Se for Reels, gera o vídeo MP4
-        if args.type in ["reels", "reels_noite"]:
+        # Passo 3: Se for Reels (ou story_manha animado), gera o vídeo MP4
+        if args.type in ["reels", "reels_noite", "story_manha"]:
             from core.media.reels import gerar_video_reels, garantir_audio_reels
             req_id = uuid.uuid4().hex
             nome_saida_reels = f"reels_pronto_{req_id}.mp4"
@@ -149,8 +149,8 @@ def main():
                     fonte_size=fonte_size
                 )
                 
-        # Passo 3.5: Se for Story, converte obrigatoriamente JPGs para MP4s com música
-        if args.type in ["story_manha", "story_tarde"]:
+        # Passo 3.5: Se for Story (estático), converte obrigatoriamente JPGs para MP4s com música
+        if args.type in ["story_tarde"]:
             from core.media.reels import gerar_video_story_individual, garantir_audio_reels
             print("🎵 Convertendo slides de Story para vídeo com música de fundo contínua...")
             midias_em_video = []

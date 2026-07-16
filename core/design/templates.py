@@ -24,28 +24,22 @@ _FONTES_URLS = {
     "BebasNeue": [
         "https://raw.githubusercontent.com/google/fonts/main/ofl/bebasneue/BebasNeue-Regular.ttf",
     ],
-    "Raleway": [
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/Raleway%5Bwght%5D.ttf",
-    ],
-    "Exo2": [
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/exo2/Exo2%5Bwght%5D.ttf",
-    ],
-    "Righteous": [
-        "https://raw.githubusercontent.com/google/fonts/main/ofl/righteous/Righteous-Regular.ttf",
-    ],
+    "Lora": [
+        "https://raw.githubusercontent.com/google/fonts/main/ofl/lora/Lora%5Bwght%5D.ttf",
+    ]
 }
 
 # ==========================================
 # FONTE POR DIA DA SEMANA (0=Segunda ... 6=Domingo)
 # ==========================================
 FONTE_POR_DIA = {
-    0: "BebasNeue",   # Segunda — Cinematográfico, impactante
-    1: "Oswald",      # Terça   — Forte, compacto e agressivo
-    2: "Raleway",     # Quarta  — Elegante e sofisticado
-    3: "Exo2",        # Quinta  — Futurista, tecnológico
-    4: "Montserrat",  # Sexta   — Versátil e premium
-    5: "Playfair",    # Sábado  — Editorial de luxo
-    6: "Righteous",   # Domingo — Vibrante e humano
+    0: "BebasNeue",      # Segunda
+    1: "Oswald",         # Terça
+    2: "Lora",           # Quarta
+    3: "Inter",          # Quinta
+    4: "Montserrat",     # Sexta
+    5: "Playfair",       # Sábado
+    6: "MontserratBold", # Domingo
 }
 
 def obter_fonte_do_dia():
@@ -113,7 +107,7 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo=None)
 CORES = {
     "texto_principal":   (255, 255, 255),    # Branco Neve
     "texto_secundario":  (200, 200, 220),    # Cinza Claro Azulado
-    "destaque":          (224, 86, 253),     # Roxo Neon Vibrante (bordas, linhas, marca)
+    "destaque":          (0, 115, 255),      # Azul Elétrico Vibrante (bordas, linhas)
     "fundo_tint_inicio": (8, 40, 100),       # Azul Elétrico Escuro / Índigo (início no topo)
     "fundo_tint_fim":    (25, 5, 45),        # Roxo Escuro / Quase Preto (fim na base)
     "sombra":            (0, 0, 0, 200)      # Preto difuso para legibilidade

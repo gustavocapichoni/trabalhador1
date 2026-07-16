@@ -92,7 +92,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
     video_clip = None
     try:
         audio_clip = AudioFileClip(caminho_audio)
-        duracao_por_slide = 4.0
+        duracao_por_slide = 4.8
         DURACAO_ULTIMO_SLIDE = 7.0  # Último slide (CTA) tem mais tempo para leitura
         n_slides = len(caminhos_imagens)
 
@@ -178,6 +178,10 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
         # --- Função: desenha o texto animado sobre um frame numpy ---
         def desenhar_texto_animado(frame_np, texto, t, duracao, dia, W, H, eh_primeiro_slide, eh_ultimo_slide=False):
             """Renderiza o texto com a animação do dia sobre o frame numpy e retorna novo frame numpy."""
+            # Garante que texto é sempre string (pode vir como lista de frases)
+            if isinstance(texto, list):
+                texto = " ".join(str(x) for x in texto)
+            texto = str(texto).strip()
             if not texto:
                 return frame_np
 
@@ -196,7 +200,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
 
             # Cor principal (branco) e sombra
             COR_PRINCIPAL = (255, 255, 255, 255)
-            COR_SOMBRA    = (0, 0, 0, 200)
+            COR_SOMBRA    = (0, 0, 0, 40)
             COR_CINZA     = (180, 180, 180, 255)
             COR_OURO      = (250, 185, 55, 255)
 
@@ -419,7 +423,12 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
         # --- Gera os clipes ---
         clips = []
         for idx, caminho in enumerate(caminhos_imagens):
-            texto_slide = textos[idx] if idx < len(textos) else ""
+            _raw_texto = textos[idx] if idx < len(textos) else ""
+            # Garante que cada texto de slide é sempre string
+            if isinstance(_raw_texto, list):
+                texto_slide = " ".join(str(x) for x in _raw_texto)
+            else:
+                texto_slide = str(_raw_texto).strip()
             eh_ultimo = (idx == n_slides - 1)
             # Último slide (CTA) tem duração maior para garantir leitura completa
             dur_slide = DURACAO_ULTIMO_SLIDE if eh_ultimo else duracao_por_slide

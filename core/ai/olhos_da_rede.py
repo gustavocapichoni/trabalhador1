@@ -5,8 +5,7 @@ from datetime import datetime, timezone, timedelta
 from loguru import logger
 from urllib.parse import quote
 
-# Termos principais de busca para focar a visão do bot no nosso nicho
-TERMOS_NICHOS = ["desenvolvimento pessoal", "finanças", "disciplina", "psicologia", "hábitos"]
+
 
 def coletar_rss(dias=7):
     """

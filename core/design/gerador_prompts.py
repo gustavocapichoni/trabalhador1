@@ -4,32 +4,6 @@ import random
 # BIBLIOTECA DE ELEMENTOS CINEMATOGRÁFICOS (Baseada na sua sugestão)
 # =====================================================================
 
-CENARIOS = [
-    "ancient stone temple", "massive library with high ceilings", "abandoned medieval castle",
-    "serene sunlit desert", "mystical ancient forest", "futuristic cyberpunk city skyline",
-    "secluded mountaintop monastery", "grand cathedral with stained glass", "ancient roman ruins",
-    "suspension bridge over foggy canyon", "vast open ocean", "coastal cliff side",
-    "deep cavern with glowing crystals", "green sunlit valley", "golden wheat field under sun",
-    "pristine snow plains", "zen japanese garden with bonsai", "state of the art modern laboratory",
-    "luxurious executive office", "empty subway station", "old vintage railway station"
-]
-
-PERSONAGENS = [
-    "old wise monk", "wanderer traveler", "child looking up", "focused writer at work",
-    "thoughtful philosopher", "archaeologist inspecting artifact", "creative artist painting",
-    "loving couple walking", "elderly woman smiling", "elegant man in suit",
-    "scientist looking at device", "carpenter working wood", "sculptor chisel in hand",
-    "painter at easel", "explorer holding map", "musician holding instrument",
-    "teacher explaining", "pilot in thought", "photographer taking picture"
-]
-
-OBJETOS = [
-    "ancient leather book", "vintage pocket watch", "old brass compass", "glowing wax candle",
-    "antique hand mirror", "writing quill and ink", "single white rose", "glowing golden key",
-    "glass hourglass", "partially open wooden door", "old stone bridge", "wooden ladder going up",
-    "large glass window", "ornate crown on table", "ancient sword", "majestic old oak tree",
-    "winding river flow", "old brass lantern", "small wooden boat", "classic wooden violin"
-]
 
 CLIMAS = [
     "light mist", "gentle rain", "dramatic storm clouds", "crystal clear blue sky",

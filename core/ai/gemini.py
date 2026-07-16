@@ -13,7 +13,7 @@ from core.config.state import carregar_estado, salvar_estado
 from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
 from loguru import logger
 
-def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, provedor, gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", tom_emocional=""):
+def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", tom_emocional=""):
     """
     Funcao auxiliar para centralizar o pos-processamento dos dados gerados (IA ou Contingencia).
     Injeta as hashtags correspondentes na legenda e os metadados de analytics no dicionario.
@@ -188,13 +188,20 @@ def gerar_conteudo_gemini(tipo):
     salvar_estado(estado)
     # --------------------------------------------------------------------
 
+    # Injeção da Base Bibliográfica (Livros) para posts que suportam profundidade
+    livros_base = detalhes_tema.get("inspira", "")
+    if livros_base and tipo != "reels_leads":
+        instrucoes_livros = f"\n        BASE BIBLIOGRÁFICA (PROFUNDIDADE OBRIGATÓRIA):\n        - Inspire-se fortemente nos conceitos, filosofias e maturidade das seguintes obras: {livros_base}\n        - Traga o peso dessas referências para o conteúdo, sem perder a linguagem direta e moderna."
+    else:
+        instrucoes_livros = ""
+
 
     if tipo == "story":
         prompt = f"""
         Você cria Stories de Instagram que fazem as pessoas pararem de rolar o feed.
         Estilo obrigatório para este story: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA FRASE CURTÍSSIMA E PODEROSA:
         - Máximo de 10 palavras.
@@ -212,12 +219,12 @@ def gerar_conteudo_gemini(tipo):
         Você cria uma sequência de Stories de Instagram matinais para reflexão profunda.
         Estilo obrigatório para esta sequência: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA DE 3 OU 4 FRASES CURTAS CONECTADAS:
+        CRIE UMA SEQUÊNCIA ENTRE 4 A 8 FRASES CURTAS CONECTADAS:
         - Cada frase será um slide diferente, então elas devem formar uma linha de raciocínio.
         - Slide 1 (Gancho): Deve focar estritamente na estrutura da categoria de gancho sorteada ({descricao_categoria}) com base na referência: '{gancho}' para parar o scroll.
-        - Slides 2 e 3 (Corpo): Devem desdobrar e detalhar a ideia prática sugerida pelo sub-ângulo: "{sub_angulo}".
+        - Slides Internos (Corpo): Devem desdobrar e detalhar a ideia prática sugerida pelo sub-ângulo: "{sub_angulo}". O número de slides internos deve variar para que o total final (contando gancho e conclusão) fique entre 4 a 8.
         - Slide Final (Conclusão): Fecha o raciocínio de forma madura e profunda.
         - Máximo de 12 palavras por frase.
         - Não use ponto de exclamação.
@@ -238,7 +245,7 @@ def gerar_conteudo_gemini(tipo):
         Você cria uma sequência curta de Stories de Instagram para o fim de tarde.
         Estilo obrigatório para esta sequência: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA SEQUÊNCIA DE 2 FRASES CURTAS CONECTADAS:
         - Slide 1 (Gancho): Abre a sequência usando a estrutura do gancho sorteado ({descricao_categoria}) com base na referência: '{gancho}'.
@@ -257,62 +264,68 @@ def gerar_conteudo_gemini(tipo):
         }}
         """
     elif tipo == "carousel":
-        # Alterna dinamicamente entre 3 e 5 slides a cada execução
-        estado = carregar_estado()
-        tamanho_atual = 5 if estado.get("ultimo_carousel") == 3 else 3
-        estado["ultimo_carousel"] = tamanho_atual
-        salvar_estado(estado)
-
-        if tamanho_atual == 3:
-            regras_slides = """        2. ESTRUTURA DOS SLIDES DE CONTEÚDO (exatamente 3 slides):
-        - Cada slide: frase curtíssima e cirúrgica de no MÁXIMO 12 palavras. Evite rodeios.
-        - Slide 1 (Contraste ou Quebra de expectativa): Uma afirmação provocativa que coloca duas ideias opostas em choque.
-          * Exemplo: "Nem todo afastamento é perda. Alguns é só livramento."
-        - Slide 2 (O Soco de realidade / Insight): Desmonte uma desculpa comum do leitor de forma cortante.
-          * Exemplo: "Pra você cobrar o topo, você não pode entregar o mínimo."
-        - Slide 3 (A Regra de ouro final): Uma lição crua e madura sobre a vida, sem moralismo barato.
-          * Exemplo: "Uma chance muda tudo, se você estiver pronto." """
-            formato_slides = '            "Frase do slide 1 (Contraste)",\n            "Frase do slide 2 (Insight)",\n            "Frase do slide 3 (Regra)"'
-        else:
-            regras_slides = """        2. ESTRUTURA DOS SLIDES DE CONTEÚDO (exatamente 5 slides):
-        - Cada slide: frase curtíssima e cirúrgica de no MÁXIMO 12 palavras.
-        - Slide 1 (Quebra de expectativa): A verdade incômoda que destrói o senso comum.
-        - Slide 2 (O Oposto da mentira): Expõe a ilusão que o leitor usa para se anestesiar.
-        - Slide 3 (A Virada de perspectiva): O insight psicológico profundo que muda a regra do jogo.
-        - Slide 4 (A Regra prática do topo): A lição de alta performance baseada em contraste.
-          * Exemplo: "Pra cobrar de 10 a 10, você não pode ser nove e meio."
-        - Slide 5 (O Legado ou Consequência real): Um xeque-mate reflexivo para o leitor digerir silenciosamente. """
-            formato_slides = '            "Slide 1 (Verdade incômoda)",\n            "Slide 2 (Ilusão exposta)",\n            "Slide 3 (Virada de perspectiva)",\n            "Slide 4 (Regra prática)",\n            "Slide 5 (Xeque-mate)"'
-
         prompt = f"""
-        Você cria Carrosséis de Instagram com ganchos magnéticos, quebras de expectativas e contrastes polidos.
+        Você cria Carrosséis de Instagram com narrativa progressiva, ganchos magnéticos e contrastes cortantes.
         Estilo obrigatório para este carrossel: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         1. TÍTULO DA CAPA (máximo 6 palavras):
-        - Deve gerar curiosidade e forçar o clique (gancho de interrupção de padrão).
-        - Use formatos que desafiem o leitor ou usem títulos diretos/provocativos:
-          * "Vou alugar um triplex na sua cabeça com isso:"
-          * "Regra do jogo para você:"
-          * "Lição do dia."
-          * "O custo invisível de..."
-          * "Por que você sabota o seu..."
-        - PROIBIDO: títulos com "dicas", "aprenda a", "como fazer", "passos para".
+        - O título da capa deve ser construído DIRETAMENTE a partir do gancho sorteado nas instruções acima.
+        - Adapte o gancho de referência ({descricao_categoria}) para um título curto e provocativo que force o clique.
+        - Formatos aceitos:
+          * Afirmação chocante curta: "O preço que você não vê."
+          * Pergunta que agride: "Por que você faz isso de novo?"
+          * Paradoxo: "Quanto mais você corre, mais parado fica."
+          * Declaração de identidade: "Dois tipos de pessoa. Qual é você?"
+        - PROIBIDO: títulos com "dicas", "aprenda a", "como fazer", "passos para", "top X".
 
-{regras_slides}
+        2. SLIDES DE CONTEÚDO (entre 5 e 8 slides — o número exato deve variar livremente conforme a necessidade da mensagem):
+        - Cada slide: frase curtíssima e cirúrgica de no MÁXIMO 12 palavras. Sem rodeios.
+        - A sequência dos slides deve seguir esta arquitetura narrativa FLUIDA:
+
+          SLIDE 1 — GANCHO (Pattern Interrupt):
+          Adapte o gancho de referência '{gancho}' ao ângulo do post. Frase curta, cortante, que para o scroll.
+          Deve usar a estrutura do formato: {descricao_categoria}
+
+          SLIDES 2-3 — ABERTURA DE LOOP (Efeito Zeigarnik):
+          Abra um ciclo de curiosidade sem fechá-lo. Aprofunde a provocação do gancho.
+          O leitor deve sentir que precisa virar o slide para descobrir o que vem a seguir.
+          PROIBIDO entregar a solução aqui.
+
+          SLIDES 4-5 — DOR DO COTIDIANO (Identificação visceral):
+          Nomeie a dor concreta e reconhecível do dia a dia do leitor.
+          Seja específico. O leitor deve pensar: "Isso sou eu. Exatamente."
+          Bata na ferida antes de curar.
+
+          SLIDES 6-7 (se houver) — VIRADA E INSIGHT:
+          Entregue a verdade prática ou o contraste que muda a perspectiva.
+          Uma lição crua, madura, aplicável. Sem moralismo barato.
+          Exemplos de formato: "Nem todo afastamento é perda. Alguns é só livramento."
+                               "Pra cobrar de 10 a 10, você não pode ser nove e meio."
+
+          SLIDE FINAL — XEQUE-MATE:
+          Frase reflexiva e poderosa para o leitor guardar mentalmente.
+          Deve criar o desejo de salvar ou compartilhar. Feche com impacto, sem conclusão bonita e embalada.
 
         3. LEGENDA:
-        - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta, madura e sem enrolação.
-        - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
+        - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta e madura.
+        - CTA OBRIGATÓRIO: A legenda DEVE terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NUNCA termine com uma conclusão fechada. O leitor deve ter algo a dizer.
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido assim:
+        Responda APENAS em formato JSON válido assim (slides deve ter entre 5 e 8 itens):
         {{
           "titulo": "Título da capa aqui",
           "slides": [
-{formato_slides}
+            "Slide 1 — Gancho adaptado do sistema",
+            "Slide 2 — Abertura de loop",
+            "Slide 3 — Aprofunda o loop / mistério",
+            "Slide 4 — Dor do cotidiano",
+            "Slide 5 — Bate na ferida",
+            "Slide 6 — Virada / insight (opcional)",
+            "Slide 7 — Regra prática (opcional)",
+            "Slide final — Xeque-mate reflexivo"
           ],
           "legenda": "Sua legenda completa aqui sem hashtags"
         }}
@@ -323,7 +336,7 @@ def gerar_conteudo_gemini(tipo):
         Seu objetivo é criar um roteiro em slides que faça o usuário PARAR de rolar o feed e assistir até o final.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA SEQUÊNCIA NARRATIVA DINÂMICA DE 8 A 12 SLIDES (o número exato deve flutuar livremente entre 8 e 12 a cada execução dependendo da necessidade da história) seguindo esta estrutura fluida:
 
@@ -367,7 +380,7 @@ def gerar_conteudo_gemini(tipo):
         e termina com uma chamada para ação irresistível.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE EXATAMENTE 5 CENAS para o vídeo, seguindo esta estrutura de funil:
 
@@ -422,7 +435,7 @@ def gerar_conteudo_gemini(tipo):
         Sua missão é criar uma história em formato de vídeo B-roll que prenda o espectador do primeiro ao último segundo.
         Estilo obrigatório: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA NARRATIVA MAGNÉTICA em 6 a 8 frases curtas seguindo esta arquitetura OBRIGATÓRIA:
 
@@ -483,7 +496,7 @@ def gerar_conteudo_gemini(tipo):
         O seu Reels é o último do dia. A pessoa está voltando para casa ou já está deitada na cama.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA SEQUÊNCIA NARRATIVA DINÂMICA DE 8 A 12 SLIDES (o número exato deve flutuar livremente entre 8 e 12 a cada execução dependendo da necessidade da história) que funcione como o CAPÍTULO FINAL de uma história que começou de manhã.
         A mensagem deve colocar quem assiste dentro da história: identifique a dor, gere empatia real e ofereça a solução.
@@ -525,7 +538,7 @@ def gerar_conteudo_gemini(tipo):
         Este é o vídeo B-roll do fim do dia. A pessoa está em modo de descanso, processando o que viveu.
         Estilo obrigatório: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que coloque o espectador dentro de uma história de dor e superação.
         O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra "eu te entendo, eu também passei por isso".
@@ -602,7 +615,7 @@ def gerar_conteudo_gemini(tipo):
         O roteiro usará a Técnica Psicológica do Usopp (10 fases).
         Estilo obrigatório: {estilo_escolhido}
 
-        {instrucoes_copy}
+        {instrucoes_copy}{instrucoes_livros}
 
         ==== CONTEÚDO BASE PARA O VÍDEO (EXTRAÍDO DO ÚLTIMO PDF GERADO) ====
         {resumo_pdf}
@@ -731,7 +744,7 @@ def gerar_conteudo_gemini(tipo):
                 
                 # Pos-processamento centralizado
                 dados = _pos_processar_dados(
-                    dados, tipo, tema_escolhido, detalhes_tema, "Gemini",
+                    dados, tipo, tema_escolhido, detalhes_tema,
                     gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
                     subtema=sub_angulo, tom_emocional=estilo_escolhido
                 )
@@ -769,7 +782,7 @@ def gerar_conteudo_gemini(tipo):
                 dados = extrair_json(texto_groq)
                 # Pos-processamento centralizado
                 dados = _pos_processar_dados(
-                    dados, tipo, tema_escolhido, detalhes_tema, "Groq",
+                    dados, tipo, tema_escolhido, detalhes_tema,
                     gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
                     subtema=sub_angulo, tom_emocional=estilo_escolhido
                 )
@@ -798,7 +811,7 @@ def gerar_conteudo_gemini(tipo):
                 dados = extrair_json(texto_or)
                 # Pos-processamento centralizado
                 dados = _pos_processar_dados(
-                    dados, tipo, tema_escolhido, detalhes_tema, "OpenRouter",
+                    dados, tipo, tema_escolhido, detalhes_tema,
                     gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
                     subtema=sub_angulo, tom_emocional=estilo_escolhido
                 )
@@ -838,7 +851,7 @@ def gerar_conteudo_gemini(tipo):
                 
                 # Pos-processamento centralizado
                 dados = _pos_processar_dados(
-                    dados, tipo, tema_escolhido, detalhes_tema, "Emergencia",
+                    dados, tipo, tema_escolhido, detalhes_tema,
                     gancho_categoria=descricao_categoria, tipo_cta=categoria_cta,
                     subtema=sub_angulo, tom_emocional=estilo_escolhido
                 )

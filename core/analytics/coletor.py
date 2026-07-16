@@ -162,16 +162,67 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
         logger.error(f"Erro ao coletar métricas para o post {post_id}: {e}")
         return None
 
+def buscar_posts_recentes_api():
+    """Busca os posts mais recentes diretamente do perfil do Instagram."""
+    if not IG_ACCESS_TOKEN or not IG_ACCOUNT_ID:
+        logger.warning("Faltam credenciais (IG_ACCESS_TOKEN ou IG_ACCOUNT_ID) para buscar posts do perfil.")
+        return []
+    
+    url = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media?fields=id,media_type,timestamp,caption&access_token={IG_ACCESS_TOKEN}"
+    try:
+        res = requests.get(url, timeout=15)
+        if res.status_code == 200:
+            data = res.json().get("data", [])
+            posts_descobertos = []
+            for item in data:
+                try:
+                    dt_obj = datetime.strptime(item.get("timestamp"), "%Y-%m-%dT%H:%M:%S%z")
+                    data_str = dt_obj.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+                except:
+                    data_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+
+                media_type = item.get("media_type", "")
+                tipo = "feed"
+                if media_type == "VIDEO":
+                    tipo = "reels"
+                elif media_type == "CAROUSEL_ALBUM":
+                    tipo = "carousel"
+                
+                posts_descobertos.append({
+                    "post_id": item.get("id"),
+                    "data": data_str,
+                    "tipo": tipo,
+                    "tema": "Descoberto Automaticamente",
+                    "caption": item.get("caption", "")
+                })
+            logger.info(f"🔎 Encontrados {len(posts_descobertos)} posts no perfil.")
+            return posts_descobertos
+        else:
+            logger.error(f"Erro ao buscar posts do perfil: {res.text}")
+            return []
+    except Exception as e:
+        logger.error(f"Exceção ao buscar posts do perfil: {e}")
+        return []
+
 def rodar_coleta():
     logger.info("📊 Iniciando coleta de métricas...")
     estado = carregar_estado()
     historico = estado.get("historico", [])
     metricas_salvas = carregar_metricas()
 
+    # --- NOVO: Buscar posts externos e unir com o histórico ---
+    posts_externos = buscar_posts_recentes_api()
+    todos_posts_dict = {p.get("post_id"): p for p in posts_externos if p.get("post_id")}
+    for p in historico:
+        if p.get("post_id"):
+            todos_posts_dict[p.get("post_id")] = p
+    historico_unificado = list(todos_posts_dict.values())
+    # ------------------------------------------------------------
+
     agora = datetime.now(timezone.utc)
     posts_processados = 0
 
-    for post in historico:
+    for post in historico_unificado:
         post_id = post.get("post_id")
         data_str = post.get("data")
 
@@ -187,8 +238,9 @@ def rodar_coleta():
 
         if is_story and agora - post_dt > timedelta(hours=24):
             continue
-        if not is_story and agora - post_dt < timedelta(hours=24):
-            continue
+        # Removido: if not is_story and agora - post_dt < timedelta(hours=24): continue
+        # Agora coletamos as métricas no mesmo dia, sem esperar 24h.
+
         if agora - post_dt > timedelta(days=14):
             continue
 
@@ -197,6 +249,24 @@ def rodar_coleta():
         novas_metricas = buscar_metricas_api(post_id, tipo_post=tipo_post)
 
         if novas_metricas:
+            # --- Calcula métricas derivadas e injeta nos dados brutos ---
+            views       = novas_metricas.get("views", novas_metricas.get("plays", 0))
+            impressions = novas_metricas.get("impressions", novas_metricas.get("reach", 0))
+            saves       = novas_metricas.get("saved", 0)
+            shares      = novas_metricas.get("shares", 0)
+            follows     = novas_metricas.get("follows", 0)
+            prof_visits = novas_metricas.get("profile_visits", 0)
+            avg_watch   = novas_metricas.get("ig_reels_avg_watch_time", 0)  # em ms
+            duracao     = post.get("duracao_video", 0)
+
+            novas_metricas["CTR_feed"]              = round(views / impressions, 4) if impressions > 0 else 0
+            novas_metricas["taxa_salvamento"]        = round(saves / views, 4) if views > 0 else 0
+            novas_metricas["taxa_compartilhamento"]  = round(shares / views, 4) if views > 0 else 0
+            novas_metricas["taxa_visita_perfil"]     = round(prof_visits / views, 4) if views > 0 else 0
+            novas_metricas["conversao_perfil"]       = round(follows / prof_visits, 4) if prof_visits > 0 else 0
+            novas_metricas["retencao_media_pct"]     = round((avg_watch / 1000) / duracao, 4) if (avg_watch > 0 and duracao > 0) else 0
+            # -------------------------------------------------------------
+
             # Salva localmente (fallback)
             if post_id not in metricas_salvas["posts"]:
                 metricas_salvas["posts"][post_id] = {}

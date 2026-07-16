@@ -39,7 +39,7 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
 
     # Palavras-chave simples e coloridas por tema — usadas EXCLUSIVAMENTE no Unsplash e Pexels
     UNSPLASH_FALLBACKS = {
-        "espiritualidade": ["candle light church warm", "sunrise spiritual nature", "peaceful golden temple light", "prayer hands warm light"],
+        "espiritualidade": ["vast peaceful ocean sunrise", "mountains above clouds golden hour", "sun rays through forest trees", "peaceful golden nature light"],
         "filosofia":       ["ancient library warm light", "person reading sunlight", "sunset philosophy nature", "dramatic golden books"],
         "psicologia":      ["person thinking window sunlight", "colorful emotional portrait", "vibrant mind concept", "warm human connection"],
         "financas":        ["luxury city skyline sunset", "golden business executive", "vibrant wealth success", "colorful financial growth"],
@@ -265,7 +265,7 @@ def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     
     if tipo == "carousel":
         return _gerar_carrossel(img, W, H, dados)
-    elif tipo in ["reels", "reels_noite", "reels_conquistador"]:
+    elif tipo in ["reels", "reels_noite", "reels_conquistador", "story_manha"]:
         return _gerar_reels(img, W, H, dados, tema_escolhido, TEMAS_MAPEADOS)
     else:
         return _gerar_estatico(img, W, H, tipo, dados, tema_escolhido, TEMAS_MAPEADOS)
@@ -303,7 +303,7 @@ def _gerar_carrossel(img, W_full, H, dados):
     print(f"🎨 Usando fonte do dia no Carrossel: {estilo_sorteado}")
     
     # Fontes maiores para garantir legibilidade no carrossel 1080x1080
-    font_capa, font_slides, font_marca = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
+    font_capa, font_slides, _ = carregar_fontes(tamanho_display=86, tamanho_body=72, tamanho_detalhe=26, estilo=estilo_sorteado)
     font_sub = carregar_fontes(tamanho_display=30, tamanho_body=30, tamanho_detalhe=30, estilo=estilo_sorteado)[0]
     
     for idx, texto in enumerate(slides_conteudo):
@@ -330,7 +330,7 @@ def _gerar_carrossel(img, W_full, H, dados):
         if os.path.exists(path_logo):
             try:
                 logo_img = Image.open(path_logo)
-                largura_desejada = 400
+                largura_desejada = 250
                 aspect_ratio = logo_img.height / logo_img.width
                 altura_desejada = int(largura_desejada * aspect_ratio)
                 logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
@@ -356,10 +356,9 @@ def _gerar_carrossel(img, W_full, H, dados):
             y_inicial = (slide_H - (len(linhas) * 105)) / 2 - 40
             for i, linha in enumerate(linhas):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 105), linha, font_capa, fill=CORES["texto_principal"], anchor="ms")
-            draw_text_with_shadow(draw, (slide_W/2, slide_H - 175), "Arrasta para o lado  ▶", font_sub, fill=CORES["destaque"], anchor="ms")
+            draw_text_with_shadow(draw, (slide_W/2, slide_H - 55), "Arrasta para o lado ->", font_sub, fill=CORES["destaque"], anchor="ms")
             
         elif texto == "CTA":  # Slide Final
-            draw.line([(slide_W*0.15, slide_H*0.35), (slide_W*0.85, slide_H*0.35)], fill=CORES["destaque"], width=2)
             ctas_disponiveis = [
                 ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!"],
                 ["A mente precisa de", "constante evolução.", "", "Siga para não estagnar!"],
@@ -376,7 +375,7 @@ def _gerar_carrossel(img, W_full, H, dados):
                     linhas_finais.extend(partes if partes else [linha])
                 else:
                     linhas_finais.append("")  # mantém linha vazia (espaçamento)
-            y_inicial = slide_H * 0.38
+            y_inicial = slide_H * 0.25
             for i, linha in enumerate(linhas_finais):
                 draw_text_with_shadow(draw, (slide_W/2, y_inicial + i * 78), linha, font_slides, fill=CORES["texto_principal"], anchor="ms")
                 
@@ -395,7 +394,17 @@ def _gerar_carrossel(img, W_full, H, dados):
 def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
     """Gera os fundos dos slides do Reels (sem texto baked) e retorna as frases separadas para animação."""
     caminhos_fundos = []
-    frases = dados.get("slides", [dados.get("frase", "...")])
+
+    # Para story_manha: 'frase' é uma lista de strings (4-8 frases)
+    # Para reels normais: 'slides' é uma lista de strings
+    slides_raw = dados.get("slides")
+    frase_raw  = dados.get("frase", "...")
+    if slides_raw:
+        frases = slides_raw if isinstance(slides_raw, list) else [slides_raw]
+    elif isinstance(frase_raw, list):
+        frases = frase_raw  # story_manha: já é uma lista de frases prontas
+    else:
+        frases = [frase_raw]  # story/post estático: string única
 
     estilo_sorteado = obter_fonte_do_dia()
     print(f"🎨 Usando fonte do dia no Reels: {estilo_sorteado}")
@@ -413,7 +422,7 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
             caminho_fonte_valido = cf
             break
 
-    font_display, font_body, font_marca = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
+    font_display, font_body, _ = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
 
     for idx, frase in enumerate(frases):
         if idx > 0 and tema_escolhido and TEMAS_MAPEADOS:
@@ -440,7 +449,7 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
         if os.path.exists(path_logo):
             try:
                 logo_img = Image.open(path_logo)
-                largura_desejada = 400
+                largura_desejada = 320
                 aspect_ratio = logo_img.height / logo_img.width
                 altura_desejada = int(largura_desejada * aspect_ratio)
                 logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
@@ -480,7 +489,7 @@ def _gerar_estatico(img, W, H, tipo, dados, tema_escolhido=None, TEMAS_MAPEADOS=
     # Usa a fonte do dia independente do layout
     estilo_fonte = obter_fonte_do_dia()
         
-    font_display, _, font_marca = carregar_fontes(48, 24, 24, estilo=estilo_fonte)
+    font_display, _, _ = carregar_fontes(48, 24, 24, estilo=estilo_fonte)
     
     frases = dados.get("frase", dados.get("slides", [""]))
     if isinstance(frases, str):
