@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-07-15 16:52:21 UTC",
+    "atualizado_em": "2026-07-16 07:02:48 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -7,7 +7,7 @@
         "mensal",
         "semanal"
     ],
-    "growth_score_referencia": 0.0004,
+    "growth_score_referencia": 0.0001,
     "icc_por_tema": {},
     "tema_maior_icc": null,
     "peso_final_temas": {
@@ -17,15 +17,22 @@
         "reels": 1.0
     },
     "peso_final_estilos": {},
-    "ganchos_growth_score": {},
-    "ctas_growth_score": {},
-    "contexto_para_gemini": "CONTEXTO ESTRATEGICO (Baseado nos ciclos: ANUAL, SEMESTRAL, TRIMESTRAL, MENSAL, SEMANAL):\n\nDISTRIBUICAO DE TEMAS (roleta ponderada — ciclos longos ancoram):\n  - Descoberto Automaticamente: 100.0%\n\nGROWTH SCORE DE REFERENCIA (benchmark atual da conta): 0.0004\n\nINSTRUCAO: Use a distribuicao de temas acima como roleta ponderada. Quando o objetivo for crescimento de seguidores, priorize o tema de maior ICC. Mantenha a estratégia de longo prazo mesmo que uma tendencia de curto prazo aponte em direcao diferente.",
+    "ganchos_growth_score": {
+        "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": 0.0,
+        "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": 0.0
+    },
+    "ctas_growth_score": {
+        "salvamento": 0.0,
+        "seguir": 0.0,
+        "comentario": 0.0
+    },
+    "contexto_para_gemini": "CONTEXTO ESTRATEGICO (Baseado nos ciclos: ANUAL, SEMESTRAL, TRIMESTRAL, MENSAL, SEMANAL):\n\nDISTRIBUICAO DE TEMAS (roleta ponderada — ciclos longos ancoram):\n  - Descoberto Automaticamente: 100.0%\n\nGANCHOS COM MAIOR GROWTH SCORE (categorias que mais convertem):\n  - CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.: 0.0000\n  - AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.: 0.0000\n\nCTAs COM MAIOR GROWTH SCORE:\n  - salvamento: 0.0000\n  - seguir: 0.0000\n  - comentario: 0.0000\n\nGROWTH SCORE DE REFERENCIA (benchmark atual da conta): 0.0001\n\nINSTRUCAO: Use a distribuicao de temas acima como roleta ponderada. Quando o objetivo for crescimento de seguidores, priorize o tema de maior ICC. Mantenha a estratégia de longo prazo mesmo que uma tendencia de curto prazo aponte em direcao diferente.",
     "analises_raw": {
         "semanal": {
             "periodo_dias": 7,
             "total_posts_analisados": 20,
-            "alcance_medio": 82.9,
-            "saves_medio": 0.3,
+            "alcance_medio": 66.4,
+            "saves_medio": 0.25,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
             },
@@ -36,25 +43,55 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0004,
-                    "engagement_score": 492.2515,
-                    "ctr_feed": 1.0102,
+                    "engagement_score": 460.15,
+                    "ctr_feed": 1.036,
                     "taxa_salvamento": 0.0023,
-                    "taxa_compartilhamento": 0.0012,
+                    "taxa_compartilhamento": 0.0014,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 20
+                    "count": 17
+                },
+                "liberdade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "filosofia": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "espiritualidade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
             "formatos_stats": {
                 "reels": {
-                    "growth_score": 0.0004,
-                    "engagement_score": 518.1595,
-                    "ctr_feed": 1.0633,
+                    "growth_score": 0.0005,
+                    "engagement_score": 488.9094,
+                    "ctr_feed": 1.1007,
                     "taxa_salvamento": 0.0024,
-                    "taxa_compartilhamento": 0.0013,
+                    "taxa_compartilhamento": 0.0015,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 19
+                    "count": 16
                 },
                 "carousel": {
                     "growth_score": 0.0,
@@ -65,23 +102,231 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 1
+                },
+                "reels_conquistador": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "reels_noite": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
-            "estilos_stats": {},
-            "ganchos_stats": {},
-            "ctas_stats": {},
-            "imagens_stats": {},
-            "musicas_stats": {},
-            "tons_stats": {},
-            "estruturas_stats": {},
-            "complexidades_stats": {},
+            "estilos_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ganchos_stats": {
+                "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ctas_stats": {
+                "salvamento": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "seguir": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "comentario": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "imagens_stats": {
+                "B-roll": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Texto Dinâmico": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "musicas_stats": {
+                "Misterioso": {
+                    "growth_score": 0.0,
+                    "engagement_score": 265.7333,
+                    "ctr_feed": 1.1667,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 3
+                }
+            },
+            "tons_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "estruturas_stats": {
+                "Reflexão Contínua": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Problema-Solução": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "complexidades_stats": {
+                "Alta": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Média": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
             "icc_por_tema": {}
         },
         "mensal": {
             "periodo_dias": 30,
-            "total_posts_analisados": 25,
-            "alcance_medio": 92.84,
-            "saves_medio": 0.28,
+            "total_posts_analisados": 28,
+            "alcance_medio": 84.46,
+            "saves_medio": 0.25,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
             },
@@ -92,20 +337,50 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0004,
-                    "engagement_score": 534.6712,
-                    "ctr_feed": 1.0355,
+                    "engagement_score": 542.2344,
+                    "ctr_feed": 1.0703,
                     "taxa_salvamento": 0.002,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 25
+                },
+                "liberdade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "filosofia": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "espiritualidade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0004,
-                    "engagement_score": 556.9492,
-                    "ctr_feed": 1.0787,
+                    "engagement_score": 564.8275,
+                    "ctr_feed": 1.1149,
                     "taxa_salvamento": 0.0021,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
@@ -121,23 +396,231 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 1
+                },
+                "reels_conquistador": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "reels_noite": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
-            "estilos_stats": {},
-            "ganchos_stats": {},
-            "ctas_stats": {},
-            "imagens_stats": {},
-            "musicas_stats": {},
-            "tons_stats": {},
-            "estruturas_stats": {},
-            "complexidades_stats": {},
+            "estilos_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ganchos_stats": {
+                "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ctas_stats": {
+                "salvamento": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "seguir": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "comentario": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "imagens_stats": {
+                "B-roll": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Texto Dinâmico": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "musicas_stats": {
+                "Misterioso": {
+                    "growth_score": 0.0,
+                    "engagement_score": 265.7333,
+                    "ctr_feed": 1.1667,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 3
+                }
+            },
+            "tons_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "estruturas_stats": {
+                "Reflexão Contínua": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Problema-Solução": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "complexidades_stats": {
+                "Alta": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Média": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
             "icc_por_tema": {}
         },
         "trimestral": {
             "periodo_dias": 90,
-            "total_posts_analisados": 25,
-            "alcance_medio": 92.84,
-            "saves_medio": 0.28,
+            "total_posts_analisados": 28,
+            "alcance_medio": 84.46,
+            "saves_medio": 0.25,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
             },
@@ -148,20 +631,50 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0004,
-                    "engagement_score": 534.6712,
-                    "ctr_feed": 1.0355,
+                    "engagement_score": 542.2344,
+                    "ctr_feed": 1.0703,
                     "taxa_salvamento": 0.002,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 25
+                },
+                "liberdade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "filosofia": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "espiritualidade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0004,
-                    "engagement_score": 556.9492,
-                    "ctr_feed": 1.0787,
+                    "engagement_score": 564.8275,
+                    "ctr_feed": 1.1149,
                     "taxa_salvamento": 0.0021,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
@@ -177,23 +690,231 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 1
+                },
+                "reels_conquistador": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "reels_noite": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
-            "estilos_stats": {},
-            "ganchos_stats": {},
-            "ctas_stats": {},
-            "imagens_stats": {},
-            "musicas_stats": {},
-            "tons_stats": {},
-            "estruturas_stats": {},
-            "complexidades_stats": {},
+            "estilos_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ganchos_stats": {
+                "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ctas_stats": {
+                "salvamento": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "seguir": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "comentario": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "imagens_stats": {
+                "B-roll": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Texto Dinâmico": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "musicas_stats": {
+                "Misterioso": {
+                    "growth_score": 0.0,
+                    "engagement_score": 265.7333,
+                    "ctr_feed": 1.1667,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 3
+                }
+            },
+            "tons_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "estruturas_stats": {
+                "Reflexão Contínua": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Problema-Solução": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "complexidades_stats": {
+                "Alta": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Média": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
             "icc_por_tema": {}
         },
         "semestral": {
             "periodo_dias": 180,
-            "total_posts_analisados": 25,
-            "alcance_medio": 92.84,
-            "saves_medio": 0.28,
+            "total_posts_analisados": 28,
+            "alcance_medio": 84.46,
+            "saves_medio": 0.25,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
             },
@@ -204,20 +925,50 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0004,
-                    "engagement_score": 534.6712,
-                    "ctr_feed": 1.0355,
+                    "engagement_score": 542.2344,
+                    "ctr_feed": 1.0703,
                     "taxa_salvamento": 0.002,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 25
+                },
+                "liberdade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "filosofia": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "espiritualidade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0004,
-                    "engagement_score": 556.9492,
-                    "ctr_feed": 1.0787,
+                    "engagement_score": 564.8275,
+                    "ctr_feed": 1.1149,
                     "taxa_salvamento": 0.0021,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
@@ -233,23 +984,231 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 1
+                },
+                "reels_conquistador": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "reels_noite": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
-            "estilos_stats": {},
-            "ganchos_stats": {},
-            "ctas_stats": {},
-            "imagens_stats": {},
-            "musicas_stats": {},
-            "tons_stats": {},
-            "estruturas_stats": {},
-            "complexidades_stats": {},
+            "estilos_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ganchos_stats": {
+                "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ctas_stats": {
+                "salvamento": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "seguir": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "comentario": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "imagens_stats": {
+                "B-roll": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Texto Dinâmico": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "musicas_stats": {
+                "Misterioso": {
+                    "growth_score": 0.0,
+                    "engagement_score": 265.7333,
+                    "ctr_feed": 1.1667,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 3
+                }
+            },
+            "tons_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "estruturas_stats": {
+                "Reflexão Contínua": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Problema-Solução": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "complexidades_stats": {
+                "Alta": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Média": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
             "icc_por_tema": {}
         },
         "anual": {
             "periodo_dias": 365,
-            "total_posts_analisados": 25,
-            "alcance_medio": 92.84,
-            "saves_medio": 0.28,
+            "total_posts_analisados": 28,
+            "alcance_medio": 84.46,
+            "saves_medio": 0.25,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
             },
@@ -260,20 +1219,50 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0004,
-                    "engagement_score": 534.6712,
-                    "ctr_feed": 1.0355,
+                    "engagement_score": 542.2344,
+                    "ctr_feed": 1.0703,
                     "taxa_salvamento": 0.002,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 25
+                },
+                "liberdade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "filosofia": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "espiritualidade": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0004,
-                    "engagement_score": 556.9492,
-                    "ctr_feed": 1.0787,
+                    "engagement_score": 564.8275,
+                    "ctr_feed": 1.1149,
                     "taxa_salvamento": 0.0021,
                     "taxa_compartilhamento": 0.0012,
                     "taxa_visita_perfil": 0.0,
@@ -289,16 +1278,224 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 1
+                },
+                "reels_conquistador": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "reels_noite": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 }
             },
-            "estilos_stats": {},
-            "ganchos_stats": {},
-            "ctas_stats": {},
-            "imagens_stats": {},
-            "musicas_stats": {},
-            "tons_stats": {},
-            "estruturas_stats": {},
-            "complexidades_stats": {},
+            "estilos_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ganchos_stats": {
+                "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 319.395,
+                    "ctr_feed": 1.25,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                },
+                "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "ctas_stats": {
+                "salvamento": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "seguir": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "comentario": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "imagens_stats": {
+                "B-roll": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Texto Dinâmico": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "musicas_stats": {
+                "Misterioso": {
+                    "growth_score": 0.0,
+                    "engagement_score": 265.7333,
+                    "ctr_feed": 1.1667,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 3
+                }
+            },
+            "tons_stats": {
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 296.09,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": {
+                    "growth_score": 0.0,
+                    "engagement_score": 158.41,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                }
+            },
+            "estruturas_stats": {
+                "Reflexão Contínua": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Problema-Solução": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
+            "complexidades_stats": {
+                "Alta": {
+                    "growth_score": 0.0,
+                    "engagement_score": 342.7,
+                    "ctr_feed": 1.5,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
+                },
+                "Média": {
+                    "growth_score": 0.0,
+                    "engagement_score": 227.25,
+                    "ctr_feed": 1.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 2
+                }
+            },
             "icc_por_tema": {}
         }
     }
