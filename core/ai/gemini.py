@@ -49,6 +49,7 @@ def gerar_conteudo_gemini(tipo):
     estado = carregar_estado()
     tema_escolhido = None
     contexto_analytics = ""
+    evitar_repeticao_msg = ""
     
     agora = datetime.now(timezone.utc)
     dia_hoje_str = agora.strftime("%Y-%m-%d")
@@ -67,6 +68,18 @@ def gerar_conteudo_gemini(tipo):
         estado["index_conquistador"] = (idx + 1) % len(temas_lista)
         salvar_estado(estado)
         logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
+
+        # Busca histórico para evitar repetição de mensagens no Conquistador
+        posts_recentes = [p for p in estado.get("historico", []) if p.get("tipo") == "reels_conquistador"]
+        ultimos_posts = posts_recentes[-6:]
+        if ultimos_posts:
+            evitar_repeticao_msg = "\n        MUITO IMPORTANTE (EVITE REPETIÇÃO DE CONTEÚDO):\n"
+            evitar_repeticao_msg += "        Você deve obrigatoriamente evitar repetir as ideias, as metáforas ou os raciocínios das seguintes mensagens que já foram geradas recentemente no perfil:\n"
+            for p_idx, p in enumerate(ultimos_posts):
+                frases_visual = p.get("frase_visual") or ""
+                if frases_visual:
+                    evitar_repeticao_msg += f"        * Post Anterior {p_idx+1}: {frases_visual[:250]}\n"
+            evitar_repeticao_msg += "        Crie algo totalmente inédito e novo, com abordagens originais.\n"
     else:
         # Se for o primeiro post do dia, rotaciona o tema sequencialmente
         if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
@@ -377,7 +390,7 @@ def gerar_conteudo_gemini(tipo):
         prompt = f"""
         Você é a manifestação de uma filosofia de vida profunda, focada na verdade absoluta e na liberdade.
         Sua visão não é materialista. Seus pilares são: Família, Amizade, Igualdade, Verdade e Liberdade.
-
+        {evitar_repeticao_msg}
         INSPIRAÇÕES LITERÁRIAS OBRIGATÓRIAS (Suas mensagens devem soar como uma fusão de):
         - "Armadilhas da Mente" (Augusto Cury) - Foco na gestão da emoção e consciência.
         - Livros Sapienciais: "Provérbios e Sabedoria de Salomão".
