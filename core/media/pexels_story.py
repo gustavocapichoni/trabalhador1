@@ -11,7 +11,7 @@ if not hasattr(PIL.Image, "ANTIALIAS"):
     
 from loguru import logger
 from core.design.templates import obter_fonte_do_dia
-from core.config.state import verificar_midia_recente, registrar_midia_usada
+from core.config.state import verificar_midia_recente, registrar_midia_usada, carregar_estado, salvar_estado
 
 def _carregar_fonte(tamanho=50, estilo=None):
     """Tenta carregar a fonte do projeto. Se falhar, usa a padrão do sistema."""
@@ -118,7 +118,21 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
 
     return np.array(img)
 
-def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0):
+# 5 paletas de degradê disponíveis para o Conquistador
+PALETAS_CONQUISTADOR = [
+    # 1. Visão Profética
+    ([176, 38, 255], [255, 255, 255], [0, 51, 255]),
+    # 2. Fogo & Glória
+    ([220, 20, 60], [255, 255, 255], [255, 140, 0]),
+    # 3. Natureza & Paz
+    ([0, 168, 107], [255, 255, 255], [30, 144, 255]),
+    # 4. Rei & Sabedoria
+    ([255, 185, 0], [255, 255, 255], [80, 0, 130]),
+    # 5. Paixão & Força
+    ([255, 20, 147], [255, 255, 255], [180, 0, 30]),
+]
+
+def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0, paleta=None):
     img = Image.fromarray(frame_array)
     w, h = img.size
     
@@ -179,11 +193,16 @@ def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade
     # Isola o recorte das letras
     mask = txt_layer.split()[3]
     
-    # Cria a matriz do degradê: Roxo Neon (176,38,255) -> Branco (255,255,255) -> Azul Elétrico (0,51,255)
+    # Cria a matriz do degradê com a paleta selecionada (ou padrão Roxo→Branco→Azul)
     gradient = np.zeros((h, w, 3), dtype=np.uint8)
-    color_top = np.array([176, 38, 255])
-    color_mid = np.array([255, 255, 255])
-    color_bot = np.array([0, 51, 255])
+    if paleta:
+        color_top = np.array(paleta[0])
+        color_mid = np.array(paleta[1])
+        color_bot = np.array(paleta[2])
+    else:
+        color_top = np.array([176, 38, 255])
+        color_mid = np.array([255, 255, 255])
+        color_bot = np.array([0, 51, 255])
     
     y_min_texto = y_inicial
     y_max_texto = y_inicial + h_texto
@@ -321,7 +340,30 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     bg_audio = None
     outro_clip = None
     query_encoded = urllib.parse.quote(query)
-    
+
+    # --- Rotação sequencial exclusiva do Conquistador (animação, paleta, plataforma) ---
+    animacao_conquistador = None
+    paleta_conquistador = None
+    plataforma_principal_conquistador = None  # None = usa a cascata padrão
+
+    if is_conquistador:
+        estado_conq = carregar_estado()
+        animacoes_lista = ["typewriter", "fade", "reveal", "static"]
+        idx_anim = estado_conq.get("index_animacao_conquistador", 0) % len(animacoes_lista)
+        animacao_conquistador = animacoes_lista[idx_anim]
+        estado_conq["index_animacao_conquistador"] = (idx_anim + 1) % len(animacoes_lista)
+
+        idx_pal = estado_conq.get("index_palette_conquistador", 0) % len(PALETAS_CONQUISTADOR)
+        paleta_conquistador = PALETAS_CONQUISTADOR[idx_pal]
+        estado_conq["index_palette_conquistador"] = (idx_pal + 1) % len(PALETAS_CONQUISTADOR)
+
+        idx_plat = estado_conq.get("index_plataforma_conquistador", 0) % 2
+        plataforma_principal_conquistador = idx_plat  # 0=Pixabay primeiro, 1=Pexels primeiro
+        estado_conq["index_plataforma_conquistador"] = (idx_plat + 1) % 2
+
+        salvar_estado(estado_conq)
+        logger.info(f"🎨 [CONQUISTADOR] Animação: {animacao_conquistador.upper()} | Paleta: #{idx_pal+1} | Plataforma: {'Pixabay' if idx_plat == 0 else 'Pexels'}")
+
     # Define quantos vídeos baixar de forma adaptativa:
     # Para reels_leads, calcula com base no número de slides para evitar repetição visual.
     # Assume ~5s por slide (leitura confortável) e ~20s por vídeo de fundo (estimativa conservadora).
@@ -336,8 +378,108 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         num_videos_necessarios = min(5, max(3, num_slides_estimado))
         logger.info(f"📊 [PEXELS_STORY] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
 
-    # --- NÍVEL 1: API DO PIXABAY ---
-    if PIXABAY_API_KEY and len(temp_vids) < num_videos_necessarios:
+    # --- BUSCA DE VÍDEOS: ordem depende da rotação do Conquistador ---
+    # plataforma_principal_conquistador: None=padrão(Pixabay→Pexels), 0=Pixabay→Pexels, 1=Pexels→Pixabay
+    _usar_pixabay_primeiro = (plataforma_principal_conquistador != 1)
+
+    def _buscar_pixabay():
+        nonlocal temp_vids
+        if not PIXABAY_API_KEY or len(temp_vids) >= num_videos_necessarios:
+            return
+        try:
+            logger.info("🔍 [NÍVEL Pixabay] Tentando buscar vídeo no Pixabay...")
+            url_pixabay = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={query_encoded}&video_type=film"
+            res_pixabay = requests.get(url_pixabay, timeout=15)
+            if res_pixabay.status_code == 200:
+                data = res_pixabay.json()
+                hits_originais = data.get("hits", [])
+                hits = []
+                for h in hits_originais:
+                    v_dict = h.get("videos", {})
+                    for size in ["large", "medium", "small", "tiny"]:
+                        if size in v_dict and v_dict[size].get("height", 0) > v_dict[size].get("width", 0):
+                            hits.append(h)
+                            break
+                if hits:
+                    random.shuffle(hits)
+                    for hit in hits:
+                        if len(temp_vids) >= num_videos_necessarios:
+                            break
+                        vid_id = str(hit.get("id", ""))
+                        if not verificar_midia_recente(vid_id):
+                            videos_dict = hit.get("videos", {})
+                            link_download = None
+                            for size in ["large", "medium", "small", "tiny"]:
+                                if size in videos_dict and videos_dict[size].get("url"):
+                                    link_download = videos_dict[size]["url"]
+                                    if videos_dict[size].get("height", 0) > videos_dict[size].get("width", 0):
+                                        break
+                            if link_download:
+                                logger.info(f"✅ Vídeo {len(temp_vids)+1} encontrado no Pixabay! Baixando...")
+                                vid_resp = requests.get(link_download, timeout=30)
+                                temp_vid = f"temp_video_{uuid.uuid4().hex}.mp4"
+                                with open(temp_vid, "wb") as fv:
+                                    fv.write(vid_resp.content)
+                                temp_vids.append(temp_vid)
+                                registrar_midia_usada(vid_id)
+                else:
+                    logger.warning("⚠️ Nenhum vídeo encontrado no Pixabay para essa query.")
+            else:
+                logger.warning(f"⚠️ Pixabay retornou status {res_pixabay.status_code}.")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao acessar Pixabay: {e}")
+
+    def _buscar_pexels():
+        nonlocal temp_vids
+        if not PEXELS_API_KEY or len(temp_vids) >= num_videos_necessarios:
+            return
+        try:
+            logger.info("🔍 [NÍVEL Pexels] Tentando buscar vídeo no Pexels...")
+            url_pexels = f"https://api.pexels.com/videos/search?query={query_encoded}&orientation=portrait&size=medium&per_page=15"
+            headers = {"Authorization": PEXELS_API_KEY}
+            response = requests.get(url_pexels, headers=headers, timeout=15)
+            if response.status_code == 200:
+                data = response.json()
+                if not data.get("videos"):
+                    logger.warning("⚠️ Nenhum vídeo encontrado no Pexels, tentando query coringa 'cinematic'")
+                    response = requests.get("https://api.pexels.com/videos/search?query=cinematic&orientation=portrait&per_page=15", headers=headers, timeout=15)
+                    data = response.json()
+                if data.get("videos"):
+                    videos = data["videos"]
+                    random.shuffle(videos)
+                    for v in videos:
+                        if len(temp_vids) >= num_videos_necessarios:
+                            break
+                        vid_id = str(v.get("id", ""))
+                        if not verificar_midia_recente(vid_id):
+                            video_files = v.get("video_files", [])
+                            arquivos_verticais = [f for f in video_files if f.get("height", 0) > f.get("width", 0)]
+                            link = None
+                            if arquivos_verticais:
+                                arquivos_verticais.sort(key=lambda x: x.get("width", 0), reverse=True)
+                                link = arquivos_verticais[0]["link"]
+                            if link:
+                                logger.info(f"✅ Vídeo {len(temp_vids)+1} encontrado no Pexels! Baixando...")
+                                vid_resp = requests.get(link, timeout=30)
+                                temp_vid = f"temp_video_{uuid.uuid4().hex}.mp4"
+                                with open(temp_vid, "wb") as fv:
+                                    fv.write(vid_resp.content)
+                                temp_vids.append(temp_vid)
+                                registrar_midia_usada(vid_id)
+            else:
+                logger.warning(f"⚠️ Pexels retornou status {response.status_code}.")
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao acessar Pexels: {e}")
+
+    if _usar_pixabay_primeiro:
+        _buscar_pixabay()
+        _buscar_pexels()
+    else:
+        _buscar_pexels()
+        _buscar_pixabay()
+
+    # --- NÍVEL 1 (legado mantido para compatibilidade com outros formatos) ---
+    if False and PIXABAY_API_KEY and len(temp_vids) < num_videos_necessarios:
         try:
             logger.info("🔍 [NÍVEL 1] Tentando buscar vídeo no Pixabay...")
             url_pixabay = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={query_encoded}&video_type=film"
@@ -551,10 +693,14 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             if efeito_escolhido != "none":
                 logger.info(f"✨ Aplicando efeito de vídeo: {efeito_escolhido.upper()}")
 
-            # Sorteia uma das 4 animações para variar o estilo das postagens
-            animacoes_disponiveis = ["typewriter", "fade", "reveal", "static"]
-            animacao = random.choice(animacoes_disponiveis)
-            logger.info(f"🎬 Animação de texto selecionada: {animacao.upper()}")
+            # Para o Conquistador: usa animação sequencial pré-definida; demais formatos: sorteio aleatório
+            if is_conquistador and animacao_conquistador:
+                animacao = animacao_conquistador
+                logger.info(f"🎬 [CONQUISTADOR] Animação sequencial: {animacao.upper()}")
+            else:
+                animacoes_disponiveis = ["typewriter", "fade", "reveal", "static"]
+                animacao = random.choice(animacoes_disponiveis)
+                logger.info(f"🎬 Animação de texto selecionada: {animacao.upper()}")
 
             def _desenhar_assinatura_rodape(frame_array, fator_escala=1.0):
                 """Desenha o logo PNG ou a assinatura GUSTAVO_8K_ no rodapé do vídeo."""
@@ -642,11 +788,12 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 frame = clip.get_frame(t)
                 frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
                 
-                # Conquistador: degradê neon em todos os slides (sem CTA dourado)
+                # Conquistador: degradê com paleta sequencial em todos os slides
                 if is_conquistador:
                     frame = _adicionar_texto_degrade(
                         frame, texto_completo, fonte_normal,
-                        chars_to_show=chars_to_show, fade_alpha=fade_alpha, deslocamento_y=deslocamento_y
+                        chars_to_show=chars_to_show, fade_alpha=fade_alpha,
+                        deslocamento_y=deslocamento_y, paleta=paleta_conquistador
                     )
                 elif idx == idx_cta:
                     # Última cena dos demais formatos = CTA em destaque dourado
