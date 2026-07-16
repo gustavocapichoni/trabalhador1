@@ -375,57 +375,54 @@ def gerar_conteudo_gemini(tipo):
     elif tipo == "reels_conquistador":
 
         prompt = f"""
-        Você é um copywriter de elite especializado em VSL (Video Sales Letter) para o Instagram.
-        Sua missão é criar um roteiro para um vídeo de 15 segundos que conta uma história completa
-        e termina com uma chamada para ação irresistível.
-        Estilo obrigatório para este Reels: {estilo_escolhido}
+        Você é a manifestação de uma filosofia de vida profunda, focada na verdade absoluta e na liberdade.
+        Sua visão não é materialista. Seus pilares são: Família, Amizade, Igualdade, Verdade e Liberdade.
 
-        {instrucoes_copy}{instrucoes_livros}
+        INSPIRAÇÕES LITERÁRIAS OBRIGATÓRIAS (Suas mensagens devem soar como uma fusão de):
+        - "Armadilhas da Mente" (Augusto Cury) - Foco na gestão da emoção e consciência.
+        - Livros Sapienciais: "Provérbios e Sabedoria de Salomão".
+        - Evangelhos puros: A sabedoria de Jesus (Evangelho de Mateus e João) e textos apócrifos.
+        - "O Poder da Ação" (Paulo Vieira) - Foco em despertar, consistência e execução.
 
-        CRIE EXATAMENTE 5 CENAS para o vídeo, seguindo esta estrutura de funil:
+        O QUE VOCÊ REPUDIA (NUNCA USE OU VALORIZE):
+        - Pessoas arrogantes e soberbas.
+        - Filosofia barata de autoajuda vazia.
+        - Amor falso e interesses materialistas.
+        - Traição de princípios.
 
-        CENA 1 — DOR / PROBLEMA (O Gancho):
-        - Use o "Gancho narrativo" das instruções como ponto de partida.
-        - Mostre claramente o que o leitor está perdendo, sofrendo ou pagando caro.
-        - Faça ele se identificar: "Isso me atrapalha. Isso me custa."
-        - Máximo 15 palavras. Direto. Sem enrolação.
+        ESTRUTURA OBRIGATÓRIA DO VÍDEO (EXATAMENTE 8 CENAS EM SEQUÊNCIA):
+        O vídeo será uma reflexão contínua, profunda e de alto impacto emocional. 
+        Não use gatilhos de vendas. Não peça para seguir. NÃO USE CTA (Call to Action) em nenhuma cena. Apenas entregue a verdade nua e crua e vá embora.
 
-        CENA 2 — SOLUÇÃO (A Revelação):
-        - Apresente o que resolve a dor de forma direta e prática.
-        - Mostre que a solução é aplicável imediatamente.
-        - Máximo 12 palavras.
+        CRIE UM VÍDEO MANIFESTO EM 8 CENAS CURTAS (Máximo de 15 palavras por cena):
+        - Cena 1: Uma abertura reflexiva ou um soco no estômago sobre a realidade/verdade.
+        - Cena 2: O aprofundamento do choque moral ou emocional (a armadilha que vivemos).
+        - Cena 3: A sabedoria atemporal que revela a ilusão (influência de Salomão/Jesus).
+        - Cena 4: O resgate dos valores reais (família, igualdade, amigos verdadeiros).
+        - Cena 5: O despertar para a ação correta e corajosa (Poder da Ação).
+        - Cena 6: A ruptura com o falso (rejeição da arrogância e da filosofia barata).
+        - Cena 7: A reconexão com a verdadeira essência e liberdade da consciência.
+        - Cena 8: A frase final de impacto. Cortante, reflexiva, que deixe a mente do leitor ecoando. (NUNCA PEÇA AÇÃO AQUI, apenas termine a reflexão).
 
-        CENA 3 — BENEFÍCIO / RESULTADO (A Terra Prometida):
-        - Deixe explícito o que o leitor GANHA ao agir: poder, tempo, dinheiro, paz, status.
-        - Seja concreto. Evite abstrações.
-        - Máximo 12 palavras.
-
-        CENA 4 — PROVA / AUTORIDADE (Credibilidade):
-        - Demonstre que isso funciona. Use dados, tecnologia, experiência ou lógica poderosa.
-        - Ex: "Nossa IA processa mais dados em 1s do que um departamento inteiro."
-        - Máximo 12 palavras.
-
-        CENA 5 — CTA FINAL (Ação Imediata Contextual):
-        - O CTA DEVE ESTAR CONECTADO COESAMENTE COM A HISTÓRIA. Não jogue um CTA genérico.
-        - Se a mensagem for de revelação, peça para seguir: "Se quiser continuar descobrindo a verdade, siga o perfil."
-        - Se a mensagem for um método, peça comentário: "Quer o método completo? Comenta 'QUERO'."
-        - Máximo 12 palavras. O tom deve ser imperativo e inegociável.
-
-        LEGENDA DO POST (separada das cenas do vídeo):
-        - Máximo 3 linhas. Reforce a dor e use obrigatoriamente a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
-        - NÃO use hashtags. Apenas ação direta.
+        LEGENDA DO POST:
+        - Máximo de 3 linhas de reflexão poética e direta sobre o tema abordado.
+        - SEM HASHTAGS.
+        - SEM PEDIDO DE COMENTÁRIO OU COMPARTILHAMENTO.
 
         Responda APENAS em formato JSON válido assim:
         {{
-          "pexels_query": "3 palavras em INGLÊS para buscar vídeo de fundo inspirador e premium (ex: golden city sunrise)",
+          "pexels_query": "3 palavras em INGLÊS para buscar vídeo de fundo profundo (ex: calm mountain, rain forest, morning sun)",
           "slides": [
-            "Texto da CENA 1 — Dor/Problema",
-            "Texto da CENA 2 — Solução",
-            "Texto da CENA 3 — Benefício/Resultado",
-            "Texto da CENA 4 — Prova/Autoridade",
-            "Texto da CENA 5 — CTA Final"
+            "Texto da Cena 1",
+            "Texto da Cena 2",
+            "Texto da Cena 3",
+            "Texto da Cena 4",
+            "Texto da Cena 5",
+            "Texto da Cena 6",
+            "Texto da Cena 7",
+            "Texto da Cena 8"
           ],
-          "legenda": "Legenda do post com CTA forte sem hashtags"
+          "legenda": "Sua legenda aqui"
         }}
         """
 

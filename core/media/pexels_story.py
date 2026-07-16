@@ -118,6 +118,102 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
 
     return np.array(img)
 
+def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0):
+    img = Image.fromarray(frame_array)
+    w, h = img.size
+    
+    # Camada inferior para sombra e contorno preto
+    shadow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(shadow_layer)
+    
+    # Camada superior puramente branca (será usada como máscara recortada)
+    txt_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(txt_layer)
+
+    margem_px = int(w * 0.075)
+    largura_max_texto = w - (margem_px * 2)
+
+    linhas = _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_texto)
+    if not linhas:
+        return frame_array
+
+    alturas = []
+    larguras = []
+    for l in linhas:
+        bb = draw.textbbox((0, 0), l, font=fonte)
+        alturas.append(bb[3] - bb[1])
+        larguras.append(bb[2] - bb[0])
+
+    espaco_entre = 14
+    padding_v = 20
+    h_texto = sum(alturas) + espaco_entre * (len(linhas) - 1)
+    total_h = h_texto + padding_v * 2
+    by0 = (h - total_h) // 2
+
+    y_inicial = by0 + padding_v + deslocamento_y
+    y = y_inicial
+    chars_drawn = 0
+    for linha, alt, lw in zip(linhas, alturas, larguras):
+        x = (w - lw) // 2
+        
+        if chars_to_show is not None:
+            if chars_drawn >= chars_to_show:
+                break
+            linha_len = len(linha)
+            if chars_drawn + linha_len > chars_to_show:
+                linha_render = linha[:chars_to_show - chars_drawn]
+            else:
+                linha_render = linha
+            chars_drawn += linha_len + 1
+        else:
+            linha_render = linha
+            
+        # Desenha sombra macia e contorno rígido preto
+        shadow_draw.text((x + 3, y + 3), linha_render, font=fonte, fill=(0, 0, 0, int(150 * fade_alpha)))
+        shadow_draw.text((x, y), linha_render, font=fonte, fill=(0, 0, 0, 0), stroke_width=2, stroke_fill=(0, 0, 0, int(255 * fade_alpha)))
+        
+        # Desenha o interior da letra puro para máscara alpha
+        draw.text((x, y), linha_render, font=fonte, fill=(255, 255, 255, int(255 * fade_alpha)))
+        y += alt + espaco_entre
+
+    # Isola o recorte das letras
+    mask = txt_layer.split()[3]
+    
+    # Cria a matriz do degradê: Roxo Neon (176,38,255) -> Branco (255,255,255) -> Azul Elétrico (0,51,255)
+    gradient = np.zeros((h, w, 3), dtype=np.uint8)
+    color_top = np.array([176, 38, 255])
+    color_mid = np.array([255, 255, 255])
+    color_bot = np.array([0, 51, 255])
+    
+    y_min_texto = y_inicial
+    y_max_texto = y_inicial + h_texto
+    h_bloco = max(1, y_max_texto - y_min_texto)
+
+    for i in range(h):
+        if i < y_min_texto:
+            color = color_top
+        elif i > y_max_texto:
+            color = color_bot
+        else:
+            ratio = (i - y_min_texto) / float(h_bloco)
+            if ratio < 0.5:
+                r = (ratio / 0.5)
+                color = color_top * (1 - r) + color_mid * r
+            else:
+                r = ((ratio - 0.5) / 0.5)
+                color = color_mid * (1 - r) + color_bot * r
+        gradient[i, :, :] = color
+        
+    grad_img = Image.fromarray(gradient, 'RGB')
+    final_txt_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    final_txt_layer.paste(grad_img, (0,0), mask=mask)
+    
+    # Empilha as 3 camadas: Fundo (vídeo) + Contorno (Preto) + Texto (Degradê)
+    img = Image.alpha_composite(img.convert("RGBA"), shadow_layer)
+    img = Image.alpha_composite(img, final_txt_layer).convert("RGB")
+
+    return np.array(img)
+
 
 def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0):
     """Desenha o CTA final com visual dourado e destacado — maior impacto visual."""
@@ -223,6 +319,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     clip = None
     final_clip = None
     bg_audio = None
+    outro_clip = None
     query_encoded = urllib.parse.quote(query)
     
     # Define quantos vídeos baixar de forma adaptativa:
@@ -409,8 +506,26 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         duracao = min(clip.duration, duracao_necessaria_reels)
         clip = clip.subclip(0, duracao)
         
-        # Usa a fonte do dia da semana (identidade visual unificada)
-        estilo_do_dia = obter_fonte_do_dia()
+        # --- Carrega o vídeo final preparado pelo usuário se existir ---
+        path_video_final = os.path.join("biblioteca_local", "logo", "video.mp4")
+        if os.path.exists(path_video_final):
+            try:
+                logger.info(f"🎬 [Pexels Story] Carregando vídeo final de encerramento: {path_video_final}")
+                outro_clip = VideoFileClip(path_video_final)
+                w_target, h_target = clip.size
+                if outro_clip.w != w_target or outro_clip.h != h_target:
+                    try:
+                        outro_clip = outro_clip.resized((w_target, h_target))
+                    except AttributeError:
+                        outro_clip = outro_clip.resize((w_target, h_target))
+                outro_duracao = outro_clip.duration
+                logger.info(f"🎬 Vídeo de encerramento carregado: {outro_duracao:.1f}s")
+            except Exception as e_load_outro:
+                logger.warning(f"⚠️ Não foi possível carregar vídeo final: {e_load_outro}")
+                outro_clip = None
+        
+        # Usa Playfair exclusivamente para o Conquistador; senão, a fonte do dia
+        estilo_do_dia = "Playfair.ttf" if is_conquistador else obter_fonte_do_dia()
         logger.info(f"✨ Fonte do dia para o vídeo: {estilo_do_dia}")
         
         # Resolução do vídeo original
@@ -527,15 +642,21 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 frame = clip.get_frame(t)
                 frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
                 
-                # Última cena = CTA em destaque dourado
-                if is_conquistador and idx == idx_cta:
+                # Conquistador: degradê neon em todos os slides (sem CTA dourado)
+                if is_conquistador:
+                    frame = _adicionar_texto_degrade(
+                        frame, texto_completo, fonte_normal,
+                        chars_to_show=chars_to_show, fade_alpha=fade_alpha, deslocamento_y=deslocamento_y
+                    )
+                elif idx == idx_cta:
+                    # Última cena dos demais formatos = CTA em destaque dourado
                     frame = _adicionar_texto_cta(
-                        frame, texto_completo, fonte_cta, 
+                        frame, texto_completo, fonte_cta,
                         chars_to_show=chars_to_show, fade_alpha=fade_alpha, deslocamento_y=deslocamento_y
                     )
                 else:
                     frame = _adicionar_texto_frame(
-                        frame, texto_completo, fonte_normal, 
+                        frame, texto_completo, fonte_normal,
                         chars_to_show=chars_to_show, fade_alpha=fade_alpha, deslocamento_y=deslocamento_y
                     )
                 
@@ -548,6 +669,14 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         else:
             final_clip = clip
 
+        # Acopla o clipe final preparado pelo usuário se existir
+        if outro_clip is not None:
+            try:
+                final_clip = concatenate_videoclips([final_clip, outro_clip], method="compose")
+                logger.info("✅ Vídeo de encerramento acoplado no pexels_story!")
+            except Exception as e_outro_concat:
+                logger.warning(f"⚠️ Erro ao acoplar o vídeo de encerramento: {e_outro_concat}")
+
         # Adicionar áudio de fundo
         try:
             from core.media.reels import garantir_audio_reels
@@ -555,11 +684,12 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             audio_path = garantir_audio_reels()
             if audio_path:
                 bg_audio = AudioFileClip(audio_path)
-                # Loop no áudio se for menor que a duração do vídeo longo
-                if bg_audio.duration < duracao:
-                    bg_audio = afx.audio_loop(bg_audio, duration=duracao)
+                duracao_total_video = final_clip.duration
+                # Loop no áudio se for menor que a duração total do vídeo
+                if bg_audio.duration < duracao_total_video:
+                    bg_audio = afx.audio_loop(bg_audio, duration=duracao_total_video)
                     
-                bg_audio = bg_audio.subclip(0, duracao)
+                bg_audio = bg_audio.subclip(0, duracao_total_video)
                 final_clip = final_clip.set_audio(bg_audio)
                 logger.info("🎵 Áudio de fundo adicionado!")
         except Exception as e:
@@ -586,6 +716,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             if clip: clip.close()
             if final_clip: final_clip.close()
             if bg_audio: bg_audio.close()
+            if outro_clip: outro_clip.close()
             for c in clip_candidatos:
                 try: c.close()
                 except: pass
@@ -606,6 +737,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         try:
             if bg_audio:
                 bg_audio.close()
+        except:
+            pass
+        try:
+            if outro_clip:
+                outro_clip.close()
         except:
             pass
         # Fecha todos os sub-clipes individuais
