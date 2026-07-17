@@ -71,7 +71,7 @@ jobs:
           YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
         run: |
           echo "$YOUTUBE_CLIENT_SECRETS_JSON" > client_secrets.json
-          echo "$YOUTUBE_TOKEN_JSON" > token.json
+          echo "$YOUTUBE_TOKEN_JSON" > token_youtube.json
 
       - name: Executar Bot (Agendado)
         if: github.event_name == 'schedule'
