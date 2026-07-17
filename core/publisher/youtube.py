@@ -32,7 +32,7 @@ def obter_servico_youtube():
         logger.error(f"❌ Erro ao criar serviço do YouTube: {e}")
         return None
 
-def postar_no_youtube(caminho_video, titulo, descricao, tags=None, privacidade="unlisted"):
+def postar_no_youtube(caminho_video, titulo, descricao, tags=None, privacidade="public"):
     """
     Faz o upload do vídeo para o YouTube Shorts.
     """
