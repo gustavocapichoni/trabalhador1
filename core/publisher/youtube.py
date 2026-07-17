@@ -15,12 +15,16 @@ SCOPES = [
 
 def obter_servico_youtube():
     """Carrega as credenciais e retorna o serviço da API do YouTube."""
-    if not os.path.exists("token_youtube.json"):
-        logger.error("❌ Arquivo 'token_youtube.json' não encontrado. Rode autenticar_youtube.py primeiro.")
+    # Garante o caminho absoluto a partir da raiz do projeto
+    root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    token_path = os.path.join(root_dir, "token_youtube.json")
+    
+    if not os.path.exists(token_path):
+        logger.error(f"❌ Arquivo 'token_youtube.json' não encontrado em {token_path}. Rode autenticar_youtube.py primeiro.")
         return None
         
     try:
-        credentials = Credentials.from_authorized_user_file("token_youtube.json", SCOPES)
+        credentials = Credentials.from_authorized_user_file(token_path, SCOPES)
         # O build cria o serviço da API
         youtube = build("youtube", "v3", credentials=credentials)
         return youtube

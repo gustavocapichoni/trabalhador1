@@ -8,7 +8,8 @@ from core.config.state import carregar_estado
 from core.publisher.youtube import obter_servico_youtube
 from googleapiclient.errors import HttpError
 
-METRICAS_FILE = "analytics/dados/metricas_youtube.json"
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+METRICAS_FILE = os.path.join(root_dir, "analytics", "dados", "metricas_youtube.json")
 
 def carregar_metricas_local():
     if os.path.exists(METRICAS_FILE):

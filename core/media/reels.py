@@ -11,36 +11,48 @@ from loguru import logger
 def garantir_audio_reels(pastas=None):
     from core.config.state import carregar_estado, salvar_estado
     try:
+        # Garante caminhos absolutos baseados na raiz do projeto
+        root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         if pastas is None:
-            pastas = [os.path.join("biblioteca_local", "musicas"), "musicas", "."]
+            pastas = [os.path.join(root_dir, "biblioteca_local", "musicas")]
+        else:
+            pastas = [os.path.join(root_dir, p) if not os.path.isabs(p) else p for p in pastas]
+            
         mp3_files = []
+        pasta_principal = "padrao"
         for pasta in pastas:
             if os.path.exists(pasta):
+                pasta_principal = os.path.basename(pasta)
                 for f in os.listdir(pasta):
                     if f.lower().endswith(".mp3") and os.path.isfile(os.path.join(pasta, f)):
                         mp3_files.append(os.path.join(pasta, f))
+        
         if mp3_files:
             estado = carregar_estado()
-            fila_musicas = estado.get("fila_musicas", [])
+            chave_estado = f"fila_musicas_{pasta_principal}"
             
-            # Filtra a fila para remover arquivos que não existem mais
-            fila_musicas = [f for f in fila_musicas if os.path.exists(f)]
+            # Se a chave antiga existir (migração), usa e depois deleta
+            if pasta_principal == "musicas" and "fila_musicas" in estado:
+                fila_musicas = estado.pop("fila_musicas")
+            else:
+                fila_musicas = estado.get(chave_estado, [])
             
-            # Se a fila acabou ou está vazia, cria uma nova com todas as músicas embaralhadas
+            # Filtra a fila para remover arquivos que não existem mais ou que não pertencem a estas pastas
+            fila_musicas = [f for f in fila_musicas if os.path.exists(f) and f in mp3_files]
+            
+            # Se a fila acabou ou está vazia, cria uma nova com todas as músicas encontradas
             if not fila_musicas:
-                logger.info("🎶 Fila de músicas esgotada. Criando nova fila com todas as músicas...")
+                logger.info(f"🎶 Fila '{chave_estado}' esgotada. Criando nova fila com {len(mp3_files)} músicas...")
                 nova_fila = mp3_files.copy()
                 random.shuffle(nova_fila)
                 fila_musicas = nova_fila
             
-            # Pega a próxima música da fila (a primeira da lista)
+            # Pega a próxima música da fila
             escolhido = fila_musicas.pop(0)
-            logger.info(f"🎵 Próxima música da fila: '{os.path.basename(escolhido)}' | Restam {len(fila_musicas)} na fila.")
+            logger.info(f"🎵 Próxima música ({pasta_principal}): '{os.path.basename(escolhido)}' | Restam {len(fila_musicas)} na fila.")
             
             # Salva a fila atualizada no estado
-            estado["fila_musicas"] = fila_musicas
-            # Remove campo antigo se existir para não confundir
-            estado.pop("ultimas_musicas", None)
+            estado[chave_estado] = fila_musicas
             salvar_estado(estado)
             
             return escolhido
