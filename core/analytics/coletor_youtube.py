@@ -138,6 +138,32 @@ def buscar_metricas_youtube_api(youtube, video_id, data_publicacao):
         metricas["shares"] = 0
         
     return metricas
+def buscar_videos_recentes_youtube_api(youtube):
+    """Busca os vídeos mais recentes do canal autenticado no YouTube."""
+    try:
+        req = youtube.search().list(part="snippet", forMine=True, type="video", maxResults=50, order="date")
+        res = req.execute()
+        
+        videos_descobertos = []
+        for item in res.get("items", []):
+            try:
+                dt_obj = datetime.strptime(item["snippet"]["publishedAt"], "%Y-%m-%dT%H:%M:%SZ")
+                data_str = dt_obj.replace(tzinfo=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+            except:
+                data_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+
+            videos_descobertos.append({
+                "video_id": item["id"]["videoId"],
+                "data": data_str,
+                "tipo": "youtube_shorts", # Assume shorts para simplificar no analytics
+                "tema": "Descoberto Automaticamente",
+                "caption": item["snippet"]["title"]
+            })
+        logger.info(f"🔎 Encontrados {len(videos_descobertos)} vídeos no canal do YouTube.")
+        return videos_descobertos
+    except Exception as e:
+        logger.error(f"Exceção ao buscar vídeos do canal: {e}")
+        return []
 
 def rodar_coleta_youtube():
     logger.info("📊 Iniciando coleta de métricas do YOUTUBE...")
@@ -150,10 +176,19 @@ def rodar_coleta_youtube():
         logger.error("Serviço do YouTube indisponível para analytics.")
         return
 
+    # --- NOVO: Buscar vídeos externos e unir com o histórico ---
+    videos_externos = buscar_videos_recentes_youtube_api(youtube)
+    todos_videos_dict = {p.get("video_id"): p for p in videos_externos if p.get("video_id")}
+    for p in historico:
+        if p.get("video_id"):
+            todos_videos_dict[p.get("video_id")] = p
+    historico_unificado = list(todos_videos_dict.values())
+    # ------------------------------------------------------------
+
     agora = datetime.now(timezone.utc)
     posts_processados = 0
 
-    for post in historico:
+    for post in historico_unificado:
         video_id = post.get("video_id")
         data_str = post.get("data")
 
