@@ -16,18 +16,21 @@ from core.publisher.email_notifier import enviar_email_notificacao
 from core.config.settings import POSTAR_NO_YOUTUBE
 from core.publisher.youtube import postar_no_youtube
 
-def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade=""):
-    from core.config.state import carregar_estado, salvar_estado
+def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade="", video_id_yt=""):
+    from core.analytics.db import get_db
     from datetime import datetime, timezone
+    
     if not post_id or post_id.startswith("DRY_RUN"):
         return
         
-    estado = carregar_estado()
-    if "historico" not in estado:
-        estado["historico"] = []
+    db = get_db()
+    if not db:
+        print("⚠️ Firebase não conectado, postagem não registrada no histórico.")
+        return
         
     novo_post = {
         "post_id": post_id,
+        "video_id_yt": video_id_yt,
         "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
         "tipo": tipo,
         "tema": tema,
@@ -45,42 +48,12 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="",
         "tipo_cta": tipo_cta,
         "duracao_video": duracao_video
     }
-    estado["historico"].append(novo_post)
-    salvar_estado(estado)
-
-def registrar_postagem_youtube(tipo, tema, video_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade=""):
-    from core.config.state import carregar_estado, salvar_estado
-    from datetime import datetime, timezone
-    if not video_id or video_id.startswith("DRY_RUN"):
-        return
-
-    estado = carregar_estado()
-    if "historico_youtube" not in estado:
-        estado["historico_youtube"] = []
-
-    novo_post = {
-        "video_id": video_id,
-        "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
-        "tipo": tipo,
-        "tema": tema,
-        "subtema": subtema,
-        "objetivo": objetivo,
-        "estilo_copy": estilo,
-        "tom_emocional": tom_emocional,
-        "estrutura_narrativa": estrutura_narrativa,
-        "complexidade": complexidade,
-        "categoria_imagem": categoria_imagem,
-        "categoria_musica": categoria_musica,
-        "frase_visual": frase_visual,
-        "legenda": legenda,
-        "gancho_categoria": gancho_categoria,
-        "tipo_cta": tipo_cta,
-        "duracao_video": duracao_video,
-        "plataforma": "youtube"
-    }
-
-    estado["historico_youtube"].insert(0, novo_post)
-    salvar_estado(estado)
+    
+    try:
+        db.collection("historico_posts").document(post_id).set(novo_post, merge=True)
+        print(f"✅ Post {post_id} registrado com sucesso em historico_posts.")
+    except Exception as e:
+        print(f"❌ Erro ao salvar post no Firebase: {e}")
 
 def main():
     parser = argparse.ArgumentParser(description="Bot de Instagram Automático 2.0")
@@ -297,6 +270,23 @@ def main():
             cat_imagem_val = conteudo.get("categoria_imagem", "")
             cat_musica_val = conteudo.get("categoria_musica", "")
             est_narrativa_val = conteudo.get("estrutura_narrativa", "")
+            
+            yt_video_id = ""
+            if POSTAR_NO_YOUTUBE and args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"] and isinstance(midia, str) and midia.endswith(".mp4"):
+                print("📺 --- Iniciando Postagem no YouTube ---")
+                try:
+                    yt_video_id = postar_no_youtube(
+                        caminho_video=midia,
+                        titulo=conteudo.get("titulo_youtube", tema_escolhido.capitalize()),
+                        descricao=legenda,
+                        tags=conteudo.get("tags_youtube", [tema_escolhido])
+                    )
+                    if yt_video_id:
+                        print(f"✅ Vídeo publicado no YouTube com ID: {yt_video_id}")
+                except Exception as e:
+                    print(f"⚠️ Erro ao postar no YouTube: {e}")
+            
+            # Registra apenas uma vez, contendo o post_id do Insta e o video_id_yt
             complexidade_val = conteudo.get("complexidade", "")
             
             registrar_postagem(
@@ -305,7 +295,8 @@ def main():
                 gancho_categoria=gancho_cat, tipo_cta=tipo_cta_val, duracao_video=dur_video,
                 subtema=subtema_val, objetivo=objetivo_val, categoria_imagem=cat_imagem_val,
                 categoria_musica=cat_musica_val, tom_emocional=tom_val,
-                estrutura_narrativa=est_narrativa_val, complexidade=complexidade_val
+                estrutura_narrativa=est_narrativa_val, complexidade=complexidade_val,
+                video_id_yt=yt_video_id
             )
         
         # Passo 5: Envia E-mail de Sucesso

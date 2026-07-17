@@ -70,8 +70,17 @@ def gerar_conteudo_gemini(tipo):
         logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
 
         # Busca histórico para evitar repetição de mensagens no Conquistador
-        posts_recentes = [p for p in estado.get("historico", []) if p.get("tipo") == "reels_conquistador"]
-        ultimos_posts = posts_recentes[-6:]
+        from core.analytics.db import get_db
+        db = get_db()
+        ultimos_posts = []
+        if db:
+            try:
+                docs = db.collection("historico_posts").where("tipo", "==", "reels_conquistador").order_by("data", direction="DESCENDING").limit(6).stream()
+                ultimos_posts = [doc.to_dict() for doc in docs]
+                # Inverte a ordem para ficar do mais antigo para o mais novo
+                ultimos_posts.reverse()
+            except Exception as e:
+                logger.error(f"Erro ao buscar histórico do Firebase: {e}")
         if ultimos_posts:
             evitar_repeticao_msg = "\n        MUITO IMPORTANTE (EVITE REPETIÇÃO DE CONTEÚDO):\n"
             evitar_repeticao_msg += "        Você deve obrigatoriamente evitar repetir as ideias, as metáforas ou os raciocínios das seguintes mensagens que já foram geradas recentemente no perfil:\n"

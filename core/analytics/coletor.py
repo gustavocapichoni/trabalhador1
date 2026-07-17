@@ -206,8 +206,18 @@ def buscar_posts_recentes_api():
 
 def rodar_coleta():
     logger.info("📊 Iniciando coleta de métricas...")
-    estado = carregar_estado()
-    historico = estado.get("historico", [])
+    from core.analytics.db import get_db
+    db = get_db()
+    
+    historico = []
+    if db:
+        try:
+            docs = db.collection("historico_posts").stream()
+            historico = [doc.to_dict() for doc in docs]
+            logger.info(f"📚 Carregados {len(historico)} posts do histórico (Firebase).")
+        except Exception as e:
+            logger.error(f"Erro ao ler historico_posts: {e}")
+
     metricas_salvas = carregar_metricas()
 
     # --- NOVO: Buscar posts externos e unir com o histórico ---

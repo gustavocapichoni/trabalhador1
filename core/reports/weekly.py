@@ -85,21 +85,22 @@ def obter_metricas_instagram(ig_id):
 
 def carregar_historico_recente():
     posts_recentes = []
-    estado = carregar_estado()
-    historico = estado.get("historico", [])
-    
-    # Filtra postagens dos últimos 7 dias
-    limite_data = datetime.now(timezone.utc) - timedelta(days=7)
-    for post in historico:
-        try:
-            # post['data'] está em formato "%Y-%m-%d %H:%M:%S"
-            post_dt = datetime.strptime(post.get("data"), "%Y-%m-%d %H:%M:%S")
-            # Converter datetime ingênuo para ciente de UTC (assumindo UTC do runner)
-            post_dt = post_dt.replace(tzinfo=timezone.utc)
-            if post_dt >= limite_data:
-                posts_recentes.append(post)
-        except Exception:
-            posts_recentes.append(post)
+    from core.analytics.db import get_db
+    db = get_db()
+    if not db:
+        return posts_recentes
+
+    try:
+        limite_data = datetime.now(timezone.utc) - timedelta(days=7)
+        # Tenta pegar apenas da data para frente (string sorting)
+        limite_str = limite_data.strftime("%Y-%m-%d %H:%M:%S")
+        
+        docs = db.collection("historico_posts").where("data", ">=", limite_str).stream()
+        for doc in docs:
+            posts_recentes.append(doc.to_dict())
+            
+    except Exception as e:
+        print(f"⚠️ Erro ao consultar historico_posts: {e}")
             
     return posts_recentes
 

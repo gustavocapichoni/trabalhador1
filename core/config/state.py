@@ -4,7 +4,7 @@ from loguru import logger
 from core.analytics.db import get_db
 
 ESTADO_FILE = "estado_migrado.json"
-DEFAULT_STATE = {"historico": [], "ultimos_temas": [], "ultimo_carousel": 3}
+DEFAULT_STATE = {"ultimos_temas": [], "ultimo_carousel": 3}
 
 def carregar_estado():
     db = get_db()

@@ -167,8 +167,6 @@ def buscar_videos_recentes_youtube_api(youtube):
 
 def rodar_coleta_youtube():
     logger.info("📊 Iniciando coleta de métricas do YOUTUBE...")
-    estado = carregar_estado()
-    historico = estado.get("historico_youtube", [])
     metricas_salvas = carregar_metricas()
     
     youtube = obter_servico_youtube()
@@ -176,14 +174,9 @@ def rodar_coleta_youtube():
         logger.error("Serviço do YouTube indisponível para analytics.")
         return
 
-    # --- NOVO: Buscar vídeos externos e unir com o histórico ---
+    # Usar apenas a busca externa para descobrir os vídeos do canal
     videos_externos = buscar_videos_recentes_youtube_api(youtube)
-    todos_videos_dict = {p.get("video_id"): p for p in videos_externos if p.get("video_id")}
-    for p in historico:
-        if p.get("video_id"):
-            todos_videos_dict[p.get("video_id")] = p
-    historico_unificado = list(todos_videos_dict.values())
-    # ------------------------------------------------------------
+    historico_unificado = videos_externos
 
     agora = datetime.now(timezone.utc)
     posts_processados = 0
