@@ -38,4 +38,11 @@ Este documento é o inventário completo do que o seu Publicador Autônomo e Cie
 *   **Sincronização em Nuvem (Firebase):** Toda a memória estratégica, todas as métricas históricas e o avanço dos experimentos são salvos na nuvem (Firestore). O bot nunca sofre "amnésia" mesmo que você mude de computador.
 
 ---
-*Status do Sistema: Auditoria limpa e finalizada com sucesso em 15 de Julho.*
+
+## 🌐 Nível 5: Expansão Multi-Plataforma (Ecossistema)
+
+*   **Publicador Dual (Instagram + YouTube Shorts):** O motor de renderização agora cria duas versões simultâneas do mesmo vídeo. Ele separa as trilhas sonoras inteligentemente, usando áudios livres de direitos autorais no YouTube para proteger o canal de "strikes", enquanto publica a versão original no Instagram.
+*   **Analytics Isolado Multi-Banco:** O robô varre de forma independente os dados da API Oficial do YouTube (Data e Analytics) e salva as métricas críticas (como Retenção Média e Inscritos Ganhos) em um banco de dados Firebase totalmente isolado, impedindo a contaminação de dados entre as redes.
+
+---
+*Status do Sistema: Integração YouTube Shorts + Analytics Dual finalizada com sucesso.*
