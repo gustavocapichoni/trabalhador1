@@ -13,6 +13,45 @@ from core.config.state import carregar_estado, salvar_estado
 from core.analytics.leitor_pdf import ler_resumo_ultimo_pdf
 from loguru import logger
 
+
+def buscar_historico_por_tema(tema, tipo_post=None, limite=8):
+    """
+    Busca os últimos posts do mesmo TEMA no historico_posts do Firebase.
+    Retorna uma string de contexto para ser injetada no prompt da IA,
+    instruindo-a a não repetir as frases e ideias já usadas nesse tema.
+    """
+    try:
+        from core.analytics.db import get_db
+        db = get_db()
+        if not db:
+            return ""
+
+        # Consulta: mesmo tema, ordenado do mais recente ao mais antigo
+        query = db.collection("historico_posts").where("tema", "==", tema)
+        if tipo_post:
+            query = query.where("tipo", "==", tipo_post)
+        docs = query.order_by("data", direction="DESCENDING").limit(limite).stream()
+        posts_anteriores = [doc.to_dict() for doc in docs]
+
+        if not posts_anteriores:
+            return ""
+
+        msg = "\n        PROIBIDO REPETIR (HISTÓRICO DO TEMA):\n"
+        msg += f"        O tema de hoje é '{tema}'. Veja abaixo o que já foi publicado nesse tema recentemente.\n"
+        msg += "        Você DEVE criar algo completamente diferente — novas frases, novas metáforas, novos ângulos:\n"
+        for i, p in enumerate(posts_anteriores):
+            frase = p.get("frase_visual") or ""
+            legenda_trecho = (p.get("legenda") or "")[:120]
+            data = p.get("data", "")[:10]
+            if frase or legenda_trecho:
+                msg += f"        * Post {i+1} ({data}): Frase='{frase[:150]}' | Legenda='{legenda_trecho}...'\n"
+        msg += "        Qualquer semelhança com os textos acima é inaceitável. Seja 100% original.\n"
+        return msg
+
+    except Exception as e:
+        logger.warning(f"Erro ao buscar histórico por tema '{tema}': {e}")
+        return ""
+
 def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", tom_emocional=""):
     """
     Funcao auxiliar para centralizar o pos-processamento dos dados gerados (IA ou Contingencia).
@@ -69,26 +108,8 @@ def gerar_conteudo_gemini(tipo):
         salvar_estado(estado)
         logger.info(f"🎯 [CONQUISTADOR] Tema forçado pelo ciclo: {tema_escolhido}")
 
-        # Busca histórico para evitar repetição de mensagens no Conquistador
-        from core.analytics.db import get_db
-        db = get_db()
-        ultimos_posts = []
-        if db:
-            try:
-                docs = db.collection("historico_posts").where("tipo", "==", "reels_conquistador").order_by("data", direction="DESCENDING").limit(6).stream()
-                ultimos_posts = [doc.to_dict() for doc in docs]
-                # Inverte a ordem para ficar do mais antigo para o mais novo
-                ultimos_posts.reverse()
-            except Exception as e:
-                logger.error(f"Erro ao buscar histórico do Firebase: {e}")
-        if ultimos_posts:
-            evitar_repeticao_msg = "\n        MUITO IMPORTANTE (EVITE REPETIÇÃO DE CONTEÚDO):\n"
-            evitar_repeticao_msg += "        Você deve obrigatoriamente evitar repetir as ideias, as metáforas ou os raciocínios das seguintes mensagens que já foram geradas recentemente no perfil:\n"
-            for p_idx, p in enumerate(ultimos_posts):
-                frases_visual = p.get("frase_visual") or ""
-                if frases_visual:
-                    evitar_repeticao_msg += f"        * Post Anterior {p_idx+1}: {frases_visual[:250]}\n"
-            evitar_repeticao_msg += "        Crie algo totalmente inédito e novo, com abordagens originais.\n"
+        # Busca histórico DESTE TEMA para evitar repetição de mensagens no Conquistador
+        evitar_repeticao_msg = buscar_historico_por_tema(tema_escolhido, tipo_post="reels_conquistador", limite=6)
     else:
         # Se for o primeiro post do dia, rotaciona o tema sequencialmente
         if estado.get("data_tema_do_dia") == dia_hoje_str and estado.get("tema_do_dia"):
@@ -106,6 +127,11 @@ def gerar_conteudo_gemini(tipo):
             estado["index_tema_diario"] = (idx + 1) % len(temas_lista)
             salvar_estado(estado)
             logger.info(f"🎲 Novo tema sequencial diário ativado: {tema_escolhido}")
+
+        # Busca histórico DESTE TEMA no historico_posts para não repetir a mensagem
+        evitar_repeticao_msg = buscar_historico_por_tema(tema_escolhido, tipo_post=tipo, limite=8)
+        if evitar_repeticao_msg:
+            logger.info(f"📚 Histórico do tema '{tema_escolhido}' carregado para anti-repetição.")
 
         # NOVO FLUXO: Ciclo sequencial diário
         recomendacoes_file = "analytics/dados/recomendacoes.json"
@@ -182,6 +208,10 @@ def gerar_conteudo_gemini(tipo):
     instrucoes_copy, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta = montar_instrucoes_copy(
         detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, is_conquistador=is_conquistador
     )
+
+    # Injeta o histórico do tema no instrucoes_copy → propagado automaticamente para TODOS os tipos de post
+    if evitar_repeticao_msg:
+        instrucoes_copy += evitar_repeticao_msg
 
     # Estilo de abordagem sorteado (com anti-repetição)
     estilo_escolhido = sortear_estilo(hist_estilos)
