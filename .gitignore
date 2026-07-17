@@ -12,6 +12,8 @@ __pycache__/
 # Local generated media
 *.jpg
 *.mp4
+!biblioteca_local/**/*.mp4
+!biblioteca_local/**/*.jpg
 reels_base.jpg
 reels_pronto.mp4
 reels_pronto_*.mp4
