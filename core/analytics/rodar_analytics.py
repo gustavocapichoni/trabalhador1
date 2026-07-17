@@ -10,6 +10,7 @@ sys.path.append(ROOT_DIR)
 from core.analytics.coletor import rodar_coleta, carregar_metricas_local
 from core.analytics.analisador import analisar_padroes
 from core.analytics.ajustador import gerar_recomendacoes_cruzadas
+from core.analytics.coletor_youtube import rodar_coleta_youtube, carregar_metricas_local as carregar_metricas_youtube_local
 
 # Mapeamento de ciclo para janela de dias
 JANELA_CICLOS = {
@@ -21,10 +22,15 @@ JANELA_CICLOS = {
 }
 
 def apenas_coletar():
-    """Fase de ingestão pura: coleta dados da API do Instagram e salva no Firebase.
+    """Fase de ingestão pura: coleta dados da API do Instagram e YouTube e salva no Firebase.
     Nenhuma recomendação nova é gerada. Roda todo dia às 4h."""
     print("=== [INGESTÃO DIÁRIA] Coletando métricas frescas da API do Instagram ===")
     rodar_coleta()
+    print("=== [INGESTÃO DIÁRIA] Coletando métricas frescas da API do YouTube ===")
+    try:
+        rodar_coleta_youtube()
+    except Exception as e:
+        print(f"⚠️ Coleta YouTube com erro (não crítico): {e}")
     print("=== [INGESTÃO DIÁRIA] Coleta finalizada. Nenhuma recomendação foi alterada. ===")
 
 def rodar_ciclo(ciclo):
@@ -38,8 +44,12 @@ def rodar_ciclo(ciclo):
     print(f"=== [ANALYTICS] Iniciando ciclo {ciclo.upper()} ===")
 
     # 1. Garante que os dados do Firebase estao sincronizados localmente
-    print("Sincronizando metricas do Firebase...")
+    print("Sincronizando metricas do Firebase (Instagram + YouTube)...")
     rodar_coleta()
+    try:
+        rodar_coleta_youtube()
+    except Exception as e:
+        print(f"⚠️ Coleta YouTube com erro (não crítico): {e}")
     metricas = carregar_metricas_local()
 
     if not metricas or "posts" not in metricas or len(metricas["posts"]) == 0:

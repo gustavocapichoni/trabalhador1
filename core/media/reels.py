@@ -8,10 +8,11 @@ if not hasattr(PIL.Image, 'ANTIALIAS'):
 from moviepy.editor import ImageClip, AudioFileClip
 from loguru import logger
 
-def garantir_audio_reels():
+def garantir_audio_reels(pastas=None):
     from core.config.state import carregar_estado, salvar_estado
     try:
-        pastas = [os.path.join("biblioteca_local", "musicas"), "musicas", "."]
+        if pastas is None:
+            pastas = [os.path.join("biblioteca_local", "musicas"), "musicas", "."]
         mp3_files = []
         for pasta in pastas:
             if os.path.exists(pasta):
@@ -69,8 +70,34 @@ def garantir_audio_reels():
         logger.warning(f"⚠️ Erro ao gerar silêncio temporário com ffmpeg: {e}")
         pass
     return None
+
+def trocar_audio_video(caminho_video_orig, caminho_audio_novo, caminho_saida):
+    """
+    Substitui o áudio de um vídeo MP4 existente por um novo áudio MP3
+    usando ffmpeg de forma ultra rápida (sem decodificar o vídeo).
+    """
+    import subprocess
+    import imageio_ffmpeg
+    logger.info(f"🔄 Trocando áudio do vídeo para a versão do YouTube...")
+    
+    ffmpeg_exe = imageio_ffmpeg.get_ffmpeg_exe()
+    
+    cmd = [
+        ffmpeg_exe, "-y",
+        "-i", caminho_video_orig,       # Entrada 0: Vídeo original
+        "-i", caminho_audio_novo,       # Entrada 1: Novo áudio
+        "-map", "0:v:0",                # Mapeia o vídeo da entrada 0
+        "-map", "1:a:0",                # Mapeia o áudio da entrada 1
+        "-c:v", "copy",                 # Copia o vídeo (sem re-renderizar, ultra rápido!)
+        "-c:a", "aac",                  # Codifica o áudio em AAC
+        "-shortest",                    # Ajusta para o menor tempo entre vídeo e áudio
+        caminho_saida
+    ]
+    subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    return caminho_saida
+
 def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pronto.mp4",
-                      textos=None, fonte_path=None, fonte_size=86):
+                      textos=None, fonte_path=None, fonte_size=86, incluir_video_final=True):
     logger.info("🎬 Montando slideshow 9:16 com música de fundo e animações de texto...")
     if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
         raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Reels.")
@@ -108,7 +135,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
         outro_clip = None
         outro_duracao = 0.0
         path_video_final = os.path.join("biblioteca_local", "logo", "video.mp4")
-        if os.path.exists(path_video_final):
+        if incluir_video_final and os.path.exists(path_video_final):
             try:
                 try:
                     from moviepy.editor import VideoFileClip as _VFC

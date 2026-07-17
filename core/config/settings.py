@@ -53,3 +53,8 @@ IG_ACCOUNT_ID = os.getenv("IG_ACCOUNT_ID")
 SMTP_EMAIL = os.getenv("SMTP_EMAIL")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 NOTIFY_EMAIL = os.getenv("NOTIFY_EMAIL")
+
+# ==========================================
+# CONFIGURAÇÃO DE REDES SOCIAIS ADICIONAIS
+# ==========================================
+POSTAR_NO_YOUTUBE = os.getenv("POSTAR_NO_YOUTUBE", "False").lower() in ("true", "1", "yes", "t")

@@ -8,3 +8,10 @@ edge-tts
 firebase-admin
 loguru
 feedparser==6.0.11
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2

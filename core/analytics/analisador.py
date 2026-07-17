@@ -31,7 +31,9 @@ def calcular_score(metricas, tipo_post="feed"):
         plays            = metricas.get("plays", 0)
         avg_watch_time   = metricas.get("ig_reels_avg_watch_time", 0)
         total_watch_time = metricas.get("ig_reels_video_view_total_time", 0)
-        score += (plays * 2) + (avg_watch_time * 0.01) + (total_watch_time * 0.001)
+        profile_visits   = metricas.get("profile_visits", 0)
+        follows          = metricas.get("follows", 0)
+        score += (plays * 2) + (avg_watch_time * 0.01) + (total_watch_time * 0.001) + (profile_visits * 2) + (follows * 5)
 
     else:
         profile_visits = metricas.get("profile_visits", 0)

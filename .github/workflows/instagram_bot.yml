@@ -65,9 +65,18 @@ jobs:
       - name: Instalar Dependências (PIP)
         run: pip install -r requirements.txt
 
+      - name: Criar arquivos de credenciais do YouTube
+        env:
+          YOUTUBE_CLIENT_SECRETS_JSON: ${{ secrets.YOUTUBE_CLIENT_SECRETS_JSON }}
+          YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
+        run: |
+          echo "$YOUTUBE_CLIENT_SECRETS_JSON" > client_secrets.json
+          echo "$YOUTUBE_TOKEN_JSON" > token.json
+
       - name: Executar Bot (Agendado)
         if: github.event_name == 'schedule'
         env:
+          POSTAR_NO_YOUTUBE: ${{ secrets.POSTAR_NO_YOUTUBE }}
           GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
@@ -91,6 +100,7 @@ jobs:
       - name: Executar Bot (Manual)
         if: github.event_name == 'workflow_dispatch'
         env:
+          POSTAR_NO_YOUTUBE: ${{ secrets.POSTAR_NO_YOUTUBE }}
           GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
           GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
           GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}

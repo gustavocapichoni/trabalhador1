@@ -123,8 +123,8 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
         tipo_lower = tipo_post.lower()
         
         if "reel" in tipo_lower or "pexels" in tipo_lower:
-            # Reels: métricas de retenção e tempo assistido
-            metrics_query = "views,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reach,saved,shares"
+            # Reels: métricas de retenção, tempo assistido, seguidores e visitas ao perfil
+            metrics_query = "views,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reach,saved,shares,profile_visits,follows"
             logger.info(f"🎬 Coletando métricas de REELS para {post_id}")
         elif "story" in tipo_lower:
             # Stories: métricas de navegação e retenção

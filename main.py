@@ -13,6 +13,8 @@ from core.ai.prompts import TEMAS_MAPEADOS
 from core.design.motor_visual import criar_arte
 from core.publisher.instagram import postar_no_instagram
 from core.publisher.email_notifier import enviar_email_notificacao
+from core.config.settings import POSTAR_NO_YOUTUBE
+from core.publisher.youtube import postar_no_youtube
 
 def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade=""):
     from core.config.state import carregar_estado, salvar_estado
@@ -44,6 +46,40 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="",
         "duracao_video": duracao_video
     }
     estado["historico"].append(novo_post)
+    salvar_estado(estado)
+
+def registrar_postagem_youtube(tipo, tema, video_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade=""):
+    from core.config.state import carregar_estado, salvar_estado
+    from datetime import datetime, timezone
+    if not video_id or video_id.startswith("DRY_RUN"):
+        return
+
+    estado = carregar_estado()
+    if "historico_youtube" not in estado:
+        estado["historico_youtube"] = []
+
+    novo_post = {
+        "video_id": video_id,
+        "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+        "tipo": tipo,
+        "tema": tema,
+        "subtema": subtema,
+        "objetivo": objetivo,
+        "estilo_copy": estilo,
+        "tom_emocional": tom_emocional,
+        "estrutura_narrativa": estrutura_narrativa,
+        "complexidade": complexidade,
+        "categoria_imagem": categoria_imagem,
+        "categoria_musica": categoria_musica,
+        "frase_visual": frase_visual,
+        "legenda": legenda,
+        "gancho_categoria": gancho_categoria,
+        "tipo_cta": tipo_cta,
+        "duracao_video": duracao_video,
+        "plataforma": "youtube"
+    }
+
+    estado["historico_youtube"].insert(0, novo_post)
     salvar_estado(estado)
 
 def main():
@@ -134,7 +170,8 @@ def main():
                         caminho_saida=nome_saida_reels,
                         textos=frases_reels,
                         fonte_path=fonte_path,
-                        fonte_size=fonte_size
+                        fonte_size=fonte_size,
+                        incluir_video_final=(args.type != "story_manha")  # Story da manhã não inclui vídeo final
                     )
                 except Exception as e:
                     print(f"⚠️ [DRY-RUN] Pulando geração real de vídeo do Reels: {e}")
@@ -146,7 +183,8 @@ def main():
                     caminho_saida=nome_saida_reels,
                     textos=frases_reels,
                     fonte_path=fonte_path,
-                    fonte_size=fonte_size
+                    fonte_size=fonte_size,
+                    incluir_video_final=(args.type != "story_manha")  # Story da manhã não inclui vídeo final
                 )
                 
         # Passo 3.5: Se for Story (estático), converte obrigatoriamente JPGs para MP4s com música
@@ -199,6 +237,55 @@ def main():
                 frase_visual = " | ".join(frase_visual)
 
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
+        
+        # Postagem opcional no YouTube Shorts para formatos de vídeo
+        if POSTAR_NO_YOUTUBE and args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"] and isinstance(midia, str) and midia.endswith(".mp4"):
+            try:
+                # Carrega o áudio específico do YouTube
+                from core.media.reels import trocar_audio_video, garantir_audio_reels
+                caminho_yt_audio = garantir_audio_reels(pastas=[os.path.join("biblioteca_local", "musicas-youtube")])
+                
+                if caminho_yt_audio and os.path.exists(caminho_yt_audio):
+                    # Cria um vídeo temporário substituindo o áudio
+                    nome_saida_yt = midia.replace(".mp4", "_youtube.mp4")
+                    trocar_audio_video(midia, caminho_yt_audio, nome_saida_yt)
+                    arquivos_gerados.append(nome_saida_yt)  # Garante que será limpo depois
+                    caminho_video_envio = nome_saida_yt
+                else:
+                    print("⚠️ Nenhuma música encontrada na pasta musicas-youtube. Enviando vídeo original.")
+                    caminho_video_envio = midia
+
+                titulo_yt = conteudo.get("titulo") or conteudo.get("frase") or tema_escolhido
+                if isinstance(titulo_yt, list):
+                    titulo_yt = titulo_yt[0] if titulo_yt else tema_escolhido
+                
+                # Executa o upload do vídeo com áudio trocado
+                if not args.dry_run:
+                    yt_video_id = postar_no_youtube(
+                        caminho_video=caminho_video_envio,
+                        titulo=titulo_yt,
+                        descricao=legenda
+                    )
+                    if yt_video_id:
+                        registrar_postagem_youtube(
+                            args.type, tema_escolhido, yt_video_id, estilo_escolhido,
+                            frase_visual=frase_visual, legenda=legenda,
+                            gancho_categoria=conteudo.get("_gancho_categoria", ""),
+                            tipo_cta=conteudo.get("_tipo_cta", ""),
+                            duracao_video=conteudo.get("_duracao_video", 0),
+                            subtema=conteudo.get("_subtema", ""),
+                            objetivo=conteudo.get("objetivo", ""),
+                            categoria_imagem=conteudo.get("categoria_imagem", ""),
+                            categoria_musica=conteudo.get("categoria_musica", ""),
+                            tom_emocional=conteudo.get("_tom_emocional", ""),
+                            estrutura_narrativa=conteudo.get("estrutura_narrativa", ""),
+                            complexidade=conteudo.get("complexidade", "")
+                        )
+                else:
+                    musica_yt = os.path.basename(caminho_yt_audio) if caminho_yt_audio else "original"
+                    print(f"⚠️ [DRY-RUN] Upload simulado para YouTube. Música: {musica_yt}")
+            except Exception as e:
+                print(f"⚠️ Erro ao postar no YouTube Shorts (continuando fluxo principal): {e}")
         
         if post_id:
             gancho_cat = conteudo.get("_gancho_categoria", "")
