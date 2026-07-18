@@ -108,6 +108,10 @@ def principal():
         # Comportamento legado: coleta + análise completa (mantida para compatibilidade)
         print("=== INICIANDO SISTEMA DE ANALYTICS CRUZADO E AUTO-AJUSTE ===")
         rodar_coleta()
+        try:
+            rodar_coleta_youtube()
+        except Exception as e:
+            print(f"⚠️ Coleta YouTube com erro (não crítico): {e}")
         metricas = carregar_metricas_local()
         if metricas and "posts" in metricas and len(metricas["posts"]) > 0:
             analises_por_periodo = {}

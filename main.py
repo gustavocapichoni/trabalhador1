@@ -279,6 +279,16 @@ def main():
             gancho_cat = conteudo.get("_gancho_categoria", "")
             tipo_cta_val = conteudo.get("_tipo_cta", "")
             dur_video = conteudo.get("_duracao_video", 0)
+            
+            # Se for formato de vídeo e a duração estiver zerada, mede a duração do arquivo físico
+            if dur_video == 0 and isinstance(midia, str) and midia.endswith(".mp4") and os.path.exists(midia):
+                try:
+                    from moviepy.editor import VideoFileClip
+                    with VideoFileClip(midia) as clip:
+                        dur_video = int(clip.duration)
+                except Exception as e:
+                    print(f"⚠️ Erro ao obter a duração real do vídeo: {e}")
+
             subtema_val = conteudo.get("_subtema", "")
             tom_val = conteudo.get("_tom_emocional", "")
             objetivo_val = conteudo.get("objetivo", "")
