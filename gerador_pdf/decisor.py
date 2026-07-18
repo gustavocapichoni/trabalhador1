@@ -88,7 +88,7 @@ def decidir_tema_da_semana():
         with open(RECOMENDACOES_PATH, "r", encoding="utf-8") as f:
             recomendacoes = json.load(f)
 
-        distribuicao_temas = recomendacoes.get("distribuicoes", {}).get("temas", {})
+        distribuicao_temas = recomendacoes.get("peso_final_temas", {})
 
         if not distribuicao_temas:
             print("⚠️ Sem dados suficientes no analytics. Escolhendo tema aleatório.")

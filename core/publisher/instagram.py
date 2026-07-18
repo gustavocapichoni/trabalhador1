@@ -230,6 +230,10 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         payload_publish = {'creation_id': parent_id, 'access_token': IG_ACCESS_TOKEN}
         res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Carrossel")
 
+        if res_publish_json is None:
+            logger.warning("⏭️ Carrossel pulado (falha não fatal ignorada).")
+            return None
+
         logger.success(f"🎉 CARROSSEL PUBLICADO! ID: {res_publish_json['id']}")
         return res_publish_json['id']
 

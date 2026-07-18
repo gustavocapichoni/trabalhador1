@@ -38,8 +38,8 @@ gerador_pdf/output/*.pdf
 # Backups temporários gerados em manutenções locais
 *.bkp.json
 
-# Estado local do bot (gerado em runtime, não deve ir pro repositório)
-estado_migrado.json
+# Estado local do bot (gerado em runtime, permitida a persistência no git)
+# estado_migrado.json
 
 # Dados de métricas gerados em runtime
 analytics/dados/metricas.json

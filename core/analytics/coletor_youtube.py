@@ -64,6 +64,18 @@ def salvar_metricas_firebase(video_id, info_post, metricas):
     except Exception as e:
         logger.error(f"❌ Erro ao salvar YouTube no Firebase: {e}")
 
+def parse_duration_seconds(duration_str):
+    """Parseia strings de duração no formato ISO 8601 do YouTube (ex: PT15S, PT1M5S) para segundos."""
+    import re
+    pattern = re.compile(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?')
+    match = pattern.match(duration_str)
+    if not match:
+        return 0
+    hours = int(match.group(1) or 0)
+    minutes = int(match.group(2) or 0)
+    seconds = int(match.group(3) or 0)
+    return hours * 3600 + minutes * 60 + seconds
+
 def buscar_metricas_youtube_api(youtube, video_id, data_publicacao):
     """
     Coleta métricas da API de Dados (básicas) e da API de Analytics (avançadas).
@@ -72,14 +84,19 @@ def buscar_metricas_youtube_api(youtube, video_id, data_publicacao):
     
     # 1. Dados Básicos (YouTube Data API v3)
     try:
-        req_data = youtube.videos().list(part="statistics", id=video_id)
+        req_data = youtube.videos().list(part="statistics,contentDetails", id=video_id)
         res_data = req_data.execute()
         
         if res_data.get("items"):
-            stats = res_data["items"][0].get("statistics", {})
+            item_data = res_data["items"][0]
+            stats = item_data.get("statistics", {})
             metricas["views"] = int(stats.get("viewCount", 0))
             metricas["likes"] = int(stats.get("likeCount", 0))
             metricas["comments"] = int(stats.get("commentCount", 0))
+            
+            content_details = item_data.get("contentDetails", {})
+            duration_iso = content_details.get("duration", "")
+            metricas["duracao_video"] = parse_duration_seconds(duration_iso)
         else:
             logger.warning(f"Vídeo {video_id} não encontrado na Data API.")
             return None
@@ -203,7 +220,7 @@ def rodar_coleta_youtube():
             # Calcula métricas extras padrão
             views = novas_metricas.get("views", 0)
             shares = novas_metricas.get("shares", 0)
-            duracao = post.get("duracao_video", 0)
+            duracao = novas_metricas.get("duracao_video", 0)
             avg_watch = novas_metricas.get("averageViewDuration", 0)
 
             novas_metricas["taxa_compartilhamento"] = round(shares / views, 4) if views > 0 else 0
