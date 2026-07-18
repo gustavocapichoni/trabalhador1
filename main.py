@@ -240,6 +240,7 @@ def main():
 
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
         
+        yt_video_id = ""
         # Postagem opcional no YouTube Shorts para formatos de vídeo
         if POSTAR_NO_YOUTUBE and args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"] and isinstance(midia, str) and midia.endswith(".mp4"):
             try:
@@ -268,21 +269,6 @@ def main():
                         titulo=titulo_yt,
                         descricao=legenda
                     )
-                    if yt_video_id:
-                        registrar_postagem_youtube(
-                            args.type, tema_escolhido, yt_video_id, estilo_escolhido,
-                            frase_visual=frase_visual, legenda=legenda,
-                            gancho_categoria=conteudo.get("_gancho_categoria", ""),
-                            tipo_cta=conteudo.get("_tipo_cta", ""),
-                            duracao_video=conteudo.get("_duracao_video", 0),
-                            subtema=conteudo.get("_subtema", ""),
-                            objetivo=conteudo.get("objetivo", ""),
-                            categoria_imagem=conteudo.get("categoria_imagem", ""),
-                            categoria_musica=conteudo.get("categoria_musica", ""),
-                            tom_emocional=conteudo.get("_tom_emocional", ""),
-                            estrutura_narrativa=conteudo.get("estrutura_narrativa", ""),
-                            complexidade=conteudo.get("complexidade", "")
-                        )
                 else:
                     musica_yt = os.path.basename(caminho_yt_audio) if caminho_yt_audio else "original"
                     print(f"⚠️ [DRY-RUN] Upload simulado para YouTube. Música: {musica_yt}")
@@ -299,8 +285,6 @@ def main():
             cat_imagem_val = conteudo.get("categoria_imagem", "")
             cat_musica_val = conteudo.get("categoria_musica", "")
             est_narrativa_val = conteudo.get("estrutura_narrativa", "")
-            
-            yt_video_id = ""
             
             # Registra apenas uma vez, contendo o post_id do Insta e o video_id_yt
             complexidade_val = conteudo.get("complexidade", "")
