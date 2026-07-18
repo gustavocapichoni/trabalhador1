@@ -71,7 +71,15 @@ def rodar_ciclo(ciclo):
         return
 
     # 3. Gera recomendacoes cruzadas ponderadas por todos os ciclos disponíveis
-    gerar_recomendacoes_cruzadas(analises_por_periodo)
+    recs = gerar_recomendacoes_cruzadas(analises_por_periodo)
+    try:
+        from core.analytics.db import get_db
+        db = get_db()
+        if db:
+            db.collection("memoria_estrategica").document("recomendacoes").set(recs, merge=True)
+            print("Recomendacoes salvas no Firebase Firestore.")
+    except Exception as e:
+        print(f"Erro ao salvar recomendacoes no Firebase: {e}")
 
     # 4. Roda o Motor de Hipóteses para formular/atualizar hipóteses estratégicas
     try:
@@ -120,7 +128,15 @@ def principal():
                 resultado = analisar_padroes(metricas, dias_limite=dias)
                 if "aviso" not in resultado:
                     analises_por_periodo[nome] = resultado
-            gerar_recomendacoes_cruzadas(analises_por_periodo)
+            recs = gerar_recomendacoes_cruzadas(analises_por_periodo)
+            try:
+                from core.analytics.db import get_db
+                db = get_db()
+                if db:
+                    db.collection("memoria_estrategica").document("recomendacoes").set(recs, merge=True)
+                    print("Recomendacoes salvas no Firebase Firestore.")
+            except Exception as e:
+                print(f"Erro ao salvar recomendacoes no Firebase: {e}")
         else:
             print("Metricas insuficientes para gerar recomendacoes cruzadas.")
         print("=== PROCESSO DE ANALYTICS CONCLUIDO ===")

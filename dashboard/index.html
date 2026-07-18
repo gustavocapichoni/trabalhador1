@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Op Marketing – Dashboard de Alto Nível</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i data-lucide="bot" class="logo-icon"></i>
+            <h2>Op Bot</h2>
+        </div>
+        <nav>
+            <div class="nav-item active" id="nav-overview"  onclick="goTab('overview')">
+                <i data-lucide="layout-dashboard"></i> Visão Geral
+            </div>
+            <div class="nav-item" id="nav-cientista" onclick="goTab('cientista')">
+                <i data-lucide="brain-circuit"></i> Cientista de Dados
+            </div>
+            <div class="nav-item" id="nav-leads" onclick="goTab('leads')">
+                <i data-lucide="users"></i> Leads
+            </div>
+            <div class="nav-item" id="nav-posts" onclick="goTab('posts')">
+                <i data-lucide="images"></i> Postagens
+            </div>
+        </nav>
+        <div class="status-box">
+            <div class="status-row"><span class="dot"></span> Status do Sistema</div>
+            <p class="tema">Tema: <span id="val-tema">--</span></p>
+            <div class="idx-row">
+                <span>Gancho: <strong id="val-gancho">--</strong></span>
+                <span>CTA: <strong id="val-cta">--</strong></span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── CONTEÚDO ── -->
+    <main class="main">
+        <div class="header">
+            <div>
+                <h1 id="page-title">Visão Geral</h1>
+                <p id="page-sub">Performance do robô separada por plataforma</p>
+            </div>
+            <button class="btn-refresh" onclick="acaoAtualizarBotao()">
+                <i data-lucide="rotate-cw"></i> Atualizar
+            </button>
+        </div>
+
+        <!-- ═══════ TAB: VISÃO GERAL ═══════ -->
+        <div class="tab active" id="tab-overview">
+
+            <!-- FUNIL E ROI DE ALTO NÍVEL -->
+            <div class="platform-header">
+                <span class="platform-badge" style="background:rgba(255,214,0,0.08); color:var(--neon-gold); border:1px solid rgba(255,214,0,0.2);"><i data-lucide="line-chart"></i> ROI &amp; Conversão de Leads</span>
+                <hr>
+            </div>
+            <div class="funnel-grid">
+                <div class="fcard">
+                    <div class="ficon gold"><i data-lucide="user-check"></i></div>
+                    <div><div class="flabel">Leads Capturados</div><div class="fvalue" id="funnel-leads">--</div></div>
+                </div>
+                <div class="fcard green-theme">
+                    <div class="ficon green"><i data-lucide="percent"></i></div>
+                    <div><div class="flabel">Taxa de Conversão</div><div class="fvalue" id="funnel-rate">--</div></div>
+                </div>
+                <div class="fcard blue-theme">
+                    <div class="ficon blue"><i data-lucide="user-plus"></i></div>
+                    <div><div class="flabel">Seguidores por Postagem</div><div class="fvalue" id="funnel-followers">--</div></div>
+                </div>
+                <div class="fcard purple-theme">
+                    <div class="ficon purple"><i data-lucide="eye"></i></div>
+                    <div><div class="flabel">Visitas ao Perfil</div><div class="fvalue" id="funnel-profile-visits">--</div></div>
+                </div>
+            </div>
+
+            <!-- INSTAGRAM -->
+            <div class="platform-header">
+                <span class="platform-badge ig"><i data-lucide="instagram"></i> Instagram</span>
+                <hr>
+            </div>
+            <div class="metrics" id="ig-metrics">
+                <div class="mcard ig-card active-ig" id="card-ig-reach" onclick="mudarMétricaIG('reach', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon ig"><i data-lucide="eye"></i></div>
+                    <div>
+                        <div class="mlabel">Alcance Total</div>
+                        <div class="mvalue" id="ig-reach">--</div>
+                        <div class="trend flat" id="trend-ig-reach">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-likes" onclick="mudarMétricaIG('likes', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon ig"><i data-lucide="heart"></i></div>
+                    <div>
+                        <div class="mlabel">Curtidas</div>
+                        <div class="mvalue" id="ig-likes">--</div>
+                        <div class="trend flat" id="trend-ig-likes">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-comments" onclick="mudarMétricaIG('comments', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon eng"><i data-lucide="message-circle"></i></div>
+                    <div>
+                        <div class="mlabel">Comentários</div>
+                        <div class="mvalue" id="ig-comments">--</div>
+                        <div class="trend flat" id="trend-ig-comments">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-saves" onclick="mudarMétricaIG('saved', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon sav"><i data-lucide="bookmark"></i></div>
+                    <div>
+                        <div class="mlabel">Salvamentos</div>
+                        <div class="mvalue" id="ig-saves">--</div>
+                        <div class="trend flat" id="trend-ig-saves">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-shares" onclick="mudarMétricaIG('shares', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon grn"><i data-lucide="share-2"></i></div>
+                    <div>
+                        <div class="mlabel">Compartilhamentos</div>
+                        <div class="mvalue" id="ig-shares">--</div>
+                        <div class="trend flat" id="trend-ig-shares">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-profile_visits" onclick="mudarMétricaIG('profile_visits', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon vis"><i data-lucide="mouse-pointer-click"></i></div>
+                    <div>
+                        <div class="mlabel">Visitas ao Perfil</div>
+                        <div class="mvalue" id="ig-profile-visits">--</div>
+                        <div class="trend flat" id="trend-ig-profile_visits">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-follows" onclick="mudarMétricaIG('follows', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon fol"><i data-lucide="user-plus"></i></div>
+                    <div>
+                        <div class="mlabel">Novos Seguidores</div>
+                        <div class="mvalue" id="ig-follows">--</div>
+                        <div class="trend flat" id="trend-ig-follows">–</div>
+                    </div>
+                </div>
+                <div class="mcard ig-card" id="card-ig-avg_watch" onclick="mudarMétricaIG('ig_reels_avg_watch_time', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon org"><i data-lucide="timer"></i></div>
+                    <div>
+                        <div class="mlabel">Retenção Reels (s)</div>
+                        <div class="mvalue" id="ig-avg-watch">--</div>
+                        <div class="trend flat" id="trend-ig-avg_watch">–</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="ccard ig-ccard">
+                    <div class="ccard-header">
+                        <h3 id="ig-chart-title">📈 Alcance por postagem (Instagram)</h3>
+                    </div>
+                    <div class="chart-wrap"><canvas id="chart-ig-line"></canvas></div>
+                    <div class="zoom-controls">
+                        <button class="zbtn" onclick="alterarZoomIG(5)" title="Afastar (dias anteriores)">
+                            <i data-lucide="minus"></i>
+                        </button>
+                        <span class="zlabel" id="lbl-zoom-ig" style="font-size:0.78rem; color:var(--text-sec); display:flex; align-items:center; font-weight:600; padding:0 0.5rem;">Exibindo 15 posts</span>
+                        <button class="zbtn" onclick="alterarZoomIG(-5)" title="Aproximar (dia atual)">
+                            <i data-lucide="plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ccard ig-ccard">
+                    <div class="ccard-header">
+                        <h3>🥧 Formatos publicados</h3>
+                    </div>
+                    <div class="chart-wrap pie"><canvas id="chart-formatos"></canvas></div>
+                </div>
+            </div>
+
+            <!-- YOUTUBE -->
+            <div class="platform-header" style="margin-top:2.5rem">
+                <span class="platform-badge yt"><i data-lucide="youtube"></i> YouTube</span>
+                <hr>
+            </div>
+            <div class="metrics" id="yt-metrics">
+                <div class="mcard yt-card active-yt" id="card-yt-views" onclick="mudarMétricaYT('views', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon yt"><i data-lucide="play-circle"></i></div>
+                    <div><div class="mlabel">Views Totais</div><div class="mvalue" id="yt-views">--</div></div>
+                </div>
+                <div class="mcard yt-card" id="card-yt-likes" onclick="mudarMétricaYT('likes', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon yt"><i data-lucide="heart"></i></div>
+                    <div><div class="mlabel">Curtidas</div><div class="mvalue" id="yt-likes">--</div></div>
+                </div>
+                <div class="mcard yt-card" id="card-yt-comments" onclick="mudarMétricaYT('comments', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon eng"><i data-lucide="message-circle"></i></div>
+                    <div><div class="mlabel">Comentários</div><div class="mvalue" id="yt-comments">--</div></div>
+                </div>
+                <div class="mcard yt-card" id="card-yt-shares" onclick="mudarMétricaYT('shares', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon grn"><i data-lucide="share-2"></i></div>
+                    <div><div class="mlabel">Compartilhamentos</div><div class="mvalue" id="yt-shares">--</div></div>
+                </div>
+                <div class="mcard yt-card" id="card-yt-minutes" onclick="mudarMétricaYT('minutes', this)">
+                    <span class="active-indicator">Ativo</span>
+                    <div class="micon org"><i data-lucide="clock"></i></div>
+                    <div><div class="mlabel">Minutos Assistidos</div><div class="mvalue" id="yt-minutes">--</div></div>
+                </div>
+            </div>
+
+            <div class="charts-row single">
+                <div class="ccard yt-ccard">
+                    <div class="ccard-header">
+                        <h3 id="yt-chart-title">📈 Views por vídeo (YouTube)</h3>
+                    </div>
+                    <div class="chart-wrap"><canvas id="chart-yt-line"></canvas></div>
+                    <div class="zoom-controls">
+                        <button class="zbtn" onclick="alterarZoomYT(5)" title="Afastar (vídeos anteriores)">
+                            <i data-lucide="minus"></i>
+                        </button>
+                        <span class="zlabel" id="lbl-zoom-yt" style="font-size:0.78rem; color:var(--text-sec); display:flex; align-items:center; font-weight:600; padding:0 0.5rem;">Exibindo 15 vídeos</span>
+                        <button class="zbtn" onclick="alterarZoomYT(-5)" title="Aproximar (dia atual)">
+                            <i data-lucide="plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══════ TAB: CIENTISTA DE DADOS ═══════ -->
+        <div class="tab" id="tab-cientista">
+            <div class="ai-banner">
+                <div class="ai-icon"><i data-lucide="sparkles"></i></div>
+                <div>
+                    <h3>Motor de Análise Estratégica</h3>
+                    <p>Recomendações geradas cruzando ciclos Semanal → Anual. O motor analisa padrões de engajamento e atualiza as hipóteses automaticamente a cada ciclo de analytics.</p>
+                </div>
+            </div>
+
+            <!-- GROWTH SCORE GAUGE -->
+            <div class="gs-card">
+                <div class="gs-gauge-wrap">
+                    <div class="gs-number" id="gs-numero" style="color:var(--neon-purple);">--</div>
+                    <div class="gs-label">Growth Score</div>
+                </div>
+                <div class="gs-bar-wrap">
+                    <div class="gs-bar-title">Benchmark da conta — quanto maior, melhor o bot está performando</div>
+                    <div class="gs-bar-track">
+                        <div class="gs-bar-fill" id="gs-bar" style="width:0%"></div>
+                    </div>
+                    <div class="gs-meta">
+                        <div class="gs-meta-item">
+                            <span class="gs-meta-label">Ciclos analisados</span>
+                            <span class="gs-meta-value" id="gs-ciclos">--</span>
+                        </div>
+                        <div class="gs-meta-item">
+                            <span class="gs-meta-label">Tema de maior ICC</span>
+                            <span class="gs-meta-value" id="gs-tema-icc">--</span>
+                        </div>
+                        <div class="gs-meta-item">
+                            <span class="gs-meta-label">Atualizado em</span>
+                            <span class="gs-meta-value" id="gs-atualizado">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ICC + ESTRATEGIA -->
+            <div class="ci-grid-top">
+                <!-- Ranking ICC por Tema -->
+                <div class="ci-box">
+                    <div class="ci-box-tag green">📈 Conversão de Seguidores por Tema</div>
+                    <h3>Ranking ICC por Tema</h3>
+                    <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:1rem;">ICC = Follows ÷ Visitas ao Perfil. Indica qual tema transforma curiosos em seguidores reais.</p>
+                    <div class="icc-list" id="icc-list">
+                        <div class="rec-item empty">Aguardando dados do Firebase...</div>
+                    </div>
+                </div>
+                <!-- Donut Estratégia do Bot -->
+                <div class="ci-box">
+                    <div class="ci-box-tag purple">🎯 Mix Estratégico Atual</div>
+                    <h3>Estratégia do Bot</h3>
+                    <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:1rem;">Como o robô pondera os temas ao escolher o próximo conteúdo (ciclos longos ancoram).</p>
+                    <div class="estrategia-grid">
+                        <div class="estrategia-chart-wrap">
+                            <canvas id="chart-estrategia"></canvas>
+                        </div>
+                        <div class="estrategia-legend" id="estrategia-legend"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RANKINGS COPY -->
+            <div class="ci-grid-bottom">
+                <!-- Ranking Ganchos -->
+                <div class="ci-box">
+                    <div class="ci-box-tag blue">🎣 Copy que Converte</div>
+                    <h3>Top Ganchos de Texto</h3>
+                    <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:1rem;">Categorias de gancho que geram mais crescimento real (Growth Score médio ponderado).</p>
+                    <div class="copy-ranking" id="ganchos-ranking">
+                        <div class="rec-item empty">Sem dados ainda...</div>
+                    </div>
+                </div>
+                <!-- Ranking CTAs -->
+                <div class="ci-box">
+                    <div class="ci-box-tag gold">📢 Chamadas que Agem</div>
+                    <h3>Top CTAs</h3>
+                    <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:1rem;">Quais chamadas para ação geram mais reação do público (Growth Score médio ponderado).</p>
+                    <div class="copy-ranking" id="ctas-ranking">
+                        <div class="rec-item empty">Sem dados ainda...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECOMENDAÇÕES + HIPÓTESES -->
+            <div class="ci-grid-bottom">
+                <div class="ci-box">
+                    <h3>💡 Recomendações do Ciclo Atual</h3>
+                    <div class="rec-list" id="rec-list">
+                        <div class="rec-item empty">Aguardando dados do Firebase...</div>
+                    </div>
+                </div>
+                <div class="ci-box">
+                    <h3>🔬 Hipóteses em Validação</h3>
+                    <table>
+                        <thead><tr><th>Hipótese</th><th>Status</th><th>Confiança</th></tr></thead>
+                        <tbody id="hipo-body"><tr><td colspan="3">Carregando...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ TAB: LEADS ═══════ -->
+        <div class="tab" id="tab-leads">
+
+            <!-- KPIs de Leads -->
+            <div class="leads-kpi-grid">
+                <div class="fcard">
+                    <div class="ficon gold"><i data-lucide="user-check"></i></div>
+                    <div><div class="flabel">Total de Leads</div><div class="fvalue" id="leads-total">--</div></div>
+                </div>
+                <div class="fcard green-theme">
+                    <div class="ficon green"><i data-lucide="percent"></i></div>
+                    <div><div class="flabel">Taxa de Conversão</div><div class="fvalue" id="leads-taxa">--</div></div>
+                </div>
+                <div class="fcard blue-theme">
+                    <div class="ficon blue"><i data-lucide="calendar-check"></i></div>
+                    <div><div class="flabel">Leads esta semana</div><div class="fvalue" id="leads-semana">--</div></div>
+                </div>
+                <div class="fcard purple-theme">
+                    <div class="ficon purple"><i data-lucide="trending-up"></i></div>
+                    <div><div class="flabel">Leads hoje</div><div class="fvalue" id="leads-hoje">--</div></div>
+                </div>
+            </div>
+
+            <!-- Gráficos de Leads -->
+            <div class="leads-chart-row">
+                <div class="ccard" style="border-top:2px solid var(--neon-gold);">
+                    <div class="ccard-header">
+                        <h3>📈 Leads capturados por dia</h3>
+                    </div>
+                    <div class="chart-wrap"><canvas id="chart-leads-dia"></canvas></div>
+                </div>
+                <div class="ccard" style="border-top:2px solid var(--neon-purple);">
+                    <div class="ccard-header">
+                        <h3>🥧 Origem dos Leads</h3>
+                    </div>
+                    <div class="chart-wrap pie"><canvas id="chart-leads-origem"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Tabela de Leads -->
+            <div class="leads-table-box">
+                <h3>📋 Lista de Leads</h3>
+                <div class="leads-search">
+                    <input type="text" id="leads-busca" placeholder="Buscar por nome ou e-mail..." oninput="filtrarLeads(this.value)">
+                </div>
+                <div class="lead-head" style="display:grid; grid-template-columns:2fr 2fr 1.2fr; gap:1rem; padding:.5rem 1rem;">
+                    <span>Nome</span><span>E-mail</span><span style="text-align:right">Data</span>
+                </div>
+                <div id="leads-lista">
+                    <div class="leads-empty">Carregando leads...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════ TAB: POSTAGENS ═══════ -->
+        <div class="tab" id="tab-posts">
+            <div class="filter-bar">
+                <button class="fbtn active" onclick="filtrar('todos',this)">Todos</button>
+                <button class="fbtn" onclick="filtrar('reels',this)">Reels / Vídeos</button>
+                <button class="fbtn" onclick="filtrar('carousel',this)">Carrossel</button>
+                <button class="fbtn" onclick="filtrar('story',this)">Stories</button>
+            </div>
+            <div class="posts-grid" id="posts-grid">
+                <div class="empty-state"><i data-lucide="loader" class="spinner"></i><span>Carregando postagens do Firebase...</span></div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Modal de Detalhes do Post -->
+<div id="post-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(4,6,10,0.85); backdrop-filter:blur(8px); z-index:100; align-items:center; justify-content:center; padding:1.5rem;" onclick="fecharModalPost(event)">
+    <div class="modal-content" style="background:var(--bg-card); border:1px solid var(--border); border-radius:16px; width:100%; max-width:640px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 15px 40px rgba(0,0,0,0.6); position:relative;" onclick="event.stopPropagation()">
+        <button onclick="fecharModalPost()" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .2s; z-index:10;"><i data-lucide="x" style="width:16px; height:16px;"></i></button>
+        <div id="modal-body-content"></div>
+    </div>
+</div>
+
+<!-- Firebase SDK v9 compat -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<!-- Scripts Locais Separados -->
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
