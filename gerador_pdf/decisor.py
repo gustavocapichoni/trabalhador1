@@ -15,6 +15,24 @@ RECOMENDACOES_PATH = os.path.join(BOT_PATH, "analytics", "dados", "recomendacoes
 
 sys.path.insert(0, BOT_PATH)
 
+def buscar_historico_pdfs_recentes(limite=4):
+    """
+    Busca os últimos PDFs gerados em 'historico_pdfs' no Firebase.
+    Usado para evitar repetir os mesmos temas e livros recentes.
+    """
+    try:
+        from core.analytics.db import get_db
+        db = get_db()
+        if not db:
+            return []
+        docs = db.collection("historico_pdfs").order_by("semana", direction="DESCENDING").limit(limite).stream()
+        return [doc.to_dict() for doc in docs]
+    except Exception as e:
+        print(f"⚠️ Erro ao buscar histórico de PDFs: {e}")
+        return []
+
+sys.path.insert(0, BOT_PATH)
+
 # Mapeamento de temas para livros (espelhado do prompts.py do bot)
 LIVROS_POR_TEMA = {
     "espiritualidade": {
@@ -114,11 +132,21 @@ def montar_briefing_completo():
     - Livro escolhido dentro do tema
     - Contexto de tendências da semana (Olhos da Rede)
     """
+    historico = buscar_historico_pdfs_recentes(limite=3)
+    livros_recentes = [h.get("livro_base") for h in historico if h.get("livro_base")]
+
     tema = decidir_tema_da_semana()
     dados_tema = LIVROS_POR_TEMA[tema]
-    livro_escolhido = random.choice(dados_tema["livros"])
+    
+    # Filtra os livros que não foram usados recentemente
+    livros_disponiveis = [l for l in dados_tema["livros"] if l not in livros_recentes]
+    if not livros_disponiveis:
+        # Se todos já foram usados, reseta a lista
+        livros_disponiveis = dados_tema["livros"]
 
-    print(f"📚 [Decisor] Livro base: '{livro_escolhido}'")
+    livro_escolhido = random.choice(livros_disponiveis)
+
+    print(f"📚 [Decisor] Livro base escolhido (anti-repetição aplicada): '{livro_escolhido}'")
 
     # Tenta buscar contexto de tendências
     contexto_mundo = ""

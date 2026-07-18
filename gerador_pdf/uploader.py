@@ -112,4 +112,21 @@ def registrar_campanha_no_firestore(titulo: str, url_pdf: str, briefing: dict):
     print(f"✅ [Uploader] Campanha registrada no Firestore: '{doc_ref.id}'")
     print(f"   Título: {titulo}")
     print(f"   URL: {url_pdf}")
+
+    # Registra também no histórico de PDFs para anti-repetição de temas/títulos
+    try:
+        historico_pdf = {
+            "titulo": titulo,
+            "tema": briefing.get("tema_chave", ""),
+            "livro_base": briefing.get("livro_base", ""),
+            "semana": semana_str,
+            "dor_principal": briefing.get("dor_alvo", ""),
+            "gerado_em": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        db.collection("historico_pdfs").document(semana_str).set(historico_pdf)
+        print(f"✅ [Uploader] PDF registrado em historico_pdfs (semana {semana_str}).")
+    except Exception as e:
+        print(f"⚠️ [Uploader] Erro ao registrar historico_pdfs: {e}")
+
     return doc_ref.id
+

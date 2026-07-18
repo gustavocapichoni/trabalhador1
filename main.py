@@ -52,6 +52,35 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="",
     try:
         db.collection("historico_posts").document(post_id).set(novo_post, merge=True)
         print(f"✅ Post {post_id} registrado com sucesso em historico_posts.")
+
+        # Se for reels_leads, registra também na coleção dedicada para anti-repetição
+        if tipo == "reels_leads":
+            frase_gancho = ""
+            if isinstance(frase_visual, list) and frase_visual:
+                frase_gancho = frase_visual[0]
+            elif isinstance(frase_visual, str):
+                frase_gancho = frase_visual[:200]
+
+            titulo_pdf = ""
+            try:
+                import json
+                caminho_pdf_json = os.path.join("gerador_pdf", "output", "ultimo_conteudo.json")
+                if os.path.exists(caminho_pdf_json):
+                    with open(caminho_pdf_json, "r", encoding="utf-8") as f:
+                        titulo_pdf = json.load(f).get("titulo_pdf", "")
+            except Exception:
+                pass
+
+            doc_leads = {
+                "post_id": post_id,
+                "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+                "titulo_pdf": titulo_pdf,
+                "gancho_fase1": frase_gancho,
+                "legenda": legenda[:300],
+                "estilo_copy": estilo,
+            }
+            db.collection("historico_reels_leads").document(post_id).set(doc_leads)
+            print(f"✅ Reels_leads registrado em historico_reels_leads.")
     except Exception as e:
         print(f"❌ Erro ao salvar post no Firebase: {e}")
 

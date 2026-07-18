@@ -52,6 +52,36 @@ def buscar_historico_por_tema(tema, tipo_post=None, limite=8):
         logger.warning(f"Erro ao buscar histórico por tema '{tema}': {e}")
         return ""
 
+def buscar_historico_reels_leads(limite=6):
+    """
+    Busca os últimos reels_leads gerados em 'historico_reels_leads' no Firebase.
+    Retorna string de contexto para a IA não repetir os mesmos ganchos e frases.
+    """
+    try:
+        from core.analytics.db import get_db
+        db = get_db()
+        if not db:
+            return ""
+        docs = db.collection("historico_reels_leads") \
+                 .order_by("data", direction="DESCENDING") \
+                 .limit(limite).stream()
+        posts = [doc.to_dict() for doc in docs]
+        if not posts:
+            return ""
+        msg = "\n        PROIBIDO REPETIR (HISTÓRICO DOS ÚLTIMOS REELS DE LEADS):\n"
+        msg += "        Estes são os roteiros de captação já publicados. Crie algo 100% diferente em gancho, ângulo e frases:\n"
+        for i, p in enumerate(posts):
+            titulo = p.get("titulo_pdf", "")
+            gancho = (p.get("gancho_fase1") or "")[:150]
+            data = p.get("data", "")[:10]
+            msg += f"        * Reels {i+1} ({data}): PDF='{titulo}' | Gancho Fase 1='{gancho}'\n"
+        msg += "        Qualquer semelhança com os textos acima é inaceitável. Seja 100% original.\n"
+        return msg
+    except Exception as e:
+        logger.warning(f"Erro ao buscar histórico de reels_leads: {e}")
+        return ""
+
+
 def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", tom_emocional=""):
     """
     Funcao auxiliar para centralizar o pos-processamento dos dados gerados (IA ou Contingencia).
@@ -641,6 +671,9 @@ def gerar_conteudo_gemini(tipo):
         """
     elif tipo == "reels_leads":
         resumo_pdf = ler_resumo_ultimo_pdf() or "Nenhum PDF anterior encontrado. Crie um roteiro genérico focando em 'Hábitos Inquebráveis'."
+        evitar_repeticao_leads = buscar_historico_reels_leads(limite=6)
+        if evitar_repeticao_leads:
+            logger.info("📚 Histórico de reels_leads carregado para anti-repetição.")
         
         # Puxa dados isolados para enriquecer a instrução direta no prompt
         titulo_pdf_limpo = "Material Exclusivo"
@@ -665,6 +698,7 @@ def gerar_conteudo_gemini(tipo):
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
+        {evitar_repeticao_leads}
 
         ==== CONTEÚDO BASE PARA O VÍDEO (EXTRAÍDO DO ÚLTIMO PDF GERADO) ====
         {resumo_pdf}
