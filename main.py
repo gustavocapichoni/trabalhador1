@@ -272,19 +272,6 @@ def main():
             est_narrativa_val = conteudo.get("estrutura_narrativa", "")
             
             yt_video_id = ""
-            if POSTAR_NO_YOUTUBE and args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"] and isinstance(midia, str) and midia.endswith(".mp4"):
-                print("📺 --- Iniciando Postagem no YouTube ---")
-                try:
-                    yt_video_id = postar_no_youtube(
-                        caminho_video=midia,
-                        titulo=conteudo.get("titulo_youtube", tema_escolhido.capitalize()),
-                        descricao=legenda,
-                        tags=conteudo.get("tags_youtube", [tema_escolhido])
-                    )
-                    if yt_video_id:
-                        print(f"✅ Vídeo publicado no YouTube com ID: {yt_video_id}")
-                except Exception as e:
-                    print(f"⚠️ Erro ao postar no YouTube: {e}")
             
             # Registra apenas uma vez, contendo o post_id do Insta e o video_id_yt
             complexidade_val = conteudo.get("complexidade", "")
