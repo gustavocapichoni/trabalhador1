@@ -1,11 +1,32 @@
 {
-    "index_palette_conquistador": 1,
-    "historico_estilos": [
-        "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
-        "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')"
+    "index_conquistador": 1,
+    "indice_cta": 2,
+    "data_tema_do_dia": "2026-07-18",
+    "historico_angulos": [
+        "A verdadeira paz não depende do mar calmo, mas de quem governa o seu barco por dentro.",
+        "Como o peso do ódio guardado destrói a sua energia, enquanto o ato de relevar e aceitar te liberta.",
+        "A sabedoria milenar mostra: colhemos exatamente o que plantamos, sem atalhos ou exceções."
     ],
+    "historico_midia": [
+        "unsplash_Y37pk3tQBXM",
+        "unsplash_qY866Nj-YX4",
+        "unsplash_-vdadygpOdI",
+        "unsplash_2xmAN6cT2Tw",
+        "unsplash_5V7TT6zzK5Y",
+        "unsplash_95YgRNjU-rE",
+        "unsplash_6_L0rex9Iik",
+        "unsplash_bwm26JyAHBk",
+        "unsplash_Si0zLlioRDM",
+        "unsplash_aSuMn355YHw",
+        "unsplash_uqOBWWeUpCE",
+        "unsplash_MY-TpReV87Q",
+        "unsplash_oA_FR_dKOxY",
+        "unsplash_HyJr8ZpbpOw",
+        "unsplash_kHdCQQ7uYh4"
+    ],
+    "indice_gancho": 2,
+    "ultimo_carousel": 3,
     "fila_musicas_musicas": [
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/اغنية-اجنبية-من-الخيال-عالم-ثاني-2019-جديد-اسمعها-و-انسى-العالم.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/prefedida.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/the_mountain-background-music-159125 (1).mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/f-chopin--nocturne-in-c-sharp-minor-for-violin-and-piano-yueun-kim-violin--쇼팽-녹턴--바이올리니스트-김유은.mp3",
@@ -46,7 +67,6 @@
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/Billie Ellish, Khaild- Lovely.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/Can We Kiss Forever - Kina ft. Adriana Proenza.mp3"
     ],
-    "index_tema_diario": 1,
     "fila_musicas_musicas-youtube": [
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Halfway In - Anno Domini Beats.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/In The Morning - Blue Beat Review.mp3",
@@ -68,35 +88,16 @@
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Wildfire - Jessie Villa.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Town This Small - Anno Domini Beats.mp3"
     ],
+    "index_tema_diario": 1,
     "indice_gancho_conquistador": 1,
-    "data_tema_do_dia": "2026-07-18",
     "ultimos_temas": [],
-    "index_plataforma_conquistador": 1,
-    "indice_cta": 2,
-    "ultimo_carousel": 3,
-    "index_conquistador": 1,
-    "index_animacao_conquistador": 1,
-    "indice_gancho": 1,
-    "tema_do_dia": "espiritualidade",
-    "historico_angulos": [
-        "A verdadeira paz não depende do mar calmo, mas de quem governa o seu barco por dentro.",
-        "Como o peso do ódio guardado destrói a sua energia, enquanto o ato de relevar e aceitar te liberta."
+    "historico_estilos": [
+        "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
+        "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')",
+        "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')"
     ],
-    "historico_midia": [
-        "unsplash_6_L0rex9Iik",
-        "unsplash_bwm26JyAHBk",
-        "unsplash_Si0zLlioRDM",
-        "unsplash_aSuMn355YHw",
-        "unsplash_uqOBWWeUpCE",
-        "unsplash_MY-TpReV87Q",
-        "unsplash_oA_FR_dKOxY",
-        "unsplash_HyJr8ZpbpOw",
-        "unsplash_kHdCQQ7uYh4",
-        "unsplash_I6FPWd-fi6o",
-        "unsplash_4IdF0A7KMJQ",
-        "263962",
-        "225615",
-        "154297",
-        "214781"
-    ]
+    "tema_do_dia": "espiritualidade",
+    "index_palette_conquistador": 1,
+    "index_plataforma_conquistador": 1,
+    "index_animacao_conquistador": 1
 }
