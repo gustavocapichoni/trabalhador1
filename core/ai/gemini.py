@@ -426,7 +426,7 @@ def gerar_conteudo_gemini(tipo):
         - Slides 2 a 4: Abertura de loop, mistério e detalhamento da dor (o problema no cotidiano do leitor).
         - Slides 5 a 8: A entrega de valor prática e a explicação do porquê funciona (o insight/segredo revelado).
         - Slides 9 a 11: Choque de realidade, quebra de desculpas comuns e validação/elogio da inteligência de quem leu até aqui.
-        - Slide Final: Xeque-mate reflexivo, frase curta de forte impacto para o leitor guardar mentalmente.
+        - Slide Final: Fusão de Xeque-mate com convite sutil para seguir. Crie uma frase de forte impacto que encerre a reflexão e faça um convite persuasivo e elegante para seguir o perfil (ex: "Se você busca respostas que a maioria ignora, acompanhe o perfil.").
 
         REGRAS DE ESCUTA E RITMO VISUAL:
         * Misture o comprimento das frases! Algumas devem ser extremamente curtas e cortantes (ex: 4 a 8 palavras) para acelerar o ritmo de leitura. Outras devem ser um pouco mais longas e explicativas (até 25 palavras) para dar profundidade.
@@ -449,7 +449,7 @@ def gerar_conteudo_gemini(tipo):
             "Frase do slide 5 (Entrega do método prático e segredo)",
             "Frase do slide 6 (Mais longa detalhando a solução)",
             "Frase do slide 7 (Elogio a inteligência do leitor)",
-            "Frase do slide 8 (Xeque-mate final cortante)"
+            "Frase do slide 8 (Xeque-mate final + convite sutil para seguir)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
@@ -584,7 +584,7 @@ def gerar_conteudo_gemini(tipo):
         - Slides 2 a 4: Diagnóstico íntimo do que acontece na mente da pessoa à noite (o ciclo de pensamentos destrutivos ou insônia mental).
         - Slides 5 a 8: A virada de perspectiva e a solução (o que mudou na sua atitude ou o método prático que quebrou esse ciclo de autossabotagem).
         - Slides 9 a 11: A promessa e o benefício do amanhã (como acordar diferente a partir de hoje se ele tomar a atitude proposta).
-        - Slide Final: Frase curta e profunda para ficar martelando na cabeça do leitor durante a noite.
+        - Slide Final: Fusão de Xeque-mate com convite sutil para seguir. Crie uma frase curta e profunda que encerre a história da noite e convide elegantemente o leitor a acompanhar a página para evoluir a cada dia (ex: "O caminho é longo. Siga o perfil para não caminhar sozinho.").
 
         REGRAS DE RITMO VISUAL:
         * Misture o comprimento das frases! Algumas devem ser curtas e diretas (ex: 4 a 8 palavras) para dinâmica rápida. Outras devem ser um pouco mais detalhadas e íntimas (até 25 palavras) para dar profundidade à conversa de travesseiro.
@@ -606,7 +606,7 @@ def gerar_conteudo_gemini(tipo):
             "Frase do slide 5 (Revelação da atitude ou técnica para quebrar a dor)",
             "Frase do slide 6 (Detalhe da solução prática)",
             "Frase do slide 7 (Elogio a busca por crescimento do leitor)",
-            "Frase do slide 8 (Xeque-mate reflexivo final)"
+            "Frase do slide 8 (Xeque-mate reflexivo final + convite sutil para seguir)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}

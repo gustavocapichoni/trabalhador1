@@ -332,7 +332,28 @@ def _aplicar_efeito_cinematico(frame_array, efeito):
 def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False, is_reels_leads=False):
     from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
     import urllib.parse
+    import random
     logger.info(f"🎥 Buscando vídeo com query: '{query}'")
+
+    # Injeção programática de CTA charmoso e integrado no final dos slides
+    if not is_reels_leads:
+        slides = list(slides)
+        if is_conquistador:
+            ctas_conquistador = [
+                "Quem chega até aqui já entendeu o sistema. Acompanhe a página para ir além.",
+                "Se você busca a verdade sem maquiagem, este é o seu perfil. Siga.",
+                "O caminho da sabedoria exige consistência. Acompanhe nossa jornada diária.",
+                "Não seja mais um na massa. Siga e desperte a sua mente."
+            ]
+            slides.append(random.choice(ctas_conquistador))
+        else:
+            ctas_pexels = [
+                "Deixe sua percepção nos comentários. E se você busca respostas reais, siga a página.",
+                "Se você leu até aqui, comente o que pensa e acompanhe nossa jornada.",
+                "Deixe sua resposta abaixo. Siga para não perder as próximas reflexões.",
+                "A discussão continua nos comentários. Siga para evoluir junto conosco."
+            ]
+            slides.append(random.choice(ctas_pexels))
 
     temp_vids = []
     clip = None

@@ -204,6 +204,133 @@ def buscar_posts_recentes_api():
         logger.error(f"Exceção ao buscar posts do perfil: {e}")
         return []
 
+def buscar_insights_conta_api():
+    """
+    Busca insights consolidados da conta no Instagram (Reach e Impressions de 28 dias,
+    Profile Views e Follows diários acumulados).
+    """
+    if not IG_ACCESS_TOKEN or not IG_ACCOUNT_ID or IG_ACCOUNT_ID.startswith("DRY_RUN"):
+        logger.warning("Faltam credenciais para buscar insights da conta do Instagram (ou em modo DRY_RUN).")
+        return None
+
+    dados_conta = {
+        "reach_30d": 0,
+        "impressions_30d": 0,
+        "profile_views_30d": 0,
+        "follower_count_30d": 0,
+        "ultima_atualizacao": datetime.now(timezone.utc).isoformat()
+    }
+
+    # 1. Coleta Reach consolidado de 28 dias
+    url_28d = (
+        f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
+        f"?metric=reach"
+        f"&period=days_28"
+        f"&access_token={IG_ACCESS_TOKEN}"
+    )
+    try:
+        res = requests.get(url_28d, timeout=15)
+        if res.status_code == 200:
+            data = res.json().get("data", [])
+            for insight in data:
+                name = insight.get("name")
+                values = insight.get("values", [])
+                if values:
+                    # Encontra o último valor maior que zero para evitar dias ainda não processados pela API
+                    val = 0
+                    for item in reversed(values):
+                        v_val = item.get("value", 0)
+                        if v_val > 0:
+                            val = v_val
+                            break
+                    # Fallback: se todos forem 0, usa o último
+                    if val == 0:
+                        val = values[-1].get("value", 0)
+                    
+                    if name == "reach":
+                        dados_conta["reach_30d"] = val
+        else:
+            logger.warning(f"Não foi possível obter insights 28d da conta: {res.text}")
+    except Exception as e:
+        logger.error(f"Erro ao buscar insights 28d da conta: {e}")
+
+    # Auxiliar para extrair o valor total do insight, seja de total_value ou da soma de values diários
+    def extrair_total(ins):
+        if "total_value" in ins:
+            return ins["total_value"].get("value", 0)
+        vals = ins.get("values", [])
+        if vals:
+            return sum(item.get("value", 0) for item in vals)
+        return 0
+
+    # 2. Coleta Profile Views (Visitas ao perfil) e Follower Count (Novos seguidores) diários (últimos 30 dias)
+    agora = datetime.now(timezone.utc)
+    trinta_dias_atras = agora - timedelta(days=30)
+    since_ts = int(trinta_dias_atras.timestamp())
+    until_ts = int(agora.timestamp())
+
+    # 2a. Profile Views (exige metric_type=total_value)
+    url_views = (
+        f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
+        f"?metric=profile_views"
+        f"&period=day"
+        f"&metric_type=total_value"
+        f"&since={since_ts}"
+        f"&until={until_ts}"
+        f"&access_token={IG_ACCESS_TOKEN}"
+    )
+    try:
+        res = requests.get(url_views, timeout=15)
+        if res.status_code == 200:
+            data = res.json().get("data", [])
+            for insight in data:
+                name = insight.get("name")
+                total_val = extrair_total(insight)
+                if name == "profile_views":
+                    dados_conta["profile_views_30d"] = total_val
+        else:
+            logger.warning(f"Não foi possível obter insights de profile_views da conta: {res.text}")
+    except Exception as e:
+        logger.error(f"Erro ao buscar insights de profile_views da conta: {e}")
+
+    # 2b. Follower Count (não suporta metric_type=total_value)
+    url_followers = (
+        f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
+        f"?metric=follower_count"
+        f"&period=day"
+        f"&since={since_ts}"
+        f"&until={until_ts}"
+        f"&access_token={IG_ACCESS_TOKEN}"
+    )
+    try:
+        res = requests.get(url_followers, timeout=15)
+        if res.status_code == 200:
+            data = res.json().get("data", [])
+            for insight in data:
+                name = insight.get("name")
+                total_val = extrair_total(insight)
+                if name == "follower_count":
+                    dados_conta["follower_count_30d"] = total_val
+        else:
+            logger.warning(f"Não foi possível obter insights de follower_count da conta: {res.text}")
+    except Exception as e:
+        logger.error(f"Erro ao buscar insights de follower_count da conta: {e}")
+
+    return dados_conta
+
+def salvar_metricas_conta_firebase(dados_conta):
+    """Salva os dados de insights da conta no Firebase Firestore."""
+    db = get_db()
+    if db is None:
+        return
+
+    try:
+        doc_ref = db.collection("metricas_conta_instagram").document("consolidados")
+        doc_ref.set(dados_conta, merge=True)
+        logger.info("🔥 Insights consolidados da conta salvos no Firebase!")
+    except Exception as e:
+        logger.error(f"❌ Erro ao salvar insights de conta no Firebase: {e}")
+
 def rodar_coleta():
     logger.info("📊 Iniciando coleta de métricas...")
     from core.analytics.db import get_db
@@ -251,7 +378,7 @@ def rodar_coleta():
         # Removido: if not is_story and agora - post_dt < timedelta(hours=24): continue
         # Agora coletamos as métricas no mesmo dia, sem esperar 24h.
 
-        if agora - post_dt > timedelta(days=14):
+        if agora - post_dt > timedelta(days=30):
             continue
 
         tipo_post = post.get("tipo", "feed")
@@ -289,6 +416,16 @@ def rodar_coleta():
             posts_processados += 1
 
         time.sleep(2)
+
+    # --- Coleta e salvamento das métricas de conta ---
+    try:
+        logger.info("📥 Iniciando coleta de insights globais da conta do Instagram...")
+        dados_conta = buscar_insights_conta_api()
+        if dados_conta:
+            salvar_metricas_conta_firebase(dados_conta)
+            metricas_salvas["conta"] = dados_conta
+    except Exception as e:
+        logger.error(f"Erro ao coletar/salvar métricas de conta: {e}")
 
     salvar_metricas_local(metricas_salvas)
     logger.success(f"Coleta finalizada. {posts_processados} posts atualizados.")

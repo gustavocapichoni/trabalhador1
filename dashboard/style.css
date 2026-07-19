@@ -343,7 +343,7 @@ tr:last-child td { border-bottom:none; }
 .post-tag { position:absolute; top:.65rem; left:.65rem; background:rgba(8,10,16,.85); backdrop-filter:blur(6px); border:1px solid var(--border); padding:.18rem .6rem; border-radius:5px; font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; z-index:2; }
 .post-body { padding:1.15rem; flex:1; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
 .post-title { font-size:.85rem; font-weight:700; margin-bottom:.35rem; color:var(--neon-blue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.post-caption { font-size:.8rem; color:var(--text-sec); line-height:1.45; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:.8rem; }
+.post-caption { font-size:.8rem; color:var(--text-sec); line-height:1.45; display:-webkit-box; -webkit-line-clamp:4; line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:.8rem; }
 .post-foot { border-top:1px solid var(--border); padding-top:.7rem; margin-top:auto; }
 .post-meta { display:flex; justify-content:space-between; font-size:.72rem; color:var(--text-muted); margin-bottom:.55rem; }
 .post-stats { display:flex; gap:.85rem; font-size:.78rem; color:var(--text-sec); flex-wrap:wrap; }

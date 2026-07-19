@@ -9,6 +9,7 @@ const db = firebase.firestore();
 // ── ESTADO GLOBAL ────────────────────────────────────────
 let postsData      = [];
 let metricasIG     = {};
+let metricasContaIG = {};
 let metricasYT     = {};
 let leadsData      = [];
 let leadsCount     = 0;
@@ -169,6 +170,17 @@ async function carregarTudo() {
             if (d.info_post) metricasPostsMap[doc.id] = d.info_post;
         });
 
+        // 4b. Métricas Conta Instagram (Consolidados globais da conta)
+        metricasContaIG = {};
+        try {
+            const contaSnap = await db.collection('metricas_conta_instagram').doc('consolidados').get();
+            if (contaSnap.exists) {
+                metricasContaIG = contaSnap.data();
+            }
+        } catch (e) {
+            console.warn('Erro ao ler metricas_conta_instagram:', e);
+        }
+
         // Merge: todos os posts que têm métrica OU estão no histórico do bot
         const todosPostsMap = {};
         // 1º adiciona descobertos pela API (via metricas_posts)
@@ -218,11 +230,18 @@ async function carregarTudo() {
 function renderFunilEstrategico() {
     // Alcance total IG
     let alcanceIG = 0, profileVisitsTotal = 0, followsTotal = 0;
-    Object.values(metricasIG).forEach(m => {
-        alcanceIG          += m.reach || 0;
-        profileVisitsTotal += m.profile_visits || 0;
-        followsTotal       += m.follows || 0;
-    });
+
+    if (metricasContaIG && metricasContaIG.reach_30d) {
+        alcanceIG          = metricasContaIG.reach_30d;
+        profileVisitsTotal = metricasContaIG.profile_views_30d || 0;
+        followsTotal       = metricasContaIG.follower_count_30d || 0;
+    } else {
+        Object.values(metricasIG).forEach(m => {
+            alcanceIG          += m.reach || 0;
+            profileVisitsTotal += m.profile_visits || 0;
+            followsTotal       += m.follows || 0;
+        });
+    }
 
     // Taxa de Conversão (Leads / Alcance IG)
     if (alcanceIG > 0 && leadsCount > 0) {
@@ -294,16 +313,29 @@ function renderTrend(id, valor) {
 // ── MÉTRICAS INSTAGRAM ───────────────────────────────────
 function renderMetricasIG() {
     let reach=0, likes=0, comments=0, saves=0, shares=0, profVisits=0, follows=0, avgWatch=0, watchCount=0;
+    
+    // Engajamento acumulado dos posts
     Object.values(metricasIG).forEach(m => {
-        reach      += m.reach      || 0;
         likes      += m.likes      || m.like_count     || 0;
         comments   += m.comments   || m.comments_count || 0;
         saves      += m.saved      || 0;
         shares     += m.shares     || 0;
-        profVisits += m.profile_visits || 0;
-        follows    += m.follows    || 0;
         if (m.ig_reels_avg_watch_time) { avgWatch += m.ig_reels_avg_watch_time; watchCount++; }
     });
+
+    // Se temos os dados da conta consolidada, usamos para alcance, visitas e novos seguidores
+    if (metricasContaIG && metricasContaIG.reach_30d) {
+        reach      = metricasContaIG.reach_30d;
+        profVisits = metricasContaIG.profile_views_30d || 0;
+        follows    = metricasContaIG.follower_count_30d || 0;
+    } else {
+        // Fallback: soma dos posts
+        Object.values(metricasIG).forEach(m => {
+            reach      += m.reach      || 0;
+            profVisits += m.profile_visits || 0;
+            follows    += m.follows    || 0;
+        });
+    }
 
     document.getElementById('ig-reach').innerText         = fmt(reach);
     document.getElementById('ig-likes').innerText         = fmt(likes);
@@ -685,7 +717,11 @@ function renderLeads() {
 
     // Taxa de Conversão
     let alcanceIG = 0;
-    Object.values(metricasIG).forEach(m => { alcanceIG += m.reach || 0; });
+    if (metricasContaIG && metricasContaIG.reach_30d) {
+        alcanceIG = metricasContaIG.reach_30d;
+    } else {
+        Object.values(metricasIG).forEach(m => { alcanceIG += m.reach || 0; });
+    }
     if (alcanceIG > 0 && leadsCount > 0) {
         const r = (leadsCount / alcanceIG) * 100;
         el('leads-taxa', r.toFixed(2) + '%');

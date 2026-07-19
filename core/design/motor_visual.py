@@ -266,7 +266,7 @@ def criar_arte(tipo, dados, tema_escolhido, TEMAS_MAPEADOS):
     if tipo == "carousel":
         return _gerar_carrossel(img, W, H, dados)
     elif tipo in ["reels", "reels_noite", "reels_conquistador", "story_manha"]:
-        return _gerar_reels(img, W, H, dados, tema_escolhido, TEMAS_MAPEADOS)
+        return _gerar_reels(img, W, H, dados, tema_escolhido, TEMAS_MAPEADOS, tipo=tipo)
     else:
         return _gerar_estatico(img, W, H, tipo, dados, tema_escolhido, TEMAS_MAPEADOS)
 
@@ -391,8 +391,9 @@ def _gerar_carrossel(img, W_full, H, dados):
         
     return caminhos_arquivos
 
-def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
+def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None, tipo="reels"):
     """Gera os fundos dos slides do Reels (sem texto baked) e retorna as frases separadas para animação."""
+    import random as _random
     caminhos_fundos = []
 
     # Para story_manha: 'frase' é uma lista de strings (4-8 frases)
@@ -405,6 +406,20 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, TEMAS_MAPEADOS=None):
         frases = frase_raw  # story_manha: já é uma lista de frases prontas
     else:
         frases = [frase_raw]  # story/post estático: string única
+
+    # Injeta CTA charmoso de seguir no ÚLTIMO slide dos Reels (não no story_manha)
+    # A IA já é orientada a fundir xeque-mate + convite nos prompts, mas esta injeção
+    # garante um slide visual dedicado e separado do conteúdo principal.
+    if tipo in ["reels", "reels_noite", "reels_conquistador"]:
+        ctas_seguir = [
+            "Se você busca respostas que a maioria ignora, acompanhe o perfil.",
+            "Quem chegou até aqui já está à frente. Siga para continuar crescendo.",
+            "O conteúdo não para por aqui. Acompanhe para a próxima reflexão.",
+            "Se esse assunto te move, este perfil foi feito para você. Siga.",
+            "Cada dia uma verdade diferente. Siga para não perder nenhuma.",
+        ]
+        frases = list(frases) + [_random.choice(ctas_seguir)]
+        print(f"📣 [CTA Visual] Slide de CTA injetado no final do {tipo.upper()}.")
 
     estilo_sorteado = obter_fonte_do_dia()
     print(f"🎨 Usando fonte do dia no Reels: {estilo_sorteado}")

@@ -3,14 +3,17 @@ from PIL import Image, ImageDraw
 
 from .templates import CORES
 
-def aplicar_mesh_gradient(img):
-    """Aplica um degradê inteligente, escurecendo mais a parte inferior e central, usando a paleta da marca."""
+def aplicar_mesh_gradient(img, cor_inicio=None, cor_fim=None, alpha_topo=15, alpha_base=40):
+    """Aplica um degradê inteligente, escurecendo mais a parte inferior e central, usando a paleta da marca.
+    
+    Parâmetros opcionais permitem customizar a cor por tipo de post sem afetar os demais.
+    """
     W, H = img.size
     overlay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
     
-    r_ini, g_ini, b_ini = CORES["fundo_tint_inicio"]
-    r_fim, g_fim, b_fim = CORES["fundo_tint_fim"]
+    r_ini, g_ini, b_ini = cor_inicio if cor_inicio else CORES["fundo_tint_inicio"]
+    r_fim, g_fim, b_fim = cor_fim if cor_fim else CORES["fundo_tint_fim"]
     
     # Degradê
     for y in range(H):
@@ -22,12 +25,12 @@ def aplicar_mesh_gradient(img):
         
         # Opacidade (Alpha) inteligente reduzida para dar mais transparência ao fundo
         if y < H * 0.3:
-            alpha = 15  # Quase invisível no topo
+            alpha = alpha_topo  # Quase invisível no topo
         elif y < H * 0.7:
             progress = (y - H * 0.3) / (H * 0.4)
-            alpha = int(15 + progress * 25)  # Suave transição no meio de 15 a 40
+            alpha = int(alpha_topo + progress * (alpha_base - alpha_topo))
         else:
-            alpha = 40  # Sutil na base
+            alpha = alpha_base  # Sutil na base
             
         draw.line([(0, y), (W, y)], fill=(r, g, b, alpha))
         
@@ -50,16 +53,21 @@ def draw_text_with_shadow(draw, position, text, font, fill=(255, 255, 255), shad
     # Texto principal
     draw.text((x, y), text, font=font, fill=fill, anchor=anchor)
 
-def desenhar_elementos_premium(draw, W, H):
-    """Adiciona molduras sutis e linhas separadoras para dar aspecto de design de agência."""
+def desenhar_elementos_premium(draw, W, H, cor_moldura=None):
+    """Adiciona molduras sutis e linhas separadoras para dar aspecto de design de agência.
+    
+    O parâmetro opcional cor_moldura permite customizar a cor da borda por tipo de post.
+    """
     # Moldura sutil interna (margem de 40px)
     margem = 40
-    cor_moldura = (*CORES["destaque"][:3], 80)  # Dourado com transparência
+    if cor_moldura is None:
+        cor_moldura = (*CORES["destaque"][:3], 80)  # Cor padrão (azul) com transparência
     
     # Desenha 4 linhas finas formando um quadro (top, bottom, left, right)
     draw.line([(margem, margem), (W - margem, margem)], fill=cor_moldura, width=1)
     draw.line([(margem, H - margem), (W - margem, H - margem)], fill=cor_moldura, width=1)
     draw.line([(margem, margem), (margem, H - margem)], fill=cor_moldura, width=1)
     draw.line([(W - margem, margem), (W - margem, H - margem)], fill=cor_moldura, width=1)
+
     
 

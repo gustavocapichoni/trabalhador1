@@ -103,12 +103,12 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo=None)
         
     return font_display, font_body, font_detalhe
 
-# Paleta Oficial de Branding da Marca — Roxo Neon + Azul Elétrico
+# Paleta Oficial de Branding da Marca — Tons Quentes (Âmbar + Vermelho Vivo)
 CORES = {
     "texto_principal":   (255, 255, 255),    # Branco Neve
-    "texto_secundario":  (200, 200, 220),    # Cinza Claro Azulado
-    "destaque":          (0, 115, 255),      # Azul Elétrico Vibrante (bordas, linhas)
-    "fundo_tint_inicio": (8, 40, 100),       # Azul Elétrico Escuro / Índigo (início no topo)
-    "fundo_tint_fim":    (25, 5, 45),        # Roxo Escuro / Quase Preto (fim na base)
+    "texto_secundario":  (220, 200, 180),    # Creme Quente Claro
+    "destaque":          (212, 140, 20),     # Âmbar Dourado Quente (bordas, linhas)
+    "fundo_tint_inicio": (110, 10, 5),       # Vermelho Quente Escuro (topo — quase invisível)
+    "fundo_tint_fim":    (80, 8, 3),         # Vermelho Profundo (base — sutil)
     "sombra":            (0, 0, 0, 200)      # Preto difuso para legibilidade
 }
