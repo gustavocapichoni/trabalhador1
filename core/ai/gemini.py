@@ -218,6 +218,21 @@ def gerar_conteudo_gemini(tipo):
                 contexto_analytics += "\n====================\n" + mundo_real + "\n====================\n\n"
         except Exception as e:
             logger.warning(f"Erro ao coletar Olhos da Rede: {e}")
+
+    # Sorteia sentimento do dia de forma persistente ou diária (apenas para posts comuns - não conquistador/leads)
+    sentimento_escolhido = None
+    if not is_conquistador and tipo != "reels_leads":
+        from core.ai.styles import SENTIMENTOS_CONFIG
+        if estado.get("data_sentimento_do_dia") == dia_hoje_str and estado.get("sentimento_do_dia"):
+            sentimento_escolhido = estado["sentimento_do_dia"]
+            logger.info(f"🧠 Sentimento do dia continuado: {sentimento_escolhido.upper()}")
+        else:
+            # Sorteia sentimento diário
+            sentimento_escolhido = random.choice(list(SENTIMENTOS_CONFIG.keys()))
+            estado["sentimento_do_dia"] = sentimento_escolhido
+            estado["data_sentimento_do_dia"] = dia_hoje_str
+            salvar_estado(estado)
+            logger.info(f"🧠 Novo sentimento diário sorteado: {sentimento_escolhido.upper()}")
         
     detalhes_tema = TEMAS_MAPEADOS[tema_escolhido]
     logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
@@ -236,7 +251,7 @@ def gerar_conteudo_gemini(tipo):
 
     # Monta instrucoes de copy (gancho sequencial + cta sequencial + ângulo anti-repetição)
     instrucoes_copy, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta = montar_instrucoes_copy(
-        detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, is_conquistador=is_conquistador
+        detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, is_conquistador=is_conquistador, sentimento_escolhido=sentimento_escolhido
     )
 
     # Injeta o histórico do tema no instrucoes_copy → propagado automaticamente para TODOS os tipos de post
@@ -280,67 +295,69 @@ def gerar_conteudo_gemini(tipo):
 
     if tipo == "story":
         prompt = f"""
-        Você cria Stories de Instagram que fazem as pessoas pararem de rolar o feed.
+        Você cria Stories de Instagram direcionados estritamente para pessoas que JÁ TE SEGUEM (audiência quente).
+        Sua comunicação deve ser uma CONVERSA ÍNTIMA, EXCLUSIVA, PROPOSITAL E DIRECIONAL.
         Estilo obrigatório para este story: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA FRASE CURTÍSSIMA E PODEROSA:
-        - Máximo de 10 palavras.
-        - Como este é um Story de frase única, ela DEVE ser o próprio gancho sorteado adaptado ao sub-ângulo sugerido. Use a estrutura de: {descricao_categoria} com base na referência: '{gancho}'.
-        - Ela deve funcionar como um soco no estômago ou uma pergunta que incomoda, fundindo o gancho com o sub-ângulo.
-        - NÃO use ponto de exclamação. Frases com ponto final ou interrogação têm mais peso.
-
+        DIRETRIZ DE ESCRITA:
+        - Fale de igual para igual, como um mentor compartilhando uma percepção pessoal profunda do seu dia a dia.
+        - Não use ganchos artificiais ou fórmulas de interrupção de padrão frias. Comece o diálogo diretamente.
+        - Escreva uma única frase curta e com altíssimo impacto emocional (máximo de 15 palavras).
+        - NÃO use ponto de exclamação. Use ponto final ou interrogação.
+        
         Responda APENAS em formato JSON válido assim:
         {{
-          "frase": "Sua frase para o story aqui"
+          "frase": "Sua frase de conversa íntima com seu seguidor aqui"
         }}
         """
     elif tipo == "story_manha":
         prompt = f"""
-        Você cria uma sequência de Stories de Instagram matinais para reflexão profunda.
+        Você cria uma sequência de Stories de Instagram matinais para reflexão profunda com sua base de seguidores atuais.
+        Sua missão é gerar uma CONVERSA INTENCIONAL e íntima que prepare o seguidor para encarar as decisões do dia.
         Estilo obrigatório para esta sequência: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA ENTRE 4 A 8 FRASES CURTAS CONECTADAS:
-        - Cada frase será um slide diferente, então elas devem formar uma linha de raciocínio.
-        - Slide 1 (Gancho): Deve focar estritamente na estrutura da categoria de gancho sorteada ({descricao_categoria}) com base na referência: '{gancho}' para parar o scroll.
-        - Slides Internos (Corpo): Devem desdobrar e detalhar a ideia prática sugerida pelo sub-ângulo: "{sub_angulo}". O número de slides internos deve variar para que o total final (contando gancho e conclusão) fique entre 4 a 8.
-        - Slide Final (Conclusão): Fecha o raciocínio de forma madura e profunda.
-        - Máximo de 12 palavras por frase.
+        CRIE UMA SEQUÊNCIA ENTRE 4 A 8 FRASES CURTAS CONECTADAS (MÁXIMO DE 12 PALAVRAS POR FRASE):
+        - Cada frase representará um slide da sua conversa contínua.
+        - Não use ganchos frios de atração. Comece o primeiro slide compartilhando uma dúvida, uma confissão ou um pensamento maduro diretamente.
+        - Use os slides internos para aprofundar a lição ou o insight sugerido pelo sub-ângulo: "{sub_angulo}".
+        - Termine a sequência (último slide) com uma frase de desfecho forte e reflexiva que dê um norte prático.
         - Não use ponto de exclamação.
-        - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo da intensidade da mensagem.
+        - Escolha se quer usar música de fundo ou não no story (true ou false) de acordo com o tom da conversa.
         
         Responda APENAS em formato JSON válido assim:
         {{
           "frase": [
-            "Frase 1 aqui",
-            "Frase 2 aqui",
-            "Frase 3 aqui"
+            "Frase do slide 1 (Início da conversa/Confissão)",
+            "Frase do slide 2 (Aprofundamento)",
+            "Frase do slide 3 (Insight ou dica prática)",
+            "Frase do slide 4 (Conclusão direcional)"
           ],
           "usar_musica": true
         }}
         """
     elif tipo == "story_tarde":
         prompt = f"""
-        Você cria uma sequência curta de Stories de Instagram para o fim de tarde.
+        Você cria uma sequência curta de Stories de Instagram para o fim de tarde com sua base de seguidores.
+        O objetivo é dialogar sobre o cansaço do dia e a importância da consistência intencional.
         Estilo obrigatório para esta sequência: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA DE 2 FRASES CURTAS CONECTADAS:
-        - Slide 1 (Gancho): Abre a sequência usando a estrutura do gancho sorteado ({descricao_categoria}) com base na referência: '{gancho}'.
-        - Slide 2 (Desfecho/Impacto): Dá a quebra de expectativa ou o desfecho reflexivo baseado no sub-ângulo sugerido: "{sub_angulo}".
-        - Máximo de 12 palavras por frase.
+        CRIE UMA SEQUÊNCIA DE EXACTAMENTE 2 FRASES CURTAS CONECTADAS (MÁXIMO DE 12 PALAVRAS POR FRASE):
+        - Slide 1: Uma reflexão íntima sobre o andamento do dia ou cansaço da rotina.
+        - Slide 2: O insight prático ou a perspectiva do sub-ângulo: "{sub_angulo}" para trazer alívio e clareza.
         - Não use ponto de exclamação.
-        - Escolha se quer usar música de fundo ou não no story (true ou false) dependendo do impacto da mensagem.
+        - Escolha se quer usar música de fundo ou não (true ou false).
         
         Responda APENAS em formato JSON válido assim:
         {{
           "frase": [
-            "Frase 1 aqui",
-            "Frase 2 aqui"
+            "Frase do slide 1 (Conexão e rotina)",
+            "Frase do slide 2 (Reflexão/Alívio)"
           ],
           "usar_musica": false
         }}
@@ -472,11 +489,11 @@ def gerar_conteudo_gemini(tipo):
         - Amor falso e interesses materialistas.
         - Traição de princípios.
 
-        ESTRUTURA OBRIGATÓRIA DO VÍDEO (EXATAMENTE 8 CENAS EM SEQUÊNCIA):
+        ESTRUTURA OBRIGATÓRIA DO VÍDEO (EXATAMENTE 9 CENAS EM SEQUÊNCIA):
         O vídeo será uma reflexão contínua, profunda e de alto impacto emocional. 
-        Não use gatilhos de vendas. Não peça para seguir. NÃO USE CTA (Call to Action) em nenhuma cena. Apenas entregue a verdade nua e crua e vá embora.
+        Não use gatilhos de vendas ou CTAs comuns nas primeiras 8 cenas. Apenas entregue a verdade nua e crua.
 
-        CRIE UM VÍDEO MANIFESTO EM 8 CENAS CURTAS (Máximo de 15 palavras por cena):
+        CRIE UM VÍDEO MANIFESTO EM 9 CENAS CURTAS (Máximo de 15 palavras por cena):
         - Cena 1: Uma abertura reflexiva ou um soco no estômago sobre a realidade/verdade.
         - Cena 2: O aprofundamento do choque moral ou emocional (a armadilha que vivemos).
         - Cena 3: A sabedoria atemporal que revela a ilusão (influência de Salomão/Jesus).
@@ -484,7 +501,14 @@ def gerar_conteudo_gemini(tipo):
         - Cena 5: O despertar para a ação correta e corajosa (Poder da Ação).
         - Cena 6: A ruptura com o falso (rejeição da arrogância e da filosofia barata).
         - Cena 7: A reconexão com a verdadeira essência e liberdade da consciência.
-        - Cena 8: A frase final de impacto. Cortante, reflexiva, que deixe a mente do leitor ecoando. (NUNCA PEÇA AÇÃO AQUI, apenas termine a reflexão).
+        - Cena 8: A frase final de impacto. Cortante, reflexiva, que deixe a mente do leitor ecoando.
+        - Cena 9 (Slide Final - CTA Imponente): Um convite sutil, filosófico e imponente para seguir e acompanhar o perfil. Não use jargões de vendas ou imperativos baratos ("me siga"). Fale como um sábio que convida a trilhar o caminho.
+        
+        Exemplos de tom para a Cena 9 (use estas estruturas como inspiração para criar uma frase única conectada ao tema):
+        * "Quem chega até aqui já entendeu o sistema. Siga o perfil para ir além."
+        * "Se você busca a verdade sem maquiagem, este é o seu perfil. Acompanhe."
+        * "O caminho da sabedoria exige consistência. Siga nossa jornada diária."
+        * "Não seja mais um na massa. Siga e desperte a sua mente."
 
         LEGENDA DO POST:
         - Máximo de 3 linhas de reflexão poética e direta sobre o tema abordado.
@@ -502,7 +526,8 @@ def gerar_conteudo_gemini(tipo):
             "Texto da Cena 5",
             "Texto da Cena 6",
             "Texto da Cena 7",
-            "Texto da Cena 8"
+            "Texto da Cena 8",
+            "Texto da Cena 9 (CTA Imponente)"
           ],
           "legenda": "Sua legenda aqui"
         }}
@@ -541,10 +566,15 @@ def gerar_conteudo_gemini(tipo):
         - Imediatamente depois, ELEVE: elogie a inteligência de quem chegou até aqui.
         - Faça-o sentir que pertence a um grupo especial de pessoas que "entendem".
 
-        FASE 4 — FECHAMENTO QUE GERA RETORNO (frases 7-8):
-        - Feche com uma frase que o espectador vai querer guardar mentalmente.
-        - Plante a semente do retorno: uma ideia inacabada, uma pergunta que ele vai continuar pensando.
-        - Deve criar o desejo instintivo de voltar ao seu perfil amanhã.
+        FASE 4 — FECHAMENTO E CTA PREMIUM (frases 7-8):
+        - Frase 7: Feche com uma frase que o espectador vai querer guardar mentalmente. Plante a semente do retorno: uma ideia inacabada, uma pergunta que ele vai continuar pensando.
+        - Frase 8 (Slide Final - CTA Charmosa): Crie uma chamada para ação (CTA) altamente sedutora e sutil de acordo com o tema, convidando o espectador a comentar ou seguir de forma elegante.
+        
+        Exemplos de tom para a Frase 8 (use estas estruturas como inspiração para criar uma frase única conectada ao post):
+        * "Deixe sua percepção nos comentários. E se você busca respostas reais, siga a página."
+        * "Se você leu até aqui, comente o que pensa e acompanhe nossa jornada."
+        * "Deixe sua resposta abaixo. Siga para não perder as próximas reflexões."
+        * "A discussão continua nos comentários. Siga para evoluir junto conosco."
 
         PEXELS QUERY: Escolha um clima visual que CASE com a emoção da história.
         - Use buscas em inglês evocativas: dark moody reading, lonely city rain, candlelight silence, foggy mountain path.
@@ -558,12 +588,14 @@ def gerar_conteudo_gemini(tipo):
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
         {{
           "slides": [
-            "Frase 1 aqui",
+            "Frase 1 aqui (Gancho)",
             "Frase 2 aqui",
             "Frase 3 aqui",
             "Frase 4 aqui",
             "Frase 5 aqui",
-            "Frase 6 aqui"
+            "Frase 6 aqui",
+            "Frase 7 aqui (Xeque-mate)",
+            "Frase 8 aqui (CTA Charmosa)"
           ],
           "pexels_query": "your evocative english search here",
           "legenda": "Sua legenda aqui sem hashtags"
@@ -643,9 +675,15 @@ def gerar_conteudo_gemini(tipo):
         - O alívio. "Mas eu descobri que a chave é fazer isso...".
         - Entregue o método ou insight que resolve essa dor oculta da noite.
 
-        FASE 4 — O FECHAMENTO E BENEFÍCIO (frases 7-8):
-        - A promessa. Como o amanhã será diferente porque ele aprendeu isso agora.
-        - Termine com um soco no estômago que exija uma tomada de posição.
+        FASE 4 — O FECHAMENTO E CTA PREMIUM (frases 7-8):
+        - Frase 7: A promessa. Como o amanhã será diferente porque ele aprendeu isso agora. Termine com um soco no estômago que exija uma tomada de posição.
+        - Frase 8 (Slide Final - CTA Charmosa): Crie uma chamada para ação (CTA) altamente sedutora e sutil de acordo com o tema noturno, convidando o espectador a comentar ou seguir.
+        
+        Exemplos de tom para a Frase 8 (use estas estruturas como inspiração para criar uma frase única conectada ao post):
+        * "Deixe sua percepção nos comentários. E se você busca respostas reais, siga a página."
+        * "Se você leu até aqui, comente o que pensa e acompanhe nossa jornada."
+        * "Deixe sua resposta abaixo. Siga para não perder as próximas reflexões."
+        * "A discussão continua nos comentários. Siga para evoluir junto conosco."
 
         PEXELS QUERY: Escolha um clima visual noturno e contemplativo.
         - Use buscas em inglês evocativas: night city lights rain, candle flame night silence, dark forest stars, person alone window night, sunset silhouette reflection.
@@ -658,12 +696,14 @@ def gerar_conteudo_gemini(tipo):
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
         {{
           "slides": [
-            "Frase 1 aqui",
+            "Frase 1 aqui (Gancho)",
             "Frase 2 aqui",
             "Frase 3 aqui",
             "Frase 4 aqui",
             "Frase 5 aqui",
-            "Frase 6 aqui"
+            "Frase 6 aqui",
+            "Frase 7 aqui (Xeque-mate)",
+            "Frase 8 aqui (CTA Charmosa)"
           ],
           "pexels_query": "your evocative night english search here",
           "legenda": "Sua legenda aqui sem hashtags"

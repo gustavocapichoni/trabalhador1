@@ -4,7 +4,7 @@ import os
 from loguru import logger
 
 from core.config.settings import IG_ACCESS_TOKEN, IG_ACCOUNT_ID
-from core.publisher.uploader import upload_temporario
+from core.publisher.uploader import upload_temporario, obter_urls_temporarias
 
 # ============================================================
 # MAPA DE ERROS CONHECIDOS
@@ -59,6 +59,54 @@ def _publicar_com_retry(url_publish, payload_publish, descricao="mídia", max_te
     raise Exception(f"❌ Falha ao publicar {descricao} após {max_tentativas} tentativas. Última resposta: {res_json}")
 
 
+def _criar_container_com_retry(caminho_arquivo, extra_payload, url_key='image_url'):
+    """
+    Tenta criar um container no Instagram utilizando as URLs geradas pelos serviços disponíveis.
+    Se o Instagram falhar ao baixar a mídia (erros de URI/OAuthException/transient),
+    tenta com a próxima URL gerada por outro uploader.
+    """
+    url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
+    
+    erros = []
+    # Itera pelas URLs disponíveis geradas pelos uploaders
+    for url_publica in obter_urls_temporarias(caminho_arquivo):
+        payload = extra_payload.copy()
+        payload[url_key] = url_publica
+        
+        logger.info(f"📤 Tentando criar container com URL: {url_publica}...")
+        try:
+            res_container = requests.post(url_container, data=payload, timeout=25)
+            res_json = res_container.json()
+            
+            if 'id' in res_json:
+                return res_json['id']
+                
+            erro = res_json.get('error', {})
+            msg = erro.get('message', '')
+            codigo = erro.get('code')
+            subcod = erro.get('error_subcode')
+            
+            logger.warning(f"⚠️ Resposta da API ao criar container: {res_json}")
+            
+            # Se for um erro conhecido que indica problema de download ou instabilidade:
+            # - Código 2: Erro inesperado / transient
+            # - Código 9004 / subcod 2207052: URI inválido / falha ao baixar mídia
+            # - Ou qualquer erro do tipo OAuthException
+            if codigo in [2, 9004] or subcod == 2207052 or erro.get('type') == 'OAuthException':
+                logger.warning("🔄 Possível bloqueio de download ou instabilidade no Instagram. Tentando próximo uploader...")
+                erros.append(f"URL {url_publica} falhou: {res_json}")
+                continue
+            else:
+                # Se for outro erro (ex: token inválido), não adianta tentar outro uploader
+                raise Exception(f"Erro na API do Instagram: {res_json}")
+                
+        except Exception as e:
+            logger.warning(f"⚠️ Falha na tentativa de criação de container: {e}")
+            erros.append(str(e))
+            
+    raise Exception(f"Falha ao criar container com todos os serviços de upload tentados. Detalhes: {erros}")
+
+
 def aguardar_processamento_container(container_id, max_tentativas=15, intervalo=8):
     """Aguarda o Instagram processar um container de mídia antes de publicar."""
     url = f"https://graph.facebook.com/v19.0/{container_id}"
@@ -98,21 +146,13 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             logger.info(f"[DRY-RUN] Enviaria imagem {midia} e criaria o container.")
             return "DRY_RUN_ID"
 
-        url_publica = upload_temporario(midia)
-        url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
-        payload = {'image_url': url_publica, 'access_token': IG_ACCESS_TOKEN}
+        payload = {'access_token': IG_ACCESS_TOKEN}
         if tipo == "test" and legenda:
             payload['caption'] = legenda
         if tipo in ["story", "test"]:
             payload['media_type'] = 'STORIES'
 
-        res_container = requests.post(url_container, data=payload, timeout=25)
-        res_container_json = res_container.json()
-
-        if 'id' not in res_container_json:
-            raise Exception(f"Falha ao criar container. Resposta: {res_container_json}")
-
-        creation_id = res_container_json['id']
+        creation_id = _criar_container_com_retry(midia, payload, url_key='image_url')
         logger.info(f"✅ Container de mídia criado! ID: {creation_id}")
         time.sleep(10)
 
@@ -141,22 +181,11 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
 
         for idx, caminho_story in enumerate(midias):
             logger.info(f"📤 Publicando story {idx+1}/{len(midias)}...")
-            url_publica = upload_temporario(caminho_story)
 
-            url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
             payload = {'media_type': 'STORIES', 'access_token': IG_ACCESS_TOKEN}
-            if caminho_story.lower().endswith('.mp4'):
-                payload['video_url'] = url_publica
-            else:
-                payload['image_url'] = url_publica
+            url_key = 'video_url' if caminho_story.lower().endswith('.mp4') else 'image_url'
 
-            res_container = requests.post(url_container, data=payload, timeout=25)
-            res_container_json = res_container.json()
-
-            if 'id' not in res_container_json:
-                raise Exception(f"Falha ao criar container do story {idx+1}. Resposta: {res_container_json}")
-
-            creation_id = res_container_json['id']
+            creation_id = _criar_container_com_retry(caminho_story, payload, url_key=url_key)
             logger.info(f"✅ Container story {idx+1} criado! ID: {creation_id}. Aguardando processamento...")
 
             # Aguarda o Instagram processar o vídeo antes de publicar
@@ -194,18 +223,13 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         child_ids = []
         for idx, caminho_slide in enumerate(midia):
             logger.info(f"📸 Carregando slide {idx+1}/{len(midia)}...")
-            url_publica = upload_temporario(caminho_slide)
 
-            url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
-            payload = {'image_url': url_publica, 'is_carousel_item': 'true', 'access_token': IG_ACCESS_TOKEN}
-            res_container = requests.post(url_container, data=payload, timeout=25)
-            res_container_json = res_container.json()
-
-            if 'id' not in res_container_json:
-                raise Exception(f"Falha ao criar slide filho {idx}. Resposta: {res_container_json}")
-
-            child_ids.append(res_container_json['id'])
-            logger.info(f"✅ Slide filho {idx+1} criado. ID: {res_container_json['id']}")
+            payload = {'is_carousel_item': 'true', 'access_token': IG_ACCESS_TOKEN}
+            url_key = 'video_url' if caminho_slide.lower().endswith('.mp4') else 'image_url'
+            
+            cid = _criar_container_com_retry(caminho_slide, payload, url_key=url_key)
+            child_ids.append(cid)
+            logger.info(f"✅ Slide filho {idx+1} criado. ID: {cid}")
 
         for cid in child_ids:
             aguardar_processamento_container(cid)
@@ -245,22 +269,14 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             logger.info(f"[DRY-RUN] Enviaria vídeo Reels {midia} e publicaria.")
             return "DRY_RUN_REELS_ID"
 
-        url_publica = upload_temporario(midia)
-
         logger.info("🎬 Criando contêiner de Reels...")
-        url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
         payload = {
-            'media_type': 'REELS', 'video_url': url_publica,
+            'media_type': 'REELS',
             'caption': legenda, 'share_to_feed': 'true',
             'thumb_offset': '2000', 'access_token': IG_ACCESS_TOKEN
         }
-        res_container = requests.post(url_container, data=payload, timeout=25)
-        res_container_json = res_container.json()
-
-        if 'id' not in res_container_json:
-            raise Exception(f"Falha ao criar container Reels. Resposta: {res_container_json}")
-
-        reels_id = res_container_json['id']
+        
+        reels_id = _criar_container_com_retry(midia, payload, url_key='video_url')
         logger.info(f"✅ Container Reels criado! ID: {reels_id}")
         aguardar_processamento_container(reels_id, max_tentativas=25)
 

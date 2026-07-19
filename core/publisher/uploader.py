@@ -107,68 +107,45 @@ def _upload_transfer_sh(caminho_arquivo):
             return url
     raise Exception(f"transfer.sh falhou (HTTP {response.status_code}): {response.text.strip()[:200]}")
 
-def upload_temporario(caminho_arquivo):
+def obter_urls_temporarias(caminho_arquivo):
     """
-    Envia o arquivo para um servidor temporário e retorna a URL pública.
-    Tenta múltiplos serviços em sequência caso ocorra alguma falha.
+    Gerador que realiza upload em múltiplos serviços em ordem de confiabilidade 
+    (priorizando os mais amigáveis ao GitHub Actions e Instagram),
+    produzindo uma URL por vez à medida que são solicitadas.
     """
     tamanho_mb = os.path.getsize(caminho_arquivo) / (1024 * 1024)
     
-    # 1. Catbox
-    print(f"📤 Enviando {caminho_arquivo} ({tamanho_mb:.1f}MB) para catbox.moe...")
-    try:
-        url = _upload_catbox(caminho_arquivo)
-        print(f"🔗 Link direto gerado (catbox.moe): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
-        return url
-    except Exception as e:
-        print(f"⚠️ catbox.moe falhou: {e}")
+    # Lista de tuplas (Nome, Função de Upload) em ordem de prioridade
+    servicos = [
+        ("tmpfiles.org", _upload_tmpfiles),
+        ("transfer.sh", _upload_transfer_sh),
+        ("file.io", _upload_file_io),
+        ("litterbox.catbox.moe", _upload_litterbox),
+        ("catbox.moe", _upload_catbox)
+    ]
     
-    # 2. Litterbox
-    print("🔄 Tentando fallback 1: litterbox.catbox.moe...")
-    try:
-        url = _upload_litterbox(caminho_arquivo)
-        print(f"🔗 Link direto gerado (litterbox): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
-        return url
-    except Exception as e:
-        print(f"⚠️ litterbox falhou: {e}")
+    sucessos = 0
+    for nome, func in servicos:
+        print(f"📤 Enviando {caminho_arquivo} ({tamanho_mb:.1f}MB) para {nome}...")
+        try:
+            url = func(caminho_arquivo)
+            print(f"🔗 Link direto gerado ({nome}): {url}")
+            print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
+            time.sleep(10)
+            sucessos += 1
+            yield url
+        except Exception as e:
+            print(f"⚠️ {nome} falhou: {e}")
+            
+    if sucessos == 0:
+        raise Exception("Falha crítica: Todos os serviços de upload temporário falharam.")
 
-    # 3. Tmpfiles.org
-    print("🔄 Tentando fallback 2: tmpfiles.org...")
-    try:
-        url = _upload_tmpfiles(caminho_arquivo)
-        print(f"🔗 Link direto gerado (tmpfiles.org): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
+def upload_temporario(caminho_arquivo):
+    """
+    Mantém compatibilidade com o resto do código.
+    Retorna a primeira URL que funcionar de obter_urls_temporarias.
+    """
+    for url in obter_urls_temporarias(caminho_arquivo):
         return url
-    except Exception as e:
-        print(f"⚠️ tmpfiles.org falhou: {e}")
+    raise Exception("Falha crítica: Nenhum serviço de upload retornou uma URL válida.")
 
-    # 4. File.io (Uso único - apenas 1 download permitido)
-    print("🔄 Tentando fallback 3: file.io...")
-    try:
-        url = _upload_file_io(caminho_arquivo)
-        print(f"🔗 Link direto gerado (file.io): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
-        return url
-    except Exception as e:
-        print(f"⚠️ file.io falhou: {e}")
-
-    # 5. Transfer.sh
-    print("🔄 Tentando fallback 4: transfer.sh...")
-    try:
-        url = _upload_transfer_sh(caminho_arquivo)
-        print(f"🔗 Link direto gerado (transfer.sh): {url}")
-        print("⏳ Aguardando 10s para o arquivo ficar disponível globalmente...")
-        time.sleep(10)
-        return url
-    except Exception as e:
-        print(f"❌ transfer.sh falhou: {e}")
-        
-    raise Exception(
-        "Falha crítica: Todos os serviços de upload temporário falharam."
-    )

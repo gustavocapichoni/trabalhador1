@@ -335,25 +335,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     import random
     logger.info(f"🎥 Buscando vídeo com query: '{query}'")
 
-    # Injeção programática de CTA charmoso e integrado no final dos slides
-    if not is_reels_leads:
-        slides = list(slides)
-        if is_conquistador:
-            ctas_conquistador = [
-                "Quem chega até aqui já entendeu o sistema. Acompanhe a página para ir além.",
-                "Se você busca a verdade sem maquiagem, este é o seu perfil. Siga.",
-                "O caminho da sabedoria exige consistência. Acompanhe nossa jornada diária.",
-                "Não seja mais um na massa. Siga e desperte a sua mente."
-            ]
-            slides.append(random.choice(ctas_conquistador))
-        else:
-            ctas_pexels = [
-                "Deixe sua percepção nos comentários. E se você busca respostas reais, siga a página.",
-                "Se você leu até aqui, comente o que pensa e acompanhe nossa jornada.",
-                "Deixe sua resposta abaixo. Siga para não perder as próximas reflexões.",
-                "A discussão continua nos comentários. Siga para evoluir junto conosco."
-            ]
-            slides.append(random.choice(ctas_pexels))
+    slides = list(slides)
 
     temp_vids = []
     clip = None
@@ -706,7 +688,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
             total_slides = len(slides)
-            tempo_por_slide = duracao / total_slides
+            if total_slides > 1:
+                tempo_slide_normal = (duracao - 2.0) / (total_slides - 1)
+            else:
+                tempo_slide_normal = duracao
+                
             idx_cta = total_slides - 1  # Última cena = CTA
 
             efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
@@ -775,8 +761,18 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 return np.array(img.convert("RGB"))
 
             def make_frame(t):
-                idx = min(int(t / tempo_por_slide), total_slides - 1)
-                t_slide = t - (idx * tempo_por_slide)
+                if total_slides > 1:
+                    if t < 2.0:
+                        idx = 0
+                        t_slide = t
+                    else:
+                        t_restante = t - 2.0
+                        idx = min(1 + int(t_restante / tempo_slide_normal), total_slides - 1)
+                        t_slide = t_restante - ((idx - 1) * tempo_slide_normal)
+                else:
+                    idx = 0
+                    t_slide = t
+                    
                 texto_completo = slides[idx]
                 
                 # SLIDE 0 (CAPA/GANCHO) e ÚLTIMO SLIDE (CTA): sempre estáticos para garantir leitura
@@ -793,7 +789,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     # Executa a lógica de cada animação
                     if animacao == "typewriter":
                         # Termina a digitação 1.5 segundos antes do fim do slide para tempo de leitura
-                        tempo_ativo = max(1.0, tempo_por_slide - 1.5)
+                        tempo_ativo = max(1.0, tempo_slide_normal - 1.5)
                         progresso = min(t_slide / tempo_ativo, 1.0)
                         chars_to_show = int(progresso * len(texto_completo))
                     elif animacao == "fade":

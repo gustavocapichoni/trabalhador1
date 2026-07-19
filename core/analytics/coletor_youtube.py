@@ -144,12 +144,14 @@ def buscar_metricas_youtube_api(youtube, video_id, data_publicacao):
         else:
             # Analytics demora de 24 a 48h para processar.
             # Se não houver dados ainda, apenas usamos defaults de 0
+            metricas["estimatedMinutesWatched"] = 0.0
             metricas["averageViewDuration"] = 0
             metricas["follows"] = 0
             metricas["shares"] = 0
             
     except Exception as e:
         logger.warning(f"Aviso: Dados de Analytics não disponíveis para {video_id} ainda (Pode levar 48h): {e}")
+        metricas["estimatedMinutesWatched"] = 0.0
         metricas["averageViewDuration"] = 0
         metricas["follows"] = 0
         metricas["shares"] = 0

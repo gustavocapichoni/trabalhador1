@@ -252,11 +252,6 @@ TEMAS_MAPEADOS = {
             "O legado real não é o dinheiro que você deixa na conta, mas o caráter e a força que você planta nos seus filhos.",
             "Sua vaidade quer aprovação do mundo; seu propósito exige apenas que você seja útil para quem está próximo."
             "A ilusão de viver como se o tempo fosse infinito, desperdiçando anos preciosos com distrações idiotas.",
-            "Sua assinatura de vida é a forma como você trata quem não tem absolutamente nada a oferecer em troca.",
-            "A clareza de saber pelo que vale a pena morrer é o que dá sentido real para a forma como você escolhe viver.",
-            "A dor de uma vida sem direção: acordar todos os dias apenas para pagar contas e esperar o final de semana.",
-            "Seu propósito se revela quando você coloca a sua maior habilidade a serviço de curar a dor de outras pessoas.",
-            "A morte limpa as vaidades; construa apenas o que resistirá ao teste do tempo e do esquecimento.",
             "A sabedoria milenar de plantar árvores sob cujas sombras você sabe que nunca se sentará.",
             "Não seja apenas uma estatística de consumo: crie, ensine, construa e deixe o mundo melhor do que encontrou.",
             "O propósito maduro suporta o tédio, a dor e o cansaço porque a causa é maior do que o seu humor do dia.",
@@ -267,7 +262,7 @@ TEMAS_MAPEADOS = {
     }
 }
 
-def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, indice_gancho=0, indice_cta=0, is_conquistador=False):
+def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, indice_gancho=0, indice_cta=0, is_conquistador=False, sentimento_escolhido=None):
     """Monta o bloco de instrução de copy injetado em todos os prompts, evitando repetições."""
     if historico_angulos is None: historico_angulos = []
     
@@ -309,9 +304,17 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     }
     descricao_categoria = descricoes_categoria.get(categoria_gancho, "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.")
 
+    # Injeta a diretriz de sentimento do dia no copy base
+    diretriz_sentimento = ""
+    if sentimento_escolhido:
+        from core.ai.styles import SENTIMENTOS_CONFIG
+        config_emocional = SENTIMENTOS_CONFIG.get(sentimento_escolhido)
+        if config_emocional:
+            diretriz_sentimento = f"\n    DIRETRIZ DE SENTIMENTO DO DIA (Ativar Emoção: {sentimento_escolhido.upper()}):\n    - {config_emocional['tom']}\n    - Cada frase e palavra deve ser desenhada para evocar este exato sentimento no leitor.\n"
+
     instrucoes = f"""
     {REGRAS_COPY_BASE}
-
+    {diretriz_sentimento}
     ESTRATÉGIA DE CONTEÚDO BASEADA EM LIVROS:
     Você tem acesso ao conhecimento dos seguintes livros para este tema: {detalhes_tema['inspira']}
     Sua missão é:
@@ -333,7 +336,7 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     → Máximo 12 palavras. Curto, cortante. SEM explicação ainda — apenas o choque inicial.
 
     ATO 2 — SLIDES 2-3 (EFEITO ZEIGARNIK — Abertura de Loop de Curiosidade):
-    → Abra um ciclo de curiosidade sem fechá-lo. Faça uma promessa implícita que só será resolvida no final do post.
+    → Abra um ciclo de curiosidade sem fechá-lo. Aprofunde a provocação do gancho.
     → O leitor PRECISA continuar para descobrir. Ex: "Existe uma razão que pouquíssimos percebem..." / "O que acontece depois disso mudou tudo."
     → PROIBIDO entregar a solução aqui. Só aumente a tensão e o mistério.
 

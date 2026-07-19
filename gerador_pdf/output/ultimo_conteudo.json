@@ -1,22 +1,26 @@
 {
-  "titulo_pdf": "O Estrategista Silencioso: A Arte de Vencer a Inércia",
-  "subtitulo_pdf": "Domine a sua mente. Conquiste os seus hábitos.",
+  "titulo_pdf": "O Código da Mente Indomável",
+  "subtitulo_pdf": "Supere a voz que te puxa para trás.",
   "capa_cards": [
     {
       "titulo": "A Névoa",
-      "texto": "É a voz sussurrante que promete conforto imediato, o eco do medo disfarçado de preguiça, o ciclo vicioso do 'amanhã eu começo'. Ela surge precisamente quando a mudança dói, uma autossabotagem cruel que aprisiona no familiar, impedindo seu verdadeiro despertar."
+      "texto": "A voz interna é o eco do seu medo, disfarçado de preguiça, puxando você para o familiar. Ela surge no limiar da mudança, sabotando cada passo antes que o novo se instale, prometendo um amanhã que nunca chega.",
+      "pergunta_destaque": "Quantas vezes a desistência venceu sua promessa de mudança?"
     },
     {
       "titulo": "A Solucao",
-      "texto": "Um método estratégico para desarmar o inimigo interno, convertendo a resistência em progresso inabalável. Aprenda a planejar suas batalhas diárias, a fortalecer sua mente e a construir hábitos duradouros que o libertarão da mediocridade, forjando um futuro de propósito."
+      "texto": "Desvende um método preciso para mapear seu campo de batalha interior. Transforme a inércia em uma disciplina inabalável, silenciando a voz da desistência e construindo hábitos que blindam sua mente contra a autossabotagem, passo a passo.",
+      "pergunta_destaque": null
     },
     {
       "titulo": "O Proposito",
-      "texto": "Conquiste a maestria sobre si mesmo e liberte o poder da ação consistente para uma vida plena."
+      "texto": "Conquiste o domínio sobre si mesmo, transformando desafios em sua maior força.",
+      "pergunta_destaque": null
     },
     {
       "titulo": "A Verdade",
-      "texto": "Sua vida está esperando você parar de lutar contra si mesmo."
+      "texto": "A verdadeira batalha não é lá fora, mas dentro de você.",
+      "citacao_destaque": "A vitória começa na mente, antes mesmo do primeiro passo."
     }
   ],
   "capitulos": [
@@ -24,77 +28,77 @@
       "numero": 1,
       "titulo": "A Névoa do Cotidiano",
       "paragrafos": [
-        "Samuel acordou naquela segunda-feira com o mesmo peso no peito. O alarme, implacável, berrava às 5h, mas o cobertor parecia ter garras. Lá fora, o frio de uma virada no tempo prometida pela Defesa Civil de SP parecia solidificar a própria inércia em seu corpo. A xícara de café esperava na cozinha, a planilha de exercícios na mesa, a lista de tarefas no bloco de notas. Tudo pronto para começar, mas ele estava imobilizado, observando o teto com a urgência de um dia que já nascia perdido.",
-        "\"Outra vez. É como se houvesse uma força invisível me puxando para trás, sussurrando que é muito difícil, que não vale a pena, que posso começar amanhã. Essa voz interna, ela é mais traiçoeira que qualquer inimigo externo, porque ela conhece minhas fraquezas, meus medos. Ela me convence a desistir antes mesmo de tentar, me acorrentando a uma rotina de arrependimentos silenciosos. Por que eu luto tanto contra mim mesmo?\"",
-        "Essa batalha interna de Samuel não era isolada. Milhões, em silêncio, enfrentavam a mesma voz que mandava desistir, a mesma névoa mental que obscurecia a clareza e a determinação. Em um mundo que exigia inteligência e constância, onde o tempo não se detinha por ninguém, a luta contra a autossabotagem era a maior guerra. As desculpas elegantes, as esperas infindáveis, a vida que parecia se acomodar na mediocridade - tudo alimentado por essa resistência invisível ao progresso."
+        "Diego, slumped no sofá, o controle da TV esquecido na mão. A tela, em vez de vibrar com a energia de uma final de copa, exibia o vazio dos canais aleatórios. Mais uma noite perdida, mais uma promessa quebrada de começar a nova rotina. O suor frio das manhãs de academia trocado pelo calor morno do cobertor. O sabor amargo da derrota pessoal era mais forte que qualquer gol perdido em campo, um eco da voz que sussurrava: \"amanhã, Diego, amanhã\". A pilha de pratos na pia, o relatório inacabado, tudo gritava a inércia que o consumia.",
+        "É sempre a mesma coisa. O impulso inicial, a euforia do começo, e então o cansaço, a dúvida, a voz. Ela vem sorrateira, justificada, dizendo que não vale a pena, que é muito difícil, que o conforto é melhor. E eu caio. Sempre caio. Como posso dominar algo lá fora se não domino a mim mesmo? Como posso ser o 'homem impossível de dominar' que vejo na internet se sou refém da minha própria mente?",
+        "Essa não é apenas a batalha de Diego. É o campo de guerra silencioso de milhões que iniciam dietas, projetos, estudos, apenas para serem derrotados pela própria mente, antes mesmo de enfrentarem qualquer obstáculo externo. A voz interna, essa sabotadora sutil, é um adversário invisível, mas implacável, que transforma sonhos em \"e se\". Ela se alimenta da dúvida, cresce na fadiga e triunfa na procrastinação, aprisionando potenciais em um ciclo vicioso de tentativas e desistências, fazendo com que cada nova jornada pareça apenas mais uma linha de largada para uma corrida que nunca termina."
       ]
     },
     {
       "numero": 2,
       "titulo": "O Espelho Partido",
       "paragrafos": [
-        "Foi durante um almoço de família. Sua irmã, uma mulher que irradiava energia e sucesso, olhou-o nos olhos após ele resmungar sobre as metas não batidas. \"Samuel\", ela disse, a voz calma, mas firme, \"você continua esperando o quê exatamente? O tempo não vai parar por você. Você está perdendo anos, talvez a vida completa, enquanto espera o momento perfeito. Seus hábitos atuais estão destruindo o seu futuro, e você sabe disso.\" A verdade, nua e crua, atingiu-o como um raio.",
-        "A brisa fria da tarde parecia congelar o ar ao seu redor, mas era o fogo da vergonha e do reconhecimento que queimava por dentro. A voz interna, agora mais alta, dizia \"ela está certa, mas é tarde demais, você não consegue\". Mas uma nova semente brotava: a urgência que os vídeos sobre \"despertar antes que seja tarde\" tanto enfatizavam. A luta entre a conformidade e a revolta era feroz, uma batalha silenciosa travada em cada célula de seu ser.",
-        "Naquela noite, olhando para o reflexo no espelho, Samuel viu não apenas seu rosto cansado, mas o peso de todas as promessas quebradas. Ele se lembrou das manchetes sobre tufões varrendo terras distantes, sobre mudanças climáticas abruptas; a vida era imprevisível e exigia adaptabilidade. Não podia mais ser refém da própria mente. Uma resolução fria e inabalável tomou conta dele. Ele não iria apenas mudar; ele iria travar uma guerra contra a inércia, uma guerra planejada e implacável."
+        "A conversa veio durante o almoço de domingo, com a mãe de Diego, mais uma vez, perguntando sobre seus \"novos planos\" com um olhar que misturava carinho e desilusão. Não houve gritos ou críticas diretas, apenas a sutileza da expectativa não correspondida, o peso da percepção de que a cada semana uma nova promessa era feita e esquecida. Foi como olhar para um espelho e ver não o campeão que ele sonhava ser, mas um mero espectador da própria vida, um torcedor da sua própria derrota. A urgência de mudar não veio de fora, mas do reflexo daquele olhar.",
+        "A voz interna, aquela velha conhecida, gritava para ele se contentar, para aceitar que \"é assim mesmo\". Mas, pela primeira vez, uma contra-voz surgia, fraca no início, mas insistente, alimentada pela vergonha e por um vislumbre da vida que ele poderia ter. O conflito era brutal: a inércia do hábito contra a centelha de um futuro diferente, a promessa de conforto imediato contra a dor disciplinada da construção.",
+        "Naquela noite, Diego decidiu que não seria apenas mais um finalista que não leva o título. Ele não aceitaria ser o Lamine Yamal de sua própria vida, promissor, mas sem a glória da vitória. Ele não seria a versão do Botafogo que vê o título escapar. Ergueu-se do sofá, sentindo o peso da decisão como um atleta que se prepara para a prorrogação em uma final. Não haveria mais \"amanhãs\". A guerra contra a voz interna começaria agora, com a primeira e mais crucial estratégia: recusar o recuo."
       ]
     },
     {
       "numero": 3,
       "titulo": "A Arma Secreta",
       "paragrafos": [
-        "Em sua busca desesperada por uma saída, Samuel encontrou um antigo volume empoeirado na biblioteca de seu avô, um tratado sobre estratégia militar e domínio tático. Não era um livro de autoajuda, mas algo muito mais profundo, focado na compreensão do campo de batalha e do inimigo. Ele o devorou, linha por linha, percebendo que os princípios de guerra poderiam ser a chave para vencer sua própria batalha interna contra a preguiça e a autossabotagem.",
-        "O conceito central era a importância do conhecimento minucioso do terreno e do adversário. Não se trata de força bruta, mas de astúcia. A vitória não é conquistada pela persistência cega, mas pela análise estratégica das próprias fraquezas e da verdadeira natureza da resistência. Cada hábito a ser formado era uma campanha; cada momento de desistência, uma investida inimiga. A preparação silenciosa e a disciplina metódica eram os alicerces de qualquer conquista duradoura.",
-        "A vida real, ele percebeu, era um campo de batalha diário. Sua mente, o terreno. A voz interna, o inimigo oculto que sabotava de dentro para fora, disfarçando-se de aliada do conforto. Para vencê-la, era preciso entender suas táticas: o ataque antes do amanhecer, a emboscada da preguiça à tarde, a rendição noturna à distração. A estratégia não era lutar contra cada impulso, mas cortar suas linhas de suprimento, fortalecer as defesas e criar rotas de escape para a ação, tornando o caminho do hábito mais fácil que o da desistência."
+        "Dias depois, enquanto organizava uma estante empoeirada, Diego encontrou um livro antigo, de capa desgastada, que seu avô costumava ler. Não era sobre finanças ou autoajuda moderna, mas sobre princípios estratégicos atemporais, sobre a arte de conduzir conflitos e vencer adversários, muitos deles invisíveis. As palavras ali, embora escritas há séculos, pareciam falar diretamente à sua luta interna, como um mapa para o seu próprio campo de batalha mental, revelando que a vitória não se tratava de força bruta, mas de inteligência e posicionamento.",
+        "O conceito central era simples, mas profundo: \"Conheça seu inimigo e a si mesmo, e você não temerá o resultado de cem batalhas.\" Não se tratava de lutar cegamente, mas de entender as forças e fraquezas do oponente - a voz interna - e de si mesmo. Era sobre mapear o terreno, antecipar os movimentos de autossabotagem e preparar pequenas vitórias estratégicas que, somadas, levariam à supremacia. A disciplina não era um fardo, mas uma tática calculada.",
+        "Imagine sua mente como um campo de batalha constante, onde a voz da desistência é um general astuto, especialista em emboscadas e desinformação. Você, o comandante, precisa de um plano. Cada pequeno hábito que você tenta formar é uma fortaleza a ser construída, e cada vez que a voz interna sussurra para você parar, é um ataque inimigo. A estratégia não é eliminar a voz, mas neutralizá-la, construindo pequenas linhas de defesa invencíveis: hábitos tão arraigados que se tornam sua própria muralha, tornando o terreno inóspito para o inimigo."
       ]
     },
     {
       "numero": 4,
       "titulo": "O Campo de Batalha",
       "paragrafos": [
-        "Samuel começou pequeno, aplicando os princípios que havia aprendido. Seu primeiro objetivo: acordar às 5h30 para meditar por dez minutos. Nos primeiros dias, o frio da madrugada parecia mais intenso, a cama mais convidativa, e a voz interna gritava com redobrada força. \"Você é fraco, não vai durar. Volte a dormir, ninguém vai saber.\" O peso do início era esmagador, uma neblina densa de dúvidas e dores musculares (da academia que tentava retomar).",
-        "A velha rotina, como um general experiente, lançava suas tropas de volta. A procrastinação, a distração das redes sociais, o desejo de mais uma hora de sono. Era um atrito constante, um cabo de guerra invisível. Mas Samuel se apegava à disciplina forjada na dor do arrependimento passado. Ele lembrava que a organização e o trabalho inteligente, como os mestres do sucesso ensinavam, eram mais importantes que a força bruta. Era preciso ser estratégico, não apenas persistente.",
-        "Na sexta-feira da primeira semana, exausto, ele conseguiu. Acordou, meditou, e sentiu uma quietude diferente. Não foi um milagre, mas uma pequena, porém significativa, vitória. A voz interna, embora ainda presente, parecia mais fraca, a névoa se dissipando. Ele havia cumprido sua pequena missão, e a sensação de conquista era um bálsamo. Era a prova: a estratégia funcionava. A inércia não era invencível; ela apenas exigia um plano de ataque superior."
+        "Diego começou pequeno. A primeira \"batalha\" era levantar da cama cinco minutos antes para beber um copo d'água, um ato simbólico, mas crucial. No primeiro dia, a voz resmungou, no segundo, tentou negociar. No terceiro, a inércia era um peso quase insuportável, como o Ibovespa recuando após uma alta, ameaçando puxá-lo para baixo. O corpo protestava, a mente inventava desculpas, cada fibra de seu ser pedia para ele ceder ao conforto familiar do \"mais cinco minutos\". Ele sentiu o atrito, o desconforto que precede a transformação.",
+        "A velha rotina era um inimigo tenaz, usando táticas de guerrilha. A cada avanço, uma tentação surgia: o celular chamando a atenção, a cama parecendo mais macia. A disciplina, antes uma palavra abstrata, tornou-se uma ferramenta forjada no desconforto, na recusa consciente de ceder ao impulso imediato. Era a decisão de enfrentar a prorrogação na final, sabendo que a vitória viria com esforço extra.",
+        "A virada veio quando, em uma manhã particularmente fria, mesmo com a voz interna gritando para ele desistir e o cansaço pesando, Diego não apenas levantou para beber água, mas adicionou cinco flexões. Não foi um grande feito atlético, mas foi uma vitória esmagadora contra o general da desistência. Aquele pequeno ato de consistência, a recusa em ceder ao \"amanhã\", gerou um calor interno, uma sensação de controle que ele não sentia há muito tempo. Aquele dia, o método provou seu valor, mostrando que mesmo os menores avanços construíam a ponte para o impossível."
       ]
     },
     {
       "numero": 5,
       "titulo": "A Nova Ordem",
       "paragrafos": [
-        "Com o tempo, as pequenas vitórias se acumularam. O despertar precoce se tornou natural, a meditação, um refúgio. Ele expandiu sua estratégia, aplicando-a aos estudos, ao trabalho, à alimentação. Cada novo hábito era um território conquistado, cada resistência superada, uma fortificação erguida. Samuel já não lutava para ser disciplinado; ele era disciplinado. A constância, antes um monstro, agora era sua aliada mais fiel, moldando sua identidade, antes fragmentada, em algo coeso e inabalável.",
-        "A paz que se seguiu não era a ausência de desafios, mas a presença de uma força interior renovada. O contraste era gritante: do homem aprisionado pela voz da desistência, ele se transformara em um estrategista de sua própria vida. A ansiedade diminuiu, a clareza aumentou, e a energia para perseguir seus sonhos era abundante. Ele não era mais um barco à deriva; era o capitão, navegando com propósito em meio a qualquer tempestade.",
-        "A história de Samuel é um espelho. Não se trata de ser perfeito, mas de ser estratégico. A voz que manda desistir é um inimigo interno real, e a única forma de silenciá-la é com um plano de batalha bem executado. Não espere a inspiração; crie a disciplina. O tempo não vai parar. Suas desculpas elegantes estão destruindo seu futuro. Desperte. Conquiste sua mente, um hábito por vez, e transforme sua vida em uma obra-prima de ação e propósito inabaláveis."
+        "Semanas se transformaram em meses. Os cinco minutos para beber água viraram uma caminhada matinal, depois treinos consistentes. A voz interna ainda aparecia, mas seu poder diminuía a cada vitória, a cada hábito solidificado. Diego não estava mais lutando contra a si mesmo, mas construindo. Ele não era mais o \"homem impossível de dominar\" apenas em vídeos, ele estava se tornando um. A disciplina se transformou em liberdade, e os hábitos, antes vistos como imposições, eram agora a estrutura de sua nova identidade, tão natural quanto respirar.",
+        "A paz que se seguiu não era a ausência de desafios, mas a presença de uma força inabalável para enfrentá-los. O contraste era gritante: o Diego apático e procrastinador foi substituído por alguém que irradiava propósito e controle. A batalha interna havia sido vencida, não pela erradicação do inimigo, mas pela construção de um império de hábitos resilientes que o tornavam invencível em seu próprio território mental.",
+        "A história de Diego não é sobre perfeição, mas sobre persistência estratégica. Ela nos ensina que a verdadeira maestria não reside em nunca cair, mas em sempre se levantar, munido de um plano e da compreensão de que a maior conquista é o domínio de si mesmo. Não espere a inspiração perfeita ou o momento ideal. Comece onde está, com o que tem, e use a disciplina como sua arma mais poderosa. A voz que te puxa para baixo é um desafio, não um destino. A arte da guerra interna é a arte de construir, tijolo por tijolo, a vida que você merece."
       ]
     }
   ],
-  "citacao_destaque": "A verdadeira guerra não é contra o mundo lá fora, mas contra o general preguiçoso que reside em nós. Vença essa batalha interna, e a vitória externa será apenas uma questão de tempo e estratégia.",
-  "titulo_citacao": "A Verdade Inabalável",
+  "citacao_destaque": "A verdadeira força não reside em nunca sentir o desejo de desistir, mas em, no exato momento da tentação, escolher lutar mais um segundo. É nesse instante que a vitória se desenha.",
+  "titulo_citacao": "A Essência da Batalha",
   "plano_acao": {
     "titulo_secao": "Plano de Ação Diário",
     "subtitulo": "Comece pequeno. Construa grande.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Reconheça o Inimigo Interno",
-        "descricao": "Identifique as frases exatas que sua mente usa para te fazer desistir. Escreva-as. Ao nomear seu adversário, você tira seu poder e começa a enxergar suas táticas de sabotagem. Isso cria consciência e desativa o piloto automático da desistência."
+        "titulo": "Mapeie seu Campo de Batalha",
+        "descricao": "Identifique a voz interna: quais são os gatilhos, as desculpas favoritas e os momentos em que ela é mais forte. Anote. Compreender o inimigo é o primeiro passo para neutralizá-lo. Isso te dá consciência para criar contra-ataques."
       },
       {
         "numero": 2,
-        "titulo": "Crie Seu Campo de Batalha Favorável",
-        "descricao": "Prepare seu ambiente para o sucesso. Deixe roupas de treino prontas, livros à vista, a cozinha organizada. Elimine distrações. Um terreno bem preparado minimiza o atrito e facilita a ação, tornando o hábito quase inevitável."
+        "titulo": "Defina sua \"Pequena Vitória\" Diária",
+        "descricao": "Escolha um único hábito minúsculo e inegociável para começar (ex: 1 copo d'água ao acordar, 1 minuto de leitura). Faça-o todos os dias, sem falhar. A consistência no pequeno constrói o músculo da disciplina."
       },
       {
         "numero": 3,
-        "titulo": "A Pequena Vitória Diária",
-        "descricao": "Escolha apenas um hábito. Comece com uma versão ridiculamente fácil. Faça cinco minutos de algo, uma flexão, leia uma página. Celebre essa pequena vitória. O impulso inicial é mais importante que a magnitude da ação."
+        "titulo": "Antecipe a Emboscada",
+        "descricao": "Antes de iniciar a tarefa, visualize a voz interna tentando te sabotar. Já tenha uma resposta pronta ou uma ação substituta (ex: se a voz disser \"estou cansado\", responda \"vou fazer apenas por 5 minutos\"). Prepare-se para o ataque."
       },
       {
         "numero": 4,
-        "titulo": "Analise e Adapte Sua Estratégia",
-        "descricao": "Ao final do dia, reflita sobre o que funcionou e o que não. Onde a voz interna atacou? Como você reagiu? Ajuste seu plano para o dia seguinte. A flexibilidade tática é crucial para a maestria e a consistência a longo prazo."
+        "titulo": "Celebre Cada Conquista",
+        "descricao": "Não subestime o poder das pequenas vitórias. Cada vez que você supera a voz interna e cumpre seu hábito, celebre mentalmente. Isso reforça o novo caminho neural e mostra ao seu cérebro que a disciplina traz recompensas."
       }
     ]
   },
-  "fechamento": "Chegou a hora de parar de adiar sua própria grandeza. O mundo não espera, e o tempo é seu recurso mais precioso. Use a inteligência, a estratégia e a disciplina para silenciar a voz que te puxa para trás e construir a vida que você realmente merece. A vitória não é para os mais fortes, mas para os mais estratégicos. Levante-se, planeje e execute. Sua transformação começa agora.",
-  "titulo_fechamento": "Sua Vitória Inadiável",
+  "fechamento": "A hora de parar de ser espectador e se tornar o protagonista da sua própria história é agora. A vitória na copa da vida não vai para o mais talentoso, mas para aquele que se recusa a desistir na prorrogação, que luta contra sua própria mente e emerge mais forte. Que a sua determinação seja o grito de vitória que silencia todas as vozes de dúvida. Comece hoje a construir a sua muralha invencível, e deixe a sua luz brilhar com a intensidade de quem venceu a si mesmo.",
+  "titulo_fechamento": "Agora é a sua vez.",
   "rodape": "Produzido com zelo, fé e propósito."
 }

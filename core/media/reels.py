@@ -13,8 +13,27 @@ def garantir_audio_reels(pastas=None):
     try:
         # Garante caminhos absolutos baseados na raiz do projeto
         root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        estado = carregar_estado()
+        
+        # Mapeamento do sentimento do dia para as subpastas (apenas se for a pasta padrão e houver sentimento ativo)
+        usando_pastas_padrao = (pastas is None)
+        sentimento = estado.get("sentimento_do_dia")
+
         if pastas is None:
-            pastas = [os.path.join(root_dir, "biblioteca_local", "musicas")]
+            if sentimento:
+                from core.ai.styles import SENTIMENTOS_CONFIG
+                config_emocional = SENTIMENTOS_CONFIG.get(sentimento)
+                if config_emocional and "pasta_audio" in config_emocional:
+                    sub_pasta_sentimento = config_emocional["pasta_audio"]
+                    caminho_emocional = os.path.join(root_dir, "biblioteca_local", "musicas", sub_pasta_sentimento)
+                    # Verifica se o usuário criou a pasta física para aquele sentimento
+                    if os.path.exists(caminho_emocional) and os.listdir(caminho_emocional):
+                        pastas = [caminho_emocional]
+                        logger.info(f"🎶 [SINESTESIA] Usando subpasta de áudio do sentimento {sentimento.upper()}: '{sub_pasta_sentimento}'")
+            
+            # Se não houver sentimento ou a pasta do sentimento não existir/estiver vazia, usa a padrão
+            if pastas is None:
+                pastas = [os.path.join(root_dir, "biblioteca_local", "musicas")]
         else:
             pastas = [os.path.join(root_dir, p) if not os.path.isabs(p) else p for p in pastas]
             
@@ -28,7 +47,6 @@ def garantir_audio_reels(pastas=None):
                         mp3_files.append(os.path.join(pasta, f))
         
         if mp3_files:
-            estado = carregar_estado()
             chave_estado = f"fila_musicas_{pasta_principal}"
             
             # Se a chave antiga existir (migração), usa e depois deleta
@@ -109,7 +127,7 @@ def trocar_audio_video(caminho_video_orig, caminho_audio_novo, caminho_saida):
     return caminho_saida
 
 def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pronto.mp4",
-                      textos=None, fonte_path=None, fonte_size=86, incluir_video_final=True):
+                      textos=None, fonte_path=None, fonte_size=86, incluir_video_final=True, tipo="reels"):
     logger.info("🎬 Montando slideshow 9:16 com música de fundo e animações de texto...")
     if 'ImageClip' not in globals() or 'AudioFileClip' not in globals():
         raise ImportError("A biblioteca 'moviepy' não está instalada! Execute 'pip install moviepy' para gerar Reels.")
@@ -133,6 +151,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
         audio_clip = AudioFileClip(caminho_audio)
         duracao_por_slide = 4.8
         DURACAO_ULTIMO_SLIDE = 7.0  # Último slide (CTA) tem mais tempo para leitura
+        DURACAO_GANCHO_COMUM = 2.0  # Gancho do reels comum dura exatamente 2 segundos
         n_slides = len(caminhos_imagens)
 
         # Dimensões da imagem (necessário antes de carregar o outro)
@@ -167,7 +186,11 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 outro_duracao = 0.0
 
         # Duração do áudio = slides + vídeo final (música cobre tudo)
-        duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
+        is_reels_comum = (tipo in ["reels", "reels_noite"])
+        if is_reels_comum and n_slides >= 2:
+            duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
+        else:
+            duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
         duracao_total_audio = duracao_slides + outro_duracao
 
         if duracao_total_audio > audio_clip.duration:
@@ -175,13 +198,18 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             ratio = audio_clip.duration / duracao_total_audio
             duracao_por_slide = duracao_por_slide * ratio
             DURACAO_ULTIMO_SLIDE = max(duracao_por_slide, DURACAO_ULTIMO_SLIDE * ratio)
-            duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
+            DURACAO_GANCHO_COMUM = DURACAO_GANCHO_COMUM * ratio
+            if is_reels_comum and n_slides >= 2:
+                duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
+            else:
+                duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
             duracao_total_audio = audio_clip.duration
 
         try:
             audio_clip = audio_clip.subclipped(0, duracao_total_audio)
         except AttributeError:
             audio_clip = audio_clip.subclip(0, duracao_total_audio)
+
 
         from datetime import datetime, timezone
         import random as _random
@@ -469,10 +497,16 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             else:
                 texto_slide = str(_raw_texto).strip()
             eh_ultimo = (idx == n_slides - 1)
-            # Último slide (CTA) tem duração maior para garantir leitura completa
-            dur_slide = DURACAO_ULTIMO_SLIDE if eh_ultimo else duracao_por_slide
+            # Duração adaptável com base no formato e posição do slide
+            if eh_ultimo:
+                dur_slide = DURACAO_ULTIMO_SLIDE
+            elif idx == 0 and is_reels_comum:
+                dur_slide = DURACAO_GANCHO_COMUM
+            else:
+                dur_slide = duracao_por_slide
             try:
                 frames_lista = gerar_frames_slide(
+
                     caminho, texto_slide, dur_slide,
                     dia_semana, idx == 0, W, H, FPS, eh_ultimo
                 )

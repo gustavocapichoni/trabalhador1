@@ -327,3 +327,93 @@ def proximo_cta(indice_atual=0):
     novo_indice = (indice_atual + 1) % len(LISTA_CTAS_SEQUENCIAL)
     return categoria, referencia, novo_indice
 
+
+# =====================================================================
+# CAIXA DE SENTIMENTOS (15 emoções)
+# Mapeia cada sentimento para diretrizes de copy, termos de busca de imagem,
+# e subpasta de áudio para criar sinestesia pura.
+# =====================================================================
+SENTIMENTOS_CONFIG = {
+    # ── Família 1: Desejo & Aspiração (Ideal para inspirar e gerar conexão de alta qualidade)
+    "poder": {
+        "tom": "Transmita autoridade incansável e domínio das emoções. Use frases firmes e seguras. Fale de auto-maestria.",
+        "busca_imagem": ["mountain climber peak sunrise", "ancient stone castle storm", "eagle flying high mountain", "epic sunset silhouette cliff"],
+        "pasta_audio": "desejo_poder"
+    },
+    "luxuria": {
+        "tom": "Desperte o desejo pelo extraordinário e pelo conhecimento restrito aos 1%. Fale sobre segredos ocultos e exclusividade.",
+        "busca_imagem": ["luxury dark study warm light", "city lights night top view skyscrapers", "glowing gold key velvet", "rich texture shadows gold"],
+        "pasta_audio": "desejo_poder"
+    },
+    "sensualidade": {
+        "tom": "Trabalhe com o magnetismo do mistério e o poder do silêncio atraente. Fale com classe, sem vulgaridade.",
+        "busca_imagem": ["warm sunset silhouette shadow", "candle light bedroom dark room", "coffee cup steam soft morning light", "aesthetic smoke mystery"],
+        "pasta_audio": "desejo_poder"
+    },
+    "prazer": {
+        "tom": "Conecte com a satisfação genuína de colher frutos do esforço e viver sob seus próprios termos. Sensação de conquista.",
+        "busca_imagem": ["person walking beach sunset ocean", "relaxing cozy fire cabin rain", "peaceful walk forest sunlight", "person smiling sun rays face"],
+        "pasta_audio": "desejo_poder"
+    },
+    "plenitude": {
+        "tom": "Foque no alívio de se sentir completo e em paz consigo mesmo. Acabe com a sensação de estar correndo em vão.",
+        "busca_imagem": ["calm ocean surface horizon morning", "zen garden bonsai peaceful", "vast empty desert warm sky", "sunbeams through clouds sky"],
+        "pasta_audio": "conexao_lealdade"
+    },
+
+    # ── Família 2: Tensão & Ação (Excelente para engajamento frio, ganchos rápidos de 2s e comentários)
+    "escassez": {
+        "tom": "Gere senso de urgência e perda de tempo. Chame a atenção para a velocidade com que os anos passam enquanto o leitor hesita.",
+        "busca_imagem": ["hourglass flowing sand macro", "vintage pocket watch shadow", "ticking clock wall shadows", "dark autumn leaves falling"],
+        "pasta_audio": "tensao_acao"
+    },
+    "raiva": {
+        "tom": "Manifeste indignação fria contra a mediocridade, a distração fácil e a hipocrisia social do mundo atual.",
+        "busca_imagem": ["stormy dark sea big waves", "heavy storm lightning clouds", "fire sparks black background", "person screaming silhouette shadow"],
+        "pasta_audio": "tensao_acao"
+    },
+    "medo": {
+        "tom": "Toque na dor inconsciente e no perigo de continuar na mesma situação de estagnação por covardia de mudar.",
+        "busca_imagem": ["foggy dark forest path mystery", "shadowy corridor lone light", "rainy window night city light blurred", "empty bench mist park"],
+        "pasta_audio": "tensao_acao"
+    },
+    "duvida": {
+        "tom": "Faça perguntas perturbadoras. Desafie as verdades que o leitor julga inabaláveis. Crie incerteza intelectual.",
+        "busca_imagem": ["misty mountain lake reflection", "foggy street lamp night silhouette", "dusty library bookshelves darkness", "open door light dark room"],
+        "pasta_audio": "tensao_acao"
+    },
+    "curiosidade": {
+        "tom": "Abra loops mentais com promessas de revelação sobre o comportamento humano. O leitor precisa virar a tela.",
+        "busca_imagem": ["ancient leather book dust", "magnifying glass text map", "brass compass glowing light", "microscope laboratory slide science"],
+        "pasta_audio": "tensao_acao"
+    },
+
+    # ── Família 3: Conexão & Lealdade (Ideal para Stories e aquecimento de base de seguidores)
+    "amor": {
+        "tom": "Aborde com altruísmo puro, empatia real e proteção aos valores familiares. O valor do sacrifício por quem se ama.",
+        "busca_imagem": ["warm hands holding together family", "heart shape light shadow", "parents child walking park sunset", "single red rose winter snow"],
+        "pasta_audio": "conexao_lealdade"
+    },
+    "carinho": {
+        "tom": "Fale com tom de proximidade e cuidado de um verdadeiro mentor. Acolha e ofereça suporte prático com calma.",
+        "busca_imagem": ["sleeping puppy kitten warm blanket", "steaming tea mug cozy room", "gentle rain window plants inside", "soft fireplace light wood cabin"],
+        "pasta_audio": "conexao_lealdade"
+    },
+    "afeto": {
+        "tom": "Mostre a importância das alianças verdadeiras e amizades de aço. Construa pontes emocionais seguras.",
+        "busca_imagem": ["two friends laughing talking street", "warm hug silhouette sunset", "people sitting around campfire", "handshake business partners warm"],
+        "pasta_audio": "conexao_lealdade"
+    },
+    "alegria": {
+        "tom": "Celebre vitórias reais, a beleza da natureza e a felicidade sincera de viver com propósito.",
+        "busca_imagem": ["sunflower field golden hour", "glorious waterfall sun rays", "person jumping freedom mountain peak", "bright green forest summer morning"],
+        "pasta_audio": "conexao_lealdade"
+    },
+    "esperanca": {
+        "tom": "Mostre que mesmo na noite mais escura, a alvorada virá. Dê perspectivas positivas de crescimento real.",
+        "busca_imagem": ["sun rays breaking through storm clouds", "green plant growing crack concrete", "light at the end of tunnel", "starry sky clear night desert"],
+        "pasta_audio": "conexao_lealdade"
+    }
+}
+
+

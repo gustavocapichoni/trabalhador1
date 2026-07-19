@@ -53,6 +53,19 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
     tema_key = tema_escolhido if tema_escolhido else "superacao"
     queries_fallback = UNSPLASH_FALLBACKS.get(tema_key, [QUERY_CORINGA])
     
+    # Injeta queries baseadas no sentimento do dia para posts padrão (não conquistador ou leads)
+    from core.config.state import carregar_estado
+    estado = carregar_estado()
+    sentimento = estado.get("sentimento_do_dia")
+    is_leads_ou_conquistador = (tipo in ["reels_conquistador", "reels_leads"])
+    
+    if sentimento and not is_leads_ou_conquistador:
+        from core.ai.styles import SENTIMENTOS_CONFIG
+        config_emocional = SENTIMENTOS_CONFIG.get(sentimento)
+        if config_emocional and "busca_imagem" in config_emocional:
+            queries_fallback = config_emocional["busca_imagem"]
+            print(f"📸 [SINESTESIA] Usando queries de imagem do sentimento {sentimento.upper()}: {queries_fallback}")
+
     # Para buscas em APIs de fotos reais: começa pelos fallbacks temáticos coloridos (NÃO usa o prompt cinematográfico da IA)
     queries_a_tentar = queries_fallback + [QUERY_CORINGA]
 

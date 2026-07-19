@@ -251,8 +251,8 @@ function renderFunilEstrategico() {
         document.getElementById('funnel-rate').innerText = '0,00%';
     }
 
-    document.getElementById('funnel-followers').innerText     = followsTotal > 0 ? fmt(followsTotal) : '--';
-    document.getElementById('funnel-profile-visits').innerText = profileVisitsTotal > 0 ? fmt(profileVisitsTotal) : '--';
+    document.getElementById('funnel-followers').innerText     = followsTotal != null ? fmt(followsTotal) : '--';
+    document.getElementById('funnel-profile-visits').innerText = profileVisitsTotal != null ? fmt(profileVisitsTotal) : '--';
 }
 
 // ── TENDÊNCIA (compara última semana vs semana anterior) ─
@@ -342,8 +342,8 @@ function renderMetricasIG() {
     document.getElementById('ig-comments').innerText      = fmt(comments);
     document.getElementById('ig-saves').innerText         = fmt(saves);
     document.getElementById('ig-shares').innerText        = fmt(shares);
-    document.getElementById('ig-profile-visits').innerText= profVisits > 0 ? fmt(profVisits) : '--';
-    document.getElementById('ig-follows').innerText       = follows > 0 ? fmt(follows) : '--';
+    document.getElementById('ig-profile-visits').innerText= profVisits != null ? fmt(profVisits) : '--';
+    document.getElementById('ig-follows').innerText       = follows != null ? fmt(follows) : '--';
     document.getElementById('ig-avg-watch').innerText     = watchCount > 0 ? (avgWatch / watchCount / 1000).toFixed(1) + 's' : '--';
 
     // Indicadores de tendência
@@ -366,7 +366,7 @@ function renderMetricasYT() {
         likes    += m.likes    || 0;
         comments += m.comments || 0;
         shares   += m.shares   || 0;
-        minutes  += m.watch_time_minutes || m.estimated_minutes_watched || 0;
+        minutes  += m.watch_time_minutes || m.estimated_minutes_watched || m.estimatedMinutesWatched || 0;
     });
     document.getElementById('yt-views').innerText    = fmt(views);
     document.getElementById('yt-likes').innerText    = fmt(likes);
@@ -432,7 +432,7 @@ function renderGraficos() {
         if (ytMetricaAtiva === 'likes')    return m.likes || 0;
         if (ytMetricaAtiva === 'comments') return m.comments || 0;
         if (ytMetricaAtiva === 'shares')   return m.shares || 0;
-        if (ytMetricaAtiva === 'minutes')  return Math.round(m.watch_time_minutes || m.estimated_minutes_watched || 0);
+        if (ytMetricaAtiva === 'minutes')  return Math.round(m.watch_time_minutes || m.estimated_minutes_watched || m.estimatedMinutesWatched || 0);
         return m.views || 0;
     });
 

@@ -1,0 +1,33 @@
+{
+    "hipoteses": [
+        {
+            "id": "hd2e548",
+            "hipotese": "Ganchos do tipo 'DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
+            "variaveis_testadas": [
+                "gancho_categoria"
+            ],
+            "grupo_a": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
+            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+            "metrica_alvo": "growth_score",
+            "confianca": 0.5,
+            "amostra": 10,
+            "status": "em_observacao",
+            "criada_em": "2026-07-19"
+        },
+        {
+            "id": "h169e38",
+            "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'compartilhamento'.",
+            "variaveis_testadas": [
+                "tipo_cta"
+            ],
+            "grupo_a": "salvamento",
+            "grupo_b": "compartilhamento",
+            "metrica_alvo": "growth_score",
+            "confianca": 0.5,
+            "amostra": 7,
+            "status": "em_observacao",
+            "criada_em": "2026-07-19"
+        }
+    ],
+    "conhecimento_consolidado": []
+}

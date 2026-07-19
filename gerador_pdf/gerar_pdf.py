@@ -409,21 +409,15 @@ def draw_page_1_content(canvas, doc):
     c1_x = left_margin
     c1_y = grid_y
     c1_title = cards[0]["titulo"] if len(cards) > 0 else "A Névoa"
-    c1_paragraphs = [cards[0]["texto"]] if len(cards) > 0 else [
-        "Sob o mesmo teto, mas a quilômetros de distância. A rotina exaustiva, as telas sempre acesas e as preocupações têm roubado o diálogo e o afeto.",
-        "Você sente que está perdendo os melhores anos da sua família para a correria implacável? O distanciamento invisível transforma lares em abrigos de passagem."
-    ]
-    if len(c1_paragraphs) == 1 and "Você sente" not in c1_paragraphs[0]:
-        partes = c1_paragraphs[0].split(". ")
-        if len(partes) > 1:
-            c1_paragraphs = [partes[0] + ".", ". ".join(partes[1:])]
-    # Texto fixo de abertura do card — nunca muda
-    TEXTO_ABERTURA_NEVOA = "A voz interna te sabota toda vez que você tenta mudar."
-    # A pergunta da caixinha de destaque é SEMPRE FIXA — nunca muda, independente da IA
-    PERGUNTA_NEVOA_FIXA = "Você sente que está perdendo os melhores anos do convívio?"
-    ai_texto = c1_paragraphs[0] if len(c1_paragraphs) >= 1 else ""
-    # Une: frase fixa + texto da IA explicando o porquê + pergunta fixa na highlight box
-    c1_paragraphs = [TEXTO_ABERTURA_NEVOA + " " + ai_texto, PERGUNTA_NEVOA_FIXA]
+    if len(cards) > 0:
+        c1_text = cards[0].get("texto", "")
+        c1_pergunta = cards[0].get("pergunta_destaque", "Você sente que está perdendo os melhores anos do convívio?")
+        c1_paragraphs = [c1_text, c1_pergunta]
+    else:
+        c1_paragraphs = [
+            "Sob o mesmo teto, mas a quilômetros de distância. A rotina exaustiva, as telas sempre acesas e as preocupações têm roubado o diálogo e o afeto.",
+            "Você sente que está perdendo os melhores anos da sua família para a correria implacável? O distanciamento invisível transforma lares em abrigos de passagem."
+        ]
     
     draw_gradient_round_rect(canvas, c1_x, c1_y, col_w, grid_height, 18, 18, "#22d3ee", "#3b82f6", border_color="rgba(255,255,255,0.15)")
     draw_card_decorations(canvas, "nevoa", c1_x, c1_y, col_w, grid_height)
@@ -435,7 +429,7 @@ def draw_page_1_content(canvas, doc):
     c2_title = cards[1]["titulo"] if len(cards) > 1 else "A Solução"
     c2_paragraphs = [cards[1]["texto"]] if len(cards) > 1 else [
         "A verdadeira solução não está em focar apenas em mais provisão material. A resposta exige uma atitude corajosa, simples e profunda: tempo de qualidade e intencionalidade.",
-        "É preciso resgatar a presença ativa e tecer novamente os fios que mantêm o amor inabalável."
+        "É preciso resgatar a presença active e tecer novamente os fios que mantêm o amor inabalável."
     ]
     draw_gradient_round_rect(canvas, c2_x, c2_y, double_col_w, row_h, 18, 18, "#c084fc", "#f472b6", border_color="rgba(255,255,255,0.15)")
     draw_card_decorations(canvas, "solucao", c2_x, c2_y, double_col_w, row_h)
@@ -456,12 +450,15 @@ def draw_page_1_content(canvas, doc):
     c4_x = c3_x + col_w + gap
     c4_y = grid_y
     c4_title = cards[3]["titulo"] if len(cards) > 3 else "A Verdade"
-    c4_paragraphs = [cards[3]["texto"]] if len(cards) > 3 else [
-        "O amor exige presença no campo de batalha da rotina.",
-        "\"Onde colocamos nosso tempo, ali ancoramos nosso coração.\""
-    ]
-    if len(c4_paragraphs) == 1:
-        c4_paragraphs.append('"Onde colocamos nosso tempo, ali ancoramos nosso coração."')
+    if len(cards) > 3:
+        c4_text = cards[3].get("texto", "")
+        c4_citacao = cards[3].get("citacao_destaque", '"Onde colocamos nosso tempo, ali ancoramos nosso coração."')
+        c4_paragraphs = [c4_text, c4_citacao]
+    else:
+        c4_paragraphs = [
+            "O amor exige presença no campo de batalha da rotina.",
+            "\"Onde colocamos nosso tempo, ali ancoramos nosso coração.\""
+        ]
     draw_gradient_round_rect(canvas, c4_x, c4_y, col_w, row_h, 18, 18, "#3b82f6", "#4f46e5", border_color="rgba(255,255,255,0.15)")
     draw_text_in_rect(canvas, c4_title, c4_paragraphs, c4_x, c4_y, col_w, row_h, title_font_size=16, body_font_size=10, has_italic_box=True)
 

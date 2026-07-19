@@ -54,10 +54,10 @@ ESTRUTURA OBRIGATÓRIA (retorne em formato JSON):
   "titulo_pdf": "Título magnético aqui",
   "subtitulo_pdf": "Uma frase curta de impacto aqui",
   "capa_cards": [
-    {{"titulo": "A Névoa", "texto": "Escreva uma explicacao poderosa e emocional de POR QUE a voz interna sabota toda tentativa de mudanca. Explique o mecanismo psicologico: o loop mental do 'amanha comeco', o medo disfarçado de preguica, a autossabotagem que surge exatamente quando voce esta prestes a mudar. Seja impactante e profundo. Minimo 35 palavras, maximo 45, sem pular linha, sem aspas."}},
+    {{"titulo": "A Névoa", "texto": "Escreva uma explicacao poderosa e emocional de POR QUE a voz interna sabota toda tentativa de mudanca. Explique o mecanismo psicologico: o loop mental do 'amanha comeco', o medo disfarçado de preguica, a autossabotagem que surge exatamente quando voce esta prestes a mudar. Seja impactante e profundo. Minimo 35 palavras, maximo 45, sem pular linha, sem aspas.", "pergunta_destaque": "Uma pergunta curta de impacto emocional para o leitor (maximo 12 palavras, sem aspas) sobre a dor central do tema da semana."}},
     {{"titulo": "A Solucao", "texto": "Escreva uma descricao envolvente e que gera desejo da solucao: o metodo preciso que vai silenciar essa voz interna e transformar a inercia em habitos solidos. Mostre a transformacao de forma visceral. Minimo 35 palavras, maximo 45, sem pular linha, sem aspas."}},
     {{"titulo": "O Proposito", "texto": "Uma frase direta e inspiradora sobre o que a pessoa vai conquistar ao seguir esse metodo. Maximo 18 palavras, sem aspas."}},
-    {{"titulo": "A Verdade", "texto": "Uma provocacao curta e cirurgica sobre a realidade da situacao. Maximo 14 palavras, sem aspas."}}
+    {{"titulo": "A Verdade", "texto": "Uma provocacao curta e cirurgica sobre a realidade da situacao. Maximo 14 palavras, sem aspas.", "citacao_destaque": "Uma citacao curta, profunda e impactante em formato de frase reflexiva (maximo 14 palavras, sem aspas) sobre o tema da semana."}}
   ],
   "capitulos": [
     {{
@@ -187,10 +187,10 @@ def gerar_conteudo_pdf(briefing: dict) -> dict:
       "titulo_pdf": "O Domínio da Mente",
       "subtitulo_pdf": "O método para silenciar a autossabotagem e assumir o controle.",
       "capa_cards": [
-        {"titulo": "A Névoa", "texto": "A autossabotagem não chega gritando. Ela sussurra que 'amanhã é um dia melhor'. Ela te convence de que o conforto de hoje vale mais que o orgulho de amanhã. É a prisão mais invisível que existe."},
+        {"titulo": "A Névoa", "texto": "A autossabotagem não chega gritando. Ela sussurra que 'amanhã é um dia melhor'. Ela te convence de que o conforto de hoje vale mais que o orgulho de amanhã. É a prisão mais invisível que existe.", "pergunta_destaque": "Você sente que sua vida está travada nas desculpas de sempre?"},
         {"titulo": "A Solução", "texto": "O domínio não nasce da motivação, mas da clareza inegociável. Quando você decide que a dor da disciplina é menor que a dor do arrependimento, o jogo vira. O método é implacável."},
         {"titulo": "O Propósito", "texto": "Recuperar o poder sobre suas próprias decisões e destruir a procrastinação."},
-        {"titulo": "A Verdade", "texto": "Você não tem um problema de tempo. Você tem um problema de prioridade."}
+        {"titulo": "A Verdade", "texto": "Você não tem um problema de tempo. Você tem um problema de prioridade.", "citacao_destaque": "\"Onde colocamos nossa energia, ali floresce o nosso destino.\""}
       ],
       "capitulos": [
         {
