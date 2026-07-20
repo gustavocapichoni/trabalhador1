@@ -162,18 +162,93 @@ LISTA_GANCHOS_SEQUENCIAL = [
 
 
 # ==========================================
-# GANCHOS CONQUISTADOR — ciclo sequencial próprio
+# GANCHOS CONQUISTADOR — ciclo sequencial próprio (50 ganchos de alto impacto)
 # ==========================================
 LISTA_GANCHOS_CONQUISTADOR = [
-    "Por que não te contaram isso antes?",
-    "E se tudo o que você sabe sobre esse assunto estiver completamente errado?",
-    "Você está fazendo isso de forma errada e eu posso provar.",
-    "Por que fazer isso assim é infinitamente melhor do que o jeito tradicional.",
-    "Como isso influencia a sua vida de uma forma que você nunca percebeu.",
-    "Será que você está caindo nessa mesma armadilha sem notar?",
-    "Então você acha que está no controle? Deixa eu te mostrar os bastidores.",
+    "A sabedoria silenciosa que protege as nossas maiores decisões.",
+    "E se a verdadeira liberdade for exatamente o oposto do que a maioria busca?",
+    "A força extraordinária de quem escolhe a paz ao barulho do mundo.",
+    "O valor inestimável de uma amizade sincera em tempos de conexões rasas.",
+    "Como encontrar clareza mental quando tudo ao redor tenta nos distrair.",
+    "A beleza invisível das escolhas feitas longe dos holofotes e da aprovação.",
+    "O verdadeiro caráter de um homem se revela no que ele cultiva no silêncio.",
+    "A estabilidade real não está no que acumulamos, mas na nossa postura.",
+    "Uma mente em paz vale muito mais do que o sucesso obtido no caos.",
+    "A sabedoria milenar de semear em silêncio e deixar o tempo agir.",
+    "Quem governa o seu pensamento quando a tempestade mental se aproxima?",
+    "A verdadeira riqueza é ter a liberdade de escolher onde colocar sua energia.",
+    "O valor do caráter reside nos princípios que você se recusa a negociar.",
+    "A construção de um legado sólido começa nas escolhas mais simples do dia.",
+    "A paz de espírito é o maior escudo contra as ilusões do mundo moderno.",
+    "A lealdade não é uma moeda de troca, é o reflexo de quem somos.",
+    "Como blindar a sua mente contra a pressa e a ansiedade da massa.",
+    "A verdadeira força não precisa fazer barulho para ser notada.",
+    "O princípio atemporal que nos ensina a valorizar as pequenas sementes.",
+    "De que serve vencer lá fora se o seu lar vive em conflito?",
+    "O silêncio maduro é, muitas vezes, a resposta mais sábia de todas.",
+    "A liberdade começa quando deixamos de ser escravos da aprovação alheia.",
+    "A importância de termos limites claros para proteger a nossa paz vital.",
+    "Como cultivar a consistência diária nos dias mais difíceis e comuns.",
+    "O valor de manter a palavra dada, mesmo quando seria mais fácil recuar.",
+    "A sabedoria de focar apenas naquilo que está sob o nosso controle direto.",
+    "Uma conversa sincera tem o poder de curar o que o orgulho tenta esconder.",
+    "A verdadeira jornada de crescimento pessoal não tem platéia nem aplausos.",
+    "Como blindar o nosso foco contra o excesso de informação inútil.",
+    "O alívio genuíno de viver uma vida baseada na verdade e na simplicidade.",
+    "A sabedoria milenar que mostra: a paciência é a maior aliada da clareza.",
+    "Quem caminha ao seu lado quando a tempestade da vida se aproxima?",
+    "A diferença sutil entre ter metas claras e viver prisioneiro da ansiedade.",
+    "A beleza das alianças verdadeiras que suportam o teste do tempo.",
+    "Como a auto-maestria nos liberta dos impulsos momentâneos e impulsivos.",
+    "O valor de cultivar a gratidão pelo que já foi construído até aqui.",
+    "A sabedoria de olhar para dentro antes de tentar responder ao mundo.",
+    "A verdadeira liberdade é poder deitar a cabeça no travesseiro com a consciência limpa.",
+    "A força silenciosa de proteger o seu círculo mais íntimo de pessoas.",
+    "Como a maturidade nos ensina a valorizar o essencial e descartar o supérfluo.",
+    "O poder de uma mente serena que não reage a toda provocação do ambiente.",
+    "A sabedoria de aceitar as mudanças com calma e recomeçar com firmeza.",
+    "O caráter sólido se constrói na constância das escolhas invisíveis.",
+    "A beleza de viver uma vida com propósito, sem pressa e sem comparações.",
+    "A importância de honrar a história e os valores de quem veio antes.",
+    "Como a paz interna se reflete na qualidade de todas as nossas decisões.",
+    "O verdadeiro valor de estar presente para quem realmente importa para você.",
+    "A sabedoria de aprender com os erros sem carregar o peso da culpa.",
+    "A força de quem se mantém fiel aos seus princípios em qualquer cenário.",
+    "O maior ato de integridade é ser a mesma pessoa no palco e nos bastidores."
 ]
 
+
+# ==========================================
+# ARQUITETURAS NARRATIVAS (6 formatos rotativos)
+# Garante que o fluxo de entrega da mensagem mude a cada postagem,
+# quebrando a mesmice do clássico "Problema-Solução".
+# ==========================================
+ARQUITETURAS_NARRATIVAS = [
+    {
+        "nome": "Problema-Solução Clássico",
+        "descricao": "Identifique a dor cotidiana do leitor logo após o gancho, aprofunde o incômodo (bata na ferida) e então entregue o insight/passo prático como recompensa."
+    },
+    {
+        "nome": "Confissão Pessoal / Storytelling",
+        "descricao": "Fale como se estivesse compartilhando um erro ou aprendizado pessoal do próprio palestrante ('Eu já estive exatamente onde você está agora...'). Use a primeira pessoa do plural ('nós') para criar aliança com o ouvinte."
+    },
+    {
+        "nome": "Pergunta & Investigação Cirúrgica",
+        "descricao": "Faça uma série de perguntas e vá guiando o leitor passo a passo para desmascarar as próprias desculpas ou mentiras mentais, revelando a raiz real do problema."
+    },
+    {
+        "nome": "Metáfora / Analogia do Cotidiano",
+        "descricao": "Use uma analogia física rica (como o funcionamento de uma represa, uma xícara transbordando, uma árvore sem raízes) para explicar um padrão de comportamento de forma extremamente visual."
+    },
+    {
+        "nome": "Confronto e Alerta de Tempo",
+        "descricao": "Abordagem crua e direta. Alerte o leitor de que o tempo está passando, destrua a falsa ilusão de conforto e chame-o para agir imediatamente com firmeza e autoridade."
+    },
+    {
+        "nome": "Micro-Fábula de Personagem",
+        "descricao": "Apresente uma cena curta com um personagem sem nome ('Às 23h, ele olhou para as telas...'). Narre a dor dele e deixe que a lição prática surja do desfecho natural da cena."
+    }
+]
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -213,6 +288,14 @@ def proximo_gancho_conquistador(indice_atual=0):
     gancho = LISTA_GANCHOS_CONQUISTADOR[indice_atual]
     novo_indice = (indice_atual + 1) % len(LISTA_GANCHOS_CONQUISTADOR)
     return gancho, novo_indice
+
+
+def proxima_arquitetura(indice_atual=0):
+    """Retorna a próxima arquitetura narrativa da sequência linear, reiniciando após a última."""
+    indice_atual = indice_atual % len(ARQUITETURAS_NARRATIVAS)
+    arquitetura = ARQUITETURAS_NARRATIVAS[indice_atual]
+    novo_indice = (indice_atual + 1) % len(ARQUITETURAS_NARRATIVAS)
+    return arquitetura, novo_indice
 
 
 # ==========================================
@@ -256,7 +339,7 @@ def sortear_estilo(historico_estilos=None):
 
 
 # ==========================================
-# CTAs ORGANIZADOS POR CATEGORIA (32 itens)
+# CTAs ORGANIZADOS POR CATEGORIA (52 itens)
 # Fornecidos pelo usuário para alternar objetivos estrategicamente
 # ==========================================
 CTAS_POR_CATEGORIA = {
@@ -268,7 +351,12 @@ CTAS_POR_CATEGORIA = {
         "Se você procura respostas diferentes, fique por aqui.",
         "Se você gosta de entender o comportamento humano, siga.",
         "Se você acredita que sempre existe outra perspectiva, acompanhe.",
-        "Talvez essa seja apenas uma das perguntas que você precisava fazer."
+        "Talvez essa seja apenas uma das perguntas que você precisava fazer.",
+        "Quem entende o valor do silêncio encontra espaço aqui. Siga.",
+        "Acompanhe nossa jornada se você busca profundidade diária.",
+        "Se você quer blindar sua mente contra o ruído moderno, siga o perfil.",
+        "A evolução pessoal exige constância. Una-se à nossa jornada diária.",
+        "Siga se você prefere a verdade que incomoda à mentira que conforta."
     ],
     "comentario": [
         "Quero saber sua resposta.",
@@ -278,7 +366,12 @@ CTAS_POR_CATEGORIA = {
         "Resuma sua opinião em uma palavra.",
         "Você já viveu isso?",
         "O que você pensa sobre isso?",
-        "Existe outra forma de enxergar isso?"
+        "Existe outra forma de enxergar isso?",
+        "Qual dessas verdades bateu mais forte em você?",
+        "Você já esteve do outro lado dessa situação?",
+        "Comente qual o seu maior obstáculo ao aplicar isso hoje.",
+        "Deixe sua percepção sincera aqui embaixo.",
+        "Se você pudesse mudar apenas uma atitude hoje, qual seria?"
     ],
     "compartilhamento": [
         "Envie para alguém que precisa ouvir isso.",
@@ -288,7 +381,12 @@ CTAS_POR_CATEGORIA = {
         "Quem você conhece que responderia diferente?",
         "Compartilhe e compare as respostas.",
         "Quero saber o que outra pessoa responderia.",
-        "Vale a pena ouvir uma segunda opinião."
+        "Vale a pena ouvir uma segunda opinião.",
+        "Envie isso para a pessoa que compartilha dos seus princípios.",
+        "Espalhe essa reflexão com quem valoriza a sabedoria prática.",
+        "Compartilhe silenciosamente com quem precisa acordar hoje.",
+        "Leve essa mensagem para quem faz parte do seu círculo de ferro.",
+        "Envie para alguém com quem você quer crescer junto."
     ],
     "salvamento": [
         "Salve para refletir depois.",
@@ -298,17 +396,22 @@ CTAS_POR_CATEGORIA = {
         "Salve antes de esquecer.",
         "Essa reflexão merece ser revisitada.",
         "Nem toda resposta aparece na primeira leitura.",
-        "Guarde essa ideia."
+        "Guarde essa ideia.",
+        "Salve este post para ler quando a mente estiver agitada.",
+        "Guarde este checklist mental para a sua próxima decisão difícil.",
+        "Salve para reler nos dias em que o foco parecer distante.",
+        "Guarde essa chave de sabedoria na sua coleção.",
+        "Salve para garantir que esse princípio se torne um hábito."
     ]
 }
 
 # ─────────────────────────────────────────────────────────────────────
 # LISTA INTERCALADA DE CTAs — Garante que o objetivo de engajamento
 # (seguir, comentar, compartilhar, salvar) mude a cada postagem de forma
-# alternada e balanceada, passando por cada uma das 32 referências.
+# alternada e balanceada, passando por cada uma das 52 referências.
 # ─────────────────────────────────────────────────────────────────────
 LISTA_CTAS_SEQUENCIAL = []
-for i in range(8):
+for i in range(13):
     LISTA_CTAS_SEQUENCIAL.append(("seguir", CTAS_POR_CATEGORIA["seguir"][i]))
     LISTA_CTAS_SEQUENCIAL.append(("comentario", CTAS_POR_CATEGORIA["comentario"][i]))
     LISTA_CTAS_SEQUENCIAL.append(("compartilhamento", CTAS_POR_CATEGORIA["compartilhamento"][i]))

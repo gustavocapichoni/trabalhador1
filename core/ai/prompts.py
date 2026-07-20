@@ -1,5 +1,5 @@
 import random
-from core.ai.styles import REGRAS_COPY_BASE, proximo_gancho, proximo_gancho_conquistador, GANCHOS_POR_CATEGORIA, proximo_cta
+from core.ai.styles import REGRAS_COPY_BASE, proximo_gancho, proximo_gancho_conquistador, GANCHOS_POR_CATEGORIA, proximo_cta, proxima_arquitetura
 
 # ==========================================
 # TEMAS E SUB-ÂNGULOS APROFUNDADOS
@@ -231,9 +231,8 @@ TEMAS_MAPEADOS = {
             "O poder de dizer 'no' para os prazeres imediatos para garantir o seu legado de longo prazo.",
             "Você não precisa de um dia perfeito para produzir; precisa produzir para transformar o dia comum em vitória.",
             "O medo do julgamento dos medíocres impede você de tentar voar alto de verdade.",
-            "A superação real não tem platéia; ela acontece nos dias cinzas, quando você está sozinho e decide treinar com dor.",
-            "A inércia é o pior veneno: começar é difícil, mas continuar é onde a mágica da consistência acontece.",
-            "Você é o único responsável pela vida que tem hoje. Aceite isso e mude, ou cale-se e continue sofrendo."
+        "A inércia é o pior veneno: começar é difícil, mas continuar é onde a mágica da consistência acontece.",
+        "Você é o único responsável pela vida que tem hoje. Aceite isso e mude, ou cale-se e continue sofrendo."
         ]
     },
     "proposito": {
@@ -250,7 +249,7 @@ TEMAS_MAPEADOS = {
             "Propósito não é algo que você encontra na estrada; é algo que você constrói nas escolhas difíceis do dia a dia.",
             "De que serve acumular títulos e prêmios se as pessoas que moram com você não te respeitam como ser humano?",
             "O legado real não é o dinheiro que você deixa na conta, mas o caráter e a força que você planta nos seus filhos.",
-            "Sua vaidade quer aprovação do mundo; seu propósito exige apenas que você seja útil para quem está próximo."
+            "Sua vaidade quer aprovação do mundo; seu propósito exige apenas que você seja útil para quem está próximo.",
             "A ilusão de viver como se o tempo fosse infinito, desperdiçando anos preciosos com distrações idiotas.",
             "A sabedoria milenar de plantar árvores sob cujas sombras você sabe que nunca se sentará.",
             "Não seja apenas uma estatística de consumo: crie, ensine, construa e deixe o mundo melhor do que encontrou.",
@@ -262,7 +261,20 @@ TEMAS_MAPEADOS = {
     }
 }
 
-def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, indice_gancho=0, indice_cta=0, is_conquistador=False, sentimento_escolhido=None):
+PERSONA_PALESTRANTE = """
+===== PERSONA OBRIGATÓRIA: O PALESTRANTE ELOQUENTE =====
+Você NÃO é um produtor de conteúdo digital comum que tenta empurrar dicas rápidas e fórmulas prontas.
+Você é um PALESTRANTE MOTIVADO, ELOQUENTE E INSPIRADOR no palco, falando para uma grande plateia que busca sabedoria prática e direção de vida.
+
+DIRETRIZES DE COMUNICAÇÃO DO PALESTRANTE:
+1. CONEXÃO DIRETA COM A PLATEIA: Use recursos oratórios para envolver quem está ouvindo. Faça perguntas retóricas para fazê-los pensar ('Você já reparou...', 'Quantos de nós já...'). Use 'nós' e 'eu também' em vez de apontar o dedo ('você errou') para criar uma aliança de empatia. Fale de igual para igual.
+2. STORYTELLING EM PRIMEIRO LUGAR: Um palestrante ensina através de histórias. Traga uma pequena analogia, metáfora ou minicena para ilustrar seu ponto. A dor deve ser explicada através da vivência cotidiana do leitor, não de conceitos abstratos.
+3. RITMO E ELOQUÊNCIA: Misture sentenças curtas e cortantes com frases ligeiramente mais longas e profundas para criar ritmo na leitura. Use palavras fortes, maduras e reflexivas. Evite termos técnicos desnecessários sem explicá-los.
+4. MENTALIDADE DE AJUDA, NÃO DE VENDAS: Você está ali para guiar, resgatar valores (família, amizade, sabedoria, liberdade) e acordar as mentes. O seu tom é motivado, resoluto e acolhedor, rejeitando qualquer arrogância ou autoajuda vazia.
+=========================================================
+"""
+
+def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angulos=None, indice_gancho=0, indice_cta=0, indice_arquitetura=0, is_conquistador=False, sentimento_escolhido=None):
     """Monta o bloco de instrução de copy injetado em todos os prompts, evitando repetições."""
     if historico_angulos is None: historico_angulos = []
     
@@ -285,6 +297,9 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
 
     # Avança o CTA na sequência linear (intercalando categorias de engajamento)
     categoria_cta, referencia_cta, novo_indice_cta = proximo_cta(indice_cta)
+
+    # Avança a arquitetura narrativa na sequência linear
+    arquitetura, novo_indice_arquitetura = proxima_arquitetura(indice_arquitetura)
 
     # Descrições de cada categoria — orientam a IA sobre o FORMATO do Slide 1
     descricoes_categoria = {
@@ -313,8 +328,15 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
             diretriz_sentimento = f"\n    DIRETRIZ DE SENTIMENTO DO DIA (Ativar Emoção: {sentimento_escolhido.upper()}):\n    - {config_emocional['tom']}\n    - Cada frase e palavra deve ser desenhada para evocar este exato sentimento no leitor.\n"
 
     instrucoes = f"""
-    {REGRAS_COPY_BASE}
+    {{REGRAS_COPY_BASE}}
+    {PERSONA_PALESTRANTE}
     {diretriz_sentimento}
+    
+    ARQUITETURA NARRATIVA DO POST (O Ritmo de Hoje):
+    Nome da Estrutura: {arquitetura['nome']}
+    Diretriz da Estrutura: {arquitetura['descricao']}
+    → Você DEVE estruturar a sequência e o fluxo dos slides/cenas do post inteiro baseando-se nesta estrutura hoje. Ela dita a forma como a história evolui e se desenvolve.
+
     ESTRATÉGIA DE CONTEÚDO BASEADA EM LIVROS:
     Você tem acesso ao conhecimento dos seguintes livros para este tema: {detalhes_tema['inspira']}
     Sua missão é:
@@ -326,14 +348,14 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     Ângulo específico sugerido: "{sub_angulo}"
 
     ===== ARQUITETURA OBRIGATÓRIA DOS 4 ATOS (PERSUASÃO SEQUENCIAL) =====
-    Esta é a espinha dorsal de TODA postagem principal. Você é livre para criar o conteúdo
-    de cada ato, mas a ORDEM e a FUNÇÃO de cada parte são absolutamente inegociáveis.
+    Esta é a espinha dorsal de TODA postagem principal (exceto no Conquistador e Leads que possuem funis próprios). 
+    Você é livre para criar o conteúdo de cada ato, mas a ORDEM e a FUNÇÃO de cada parte são absolutamente inegociáveis.
 
     ATO 1 — SLIDE 1 (INTERRUPÇÃO DE PADRÃO / GANCHO):
-    Formato desta postagem: {descricao_categoria}
+    Formato da abertura de hoje: {descricao_categoria}
+    Exemplos de tom e ritmo para o gancho (NÃO copie a frase abaixo, use-a apenas como referência de energia para criar o seu próprio gancho 100% inédito e original):
     Gancho de referência: "{gancho}"
-    → Adapte este gancho ao tema e ao ângulo sugerido, mantendo a ESTRUTURA fiel ao formato acima.
-    → Máximo 12 palavras. Curto, cortante. SEM explicação ainda — apenas o choque inicial.
+    → Crie uma abertura original e curta adaptada ao tema e ângulo do post. Máximo 12 palavras.
 
     ATO 2 — SLIDES 2-3 (EFEITO ZEIGARNIK — Abertura de Loop de Curiosidade):
     → Abra um ciclo de curiosidade sem fechá-lo. Aprofunde a provocação do gancho.
@@ -352,12 +374,14 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     =====================================================================
 
     ===== DIRETRIZ OBRIGATÓRIA DE CTA (LEGENDA E FECHAMENTO) =====
-    Para esta postagem, você DEVE construir a chamada para ação (CTA) na legenda focando no objetivo de: {categoria_cta.upper()}.
+    Objetivo do CTA desta postagem: {categoria_cta.upper()}
+    Frase de referência para o tom do CTA (NÃO copie esta frase no roteiro ou na legenda, ela serve apenas como guia do objetivo e do sentimento que o CTA deve despertar):
+    Frase de referência: "{referencia_cta}"
     
-    Frase de referência para o tom: "{referencia_cta}"
-    
-    → Adapte esta referência de forma orgânica e inteligente para se fundir com o assunto do post de hoje.
-    → O CTA da legenda deve obrigatoriamente seguir este formato e direcionamento estratégico.
+    DIRETRIZES DE CTA DO PALESTRANTE:
+    - O CTA na legenda deve fluir de forma totalmente orgânica, nascendo de forma integrada a partir do conteúdo do texto que você acabou de escrever. 
+    - Não use fórmulas de venda baratas ou transições abruptas.
+    - O convite deve ser elegante, persuasivo e condizente com a voz do palestrante no palco.
     ==============================================================
 
     ESTRUTURA DE ESCRITA DE SUCESSO (Feedback do Analytics):
@@ -370,4 +394,4 @@ def montar_instrucoes_copy(detalhes_tema, contexto_analytics="", historico_angul
     DADOS DE PERFORMANCE E CONTEXTO ATUAL:
     {contexto_analytics}
     """
-    return instrucoes, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta
+    return instrucoes, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta, arquitetura, novo_indice_arquitetura

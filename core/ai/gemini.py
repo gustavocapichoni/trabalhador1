@@ -245,13 +245,14 @@ def gerar_conteudo_gemini(tipo):
     indice_gancho             = estado.get("indice_gancho", 0)
     indice_gancho_conquistador = estado.get("indice_gancho_conquistador", 0)
     indice_cta                = estado.get("indice_cta", 0)
+    indice_arquitetura        = estado.get("indice_arquitetura", 0)
 
     # Seleciona o índice correto de gancho conforme o modo da postagem
     idx_atual = indice_gancho_conquistador if is_conquistador else indice_gancho
 
-    # Monta instrucoes de copy (gancho sequencial + cta sequencial + ângulo anti-repetição)
-    instrucoes_copy, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta = montar_instrucoes_copy(
-        detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, is_conquistador=is_conquistador, sentimento_escolhido=sentimento_escolhido
+    # Monta instrucoes de copy (gancho sequencial + cta sequencial + arquitetura narrativa + ângulo anti-repetição)
+    instrucoes_copy, sub_angulo, gancho, descricao_categoria, novo_indice, categoria_cta, referencia_cta, novo_indice_cta, arquitetura, novo_indice_arquitetura = montar_instrucoes_copy(
+        detalhes_tema, contexto_analytics, hist_angulos, idx_atual, indice_cta, indice_arquitetura=indice_arquitetura, is_conquistador=is_conquistador, sentimento_escolhido=sentimento_escolhido
     )
 
     # Injeta o histórico do tema no instrucoes_copy → propagado automaticamente para TODOS os tipos de post
@@ -262,6 +263,7 @@ def gerar_conteudo_gemini(tipo):
     estilo_escolhido = sortear_estilo(hist_estilos)
     logger.info(f"🎭 Estilo de abordagem sorteado: {estilo_escolhido.split(':')[0].upper()}")
     logger.info(f"🎣 Gancho sequencial #{idx_atual}: [{gancho[:50]}...]")
+    logger.info(f"📐 Arquitetura narrativa: {arquitetura['nome']}")
 
     # Atualiza histórico de ângulos e estilos (mantém os últimos 25)
     hist_angulos.append(sub_angulo)
@@ -276,10 +278,11 @@ def gerar_conteudo_gemini(tipo):
     else:
         estado["indice_gancho"] = novo_indice
 
-    # Define se esta postagem consome e avança o índice de CTA
+    # Define se esta postagem consome e avança o índice de CTA e Arquitetura
     tipos_com_cta = ["carousel", "reels", "reels_conquistador", "pexels_story", "reels_noite", "pexels_story_noite"]
     if tipo in tipos_com_cta:
         estado["indice_cta"] = novo_indice_cta
+        estado["indice_arquitetura"] = novo_indice_arquitetura
         logger.info(f"📣 CTA sequencial #{indice_cta}: [{categoria_cta.upper()}] -> '{referencia_cta}'")
 
     salvar_estado(estado)
@@ -474,8 +477,9 @@ def gerar_conteudo_gemini(tipo):
     elif tipo == "reels_conquistador":
 
         prompt = f"""
-        Você é a manifestação de uma filosofia de vida profunda, focada na verdade absoluta e na liberdade.
-        Sua visão não é materialista. Seus pilares são: Família, Amizade, Igualdade, Verdade e Liberdade.
+        Você é a manifestação de uma filosofia de vida profunda. Você é um PALESTRANTE MOTIVADO E ELOQUENTE, cujo tom é sábio, inspirador e imponente no palco.
+        Sua visão não é materialista. Seus pilares essenciais são: Família, Amizade, Igualdade, Verdade e Liberdade.
+        Use os recursos oratórios da persona: fale de igual para igual, use 'nós' e 'eu também' para criar identificação, e ensine através de analogias e narrativas fortes nas primeiras cenas.
         {evitar_repeticao_msg}
         INSPIRAÇÕES LITERÁRIAS OBRIGATÓRIAS (Suas mensagens devem soar como uma fusão de):
         - "Armadilhas da Mente" (Augusto Cury) - Foco na gestão da emoção e consciência.
@@ -502,9 +506,9 @@ def gerar_conteudo_gemini(tipo):
         - Cena 6: A ruptura com o falso (rejeição da arrogância e da filosofia barata).
         - Cena 7: A reconexão com a verdadeira essência e liberdade da consciência.
         - Cena 8: A frase final de impacto. Cortante, reflexiva, que deixe a mente do leitor ecoando.
-        - Cena 9 (Slide Final - CTA Imponente): Um convite sutil, filosófico e imponente para seguir e acompanhar o perfil. Não use jargões de vendas ou imperativos baratos ("me siga"). Fale como um sábio que convida a trilhar o caminho.
+        - Cena 9 (Slide Final - CTA Imponente): Um convite sutil, filosófico e imponente para seguir e acompanhar o perfil. Não use jargões de vendas ou imperativos baratos ("me siga"). Fale como o palestrante no palco que convida a plateia a caminhar junto. Crie uma frase 100% original alinhada ao assunto discutido hoje.
         
-        Exemplos de tom para a Cena 9 (use estas estruturas como inspiração para criar uma frase única conectada ao tema):
+        Exemplos de tom para a Cena 9 (use estas estruturas como inspiração para criar uma frase única conectada ao tema, NUNCA copie literalmente):
         * "Quem chega até aqui já entendeu o sistema. Siga o perfil para ir além."
         * "Se você busca a verdade sem maquiagem, este é o seu perfil. Acompanhe."
         * "O caminho da sabedoria exige consistência. Siga nossa jornada diária."
@@ -795,22 +799,12 @@ def gerar_conteudo_gemini(tipo):
         Foque na transformação de vida. A pessoa não quer um arquivo PDF, ela quer a paz ou o resultado prático que ele traz.
 
         FASE 10 — CONVITE AO APROFUNDAMENTO E CTA - Últimos Slides:
-        Apresente a solução gratuita. Fale com um tom de pura ajuda e entrega de valor (um convite generoso e desinteressado para evoluir), removendo completamente qualquer tom comercial de venda agressiva ou escassez artificial.
+        Apresente a solução gratuita de forma integrada e natural. Fale com um tom de pura ajuda e entrega de valor (um convite generoso e desinteressado para evoluir, agindo como o palestrante no palco que quer presentear a plateia), removendo totalmente qualquer tom comercial de venda agressiva ou escassez artificial.
         O CTA deve ter DUAS PARTES obrigatórias, distribuídas nos últimos slides:
 
-        PARTE 1 — ENTREGA DE VALOR (1 slide): Use uma das frases abaixo para oferecer ajuda de presente (escolha a que melhor encaixa no contexto):
-        - "Eu preparei um guia completo para te ajudar."
-        - "Eu organizei um método passo a passo para você."
-        - "Eu preparei um material exclusivo para você."
-        - "Eu montei um plano de ação gratuito para você."
-        - "Eu estruturei um checklist prático para facilitar sua jornada."
-        NUNCA use os termos: "manual prático", "baixe o PDF", "pegue seu guia", "acesse o PDF".
-
-        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Faça um convite sutil e elegante direcionando para o link na bio (sem pressão de venda):
-        - "Se fizer sentido para você, o link para acessar está na bio."
-        - "O acesso é gratuito pelo link na bio. Sinta-se convidado."
-        - "Você pode acessar o material completo clicando no link na bio."
-        - "O link está na bio para você iniciar o seu processo."
+        PARTE 1 — ENTREGA DE VALOR (1 slide): Ofereça o material gratuito que preparamos para o leitor. O tom deve seguir ideias como: "Eu preparei um guia completo para te ajudar", "Eu estruturei um checklist prático...", "Eu montei um plano de ação...". Adapte e crie uma frase original que case com o assunto do vídeo. NUNCA use termos comerciais como: "manual prático", "baixe o PDF", "pegue seu guia", "acesse o PDF".
+        
+        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Faça um convite sutil e elegante direcionando o leitor para o link na bio (ex: "O link para acessar está na bio", "Sinta-se convidado a acessar pelo link na bio"). A frase deve ser 100% autoral e nascer naturalmente do encerramento do vídeo. NUNCA use frases engessadas repetitivas.
 
 
         PEXELS QUERY: Escolha buscas em inglês que criem uma atmosfera cinematográfica de acordo com o sentimento do dia "{sentimento_escolhido}". Ex: 'cinematic mysterious city', 'dark elegant texture', 'warm candlelight'.

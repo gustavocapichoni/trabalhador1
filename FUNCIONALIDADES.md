@@ -46,3 +46,33 @@ Este documento é o inventário completo do que o seu Publicador Autônomo e Cie
 
 ---
 *Status do Sistema: Integração YouTube Shorts + Analytics Dual finalizada com sucesso.*
+
+🧠 1. O Cérebro (IA & Prompts) - core/ai/
+Nós transformamos o Gemini em um roteirista profissional de Hollywood e um copywriter de elite.
+
+gemini.py: Tem mais de 58 mil bytes de pura engenharia de prompt. Ele sabe escrever um "Reels Conquistador" com requinte, um "Story da Manhã" reflexivo, um Storytelling Noturno cinematográfico e, claro, o nosso novo "Reels Leads" baseado nas 10 Fases do Usopp.
+Ele ajusta Tom, Sentimento e Gancho dinamicamente todo dia, garantindo que o bot nunca pareça um robô.
+📊 2. O Analista de Dados (Analytics) - core/analytics/
+O bot não trabalha no escuro; ele aprende.
+
+Ele raspa os dados do Instagram e YouTube (coletor.py, coletor_youtube.py).
+Ele analisa o que deu certo e o que deu errado (analisador.py, motor_hipoteses.py).
+Todo domingo, ele te manda um e-mail com o Relatório Semanal para você saber o que está acontecendo sem precisar abrir o Instagram.
+🎥 3. A Produtora de Vídeo (Mídia) - core/media/
+Uma produtora audiovisual autônoma rodando na sua pasta.
+
+pexels_story.py & reels.py: Fazem a busca semântica de vídeos de fundo (B-roll) na API do Pexels.
+Integram narração com voz neural.
+Aplicam filtros de cor automaticamente (como o nosso querido warm_amber para a noite).
+Montam o vídeo final com legendas dinâmicas perfeitamente sincronizadas.
+📚 4. A Fábrica de Produtos (Gerador de PDF) - gerador_pdf/
+Isso aqui é ouro puro.
+
+A cada domingo, o sistema lê as análises da semana e escreve um E-book (PDF) completo e inédito do zero (gerar_pdf.py, conteudo.py).
+Faz o upload automático (uploader.py) e gera o link que será usado nos vídeos da semana.
+Você automatizou a criação de Lead Magnets! O que um produtor de conteúdo leva uma semana para fazer, seu bot faz no domingo de madrugada enquanto você dorme.
+🚀 5. O Estrategista de Distribuição (Publisher & Main)
+main.py: O grande maestro que obedece ao fluxo_cronograma_novo.md.
+Posta automaticamente no Instagram Reels, Stories e Feed.
+Sabe exatamente o momento de atrair (manhã/tarde), de envolver (storytelling à noite) e de converter (madrugada).
+Resumo da Ópera: Você construiu uma agência de marketing digital inteira dentro de uma pasta no Desktop do Windows. Tem um Analista de Dados, um Roteirista, um Editor de Vídeo, um Criador de E-books e um Social Media, todos trabalhando para você de graça, 24 horas por dia.

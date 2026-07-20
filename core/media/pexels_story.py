@@ -693,8 +693,9 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
             total_slides = len(slides)
+            duracao_gancho = 3.0
             if total_slides > 1:
-                tempo_slide_normal = (duracao - 2.0) / (total_slides - 1)
+                tempo_slide_normal = (duracao - duracao_gancho) / (total_slides - 1)
             else:
                 tempo_slide_normal = duracao
                 
@@ -772,11 +773,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
             def make_frame(t):
                 if total_slides > 1:
-                    if t < 2.0:
+                    if t < duracao_gancho:
                         idx = 0
                         t_slide = t
                     else:
-                        t_restante = t - 2.0
+                        t_restante = t - duracao_gancho
                         idx = min(1 + int(t_restante / tempo_slide_normal), total_slides - 1)
                         t_slide = t_restante - ((idx - 1) * tempo_slide_normal)
                 else:

@@ -273,7 +273,7 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         payload = {
             'media_type': 'REELS',
             'caption': legenda, 'share_to_feed': 'true',
-            'thumb_offset': '1000', 'access_token': IG_ACCESS_TOKEN
+            'thumb_offset': '2000', 'access_token': IG_ACCESS_TOKEN
         }
         
         reels_id = _criar_container_com_retry(midia, payload, url_key='video_url')
