@@ -338,7 +338,14 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
     import urllib.parse
     import random
-    logger.info(f"🎥 Buscando vídeo com query: '{query}'")
+
+    # --- Normaliza query: aceita string ou lista (suporte a múltiplas queries) ---
+    if isinstance(query, str):
+        queries_lista = [query]
+    else:
+        queries_lista = list(query)
+
+    logger.info(f"🎥 Buscando vídeos com {len(queries_lista)} quer{'y' if len(queries_lista)==1 else 'ies'}: {queries_lista}")
 
     slides = list(slides)
 
@@ -347,7 +354,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     final_clip = None
     bg_audio = None
     outro_clip = None
-    query_encoded = urllib.parse.quote(query)
+
 
     # --- Rotação sequencial exclusiva do Conquistador (animação, paleta, plataforma) ---
     animacao_conquistador = None
@@ -390,13 +397,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     # plataforma_principal_conquistador: None=padrão(Pixabay→Pexels), 0=Pixabay→Pexels, 1=Pexels→Pixabay
     _usar_pixabay_primeiro = (plataforma_principal_conquistador != 1)
 
-    def _buscar_pixabay():
+    def _buscar_pixabay(q_encoded):
         nonlocal temp_vids
         if not PIXABAY_API_KEY or len(temp_vids) >= num_videos_necessarios:
             return
         try:
-            logger.info("🔍 [NÍVEL Pixabay] Tentando buscar vídeo no Pixabay...")
-            url_pixabay = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={query_encoded}&video_type=film"
+            # Paginação aleatória: sorteia entre página 1, 2 ou 3 — triplica o pool de resultados
+            page = random.randint(1, 3)
+            logger.info(f"🔍 [Pixabay] '{urllib.parse.unquote(q_encoded)}' (pág. {page})...")
+            url_pixabay = f"https://pixabay.com/api/videos/?key={PIXABAY_API_KEY}&q={q_encoded}&video_type=film&page={page}&per_page=15"
             res_pixabay = requests.get(url_pixabay, timeout=15)
             if res_pixabay.status_code == 200:
                 data = res_pixabay.json()
@@ -437,13 +446,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         except Exception as e:
             logger.warning(f"⚠️ Erro ao acessar Pixabay: {e}")
 
-    def _buscar_pexels():
+    def _buscar_pexels(q_encoded):
         nonlocal temp_vids
         if not PEXELS_API_KEY or len(temp_vids) >= num_videos_necessarios:
             return
         try:
-            logger.info("🔍 [NÍVEL Pexels] Tentando buscar vídeo no Pexels...")
-            url_pexels = f"https://api.pexels.com/videos/search?query={query_encoded}&orientation=portrait&size=medium&per_page=15"
+            # Paginação aleatória: sorteia entre página 1, 2 ou 3 — triplica o pool de resultados
+            page = random.randint(1, 3)
+            logger.info(f"🔍 [Pexels] '{urllib.parse.unquote(q_encoded)}' (pág. {page})...")
+            url_pexels = f"https://api.pexels.com/videos/search?query={q_encoded}&orientation=portrait&size=medium&per_page=15&page={page}"
             headers = {"Authorization": PEXELS_API_KEY}
             response = requests.get(url_pexels, headers=headers, timeout=15)
             if response.status_code == 200:
@@ -479,12 +490,20 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         except Exception as e:
             logger.warning(f"⚠️ Erro ao acessar Pexels: {e}")
 
-    if _usar_pixabay_primeiro:
-        _buscar_pixabay()
-        _buscar_pexels()
-    else:
-        _buscar_pexels()
-        _buscar_pixabay()
+    # --- Loop pelas queries: cada query busca em ambas as APIs ---
+    # Garante que vídeos de universos visuais distintos sejam baixados para o mesmo post
+    for q in queries_lista:
+        if len(temp_vids) >= num_videos_necessarios:
+            break
+        q_encoded = urllib.parse.quote(q)
+        if _usar_pixabay_primeiro:
+            _buscar_pixabay(q_encoded)
+            if len(temp_vids) < num_videos_necessarios:
+                _buscar_pexels(q_encoded)
+        else:
+            _buscar_pexels(q_encoded)
+            if len(temp_vids) < num_videos_necessarios:
+                _buscar_pixabay(q_encoded)
 
     # --- NÍVEL 1 (legado mantido para compatibilidade com outros formatos) ---
     if False and PIXABAY_API_KEY and len(temp_vids) < num_videos_necessarios:

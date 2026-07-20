@@ -519,9 +519,16 @@ def gerar_conteudo_gemini(tipo):
         - SEM HASHTAGS.
         - SEM PEDIDO DE COMENTÁRIO OU COMPARTILHAMENTO.
 
+        UNIVERSO VISUAL OBRIGATÓRIO — REELS CONQUISTADOR:
+        As queries devem evocar grandiosidade, natureza épica e poder sereno: montanhas, oceanos, florestas antigas, céus estrelados, desertos ao amanhecer. NUNCA interiores urbanos ou escritórios.
+
         Responda APENAS em formato JSON válido assim:
         {{
-          "pexels_query": "3 palavras em INGLÊS para buscar vídeo de fundo profundo (ex: calm mountain, rain forest, morning sun)",
+          "pexels_queries": [
+            "epic mountain summit golden fog",
+            "ancient forest light rays path",
+            "ocean waves cliff sunset cinematic"
+          ],
           "slides": [
             "Texto da Cena 1",
             "Texto da Cena 2",
@@ -589,6 +596,9 @@ def gerar_conteudo_gemini(tipo):
         - NUNCA termine com uma mensagem positiva e fechada. Sempre com uma pergunta que exija resposta.
         - NÃO inclua hashtags.
 
+        UNIVERSO VISUAL OBRIGATÓRIO — PEXELS STORY MANHÃ:
+        As queries devem evocar luz natural, espaços abertos, natureza ao amanhecer, calma e esperança: parques, rios, campos, trilhas, flores, luz solar. NUNCA ambientes noturnos ou interiores fechados.
+
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
         {{
           "slides": [
@@ -601,7 +611,11 @@ def gerar_conteudo_gemini(tipo):
             "Frase 7 aqui (Xeque-mate)",
             "Frase 8 aqui (CTA Charmosa)"
           ],
-          "pexels_query": "your evocative english search here",
+          "pexels_queries": [
+            "golden sunrise meadow mist peaceful",
+            "person walking forest trail morning light",
+            "calm river reflection nature tranquil"
+          ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
@@ -705,6 +719,9 @@ def gerar_conteudo_gemini(tipo):
         - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NÃO inclua hashtags.
 
+        UNIVERSO VISUAL OBRIGATÓRIO — PEXELS STORY NOITE:
+        As queries devem evocar aconchego, introspecção noturna, ambientes internos quentes: velas, lareira, chuva na janela, luzes âmbar, lâmpada vintage, city lights noturnos. NUNCA natureza aberta diurna.
+
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 10 a 12 frases):
         {{
           "slides": [
@@ -720,7 +737,11 @@ def gerar_conteudo_gemini(tipo):
             "Frase 10 aqui (A promessa do amanhã)",
             "Frase 11 aqui (CTA Charmoso integrado à história)"
           ],
-          "pexels_query": "warm amber night cozy candlelight",
+          "pexels_queries": [
+            "warm candlelight bedroom cozy night",
+            "rain window city lights amber glow",
+            "fireplace intimate evening interior warm"
+          ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
@@ -814,6 +835,9 @@ def gerar_conteudo_gemini(tipo):
         - CTA OBRIGATÓRIO NA LEGENDA: Crie uma frase sutil convidando para acessar o Link na Bio de forma amigável (ex: "Se você quer dar o próximo passo, o link para acessar o material completo está na bio. Fique à vontade para ler.").
         - NÃO inclua hashtags.
 
+        UNIVERSO VISUAL OBRIGATÓRIO — REELS LEADS:
+        As queries devem evocar aprendizado, foco, profissionalismo e crescimento pessoal: pessoa lendo, escrevendo, estudando, café na mesa, livros, cadernos, janela com luz natural, escritório clean. NUNCA natureza épica ou ambiente noturno.
+
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 25 a 35 frases curtas):
         {{
           "slides": [
@@ -822,7 +846,11 @@ def gerar_conteudo_gemini(tipo):
             "Texto da Cena 3",
             "..."
           ],
-          "pexels_query": "your evocative english search here",
+          "pexels_queries": [
+            "person writing notebook focused desk",
+            "open books library warm light study",
+            "professional coffee window morning calm"
+          ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """

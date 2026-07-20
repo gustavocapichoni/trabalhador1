@@ -86,5 +86,5 @@ def registrar_midia_usada(midia_id):
     
     estado["historico_midia"].insert(0, midia_id)
     # Mantém apenas as últimas 15 mídias na memória
-    estado["historico_midia"] = estado["historico_midia"][:15]
+    estado["historico_midia"] = estado["historico_midia"][:60]
     salvar_estado(estado)

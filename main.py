@@ -125,8 +125,11 @@ def main():
             if args.dry_run:
                 try:
                     print("🧪 [DRY-RUN] Gerando vídeo local do Pexels Story para teste...")
+                    pq = conteudo.get("pexels_queries") or conteudo.get("pexels_query", "nature calm")
+                    if isinstance(pq, str):
+                        pq = [pq]
                     midia = gerar_pexels_story(
-                        conteudo.get("pexels_query", "nature calm"),
+                        pq,
                         conteudo.get("slides", []),
                         caminho_saida=_saida,
                         tema=tema_escolhido,
@@ -138,8 +141,11 @@ def main():
                     print(f"⚠️ [DRY-RUN] Erro ao gerar vídeo do Pexels Story: {e}")
                     midia = _saida
             else:
+                pq = conteudo.get("pexels_queries") or conteudo.get("pexels_query", "nature calm")
+                if isinstance(pq, str):
+                    pq = [pq]
                 midia = gerar_pexels_story(
-                    conteudo.get("pexels_query", "nature calm"),
+                    pq,
                     conteudo.get("slides", []),
                     caminho_saida=_saida,
                     tema=tema_escolhido,
