@@ -219,9 +219,9 @@ def gerar_conteudo_gemini(tipo):
         except Exception as e:
             logger.warning(f"Erro ao coletar Olhos da Rede: {e}")
 
-    # Sorteia sentimento do dia de forma persistente ou diária (apenas para posts comuns - não conquistador/leads)
+    # Sorteia sentimento do dia de forma persistente ou diária (apenas para posts comuns - não conquistador)
     sentimento_escolhido = None
-    if not is_conquistador and tipo != "reels_leads":
+    if not is_conquistador:
         from core.ai.styles import SENTIMENTOS_CONFIG
         if estado.get("data_sentimento_do_dia") == dia_hoje_str and estado.get("sentimento_do_dia"):
             sentimento_escolhido = estado["sentimento_do_dia"]
@@ -645,70 +645,82 @@ def gerar_conteudo_gemini(tipo):
         """
     elif tipo == "pexels_story_noite":
         prompt = f"""
-        Você é um diretor de cinema que cria micro-documentários noturnos para o Instagram.
-        Este é o vídeo B-roll do fim do dia. A pessoa está em modo de descanso, processando o que viveu.
+        Você é um contador de histórias noturno, um roteirista que transforma experiências humanas comuns em micro-fábulas visuais que conectam profundamente antes de dormir.
+        O público está deitado, com o celular na mão, em modo emocional aberto. Essa é a janela mais receptiva do dia.
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA NARRATIVA CINEMATOGRÁFICA NOTURNA em 6 a 8 frases que coloque o espectador dentro de uma história de dor e superação.
-        O ritmo deve ser: mais lento, mais denso, mais íntimo. Como uma voz que sussurra "eu te entendo, eu também passei por isso".
+        ===== MISSÃO: CRIAR UMA HISTÓRIA NOTURNA EM FORMATO STORYTELLING =====
+        NÃO escreva reflexões filosóficas soltas. NÃO dê conselhos diretos.
+        ESCREVA UMA HISTÓRIA CURTA — com personagem, cenário, conflito e resolução.
+        O espectador DEVE se ver dentro da história. A lição surge naturalmente do desfecho, não é declarada.
 
-        FASE 1 — GANCHO DE PARADA DE FEED (frase 1 - OBRIGATÓRIA):
-        Esta é a frase mais importante de todo o vídeo. É ela que aparece NA TELA NO MOMENTO EM QUE A PESSOA BATE O OLHO.
-        - REGRA DE OURO: O espectador PRECISA parar de rolar. Use UMA das fórmulas abaixo:
-          * Frase polêmica que divide opiniões: "A maioria das pessoas acha que [X], mas a realidade é o contrário."
-          * Frase que provoca identificação visceral: "Todo mundo finge que [dor comum] não existe. Mas você sabe que existe."
-          * Afirmação perturbadora e inesperada: "A coisa que mais te sabota não é o que você acha."
-          * Pergunta que obriga concordância ou discordância: "Você já reparou que quanto mais você tenta, mais parece que nada muda?"
-        - Máximo 10 palavras. Direta, visceral. SEM explicação ainda — só o choque.
+        ESTRUTURA NARRATIVA OBRIGATÓRIA (10 a 12 frases curtas):
 
-        FRASE 2 — APROFUNDAMENTO DO GANCHO:
-        - Aprofunde a provocação da frase 1. Mostre que você entende a dor melhor do que ninguém.
-        - Cada frase: máximo 10 palavras.
+        ATO 1 — O PERSONAGEM E A CENA (frases 1-3):
+        - Frase 1 (GANCHO - OBRIGATÓRIO): Apresente o personagem em uma situação noturna concreta e específica que o espectador reconhece.
+          Não um conselho. Uma imagem cinematic: onde ele está, o que ele está fazendo ou sentindo à noite.
+          Exemplo de tom: "Ela desligou o notebook às 23h. Mais um dia que não era o dia certo."
+          Máximo 12 palavras. Cena real, específica, visceral.
+        - Frase 2: Aprofunde o estado interno do personagem. O que ele sente, o que ele pensa antes de dormir.
+        - Frase 3: O ambiente ao redor reflete o estado emocional dele (a luz fraca, o silêncio, o peso do travesseiro).
 
-        FASE 2 — A PROFUNDIDADE DA HISTÓRIA (frases 3-4):
-        - Mostre como manter essa dor vai destruir o futuro dele. 
-        - Uma narrativa de "se continuar assim, a vida passa e nada muda".
+        ATO 2 — O CONFLITO / PONTO DE RUPTURA (frases 4-6):
+        - Frase 4: O pensamento que invade a mente e não sai. A dor que o acompanha toda noite.
+        - Frase 5: O momento em que o personagem percebe que algo precisa mudar. Ainda não sabe o quê.
+        - Frase 6: A decisão errada que ele sempre toma nesse ponto (evitar, distrair, adiar). O leitor se reconhece aqui.
 
-        FASE 3 — A SOLUÇÃO (frases 5-6):
-        - O alívio. "Mas eu descobri que a chave é fazer isso...".
-        - Entregue o método ou insight que resolve essa dor oculta da noite.
+        ATO 3 — A DESCOBERTA / VIRADA (frases 7-9):
+        - Frase 7: O personagem encontra (ou se lembra de) uma lição, um ensinamento ou uma mudança de perspectiva.
+          Essa lição DEVE vir diretamente dos livros ou do ângulo do tema do dia. Não invente. Use a sabedoria dos livros.
+        - Frase 8: O efeito dessa descoberta nele. Como a carga diminui. A respiração muda. A mente aquieta.
+        - Frase 9: A resolução interna. Não é a solução do problema externo, mas uma paz ou clareza que ele encontra dentro de si.
 
-        FASE 4 — O FECHAMENTO E CTA PREMIUM (frases 7-8):
-        - Frase 7: A promessa. Como o amanhã será diferente porque ele aprendeu isso agora. Termine com um soco no estômago que exija uma tomada de posição.
-        - Frase 8 (Slide Final - CTA Charmosa): Crie uma chamada para ação (CTA) altamente sedutora e sutil de acordo com o tema noturno, convidando o espectador a comentar ou seguir.
-        
-        Exemplos de tom para a Frase 8 (use estas estruturas como inspiração para criar uma frase única conectada ao post):
-        * "Deixe sua percepção nos comentários. E se você busca respostas reais, siga a página."
-        * "Se você leu até aqui, comente o que pensa e acompanhe nossa jornada."
-        * "Deixe sua resposta abaixo. Siga para não perder as próximas reflexões."
-        * "A discussão continua nos comentários. Siga para evoluir junto conosco."
+        ATO 4 — O AMANHÃ E O CTA (frases 10-12):
+        - Frase 10: A promessa do amanhã. Como ele vai acordar diferente porque teve essa percepção agora.
+        - Frase 11 (Slide Final - CTA Charmoso): Crie uma chamada para ação (CTA) integrada ao tom da história, convidando a comentar ou seguir.
 
-        PEXELS QUERY: Escolha um clima visual noturno e contemplativo.
-        - Use buscas em inglês evocativas: night city lights rain, candle flame night silence, dark forest stars, person alone window night, sunset silhouette reflection.
+        Exemplos de tom para o Slide Final (crie uma frase única conectada à história do post, não copie):
+        * "Se essa história te tocou, deixe nos comentários. Siga para a próxima."
+        * "Você já se viu nesse personagem? Comente abaixo. E acompanhe amanhã."
+        * "A jornada continua. Siga o perfil para não perder o próximo capítulo."
+
+        REGRAS ABSOLUTAS DE RITMO:
+        - Máximo de 12 palavras por frase. Frases curtas constroem tensão.
+        - Misture frases muito curtas (4 palavras) com frases médias (12 palavras) para criar ritmo cinematográfico.
+        - NÃO use ponto de exclamação.
+        - NÃO declare a moral da história. Deixe ela emergir do desfecho.
+        - NÃO use "você deve" ou "você precisa". Mostre através do personagem.
+
+        PEXELS QUERY: Escolha imagens que criem uma atmosfera de aconchego e introspecção noturna com tons quentes.
+        - Use buscas em inglês evocativas: warm candlelight bedroom, cozy night lamp reading, amber light window rain, golden hour sunset silhouette, fireplace warm glow night.
 
         LEGENDA:
-        - Máximo 3 linhas. Tom íntimo e persuasivo.
+        - Máximo 3 linhas. Tom de quem está te contando algo íntimo, como um amigo numa conversa de madrugada.
         - CTA OBRIGATÓRIO: A legenda DEVE obrigatoriamente terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 6 a 8 frases):
+        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 10 a 12 frases):
         {{
           "slides": [
-            "Frase 1 aqui (Gancho)",
-            "Frase 2 aqui",
-            "Frase 3 aqui",
-            "Frase 4 aqui",
-            "Frase 5 aqui",
-            "Frase 6 aqui",
-            "Frase 7 aqui (Xeque-mate)",
-            "Frase 8 aqui (CTA Charmosa)"
+            "Frase 1 aqui (Cena de abertura - o personagem)",
+            "Frase 2 aqui (Estado interno)",
+            "Frase 3 aqui (O ambiente)",
+            "Frase 4 aqui (O conflito interno)",
+            "Frase 5 aqui (A percepção de que algo precisa mudar)",
+            "Frase 6 aqui (A decisão errada habitual)",
+            "Frase 7 aqui (A descoberta / lição dos livros)",
+            "Frase 8 aqui (O efeito da descoberta)",
+            "Frase 9 aqui (A resolução interna / paz)",
+            "Frase 10 aqui (A promessa do amanhã)",
+            "Frase 11 aqui (CTA Charmoso integrado à história)"
           ],
-          "pexels_query": "your evocative night english search here",
+          "pexels_query": "warm amber night cozy candlelight",
           "legenda": "Sua legenda aqui sem hashtags"
         }}
         """
+
     elif tipo == "reels_leads":
         resumo_pdf = ler_resumo_ultimo_pdf() or "Nenhum PDF anterior encontrado. Crie um roteiro genérico focando em 'Hábitos Inquebráveis'."
         evitar_repeticao_leads = buscar_historico_reels_leads(limite=6)
@@ -732,9 +744,9 @@ def gerar_conteudo_gemini(tipo):
                 logger.warning(f"Erro ao obter titulo e solucao do PDF: {e}")
 
         prompt = f"""
-        Você é um estrategista de vendas e mestre em copywriting focado em conversão e geração de leads.
-        Sua missão é criar um vídeo longo (2:30 a 3:00) focado em capturar leads através da entrega de um "Manual Prático" em PDF 100% gratuito.
-        O roteiro usará a Técnica Psicológica do Usopp (10 fases).
+        Você é um mentor de desenvolvimento pessoal e contador de histórias focado em gerar conexão profunda, confiança e atração de leads.
+        Sua missão é criar um vídeo longo (2:30 a 3:00) focado em capturar leads através da entrega de um material prático em PDF 100% gratuito.
+        O roteiro usará a Técnica Psicológica do Usopp (10 fases), mas com uma pegada sinestésica e emocional guiada pelas variáveis do dia.
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
@@ -746,24 +758,26 @@ def gerar_conteudo_gemini(tipo):
         
         INSTRUÇÃO CRUCIAL:
         1. O vídeo inteiro funciona estritamente como um "trailer cinematográfico e magnético" para o PDF gerado. O título do PDF é "{titulo_pdf_limpo}" e a solução principal é "{solucao_pdf_limpo}".
-        2. O gancho inicial (Fase 1) DEVE atacar de forma visceral a dor/problema citada no resumo.
-        3. FASE 9 (Desejo) e FASE 10 (Oferta e CTA) DEVEM se conectar de forma cirúrgica e direta com o tema e a promessa do PDF. O espectador precisa sentir que a única forma de obter as respostas completas sobre "{solucao_pdf_limpo}" é obtendo o material gratuito "{titulo_pdf_limpo}".
-        4. O CTA deve deixar claro que preparamos um material exclusivo contendo o passo a passo completo discutido no vídeo, direcionando o usuário para o link na bio.
+        2. O gancho inicial (Fase 1) DEVE atacar de forma visceral a dor/problema citada no resumo, usando a estrutura do gancho sorteado para hoje.
+        3. FASE 9 (Desejo) e FASE 10 (Convite e CTA) DEVEM se conectar de forma cirúrgica com a transformação e a promessa do PDF, de forma leve, focando em ajuda real, sem parecer anúncio de vendas.
+        4. O CTA deve deixar claro que preparamos um material exclusivo e gratuito para ajudar no passo a passo completo discutido no vídeo, direcionando o usuário de forma elegante para o link na bio.
 
 
         CRIE UM ROTEIRO LONGO COM 25 A 35 SLIDES seguindo OBRIGATORIAMENTE este funil de 10 Fases:
 
         FASE 1 — INTERRUPÇÃO DO PADRÃO (Pattern Interrupt) - Slides 1 a 3:
-        Comece com algo impossível de ignorar. Não venda. Não fale do PDF. Choque a audiência.
+        Abra o Slide 1 e 2 usando a ESTRUTURA DO GANCHO DE REFERÊNCIA de hoje: "{gancho}" (formato: {descricao_categoria}).
+        Adapte a estrutura do gancho ao assunto do PDF de hoje de forma impactante, natural e provocativa para parar o scroll. Não ofereça nada ainda.
 
         FASE 2 — CURIOSIDADE (Curiosity Gap) - Slides 4 a 6:
-        Crie tensão e deixe perguntas sem resposta. Aumente o mistério.
+        Crie tensão e deixe perguntas sem resposta. Aumente o mistério. O leitor precisa querer ver os próximos slides.
 
         FASE 3 — AUMENTO DA TENSÃO - Slides 7 a 9:
         Não entregue a resposta cedo. Aumente a expectativa. A dor começa a se formar.
 
         FASE 4 — CRIAÇÃO DO PROBLEMA - Slides 10 a 12:
-        Mostre uma dor oculta e profunda da audiência. Eles não sabiam que precisavam de algo, agora precisam.
+        Mostre a dor oculta e profunda da audiência. Eles não sabiam que precisavam de algo, agora precisam.
+        INTRUÇÃO EMOCIONAL: Construa essa dor baseando-se fortemente no SENTIMENTO DO DIA sorteado: "{sentimento_escolhido}". Descreva a angústia ou o erro habitual sob a ótica desse sentimento.
 
         FASE 5 — SOLUÇÃO - Slides 13 a 15:
         Apresente a ideia da solução no momento de maior tensão. O alívio imediato.
@@ -772,51 +786,47 @@ def gerar_conteudo_gemini(tipo):
         Demonstre visualmente (em palavras) como essa solução age na vida prática. Elimine objeções.
 
         FASE 7 — AUTORIDADE - Slides 19 a 21:
-        Explique o porquê de funcionar. Só explique depois de demonstrar. Seja o especialista.
+        Explique o porquê de funcionar. Só explique depois de demonstrar. Seja o especialista/mentor.
 
         FASE 8 — PROVA SOCIAL - Slides 22 a 24:
         Mostre que pessoas normais estão alcançando resultados. Reduza o risco e o medo da mudança.
 
         FASE 9 — DESEJO - Slides 25 a 27:
-        Foque na transformação de vida. A pessoa não quer o PDF, ela quer o resultado que o PDF traz.
+        Foque na transformação de vida. A pessoa não quer um arquivo PDF, ela quer a paz ou o resultado prático que ele traz.
 
-        FASE 10 — OFERTA E CTA - Últimos Slides:
-        Faça a oferta irresistível. É 100% gratuito.
+        FASE 10 — CONVITE AO APROFUNDAMENTO E CTA - Últimos Slides:
+        Apresente a solução gratuita. Fale com um tom de pura ajuda e entrega de valor (um convite generoso e desinteressado para evoluir), removendo completamente qualquer tom comercial de venda agressiva ou escassez artificial.
         O CTA deve ter DUAS PARTES obrigatórias, distribuídas nos últimos slides:
 
-        PARTE 1 — ENTREGA DE VALOR (1 slide): Use uma das frases abaixo, escolhendo a palavra que melhor casa com o conteúdo do vídeo:
-        - "Eu preparei um guia completo para você."
-        - "Eu preparei um método passo a passo para você."
+        PARTE 1 — ENTREGA DE VALOR (1 slide): Use uma das frases abaixo para oferecer ajuda de presente (escolha a que melhor encaixa no contexto):
+        - "Eu preparei um guia completo para te ajudar."
+        - "Eu organizei um método passo a passo para você."
         - "Eu preparei um material exclusivo para você."
-        - "Eu preparei uma estratégia pronta para você aplicar."
-        - "Eu preparei um plano de ação para você."
-        - "Eu preparei um e-book gratuito para você."
-        - "Eu preparei uma técnica que poucos conhecem."
-        - "Eu preparei um kit completo para você."
-        - "Eu preparei um checklist para facilitar sua jornada."
+        - "Eu montei um plano de ação gratuito para você."
+        - "Eu estruturei um checklist prático para facilitar sua jornada."
         NUNCA use os termos: "manual prático", "baixe o PDF", "pegue seu guia", "acesse o PDF".
 
-        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Após a entrega de valor, adicione a urgência. Use UMA das frases abaixo:
-        - "Link na bio. Só essa semana. Vai lá antes que saia do ar."
-        - "É gratuito. É só essa semana. O link tá na bio. Vai lá."
-        - "Clica no link da bio agora. Depois que a semana acabar, fecha."
-        - "Vai no link da bio agora. Esse conteúdo não fica pra sempre."
-        - Conecte a ação de acessar com a transformação que a narrativa promoveu.
+        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Faça um convite sutil e elegante direcionando para o link na bio (sem pressão de venda):
+        - "Se fizer sentido para você, o link para acessar está na bio."
+        - "O acesso é gratuito pelo link na bio. Sinta-se convidado."
+        - "Você pode acessar o material completo clicando no link na bio."
+        - "O link está na bio para você iniciar o seu processo."
 
 
-        PEXELS QUERY: Escolha um clima visual cinematográfico. Ex: 'cinematic mysterious city', 'dark elegant texture'.
+        PEXELS QUERY: Escolha buscas em inglês que criem uma atmosfera cinematográfica de acordo com o sentimento do dia "{sentimento_escolhido}". Ex: 'cinematic mysterious city', 'dark elegant texture', 'warm candlelight'.
         
         LEGENDA:
-        - Máximo 3 linhas. Focada na urgência e na escassez (ex: "só essa semana").
-        - CTA OBRIGATÓRIO NA LEGENDA: Crie uma frase chamando para acessar o Link na Bio (ex: "Link na bio só essa semana, vai lá garantir o seu antes que saia do ar").
+        - Máximo 3 linhas. Focada em empatia e conexão emocional com a dor debatida.
+        - CTA OBRIGATÓRIO NA LEGENDA: Crie uma frase sutil convidando para acessar o Link na Bio de forma amigável (ex: "Se você quer dar o próximo passo, o link para acessar o material completo está na bio. Fique à vontade para ler.").
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter de 25 a 35 frases curtas):
         {{
           "slides": [
-            "Frase 1 aqui",
-            "...",
-            "Frase 35 aqui"
+            "Texto da Cena 1 (Gancho adaptado)",
+            "Texto da Cena 2",
+            "Texto da Cena 3",
+            "..."
           ],
           "pexels_query": "your evocative english search here",
           "legenda": "Sua legenda aqui sem hashtags"

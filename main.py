@@ -131,7 +131,8 @@ def main():
                         caminho_saida=_saida,
                         tema=tema_escolhido,
                         is_conquistador=(args.type == "reels_conquistador"),
-                        is_reels_leads=(args.type == "reels_leads")
+                        is_reels_leads=(args.type == "reels_leads"),
+                        is_noite=(args.type == "pexels_story_noite")
                     )
                 except Exception as e:
                     print(f"⚠️ [DRY-RUN] Erro ao gerar vídeo do Pexels Story: {e}")
@@ -143,7 +144,8 @@ def main():
                     caminho_saida=_saida,
                     tema=tema_escolhido,
                     is_conquistador=(args.type == "reels_conquistador"),
-                    is_reels_leads=(args.type == "reels_leads")
+                    is_reels_leads=(args.type == "reels_leads"),
+                    is_noite=(args.type == "pexels_story_noite")
                 )
         else:
             midia = criar_arte(args.type, conteudo, tema_escolhido, TEMAS_MAPEADOS)

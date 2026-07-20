@@ -327,9 +327,14 @@ def _aplicar_efeito_cinematico(frame_array, efeito):
         overlay = Image.new("RGBA", (w, h), (0, 0, 0, 80))
         img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
         
+    elif efeito == "warm_amber":
+        # Aplica uma tonalidade quente (âmbar/dourado) de aconchego e abertura
+        overlay = Image.new("RGBA", (w, h), (245, 150, 45, 30))  # Overlay laranja/ouro suave
+        img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+        
     return np.array(img)
 
-def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False, is_reels_leads=False):
+def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False, is_reels_leads=False, is_noite=False):
     from core.config.settings import PEXELS_API_KEY, PIXABAY_API_KEY
     import urllib.parse
     import random
@@ -695,10 +700,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 
             idx_cta = total_slides - 1  # Última cena = CTA
 
-            efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
-            efeito_escolhido = random.choice(efeitos)
-            if efeito_escolhido != "none":
-                logger.info(f"✨ Aplicando efeito de vídeo: {efeito_escolhido.upper()}")
+            # Pexels Story da Noite: sempre usa o filtro quente (âmbar) para maior abertura emocional
+            if is_noite:
+                efeito_escolhido = "warm_amber"
+                logger.info("🟠 [NOITE] Filtro warm_amber aplicado para maior receptividade emocional.")
+            else:
+                efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
+                efeito_escolhido = random.choice(efeitos)
+                if efeito_escolhido != "none":
+                    logger.info(f"✨ Aplicando efeito de vídeo: {efeito_escolhido.upper()}")
 
             # Para o Conquistador: usa animação sequencial pré-definida; demais formatos: sorteio aleatório
             if is_conquistador and animacao_conquistador:
