@@ -700,10 +700,10 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 
             idx_cta = total_slides - 1  # Última cena = CTA
 
-            # Pexels Story da Noite: sempre usa o filtro quente (âmbar) para maior abertura emocional
-            if is_noite:
+            # O Reels Leads e o Story Noturno sempre usam o filtro de cores quentes (warm_amber)
+            if is_reels_leads or is_noite:
                 efeito_escolhido = "warm_amber"
-                logger.info("🟠 [NOITE] Filtro warm_amber aplicado para maior receptividade emocional.")
+                logger.info("🟠 Filtro warm_amber (cores quentes) aplicado.")
             else:
                 efeitos = ["none", "none", "cinematic_bars", "vignette_dark"]
                 efeito_escolhido = random.choice(efeitos)
