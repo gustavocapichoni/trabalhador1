@@ -221,10 +221,10 @@ def buscar_insights_conta_api():
         "ultima_atualizacao": datetime.now(timezone.utc).isoformat()
     }
 
-    # 1. Coleta Reach consolidado de 28 dias
+    # 1. Coleta Reach e Impressions consolidados de 28 dias
     url_28d = (
         f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
-        f"?metric=reach"
+        f"?metric=reach,impressions"
         f"&period=days_28"
         f"&access_token={IG_ACCESS_TOKEN}"
     )
@@ -246,9 +246,11 @@ def buscar_insights_conta_api():
                     # Fallback: se todos forem 0, usa o último
                     if val == 0:
                         val = values[-1].get("value", 0)
-                    
+
                     if name == "reach":
                         dados_conta["reach_30d"] = val
+                    elif name == "impressions":
+                        dados_conta["impressions_30d"] = val
         else:
             logger.warning(f"Não foi possível obter insights 28d da conta: {res.text}")
     except Exception as e:
@@ -402,7 +404,23 @@ def rodar_coleta():
             novas_metricas["taxa_visita_perfil"]     = round(prof_visits / views, 4) if views > 0 else 0
             novas_metricas["conversao_perfil"]       = round(follows / prof_visits, 4) if prof_visits > 0 else 0
             novas_metricas["retencao_media_pct"]     = round((avg_watch / 1000) / duracao, 4) if (avg_watch > 0 and duracao > 0) else 0
-            # -------------------------------------------------------------
+
+            # --- CORREÇÃO: Calcula e grava o growth_score individual do post ---
+            # Isso alimenta o Motor de Hipóteses com dados reais por post
+            gs_conversao   = (follows / prof_visits) if prof_visits > 0 else 0
+            gs_curiosidade = (prof_visits / views) if views > 0 else 0
+            gs_retencao    = (avg_watch / 1000 / duracao) if (avg_watch > 0 and duracao > 0) else 0
+            gs_share       = (shares / views) if views > 0 else 0
+            gs_save        = (saves / views) if views > 0 else 0
+            novas_metricas["growth_score"] = round(
+                0.35 * gs_conversao
+                + 0.20 * gs_curiosidade
+                + 0.20 * gs_retencao
+                + 0.15 * gs_share
+                + 0.10 * gs_save,
+                4
+            )
+            # ------------------------------------------------------------------
 
             # Salva localmente (fallback)
             if post_id not in metricas_salvas["posts"]:
@@ -422,6 +440,18 @@ def rodar_coleta():
         logger.info("📥 Iniciando coleta de insights globais da conta do Instagram...")
         dados_conta = buscar_insights_conta_api()
         if dados_conta:
+            # --- CORREÇÃO: Fallback de seguidores ---
+            # A API da Meta pode retornar 0 para contas menores por limitação de privacidade.
+            # Nesse caso, somamos os seguidores trazidos individualmente por cada post.
+            if dados_conta.get("follower_count_30d", 0) == 0:
+                follows_somados = sum(
+                    metricas_salvas["posts"].get(pid, {}).get("metricas", {}).get("follows", 0)
+                    for pid in metricas_salvas.get("posts", {})
+                )
+                if follows_somados > 0:
+                    dados_conta["follower_count_30d"] = follows_somados
+                    logger.info(f"📊 follower_count_30d preenchido via fallback (soma de posts): {follows_somados}")
+            # -----------------------------------------
             salvar_metricas_conta_firebase(dados_conta)
             metricas_salvas["conta"] = dados_conta
     except Exception as e:

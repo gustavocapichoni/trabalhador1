@@ -235,11 +235,21 @@ function renderFunilEstrategico() {
         alcanceIG          = metricasContaIG.reach_30d;
         profileVisitsTotal = metricasContaIG.profile_views_30d || 0;
         followsTotal       = metricasContaIG.follower_count_30d || 0;
-    } else {
+    }
+
+    // Fallback: se follower_count_30d for 0 (limitação de privacidade da Meta),
+    // soma os seguidores vindos individualmente de cada post publicado.
+    if (followsTotal === 0) {
+        Object.values(metricasIG).forEach(m => {
+            followsTotal += m.follows || 0;
+        });
+    }
+
+    // Fallback: se alcance global for 0, soma o alcance de cada post
+    if (alcanceIG === 0) {
         Object.values(metricasIG).forEach(m => {
             alcanceIG          += m.reach || 0;
             profileVisitsTotal += m.profile_visits || 0;
-            followsTotal       += m.follows || 0;
         });
     }
 
