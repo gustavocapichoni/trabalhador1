@@ -69,13 +69,14 @@ def buscar_historico_reels_leads(limite=6):
         if not posts:
             return ""
         msg = "\n        PROIBIDO REPETIR (HISTÓRICO DOS ÚLTIMOS REELS DE LEADS):\n"
-        msg += "        Estes são os roteiros de captação já publicados. Crie algo 100% diferente em gancho, ângulo e frases:\n"
+        msg += "        Estes são os roteiros de captação já publicados. Crie algo 100% diferente em gancho, ângulo e frases de encerramento/CTA:\n"
         for i, p in enumerate(posts):
             titulo = p.get("titulo_pdf", "")
-            gancho = (p.get("gancho_fase1") or "")[:150]
+            gancho = (p.get("gancho_fase1") or "")[:120]
+            cta_fechamento = (p.get("cta_final") or "")[:120]
             data = p.get("data", "")[:10]
-            msg += f"        * Reels {i+1} ({data}): PDF='{titulo}' | Gancho Fase 1='{gancho}'\n"
-        msg += "        Qualquer semelhança com os textos acima é inaceitável. Seja 100% original.\n"
+            msg += f"        * Reels {i+1} ({data}): PDF='{titulo}' | Gancho='{gancho}' | Convite Final Usado='{cta_fechamento}'\n"
+        msg += "        Qualquer semelhança com os ganchos ou frases finais acima é inaceitável. Seja 100% original em todo o roteiro.\n"
         return msg
     except Exception as e:
         logger.warning(f"Erro ao buscar histórico de reels_leads: {e}")
@@ -819,13 +820,12 @@ def gerar_conteudo_gemini(tipo):
         FASE 9 — DESEJO - Slides 25 a 27:
         Foque na transformação de vida. A pessoa não quer um arquivo PDF, ela quer a paz ou o resultado prático que ele traz.
 
-        FASE 10 — CONVITE AO APROFUNDAMENTO E CTA - Últimos Slides:
-        Apresente a solução gratuita de forma integrada e natural. Fale com um tom de pura ajuda e entrega de valor (um convite generoso e desinteressado para evoluir, agindo como o palestrante no palco que quer presentear a plateia), removendo totalmente qualquer tom comercial de venda agressiva ou escassez artificial.
-        O CTA deve ter DUAS PARTES obrigatórias, distribuídas nos últimos slides:
-
-        PARTE 1 — ENTREGA DE VALOR (1 slide): Ofereça o material gratuito que preparamos para o leitor. O tom deve seguir ideias como: "Eu preparei um guia completo para te ajudar", "Eu estruturei um checklist prático...", "Eu montei um plano de ação...". Adapte e crie uma frase original que case com o assunto do vídeo. NUNCA use termos comerciais como: "manual prático", "baixe o PDF", "pegue seu guia", "acesse o PDF".
-        
-        PARTE 2 — URGÊNCIA E AÇÃO (1 a 2 slides): Faça um convite sutil e elegante direcionando o leitor para o link na bio (ex: "O link para acessar está na bio", "Sinta-se convidado a acessar pelo link na bio"). A frase deve ser 100% autoral e nascer naturalmente do encerramento do vídeo. NUNCA use frases engessadas repetitivas.
+        FASE 10 — CONVITE E CTA - EXATAMENTE NOS 2 ÚLTIMOS SLIDES DO ARRAY (Slides N-1 e N):
+        REGRAS RIGOROSAS E INVIOLÁVEIS DO CONVITE:
+        1. PROIBIÇÃO ABSOLUTA DE REPETIÇÃO: Nos slides de 1 até o antepenúltimo, é ESTRITAMENTE PROIBIDO mencionar palavras como 'link', 'bio', 'material', 'acessar', 'PDF', 'guia' ou fazer qualquer convite antecipado. Todo o miolo do vídeo deve ser 100% conteúdo e história.
+        2. A FASE 10 DEVE TER EXATAMENTE 2 SLIDES NO FINAL:
+           - PENÚLTIMO SLIDE (Entrega de Valor - 1 slide): Fale como um palestrante generoso entregando uma ferramenta prática (ex: "Estruturei um plano de ação simples para você aplicar isso na sua rotina."). NUNCA use termos comerciais como "baixe o PDF", "manual", "pegue seu arquivo".
+           - ÚLTIMO SLIDE (Convite Único ao Perfil - 1 slide): Faça um ÚNICO convite elegante e autoral direcionando para o topo do perfil (ex: "O caminho completo te espera no link principal do meu perfil."). É PROIBIDO repetir a palavra 'link' ou 'bio' mais de uma única vez no vídeo inteiro.
 
 
         PEXELS QUERY: Escolha buscas em inglês que criem uma atmosfera cinematográfica de acordo com o sentimento do dia "{sentimento_escolhido}". Ex: 'cinematic mysterious city', 'dark elegant texture', 'warm candlelight'.

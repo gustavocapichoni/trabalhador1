@@ -71,11 +71,19 @@ def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="",
             except Exception:
                 pass
 
+            # Pega o último slide como cta_final se frase_visual for lista
+            cta_final_str = ""
+            if isinstance(frase_visual, list) and frase_visual:
+                cta_final_str = frase_visual[-1][:200]
+            elif isinstance(frase_visual, str):
+                cta_final_str = frase_visual[-200:]
+
             doc_leads = {
                 "post_id": post_id,
                 "data": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
                 "titulo_pdf": titulo_pdf,
                 "gancho_fase1": frase_gancho,
+                "cta_final": cta_final_str,
                 "legenda": legenda[:300],
                 "estilo_copy": estilo,
             }
