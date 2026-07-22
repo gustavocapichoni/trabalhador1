@@ -451,17 +451,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if not PEXELS_API_KEY or len(temp_vids) >= num_videos_necessarios:
             return
         try:
-            # Paginação aleatória: sorteia entre página 1, 2 ou 3 — triplica o pool de resultados
-            page = random.randint(1, 3)
+            # Paginação aleatória expandida: sorteia entre página 1 a 10 e 30 vídeos por página — multiplica o pool por 10
+            page = random.randint(1, 10)
             logger.info(f"🔍 [Pexels] '{urllib.parse.unquote(q_encoded)}' (pág. {page})...")
-            url_pexels = f"https://api.pexels.com/videos/search?query={q_encoded}&orientation=portrait&size=medium&per_page=15&page={page}"
+            url_pexels = f"https://api.pexels.com/videos/search?query={q_encoded}&orientation=portrait&size=medium&per_page=30&page={page}"
             headers = {"Authorization": PEXELS_API_KEY}
             response = requests.get(url_pexels, headers=headers, timeout=15)
             if response.status_code == 200:
                 data = response.json()
                 if not data.get("videos"):
-                    logger.warning("⚠️ Nenhum vídeo encontrado no Pexels, tentando query coringa 'cinematic'")
-                    response = requests.get("https://api.pexels.com/videos/search?query=cinematic&orientation=portrait&per_page=15", headers=headers, timeout=15)
+                    logger.warning("⚠️ Nenhum vídeo encontrado no Pexels para a página sorteada, tentando página 1...")
+                    response = requests.get(f"https://api.pexels.com/videos/search?query={q_encoded}&orientation=portrait&per_page=30&page=1", headers=headers, timeout=15)
                     data = response.json()
                 if data.get("videos"):
                     videos = data["videos"]

@@ -123,8 +123,9 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
         
         for query_atual in queries_a_tentar:
             import urllib.parse
+            page = random.randint(1, 10)
             query_encoded = urllib.parse.quote(query_atual)
-            url_pexels = f"https://api.pexels.com/v1/search?query={query_encoded}&orientation={pex_orientation}&per_page=15"
+            url_pexels = f"https://api.pexels.com/v1/search?query={query_encoded}&orientation={pex_orientation}&per_page=30&page={page}"
             try:
                 response = requests.get(url_pexels, headers=headers, timeout=15)
                 if response.status_code == 200:
