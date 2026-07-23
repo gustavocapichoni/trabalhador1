@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-07-23 01:44:43 UTC",
+    "atualizado_em": "2026-07-23 01:57:09 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -152,7 +152,7 @@
                 "conexoes": {
                     "growth_score": 0.0049,
                     "engagement_score": 14.66,
-                    "ctr_feed": 1.5,
+                    "ctr_feed": 2.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -194,7 +194,7 @@
                 "reels_conquistador": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -306,7 +306,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -398,7 +398,7 @@
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -460,7 +460,7 @@
                 "compartilhamento": {
                     "growth_score": 0.017,
                     "engagement_score": 90.36,
-                    "ctr_feed": 1.2168,
+                    "ctr_feed": 1.2883,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -512,7 +512,7 @@
                 "B-roll": {
                     "growth_score": 0.0253,
                     "engagement_score": 218.37,
-                    "ctr_feed": 0.9471,
+                    "ctr_feed": 1.0027,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -604,7 +604,7 @@
                 "Misterioso": {
                     "growth_score": 0.0264,
                     "engagement_score": 179.3155,
-                    "ctr_feed": 0.9178,
+                    "ctr_feed": 0.9428,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -756,7 +756,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -808,7 +808,7 @@
                 "Ameaça-Alívio": {
                     "growth_score": 0.0168,
                     "engagement_score": 151.8383,
-                    "ctr_feed": 0.9582,
+                    "ctr_feed": 0.986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -940,7 +940,7 @@
                 "Alta": {
                     "growth_score": 0.0114,
                     "engagement_score": 120.295,
-                    "ctr_feed": 0.9054,
+                    "ctr_feed": 0.9679,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1047,7 +1047,7 @@
                 "conexoes": {
                     "growth_score": 0.0049,
                     "engagement_score": 14.66,
-                    "ctr_feed": 1.5,
+                    "ctr_feed": 2.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1089,7 +1089,7 @@
                 "reels_conquistador": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1201,7 +1201,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1293,7 +1293,7 @@
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1355,7 +1355,7 @@
                 "compartilhamento": {
                     "growth_score": 0.017,
                     "engagement_score": 90.36,
-                    "ctr_feed": 1.2168,
+                    "ctr_feed": 1.2883,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1407,7 +1407,7 @@
                 "B-roll": {
                     "growth_score": 0.0253,
                     "engagement_score": 218.37,
-                    "ctr_feed": 0.9471,
+                    "ctr_feed": 1.0027,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -1499,7 +1499,7 @@
                 "Misterioso": {
                     "growth_score": 0.0264,
                     "engagement_score": 179.3155,
-                    "ctr_feed": 0.9178,
+                    "ctr_feed": 0.9428,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -1651,7 +1651,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1703,7 +1703,7 @@
                 "Ameaça-Alívio": {
                     "growth_score": 0.0168,
                     "engagement_score": 151.8383,
-                    "ctr_feed": 0.9582,
+                    "ctr_feed": 0.986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -1835,7 +1835,7 @@
                 "Alta": {
                     "growth_score": 0.0114,
                     "engagement_score": 120.295,
-                    "ctr_feed": 0.9054,
+                    "ctr_feed": 0.9679,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1942,7 +1942,7 @@
                 "conexoes": {
                     "growth_score": 0.0049,
                     "engagement_score": 14.66,
-                    "ctr_feed": 1.5,
+                    "ctr_feed": 2.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1984,7 +1984,7 @@
                 "reels_conquistador": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2096,7 +2096,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2188,7 +2188,7 @@
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2250,7 +2250,7 @@
                 "compartilhamento": {
                     "growth_score": 0.017,
                     "engagement_score": 90.36,
-                    "ctr_feed": 1.2168,
+                    "ctr_feed": 1.2883,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2302,7 +2302,7 @@
                 "B-roll": {
                     "growth_score": 0.0253,
                     "engagement_score": 218.37,
-                    "ctr_feed": 0.9471,
+                    "ctr_feed": 1.0027,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -2394,7 +2394,7 @@
                 "Misterioso": {
                     "growth_score": 0.0264,
                     "engagement_score": 179.3155,
-                    "ctr_feed": 0.9178,
+                    "ctr_feed": 0.9428,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -2546,7 +2546,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2598,7 +2598,7 @@
                 "Ameaça-Alívio": {
                     "growth_score": 0.0168,
                     "engagement_score": 151.8383,
-                    "ctr_feed": 0.9582,
+                    "ctr_feed": 0.986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -2730,7 +2730,7 @@
                 "Alta": {
                     "growth_score": 0.0114,
                     "engagement_score": 120.295,
-                    "ctr_feed": 0.9054,
+                    "ctr_feed": 0.9679,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2837,7 +2837,7 @@
                 "conexoes": {
                     "growth_score": 0.0049,
                     "engagement_score": 14.66,
-                    "ctr_feed": 1.5,
+                    "ctr_feed": 2.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2879,7 +2879,7 @@
                 "reels_conquistador": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2991,7 +2991,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3083,7 +3083,7 @@
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3145,7 +3145,7 @@
                 "compartilhamento": {
                     "growth_score": 0.017,
                     "engagement_score": 90.36,
-                    "ctr_feed": 1.2168,
+                    "ctr_feed": 1.2883,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3197,7 +3197,7 @@
                 "B-roll": {
                     "growth_score": 0.0253,
                     "engagement_score": 218.37,
-                    "ctr_feed": 0.9471,
+                    "ctr_feed": 1.0027,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -3289,7 +3289,7 @@
                 "Misterioso": {
                     "growth_score": 0.0264,
                     "engagement_score": 179.3155,
-                    "ctr_feed": 0.9178,
+                    "ctr_feed": 0.9428,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -3441,7 +3441,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3493,7 +3493,7 @@
                 "Ameaça-Alívio": {
                     "growth_score": 0.0168,
                     "engagement_score": 151.8383,
-                    "ctr_feed": 0.9582,
+                    "ctr_feed": 0.986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -3625,7 +3625,7 @@
                 "Alta": {
                     "growth_score": 0.0114,
                     "engagement_score": 120.295,
-                    "ctr_feed": 0.9054,
+                    "ctr_feed": 0.9679,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3732,7 +3732,7 @@
                 "conexoes": {
                     "growth_score": 0.0049,
                     "engagement_score": 14.66,
-                    "ctr_feed": 1.5,
+                    "ctr_feed": 2.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3774,7 +3774,7 @@
                 "reels_conquistador": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3886,7 +3886,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3978,7 +3978,7 @@
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
                     "growth_score": 0.0152,
                     "engagement_score": 160.3933,
-                    "ctr_feed": 1.2072,
+                    "ctr_feed": 1.2905,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4040,7 +4040,7 @@
                 "compartilhamento": {
                     "growth_score": 0.017,
                     "engagement_score": 90.36,
-                    "ctr_feed": 1.2168,
+                    "ctr_feed": 1.2883,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4092,7 +4092,7 @@
                 "B-roll": {
                     "growth_score": 0.0253,
                     "engagement_score": 218.37,
-                    "ctr_feed": 0.9471,
+                    "ctr_feed": 1.0027,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -4184,7 +4184,7 @@
                 "Misterioso": {
                     "growth_score": 0.0264,
                     "engagement_score": 179.3155,
-                    "ctr_feed": 0.9178,
+                    "ctr_feed": 0.9428,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -4336,7 +4336,7 @@
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
                     "growth_score": 0.0061,
                     "engagement_score": 109.8967,
-                    "ctr_feed": 1.3798,
+                    "ctr_feed": 1.5465,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4388,7 +4388,7 @@
                 "Ameaça-Alívio": {
                     "growth_score": 0.0168,
                     "engagement_score": 151.8383,
-                    "ctr_feed": 0.9582,
+                    "ctr_feed": 0.986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -4520,7 +4520,7 @@
                 "Alta": {
                     "growth_score": 0.0114,
                     "engagement_score": 120.295,
-                    "ctr_feed": 0.9054,
+                    "ctr_feed": 0.9679,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
