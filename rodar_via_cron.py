@@ -99,6 +99,9 @@ if __name__ == "__main__":
         elif tipo == "gerador_pdf":
             print("🚀 Executando manualmente: Gerador de PDF Semanal")
             subprocess.run(["python", "gerador_pdf/gerador.py"])
+        elif tipo == "user_requests":
+            print("🚀 Executando manualmente: Processador do Studio de Criação")
+            subprocess.run(["python", "core/publisher/executor_usuario.py"])
         elif tipo:
             print(f"Executando manualmente: {tipo}")
             subprocess.run(["python", "main.py", "--type", tipo])
