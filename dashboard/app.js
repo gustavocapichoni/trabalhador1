@@ -1157,10 +1157,19 @@ function gerarPreviewPostagem() {
 
 async function dispararGitHubActions() {
     try {
+        // Busca o token de forma segura do Firebase (nunca fica exposto no código)
+        const configDoc = await db.collection('config').doc('sistema').get();
+        const pat = configDoc.exists ? configDoc.data().github_pat : null;
+        if (!pat) {
+            console.warn("⚠️ Token do GitHub não encontrado no Firebase.");
+            return;
+        }
+
         fetch('https://api.github.com/repos/gustavocapichoni/trabalhador1/actions/workflows/instagram_bot.yml/dispatches', {
             method: 'POST',
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
+                'Authorization': `token ${pat}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -1169,6 +1178,12 @@ async function dispararGitHubActions() {
                     tipo_post: 'user_requests'
                 }
             })
+        }).then(res => {
+            if (res.status === 204) {
+                console.log("✅ GitHub Actions disparado com sucesso!");
+            } else {
+                console.warn("⚠️ Resposta inesperada do GitHub Actions:", res.status);
+            }
         }).catch(err => console.warn("Aviso ao chamar API do GitHub:", err));
     } catch (e) {
         console.warn("Aviso ao disparar GitHub Actions:", e);
