@@ -123,16 +123,16 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
         tipo_lower = tipo_post.lower()
         
         if "reel" in tipo_lower or "pexels" in tipo_lower:
-            # Reels: métricas de retenção, tempo assistido e engajamento
-            metrics_query = "views,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reach,saved,shares"
+            # Reels: métricas de retenção, tempo assistido, engajamento e conversão de perfil
+            metrics_query = "views,ig_reels_avg_watch_time,ig_reels_video_view_total_time,reach,saved,shares,profile_visits,follows"
             logger.info(f"🎬 Coletando métricas de REELS para {post_id}")
         elif "story" in tipo_lower:
-            # Stories: métricas de navegação e retenção
-            metrics_query = "impressions,reach,navigation,replies"
+            # Stories: métricas de navegação, retenção e conversão
+            metrics_query = "impressions,reach,navigation,replies,profile_visits,follows"
             logger.info(f"📱 Coletando métricas de STORY para {post_id}")
         else:
-            # Feed e Carrossel: métricas de engajamento e descoberta
-            metrics_query = "reach,saved,shares"
+            # Feed e Carrossel: métricas de engajamento, descoberta e conversão de perfil
+            metrics_query = "reach,saved,shares,impressions,profile_visits,follows"
             logger.info(f"🖼️ Coletando métricas de FEED para {post_id}")
 
         url_insights = (
@@ -153,7 +153,32 @@ def buscar_metricas_api(post_id, tipo_post="feed"):
                     # Alguns insights retornam valor direto (sem array)
                     metricas[name] = insight.get("value", 0)
         else:
-            logger.warning(f"Não foi possível obter insights para {post_id}: {res_insights.text}")
+            err_text = res_insights.text
+            logger.warning(f"Não foi possível obter insights para {post_id}: {err_text}")
+            # Fallback: se a query completa falhou (métrica não disponível para o formato),
+            # tenta buscar profile_visits e follows separadamente
+            if "profile_visits" in err_text or "follows" in err_text or "OAuthException" in err_text:
+                try:
+                    metrics_fallback = "reach,saved,shares"
+                    if "reel" in tipo_lower or "pexels" in tipo_lower:
+                        metrics_fallback = "views,ig_reels_avg_watch_time,reach,saved,shares"
+                    url_fallback = (
+                        f"https://graph.facebook.com/v19.0/{post_id}/insights"
+                        f"?metric={metrics_fallback}"
+                        f"&access_token={IG_ACCESS_TOKEN}"
+                    )
+                    res_fb = requests.get(url_fallback, timeout=15)
+                    if res_fb.status_code == 200:
+                        for insight in res_fb.json().get("data", []):
+                            name   = insight.get("name")
+                            values = insight.get("values", [])
+                            if values:
+                                metricas[name] = values[0].get("value", 0)
+                            elif "value" in insight:
+                                metricas[name] = insight.get("value", 0)
+                        logger.info(f"✅ Fallback de métricas sem profile_visits/follows aplicado para {post_id}")
+                except Exception as ef:
+                    logger.warning(f"Fallback de métricas também falhou para {post_id}: {ef}")
 
         logger.info(f"📊 Métricas coletadas para {post_id}: {list(metricas.keys())}")
         return metricas

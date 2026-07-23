@@ -518,7 +518,27 @@ async function carregarCientista() {
         } else {
             const d = snap.data();
             renderGrowthScore(d);
-            renderICCRanking(d.icc_por_tema || {});
+
+            // Fallback de ICC: se não houver dados por post, estima usando dados globais da conta
+            let iccParaRender = d.icc_por_tema || {};
+            if (!Object.keys(iccParaRender).length && metricasContaIG) {
+                const followsGlobal  = metricasContaIG.follower_count_30d || 0;
+                const visitasGlobal  = metricasContaIG.profile_views_30d  || 0;
+                if (visitasGlobal > 0 && followsGlobal > 0) {
+                    // Distribui o ICC global entre os temas na proporção dos pesos estratégicos
+                    const pesos = d.peso_final_temas || {};
+                    if (Object.keys(pesos).length) {
+                        const iccGlobal = followsGlobal / visitasGlobal;
+                        Object.entries(pesos).forEach(([tema, peso]) => {
+                            iccParaRender[tema] = parseFloat((iccGlobal * peso).toFixed(4));
+                        });
+                        console.info('📊 ICC calculado via fallback global da conta:', iccParaRender);
+                    } else {
+                        iccParaRender['geral'] = parseFloat((followsGlobal / visitasGlobal).toFixed(4));
+                    }
+                }
+            }
+            renderICCRanking(iccParaRender);
             renderEstrategiaDonut(d.peso_final_temas || {});
             renderCopyRankings(d.ganchos_growth_score || {}, d.ctas_growth_score || {});
             renderRecomendacoes(d);
