@@ -339,11 +339,20 @@ function renderMetricasIG() {
         profVisits = metricasContaIG.profile_views_30d || 0;
         follows    = metricasContaIG.follower_count_30d || 0;
     } else {
-        // Fallback: soma dos posts
         Object.values(metricasIG).forEach(m => {
-            reach      += m.reach      || 0;
+            reach += m.reach || 0;
+        });
+    }
+
+    // Fallback de Visitas ao Perfil e Seguidores se o consolidado da conta retornar 0
+    if (profVisits === 0) {
+        Object.values(metricasIG).forEach(m => {
             profVisits += m.profile_visits || 0;
-            follows    += m.follows    || 0;
+        });
+    }
+    if (follows === 0) {
+        Object.values(metricasIG).forEach(m => {
+            follows += m.follows || 0;
         });
     }
 

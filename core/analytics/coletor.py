@@ -301,7 +301,6 @@ def buscar_insights_conta_api():
         f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
         f"?metric=profile_views"
         f"&period=day"
-        f"&metric_type=total_value"
         f"&since={since_ts}"
         f"&until={until_ts}"
         f"&access_token={IG_ACCESS_TOKEN}"
