@@ -1155,12 +1155,32 @@ function gerarPreviewPostagem() {
     lucide.createIcons();
 }
 
+async function dispararGitHubActions() {
+    try {
+        fetch('https://api.github.com/repos/gustavocapichoni/trabalhador1/actions/workflows/instagram_bot.yml/dispatches', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ref: 'main',
+                inputs: {
+                    tipo_post: 'user_requests'
+                }
+            })
+        }).catch(err => console.warn("Aviso ao chamar API do GitHub:", err));
+    } catch (e) {
+        console.warn("Aviso ao disparar GitHub Actions:", e);
+    }
+}
+
 async function confirmarPublicacao() {
     if (!criadorSolicitacaoPendente) return;
 
     const btn = document.getElementById('btn-pub-now');
     btn.disabled = true;
-    btn.innerHTML = '<i data-lucide="loader" class="spinner"></i> Agendando com o Robô...';
+    btn.innerHTML = '<i data-lucide="loader" class="spinner"></i> Disparando Robô na Nuvem...';
     lucide.createIcons();
 
     try {
@@ -1173,7 +1193,10 @@ async function confirmarPublicacao() {
             solicitado_em: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        alert("🚀 Postagem agendada com sucesso! O robô lerá a sua solicitação e fará a publicação no Instagram.");
+        // Dispara o acionamento no GitHub Actions
+        dispararGitHubActions();
+
+        alert("🚀 Sucesso! Sua postagem foi solicitada e o robô foi ativado na nuvem!");
         resetarFormularioCriador();
         await carregarSolicitacoes();
     } catch (e) {
