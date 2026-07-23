@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-07-23 01:57:09 UTC",
+    "atualizado_em": "2026-07-23 02:11:13 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -7,43 +7,43 @@
         "mensal",
         "semanal"
     ],
-    "growth_score_referencia": 0.0302,
+    "growth_score_referencia": 0.0402,
     "icc_por_tema": {},
     "tema_maior_icc": null,
     "peso_final_temas": {
-        "liberdade": 0.409,
-        "psicologia": 0.248,
-        "financas": 0.206,
-        "filosofia": 0.088,
-        "espiritualidade": 0.025,
-        "conexoes": 0.023,
+        "liberdade": 0.307,
+        "conexoes": 0.267,
+        "psicologia": 0.186,
+        "financas": 0.155,
+        "filosofia": 0.066,
+        "espiritualidade": 0.018,
         "Descoberto Automaticamente": 0.0009
     },
     "peso_final_formatos": {
-        "pexels_story_noite": 0.3786,
-        "reels_leads": 0.3176,
-        "reels_noite": 0.1359,
-        "reels_conquistador": 0.0689,
-        "pexels_story": 0.0659,
-        "reels": 0.032
+        "pexels_story_noite": 0.3596,
+        "reels_leads": 0.3016,
+        "reels_noite": 0.1289,
+        "reels_conquistador": 0.1159,
+        "pexels_story": 0.0629,
+        "reels": 0.031
     },
     "peso_final_estilos": {
-        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-        "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-        "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-        "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-        "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-        "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-        "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021,
-        "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018
+        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+        "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+        "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+        "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+        "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+        "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+        "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+        "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+        "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
     },
     "ganchos_growth_score": {
         "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.": 0.0196,
         "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.": 0.0,
         "DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.": 0.0456,
         "DESAFIO — Convide o leitor a participar ativamente, como se fosse um teste ou uma aposta. Provoque-o a provar algo a si mesmo.": 0.0913,
-        "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": 0.0152,
+        "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": 0.0269,
         "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.": 0.0478,
         "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada que quebre a crença mais comum do leitor.": 0.0232
     },
@@ -51,9 +51,9 @@
         "comentario": 0.0559,
         "salvamento": 0.0388,
         "seguir": 0.026,
-        "compartilhamento": 0.017
+        "compartilhamento": 0.0271
     },
-    "contexto_para_gemini": "CONTEXTO ESTRATEGICO (Baseado nos ciclos: ANUAL, SEMESTRAL, TRIMESTRAL, MENSAL, SEMANAL):\n\nDISTRIBUICAO DE TEMAS (roleta ponderada — ciclos longos ancoram):\n  - liberdade: 40.9%\n  - psicologia: 24.8%\n  - financas: 20.6%\n  - filosofia: 8.8%\n  - espiritualidade: 2.5%\n  - conexoes: 2.3%\n  - Descoberto Automaticamente: 0.1%\n\nGANCHOS COM MAIOR GROWTH SCORE (categorias que mais convertem):\n  - DESAFIO — Convide o leitor a participar ativamente, como se fosse um teste ou uma aposta. Provoque-o a provar algo a si mesmo.: 0.0913\n  - SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.: 0.0478\n  - DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.: 0.0456\n\nCTAs COM MAIOR GROWTH SCORE:\n  - comentario: 0.0559\n  - salvamento: 0.0388\n  - seguir: 0.0260\n\nGROWTH SCORE DE REFERENCIA (benchmark atual da conta): 0.0302\n\nINSTRUCAO: Use a distribuicao de temas acima como roleta ponderada. Quando o objetivo for crescimento de seguidores, priorize o tema de maior ICC. Mantenha a estratégia de longo prazo mesmo que uma tendencia de curto prazo aponte em direcao diferente.",
+    "contexto_para_gemini": "CONTEXTO ESTRATEGICO (Baseado nos ciclos: ANUAL, SEMESTRAL, TRIMESTRAL, MENSAL, SEMANAL):\n\nDISTRIBUICAO DE TEMAS (roleta ponderada — ciclos longos ancoram):\n  - liberdade: 30.7%\n  - conexoes: 26.7%\n  - psicologia: 18.6%\n  - financas: 15.5%\n  - filosofia: 6.6%\n  - espiritualidade: 1.8%\n  - Descoberto Automaticamente: 0.1%\n\nGANCHOS COM MAIOR GROWTH SCORE (categorias que mais convertem):\n  - DESAFIO — Convide o leitor a participar ativamente, como se fosse um teste ou uma aposta. Provoque-o a provar algo a si mesmo.: 0.0913\n  - SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.: 0.0478\n  - DADO/ESTATÍSTICA — Abra com um número, estudo ou fato científico chocante que mate as crenças do leitor com evidência.: 0.0456\n\nCTAs COM MAIOR GROWTH SCORE:\n  - comentario: 0.0559\n  - salvamento: 0.0388\n  - compartilhamento: 0.0271\n\nGROWTH SCORE DE REFERENCIA (benchmark atual da conta): 0.0402\n\nINSTRUCAO: Use a distribuicao de temas acima como roleta ponderada. Quando o objetivo for crescimento de seguidores, priorize o tema de maior ICC. Mantenha a estratégia de longo prazo mesmo que uma tendencia de curto prazo aponte em direcao diferente.",
     "analises_raw": {
         "semanal": {
             "periodo_dias": 7,
@@ -61,32 +61,32 @@
             "alcance_medio": 26.84,
             "saves_medio": 0.1,
             "distribuicao_temas": {
-                "filosofia": 0.088,
+                "filosofia": 0.066,
                 "Descoberto Automaticamente": 0.0,
-                "espiritualidade": 0.025,
-                "financas": 0.206,
-                "liberdade": 0.409,
-                "psicologia": 0.248,
-                "conexoes": 0.023
+                "espiritualidade": 0.018,
+                "financas": 0.155,
+                "liberdade": 0.307,
+                "psicologia": 0.186,
+                "conexoes": 0.267
             },
             "distribuicao_formatos": {
-                "reels": 0.046,
-                "reels_conquistador": 0.068,
-                "reels_leads": 0.313,
-                "pexels_story_noite": 0.374,
-                "pexels_story": 0.065,
-                "reels_noite": 0.134
+                "reels": 0.044,
+                "reels_conquistador": 0.114,
+                "reels_leads": 0.297,
+                "pexels_story_noite": 0.355,
+                "pexels_story": 0.062,
+                "reels_noite": 0.127
             },
             "distribuicao_estilos": {
-                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018,
-                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021
+                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
             },
             "temas_stats": {
                 "filosofia": {
@@ -150,9 +150,9 @@
                     "count": 6
                 },
                 "conexoes": {
-                    "growth_score": 0.0049,
-                    "engagement_score": 14.66,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.0752,
+                    "engagement_score": 207.98,
+                    "ctr_feed": 3.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -192,9 +192,9 @@
                     "count": 4
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -304,9 +304,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -396,9 +396,9 @@
                     "count": 5
                 },
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -458,9 +458,9 @@
                     "count": 9
                 },
                 "compartilhamento": {
-                    "growth_score": 0.017,
-                    "engagement_score": 90.36,
-                    "ctr_feed": 1.2883,
+                    "growth_score": 0.0271,
+                    "engagement_score": 117.9771,
+                    "ctr_feed": 1.4311,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -510,9 +510,9 @@
                     "count": 1
                 },
                 "B-roll": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 218.37,
-                    "ctr_feed": 1.0027,
+                    "growth_score": 0.0331,
+                    "engagement_score": 239.85,
+                    "ctr_feed": 1.1138,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -602,9 +602,9 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 179.3155,
-                    "ctr_feed": 0.9428,
+                    "growth_score": 0.0299,
+                    "engagement_score": 188.9815,
+                    "ctr_feed": 0.9928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -754,9 +754,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -806,9 +806,9 @@
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0168,
-                    "engagement_score": 151.8383,
-                    "ctr_feed": 0.986,
+                    "growth_score": 0.0207,
+                    "engagement_score": 162.5783,
+                    "ctr_feed": 1.0416,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -938,9 +938,9 @@
                     "count": 26
                 },
                 "Alta": {
-                    "growth_score": 0.0114,
-                    "engagement_score": 120.295,
-                    "ctr_feed": 0.9679,
+                    "growth_score": 0.0202,
+                    "engagement_score": 144.46,
+                    "ctr_feed": 1.0929,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -956,32 +956,32 @@
             "alcance_medio": 48.2,
             "saves_medio": 0.17,
             "distribuicao_temas": {
-                "filosofia": 0.088,
+                "filosofia": 0.066,
                 "Descoberto Automaticamente": 0.001,
-                "espiritualidade": 0.025,
-                "financas": 0.206,
-                "liberdade": 0.409,
-                "psicologia": 0.248,
-                "conexoes": 0.023
+                "espiritualidade": 0.018,
+                "financas": 0.155,
+                "liberdade": 0.307,
+                "psicologia": 0.186,
+                "conexoes": 0.267
             },
             "distribuicao_formatos": {
-                "reels": 0.031,
-                "reels_conquistador": 0.069,
-                "reels_leads": 0.318,
-                "pexels_story_noite": 0.379,
-                "pexels_story": 0.066,
-                "reels_noite": 0.136
+                "reels": 0.03,
+                "reels_conquistador": 0.116,
+                "reels_leads": 0.302,
+                "pexels_story_noite": 0.36,
+                "pexels_story": 0.063,
+                "reels_noite": 0.129
             },
             "distribuicao_estilos": {
-                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018,
-                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021
+                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
             },
             "temas_stats": {
                 "filosofia": {
@@ -1045,9 +1045,9 @@
                     "count": 6
                 },
                 "conexoes": {
-                    "growth_score": 0.0049,
-                    "engagement_score": 14.66,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.0752,
+                    "engagement_score": 207.98,
+                    "ctr_feed": 3.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1087,9 +1087,9 @@
                     "count": 4
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1199,9 +1199,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1291,9 +1291,9 @@
                     "count": 5
                 },
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1353,9 +1353,9 @@
                     "count": 9
                 },
                 "compartilhamento": {
-                    "growth_score": 0.017,
-                    "engagement_score": 90.36,
-                    "ctr_feed": 1.2883,
+                    "growth_score": 0.0271,
+                    "engagement_score": 117.9771,
+                    "ctr_feed": 1.4311,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1405,9 +1405,9 @@
                     "count": 1
                 },
                 "B-roll": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 218.37,
-                    "ctr_feed": 1.0027,
+                    "growth_score": 0.0331,
+                    "engagement_score": 239.85,
+                    "ctr_feed": 1.1138,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -1497,9 +1497,9 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 179.3155,
-                    "ctr_feed": 0.9428,
+                    "growth_score": 0.0299,
+                    "engagement_score": 188.9815,
+                    "ctr_feed": 0.9928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -1649,9 +1649,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1701,9 +1701,9 @@
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0168,
-                    "engagement_score": 151.8383,
-                    "ctr_feed": 0.986,
+                    "growth_score": 0.0207,
+                    "engagement_score": 162.5783,
+                    "ctr_feed": 1.0416,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -1833,9 +1833,9 @@
                     "count": 26
                 },
                 "Alta": {
-                    "growth_score": 0.0114,
-                    "engagement_score": 120.295,
-                    "ctr_feed": 0.9679,
+                    "growth_score": 0.0202,
+                    "engagement_score": 144.46,
+                    "ctr_feed": 1.0929,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1851,32 +1851,32 @@
             "alcance_medio": 48.2,
             "saves_medio": 0.17,
             "distribuicao_temas": {
-                "filosofia": 0.088,
+                "filosofia": 0.066,
                 "Descoberto Automaticamente": 0.001,
-                "espiritualidade": 0.025,
-                "financas": 0.206,
-                "liberdade": 0.409,
-                "psicologia": 0.248,
-                "conexoes": 0.023
+                "espiritualidade": 0.018,
+                "financas": 0.155,
+                "liberdade": 0.307,
+                "psicologia": 0.186,
+                "conexoes": 0.267
             },
             "distribuicao_formatos": {
-                "reels": 0.031,
-                "reels_conquistador": 0.069,
-                "reels_leads": 0.318,
-                "pexels_story_noite": 0.379,
-                "pexels_story": 0.066,
-                "reels_noite": 0.136
+                "reels": 0.03,
+                "reels_conquistador": 0.116,
+                "reels_leads": 0.302,
+                "pexels_story_noite": 0.36,
+                "pexels_story": 0.063,
+                "reels_noite": 0.129
             },
             "distribuicao_estilos": {
-                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018,
-                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021
+                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
             },
             "temas_stats": {
                 "filosofia": {
@@ -1940,9 +1940,9 @@
                     "count": 6
                 },
                 "conexoes": {
-                    "growth_score": 0.0049,
-                    "engagement_score": 14.66,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.0752,
+                    "engagement_score": 207.98,
+                    "ctr_feed": 3.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1982,9 +1982,9 @@
                     "count": 4
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2094,9 +2094,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2186,9 +2186,9 @@
                     "count": 5
                 },
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2248,9 +2248,9 @@
                     "count": 9
                 },
                 "compartilhamento": {
-                    "growth_score": 0.017,
-                    "engagement_score": 90.36,
-                    "ctr_feed": 1.2883,
+                    "growth_score": 0.0271,
+                    "engagement_score": 117.9771,
+                    "ctr_feed": 1.4311,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2300,9 +2300,9 @@
                     "count": 1
                 },
                 "B-roll": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 218.37,
-                    "ctr_feed": 1.0027,
+                    "growth_score": 0.0331,
+                    "engagement_score": 239.85,
+                    "ctr_feed": 1.1138,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -2392,9 +2392,9 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 179.3155,
-                    "ctr_feed": 0.9428,
+                    "growth_score": 0.0299,
+                    "engagement_score": 188.9815,
+                    "ctr_feed": 0.9928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -2544,9 +2544,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2596,9 +2596,9 @@
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0168,
-                    "engagement_score": 151.8383,
-                    "ctr_feed": 0.986,
+                    "growth_score": 0.0207,
+                    "engagement_score": 162.5783,
+                    "ctr_feed": 1.0416,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -2728,9 +2728,9 @@
                     "count": 26
                 },
                 "Alta": {
-                    "growth_score": 0.0114,
-                    "engagement_score": 120.295,
-                    "ctr_feed": 0.9679,
+                    "growth_score": 0.0202,
+                    "engagement_score": 144.46,
+                    "ctr_feed": 1.0929,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2746,32 +2746,32 @@
             "alcance_medio": 48.2,
             "saves_medio": 0.17,
             "distribuicao_temas": {
-                "filosofia": 0.088,
+                "filosofia": 0.066,
                 "Descoberto Automaticamente": 0.001,
-                "espiritualidade": 0.025,
-                "financas": 0.206,
-                "liberdade": 0.409,
-                "psicologia": 0.248,
-                "conexoes": 0.023
+                "espiritualidade": 0.018,
+                "financas": 0.155,
+                "liberdade": 0.307,
+                "psicologia": 0.186,
+                "conexoes": 0.267
             },
             "distribuicao_formatos": {
-                "reels": 0.031,
-                "reels_conquistador": 0.069,
-                "reels_leads": 0.318,
-                "pexels_story_noite": 0.379,
-                "pexels_story": 0.066,
-                "reels_noite": 0.136
+                "reels": 0.03,
+                "reels_conquistador": 0.116,
+                "reels_leads": 0.302,
+                "pexels_story_noite": 0.36,
+                "pexels_story": 0.063,
+                "reels_noite": 0.129
             },
             "distribuicao_estilos": {
-                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018,
-                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021
+                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
             },
             "temas_stats": {
                 "filosofia": {
@@ -2835,9 +2835,9 @@
                     "count": 6
                 },
                 "conexoes": {
-                    "growth_score": 0.0049,
-                    "engagement_score": 14.66,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.0752,
+                    "engagement_score": 207.98,
+                    "ctr_feed": 3.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2877,9 +2877,9 @@
                     "count": 4
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2989,9 +2989,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3081,9 +3081,9 @@
                     "count": 5
                 },
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3143,9 +3143,9 @@
                     "count": 9
                 },
                 "compartilhamento": {
-                    "growth_score": 0.017,
-                    "engagement_score": 90.36,
-                    "ctr_feed": 1.2883,
+                    "growth_score": 0.0271,
+                    "engagement_score": 117.9771,
+                    "ctr_feed": 1.4311,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3195,9 +3195,9 @@
                     "count": 1
                 },
                 "B-roll": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 218.37,
-                    "ctr_feed": 1.0027,
+                    "growth_score": 0.0331,
+                    "engagement_score": 239.85,
+                    "ctr_feed": 1.1138,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -3287,9 +3287,9 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 179.3155,
-                    "ctr_feed": 0.9428,
+                    "growth_score": 0.0299,
+                    "engagement_score": 188.9815,
+                    "ctr_feed": 0.9928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -3439,9 +3439,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3491,9 +3491,9 @@
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0168,
-                    "engagement_score": 151.8383,
-                    "ctr_feed": 0.986,
+                    "growth_score": 0.0207,
+                    "engagement_score": 162.5783,
+                    "ctr_feed": 1.0416,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -3623,9 +3623,9 @@
                     "count": 26
                 },
                 "Alta": {
-                    "growth_score": 0.0114,
-                    "engagement_score": 120.295,
-                    "ctr_feed": 0.9679,
+                    "growth_score": 0.0202,
+                    "engagement_score": 144.46,
+                    "ctr_feed": 1.0929,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3641,32 +3641,32 @@
             "alcance_medio": 48.2,
             "saves_medio": 0.17,
             "distribuicao_temas": {
-                "filosofia": 0.088,
+                "filosofia": 0.066,
                 "Descoberto Automaticamente": 0.001,
-                "espiritualidade": 0.025,
-                "financas": 0.206,
-                "liberdade": 0.409,
-                "psicologia": 0.248,
-                "conexoes": 0.023
+                "espiritualidade": 0.018,
+                "financas": 0.155,
+                "liberdade": 0.307,
+                "psicologia": 0.186,
+                "conexoes": 0.267
             },
             "distribuicao_formatos": {
-                "reels": 0.031,
-                "reels_conquistador": 0.069,
-                "reels_leads": 0.318,
-                "pexels_story_noite": 0.379,
-                "pexels_story": 0.066,
-                "reels_noite": 0.136
+                "reels": 0.03,
+                "reels_conquistador": 0.116,
+                "reels_leads": 0.302,
+                "pexels_story_noite": 0.36,
+                "pexels_story": 0.063,
+                "reels_noite": 0.129
             },
             "distribuicao_estilos": {
-                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.186,
-                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.178,
-                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.363,
-                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.078,
-                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.034,
-                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.018,
-                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.071,
-                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.051,
-                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.021
+                "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')": 0.174,
+                "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')": 0.166,
+                "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.34,
+                "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')": 0.073,
+                "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')": 0.032,
+                "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": 0.083,
+                "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.066,
+                "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.048,
+                "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')": 0.019
             },
             "temas_stats": {
                 "filosofia": {
@@ -3730,9 +3730,9 @@
                     "count": 6
                 },
                 "conexoes": {
-                    "growth_score": 0.0049,
-                    "engagement_score": 14.66,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.0752,
+                    "engagement_score": 207.98,
+                    "ctr_feed": 3.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3772,9 +3772,9 @@
                     "count": 4
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3884,9 +3884,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3976,9 +3976,9 @@
                     "count": 5
                 },
                 "CONFLITO — Tome uma posição polêmica ou discorde de uma ideia popular. Provoque reação emocional imediata — concordância ou indignação.": {
-                    "growth_score": 0.0152,
-                    "engagement_score": 160.3933,
-                    "ctr_feed": 1.2905,
+                    "growth_score": 0.0269,
+                    "engagement_score": 192.6133,
+                    "ctr_feed": 1.4572,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4038,9 +4038,9 @@
                     "count": 9
                 },
                 "compartilhamento": {
-                    "growth_score": 0.017,
-                    "engagement_score": 90.36,
-                    "ctr_feed": 1.2883,
+                    "growth_score": 0.0271,
+                    "engagement_score": 117.9771,
+                    "ctr_feed": 1.4311,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4090,9 +4090,9 @@
                     "count": 1
                 },
                 "B-roll": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 218.37,
-                    "ctr_feed": 1.0027,
+                    "growth_score": 0.0331,
+                    "engagement_score": 239.85,
+                    "ctr_feed": 1.1138,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0009,
                     "taxa_visita_perfil": 0.0,
@@ -4182,9 +4182,9 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 179.3155,
-                    "ctr_feed": 0.9428,
+                    "growth_score": 0.0299,
+                    "engagement_score": 188.9815,
+                    "ctr_feed": 0.9928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -4334,9 +4334,9 @@
                     "count": 3
                 },
                 "Tom agressivo e direto: acorde o leitor com uma verdade inconveniente, sem rodeios ou carinho (ex: 'Pare de mentir para você mesmo...')": {
-                    "growth_score": 0.0061,
-                    "engagement_score": 109.8967,
-                    "ctr_feed": 1.5465,
+                    "growth_score": 0.0296,
+                    "engagement_score": 174.3367,
+                    "ctr_feed": 1.8798,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4386,9 +4386,9 @@
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0168,
-                    "engagement_score": 151.8383,
-                    "ctr_feed": 0.986,
+                    "growth_score": 0.0207,
+                    "engagement_score": 162.5783,
+                    "ctr_feed": 1.0416,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0004,
                     "taxa_visita_perfil": 0.0,
@@ -4518,9 +4518,9 @@
                     "count": 26
                 },
                 "Alta": {
-                    "growth_score": 0.0114,
-                    "engagement_score": 120.295,
-                    "ctr_feed": 0.9679,
+                    "growth_score": 0.0202,
+                    "engagement_score": 144.46,
+                    "ctr_feed": 1.0929,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
