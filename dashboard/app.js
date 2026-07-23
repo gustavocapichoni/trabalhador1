@@ -47,7 +47,8 @@ const TABS = {
     overview:  ['Visão Geral',           'Performance do robô separada por plataforma'],
     cientista: ['Cientista de Dados',    'Recomendações e hipóteses do motor de análise'],
     leads:     ['Leads Capturados',      'Histórico e análise dos leads captados pela landing page'],
-    posts:     ['Histórico de Postagens','Todos os conteúdos gerados e publicados recentemente']
+    posts:     ['Histórico de Postagens','Todos os conteúdos gerados e publicados recentemente'],
+    criador:   ['Área do Usuário',       'Crie, visualize e publique postagens personalizadas']
 };
 
 function goTab(name) {
@@ -57,6 +58,10 @@ function goTab(name) {
     document.getElementById('nav-' + name).classList.add('active');
     document.getElementById('page-title').innerText = TABS[name][0];
     document.getElementById('page-sub').innerText   = TABS[name][1];
+
+    if (name === 'criador') {
+        carregarSolicitacoes();
+    }
 }
 
 // ── MUDANÇA DE MÉTRICA NOS CARDS IG ─────────────────────
@@ -1090,6 +1095,147 @@ function fmtDataCompleta(str) {
 }
 
 function rec(html) { return `<div class="rec-item">${html}</div>`; }
+
+// ── LÓGICA DA ÁREA DO USUÁRIO / CRIADOR ─────────────────
+let criadorModoTexto = 'ia';
+let criadorTipoPost  = 'reels';
+let criadorSolicitacaoPendente = null;
+
+function selecionarModoTexto(modo) {
+    criadorModoTexto = modo;
+    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById('mode-' + modo);
+    if (target) target.classList.add('active');
+}
+
+function selecionarTipoPost(tipo, element) {
+    criadorTipoPost = tipo;
+    document.querySelectorAll('.pt-card').forEach(c => c.classList.remove('active'));
+    if (element) element.classList.add('active');
+}
+
+const NOMES_FORMATOS = {
+    reels:             'Reels Tradicional',
+    reels_leads:       'Reels Captura de Leads',
+    pexels_story:      'Pexels Story (B-roll)',
+    carousel:          'Carrossel Informativo',
+    storytelling:      'Storytelling Noturno',
+    story:             'Dupla de Stories',
+    reels_conquistador:'Reels Conquistador (VSL)'
+};
+
+function gerarPreviewPostagem() {
+    const tema = document.getElementById('input-tema-livre').value.trim();
+    const mensagem = document.getElementById('textarea-mensagem').value.trim();
+
+    if (!tema && !mensagem) {
+        alert("Por favor, preencha o Tema/Profissão ou a Mensagem antes de criar a pré-visualização.");
+        return;
+    }
+
+    criadorSolicitacaoPendente = {
+        tema: tema || 'Geral',
+        modo_texto: criadorModoTexto,
+        mensagem: mensagem || 'Conteúdo livre sobre o tema.',
+        tipo_post: criadorTipoPost
+    };
+
+    // Preenche o painel de preview
+    document.getElementById('prev-tema').innerText = criadorSolicitacaoPendente.tema;
+    document.getElementById('prev-formato').innerText = NOMES_FORMATOS[criadorTipoPost] || criadorTipoPost;
+    document.getElementById('prev-modo').innerText = (criadorModoTexto === 'ia') 
+        ? '🤖 IA Formular / Aprimorar' 
+        : '✍️ Texto Exato do Usuário';
+    document.getElementById('prev-mensagem').innerText = criadorSolicitacaoPendente.mensagem;
+
+    // Exibe a div de preview e ajusta a rolagem da tela
+    const previewBox = document.getElementById('card-preview-criador');
+    previewBox.style.display = 'block';
+    previewBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    lucide.createIcons();
+}
+
+async function confirmarPublicacao() {
+    if (!criadorSolicitacaoPendente) return;
+
+    const btn = document.getElementById('btn-pub-now');
+    btn.disabled = true;
+    btn.innerHTML = '<i data-lucide="loader" class="spinner"></i> Agendando com o Robô...';
+    lucide.createIcons();
+
+    try {
+        await db.collection('solicitacoes_postagem').add({
+            tema: criadorSolicitacaoPendente.tema,
+            modo_texto: criadorSolicitacaoPendente.modo_texto,
+            mensagem: criadorSolicitacaoPendente.mensagem,
+            tipo_post: criadorSolicitacaoPendente.tipo_post,
+            status: 'pendente',
+            solicitado_em: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        alert("🚀 Postagem agendada com sucesso! O robô lerá a sua solicitação e fará a publicação no Instagram.");
+        resetarFormularioCriador();
+        await carregarSolicitacoes();
+    } catch (e) {
+        console.error("Erro ao salvar solicitação:", e);
+        alert("⚠️ Erro ao salvar solicitação no Firebase: " + e.message);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i data-lucide="send"></i> 🚀 Publicar Agora';
+        lucide.createIcons();
+    }
+}
+
+function resetarFormularioCriador() {
+    criadorSolicitacaoPendente = null;
+    document.getElementById('input-tema-livre').value = '';
+    document.getElementById('textarea-mensagem').value = '';
+    document.getElementById('card-preview-criador').style.display = 'none';
+    selecionarModoTexto('ia');
+    const defaultPt = document.getElementById('pt-reels');
+    if (defaultPt) selecionarTipoPost('reels', defaultPt);
+}
+
+async function carregarSolicitacoes() {
+    const listEl = document.getElementById('user-requests-list');
+    if (!listEl) return;
+
+    try {
+        const snap = await db.collection('solicitacoes_postagem').orderBy('solicitado_em', 'desc').limit(10).get();
+        if (snap.empty) {
+            listEl.innerHTML = '<div class="empty-state"><i data-lucide="inbox"></i><span>Nenhuma solicitação enviada ainda.</span></div>';
+            lucide.createIcons();
+            return;
+        }
+
+        let html = '';
+        snap.forEach(doc => {
+            const data = doc.data();
+            const fmt = NOMES_FORMATOS[data.tipo_post] || data.tipo_post;
+            const dataStr = data.solicitado_em ? fmtDataCompleta(data.solicitado_em.toDate()) : 'Recentemente';
+            const statusClass = (data.status === 'publicado') ? 'status-publicado' : 'status-pendente';
+            const statusLabel = (data.status === 'publicado') ? '✅ Publicado' : '⏳ Pendente (Robô)';
+
+            html += `
+                <div class="req-item">
+                    <div class="req-info">
+                        <strong>${data.tema || 'Geral'}</strong>
+                        <span style="color:var(--text-sec);">(${fmt})</span><br>
+                        <small style="color:var(--text-muted);">${dataStr}</small>
+                    </div>
+                    <span class="req-status ${statusClass}">${statusLabel}</span>
+                </div>
+            `;
+        });
+
+        listEl.innerHTML = html;
+        lucide.createIcons();
+    } catch (e) {
+        console.warn("Aviso ao carregar solicitações do usuário:", e);
+        listEl.innerHTML = '<div class="empty-state"><i data-lucide="inbox"></i><span>Solicitações prontas para uso.</span></div>';
+        lucide.createIcons();
+    }
+}
 
 // ── INIT ─────────────────────────────────────────────────
 lucide.createIcons();

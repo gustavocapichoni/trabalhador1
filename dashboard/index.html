@@ -33,6 +33,9 @@
             <div class="nav-item" id="nav-posts" onclick="goTab('posts')">
                 <i data-lucide="images"></i> Postagens
             </div>
+            <div class="nav-item" id="nav-criador" onclick="goTab('criador')">
+                <i data-lucide="sparkles"></i> Área do Usuário
+            </div>
         </nav>
         <div class="status-box">
             <div class="status-row"><span class="dot"></span> Status do Sistema</div>
@@ -407,6 +410,153 @@
             </div>
             <div class="posts-grid" id="posts-grid">
                 <div class="empty-state"><i data-lucide="loader" class="spinner"></i><span>Carregando postagens do Firebase...</span></div>
+            </div>
+        </div>
+
+        <!-- ═══════ TAB: ÁREA DO USUÁRIO / CRIADOR ═══════ -->
+        <div class="tab" id="tab-criador">
+            <div class="creator-container">
+                <!-- FORMULÁRIO DE CRIAÇÃO -->
+                <div class="creator-card" id="card-form-criador">
+                    <div class="creator-header">
+                        <div class="creator-badge"><i data-lucide="sparkles"></i> Estúdio de Criação com IA</div>
+                        <h2>Crie a Postagem Perfeita</h2>
+                        <p>Defina a profissão/tema livremente, escolha a mensagem e a IA fará o resto.</p>
+                    </div>
+
+                    <!-- 1. Tema / Nicho / Profissão -->
+                    <div class="form-group">
+                        <label for="input-tema-livre">
+                            <i data-lucide="briefcase"></i> Tema, Nicho ou Profissão (100% Editável)
+                        </label>
+                        <input type="text" id="input-tema-livre" placeholder="Ex: Advocacia Trabalhista, Barbearia, Medicina, Estética, Finanças..." />
+                        <span class="form-help">Digite livremente a sua área, profissão ou o assunto principal do post.</span>
+                    </div>
+
+                    <!-- 2. Modo do Texto -->
+                    <div class="form-group">
+                        <label><i data-lucide="cpu"></i> Como a IA deve tratar o texto?</label>
+                        <div class="mode-grid">
+                            <div class="mode-card active" id="mode-ia" onclick="selecionarModoTexto('ia')">
+                                <div class="mode-icon"><i data-lucide="bot"></i></div>
+                                <div class="mode-info">
+                                    <strong>🤖 IA Formular / Aprimorar</strong>
+                                    <span>A IA lê a ideia e escreve um texto persuasivo e otimizado.</span>
+                                </div>
+                            </div>
+                            <div class="mode-card" id="mode-exato" onclick="selecionarModoTexto('exato')">
+                                <div class="mode-icon"><i data-lucide="file-check"></i></div>
+                                <div class="mode-info">
+                                    <strong>✍️ Texto Exato do Usuário</strong>
+                                    <span>Preserva o texto integralmente, sem alterar as palavras.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Mensagem / Conteúdo -->
+                    <div class="form-group">
+                        <label for="textarea-mensagem">
+                            <i data-lucide="message-square"></i> Mensagem ou Instruções para a IA
+                        </label>
+                        <textarea id="textarea-mensagem" rows="4" placeholder="Escreva aqui a mensagem principal que você quer transmitir, as ideias centrais ou o texto exato do post..."></textarea>
+                    </div>
+
+                    <!-- 4. Seleção de Formato / Tipo de Post -->
+                    <div class="form-group">
+                        <label><i data-lucide="film"></i> Formato da Postagem</label>
+                        <div class="post-type-grid">
+                            <div class="pt-card active" id="pt-reels" onclick="selecionarTipoPost('reels', this)">
+                                <i data-lucide="video"></i>
+                                <strong>Reels</strong>
+                                <span>Vídeo dinâmico matinal/almoço</span>
+                            </div>
+                            <div class="pt-card" id="pt-reels_leads" onclick="selecionarTipoPost('reels_leads', this)">
+                                <i data-lucide="user-plus"></i>
+                                <strong>Reels Leads</strong>
+                                <span>Captura de Leads e E-book</span>
+                            </div>
+                            <div class="pt-card" id="pt-pexels_story" onclick="selecionarTipoPost('pexels_story', this)">
+                                <i data-lucide="clapperboard"></i>
+                                <strong>Pexels Story</strong>
+                                <span>Vídeo B-roll Motivacional</span>
+                            </div>
+                            <div class="pt-card" id="pt-carousel" onclick="selecionarTipoPost('carousel', this)">
+                                <i data-lucide="layers"></i>
+                                <strong>Carrossel</strong>
+                                <span>Slides educativos em imagem</span>
+                            </div>
+                            <div class="pt-card" id="pt-storytelling" onclick="selecionarTipoPost('storytelling', this)">
+                                <i data-lucide="moon"></i>
+                                <strong>Storytelling</strong>
+                                <span>Narrativa noturna de alto impacto</span>
+                            </div>
+                            <div class="pt-card" id="pt-story" onclick="selecionarTipoPost('story', this)">
+                                <i data-lucide="smartphone"></i>
+                                <strong>Story</strong>
+                                <span>Dupla de Stories para o dia</span>
+                            </div>
+                            <div class="pt-card" id="pt-reels_conquistador" onclick="selecionarTipoPost('reels_conquistador', this)">
+                                <i data-lucide="flame"></i>
+                                <strong>Reels Conquistador</strong>
+                                <span>VSL de Atração de Público</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação -->
+                    <button class="btn-create-post" onclick="gerarPreviewPostagem()">
+                        <i data-lucide="sparkles"></i> Criar Postagem
+                    </button>
+                </div>
+
+                <!-- PAINEL DE PRÉ-VISUALIZAÇÃO (PREVIEW) -->
+                <div class="preview-card" id="card-preview-criador" style="display:none;">
+                    <div class="preview-header">
+                        <span class="preview-badge"><i data-lucide="eye"></i> Pré-Visualização da Postagem</span>
+                        <h3>Revise as Configurações do Post</h3>
+                    </div>
+
+                    <div class="preview-body">
+                        <div class="prev-item">
+                            <span class="prev-lbl">Nicho / Tema:</span>
+                            <span class="prev-val highlight" id="prev-tema">--</span>
+                        </div>
+                        <div class="prev-item">
+                            <span class="prev-lbl">Formato:</span>
+                            <span class="prev-val badge-type" id="prev-formato">--</span>
+                        </div>
+                        <div class="prev-item">
+                            <span class="prev-lbl">Tratamento do Texto:</span>
+                            <span class="prev-val" id="prev-modo">--</span>
+                        </div>
+                        <div class="prev-item vertical">
+                            <span class="prev-lbl">Mensagem / Diretriz:</span>
+                            <div class="prev-text-box" id="prev-mensagem">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Botões de Ação Final -->
+                    <div class="preview-actions">
+                        <button class="btn-publish-now" id="btn-pub-now" onclick="confirmarPublicacao()">
+                            <i data-lucide="send"></i> 🚀 Publicar Agora
+                        </button>
+                        <button class="btn-new-post" onclick="resetarFormularioCriador()">
+                            <i data-lucide="plus-circle"></i> ➕ Criar Nova Postagem
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PAINEL DE HISTÓRICO DE PEDIDOS DO USUÁRIO -->
+                <div class="history-card">
+                    <h3><i data-lucide="history"></i> Suas Solicitações de Postagem</h3>
+                    <div id="user-requests-list">
+                        <div class="empty-state">
+                            <i data-lucide="inbox"></i>
+                            <span>Nenhuma solicitação enviada ainda.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
