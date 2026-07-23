@@ -246,10 +246,10 @@ def buscar_insights_conta_api():
         "ultima_atualizacao": datetime.now(timezone.utc).isoformat()
     }
 
-    # 1. Coleta Reach e Impressions consolidados de 28 dias
+    # 1. Coleta Reach e Views consolidados de 28 dias
     url_28d = (
         f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
-        f"?metric=reach,impressions"
+        f"?metric=reach,views"
         f"&period=days_28"
         f"&access_token={IG_ACCESS_TOKEN}"
     )
@@ -268,13 +268,12 @@ def buscar_insights_conta_api():
                         if v_val > 0:
                             val = v_val
                             break
-                    # Fallback: se todos forem 0, usa o último
                     if val == 0:
                         val = values[-1].get("value", 0)
 
                     if name == "reach":
                         dados_conta["reach_30d"] = val
-                    elif name == "impressions":
+                    elif name == "views":
                         dados_conta["impressions_30d"] = val
         else:
             logger.warning(f"Não foi possível obter insights 28d da conta: {res.text}")
@@ -300,7 +299,7 @@ def buscar_insights_conta_api():
     url_views = (
         f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/insights"
         f"?metric=profile_views"
-        f"&period=day"
+        f"&metric_type=total_value"
         f"&since={since_ts}"
         f"&until={until_ts}"
         f"&access_token={IG_ACCESS_TOKEN}"
