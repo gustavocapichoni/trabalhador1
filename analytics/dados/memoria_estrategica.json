@@ -1,67 +1,67 @@
 {
-    "conhecimento_consolidado": [],
     "hipoteses": [
         {
-            "grupo_a": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
-            "hipotese": "Ganchos do tipo 'DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
-            "variaveis_testadas": [
-                "gancho_categoria"
-            ],
-            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
             "confianca": 0.0,
+            "media_grupo_a": 0.0,
             "id": "hd2e548",
             "atualizada_em": "2026-07-20",
-            "criada_em": "2026-07-19",
-            "media_grupo_a": 0.0,
-            "media_grupo_b": 0.0,
-            "metrica_alvo": "growth_score",
+            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+            "hipotese": "Ganchos do tipo 'DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
             "status": "em_observacao",
-            "amostra": 10
-        },
-        {
-            "grupo_a": "salvamento",
-            "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'compartilhamento'.",
-            "variaveis_testadas": [
-                "tipo_cta"
-            ],
-            "grupo_b": "compartilhamento",
-            "confianca": 0.0,
-            "id": "h169e38",
-            "atualizada_em": "2026-07-20",
-            "criada_em": "2026-07-19",
-            "media_grupo_a": 0.0,
             "media_grupo_b": 0.0,
+            "criada_em": "2026-07-19",
             "metrica_alvo": "growth_score",
-            "status": "em_observacao",
-            "amostra": 11
-        },
-        {
-            "grupo_a": "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
-            "hipotese": "Ganchos do tipo 'SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
+            "grupo_a": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
+            "amostra": 10,
             "variaveis_testadas": [
                 "gancho_categoria"
-            ],
-            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
-            "metrica_alvo": "growth_score",
-            "id": "hee5ecf",
-            "criada_em": "2026-07-20",
-            "confianca": 0.5,
-            "status": "em_observacao",
-            "amostra": 12
+            ]
         },
         {
+            "confianca": 0.0,
+            "media_grupo_a": 0.0,
+            "id": "h169e38",
+            "atualizada_em": "2026-07-20",
+            "grupo_b": "compartilhamento",
+            "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'compartilhamento'.",
+            "status": "em_observacao",
+            "media_grupo_b": 0.0,
+            "criada_em": "2026-07-19",
+            "metrica_alvo": "growth_score",
             "grupo_a": "salvamento",
-            "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'seguir'.",
+            "amostra": 11,
             "variaveis_testadas": [
                 "tipo_cta"
-            ],
-            "grupo_b": "seguir",
-            "metrica_alvo": "growth_score",
-            "id": "h5c83d1",
-            "criada_em": "2026-07-20",
+            ]
+        },
+        {
             "confianca": 0.5,
+            "id": "hee5ecf",
+            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
+            "hipotese": "Ganchos do tipo 'SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
             "status": "em_observacao",
-            "amostra": 12
+            "criada_em": "2026-07-20",
+            "metrica_alvo": "growth_score",
+            "grupo_a": "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
+            "amostra": 12,
+            "variaveis_testadas": [
+                "gancho_categoria"
+            ]
+        },
+        {
+            "confianca": 0.5,
+            "id": "h5c83d1",
+            "grupo_b": "seguir",
+            "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'seguir'.",
+            "status": "em_observacao",
+            "criada_em": "2026-07-20",
+            "metrica_alvo": "growth_score",
+            "grupo_a": "salvamento",
+            "amostra": 12,
+            "variaveis_testadas": [
+                "tipo_cta"
+            ]
         }
-    ]
+    ],
+    "conhecimento_consolidado": []
 }
