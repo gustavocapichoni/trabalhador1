@@ -24,8 +24,9 @@ on:
           - mensal
           - trimestral
           - semestral
-          - anual
+          - user_requests
           - test
+
 
 
 
