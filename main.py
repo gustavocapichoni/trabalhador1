@@ -255,6 +255,22 @@ def main():
                 frase_visual = " | ".join(frase_visual)
 
         post_id = postar_no_instagram(args.type, midia, legenda, dry_run=args.dry_run)
+
+        # -------------------------------------------------------
+        # Postagem na segunda conta (@codigo.da.sabedoria_)
+        # -------------------------------------------------------
+        from core.config.settings import IG_ACCESS_TOKEN_2, IG_ACCOUNT_ID_2
+        if IG_ACCESS_TOKEN_2 and IG_ACCOUNT_ID_2:
+            try:
+                print("📲 Postando também na conta 2 (@codigo.da.sabedoria_)...")
+                post_id_2 = postar_no_instagram(
+                    args.type, midia, legenda, dry_run=args.dry_run,
+                    access_token=IG_ACCESS_TOKEN_2, account_id=IG_ACCOUNT_ID_2
+                )
+                if post_id_2:
+                    print(f"✅ Conta 2 publicada com sucesso! ID: {post_id_2}")
+            except Exception as e:
+                print(f"⚠️ Falha ao postar na conta 2 (conta 1 OK): {e}")
         
         yt_video_id = ""
         # Postagem opcional no YouTube Shorts para formatos de vídeo

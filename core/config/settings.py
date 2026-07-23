@@ -47,6 +47,10 @@ UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 IG_ACCESS_TOKEN = os.getenv("IG_ACCESS_TOKEN")
 IG_ACCOUNT_ID = os.getenv("IG_ACCOUNT_ID")
 
+# Segunda conta (@codigo.da.sabedoria_)
+IG_ACCESS_TOKEN_2 = os.getenv("IG_ACCESS_TOKEN_2")
+IG_ACCOUNT_ID_2  = os.getenv("IG_ACCOUNT_ID_2")
+
 # ==========================================
 # CREDENCIAIS DE E-MAIL (SMTP)
 # ==========================================

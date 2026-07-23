@@ -3,7 +3,7 @@ import time
 import os
 from loguru import logger
 
-from core.config.settings import IG_ACCESS_TOKEN, IG_ACCOUNT_ID
+from core.config.settings import IG_ACCESS_TOKEN, IG_ACCOUNT_ID, IG_ACCESS_TOKEN_2, IG_ACCOUNT_ID_2
 from core.publisher.uploader import upload_temporario, obter_urls_temporarias
 
 # ============================================================
@@ -59,13 +59,14 @@ def _publicar_com_retry(url_publish, payload_publish, descricao="mídia", max_te
     raise Exception(f"❌ Falha ao publicar {descricao} após {max_tentativas} tentativas. Última resposta: {res_json}")
 
 
-def _criar_container_com_retry(caminho_arquivo, extra_payload, url_key='image_url'):
+def _criar_container_com_retry(caminho_arquivo, extra_payload, url_key='image_url', account_id=None):
     """
     Tenta criar um container no Instagram utilizando as URLs geradas pelos serviços disponíveis.
     Se o Instagram falhar ao baixar a mídia (erros de URI/OAuthException/transient),
     tenta com a próxima URL gerada por outro uploader.
     """
-    url_container = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
+    acc = account_id or IG_ACCOUNT_ID
+    url_container = f"https://graph.facebook.com/v19.0/{acc}/media"
     
     erros = []
     # Itera pelas URLs disponíveis geradas pelos uploaders
@@ -107,10 +108,10 @@ def _criar_container_com_retry(caminho_arquivo, extra_payload, url_key='image_ur
     raise Exception(f"Falha ao criar container com todos os serviços de upload tentados. Detalhes: {erros}")
 
 
-def aguardar_processamento_container(container_id, max_tentativas=15, intervalo=8):
+def aguardar_processamento_container(container_id, max_tentativas=15, intervalo=8, access_token=None):
     """Aguarda o Instagram processar um container de mídia antes de publicar."""
     url = f"https://graph.facebook.com/v19.0/{container_id}"
-    params = {'fields': 'status_code', 'access_token': IG_ACCESS_TOKEN}
+    params = {'fields': 'status_code', 'access_token': access_token or IG_ACCESS_TOKEN}
 
     for tentativa in range(1, max_tentativas + 1):
         try:
@@ -131,12 +132,20 @@ def aguardar_processamento_container(container_id, max_tentativas=15, intervalo=
     raise Exception(f"Container {container_id} não ficou pronto após {max_tentativas} tentativas.")
 
 
-def postar_no_instagram(tipo, midia, legenda, dry_run=False):
-    logger.info(f"🚀 Iniciando postagem no Instagram ({tipo.upper()})...")
+def postar_no_instagram(tipo, midia, legenda, dry_run=False, access_token=None, account_id=None):
+    # Se não informar credenciais, usa as da conta 1 (padrão)
+    token = access_token or IG_ACCESS_TOKEN
+    acc_id = account_id or IG_ACCOUNT_ID
 
-    if not IG_ACCESS_TOKEN or not IG_ACCOUNT_ID:
-        logger.warning("⚠️ IG_ACCESS_TOKEN ou IG_ACCOUNT_ID ausente no .env. Postagem pulada.")
+    logger.info(f"🚀 Iniciando postagem no Instagram ({tipo.upper()}) — Conta: {acc_id}...")
+
+    if not token or not acc_id:
+        logger.warning("⚠️ IG_ACCESS_TOKEN ou IG_ACCOUNT_ID ausente. Postagem pulada.")
         return "ID_TESTE_LOCAL"
+
+    # Apelidos locais para compatibilidade com o restante da função
+    IG_ACCESS_TOKEN_LOCAL = token
+    IG_ACCOUNT_ID_LOCAL = acc_id
 
     # -------------------------------------------------------
     # 1. Story único / Teste
@@ -146,18 +155,18 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             logger.info(f"[DRY-RUN] Enviaria imagem {midia} e criaria o container.")
             return "DRY_RUN_ID"
 
-        payload = {'access_token': IG_ACCESS_TOKEN}
+        payload = {'access_token': IG_ACCESS_TOKEN_LOCAL}
         if tipo == "test" and legenda:
             payload['caption'] = legenda
         if tipo in ["story", "test"]:
             payload['media_type'] = 'STORIES'
 
-        creation_id = _criar_container_com_retry(midia, payload, url_key='image_url')
+        creation_id = _criar_container_com_retry(midia, payload, url_key='image_url', account_id=IG_ACCOUNT_ID_LOCAL)
         logger.info(f"✅ Container de mídia criado! ID: {creation_id}")
         time.sleep(10)
 
-        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media_publish"
-        payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN}
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
         res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Story")
 
         if res_publish_json is None:
@@ -182,20 +191,20 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         for idx, caminho_story in enumerate(midias):
             logger.info(f"📤 Publicando story {idx+1}/{len(midias)}...")
 
-            payload = {'media_type': 'STORIES', 'access_token': IG_ACCESS_TOKEN}
+            payload = {'media_type': 'STORIES', 'access_token': IG_ACCESS_TOKEN_LOCAL}
             url_key = 'video_url' if caminho_story.lower().endswith('.mp4') else 'image_url'
 
-            creation_id = _criar_container_com_retry(caminho_story, payload, url_key=url_key)
+            creation_id = _criar_container_com_retry(caminho_story, payload, url_key=url_key, account_id=IG_ACCOUNT_ID_LOCAL)
             logger.info(f"✅ Container story {idx+1} criado! ID: {creation_id}. Aguardando processamento...")
 
             # Aguarda o Instagram processar o vídeo antes de publicar
             if caminho_story.lower().endswith('.mp4'):
-                aguardar_processamento_container(creation_id, max_tentativas=15, intervalo=8)
+                aguardar_processamento_container(creation_id, max_tentativas=15, intervalo=8, access_token=IG_ACCESS_TOKEN_LOCAL)
             else:
                 time.sleep(10)
 
-            url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media_publish"
-            payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN}
+            url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+            payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
             res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao=f"Story {idx+1}")
 
             if res_publish_json is None:
@@ -224,22 +233,22 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         for idx, caminho_slide in enumerate(midia):
             logger.info(f"📸 Carregando slide {idx+1}/{len(midia)}...")
 
-            payload = {'is_carousel_item': 'true', 'access_token': IG_ACCESS_TOKEN}
+            payload = {'is_carousel_item': 'true', 'access_token': IG_ACCESS_TOKEN_LOCAL}
             url_key = 'video_url' if caminho_slide.lower().endswith('.mp4') else 'image_url'
             
-            cid = _criar_container_com_retry(caminho_slide, payload, url_key=url_key)
+            cid = _criar_container_com_retry(caminho_slide, payload, url_key=url_key, account_id=IG_ACCOUNT_ID_LOCAL)
             child_ids.append(cid)
             logger.info(f"✅ Slide filho {idx+1} criado. ID: {cid}")
 
         for cid in child_ids:
-            aguardar_processamento_container(cid)
+            aguardar_processamento_container(cid, access_token=IG_ACCESS_TOKEN_LOCAL)
 
         logger.info("🎠 Criando container pai para o Carrossel...")
         children_str = ",".join(child_ids)
-        url_parent = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media"
+        url_parent = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media"
         payload_parent = {
             'media_type': 'CAROUSEL', 'children': children_str,
-            'caption': legenda, 'access_token': IG_ACCESS_TOKEN
+            'caption': legenda, 'access_token': IG_ACCESS_TOKEN_LOCAL
         }
         res_parent = requests.post(url_parent, data=payload_parent, timeout=25)
         res_parent_json = res_parent.json()
@@ -248,10 +257,10 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
             raise Exception(f"Falha ao criar pai do carrossel. Resposta: {res_parent_json}")
 
         parent_id = res_parent_json['id']
-        aguardar_processamento_container(parent_id)
+        aguardar_processamento_container(parent_id, access_token=IG_ACCESS_TOKEN_LOCAL)
 
-        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media_publish"
-        payload_publish = {'creation_id': parent_id, 'access_token': IG_ACCESS_TOKEN}
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': parent_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
         res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Carrossel")
 
         if res_publish_json is None:
@@ -273,15 +282,15 @@ def postar_no_instagram(tipo, midia, legenda, dry_run=False):
         payload = {
             'media_type': 'REELS',
             'caption': legenda, 'share_to_feed': 'true',
-            'thumb_offset': '2000', 'access_token': IG_ACCESS_TOKEN
+            'thumb_offset': '2000', 'access_token': IG_ACCESS_TOKEN_LOCAL
         }
         
-        reels_id = _criar_container_com_retry(midia, payload, url_key='video_url')
+        reels_id = _criar_container_com_retry(midia, payload, url_key='video_url', account_id=IG_ACCOUNT_ID_LOCAL)
         logger.info(f"✅ Container Reels criado! ID: {reels_id}")
-        aguardar_processamento_container(reels_id, max_tentativas=25)
+        aguardar_processamento_container(reels_id, max_tentativas=25, access_token=IG_ACCESS_TOKEN_LOCAL)
 
-        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID}/media_publish"
-        payload_publish = {'creation_id': reels_id, 'access_token': IG_ACCESS_TOKEN}
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': reels_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
         res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Reels")
 
         if res_publish_json is None:
