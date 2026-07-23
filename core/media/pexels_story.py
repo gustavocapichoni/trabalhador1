@@ -384,12 +384,12 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     # Assume ~5s por slide (leitura confortável) e ~20s por vídeo de fundo (estimativa conservadora).
     if is_reels_leads:
         num_slides_estimado = len(slides) if slides else 30
-        duracao_necessaria_reels = min(num_slides_estimado * 5, 180)  # max 3 min
+        duracao_necessaria_reels = min(num_slides_estimado * 7, 180)  # max 3 min, 7s por slide
         num_videos_necessarios = min(12, max(6, int(duracao_necessaria_reels / 20) + 1))
         logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
     else:
         num_slides_estimado = len(slides) if slides else 3
-        duracao_necessaria_reels = num_slides_estimado * 5.5
+        duracao_necessaria_reels = num_slides_estimado * 7.0
         num_videos_necessarios = min(5, max(3, num_slides_estimado))
         logger.info(f"📊 [PEXELS_STORY] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
 
@@ -614,7 +614,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if slides:
             logger.info("✍️ Adicionando textos via Pillow (sem ImageMagick)...")
             total_slides = len(slides)
-            duracao_gancho = 3.0
+            duracao_gancho = 5.0
             if total_slides > 1:
                 tempo_slide_normal = (duracao - duracao_gancho) / (total_slides - 1)
             else:
