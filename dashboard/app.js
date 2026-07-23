@@ -45,10 +45,10 @@ const NOMES_METRICAS = {
 // ── NAVEGAÇÃO ────────────────────────────────────────────
 const TABS = {
     overview:  ['Visão Geral',           'Performance do robô separada por plataforma'],
+    criador:   ['Studio de Criação',     'Crie, visualize e publique postagens personalizadas'],
     cientista: ['Cientista de Dados',    'Recomendações e hipóteses do motor de análise'],
     leads:     ['Leads Capturados',      'Histórico e análise dos leads captados pela landing page'],
-    posts:     ['Histórico de Postagens','Todos os conteúdos gerados e publicados recentemente'],
-    criador:   ['Área do Usuário',       'Crie, visualize e publique postagens personalizadas']
+    posts:     ['Histórico de Postagens','Todos os conteúdos gerados e publicados recentemente']
 };
 
 function goTab(name) {
