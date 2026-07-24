@@ -477,6 +477,40 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 if texto:
                     frame = desenhar_texto_animado(frame, texto, t, duracao, dia, W, H, eh_primeiro_slide, eh_ultimo_slide)
 
+                # --- Elementos de Marca (Selo no Topo + Marca d'água no Rodapé) ---
+                try:
+                    img_frame = PILImage.fromarray(frame).convert("RGBA")
+                    logo_dir = os.path.join("biblioteca_local", "logo")
+                    
+                    # 1. Selo no topo
+                    path_selo = os.path.join(logo_dir, "foto_perfil.png")
+                    if not os.path.exists(path_selo) and os.path.exists("foto_perfil.png"):
+                        path_selo = "foto_perfil.png"
+                    if os.path.exists(path_selo):
+                        selo_img = PILImage.open(path_selo).convert("RGBA")
+                        larg_selo = 200
+                        alt_selo = int(larg_selo * (selo_img.height / selo_img.width))
+                        selo_redim = selo_img.resize((larg_selo, alt_selo), PILImage.Resampling.LANCZOS)
+                        img_frame.paste(selo_redim, (int((W - larg_selo)/2), 100), selo_redim)
+
+                    # 2. Marca d'água no rodapé
+                    path_logo = ""
+                    if os.path.exists(logo_dir):
+                        for file_item in os.listdir(logo_dir):
+                            if file_item.lower().endswith(".png") and file_item != "foto_perfil.png":
+                                path_logo = os.path.join(logo_dir, file_item)
+                                break
+                    if os.path.exists(path_logo):
+                        logo_img = PILImage.open(path_logo).convert("RGBA")
+                        larg_logo = 250
+                        alt_logo = int(larg_logo * (logo_img.height / logo_img.width))
+                        logo_redim = logo_img.resize((larg_logo, alt_logo), PILImage.Resampling.LANCZOS)
+                        img_frame.paste(logo_redim, (int((W - larg_logo)/2), H - alt_logo - 70), logo_redim)
+
+                    frame = np.array(img_frame.convert("RGB"))
+                except Exception as _e_brand:
+                    pass
+
                 # --- FadeOut no final do slide ---
                 frames_restantes = total_frames - f
                 if frames_restantes <= fade_frames and fade_frames > 0:

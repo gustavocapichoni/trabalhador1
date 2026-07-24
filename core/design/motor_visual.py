@@ -339,11 +339,11 @@ def _gerar_carrossel(img, W_full, H, dados):
         if os.path.exists(path_selo):
             try:
                 selo_img = Image.open(path_selo).convert("RGBA")
-                larg_selo = 130
+                larg_selo = 200
                 alt_selo = int(larg_selo * (selo_img.height / selo_img.width))
                 selo_redim = selo_img.resize((larg_selo, alt_selo), Image.Resampling.LANCZOS)
                 slide_rgba = slide_img.convert("RGBA")
-                slide_rgba.paste(selo_redim, (int((slide_W - larg_selo)/2), 50), selo_redim)
+                slide_rgba.paste(selo_redim, (int((slide_W - larg_selo)/2), 100), selo_redim)
                 slide_img = slide_rgba.convert("RGB")
                 draw = ImageDraw.Draw(slide_img)
             except Exception as e_selo:
