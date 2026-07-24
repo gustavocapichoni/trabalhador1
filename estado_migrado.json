@@ -1,27 +1,8 @@
 {
-    "indice_cta": 40,
-    "data_sentimento_do_dia": "2026-07-24",
-    "index_palette_conquistador": 4,
-    "fila_musicas_musicas-youtube": [
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/A Free Night in Bushwick - William Rosati.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Paradise - Anno Domini Beats.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Shining (feat. Leon Albertson & Adryon de León) - Leon Albertson feat. Adryon de León.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Never Coming Down - The Soundlings.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Wildfire - Jessie Villa.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/A Kiss For Amanda - DJ Williams.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Two Things - Anno Domini Beats.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/13 Cocktails - Dan Bodan.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Fearless - The Soundlings (feat. Ruby Jay).mp3"
-    ],
-    "index_conquistador": 1,
-    "indice_gancho": 46,
+    "index_animacao_conquistador": 1,
     "index_tema_diario": 7,
-    "fila_musicas_musicas": [
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/grand_project-wonders-of-the-earth-550792.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/pietix-dark-deep-house-cinema-513156.mp3"
-    ],
+    "ultimo_carousel": 3,
     "historico_angulos": [
-        "A diferença brutal entre quem gasta para parecer rico na internet e quem foca em construir paz de espírito.",
         "O custo silencioso de não investir em conhecimento prático: você paga caro demais pela sua própria ignorância.",
         "Riqueza exige paciência entediante; a pressa de ficar rico rápido enriquece apenas os golpistas.",
         "A obsessão pelo consumo de luxo é o atalho preferido de quem tem baixa autoimagem.",
@@ -45,10 +26,36 @@
         "Você quer ser lembrado pelo que acumulou ou pela diferença profunda que fez na vida de quem te conheceu?",
         "A sabedoria bíblica ensina: quem muito fala, muito erra. O silêncio poupa a alma.",
         "Cada micro-vitória sobre a preguiça constrói a musculatura da sua autoconfiança de verdade.",
-        "O poder de dizer 'no' para os prazeres imediatos para garantir o seu legado de longo prazo."
+        "O poder de dizer 'no' para os prazeres imediatos para garantir o seu legado de longo prazo.",
+        "A constância tediosa vence o talento genial todas as vezes que o talento decide não trabalhar duro."
     ],
+    "ultimos_temas": [],
     "tema_do_dia": "superacao",
+    "fila_musicas_musicas-youtube": [
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Paradise - Anno Domini Beats.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Shining (feat. Leon Albertson & Adryon de León) - Leon Albertson feat. Adryon de León.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Never Coming Down - The Soundlings.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Wildfire - Jessie Villa.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/A Kiss For Amanda - DJ Williams.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Two Things - Anno Domini Beats.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/13 Cocktails - Dan Bodan.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Fearless - The Soundlings (feat. Ruby Jay).mp3"
+    ],
+    "data_sentimento_do_dia": "2026-07-24",
     "historico_midia": [
+        "unsplash_L0yuNRVWkSY",
+        "unsplash_O4Ah4P0plvE",
+        "unsplash_s2fIbsu_40E",
+        "unsplash_z6rQ5P9quAU",
+        "unsplash_nsUxcuhJDXY",
+        "unsplash_LJZ7HTDBMNs",
+        "unsplash_CDTlimr5Yxg",
+        "unsplash_Tl0lYXcyT-A",
+        "unsplash_bijbkkmpFqg",
+        "unsplash_mILNgdp42d8",
+        "unsplash_66swYrZd09g",
+        "unsplash_F5Rbtyp8Sgk",
+        "unsplash_md12HGULmvc",
         "37664334",
         "9903488",
         "6391735",
@@ -238,10 +245,19 @@
         "unsplash_LtXz48EJX90",
         "unsplash_UBVY_cVwsHE"
     ],
+    "index_conquistador": 1,
+    "data_tema_do_dia": "2026-07-24",
+    "sentimento_do_dia": "curiosidade",
+    "fila_musicas_musicas": [
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/pietix-dark-deep-house-cinema-513156.mp3"
+    ],
     "indice_gancho_conquistador": 9,
-    "indice_arquitetura": 1,
+    "index_palette_conquistador": 4,
+    "index_plataforma_conquistador": 1,
+    "indice_arquitetura": 2,
+    "indice_gancho": 47,
+    "indice_cta": 41,
     "historico_estilos": [
-        "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
         "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
         "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
         "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
@@ -265,12 +281,7 @@
         "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
         "Tom cínico e realista cru: destrua expectativas de filmes da Disney e traga para a vida real dura (ex: 'O mundo não deve nada a você. Se quiser algo, levante e...')",
         "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')",
-        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')"
-    ],
-    "ultimos_temas": [],
-    "index_plataforma_conquistador": 1,
-    "ultimo_carousel": 3,
-    "index_animacao_conquistador": 1,
-    "sentimento_do_dia": "curiosidade",
-    "data_tema_do_dia": "2026-07-24"
+        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')",
+        "Tom filosófico e reflexivo: faça o leitor questionar a realidade profunda usando metáforas fortes (ex: 'Nós passamos a vida construindo gaiolas para...')"
+    ]
 }
