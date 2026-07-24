@@ -332,6 +332,16 @@ def _aplicar_efeito_cinematico(frame_array, efeito):
         overlay = Image.new("RGBA", (w, h), (245, 150, 45, 30))  # Overlay laranja/ouro suave
         img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
         
+    elif efeito == "cyber_glow":
+        # Aplica uma tonalidade azul ciberpunk/ciano com alto contraste noturno
+        overlay = Image.new("RGBA", (w, h), (10, 30, 60, 45))  # Overlay ciberpunk escuro
+        img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+
+    elif efeito == "dark_gold_neon":
+        # Aplica uma tonalidade de Ouro Metálico e iluminação escura nobre
+        overlay = Image.new("RGBA", (w, h), (212, 175, 55, 35)) # Overlay ouro metálico sabedoria
+        img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+        
     return np.array(img)
 
 def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=None, is_conquistador=False, is_reels_leads=False, is_noite=False):
@@ -550,17 +560,18 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if len(clip_candidatos) == 1:
             clip = clip_candidatos[0]
         else:
-            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes para o fundo...")
-            # Força que todos os vídeos tenham o mesmo tamanho/escala antes de juntar
+            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes com micro-cortes dinâmicos (~5s por cena)...")
             width_target = min(c.w for c in clip_candidatos)
             height_target = min(c.h for c in clip_candidatos)
             
             clips_redimensionados = []
             for c in clip_candidatos:
-                if c.w != width_target or c.h != height_target:
-                    clips_redimensionados.append(c.resize((width_target, height_target)))
+                # Aplica micro-corte: pega no máximo 5 segundos de cada vídeo para acelerar o ritmo
+                c_sub = c.subclip(0, min(c.duration, 5.0))
+                if c_sub.w != width_target or c_sub.h != height_target:
+                    clips_redimensionados.append(c_sub.resize((width_target, height_target)))
                 else:
-                    clips_redimensionados.append(c)
+                    clips_redimensionados.append(c_sub)
                     
             clip = concatenate_videoclips(clips_redimensionados, method="compose")
         
@@ -641,35 +652,57 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                 animacao = random.choice(animacoes_disponiveis)
                 logger.info(f"🎬 Animação de texto selecionada: {animacao.upper()}")
 
-            def _desenhar_assinatura_rodape(frame_array, fator_escala=1.0):
-                """Desenha o logo PNG ou a assinatura GUSTAVO_8K_ no rodapé do vídeo."""
+            def _desenhar_elementos_marca(frame_array, fator_escala=1.0, is_cta=False, t_slide=0.0):
+                """Desenha o Selo da foto_perfil.png no topo, o logo PNG no rodapé e aplica o brilho pulsante no CTA."""
                 img = Image.fromarray(frame_array).convert("RGBA")
                 w, h = img.size
-
-                logo_aplicado = False
                 logo_dir = os.path.join("biblioteca_local", "logo")
-                path_logo = ""
+
+                # --- 1. SELO DA FOTO DE PERFIL NO TOPO ---
+                path_selo = os.path.join(logo_dir, "foto_perfil.png")
+                if not os.path.exists(path_selo):
+                    # Tenta fallback se estiver na raiz do projeto
+                    if os.path.exists("foto_perfil.png"):
+                        path_selo = "foto_perfil.png"
+
+                if os.path.exists(path_selo):
+                    try:
+                        selo_img = Image.open(path_selo).convert("RGBA")
+                        largura_selo = max(90, int(130 * fator_escala))
+                        aspect = selo_img.height / selo_img.width
+                        altura_selo = int(largura_selo * aspect)
+                        selo_redim = selo_img.resize((largura_selo, altura_selo), Image.Resampling.LANCZOS)
+
+                        x_selo = int((w - largura_selo) / 2)
+                        y_selo = int(50 * fator_escala)
+
+                        img.paste(selo_redim, (x_selo, y_selo), selo_redim)
+                    except Exception as e_selo:
+                        logger.warning(f"⚠️ Erro ao aplicar selo no topo: {e_selo}")
+
+                # --- 2. MARCA D'ÁGUA NO RODAPÉ ---
+                path_logo_rodape = ""
+                logo_aplicado = False
                 if os.path.exists(logo_dir):
                     for f in os.listdir(logo_dir):
-                        if f.lower().endswith(".png"):
-                            path_logo = os.path.join(logo_dir, f)
+                        if f.lower().endswith(".png") and f != "foto_perfil.png":
+                            path_logo_rodape = os.path.join(logo_dir, f)
                             break
-                if os.path.exists(path_logo):
+                if os.path.exists(path_logo_rodape):
                     try:
-                        logo_img = Image.open(path_logo)
-                        # Tamanho da logo escalado proporcionalmente
-                        largura_desejada = max(150, int(320 * fator_escala))
+                        logo_img = Image.open(path_logo_rodape).convert("RGBA")
+                        largura_desejada = max(140, int(280 * fator_escala))
                         aspect_ratio = logo_img.height / logo_img.width
                         altura_desejada = int(largura_desejada * aspect_ratio)
-                        logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+                        logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS)
 
                         x_pos = int((w - largura_desejada) / 2)
-                        y_pos = h - altura_desejada - int(60 * fator_escala)
+                        y_pos = h - altura_desejada - int(55 * fator_escala)
 
                         img.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
                         logo_aplicado = True
                     except Exception as e:
-                        logger.warning(f"⚠️ Erro ao aplicar imagem de logo no rodapé do vídeo ({e}). Usando fallback de texto.")
+                        logger.warning(f"⚠️ Erro ao aplicar marca no rodapé: {e}")
 
                 if not logo_aplicado:
                     draw = ImageDraw.Draw(img)
@@ -680,15 +713,21 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     tw = bb[2] - bb[0]
                     x_marca = (w - tw) // 2
                     y_marca = h - int(60 * fator_escala)
-                    # Efeito de brilho dourado (glow)
                     cor_brilho = (235, 160, 40, 50)
                     for ox in [-2, -1, 0, 1, 2]:
                         for oy in [-2, -1, 0, 1, 2]:
                             if ox != 0 or oy != 0:
                                 draw.text((x_marca + ox, y_marca + oy), texto_marca, font=fonte_rodape, fill=cor_brilho)
-                    # Sombra e texto dourado
                     draw.text((x_marca + 2, y_marca + 2), texto_marca, font=fonte_rodape, fill=(0, 0, 0, 200))
                     draw.text((x_marca, y_marca), texto_marca, font=fonte_rodape, fill=(250, 185, 55))
+
+                # --- 3. EFEITO DE BRILHO PULSANTE DOURADO NO CTA FINAL ---
+                if is_cta:
+                    import math
+                    # Pulsa suavemente de 0 a 1 usando seno
+                    intense = int(45 * (0.5 + 0.5 * math.sin(t_slide * 4)))
+                    aura = Image.new("RGBA", (w, h), (212, 175, 55, intense))
+                    img = Image.alpha_composite(img, aura)
 
                 return np.array(img.convert("RGB"))
 
@@ -756,8 +795,8 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                         chars_to_show=chars_to_show, fade_alpha=fade_alpha, deslocamento_y=deslocamento_y
                     )
                 
-                # Assinatura GUSTAVO_8K_ sempre visível no rodapé
-                frame = _desenhar_assinatura_rodape(frame, fator_escala)
+                # Desenha o Selo foto_perfil.png no topo, a Marca d'água no rodapé e o efeito de brilho no CTA
+                frame = _desenhar_elementos_marca(frame, fator_escala, is_cta=(idx == idx_cta), t_slide=t_slide)
                 return frame
 
             final_clip = VideoClip(make_frame, duration=duracao)

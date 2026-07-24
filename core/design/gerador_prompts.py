@@ -6,9 +6,8 @@ import random
 
 
 CLIMAS = [
-    "light mist", "gentle rain", "dramatic storm clouds", "crystal clear blue sky",
-    "falling snow flakes", "soft wind blowing", "bright golden dawn sunrise",
-    "warm glowing sunset", "glowing full moon", "starry night sky"
+    "glowing neon reflections in rain", "dramatic cyberpunk night lights", "warm golden ambient illumination",
+    "light mist with neon beam rays", "falling snow flakes with glowing city lights", "starry night sky over futuristic skyline"
 ]
 
 ENQUADRAMENTOS = [
@@ -17,9 +16,9 @@ ENQUADRAMENTOS = [
 ]
 
 ESTILOS = [
-    "raw photograph, photo", "candid photography", "captured on 35mm film", 
-    "shot on DSLR camera", "natural skin texture with pores and imperfections", 
-    "kodak portra 400 style", "authentic daylight", "real life documentary style"
+    "cinematic photograph, high contrast, dark gold lighting", "candid cyberpunk photography",
+    "shot on 35mm lens with vivid neon highlights", "natural skin texture with futuristic ambient glow",
+    "dark luxury aesthetic with gold and cyan neon accents", "authentic night documentary style"
 ]
 
 # =====================================================================
@@ -27,44 +26,44 @@ ESTILOS = [
 # =====================================================================
 TEMAS_SIMBOLOS = {
     "espiritualidade": {
-        "personagens": ["old wise monk", "wanderer traveler", "child looking up"],
-        "objetos": ["glowing wax candle", "single white rose", "old brass lantern", "wooden ladder going up"],
-        "cenarios": ["secluded mountaintop monastery", "grand cathedral with stained glass", "ancient stone temple", "zen japanese garden with bonsai"]
+        "personagens": ["thoughtful wanderer", "person meditating in neon city", "glowing neural AI brain reflection"],
+        "objetos": ["glowing golden brain circuit diagram", "ancient pillar with futuristic hologram", "glowing golden candle", "old brass lantern"],
+        "cenarios": ["futuristic sacred temple night neon", "secluded mountaintop monastery over cyber city", "dark glass tower overlooking neon city"]
     },
     "filosofia": {
-        "personagens": ["thoughtful philosopher", "focused writer at work", "old wise monk"],
-        "objetos": ["ancient leather book", "glass hourglass", "writing quill and ink"],
-        "cenarios": ["massive library with high ceilings", "ancient roman ruins", "secluded mountaintop monastery"]
+        "personagens": ["thoughtful philosopher", "focused writer at futuristic desk", "person looking at cyber skyline"],
+        "objetos": ["ancient leather book with holographic glowing text", "glass hourglass with golden glowing sand", "glowing neural circuit pillar"],
+        "cenarios": ["futuristic high tech library with neon lights", "ancient roman ruins with cyber hologram lights", "dark gold luxury cyber office"]
     },
     "psicologia": {
-        "personagens": ["thoughtful philosopher", "focused writer at work", "scientist looking at device"],
-        "objetos": ["antique hand mirror", "glass hourglass", "partially open wooden door", "large glass window"],
-        "cenarios": ["massive library with high ceilings", "serene sunlit desert", "zen japanese garden with bonsai"]
+        "personagens": ["thoughtful person looking at neon city", "focused scientist looking at neural holographic interface", "person walking night street"],
+        "objetos": ["antique hand mirror with neon reflection", "glowing neural network diagram", "large glass window over futuristic city"],
+        "cenarios": ["futuristic cyberpunk apartment at night", "glowing dark gold reflection room", "neonlit metropolis night street"]
     },
     "financas": {
-        "personagens": ["elegant man in suit", "focused writer at work", "scientist looking at device"],
-        "objetos": ["vintage pocket watch", "glowing golden key", "large glass window"],
-        "cenarios": ["luxurious executive office", "state of the art modern laboratory", "futuristic cyberpunk city skyline"]
+        "personagens": ["elegant person in dark suit", "visionary founder looking at skyline", "cyber executive"],
+        "objetos": ["glowing golden key", "holographic financial chart", "luxury golden watch"],
+        "cenarios": ["luxurious executive office overlooking cyberpunk night city skyline", "futuristic skyscraper terrace at night", "state of the art modern cyber laboratory"]
     },
     "liberdade": {
-        "personagens": ["wanderer traveler", "explorer holding map", "photographer taking picture"],
-        "objetos": ["old brass compass", "small wooden boat", "glowing golden key"],
-        "cenarios": ["vast open ocean", "coastal cliff side", "green sunlit valley", "suspension bridge over foggy canyon", "old vintage railway station"]
+        "personagens": ["wanderer traveler looking at neon metropolis", "explorer walking night bridge", "person driving on futuristic highway"],
+        "objetos": ["glowing golden compass", "futuristic motorcycle", "glowing golden key"],
+        "cenarios": ["futuristic suspension bridge over foggy cyber canyon", "cyberpunk highway night motion", "coastal cliff overlooking glowing neon city"]
     },
     "conexoes": {
-        "personagens": ["loving couple walking", "elderly woman smiling", "child looking up"],
-        "objetos": ["single white rose", "classic wooden violin", "glowing wax candle"],
-        "cenarios": ["zen japanese garden with bonsai", "cozy warm room", "green sunlit valley"]
+        "personagens": ["people walking together in neon city", "moving crowd in futuristic metropolis", "person looking at digital connections"],
+        "objetos": ["glowing golden neural thread", "classic wooden violin with gold light", "glowing wax candle"],
+        "cenarios": ["cyberpunk street with moving crowd at night", "cozy room overlooking neon city skyline", "futuristic urban plaza at night"]
     },
     "superacao": {
-        "personagens": ["carpenter working wood", "sculptor chisel in hand", "wanderer traveler"],
-        "objetos": ["ancient sword", "old brass lantern", "old stone bridge"],
-        "cenarios": ["abandoned medieval castle", "pristine snow plains", "deep cavern with glowing crystals", "coastal cliff side"]
+        "personagens": ["runner training in rain under neon lights", "person climbing futuristic glass tower", "wanderer in cyber city"],
+        "objetos": ["glowing golden emblem", "ancient sword with cyber glow", "old stone bridge with neon lights"],
+        "cenarios": ["cyberpunk skyscraper rooftop night", "futuristic rain drenched city street", "deep cavern with glowing golden crystals"]
     },
     "proposito": {
-        "personagens": ["creative artist painting", "painter at easel", "musician holding instrument", "focused writer at work"],
-        "objetos": ["old brass compass", "majestic old oak tree", "glowing golden key", "writing quill and ink"],
-        "cenarios": ["green sunlit valley", "massive library with high ceilings", "secluded mountaintop monastery"]
+        "personagens": ["creative visionary looking at horizon", "artist working with holographic light", "focused writer in cyber room"],
+        "objetos": ["glowing golden compass", "glowing golden brain circuit pillar", "glowing golden key"],
+        "cenarios": ["futuristic glass observatory looking at night city", "high tech library with golden ambient glow", "cyberpunk city skyline night"]
     }
 }
 

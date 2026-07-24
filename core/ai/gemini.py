@@ -521,14 +521,14 @@ def gerar_conteudo_gemini(tipo):
         - SEM PEDIDO DE COMENTÁRIO OU COMPARTILHAMENTO.
 
         UNIVERSO VISUAL OBRIGATÓRIO — REELS CONQUISTADOR:
-        As queries devem evocar grandiosidade, natureza épica e poder sereno: montanhas, oceanos, florestas antigas, céus estrelados, desertos ao amanhecer. NUNCA interiores urbanos ou escritórios.
+        As queries devem evocar a grandiosidade e sabedoria cibernética em tons de ouro e noite: metrópoles ciberpunk, néon noturno, multidão em movimento nas cidades, arquitetura tecnológica futurista com iluminação dourada nobre, reflexos néon na chuva. NUNCA vídeos genéricos de campo.
 
         Responda APENAS em formato JSON válido assim:
         {{
           "pexels_queries": [
-            "epic mountain summit golden fog",
-            "ancient forest light rays path",
-            "ocean waves cliff sunset cinematic"
+            "cyberpunk city night neon lights crowd",
+            "dark gold futuristic tech architecture",
+            "glowing neural network cyber city night"
           ],
           "slides": [
             "Texto da Cena 1",

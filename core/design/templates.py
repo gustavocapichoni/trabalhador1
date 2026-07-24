@@ -103,12 +103,12 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo=None)
         
     return font_display, font_body, font_detalhe
 
-# Paleta Oficial de Branding da Marca — Tons Quentes (Âmbar + Vermelho Vivo)
+# Paleta Oficial de Branding da Marca — Código da Sabedoria (Ouro Metálico + Azul Escuro Ciberpunk)
 CORES = {
     "texto_principal":   (255, 255, 255),    # Branco Neve
-    "texto_secundario":  (220, 200, 180),    # Creme Quente Claro
-    "destaque":          (212, 140, 20),     # Âmbar Dourado Quente (bordas, linhas)
-    "fundo_tint_inicio": (110, 10, 5),       # Vermelho Quente Escuro (topo — quase invisível)
-    "fundo_tint_fim":    (80, 8, 3),         # Vermelho Profundo (base — sutil)
-    "sombra":            (0, 0, 0, 200)      # Preto difuso para legibilidade
+    "texto_secundario":  (230, 215, 175),    # Dourado Suave Claro
+    "destaque":          (212, 175, 55),     # Ouro Metálico Brilhante (bordas, linhas e néon)
+    "fundo_tint_inicio": (10, 15, 26),       # Azul Escuro Cibernético (topo — quase invisível)
+    "fundo_tint_fim":    (25, 20, 10),       # Ouro Escuro Profundo (base — sutil)
+    "sombra":            (0, 0, 0, 230)      # Preto difuso profundo para legibilidade perfeita
 }

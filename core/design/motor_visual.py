@@ -32,23 +32,23 @@ def buscar_imagem_fundo(tipo, tema_escolhido, TEMAS_MAPEADOS, prompt_imagem=None
         W, H = 1080, 1080
         orientation = "squarish"
 
-    query_termo = "premium,inspiring,cinematic,aesthetic"
+    query_termo = "cyberpunk,futuristic,city night,neon lights,dark gold"
     if tema_escolhido and tema_escolhido in TEMAS_MAPEADOS:
         query_termo = TEMAS_MAPEADOS[tema_escolhido].get("query_unsplash", query_termo)
 
 
-    # Palavras-chave simples e coloridas por tema — usadas EXCLUSIVAMENTE no Unsplash e Pexels
+    # Palavras-chave futuristas, ciberpunk e urbanas — alinhadas à foto de perfil Código da Sabedoria
     UNSPLASH_FALLBACKS = {
-        "espiritualidade": ["vast peaceful ocean sunrise", "mountains above clouds golden hour", "sun rays through forest trees", "peaceful golden nature light"],
-        "filosofia":       ["ancient library warm light", "person reading sunlight", "sunset philosophy nature", "dramatic golden books"],
-        "psicologia":      ["person thinking window sunlight", "colorful emotional portrait", "vibrant mind concept", "warm human connection"],
-        "financas":        ["luxury city skyline sunset", "golden business executive", "vibrant wealth success", "colorful financial growth"],
-        "liberdade":       ["colorful sunset open road", "person hiking mountain sunrise", "vibrant ocean freedom", "golden horizon adventure"],
-        "conexoes":        ["couple sunset warm light", "friends laughing colorful", "warm hug golden hour", "vibrant family moment"],
-        "superacao":       ["athlete sunrise training", "person climbing mountain golden", "colorful running determination", "vibrant victory winner"],
-        "proposito":       ["colorful path forest sunlight", "inspiring sunrise horizon vibrant", "person journey golden light", "purpose light nature"],
+        "espiritualidade": ["futuristic sacred temple night neon", "glowing neural brain gold light", "person meditating futuristic neon city", "starry night sky over cyber city"],
+        "filosofia":       ["futuristic library neon night", "thoughtful person cyberpunk city", "ancient pillar futuristic hologram", "dramatic gold light cyber city"],
+        "psicologia":      ["cyberpunk portrait neon lights", "person walking neon street night", "futuristic neural network glow", "mind concept dark gold lights"],
+        "financas":        ["futuristic cyberpunk skyscraper night", "golden neon city skyline", "cyber financial growth hologram", "futuristic executive gold light"],
+        "liberdade":       ["cyberpunk highway night motion", "person looking at futuristic neon city", "futuristic bridge night lights", "cyberpunk skyline dark gold"],
+        "conexoes":        ["people walking neon city night", "futuristic crowd motion lights", "cyberpunk street connection night", "warm gold neon crowd"],
+        "superacao":       ["person running neon city rain", "futuristic runner dark gold light", "cyberpunk skyscraper peak night", "dark gold neon determination"],
+        "proposito":       ["futuristic path neon lights night", "glowing golden key cyber city", "person walking futuristic city night", "gold neural light cyber city"],
     }
-    QUERY_CORINGA = "vibrant colorful inspiring portrait golden light"
+    QUERY_CORINGA = "cyberpunk city night neon futuristic moving crowd dark gold"
     
     tema_key = tema_escolhido if tema_escolhido else "superacao"
     queries_fallback = UNSPLASH_FALLBACKS.get(tema_key, [QUERY_CORINGA])
@@ -332,13 +332,30 @@ def _gerar_carrossel(img, W_full, H, dados):
         # Elementos de Agência Premium
         desenhar_elementos_premium(draw, slide_W, slide_H)
         
-        # Marca d'água / Logo no rodapé
+        # 1. Selo foto_perfil.png no Topo
+        path_selo = os.path.join(logo_dir, "foto_perfil.png")
+        if not os.path.exists(path_selo) and os.path.exists("foto_perfil.png"):
+            path_selo = "foto_perfil.png"
+        if os.path.exists(path_selo):
+            try:
+                selo_img = Image.open(path_selo).convert("RGBA")
+                larg_selo = 130
+                alt_selo = int(larg_selo * (selo_img.height / selo_img.width))
+                selo_redim = selo_img.resize((larg_selo, alt_selo), Image.Resampling.LANCZOS)
+                slide_rgba = slide_img.convert("RGBA")
+                slide_rgba.paste(selo_redim, (int((slide_W - larg_selo)/2), 50), selo_redim)
+                slide_img = slide_rgba.convert("RGB")
+                draw = ImageDraw.Draw(slide_img)
+            except Exception as e_selo:
+                print(f"⚠️ Erro ao desenhar selo no topo: {e_selo}")
+
+        # 2. Marca d'água / Logo no rodapé
         logo_aplicado = False
         logo_dir = os.path.join("biblioteca_local", "logo")
         path_logo = ""
         if os.path.exists(logo_dir):
             for f in os.listdir(logo_dir):
-                if f.lower().endswith(".png"):
+                if f.lower().endswith(".png") and f != "foto_perfil.png":
                     path_logo = os.path.join(logo_dir, f)
                     break
         if os.path.exists(path_logo):
