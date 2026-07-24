@@ -395,13 +395,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     if is_reels_leads:
         num_slides_estimado = len(slides) if slides else 30
         duracao_necessaria_reels = min(num_slides_estimado * 7, 180)  # max 3 min, 7s por slide
-        num_videos_necessarios = min(12, max(6, int(duracao_necessaria_reels / 20) + 1))
-        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
+        # Baixa vídeos suficientes para cobrir toda a duração sem precisar de loop (5s por clip)
+        num_videos_necessarios = min(20, max(6, int(duracao_necessaria_reels / 5.0) + 1))
+        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos únicos")
     else:
         num_slides_estimado = len(slides) if slides else 3
         duracao_necessaria_reels = num_slides_estimado * 7.0
-        num_videos_necessarios = min(5, max(3, num_slides_estimado))
-        logger.info(f"📊 [PEXELS_STORY] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos")
+        # Baixa vídeos suficientes para cobrir toda a duração sem precisar de loop
+        num_videos_necessarios = min(15, max(4, int(duracao_necessaria_reels / 5.0) + 1))
+        logger.info(f"📊 [PEXELS_STORY] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando até {num_videos_necessarios} vídeos únicos")
 
     # --- BUSCA DE VÍDEOS: ordem depende da rotação do Conquistador ---
     # plataforma_principal_conquistador: None=padrão(Pixabay→Pexels), 0=Pixabay→Pexels, 1=Pexels→Pixabay
@@ -560,14 +562,16 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         if len(clip_candidatos) == 1:
             clip = clip_candidatos[0]
         else:
-            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes com micro-cortes dinâmicos (~5s por cena)...")
+            logger.info(f"🔗 Concatendo {len(clip_candidatos)} vídeos diferentes com micro-cortes dinâmicos...")
             width_target = min(c.w for c in clip_candidatos)
             height_target = min(c.h for c in clip_candidatos)
             
+            # Calcula a duração de corte por vídeo para cobrir toda a mensagem sem loops
+            tempo_corte_por_video = max(5.0, duracao_necessaria_reels / len(clip_candidatos))
+            
             clips_redimensionados = []
             for c in clip_candidatos:
-                # Aplica micro-corte: pega no máximo 5 segundos de cada vídeo para acelerar o ritmo
-                c_sub = c.subclip(0, min(c.duration, 5.0))
+                c_sub = c.subclip(0, min(c.duration, tempo_corte_por_video))
                 if c_sub.w != width_target or c_sub.h != height_target:
                     clips_redimensionados.append(c_sub.resize((width_target, height_target)))
                 else:

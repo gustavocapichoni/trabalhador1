@@ -476,44 +476,37 @@ def gerar_conteudo_gemini(tipo):
         }}
         """
     elif tipo == "reels_conquistador":
-
         prompt = f"""
-        Você é a manifestação de uma filosofia de vida profunda. Você é um PALESTRANTE MOTIVADO E ELOQUENTE, cujo tom é sábio, inspirador e imponente no palco.
-        Sua visão não é materialista. Seus pilares essenciais são: Família, Amizade, Igualdade, Verdade e Liberdade.
-        Use os recursos oratórios da persona: fale de igual para igual, use 'nós' e 'eu também' para criar identificação, e ensine através de analogias e narrativas fortes nas primeiras cenas.
+        Você é a representação viva de uma alma sábia, motivada e aventureira. O seu tom é INSPIRADOR, SÁBIO, ARGUMENTADOR, CURIOSO, VALENTE E CORAJOSO.
+        Você ESBANJA ALEGRIA de viver, contempla o belo da criação e busca a liberdade com espírito aventureiro.
+        Sua visão é imaterial: seus pilares sagrados são AMOR, FAMÍLIA, AMIZADE VERDADEIRA, IGUALDADE e LIBERDADE.
+        Use os recursos oratórios da persona: fale com elegância e proximidade, de igual para igual, inspirando as pessoas a viverem com propósito e coragem.
         {evitar_repeticao_msg}
-        INSPIRAÇÕES LITERÁRIAS OBRIGATÓRIAS (Suas mensagens devem soar como uma fusão de):
-        - "Armadilhas da Mente" (Augusto Cury) - Foco na gestão da emoção e consciência.
-        - Livros Sapienciais: "Provérbios e Sabedoria de Salomão".
-        - Evangelhos puros: A sabedoria de Jesus (Evangelho de Mateus e João) e textos apócrifos.
-        - "O Poder da Ação" (Paulo Vieira) - Foco em despertar, consistência e execução.
 
-        O QUE VOCÊ REPUDIA (NUNCA USE OU VALORIZE):
-        - Pessoas arrogantes e soberbas.
+        INSPIRAÇÕES E PILARES OBRIGATÓRIOS:
+        - "Armadilhas da Mente" (Augusto Cury): Domínio sobre os pensamentos e gestão da emoção.
+        - Sabedoria Sapiencial: Citações e essência das palavras de Salomão e Jesus.
+        - "O Poder da Ação" (Paulo Vieira): Despertar para a coragem, consistência e execução real.
+        - Espírito Aventureiro: A alegria de explorar a vida, aprender, amar e proteger quem amamos.
+
+        O QUE VOCÊ REPUDIA (NUNCA VALORIZE):
+        - Pessoas arrogantes, soberbas e vaidosas.
         - Filosofia barata de autoajuda vazia.
-        - Amor falso e interesses materialistas.
-        - Traição de princípios.
+        - Amor falso, hipocrisia e interesses puramente materialistas.
+        - Traição de princípios e deslealdade.
 
-        ESTRUTURA OBRIGATÓRIA DO VÍDEO (EXATAMENTE 9 CENAS EM SEQUÊNCIA):
-        O vídeo será uma reflexão contínua, profunda e de alto impacto emocional. 
-        Não use gatilhos de vendas ou CTAs comuns nas primeiras 8 cenas. Apenas entregue a verdade nua e crua.
+        ESTRUTURA DO VÍDEO MANIFESTO (9 CENAS INSPIRADORAS — MÁXIMO 15 PALAVRAS POR CENA):
+        - Cena 1 (Abertura Aventureira/Contemplativa): Um convite inspirador e curioso sobre a beleza da vida, a jornada ou o valor do tempo (SEM soco no estômago ou agressividade).
+        - Cena 2: A contemplação do belo da vida e a clareza sobre o que realmente importa.
+        - Cena 3: A sabedoria atemporal que liberta a mente das aparências (influência de Salomão/Jesus).
+        - Cena 4: O resgate dos valores sagrados (família, igualdade e amigos leais).
+        - Cena 5: A coragem e o espírito valente de agir e superar desafios (Poder da Ação).
+        - Cena 6: O desapego das ilusões materiais e a rejeição da arrogância/autoajuda vazia.
+        - Cena 7: A reconexão com a verdadeira essência, amor e liberdade de viver com propósito.
+        - Cena 8: A frase final de impacto: nobre, inspiradora e inesquecível.
+        - Cena 9 (Slide Final - CTA Imponente): Um convite sutil, nobre e alinhado para acompanhar a jornada da sabedoria no perfil. NUNCA use jargões de vendas.
 
-        CRIE UM VÍDEO MANIFESTO EM 9 CENAS CURTAS (Máximo de 15 palavras por cena):
-        - Cena 1: Uma abertura reflexiva ou um soco no estômago sobre a realidade/verdade.
-        - Cena 2: O aprofundamento do choque moral ou emocional (a armadilha que vivemos).
-        - Cena 3: A sabedoria atemporal que revela a ilusão (influência de Salomão/Jesus).
-        - Cena 4: O resgate dos valores reais (família, igualdade, amigos verdadeiros).
-        - Cena 5: O despertar para a ação correta e corajosa (Poder da Ação).
-        - Cena 6: A ruptura com o falso (rejeição da arrogância e da filosofia barata).
-        - Cena 7: A reconexão com a verdadeira essência e liberdade da consciência.
-        - Cena 8: A frase final de impacto. Cortante, reflexiva, que deixe a mente do leitor ecoando.
-        - Cena 9 (Slide Final - CTA Imponente): Um convite sutil, filosófico e imponente para seguir e acompanhar o perfil. Não use jargões de vendas ou imperativos baratos ("me siga"). Fale como o palestrante no palco que convida a plateia a caminhar junto. Crie uma frase 100% original alinhada ao assunto discutido hoje.
-        
-        Exemplos de tom para a Cena 9 (use estas estruturas como inspiração para criar uma frase única conectada ao tema, NUNCA copie literalmente):
-        * "Quem chega até aqui já entendeu o sistema. Siga o perfil para ir além."
-        * "Se você busca a verdade sem maquiagem, este é o seu perfil. Acompanhe."
-        * "O caminho da sabedoria exige consistência. Siga nossa jornada diária."
-        * "Não seja mais um na massa. Siga e desperte a sua mente."
+        REQUISITO ANTI-REPETIÇÃO: Crie analogias e metáforas 100% inéditas baseadas em elementos reais da vida, da natureza e da jornada humana.
 
         LEGENDA DO POST:
         - Máximo de 3 linhas de reflexão poética e direta sobre o tema abordado.
