@@ -1,14 +1,9 @@
 {
-    "fila_musicas_musicas": [
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/46851258-cordes-de-piano-cinema-337464.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/Música-tema-principal-da-série-La-casa-de-papel-_-NETFLIX-_.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/grand_project-wonders-of-the-earth-550792.mp3",
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/pietix-dark-deep-house-cinema-513156.mp3"
-    ],
-    "index_tema_diario": 6,
-    "tema_do_dia": "conexoes",
+    "ultimos_temas": [],
+    "index_animacao_conquistador": 1,
+    "index_plataforma_conquistador": 1,
+    "indice_arquitetura": 1,
     "historico_estilos": [
-        "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')",
         "Tom professoral e didático: ensine com autoridade e clareza, dividindo a verdade em passos lógicos (ex: 'Existem três regras imutáveis que você precisa entender.')",
         "Tom irônico e sarcástico: deboche suavemente da situação ridícula em que o leitor se colocou (ex: 'Parabéns, você conseguiu estragar tudo de novo. E agora?')",
         "Tom motivacional intenso: seja o treinador gritando no ouvido antes da guerra, inflamando a coragem (ex: 'Você nasceu para coisas maiores. Não aceite menos que...')",
@@ -32,11 +27,11 @@
         "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')",
         "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')",
         "Tom de urgência e alerta de perigo: chame a atenção de forma protetiva, instilando medo de perder tempo (ex: 'Você tem exatamente três meses antes de...')",
-        "Tom cínico e realista cru: destrua expectativas de filmes da Disney e traga para a vida real dura (ex: 'O mundo não deve nada a você. Se quiser algo, levante e...')"
+        "Tom cínico e realista cru: destrua expectativas de filmes da Disney e traga para a vida real dura (ex: 'O mundo não deve nada a você. Se quiser algo, levante e...')",
+        "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')"
     ],
-    "ultimos_temas": [],
+    "indice_cta": 40,
     "historico_angulos": [
-        "Como o estresse crônico destrói sua tomada de decisão e te faz agir por puro impulso primitivo.",
         "A armadilha de comprar coisas que você não precisa com dinheiro que não tem para preencher um vazio emocional.",
         "A diferença brutal entre quem gasta para parecer rico na internet e quem foca em construir paz de espírito.",
         "O custo silencioso de não investir em conhecimento prático: você paga caro demais pela sua própria ignorância.",
@@ -60,11 +55,38 @@
         "O perigo do rancor acumulado: pequenas mágoas não ditas viram uma muralha intransponível.",
         "Terminar um ciclo falido exige coragem, mas insistir nele por puro orgulho é burrice emocional.",
         "Você quer ser lembrado pelo que acumulou ou pela diferença profunda que fez na vida de quem te conheceu?",
-        "A sabedoria bíblica ensina: quem muito fala, muito erra. O silêncio poupa a alma."
+        "A sabedoria bíblica ensina: quem muito fala, muito erra. O silêncio poupa a alma.",
+        "Cada micro-vitória sobre a preguiça constrói a musculatura da sua autoconfiança de verdade."
     ],
-    "index_animacao_conquistador": 1,
+    "data_sentimento_do_dia": "2026-07-24",
+    "sentimento_do_dia": "curiosidade",
+    "tema_do_dia": "superacao",
     "index_conquistador": 1,
+    "indice_gancho": 45,
+    "indice_gancho_conquistador": 9,
+    "index_tema_diario": 7,
+    "fila_musicas_musicas": [
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/Música-tema-principal-da-série-La-casa-de-papel-_-NETFLIX-_.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/grand_project-wonders-of-the-earth-550792.mp3",
+        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas/pietix-dark-deep-house-cinema-513156.mp3"
+    ],
+    "data_tema_do_dia": "2026-07-24",
     "historico_midia": [
+        "7947677",
+        "7121777",
+        "6940964",
+        "7884166",
+        "6955278",
+        "5255993",
+        "34335608",
+        "6996200",
+        "15863264",
+        "6799146",
+        "6054890",
+        "11370686",
+        "13566555",
+        "6098615",
+        "6941197",
         "38381813",
         "27757818",
         "35787532",
@@ -219,11 +241,7 @@
         "unsplash_LtXz48EJX90",
         "unsplash_UBVY_cVwsHE"
     ],
-    "indice_arquitetura": 0,
-    "indice_gancho_conquistador": 9,
-    "sentimento_do_dia": "alegria",
     "fila_musicas_musicas-youtube": [
-        "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Halfway In - Anno Domini Beats.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/A Free Night in Bushwick - William Rosati.mp3",
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Paradise - Anno Domini Beats.mp3",
@@ -236,10 +254,5 @@
         "/home/runner/work/trabalhador1/trabalhador1/biblioteca_local/musicas-youtube/Fearless - The Soundlings (feat. Ruby Jay).mp3"
     ],
     "ultimo_carousel": 3,
-    "data_tema_do_dia": "2026-07-23",
-    "indice_gancho": 44,
-    "indice_cta": 39,
-    "index_palette_conquistador": 4,
-    "index_plataforma_conquistador": 1,
-    "data_sentimento_do_dia": "2026-07-23"
+    "index_palette_conquistador": 4
 }
