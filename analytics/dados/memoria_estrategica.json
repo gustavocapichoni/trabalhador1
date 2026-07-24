@@ -1,67 +1,67 @@
 {
-    "conhecimento_consolidado": [],
     "hipoteses": [
         {
-            "media_grupo_a": 0.0,
+            "id": "hd2e548",
             "criada_em": "2026-07-19",
             "media_grupo_b": 0.0,
             "atualizada_em": "2026-07-20",
             "confianca": 0.0,
             "amostra": 10,
             "grupo_a": "DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.",
+            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
             "hipotese": "Ganchos do tipo 'DECLARAÇÃO EM 2ª PESSOA — Abra com uma frase curtíssima falando diretamente para o 'Você', como se você já soubesse o segredo que ele esconde.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
             "status": "em_observacao",
-            "id": "hd2e548",
+            "metrica_alvo": "growth_score",
+            "media_grupo_a": 0.0,
             "variaveis_testadas": [
                 "gancho_categoria"
-            ],
-            "metrica_alvo": "growth_score",
-            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho."
+            ]
         },
         {
-            "media_grupo_a": 0.0,
+            "id": "h169e38",
             "criada_em": "2026-07-19",
             "media_grupo_b": 0.0,
             "atualizada_em": "2026-07-20",
             "confianca": 0.0,
             "amostra": 11,
             "grupo_a": "salvamento",
+            "grupo_b": "compartilhamento",
             "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'compartilhamento'.",
             "status": "em_observacao",
-            "id": "h169e38",
+            "metrica_alvo": "growth_score",
+            "media_grupo_a": 0.0,
             "variaveis_testadas": [
                 "tipo_cta"
-            ],
-            "metrica_alvo": "growth_score",
-            "grupo_b": "compartilhamento"
+            ]
         },
         {
+            "id": "hee5ecf",
             "criada_em": "2026-07-20",
-            "confianca": 0.5,
             "amostra": 12,
-            "grupo_a": "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
+            "confianca": 0.5,
+            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.",
             "hipotese": "Ganchos do tipo 'SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.' convertem mais seguidores do que 'PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho.'.",
             "status": "em_observacao",
-            "id": "hee5ecf",
+            "grupo_a": "SEGREDO/REVELAÇÃO — Abra gerando curiosidade máxima: o leitor sente que está prestes a receber uma informação que ninguém mais tem.",
+            "metrica_alvo": "growth_score",
             "variaveis_testadas": [
                 "gancho_categoria"
-            ],
-            "metrica_alvo": "growth_score",
-            "grupo_b": "PERGUNTA QUE AGRIDE — Abra com uma pergunta direta e desconfortável que force o leitor a se encarar no espelho."
+            ]
         },
         {
+            "id": "h5c83d1",
             "criada_em": "2026-07-20",
-            "confianca": 0.5,
             "amostra": 12,
-            "grupo_a": "salvamento",
+            "confianca": 0.5,
+            "grupo_b": "seguir",
             "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores do que 'seguir'.",
             "status": "em_observacao",
-            "id": "h5c83d1",
+            "grupo_a": "salvamento",
+            "metrica_alvo": "growth_score",
             "variaveis_testadas": [
                 "tipo_cta"
-            ],
-            "metrica_alvo": "growth_score",
-            "grupo_b": "seguir"
+            ]
         }
-    ]
+    ],
+    "conhecimento_consolidado": []
 }
