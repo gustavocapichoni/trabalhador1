@@ -1,140 +1,140 @@
 {
+    "conhecimento_consolidado": [],
     "hipoteses": [
         {
             "variaveis_testadas": [
                 "gancho_categoria"
             ],
-            "media_grupo_b": 0.0153,
-            "concluida_em": "2026-08-05",
+            "hipotese": "Ganchos do tipo 'AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.' geram maior crescimento de perfil do que outros ganchos.",
             "grupo_b": "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.",
-            "amostra": 42,
+            "concluida_em": "2026-08-05",
             "atualizada_em": "2026-08-05",
-            "grupo_a": "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.",
-            "criada_em": "2026-08-03",
-            "media_grupo_a": 0.0335,
-            "status": "confirmada",
+            "amostra": 42,
+            "id": "ha94ba0",
             "metrica_alvo": "growth_score",
             "confianca": 0.857,
-            "hipotese": "Ganchos do tipo 'AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.' geram maior crescimento de perfil do que outros ganchos.",
-            "id": "ha94ba0"
+            "media_grupo_a": 0.0335,
+            "grupo_a": "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.",
+            "status": "confirmada",
+            "media_grupo_b": 0.0153,
+            "criada_em": "2026-08-03"
         },
         {
+            "hipotese": "CTA do tipo 'compartilhamento' gera mais conversão de seguidores.",
+            "grupo_b": "comentario",
+            "id": "ha9e96f",
+            "grupo_a": "compartilhamento",
+            "media_grupo_a": 0.0215,
+            "atualizada_em": "2026-08-10",
+            "metrica_alvo": "growth_score",
+            "confianca": 0.612,
+            "status": "em_observacao",
+            "amostra": 73,
+            "media_grupo_b": 0.0156,
             "variaveis_testadas": [
                 "tipo_cta"
             ],
-            "media_grupo_b": 0.0156,
-            "criada_em": "2026-08-03",
-            "grupo_b": "comentario",
-            "atualizada_em": "2026-08-10",
-            "amostra": 73,
-            "grupo_a": "compartilhamento",
-            "hipotese": "CTA do tipo 'compartilhamento' gera mais conversão de seguidores.",
-            "media_grupo_a": 0.0215,
-            "status": "em_observacao",
-            "confianca": 0.612,
-            "metrica_alvo": "growth_score",
-            "id": "ha9e96f"
+            "criada_em": "2026-08-03"
         },
         {
+            "hipotese": "Ganchos baseados em CURIOSIDADE convertem 25% mais seguidores do que ganchos genéricos.",
+            "grupo_b": "generico",
+            "id": "h969fe3",
+            "grupo_a": "curiosidade",
+            "amostra": 1,
             "variaveis_testadas": [
                 "gancho_categoria"
             ],
-            "criada_em": "2026-08-03",
-            "id": "h969fe3",
-            "grupo_b": "generico",
-            "amostra": 1,
-            "grupo_a": "curiosidade",
-            "confianca": 0.5,
-            "status": "em_observacao",
             "metrica_alvo": "growth_score",
-            "hipotese": "Ganchos baseados em CURIOSIDADE convertem 25% mais seguidores do que ganchos genéricos."
+            "status": "em_observacao",
+            "confianca": 0.5,
+            "criada_em": "2026-08-03"
         },
         {
+            "hipotese": "Posts com foco no tema FINANÇAS e SUPERAÇÃO geram mais compartilhamentos.",
+            "grupo_b": "outros",
+            "id": "hc99c70",
+            "grupo_a": "financas",
+            "media_grupo_a": 0.0,
+            "atualizada_em": "2026-08-10",
+            "metrica_alvo": "conversao_perfil",
+            "confianca": 0.0,
+            "status": "em_observacao",
+            "amostra": 9,
+            "media_grupo_b": 0,
             "variaveis_testadas": [
                 "tema"
             ],
-            "media_grupo_b": 0,
-            "criada_em": "2026-08-03",
-            "grupo_b": "outros",
-            "atualizada_em": "2026-08-10",
-            "amostra": 9,
-            "grupo_a": "financas",
-            "hipotese": "Posts com foco no tema FINANÇAS e SUPERAÇÃO geram mais compartilhamentos.",
-            "media_grupo_a": 0.0,
-            "status": "em_observacao",
-            "confianca": 0.0,
-            "metrica_alvo": "conversao_perfil",
-            "id": "hc99c70"
+            "criada_em": "2026-08-03"
         },
         {
             "variaveis_testadas": [
                 "gancho_categoria"
             ],
-            "media_grupo_b": 0.0128,
-            "concluida_em": "2026-08-05",
+            "hipotese": "Ganchos do tipo 'CONFLITO — Tome uma posição ousada. Provoque reacão emocional imediata.' geram maior crescimento de perfil do que outros ganchos.",
             "grupo_b": "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.",
+            "id": "h34678d",
             "atualizada_em": "2026-08-05",
-            "amostra": 14,
-            "grupo_a": "CONFLITO — Tome uma posição ousada. Provoque reacão emocional imediata.",
-            "criada_em": "2026-08-05",
             "media_grupo_a": 0.0196,
+            "amostra": 14,
+            "metrica_alvo": "growth_score",
             "status": "confirmada",
             "confianca": 0.66,
-            "metrica_alvo": "growth_score",
-            "hipotese": "Ganchos do tipo 'CONFLITO — Tome uma posição ousada. Provoque reacão emocional imediata.' geram maior crescimento de perfil do que outros ganchos.",
-            "id": "h34678d"
+            "grupo_a": "CONFLITO — Tome uma posição ousada. Provoque reacão emocional imediata.",
+            "concluida_em": "2026-08-05",
+            "media_grupo_b": 0.0128,
+            "criada_em": "2026-08-05"
         },
         {
-            "variaveis_testadas": [
-                "tipo_cta"
-            ],
-            "media_grupo_b": 0.0156,
-            "criada_em": "2026-08-05",
-            "grupo_b": "comentario",
-            "atualizada_em": "2026-08-10",
-            "amostra": 86,
-            "grupo_a": "salvamento",
             "hipotese": "CTA do tipo 'salvamento' gera mais conversão de seguidores.",
+            "grupo_b": "comentario",
+            "id": "h07157e",
+            "grupo_a": "salvamento",
             "media_grupo_a": 0.017,
-            "status": "em_observacao",
-            "confianca": 0.525,
+            "atualizada_em": "2026-08-10",
             "metrica_alvo": "growth_score",
-            "id": "h07157e"
-        },
-        {
+            "confianca": 0.525,
+            "status": "em_observacao",
+            "amostra": 86,
+            "media_grupo_b": 0.0156,
             "variaveis_testadas": [
                 "tipo_cta"
             ],
-            "media_grupo_b": 0.0215,
-            "criada_em": "2026-08-09",
+            "criada_em": "2026-08-05"
+        },
+        {
+            "hipotese": "CTA do tipo 'seguir' gera mais conversão de seguidores.",
             "grupo_b": "compartilhamento",
             "amostra": 76,
-            "atualizada_em": "2026-08-10",
             "grupo_a": "seguir",
-            "hipotese": "CTA do tipo 'seguir' gera mais conversão de seguidores.",
             "media_grupo_a": 0.0201,
+            "atualizada_em": "2026-08-10",
+            "metrica_alvo": "growth_score",
             "status": "em_observacao",
             "confianca": 0.48,
-            "metrica_alvo": "growth_score",
-            "id": "h29d088"
+            "id": "h29d088",
+            "media_grupo_b": 0.0215,
+            "variaveis_testadas": [
+                "tipo_cta"
+            ],
+            "criada_em": "2026-08-09"
         },
         {
+            "hipotese": "Ganchos do tipo 'AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.' geram maior crescimento de perfil do que outros ganchos.",
+            "grupo_b": "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.",
+            "amostra": 78,
+            "grupo_a": "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.",
+            "media_grupo_a": 0.0163,
+            "atualizada_em": "2026-08-10",
+            "metrica_alvo": "growth_score",
+            "status": "em_observacao",
+            "confianca": 0.589,
+            "id": "hf62eab",
+            "media_grupo_b": 0.0125,
             "variaveis_testadas": [
                 "gancho_categoria"
             ],
-            "media_grupo_b": 0.0125,
-            "criada_em": "2026-08-10",
-            "grupo_b": "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.",
-            "atualizada_em": "2026-08-10",
-            "amostra": 78,
-            "grupo_a": "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.",
-            "hipotese": "Ganchos do tipo 'AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.' geram maior crescimento de perfil do que outros ganchos.",
-            "media_grupo_a": 0.0163,
-            "status": "em_observacao",
-            "confianca": 0.589,
-            "metrica_alvo": "growth_score",
-            "id": "hf62eab"
+            "criada_em": "2026-08-10"
         }
-    ],
-    "conhecimento_consolidado": []
+    ]
 }
