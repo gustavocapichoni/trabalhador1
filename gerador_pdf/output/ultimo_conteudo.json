@@ -1,121 +1,123 @@
 {
-  "titulo_pdf": "O Protocolo Antidrift: Mentalidade Financeira Inabalável",
-  "subtitulo_pdf": "O método passo a passo para assumir o controle do seu destino financeiro.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a man standing at a crossroads, one path lit by a golden light, the other shrouded in mist, 8k, hyperrealistic.",
+  "titulo_pdf": "O Salto Quântico da Decisão: Desbloqueie a Mente Intuitiva",
+  "subtitulo_pdf": "O protocolo exato para desmascarar a auto-sabotagem e agir com clareza instantânea.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, with subtle gears turning within, 8k",
   "capa_cards": [
     {
-      "titulo": "A Corrida Vazia",
-      "texto": "Você corre sem parar, trabalhando exausto, mas a linha de chegada nunca aparece? Sente que seu esforço não te tira do lugar?",
-      "pergunta_destaque": "Quando você vai parar de aceitar isso?"
+      "titulo": "Seu Cérebro Te Prende?",
+      "texto": "Seu cérebro adora o sofrimento conhecido e se recusa a mudar, te mantendo refém de padrões velhos e dolorosos. O que você faz com essa verdade?",
+      "pergunta_destaque": "Cansado de se sabotar?"
     },
     {
-      "titulo": "Desperte do Transe",
-      "texto": "Liberte-se do hábito da 'deriva' e assuma o comando da sua mente para conquistar a prosperidade."
+      "titulo": "A Estratégia Blink",
+      "texto": "Um método para confiar nos seus instintos mais rápidos e tomar decisões eficazes em segundos.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Resultados Reais Hoje",
-      "texto": "Transforme esforço em progresso visível e tangível, semana após semana."
+      "titulo": "Liberdade em Ação",
+      "texto": "Ganhe clareza brutal, tome decisões melhores e liberte-se do ciclo de inércia.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Mente Mestra do Dinheiro",
-      "texto": "Seu destino é moldado por suas decisões, não pelas circunstâncias.",
-      "citacao_destaque": "A mente humana é a arma mais poderosa. Código da Sabedoria."
+      "titulo": "Confie na Sua Mente",
+      "texto": "A sabedoria não é lenta, é um flash de clareza brutal. Código da Sabedoria.",
+      "citacao_destaque": "O insight mais rápido é o mais real. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "A Maldição do 'Mais Tarde': Por Que Você Não Chega Lá",
-      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a blurred future reflection in a cracked mirror, 8k, hyperrealistic.",
+      "titulo": "O Conforto da Prisão: Por Que o Sofrimento É Tão Sedutor?",
+      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, seeing a distorted reflection, 8k",
       "paragrafos": [
-        "É irônico como nos orgulhamos de estar ocupados, mas raramente nos questionamos: ocupados com o quê, exatamente? Você trabalha exausto, empurra com a barriga a decisão de olhar para suas finanças, e no fim do mês, sente o mesmo vazio, a mesma frustração de não ter chegado a lugar algum. Este é o preço invisível da vida no automático: você paga com seu tempo, sua energia e sua paz, sem receber o retorno que merece. Parece que você está em uma esteira de alta velocidade, suando, mas o cenário ao redor não muda.",
-        "Napoleão Hill, em 'Mais Esperto que o Diabo', expõe a 'deriva' como o maior inimigo da humanidade. Ele descreve a maioria das pessoas como 'derivares', que se deixam levar pelas circunstâncias, sem um propósito definido, sem um plano. Como um navio sem leme, eles navegam para onde o vento os leva, acabando em portos que nunca desejaram. Muitos, ao invés de enfrentar a tempestade e assumir o controle do leme, preferem culpar o mar, o vento ou a falta de sorte. A verdade é que o 'Diabo' prospera na sua indecisão, na sua inércia.",
-        "O primeiro passo para quebrar a maldição do 'mais tarde' é a clareza brutal. Pegue um papel e anote agora: Quais são as três maiores desculpas que você usa para não cuidar da sua mentalidade financeira? O que você realmente faria hoje se soubesse que não pode falhar? Perceba que a inércia não é falta de tempo, é falta de decisão. Escolha uma dessas desculpas e comprometa-se a desmascará-la, começando com uma ação mínima, mas concreta, nos próximos 30 minutos. Não é sobre o tamanho da ação, é sobre a quebra do padrão."
+        "É uma verdade chocante, mas seu cérebro prefere a miséria familiar ao caos da mudança. Você se sente preso em um ciclo repetitivo, gastando energia em tarefas que não te levam a lugar nenhum, apenas para manter a ilusão de controle. O custo invisível disso? Uma vida que você não escolheu, vivida no piloto automático, enquanto o potencial de uma versão melhor de si mesmo se desintegra em desculpas. É quase ridículo como nos apegamos a uma rotina que nos esgota, não é? A ironia é que a 'segurança' que buscamos é a própria cela.",
+        "Malcolm Gladwell, em 'Blink', nos mostra como muitas vezes, a primeira impressão, o 'flash' de intuição, é mais precisa do que horas de deliberação. Ele conta a história de um especialista em arte que, ao ver uma estátua grega recém-adquirida por um museu, imediatamente sentiu que era uma falsificação, mesmo sem provas concretas. Todos os outros analisaram por meses e não encontraram nada. A intuição dele, um 'blink', estava correta. A peça era falsa. Você também tem essa capacidade, mas o medo do 'caos da mudança' silencia seu alarme interno.",
+        "A lição útil revelada é que o primeiro passo para sair da inércia é reconhecer o padrão de sabotagem no exato momento em que ele surge. Hoje, preste atenção aos pequenos desconfortos. Aquele 'não' que você queria dizer, a tarefa que você procrastina. Anote três situações onde seu cérebro prefere o conhecido, mesmo que doloroso. Em seguida, escolha uma delas e faça o oposto do que sua zona de conforto ditaria, por menor que seja o movimento. Quebre o padrão com um 'blink' de atitude."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_dd562a.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_7b2285.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Seu Cérebro é um Traidor: Como Reverter o Jogo da Deriva",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword casting a long shadow, indicating a mental battle, 8k, hyperrealistic.",
+      "titulo": "Afie Seu Radar: Domine o Caos Mental e a Intuição Diluída",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, representing clarity and decision, 8k",
       "paragrafos": [
-        "A gente adora a ideia de mudar, mas detesta o processo de mudança. É quase patético, não? Seu cérebro, essa máquina incrível, muitas vezes prefere o sofrimento conhecido da dívida ou da estagnação financeira à incerteza libertadora de um novo caminho. Ele te sabota com pensamentos como 'é muito difícil', 'não tenho tempo', 'não sou bom com números'. Essa é a voz do seu 'diabo' particular, sussurrando padrões de derrota para te manter na zona de conforto miserável. É uma contradição humana gritante: desejamos a riqueza, mas evitamos o trabalho mental necessário para criá-la.",
-        "O 'Mais Esperto que o Diabo' revela que a chave para dominar a deriva é dominar sua própria mente. O Diabo confessa que seu maior poder reside em controlar as frequências de pensamento dos humanos, induzindo-os a hábitos de indecisão e procrastinação. Ele usa o medo e a dúvida como suas ferramentas mais eficazes. Mas há uma 'arma' contra isso: a sua mente, quando treinada para um 'propósito definido'. Pense nos grandes mestres financeiros. Eles não são mais inteligentes, são mais focados e deliberados na forma como usam sua atenção.",
-        "A técnica exata para dominar sua atenção é o 'Foco Deliberado de 15 Minutos'. Escolha uma tarefa financeira que você está procrastinando (ex: organizar uma planilha, pesquisar um investimento, revisar um gasto). Defina um timer de 15 minutos e comprometa-se a focar APENAS nisso, sem distrações. Ao final, faça uma pausa. Repita este ciclo duas vezes ao dia. Isso reprograma seu cérebro para associar foco a resultados e quebra o ciclo de procrastinação. É um treinamento de disciplina mental que, com o tempo, te dará um controle absoluto sobre seus impulsos e, consequentemente, sobre suas finanças."
+        "A dificuldade de manter o foco é a desculpa favorita do cérebro para evitar o desconhecido. Você se sente arrastado por mil distrações, incapaz de aterrar sua atenção no que realmente importa. É um padrão engraçado, não é? Reclamamos da falta de tempo, mas estamos sempre 'ocupados' com coisas que não nos movem. Essa névoa mental é o terreno fértil para o sofrimento conhecido, pois nos impede de ver as alternativas e de confiar em nossa própria bússola interna, que está sempre tentando nos guiar.",
+        "Gladwell explora como bombeiros de elite conseguem tomar decisões de vida ou morte em segundos em meio ao caos de um incêndio. Eles não processam cada detalhe conscientemente, mas 'thin-slice' a situação, reconhecendo padrões e agindo instintivamente com base em anos de experiência e intuição apurada. É o controle dos impulsos e a capacidade de filtrar o barulho para focar na informação essencial. Sua mente, quando treinada, faz o mesmo.",
+        "A técnica exata para dominar sua atenção e reprogramar sua mentalidade começa com o 'Filtro de 60 Segundos'. Quando se sentir sobrecarregado ou prestes a cair em um padrão antigo, pare tudo. Respire fundo três vezes. Pergunte-se: 'Qual a informação mais crucial aqui?' e 'Qual o menor passo de ação que posso tomar AGORA, com base na minha intuição, que me afasta do sofrimento conhecido?'. Não pense por mais de um minuto. Confie no seu primeiro 'blink' de resposta e aja imediatamente. Isso reprograma seu cérebro para valorizar a ação rápida e intuitiva."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_9f6edd.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_c875fe.jpg"
     },
     {
       "numero": 3,
-      "titulo": "O Mapa da Riqueza: Como Sair da Deriva e Navegar para a Abundância",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing compass guiding the way through a stormy, misty landscape at dawn, 8k, hyperrealistic.",
+      "titulo": "O Plano Relâmpago: Sua Bússola Contra a Exaustão Inútil",
+      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, with a single beam of light, 8k",
       "paragrafos": [
-        "A sensação de trabalhar exausto sem nunca sentir que está chegando a algum lugar não é falta de esforço, é falta de direção. É como remar um barco em círculos, gastando energia e tempo, mas voltando sempre para o mesmo ponto. A raiva que surge dessa percepção deve ser o combustível para a sua revolução. Chega de aceitar uma vida financeira que não te honra. Você merece mais do que a frustração diária. Você merece um plano, uma bússola que realmente te guie.",
-        "Hill nos ensina que o 'Diabo' teme o propósito definido. Aqueles que sabem exatamente o que querem e têm um plano para alcançá-lo são imunes à deriva. Ele cita exemplos de pessoas que, contra todas as probabilidades, conquistaram fortunas porque tinham um 'objetivo principal definido' e uma fé inabalável. Não se trata de sorte, mas de uma orquestração deliberada da mente e das ações. Sem um mapa claro, qualquer caminho serve, e é aí que o Diabo te pega, mantendo-o ocupado, mas improdutivo.",
-        "Para desenhar um plano à prova de desculpas, adote a 'Estratégia dos Três Pilares da Riqueza Consciente'. Primeiro, defina seu 'Propósito Financeiro Principal' para os próximos 90 dias (ex: 'Economizar R$X para Y', 'Pagar a dívida Z'). Segundo, divida este propósito em três metas menores e semanais. Terceiro, escolha um 'Bloqueio de Tempo Inegociável' de 30 minutos por dia na sua agenda, dedicado EXCLUSIVAMENTE a uma ação relacionada a uma dessas metas. Este bloqueio é sagrado. Trate-o como um compromisso inadiável. Este é o seu mapa e sua bússola. Comece hoje, com a primeira ação do seu bloqueio de tempo. A abundância não é um acaso, é uma consequência do seu plano."
+        "Você trabalha exausto, mas a sensação de estagnação persiste. Parece que corre, corre, mas nunca chega a lugar algum. Essa exaustão inútil é o resultado direto de um planejamento excessivo ou da falta de qualquer planejamento real, gerando uma paralisia por análise que o mantém no ciclo do sofrimento conhecido. Admitir que estamos presos nessa roda de hamster é o primeiro passo para pular fora, por mais desconfortável que seja confrontar essa verdade.",
+        "O livro 'Blink' nos ensina sobre a força das decisões tomadas rapidamente, mas com base em um vasto repertório de informações 'inconscientes'. Ele aborda como os improvisadores, por exemplo, não seguem um roteiro rígido, mas respondem instantaneamente ao que acontece, construindo algo coerente e inovador em tempo real. Isso é antecipação e escolha de metas reais em ação: não um plano engessado, mas uma capacidade de adaptação e tomada de decisão ágil, calibrada pela intuição.",
+        "Para desenhar um plano à prova de desculpas para sua semana, use a 'Estratégia do Fatiamento Rápido'. Em vez de grandes metas, defina 3 'micrometas' claras para cada dia, que possam ser iniciadas e concluídas em um curto período (15-30 minutos). Não planeje o mês; planeje o hoje. Cada micrometa deve ser um 'blink' de ação que te tira da zona de conforto. Ao final do dia, avalie: 'O que eu aprendi com esses pequenos saltos?' e 'Qual o próximo micromovimento para amanhã?'. Isso constrói momentum e confiança, destruindo a preferência pelo sofrimento conhecido."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3074ec.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3ff729.jpg"
     }
   ],
-  "citacao_destaque": "O propósito definido é o ponto de partida de toda a realização.",
+  "citacao_destaque": "A intuição é a mente em velocidade máxima, livre das amarras da dúvida. Código da Sabedoria.",
   "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O homem que não tem um propósito definido na vida é como um navio sem leme: o tempo o leva para onde não quer ir.",
+  "verso_base": "O homem que não se move com a mudança não vive, apenas existe. A sabedoria é fluida.",
   "referencia_verso": "Filosofia Estoica",
   "plano_acao": {
-    "titulo_secao": "O Protocolo Antidrift 7x7: Seu Plano de 7 Dias para a Liberdade Financeira",
-    "prompt_imagem": "Cinematic dark moody photography of a person drawing a complex map with a glowing pen, surrounded by ancient scrolls and a focused expression, hyperrealistic, 8k.",
-    "subtitulo": "Aplique estas 7 regras pelos próximos 7 dias e sinta a mentalidade financeira do 'Diabo' perder o controle sobre você. Disciplina é a nova sorte.",
+    "titulo_secao": "O Protocolo Blink: 7 Dias Para Despertar Sua Mente Intuitiva",
+    "prompt_imagem": "Cinematic dark moody photography of a glowing brain connected to a series of intricate gears, set against a dark, reflective surface, hyper-realistic, 8k",
+    "subtitulo": "Ative sua capacidade inata de decisão rápida e estratégica, transformando a inércia em ação deliberada em uma semana.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Desmascare a Mentira",
-        "descricao": "Hoje, identifique sua maior desculpa financeira e escreva-a em um papel. Ao lado, anote a ação MINIMA que você PODE fazer para refutá-la. Faça essa ação agora. Não amanhã, AGORA."
+        "titulo": "Dia 1: O Rastreador de Conforto Tóxico",
+        "descricao": "Hoje, observe e anote 5 momentos em que você escolheu o familiar, mesmo sabendo que não era o ideal. Não julgue, apenas registre. Isso revela os pontos cegos de sua auto-sabotagem. No final do dia, escolha um desses pontos e decida conscientemente agir diferente amanhã."
       },
       {
         "numero": 2,
-        "titulo": "O Foco Imbatível de 15",
-        "descricao": "Duas vezes ao dia, escolha uma tarefa financeira e dedique 15 minutos de foco absoluto. Sem celular, sem abas abertas. Apenas você e a tarefa. Relate o progresso."
+        "titulo": "Dia 2: O Desafio do Primeiro Impulso",
+        "descricao": "Escolha uma decisão pequena do dia (o que comer, qual tarefa iniciar). Conte até 3 e siga a primeira ideia que surgir na sua mente, sem hesitar ou analisar demais. Observe o resultado. Treine seu cérebro a confiar em seus 'blinks' iniciais, mesmo que pareça bobo."
       },
       {
         "numero": 3,
-        "titulo": "O Propósito Inegociável",
-        "descricao": "Defina seu 'Propósito Financeiro Principal' para os próximos 90 dias. Precisa ser claro, mensurável e inspirador. Escreva-o em um lugar visível."
+        "titulo": "Dia 3: O Filtro de Ruído Mental",
+        "descricao": "Dedique 10 minutos para meditação focada. Feche os olhos, concentre-se na sua respiração. Quando um pensamento distrator surgir, observe-o e deixe-o ir. O objetivo não é parar de pensar, mas treinar sua mente a filtrar o barulho e focar no essencial, como um 'thin-slicer' experiente."
       },
       {
         "numero": 4,
-        "titulo": "O Bloqueio Sagrado",
-        "descricao": "Escolha um horário fixo de 30 minutos para seu 'Bloqueio de Tempo Inegociável' diário. Dedique-o à sua meta financeira. Este é um compromisso com você mesmo, inquebrável."
+        "titulo": "Dia 4: A Ação Micro-Massiva",
+        "descricao": "Identifique uma grande tarefa que você tem protelado. Divida-a em 3 micrometas que você possa iniciar e concluir em 15 minutos cada. Faça a primeira micrometa imediatamente, sem pensar. A chave é a ação instantânea, não a perfeição."
       },
       {
         "numero": 5,
-        "titulo": "A Auditoria da Distração",
-        "descricao": "Monitore por um dia onde seu dinheiro e sua atenção estão realmente indo. Identifique um gasto ou um hábito de distração que está te desviando do seu propósito e corte-o na raiz."
+        "titulo": "Dia 5: O Feedback da Intuição",
+        "descricao": "Reflita sobre as decisões rápidas que você tomou nos últimos dias. Quais foram bem-sucedidas? Quais não foram? O que você aprendeu sobre sua intuição? Use este feedback para calibrar seu 'radar' interno, entendendo o que funciona para você."
       },
       {
         "numero": 6,
-        "titulo": "A Visualização do Sucesso",
-        "descricao": "Todos os dias, por 5 minutos, visualize-se vivendo seu propósito financeiro. Sinta a emoção, a liberdade. Isso reforça sua mentalidade e atrai o que você deseja."
+        "titulo": "Dia 6: A Resposta Rápida à Contradição",
+        "descricao": "Quando alguém ou algo apresentar uma ideia que contradiz seu senso comum, em vez de rejeitar ou aceitar cegamente, faça uma pausa de 5 segundos. Pergunte a si mesmo: 'Qual é o meu 'blink' sobre isso? Qual a verdade oculta aqui?'. Treine-se para buscar insights em verdades impopulares."
       },
       {
         "numero": 7,
-        "titulo": "O Relatório de Bordo",
-        "descricao": "No final do 7º dia, revise seu progresso. O que mudou? O que você aprendeu? Planeje os próximos 7 dias com base nesses aprendizados. Repita o ciclo. A consistência é a chave."
+        "titulo": "Dia 7: O Salto Planejado",
+        "descricao": "Com base nas suas aprendizagens, escolha um novo desafio para a próxima semana que antes você evitaria. Desenhe um plano de ação de 3 micrometas diárias para este desafio. Comprometa-se a agir com base em sua intuição afiada e na clareza que você desenvolveu."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_5af7d1.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_bbb6ce.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "7 DIAS PARA REPROGRAMAR SUA MENTE FINANCEIRA E AGIR.",
+    "promessa_clara": "7 DIAS PARA TRANSFORMAR SUA MENTE E SUAS DECISÕES.",
     "beneficios": [
-      "Em 7 dias você identifica e quebra os padrões de estagnação financeira.",
-      "Assuma o controle total da sua atenção e pare de procrastinar de vez.",
-      "Construa um plano de ação à prova de desculpas para suas finanças.",
-      "Desperte a mentalidade de prosperidade que estava adormecida em você.",
-      "Transforme frustração em progresso real e visível, dia após dia."
+      "Identifique os padrões que te prendem ao sofrimento conhecido.",
+      "Aprenda a confiar na sua intuição para decisões rápidas e eficazes.",
+      "Liberte-se da paralisia por análise e da procrastinação.",
+      "Crie planos de ação práticos e à prova de desculpas.",
+      "Assuma o controle do seu destino com clareza e autoridade."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_738f91.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_66c32e.jpg"
 }
