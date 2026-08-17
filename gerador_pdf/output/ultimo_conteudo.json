@@ -1,123 +1,123 @@
 {
-  "titulo_pdf": "O Salto Quântico da Decisão: Desbloqueie a Mente Intuitiva",
-  "subtitulo_pdf": "O protocolo exato para desmascarar a auto-sabotagem e agir com clareza instantânea.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, with subtle gears turning within, 8k",
+  "titulo_pdf": "O MAPA DA ALMA: Sua Bússola Interna para Reacender o Sentido da Vida",
+  "subtitulo_pdf": "Um Guia Prático e Incisivo para Recobrar a Conexão Espiritual e Transformar seu Destino.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
   "capa_cards": [
     {
-      "titulo": "Seu Cérebro Te Prende?",
-      "texto": "Seu cérebro adora o sofrimento conhecido e se recusa a mudar, te mantendo refém de padrões velhos e dolorosos. O que você faz com essa verdade?",
-      "pergunta_destaque": "Cansado de se sabotar?"
+      "titulo": "A Desconexão Silenciosa",
+      "texto": "Você sente o vazio crescer, a vida em automático te roubando a essência e a fé se esvaindo sem perceber. O mundo grita, mas sua alma sussurra a dor da falta de propósito.",
+      "pergunta_destaque": "Sua vida virou uma rotina sem significado?"
     },
     {
-      "titulo": "A Estratégia Blink",
-      "texto": "Um método para confiar nos seus instintos mais rápidos e tomar decisões eficazes em segundos.",
-      "pergunta_destaque": ""
+      "titulo": "Ative A Sabedoria dos Evangelhos",
+      "texto": "Um método direto e profundo dos Evangelhos para restaurar sua bússola moral e espiritual.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Liberdade em Ação",
-      "texto": "Ganhe clareza brutal, tome decisões melhores e liberte-se do ciclo de inércia.",
-      "pergunta_destaque": ""
+      "titulo": "Recupere o Sentido e a Paz",
+      "texto": "Encontre clareza, propósito e a força para agir com fé, HOJE.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Confie na Sua Mente",
-      "texto": "A sabedoria não é lenta, é um flash de clareza brutal. Código da Sabedoria.",
-      "citacao_destaque": "O insight mais rápido é o mais real. Código da Sabedoria."
+      "titulo": "A Verdade Liberta",
+      "texto": "A verdade não é para ser lida, mas vivida.",
+      "citacao_destaque": "A verdade não é para ser lida, mas vivida. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Conforto da Prisão: Por Que o Sofrimento É Tão Sedutor?",
-      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, seeing a distorted reflection, 8k",
+      "titulo": "O Preço Invisível da Vida no Automático",
+      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, 8k",
       "paragrafos": [
-        "É uma verdade chocante, mas seu cérebro prefere a miséria familiar ao caos da mudança. Você se sente preso em um ciclo repetitivo, gastando energia em tarefas que não te levam a lugar nenhum, apenas para manter a ilusão de controle. O custo invisível disso? Uma vida que você não escolheu, vivida no piloto automático, enquanto o potencial de uma versão melhor de si mesmo se desintegra em desculpas. É quase ridículo como nos apegamos a uma rotina que nos esgota, não é? A ironia é que a 'segurança' que buscamos é a própria cela.",
-        "Malcolm Gladwell, em 'Blink', nos mostra como muitas vezes, a primeira impressão, o 'flash' de intuição, é mais precisa do que horas de deliberação. Ele conta a história de um especialista em arte que, ao ver uma estátua grega recém-adquirida por um museu, imediatamente sentiu que era uma falsificação, mesmo sem provas concretas. Todos os outros analisaram por meses e não encontraram nada. A intuição dele, um 'blink', estava correta. A peça era falsa. Você também tem essa capacidade, mas o medo do 'caos da mudança' silencia seu alarme interno.",
-        "A lição útil revelada é que o primeiro passo para sair da inércia é reconhecer o padrão de sabotagem no exato momento em que ele surge. Hoje, preste atenção aos pequenos desconfortos. Aquele 'não' que você queria dizer, a tarefa que você procrastina. Anote três situações onde seu cérebro prefere o conhecido, mesmo que doloroso. Em seguida, escolha uma delas e faça o oposto do que sua zona de conforto ditaria, por menor que seja o movimento. Quebre o padrão com um 'blink' de atitude."
+        "É irônico como buscamos o sentido da vida nas manchetes do dia, nas oscilações da bolsa ou na fama alheia, enquanto a resposta pulsa em um lugar que raramente visitamos: dentro de nós. Você se sente como um navio à deriva, com o motor ligado mas sem rumo, navegando por um mar de informações e distrações, enquanto a bússola interna aponta para um vazio inquietante. Esse piloto automático é o verdadeiro ladrão da sua fé e propósito, operando silenciosamente e cobrando um preço que você só percebe quando a alma já está exausta.",
+        "Imagine um pastor que, tendo cem ovelhas, perde uma. A maioria diria: 'São 99 ainda, que se dane a uma'. Mas os Evangelhos nos mostram que o verdadeiro pastor deixa as 99 para ir atrás daquela única, perdida e sem rumo, até encontrá-la. Não é sobre o número, mas sobre o valor de cada vida, e a sua, que se sente perdida, é infinitamente valiosa.",
+        "O primeiro passo para reencontrar o sentido não é buscar um novo caminho, mas parar de andar no caminho errado. Identifique hoje uma única atividade que drena sua energia espiritual ou te afasta de sua essência, e decida minimizá-la ou eliminá-la. Comece pequeno: 15 minutos de silêncio intencional em vez de rolar o feed. Este é o seu primeiro 'volante' de volta ao controle."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_7b2285.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_89ed9c.jpg"
     },
     {
       "numero": 2,
-      "titulo": "Afie Seu Radar: Domine o Caos Mental e a Intuição Diluída",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, representing clarity and decision, 8k",
+      "titulo": "Dominando a Mente: A Batalha Silenciosa Pelo Foco",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, 8k",
       "paragrafos": [
-        "A dificuldade de manter o foco é a desculpa favorita do cérebro para evitar o desconhecido. Você se sente arrastado por mil distrações, incapaz de aterrar sua atenção no que realmente importa. É um padrão engraçado, não é? Reclamamos da falta de tempo, mas estamos sempre 'ocupados' com coisas que não nos movem. Essa névoa mental é o terreno fértil para o sofrimento conhecido, pois nos impede de ver as alternativas e de confiar em nossa própria bússola interna, que está sempre tentando nos guiar.",
-        "Gladwell explora como bombeiros de elite conseguem tomar decisões de vida ou morte em segundos em meio ao caos de um incêndio. Eles não processam cada detalhe conscientemente, mas 'thin-slice' a situação, reconhecendo padrões e agindo instintivamente com base em anos de experiência e intuição apurada. É o controle dos impulsos e a capacidade de filtrar o barulho para focar na informação essencial. Sua mente, quando treinada, faz o mesmo.",
-        "A técnica exata para dominar sua atenção e reprogramar sua mentalidade começa com o 'Filtro de 60 Segundos'. Quando se sentir sobrecarregado ou prestes a cair em um padrão antigo, pare tudo. Respire fundo três vezes. Pergunte-se: 'Qual a informação mais crucial aqui?' e 'Qual o menor passo de ação que posso tomar AGORA, com base na minha intuição, que me afasta do sofrimento conhecido?'. Não pense por mais de um minuto. Confie no seu primeiro 'blink' de resposta e aja imediatamente. Isso reprograma seu cérebro para valorizar a ação rápida e intuitiva."
+        "A verdade que ninguém quer ouvir: seu cérebro adora o sofrimento familiar. É mais fácil reclamar da falta de sentido do que construir um, porque construir exige disciplina, e disciplina dói. É o mesmo mecanismo que nos faz assistir a dramas repetitivos na TV quando poderíamos estar criando nossa própria saga. O caos externo, as notícias do mercado, a queda de aprovação de figuras públicas - tudo isso distrai e alimenta a inércia, enquanto a mudança real exige que você lute contra o inimigo mais astuto: sua própria mente.",
+        "Quando Jesus foi tentado no deserto, ele não negociou com a dúvida ou com a fome. Ele dominou seus impulsos com a Palavra, com uma convicção inabalável. Não foi fácil, mas foi um ato de soberania sobre si mesmo, um controle absoluto sobre as vozes internas e externas que tentavam desviá-lo de seu propósito.",
+        "Domine sua atenção. Escolha intencionalmente um 'Ponto de Ancoragem Diário' para sua mente. Pode ser uma frase dos Evangelhos, um breve momento de gratidão, ou uma respiração consciente. Ao sentir a mente divagar para o vazio ou o desânimo, retorne a este ponto. Repita isso cinco vezes ao dia. É como treinar um músculo, mas para a alma: fortaleça sua capacidade de redirecionar o foco para o que nutre sua fé e propósito."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_c875fe.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_72a818.jpg"
     },
     {
       "numero": 3,
-      "titulo": "O Plano Relâmpago: Sua Bússola Contra a Exaustão Inútil",
-      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, with a single beam of light, 8k",
+      "titulo": "Construindo o Sentido: Plano de Ação à Prova de Desculpas",
+      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, 8k",
       "paragrafos": [
-        "Você trabalha exausto, mas a sensação de estagnação persiste. Parece que corre, corre, mas nunca chega a lugar algum. Essa exaustão inútil é o resultado direto de um planejamento excessivo ou da falta de qualquer planejamento real, gerando uma paralisia por análise que o mantém no ciclo do sofrimento conhecido. Admitir que estamos presos nessa roda de hamster é o primeiro passo para pular fora, por mais desconfortável que seja confrontar essa verdade.",
-        "O livro 'Blink' nos ensina sobre a força das decisões tomadas rapidamente, mas com base em um vasto repertório de informações 'inconscientes'. Ele aborda como os improvisadores, por exemplo, não seguem um roteiro rígido, mas respondem instantaneamente ao que acontece, construindo algo coerente e inovador em tempo real. Isso é antecipação e escolha de metas reais em ação: não um plano engessado, mas uma capacidade de adaptação e tomada de decisão ágil, calibrada pela intuição.",
-        "Para desenhar um plano à prova de desculpas para sua semana, use a 'Estratégia do Fatiamento Rápido'. Em vez de grandes metas, defina 3 'micrometas' claras para cada dia, que possam ser iniciadas e concluídas em um curto período (15-30 minutos). Não planeje o mês; planeje o hoje. Cada micrometa deve ser um 'blink' de ação que te tira da zona de conforto. Ao final do dia, avalie: 'O que eu aprendi com esses pequenos saltos?' e 'Qual o próximo micromovimento para amanhã?'. Isso constrói momentum e confiança, destruindo a preferência pelo sofrimento conhecido."
+        "É exaustivo, não é? Trabalhar como um condenado, ver o mundo girar em caos, e ainda assim sentir que sua vida está presa em um loop, sem avanço real. Você troca o tempo por dinheiro, e o dinheiro por distrações, mas o sentido continua em falta. Ninguém te preparou para a maratona da existência sem um mapa, e as promessas vazias do sucesso rápido, como as notícias sobre a fama, apenas amplificam a sensação de que você está perdendo algo essencial. O sentimento de 'estar perdido' não é falta de direção, mas falta de um plano de ação claro e intencional.",
+        "Jesus perguntou: 'Qual de vocês, se quiser construir uma torre, não se senta primeiro e calcula os custos, para ver se tem dinheiro suficiente para completá-la?' Parece óbvio, mas quantos de nós aplicam isso à própria vida e propósito? Quantos 'começam a construir' sem calcular o esforço, o tempo e a dedicação necessários para uma vida com sentido?",
+        "Desenhe seu 'Mapa da Intenção Semanal'. Escolha três ações espirituais ou de propósito que você quer realizar esta semana (ex: 15 minutos de leitura espiritual diária, um ato de serviço, uma conversa profunda). Bloqueie-as na sua agenda como se fossem reuniões inadiáveis. Não 'tentar fazer', mas 'fazer'. Calcule o custo da inação e o valor da ação. Seu destino não é algo que se espera, é algo que se constrói, um tijolo de intenção por vez."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3ff729.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_40c5d4.jpg"
     }
   ],
-  "citacao_destaque": "A intuição é a mente em velocidade máxima, livre das amarras da dúvida. Código da Sabedoria.",
-  "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O homem que não se move com a mudança não vive, apenas existe. A sabedoria é fluida.",
-  "referencia_verso": "Filosofia Estoica",
+  "citacao_destaque": "Não são os que ouvem a lei que são justos aos olhos de Deus, mas sim os que praticam a lei.",
+  "titulo_citacao": "A Regra de Ouro da Ação",
+  "verso_base": "A fé, por si só, se não for acompanhada de obras, está morta.",
+  "referencia_verso": "Tiago 2:17",
   "plano_acao": {
-    "titulo_secao": "O Protocolo Blink: 7 Dias Para Despertar Sua Mente Intuitiva",
-    "prompt_imagem": "Cinematic dark moody photography of a glowing brain connected to a series of intricate gears, set against a dark, reflective surface, hyper-realistic, 8k",
-    "subtitulo": "Ative sua capacidade inata de decisão rápida e estratégica, transformando a inércia em ação deliberada em uma semana.",
+    "titulo_secao": "O Protocolo da Conexão Ativa: 7 Dias para Reacender a Chama Interior",
+    "prompt_imagem": "Cinematic dark moody photography of a man meditating in a serene ancient temple, rays of light piercing through, 8k",
+    "subtitulo": "Ative sua fé e propósito com este guia prático e diário baseado nos ensinamentos atemporais para uma vida com mais sentido.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Dia 1: O Rastreador de Conforto Tóxico",
-        "descricao": "Hoje, observe e anote 5 momentos em que você escolheu o familiar, mesmo sabendo que não era o ideal. Não julgue, apenas registre. Isso revela os pontos cegos de sua auto-sabotagem. No final do dia, escolha um desses pontos e decida conscientemente agir diferente amanhã."
+        "titulo": "Dia 1: A PAUSA REFLEXIVA",
+        "descricao": "Identifique uma distração que rouba sua paz. Minimiza-a por 30 minutos hoje para criar um espaço de clareza."
       },
       {
         "numero": 2,
-        "titulo": "Dia 2: O Desafio do Primeiro Impulso",
-        "descricao": "Escolha uma decisão pequena do dia (o que comer, qual tarefa iniciar). Conte até 3 e siga a primeira ideia que surgir na sua mente, sem hesitar ou analisar demais. Observe o resultado. Treine seu cérebro a confiar em seus 'blinks' iniciais, mesmo que pareça bobo."
+        "titulo": "Dia 2: O FOCO SAGRADO",
+        "descricao": "Escolha uma frase inspiradora dos Evangelhos. Medite nela por 5 minutos, três vezes ao dia, para ancorar sua mente."
       },
       {
         "numero": 3,
-        "titulo": "Dia 3: O Filtro de Ruído Mental",
-        "descricao": "Dedique 10 minutos para meditação focada. Feche os olhos, concentre-se na sua respiração. Quando um pensamento distrator surgir, observe-o e deixe-o ir. O objetivo não é parar de pensar, mas treinar sua mente a filtrar o barulho e focar no essencial, como um 'thin-slicer' experiente."
+        "titulo": "Dia 3: AÇÃO CONSCIENTE",
+        "descricao": "Realize um pequeno ato de bondade, sem esperar reconhecimento. Deixe a fé se manifestar em obras concretas."
       },
       {
         "numero": 4,
-        "titulo": "Dia 4: A Ação Micro-Massiva",
-        "descricao": "Identifique uma grande tarefa que você tem protelado. Divida-a em 3 micrometas que você possa iniciar e concluir em 15 minutos cada. Faça a primeira micrometa imediatamente, sem pensar. A chave é a ação instantânea, não a perfeição."
+        "titulo": "Dia 4: O SILÊNCIO QUE REVELA",
+        "descricao": "Passe 15 minutos em silêncio absoluto, apenas observando seus pensamentos. Ouça a voz da sua intuição."
       },
       {
         "numero": 5,
-        "titulo": "Dia 5: O Feedback da Intuição",
-        "descricao": "Reflita sobre as decisões rápidas que você tomou nos últimos dias. Quais foram bem-sucedidas? Quais não foram? O que você aprendeu sobre sua intuição? Use este feedback para calibrar seu 'radar' interno, entendendo o que funciona para você."
+        "titulo": "Dia 5: A GRATIDÃO ATIVA",
+        "descricao": "Escreva três coisas pelas quais você é grato e por que. Reconheça as bênçãos diárias em sua vida."
       },
       {
         "numero": 6,
-        "titulo": "Dia 6: A Resposta Rápida à Contradição",
-        "descricao": "Quando alguém ou algo apresentar uma ideia que contradiz seu senso comum, em vez de rejeitar ou aceitar cegamente, faça uma pausa de 5 segundos. Pergunte a si mesmo: 'Qual é o meu 'blink' sobre isso? Qual a verdade oculta aqui?'. Treine-se para buscar insights em verdades impopulares."
+        "titulo": "Dia 6: O COMPROMISSO REAL",
+        "descricao": "Defina uma única meta espiritual para a próxima semana e planeje como alcançá-la. Escreva os passos práticos."
       },
       {
         "numero": 7,
-        "titulo": "Dia 7: O Salto Planejado",
-        "descricao": "Com base nas suas aprendizagens, escolha um novo desafio para a próxima semana que antes você evitaria. Desenhe um plano de ação de 3 micrometas diárias para este desafio. Comprometa-se a agir com base em sua intuição afiada e na clareza que você desenvolveu."
+        "titulo": "Dia 7: A CONEXÃO RENOVADA",
+        "descricao": "Compartilhe sua jornada ou aprendizado com alguém de confiança. A fé cresce ao ser vivida e compartilhada."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_bbb6ce.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_d3f2d3.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "7 DIAS PARA TRANSFORMAR SUA MENTE E SUAS DECISÕES.",
+    "promessa_clara": "7 DIAS PARA REACENDER A CHAMA DA FÉ E PROPÓSITO.",
     "beneficios": [
-      "Identifique os padrões que te prendem ao sofrimento conhecido.",
-      "Aprenda a confiar na sua intuição para decisões rápidas e eficazes.",
-      "Liberte-se da paralisia por análise e da procrastinação.",
-      "Crie planos de ação práticos e à prova de desculpas.",
-      "Assuma o controle do seu destino com clareza e autoridade."
+      "Reencontre o sentido perdido na rotina exaustiva.",
+      "Domine sua atenção e foque no que realmente importa.",
+      "Crie um plano de ação espiritual à prova de desculpas.",
+      "Experimente a paz e clareza dos Evangelhos na prática.",
+      "Transforme sua fé em ação e seu destino em propósito."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_66c32e.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_445d1a.jpg"
 }
