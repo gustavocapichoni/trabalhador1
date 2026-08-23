@@ -115,9 +115,9 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
 
     return np.array(img)
 
-# Paleta fixa da marca: Sábado — Abundância & Ouro (Dourado Âmbar → Prata Metálico → Bronze)
+# Paleta fixa da marca: Prata Metálico Sólido (#D8DCE3)
 # Esta é a identidade visual permanente de todas as postagens do perfil.
-PALETA_PADRAO_MARCA = ([255, 215, 0], [216, 220, 227], [139, 90, 43])
+PALETA_PADRAO_MARCA = ([216, 220, 227], [216, 220, 227], [216, 220, 227])
 
 # Paleta do Reels Leads — Prata Metálico sólido (sem degradê colorido)
 PALETAS_LEADS = [
@@ -126,7 +126,7 @@ PALETAS_LEADS = [
 ]
 
 def obter_paleta_do_dia():
-    """Retorna a paleta fixa da marca: Dourado Âmbar → Branco → Bronze."""
+    """Retorna a paleta fixa da marca: Prata Metálico Sólido."""
     return PALETA_PADRAO_MARCA
 
 def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0, paleta=None):

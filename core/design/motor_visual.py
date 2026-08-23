@@ -437,10 +437,8 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, tipo="reels"):
     else:
         frases = [frase_raw]  # story/post estático: string única
 
-    # Injeta CTA charmoso de seguir no ÚLTIMO slide dos Reels (não no story_manha)
-    # A IA já é orientada a fundir xeque-mate + convite nos prompts, mas esta injeção
-    # garante um slide visual dedicado e separado do conteúdo principal.
-    if tipo in ["reels", "reels_noite", "reels_conquistador"]:
+    # Injeta CTA apenas para reels_conquistador (reels manha/tarde/noite e story_manha sao sem CTAs)
+    if tipo in ["reels_conquistador"]:
         ctas_seguir = [
             "Se você busca respostas que a maioria ignora, acompanhe o perfil.",
             "Quem chegou até aqui já está à frente. Siga para continuar crescendo.",
@@ -470,8 +468,9 @@ def _gerar_reels(img, W, H, dados, tema_escolhido=None, tipo="reels"):
     font_display, font_body, _ = carregar_fontes(86, 22, 24, estilo=estilo_sorteado)
 
     for idx, frase in enumerate(frases):
-        if idx > 0 and tema_escolhido:
-            # Busca uma nova imagem para o próximo slide
+        # story_manha, reels e reels_noite usam a MESMA imagem base para todos os slides (1 unica imagem por post)
+        if idx > 0 and tema_escolhido and tipo not in ["story_manha", "reels", "reels_noite"]:
+            # Busca uma nova imagem para o próximo slide (ex: carrossel)
             prompt_secundario = dados.get("prompt_imagem")
             nova_img, _, _ = buscar_imagem_fundo("reels", tema_escolhido, prompt_imagem=prompt_secundario)
             nova_img = aplicar_mesh_gradient(nova_img)

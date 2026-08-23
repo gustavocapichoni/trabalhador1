@@ -164,9 +164,14 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
     video_clip = None
     try:
         audio_clip = AudioFileClip(caminho_audio)
-        duracao_por_slide = 9.0
-        DURACAO_ULTIMO_SLIDE = 11.0  # Último slide (CTA) tem mais tempo para leitura
-        DURACAO_GANCHO_COMUM = 7.0  # Gancho do reels dura 7 segundos para leitura confortável
+        if tipo in ["story_manha", "reels", "reels_noite"]:
+            duracao_por_slide = 5.0
+            DURACAO_ULTIMO_SLIDE = 5.0
+            DURACAO_GANCHO_COMUM = 5.0
+        else:
+            duracao_por_slide = 9.0
+            DURACAO_ULTIMO_SLIDE = 11.0  # Último slide (CTA) tem mais tempo para leitura
+            DURACAO_GANCHO_COMUM = 7.0  # Gancho do reels dura 7 segundos para leitura confortável
         n_slides = len(caminhos_imagens)
 
         # Dimensões da imagem (necessário antes de carregar o outro)
@@ -202,7 +207,9 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
 
         # Duração do áudio = slides + vídeo final (música cobre tudo)
         is_reels_comum = (tipo in ["reels", "reels_noite"])
-        if is_reels_comum and n_slides >= 2:
+        if tipo in ["story_manha", "reels", "reels_noite"]:
+            duracao_slides = n_slides * 5.0
+        elif is_reels_comum and n_slides >= 2:
             duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
         else:
             duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE

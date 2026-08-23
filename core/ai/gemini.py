@@ -171,9 +171,9 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_cate
     return dados
 
 def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
-    # Calcula número de slides para stories de forma alternada a cada dia (3 em um dia, 4 no outro)
+    # Calcula número de slides para stories de forma alternada a cada dia (2 em um dia, 3 no outro)
     dia_ano = datetime.now(timezone.utc).timetuple().tm_yday
-    num_slides_story = 3 if dia_ano % 2 == 0 else 4
+    num_slides_story = 2 if dia_ano % 2 == 0 else 3
 
     if tipo == "test":
         logger.info("Gerando conteudo de teste estatico...")
@@ -625,40 +625,33 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
           "legenda": "Sua legenda completa aqui sem hashtags"
         }}
         """
-    elif tipo == "reels":
+        num_slides_reels = 2 if dia_ano % 2 == 0 else 3
         prompt = f"""
         Você é a Máquina de Construção de Curiosidade. Seu objetivo é criar um roteiro em slides que faça o usuário PARAR de rolar o feed e assistir até o final.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA EXATA DE 6 SLIDES seguindo rigorosamente a estrutura oficial de 6 Fases (Nicholas Boothman):
-
-        - Slide 1 / Fase 1 (Interrupção Mental - 0-2s): O Gancho/Quebra de Padrão. Nunca comece afirmando. Sempre comece criando uma lacuna mental com uma pergunta ou mistério irresistível. Use as fórmulas de ganchos: "Você acredita que...", "Existe uma mentira...", "Ninguém percebe que...", "O maior erro...", "Quase todo mundo...". (entre 10 e 15 palavras)
-        - Slide 2 / Fase 2 (Identificação - 2-6s): Conexão direta com o espectador. Ele deve pensar: "Isso é sobre mim". Fale diretamente com o leitor usando "você", nunca "as pessoas". (entre 10 e 15 palavras)
-        - Slide 3 / Fase 3 (Quebra de expectativa - 6-12s): Tensão e surpresa que mudam o rumo esperado. Use fórmulas como: "Mas o problema não é esse.", "Na verdade acontece exatamente o contrário.", "É aqui que quase todos erram.". (entre 10 e 15 palavras)
-        - Slide 4 / Fase 4 (Desenvolvimento do Raciocínio): Desenvolva a ideia com lógica. Cada slide responde ao anterior. Entregue lucidez. (entre 10 e 15 palavras)
-        - Slide 5 / Fase 5 (Reflexão - 25-35s): Frase memorável e inesquecível de altíssimo impacto (Xeque-mate). (entre 10 e 15 palavras)
-        - Slide 6 / Fase 6 (Convite Invisível): CTA sutil que faz a pessoa pensar e agir em sua própria vida, sem pedir para seguir diretamente. Use fórmulas como: "Amanhã você vai tentar controlar tudo outra vez. Observe isso.", "Repare nisso durante o dia.", "Pense nisso antes de dormir.". (entre 10 e 15 palavras)
+        CRIE UMA SEQUÊNCIA NARRATIVA CURTA DE EXATAMENTE {num_slides_reels} SLIDES (ENTRE 10 E 15 PALAVRAS POR SLIDE, SEM QUALQUER CTA OU CONVITE PARA SEGUIR):
+        - Slide 1 (Gancho/Interrupção Mental): Frase cortante que faz parar o scroll (10 a 15 palavras).
+        - Slide 2 (Insight / Revelação): Aprofundamento da provocação (10 a 15 palavras).
+        {"- Slide 3 (Reflexão Memorável Xeque-Mate): Fechamento direto de alto impacto (10 a 15 palavras)." if num_slides_reels == 3 else ""}
 
         REGRAS DE ESCRITA E RITMO VISUAL:
         * Todas as frases devem ser curtas, cortantes e limpas.
         * NÃO use pontos de exclamação.
         * PROIBIDO usar "..." de forma automática.
+        * PROIBIDO qualquer chamada para ação (CTA), pedido para seguir ou convite.
 
         LEGENDA:
         - Máximo 3 linhas. Foco em complementar a reflexão em tom direto.
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido assim (deve ter exatamente 6 slides):
+        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter EXATAMENTE {num_slides_reels} itens):
         {{
           "slides": [
-            "Slide 1 (Interrupção Mental - Gancho)",
-            "Slide 2 (Identificação - Foco no você)",
-            "Slide 3 (Quebra de Expectativa)",
-            "Slide 4 (Revelação)",
-            "Slide 5 (Reflexão Memorável)",
-            "Slide 6 (Convite Invisível)"
+            "Slide 1 (Gancho)",
+            "Slide 2 (Insight)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
