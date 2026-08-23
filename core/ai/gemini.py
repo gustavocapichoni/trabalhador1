@@ -855,32 +855,32 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
             except Exception as e:
                 logger.warning(f"Erro ao obter titulo e solucao do PDF: {e}")
 
-        # ── Rotação sequencial dos 5 pilares visuais ──────────────────────────
+        # ── Rotação sequencial dos 5 pilares visuais de alta classe ───────────
         PILARES_VISUAIS_LEADS = [
             {
-                "nome": "Show e Multidão em Êxtase",
-                "exemplo_query": "stadium concert crowd cheering stage lights high energy cinematic",
-                "descricao": "shows lotados, multidões em êxtase, luzes de palco vibrantes, atmosfera de rockstar e grandeza",
+                "nome": "Gala de Luxo e Alta Sociedade",
+                "exemplo_query": "exclusive luxury gala evening event elegant man in suit chic woman cinematic",
+                "descricao": "eventos de gala noturnos, ternos elegantes, vestidos de grife, iluminação dourada requintada e alta sociedade",
             },
             {
-                "nome": "Luxo e Poder",
-                "exemplo_query": "luxury sports car driving bright modern city successful lifestyle 4k",
-                "descricao": "carros de luxo, penthouses, ambientes premium, estilo de vida de altíssimo padrão, sol brilhando",
+                "nome": "Caminhada Urbana Noturna",
+                "exemplo_query": "stylish couple walking city night golden lighting architecture cinematic 4k",
+                "descricao": "casais ou pessoas elegantes caminhando em avenidas e praças iluminadas à noite ou no amanhecer",
             },
             {
-                "nome": "Amanhecer Épico e Visão",
-                "exemplo_query": "successful person standing mountain top or modern building looking at epic sunrise",
-                "descricao": "amanhecer glorioso, luz dourada da manhã, líderes olhando para o horizonte com visão de futuro",
+                "nome": "Visão Penthouse e Liderança",
+                "exemplo_query": "confident leader standing modern skyscraper penthouse balcony city night view",
+                "descricao": "terraços de luxo, coberturas modernas, visão panorâmica da cidade iluminada e atmosfera de triunfo",
             },
             {
-                "nome": "Palco e Liderança",
-                "exemplo_query": "charismatic leader speaking on stage spotlights audience applause",
-                "descricao": "líderes palestrando, palcos iluminados, aplausos, carisma e magnetismo",
+                "nome": "Estilo de Vida VIP Sábio",
+                "exemplo_query": "luxury sports car driving illuminated modern city night successful lifestyle",
+                "descricao": "carros premium rodando pela cidade à noite, arquitetura contemporânea, cafés requintados e sobriedade",
             },
             {
-                "nome": "Celebração e Pertencimento",
-                "exemplo_query": "exclusive party people celebrating cheering champagne luxury event",
-                "descricao": "pessoas celebrando o topo, festas exclusivas, alegria, alta energia, ambiente festivo premium",
+                "nome": "Palco e Prestígio",
+                "exemplo_query": "charismatic leader speaking on illuminated stage audience applause cinematic",
+                "descricao": "líderes em palcos iluminados, atmosfera de sabedoria, palestras de prestígio e autoridade",
             },
         ]
         estado_leads = carregar_estado()

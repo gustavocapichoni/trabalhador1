@@ -158,12 +158,34 @@ def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade
         larguras.append(bb[2] - bb[0])
 
     espaco_entre = 14
-    padding_v = 20
+    padding_v = 24
+    padding_h = 36
     h_texto = sum(alturas) + espaco_entre * (len(linhas) - 1)
     total_h = h_texto + padding_v * 2
     by0 = (h - total_h) // 2
 
     y_inicial = by0 + padding_v + deslocamento_y
+    
+    # ── CARD VITRINE: Painel escuro semitransparente com cantos arredondados ──
+    try:
+        max_lw = max(larguras) if larguras else 0
+        card_w = max_lw + (padding_h * 2)
+        card_h = total_h
+        card_x0 = (w - card_w) // 2
+        card_y0 = (by0 + deslocamento_y)
+        card_x1 = card_x0 + card_w
+        card_y1 = card_y0 + card_h
+
+        card_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        card_draw = ImageDraw.Draw(card_layer)
+        alpha_card = int(140 * fade_alpha)  # ~55% de opacidade para efeito vitrine vidro escuro
+        cor_card = (12, 12, 18, alpha_card)  # Tom dark premium
+        cor_borda = (235, 180, 50, int(60 * fade_alpha))  # Sutil borda dourada elegante
+        card_draw.rounded_rectangle([card_x0, card_y0, card_x1, card_y1], radius=20, fill=cor_card, outline=cor_borda, width=1)
+        img = Image.alpha_composite(img.convert("RGBA"), card_layer)
+    except Exception as e_card:
+        logger.debug(f"Erro ao desenhar card vitrine: {e_card}")
+
     y = y_inicial
     chars_drawn = 0
     for linha, alt, lw in zip(linhas, alturas, larguras):
@@ -341,6 +363,28 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
 
     by0 = (h - total_h) // 2
     y_inicial_bloco = by0 + padding_v + deslocamento_y
+
+    # ── CARD VITRINE (CTA): Painel escuro semitransparente com cantos arredondados ──
+    try:
+        todas_larguras = larguras_topo + larguras_baixo
+        max_lw = max(todas_larguras) if todas_larguras else 0
+        padding_h = 36
+        card_w = max_lw + (padding_h * 2)
+        card_h = total_h
+        card_x0 = (w - card_w) // 2
+        card_y0 = (by0 + deslocamento_y)
+        card_x1 = card_x0 + card_w
+        card_y1 = card_y0 + card_h
+
+        card_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        card_draw = ImageDraw.Draw(card_layer)
+        alpha_card = int(140 * fade_alpha)
+        cor_card = (12, 12, 18, alpha_card)
+        cor_borda = (235, 180, 50, int(60 * fade_alpha))
+        card_draw.rounded_rectangle([card_x0, card_y0, card_x1, card_y1], radius=20, fill=cor_card, outline=cor_borda, width=1)
+        img = Image.alpha_composite(img.convert("RGBA"), card_layer)
+    except Exception as e_card:
+        logger.debug(f"Erro ao desenhar card vitrine CTA: {e_card}")
 
     if paleta_override:
         shadow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
@@ -1055,51 +1099,14 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
             def _desenhar_elementos_marca(frame_array, fator_escala=1.0, is_cta=False, t_slide=0.0, idx_slide_atual=0):
                 """
-                Desenha a marca d'água ou o CTA do dia no rodapé do frame.
-
-                Regras para reels_leads e story_tarde:
-                  - Slide 0 (1º slide): exibe a marca d'água normal.
-                  - Slide 1+ (2º slide em diante): exibe o CTA do dia com animação de transição.
-                    A transição ocorre nos primeiros 0.5s do slide:
-                      * Marca d'água faz fade-out (opacidade 100% → 0%).
-                      * CTA faz fade-in  (opacidade 0%   → 100%).
-                    Após 0.5s o CTA fica fixo pelo restante do slide.
-
-                Todos os outros formatos: comportamento original (marca d'água sempre).
+                Desenha a marca d'água permanente no rodapé do frame (foto_perfil.png).
                 """
                 img = Image.fromarray(frame_array).convert("RGBA")
                 w, h = img.size
                 logo_dir = os.path.join("biblioteca_local", "logo")
 
-                # ── Duração da animação de transição (em segundos) ──────────────
-                DURACAO_TRANSICAO = 0.5
-
-                # ── Decide se usamos o CTA do dia ou a marca d'água ─────────────
-                usar_cta = (
-                    (is_reels_leads or is_story_tarde)
-                    and _path_cta_do_dia is not None
-                    and idx_slide_atual >= 1          # A partir do 2º slide
-                )
-
-                # ── Calcula opacidades da transição ─────────────────────────────
-                if usar_cta:
-                    if idx_slide_atual == 1:
-                        # Transição suave apenas na passagem do Slide 0 para o Slide 1
-                        progresso_transicao = min(1.0, t_slide / DURACAO_TRANSICAO) if DURACAO_TRANSICAO > 0 else 1.0
-                        alpha_marca = int(255 * (1.0 - progresso_transicao))
-                        alpha_cta   = int(255 * progresso_transicao)
-                    else:
-                        # Do Slide 2 em diante, o CTA fica fixo e a marca d'água 100% oculta
-                        alpha_marca = 0
-                        alpha_cta   = 255
-                else:
-                    # Slide 0 ou formatos não-CTA: apenas marca d'água em opacidade total
-                    alpha_marca = 255
-                    alpha_cta   = 0
-
-                # ── Helper: aplica logo com opacidade customizada ────────────────
-                def _colar_logo(path_img, largura_px, y_offset_px, alpha_override):
-                    """Carrega, redimensiona e cola uma imagem PNG com alpha_override (0-255)."""
+                # ── Helper: aplica logo com opacidade total ──────────────────
+                def _colar_logo(path_img, largura_px, y_offset_px):
                     if not path_img or not os.path.exists(path_img):
                         return False
                     try:
@@ -1107,10 +1114,6 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                         aspect = logo_img.height / logo_img.width
                         altura_px = int(largura_px * aspect)
                         logo_res = logo_img.resize((largura_px, altura_px), Image.Resampling.LANCZOS)
-                        # Aplica alpha_override multiplicando o canal alpha de cada pixel
-                        r, g, b, a = logo_res.split()
-                        a = a.point(lambda px: int(px * alpha_override / 255))
-                        logo_res = Image.merge("RGBA", (r, g, b, a))
                         x_pos = int((w - largura_px) / 2)
                         y_pos = h - altura_px - y_offset_px
                         img.paste(logo_res, (x_pos, y_pos), logo_res)
@@ -1119,18 +1122,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                         logger.warning(f"⚠️ Erro ao colar imagem '{path_img}': {e}")
                         return False
 
-                # ── 1. Marca d'água (sempre visível no Slide 0; fade-out nos slides seguintes) ──
+                # ── Marca d'água permanente (foto_perfil.png em todos os slides) ──
                 path_logo_rodape = os.path.join(logo_dir, "foto_perfil.png")
-
                 largura_marca = max(140, int(280 * fator_escala))
                 y_offset_marca = int(55 * fator_escala)
-                marca_aplicada = False
 
-                if alpha_marca > 0:
-                    marca_aplicada = _colar_logo(path_logo_rodape, largura_marca, y_offset_marca, alpha_marca)
+                marca_aplicada = _colar_logo(path_logo_rodape, largura_marca, y_offset_marca)
 
                 # Fallback textual se a imagem da marca não estiver disponível
-                if not marca_aplicada and alpha_marca > 0:
+                if not marca_aplicada:
                     draw = ImageDraw.Draw(img)
                     tamanho_marca = max(22, int(36 * fator_escala))
                     fonte_rodape = _carregar_fonte(tamanho_marca, "Montserrat")
@@ -1139,23 +1139,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     tw = bb[2] - bb[0]
                     x_marca = (w - tw) // 2
                     y_marca = h - int(60 * fator_escala)
-                    cor_brilho = (235, 160, 40, min(50, alpha_marca))
-                    cor_sombra = (0, 0, 0, min(200, alpha_marca))
-                    cor_texto  = (250, 185, 55, alpha_marca)
+                    cor_brilho = (235, 160, 40, 50)
+                    cor_sombra = (0, 0, 0, 200)
+                    cor_texto  = (250, 185, 55, 255)
                     for ox in [-2, -1, 0, 1, 2]:
                         for oy in [-2, -1, 0, 1, 2]:
                             if ox != 0 or oy != 0:
                                 draw.text((x_marca + ox, y_marca + oy), texto_marca, font=fonte_rodape, fill=cor_brilho)
                     draw.text((x_marca + 2, y_marca + 2), texto_marca, font=fonte_rodape, fill=cor_sombra)
                     draw.text((x_marca, y_marca), texto_marca, font=fonte_rodape, fill=cor_texto)
-
-                # ── 2. CTA do dia (fade-in a partir do Slide 2 em reels_leads/story_tarde) ──
-                if usar_cta and alpha_cta > 0:
-                    largura_cta = max(140, int(280 * fator_escala))  # Ajustado para 280px igual à marca d'água
-                    _colar_logo(_path_cta_do_dia, largura_cta, y_offset_marca, alpha_cta)
-
-                # ── 3. CTA LIMPO — sem efeito de brilho pulsante ────────────────
-                # Removido permanentemente para evitar oscilações de luz/pisca-pisca
 
                 return np.array(img.convert("RGB"))
 
