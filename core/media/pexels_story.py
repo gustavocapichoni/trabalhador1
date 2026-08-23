@@ -119,10 +119,10 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
 # Esta é a identidade visual permanente de todas as postagens do perfil.
 PALETA_PADRAO_MARCA = ([255, 215, 0], [216, 220, 227], [139, 90, 43])
 
-# Paletas exclusivas do Reels Leads — alternam a cada geração para diferenciar esse formato
+# Paleta do Reels Leads — Prata Metálico sólido (sem degradê colorido)
 PALETAS_LEADS = [
-    ([176, 38, 255], [216, 220, 227], [0, 51, 255]),   # Visão Profética (Roxo → Prata Metálico → Azul)
-    ([255, 20, 147], [216, 220, 227], [180, 0, 30]),    # Paixão & Força (Rosa → Prata Metálico → Vermelho Escuro)
+    ([216, 220, 227], [216, 220, 227], [216, 220, 227]),   # Prata Metálico sólido
+    ([216, 220, 227], [216, 220, 227], [216, 220, 227]),   # Prata Metálico sólido (alternado)
 ]
 
 def obter_paleta_do_dia():
