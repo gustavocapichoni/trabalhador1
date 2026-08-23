@@ -987,10 +987,10 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         Apresente a chave da virada citando ou introduzindo o tema do material: "{titulo_pdf_limpo}".
         LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
 
-        SLIDE 4 — CTA FINAL DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por \n):
+        SLIDE 4 — CTA FINAL DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por \\n):
         OBJETIVO: Chamada para ação simples e irresistível.
-        Parte 1 (ANTES de \n): no máximo 5 a 6 palavras. Ex: "Comente 'SABEDORIA' pra receber no Direct."
-        Parte 2 (DEPOIS de \n): no máximo 5 a 6 palavras. Ex: "Descubra o método prático da semana."
+        Parte 1 (ANTES de \\n): no máximo 5 a 6 palavras. Ex: "Comente 'SABEDORIA' pra receber no Direct."
+        Parte 2 (DEPOIS de \\n): no máximo 5 a 6 palavras. Ex: "Descubra o método prático da semana."
         REGRA INEGOCIÁVEL: A soma de palavras da Parte 1 + Parte 2 NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
 
         ═══════════════════════════════════════════════════
@@ -1015,7 +1015,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - DEVE terminar com variação natural do CTA. Exemplo: "Comente 'SABEDORIA' que te envio no Direct 👇"
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido (o array 'slides' DEVE conter EXATAMENTE 4 frases, a 4ª com \n):
+        Responda APENAS em formato JSON válido (o array 'slides' DEVE conter EXATAMENTE 4 frases, a 4ª com \\n):
         {{
           "cta_keyword": "SABEDORIA",
           "slides": [
