@@ -691,11 +691,11 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         num_videos_necessarios = 1
         logger.info(f"📊 [STORY_TARDE] {num_slides_estimado} slides × 5s = {duracao_necessaria_reels}s | 1 vídeo único de {duracao_minima_download}s+")
     elif is_reels_leads:
-        num_slides_estimado = len(slides) if slides else 3
-        duracao_necessaria_reels = min(15.0, num_slides_estimado * 4.5)  # ~13.5s total (3 slides)
-        duracao_minima_download = 15
+        num_slides_estimado = len(slides) if slides else 4
+        duracao_necessaria_reels = num_slides_estimado * 5.0  # 5s por slide (ex: 4 slides = 20s)
+        duracao_minima_download = int(duracao_necessaria_reels)
         num_videos_necessarios = 1
-        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides rápidos → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
+        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides × 5s = {duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     elif (not is_noite) and (not is_conquistador):
         # pexels_story da Manhã: 1 único vídeo de fundo contínuo de ~12s a 14s (3 slides)
         num_slides_estimado = len(slides) if slides else 3

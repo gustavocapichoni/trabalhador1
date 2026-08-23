@@ -968,36 +968,30 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         3. Se a sequência toda conduz logicamente ao PDF como próxima peça natural da conversa.
 
         ═══════════════════════════════════════════════════
-        ESTRUTURA OBRIGATÓRIA DOS SLIDES (6 OU 7 SLIDES):
+        ESTRUTURA OBRIGATÓRIA DOS SLIDES (EXATAMENTE 4 SLIDES):
         ═══════════════════════════════════════════════════
 
-        SLIDE 1 — PARAR O SCROLL (MÁXIMO 8 a 10 palavras):
-        OBJETIVO COMPORTAMENTAL: fazer o polegar parar.
+        SLIDE 1 — PARAR O SCROLL / GANCHO DE ALTO IMPACTO (MÁXIMO 8 a 10 palavras):
+        OBJETIVO: Fazer o polegar parar imediatamente.
         Use o mecanismo {mecanismo_nome} desde a primeira palavra.
-        LIMITE ESTRITO: No máximo 8 a 10 palavras. DEVE caber em exatamente 2 ou 3 linhas na tela.
-        PROIBIDO: frases motivacionais genéricas, clichês de autoajuda, frases longas.
+        LIMITE ESTRITO: No máximo 8 a 10 palavras (DEVE caber em no máximo 3 linhas na tela).
+        PROIBIDO: frases motivacionais genéricas, clichês ou textos longos.
 
-        SLIDES 2 e 3 — CRIAR IDENTIFICAÇÃO E REVELAR A DOR (MÁXIMO 8 a 10 palavras por slide):
-        OBJETIVO COMPORTAMENTAL: fazer a pessoa pensar "ele descreveu exatamente o que vivo".
-        Descreva situações concretas e específicas. REVELE o que a pessoa já sente.
-        LIMITE ESTRITO: No máximo 8 a 10 palavras por slide. Escreva pensamentos curtos e diretos.
-        JAMAIS faça a pessoa se sentir inferior ou culpada.
+        SLIDE 2 — IDENTIFICAÇÃO E REVELAÇÃO DA DOR (MÁXIMO 8 a 10 palavras):
+        OBJETIVO: Fazer a pessoa pensar "ele descreveu exatamente o que vivo".
+        Revele o conflito interno ou dor sem acusar ou diminuir o leitor.
+        LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
 
-        SLIDE 4 — VIRADA: A NOVA PERCEPÇÃO (MÁXIMO 8 a 10 palavras):
-        OBJETIVO COMPORTAMENTAL: criar o desejo de saber mais.
-        Apresente a ideia central como uma revelação. Abra a porta com uma frase sintética de 8 a 10 palavras.
+        SLIDE 3 — VIRADA E PONTE COM O MATERIAL (MÁXIMO 8 a 10 palavras):
+        OBJETIVO: A nova percepção + conexão lógica com o conteúdo da semana.
+        Apresente a chave da virada citando ou introduzindo o tema do material: "{titulo_pdf_limpo}".
+        LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
 
-        SLIDE 5 — PONTE PARA O MATERIAL:
-        OBJETIVO COMPORTAMENTAL: fazer o PDF parecer a próxima peça lógica da conversa.
-        Frase de convite super enxuta (MÁXIMO 6 a 8 palavras). Exemplo: "Para evoluir na prática, veja o material da semana."
-        Apresente o nome EXATO do material: "{titulo_pdf_limpo}".
-        Se ultrapassar 12 palavras no total: OBRIGATÓRIO dividir em 2 slides (Slide 5 = convite curto, Slide 6 = Título do PDF).
-
-        SLIDE FINAL — CTA DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por \\n):
-        OBJETIVO COMPORTAMENTAL: tornar o ato de comentar simples e de baixo custo.
-        Parte 1 (ANTES de \\n): no máximo 5 a 6 palavras. Modelo: "Comente 'SABEDORIA' pra receber no Direct."
-        Parte 2 (DEPOIS de \\n): no máximo 5 a 6 palavras. Modelo: "Descubra o método prático da semana."
-        REGRA INEGOCIÁVEL: A soma de palavras da Parte 1 + Parte 2 NÃO PODE ultrapassar 12 palavras no total. Isso garante EXATAMENTE 2 (ou no máximo 3) linhas na tela.
+        SLIDE 4 — CTA FINAL DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por \n):
+        OBJETIVO: Chamada para ação simples e irresistível.
+        Parte 1 (ANTES de \n): no máximo 5 a 6 palavras. Ex: "Comente 'SABEDORIA' pra receber no Direct."
+        Parte 2 (DEPOIS de \n): no máximo 5 a 6 palavras. Ex: "Descubra o método prático da semana."
+        REGRA INEGOCIÁVEL: A soma de palavras da Parte 1 + Parte 2 NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
 
         ═══════════════════════════════════════════════════
         REGRAS ABSOLUTAS DE QUALIDADE:
@@ -1021,17 +1015,14 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - DEVE terminar com variação natural do CTA. Exemplo: "Comente 'SABEDORIA' que te envio no Direct 👇"
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido (o array 'slides' DEVE conter 6 OU 7 frases, a última com \\n):
+        Responda APENAS em formato JSON válido (o array 'slides' DEVE conter EXATAMENTE 4 frases, a 4ª com \n):
         {{
           "cta_keyword": "SABEDORIA",
           "slides": [
-            "Gancho com mecanismo {mecanismo_nome} — faz o scroll parar.",
-            "Identificação concreta: a pessoa pensa 'isso acontece comigo'.",
-            "Aprofundamento da dor — revela, não acusa. Remove a culpa da pessoa.",
-            "Virada: a nova percepção que muda tudo. Abre a porta, não entrega a solução.",
-            "Ponte natural para o material, sem parecer venda.",
-            "{titulo_pdf_limpo}.",
-            "Comente 'SABEDORIA' e eu te envio direto no Direct. \\n Você vai descobrir [promessa concreta do benefício real do PDF]."
+            "Gancho de alto impacto com {mecanismo_nome}.",
+            "Identificação concreta da dor ou tensão.",
+            "Virada de chave com {titulo_pdf_limpo}.",
+            "Comente 'SABEDORIA' pra receber no Direct. \\n Descubra o método prático da semana."
           ],
           "pexels_queries": [
             "{pilar_exemplo}",
