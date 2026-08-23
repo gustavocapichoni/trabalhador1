@@ -36,7 +36,7 @@ def aplicar_mesh_gradient(img, cor_inicio=None, cor_fim=None, alpha_topo=15, alp
         
     return Image.alpha_composite(img.convert('RGBA'), overlay)
 
-def draw_text_with_shadow(draw, position, text, font, fill=(255, 255, 255), shadow_color=(0, 0, 0, 220), anchor="ms"):
+def draw_text_with_shadow(draw, position, text, font, fill=(216, 220, 227), shadow_color=(0, 0, 0, 220), anchor="ms"):
     """Desenha texto com um contorno suave e sombra projetada forte para legibilidade máxima."""
     x, y = position
     offset = max(1, int(font.size * 0.03))

@@ -12,9 +12,8 @@ from core.ai.gemini import gerar_conteudo_gemini
 from core.design.motor_visual import criar_arte
 from core.publisher.instagram import postar_no_instagram
 from core.publisher.email_notifier import enviar_email_notificacao
-from core.config.settings import POSTAR_NO_YOUTUBE, POSTAR_NO_TIKTOK
+from core.config.settings import POSTAR_NO_YOUTUBE
 from core.publisher.youtube import postar_no_youtube
-from core.publisher.tiktok import postar_no_tiktok
 
 def registrar_postagem(tipo, tema, post_id, estilo, frase_visual="", legenda="", gancho_categoria="", tipo_cta="", duracao_video=0, subtema="", objetivo="", categoria_imagem="", categoria_musica="", tom_emocional="", estrutura_narrativa="", complexidade="", video_id_yt=""):
     from core.analytics.db import get_db
@@ -351,24 +350,6 @@ def main():
                     print(f"⚠️ [DRY-RUN] Upload simulado para YouTube. Música: {musica_yt}")
             except Exception as e:
                 print(f"⚠️ Erro ao postar no YouTube Shorts (continuando fluxo principal): {e}")
-        
-        # Postagem opcional no TikTok para formatos de vídeo
-        if POSTAR_NO_TIKTOK and args.type in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"] and isinstance(midia, str) and midia.endswith(".mp4"):
-            try:
-                titulo_tk = conteudo.get("titulo") or conteudo.get("frase") or tema_escolhido
-                if isinstance(titulo_tk, list):
-                    titulo_tk = titulo_tk[0] if titulo_tk else tema_escolhido
-
-                if not args.dry_run:
-                    postar_no_tiktok(
-                        caminho_video=midia,
-                        titulo=titulo_tk,
-                        legenda=legenda
-                    )
-                else:
-                    print("⚠️ [DRY-RUN] Upload simulado para TikTok.")
-            except Exception as e:
-                print(f"⚠️ Erro ao postar no TikTok (continuando fluxo principal): {e}")
         
         if post_id:
             gancho_cat = conteudo.get("_gancho_categoria", "")

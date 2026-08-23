@@ -72,72 +72,36 @@ jobs:
       - name: Instalar Dependências (PIP)
         run: pip install -r requirements.txt
 
-      - name: Criar arquivos de credenciais das redes (YouTube e TikTok)
+      - name: Criar arquivo .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" > .env
+
+      - name: Criar arquivos de credenciais das redes (YouTube)
         env:
           YOUTUBE_CLIENT_SECRETS_JSON: ${{ secrets.YOUTUBE_CLIENT_SECRETS_JSON }}
           YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
-          TIKTOK_TOKEN_JSON: ${{ secrets.TIKTOK_TOKEN_JSON }}
         run: |
           echo "$YOUTUBE_CLIENT_SECRETS_JSON" > client_secrets.json
           echo "$YOUTUBE_TOKEN_JSON" > token_youtube.json
-          [ -n "$TIKTOK_TOKEN_JSON" ] && echo "$TIKTOK_TOKEN_JSON" > token_tiktok.json || true
 
       - name: Executar Bot (Agendado)
         if: github.event_name == 'schedule'
         env:
-          POSTAR_NO_YOUTUBE: ${{ secrets.POSTAR_NO_YOUTUBE }}
-          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-          GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
-          GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
-          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
-          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
-          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
           IG_ACCESS_TOKEN_2: ${{ secrets.IG_ACCESS_TOKEN_2 }}
           IG_ACCOUNT_ID_2: ${{ secrets.IG_ACCOUNT_ID_2 }}
           IG_ACCESS_TOKEN_9: ${{ secrets.IG_ACCESS_TOKEN_9 }}
           IG_ACCOUNT_ID_9: ${{ secrets.IG_ACCOUNT_ID_9 }}
-          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
-          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-          ELEVENLABS_API_KEY_2: ${{ secrets.ELEVENLABS_API_KEY_2 }}
-          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
-          ELEVENLABS_VOICE_ID_2: ${{ secrets.ELEVENLABS_VOICE_ID_2 }}
         run: python rodar_via_cron.py
 
       - name: Executar Bot (Manual)
         if: github.event_name == 'workflow_dispatch'
         env:
-          POSTAR_NO_YOUTUBE: ${{ secrets.POSTAR_NO_YOUTUBE }}
-          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-          GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
-          GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
-          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
-          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
-          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
           IG_ACCESS_TOKEN_2: ${{ secrets.IG_ACCESS_TOKEN_2 }}
           IG_ACCOUNT_ID_2: ${{ secrets.IG_ACCOUNT_ID_2 }}
           IG_ACCESS_TOKEN_9: ${{ secrets.IG_ACCESS_TOKEN_9 }}
           IG_ACCOUNT_ID_9: ${{ secrets.IG_ACCOUNT_ID_9 }}
-          SMTP_EMAIL: ${{ secrets.SMTP_EMAIL }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}

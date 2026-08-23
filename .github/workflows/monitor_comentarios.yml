@@ -23,12 +23,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests loguru firebase-admin python-dotenv
 
+      - name: Criar arquivo .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" > .env
+
       - name: Executar Resposta Automática de Comentários
         env:
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          IG_ACCOUNT_ID: ${{ secrets.IG_ACCOUNT_ID }}
           IG_ACCESS_TOKEN_9: ${{ secrets.IG_ACCESS_TOKEN_9 }}
           IG_ACCOUNT_ID_9: ${{ secrets.IG_ACCOUNT_ID_9 }}
-          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
         run: |
           python core/publisher/gerenciador_comentarios.py

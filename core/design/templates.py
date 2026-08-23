@@ -104,10 +104,10 @@ def carregar_fontes(tamanho_display, tamanho_body, tamanho_detalhe, estilo=None)
         
     return font_display, font_body, font_detalhe
 
-# Paleta Oficial de Branding da Marca — Código da Sabedoria (Ouro Metálico + Azul Escuro Ciberpunk)
+# Paleta Oficial de Branding da Marca — Prata Metálico Clássico + Ouro Metálico
 CORES = {
-    "texto_principal":   (255, 255, 255),    # Branco Neve
-    "texto_secundario":  (230, 215, 175),    # Dourado Suave Claro
+    "texto_principal":   (216, 220, 227),    # Prata Metálico Clássico (#D8DCE3)
+    "texto_secundario":  (190, 196, 206),    # Prata Fosco Suave (#BEC4CE)
     "destaque":          (212, 175, 55),     # Ouro Metálico Brilhante (bordas, linhas e néon)
     "fundo_tint_inicio": (10, 15, 26),       # Azul Escuro Cibernético (topo — quase invisível)
     "fundo_tint_fim":    (25, 20, 10),       # Ouro Escuro Profundo (base — sutil)

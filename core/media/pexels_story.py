@@ -115,14 +115,14 @@ def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_a
 
     return np.array(img)
 
-# Paleta fixa da marca: Sábado — Abundância & Ouro (Dourado Âmbar → Branco → Bronze)
+# Paleta fixa da marca: Sábado — Abundância & Ouro (Dourado Âmbar → Prata Metálico → Bronze)
 # Esta é a identidade visual permanente de todas as postagens do perfil.
-PALETA_PADRAO_MARCA = ([255, 215, 0], [255, 255, 255], [139, 90, 43])
+PALETA_PADRAO_MARCA = ([255, 215, 0], [216, 220, 227], [139, 90, 43])
 
 # Paletas exclusivas do Reels Leads — alternam a cada geração para diferenciar esse formato
 PALETAS_LEADS = [
-    ([176, 38, 255], [255, 255, 255], [0, 51, 255]),   # Visão Profética (Roxo → Branco → Azul)
-    ([255, 20, 147], [255, 255, 255], [180, 0, 30]),    # Paixão & Força (Rosa → Branco → Vermelho Escuro)
+    ([176, 38, 255], [216, 220, 227], [0, 51, 255]),   # Visão Profética (Roxo → Prata Metálico → Azul)
+    ([255, 20, 147], [216, 220, 227], [180, 0, 30]),    # Paixão & Força (Rosa → Prata Metálico → Vermelho Escuro)
 ]
 
 def obter_paleta_do_dia():
@@ -488,23 +488,23 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
                                   stroke_width=3, stroke_fill=(0, 0, 0, int(255 * fade_alpha)))
                     else:
                         draw.text((cur_x + 3, y + 3), p, font=f_usar, fill=(0, 0, 0, int(150 * fade_alpha)))
-                        draw.text((cur_x, y), p, font=f_usar, fill=(255, 255, 255, int(255 * fade_alpha)),
+                        draw.text((cur_x, y), p, font=f_usar, fill=(216, 220, 227, int(255 * fade_alpha)),
                                   stroke_width=2, stroke_fill=(0, 0, 0, int(255 * fade_alpha)))
                     cur_x += pw + espaco_w
             else:
-                # Sombra suave + contorno preto com texto Branco Puro
+                # Sombra suave + contorno preto com texto Prata Metálico
                 draw.text((x + 3, y + 3), linha, font=fonte_cta, fill=(0, 0, 0, int(150 * fade_alpha)))
-                draw.text((x, y), linha, font=fonte_cta, fill=(255, 255, 255, int(255 * fade_alpha)),
+                draw.text((x, y), linha, font=fonte_cta, fill=(216, 220, 227, int(255 * fade_alpha)),
                           stroke_width=2, stroke_fill=(0, 0, 0, int(255 * fade_alpha)))
             y += alt + espaco_entre
         y += divisor_espaco - espaco_entre
 
-    # 2. Renderiza as linhas de Baixo (Proposta de Valor) sempre em Branco Puro
+    # 2. Renderiza as linhas de Baixo (Proposta de Valor) sempre em Prata Metálico
     #    Esta seção é descritiva e não deve ter destaque dourado (a keyword aqui é contextual, não o CTA)
     for linha, alt, lw in zip(linhas_baixo, alturas_baixo, larguras_baixo):
         x = (w - lw) // 2
         draw.text((x + 3, y + 3), linha, font=fonte_cta, fill=(0, 0, 0, int(150 * fade_alpha)))
-        draw.text((x, y), linha, font=fonte_cta, fill=(255, 255, 255, int(255 * fade_alpha)),
+        draw.text((x, y), linha, font=fonte_cta, fill=(216, 220, 227, int(255 * fade_alpha)),
                   stroke_width=2, stroke_fill=(0, 0, 0, int(255 * fade_alpha)))
         y += alt + espaco_entre
 
@@ -680,34 +680,40 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             logger.warning("⚠️ Nenhum arquivo cta0X.png encontrado em biblioteca_local/logo. Usando marca d'água padrão.")
 
     # Define quantos vídeos baixar de forma adaptativa:
-    # Para reels_leads, calcula com base no número de slides para evitar repetição visual.
-    # Para pexels_story (dia e noite): 1 único vídeo de fundo contínuo (sem cortes entre vídeos).
-    # Assume ~5s por slide (leitura confortável) e ~20s por vídeo de fundo (estimativa conservadora).
-    if is_reels_leads or is_story_tarde:
-        # Calcula a duração exata do vídeo: 5 segundos por slide
+    # Para reels_leads: 3 slides rápidos de ~4s a 5s cada = ~12s a 15s no máximo
+    # Para story_tarde: preservado com 5s por slide
+    # Para pexels_story (dia e noite): 1 único vídeo de fundo contínuo de ~12s a 14s (3 slides de ~4s)
+    # Para reels_conquistador: 3 vídeos rápidos sincronizados de ~4s cada = ~12s a 14s no máximo
+    if is_story_tarde:
         num_slides_estimado = len(slides) if slides else 5
-        duracao_necessaria_reels = num_slides_estimado * 5  # 5s por slide
-        duracao_minima_download = 30  # Baixa vídeo de 30s+ para evitar loop
-        num_videos_necessarios = 1  # ← Único vídeo de fundo
-        logger.info(f"📊 [{'REELS_LEADS' if is_reels_leads else 'STORY_TARDE'}] {num_slides_estimado} slides × 5s = {duracao_necessaria_reels}s | 1 vídeo único de {duracao_minima_download}s+")
+        duracao_necessaria_reels = num_slides_estimado * 5
+        duracao_minima_download = 30
+        num_videos_necessarios = 1
+        logger.info(f"📊 [STORY_TARDE] {num_slides_estimado} slides × 5s = {duracao_necessaria_reels}s | 1 vídeo único de {duracao_minima_download}s+")
+    elif is_reels_leads:
+        num_slides_estimado = len(slides) if slides else 3
+        duracao_necessaria_reels = min(15.0, num_slides_estimado * 4.5)  # ~13.5s total (3 slides)
+        duracao_minima_download = 15
+        num_videos_necessarios = 1
+        logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides rápidos → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     elif (not is_noite) and (not is_conquistador):
-        # pexels_story da Manhã: 1 único vídeo de fundo contínuo + loop suave se necessário
-        num_slides_estimado = len(slides) if slides else 4
-        duracao_necessaria_reels = num_slides_estimado * 6.5  # ~6.5s por slide para leitura calma
-        num_videos_necessarios = 1  # ← ÚNICO VÍDEO DE FUNDO CONTÍNUO
-        logger.info(f"📊 [PEXELS_STORY MANHÃ] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários | 1 vídeo de fundo contínuo")
+        # pexels_story da Manhã: 1 único vídeo de fundo contínuo de ~12s a 14s (3 slides)
+        num_slides_estimado = len(slides) if slides else 3
+        duracao_necessaria_reels = min(14.0, num_slides_estimado * 4.0)  # ~12s a 14s
+        num_videos_necessarios = 1
+        logger.info(f"📊 [PEXELS_STORY MANHÃ] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     elif is_noite and (not is_conquistador):
-        # pexels_story_noite: 1 único vídeo de fundo contínuo + loop suave se necessário
-        num_slides_estimado = len(slides) if slides else 4
-        duracao_necessaria_reels = num_slides_estimado * 7.0  # ~7s por slide à noite
-        num_videos_necessarios = 1  # ← ÚNICO VÍDEO DE FUNDO CONTÍNUO
-        logger.info(f"📊 [PEXELS_STORY NOITE] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários | 1 vídeo de fundo contínuo")
+        # pexels_story_noite: 1 único vídeo de fundo contínuo de ~13s a 15s (3 slides)
+        num_slides_estimado = len(slides) if slides else 3
+        duracao_necessaria_reels = min(15.0, num_slides_estimado * 4.5)  # ~13.5s a 15s
+        num_videos_necessarios = 1
+        logger.info(f"📊 [PEXELS_STORY NOITE] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     else:
-        # Conquistador: 1 vídeo por slide para sincronização perfeita
-        num_slides_estimado = len(slides) if slides else 4
-        duracao_necessaria_reels = num_slides_estimado * 7.0
+        # Conquistador: 3 vídeos rápidos sincronizados de ~4s cada (12s a 14s total)
+        num_slides_estimado = len(slides) if slides else 3
+        duracao_necessaria_reels = min(14.0, num_slides_estimado * 4.0)
         num_videos_necessarios = num_slides_estimado
-        logger.info(f"📊 [CONQUISTADOR] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.0f}s necessários → baixando {num_videos_necessarios} vídeos (1 por slide)")
+        logger.info(f"📊 [CONQUISTADOR] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.1f}s necessários → baixando {num_videos_necessarios} vídeos (1 por slide)")
 
     # --- BUSCA DE VÍDEOS: ordem depende da rotação do Conquistador ---
     # plataforma_principal_conquistador: None=padrão(Pixabay→Pexels), 0=Pixabay→Pexels, 1=Pexels→Pixabay
@@ -999,17 +1005,22 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             # Define o tempo de início exato de cada slide
             slide_start_times = [0.0] * (total_slides + 1)
             
-            if is_story_tarde or is_reels_leads:
-                # Formatos de conversão: Divisão igualitária de tempo por slide (5s por slide em um vídeo de 30s com 6 slides)
+            if is_story_tarde:
                 tempo_por_slide = duracao / max(1, total_slides)
-                
+                t_atual = 0.0
+                for i in range(total_slides):
+                    slide_start_times[i] = t_atual
+                    t_atual += tempo_por_slide
+            elif is_reels_leads:
+                # 3 slides divididos de forma equilibrada no vídeo de ~13-15s
+                tempo_por_slide = duracao / max(1, total_slides)
                 t_atual = 0.0
                 for i in range(total_slides):
                     slide_start_times[i] = t_atual
                     t_atual += tempo_por_slide
             else:
-                # Formatos padrão (Story da manhã, noite, etc)
-                duracao_gancho = 5.0
+                # Formatos padrão rápidos (Pexels Story Manhã, Noite, Conquistador): Gancho ágil de 3.5s
+                duracao_gancho = min(3.5, duracao / max(1, total_slides))
                 if total_slides > 1:
                     tempo_slide_normal = (duracao - duracao_gancho) / (total_slides - 1)
                 else:

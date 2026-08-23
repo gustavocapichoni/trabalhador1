@@ -69,6 +69,3 @@ NOTIFY_EMAIL = os.getenv("NOTIFY_EMAIL")
 # CONFIGURAÇÃO DE REDES SOCIAIS ADICIONAIS
 # ==========================================
 POSTAR_NO_YOUTUBE = os.getenv("POSTAR_NO_YOUTUBE", "False").lower() in ("true", "1", "yes", "t")
-POSTAR_NO_TIKTOK  = os.getenv("POSTAR_NO_TIKTOK", "False").lower() in ("true", "1", "yes", "t")
-TIKTOK_CLIENT_KEY = os.getenv("TIKTOK_CLIENT_KEY")
-TIKTOK_CLIENT_SECRET = os.getenv("TIKTOK_CLIENT_SECRET")

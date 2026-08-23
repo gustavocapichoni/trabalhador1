@@ -47,6 +47,12 @@ jobs:
       - name: Instalar Dependencias
         run: pip install -r requirements.txt
 
+      - name: Criar arquivo .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" > .env
+
       # -------------------------------------------------------
       # Disparo via cron automatico:
       # O GitHub nao passa o mes diretamente, entao o script
@@ -54,16 +60,6 @@ jobs:
       # -------------------------------------------------------
       - name: Determinar e Executar Relatorio (Cron Automatico)
         if: github.event_name == 'schedule'
-        env:
-          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-          GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
-          GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
-          SMTP_EMAIL:       ${{ secrets.SMTP_EMAIL }}
-          SMTP_PASSWORD:    ${{ secrets.SMTP_PASSWORD }}
-          NOTIFY_EMAIL:     ${{ secrets.NOTIFY_EMAIL }}
-          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
         run: |
           python - <<'EOF'
           import subprocess, datetime
@@ -108,16 +104,6 @@ jobs:
       # -------------------------------------------------------
       - name: Executar Relatorio (Manual)
         if: github.event_name == 'workflow_dispatch'
-        env:
-          GEMINI_API_KEY_1: ${{ secrets.GEMINI_API_KEY_1 }}
-          GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-          GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
-          GEMINI_API_KEY_4: ${{ secrets.GEMINI_API_KEY_4 }}
-          GEMINI_API_KEY_5: ${{ secrets.GEMINI_API_KEY_5 }}
-          SMTP_EMAIL:       ${{ secrets.SMTP_EMAIL }}
-          SMTP_PASSWORD:    ${{ secrets.SMTP_PASSWORD }}
-          NOTIFY_EMAIL:     ${{ secrets.NOTIFY_EMAIL }}
-          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
         run: |
           python core/analytics/rodar_analytics.py --ciclo ${{ github.event.inputs.tipo_relatorio }}
           python core/reports/periodic.py ${{ github.event.inputs.tipo_relatorio }}

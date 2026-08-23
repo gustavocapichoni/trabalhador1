@@ -649,25 +649,44 @@ def draw_cover_image_page(canvas, doc):
 
     canvas.restoreState()
 
-    # 3. Emblema da Marca (foto_perfil.png) centralizado harmonicamente
+    # 3. Frase Inspiradora Refinada no Topo (acima da logo)
+    frase_topo = conteudo.get("frase_topo_capa") or "SABEDORIA QUE TRANSFORMA DESTINOS"
+    frase_topo = frase_topo.strip().upper()
+    
+    canvas.saveState()
+    margin_h = 50
+    text_width = page_width - 2 * margin_h
+
+    topo_style = ParagraphStyle(
+        name="cover_quote_top",
+        fontName=font_map.get("display-bold", font_map["sans-bold"]),
+        fontSize=12,
+        leading=16,
+        textColor=get_color("#fbbf24"),
+        alignment=TA_CENTER
+    )
+
+    p_topo = Paragraph(f"✦ &nbsp; {frase_topo} &nbsp; ✦", topo_style)
+    tw, th = p_topo.wrap(text_width, 60)
+    p_topo.drawOn(canvas, margin_h, page_height - 115)
+    canvas.restoreState()
+
+    # 4. Emblema da Marca (foto_perfil.png) centralizado harmonicamente
     if os.path.exists(logo_path):
         try:
             canvas.saveState()
             logo_size = 350
             logo_x = (page_width - logo_size) / 2
-            logo_y = (page_height - logo_size) / 2 + 25
+            logo_y = (page_height - logo_size) / 2 + 15
             canvas.drawImage(logo_path, logo_x, logo_y, width=logo_size, height=logo_size, mask='auto', preserveAspectRatio=True)
             canvas.restoreState()
         except Exception as e_capa:
-            print(f"âš ï¸  Aviso: NÃ£o foi possÃ­vel renderizar a capa com foto_perfil.png: {e_capa}")
+            print(f"⚠️  Aviso: Não foi possível renderizar a capa com foto_perfil.png: {e_capa}")
     else:
-        print(f"âš ï¸  Aviso: foto_perfil.png nÃ£o encontrada em: {logo_path}")
+        print(f"⚠️  Aviso: foto_perfil.png não encontrada em: {logo_path}")
 
-    # 4. Selo da Marca abaixo do Emblema (sem duplicar o tÃ­tulo do PDF que jÃ¡ fica na PÃ¡gina 2)
+    # 5. Selo da Marca abaixo do Emblema
     canvas.saveState()
-    margin_h = 50
-    text_width = page_width - 2 * margin_h
-
     tagline_style = ParagraphStyle(
         name="cover_tagline",
         fontName=font_map["sans-bold"],
@@ -677,7 +696,7 @@ def draw_cover_image_page(canvas, doc):
         alignment=TA_CENTER
     )
 
-    p_tagline = Paragraph("CODIGO DA SABEDORIA * EDICAO SEMANAL", tagline_style)
+    p_tagline = Paragraph("CODIGO DA SABEDORIA • EDICAO SEMANAL", tagline_style)
     gw, gh = p_tagline.wrap(text_width, 40)
     p_tagline.drawOn(canvas, margin_h, 110)
 
@@ -869,255 +888,239 @@ def draw_bg_oferta(canvas, doc):
         canvas.line(cx_c, cy_c, cx_c, cy_c + dy * c_len)
     canvas.restoreState()
 
-    margin = 54
+    margin = 46
     text_w = page_width - 2 * margin
 
-    # 3. Label superior em tracking largo - dourado
+    # 3. Label superior discreto e elegante
     label_style = ParagraphStyle(
         name="oferta_label",
         fontName=font_map_e["sans-bold"],
-        fontSize=7.5,
+        fontSize=8,
         leading=11,
         textColor=get_color("#d4af37"),
         alignment=TA_CENTER,
-        charSpace=3,
+        charSpace=2,
     )
-    p_lbl = Paragraph("OFERTA EXCLUSIVA * LEITORES DO CODIGO DA SABEDORIA", label_style)
+    p_lbl = Paragraph("LEITORES DO CODIGO DA SABEDORIA", label_style)
     lw, lh = p_lbl.wrap(text_w, 20)
-    lbl_y = page_height - 55
+    lbl_y = page_height - 52
     p_lbl.drawOn(canvas, margin, lbl_y)
 
-    # Linha divisoria fina dourada
-    div_y = lbl_y - 7
-    draw_thin_divider(canvas, div_y, x_start=margin + 50, x_end=page_width - margin - 50,
-                      color="#d4af37", alpha=0.6, thickness=0.6)
+    div_y = lbl_y - 6
+    draw_thin_divider(canvas, div_y, x_start=margin + 40, x_end=page_width - margin - 40,
+                      color="#d4af37", alpha=0.5, thickness=0.6)
 
-    # 4. Titulo principal em Playfair Display
+    # 4. Titulo e Subtitulo sutis
     titulo_style = ParagraphStyle(
         name="oferta_titulo",
         fontName=font_map_e["display-bold"],
-        fontSize=30,
-        leading=36,
+        fontSize=24,
+        leading=28,
         textColor=get_color("#ffffff"),
         alignment=TA_CENTER,
     )
     subtitulo_style = ParagraphStyle(
         name="oferta_subtitulo",
         fontName=font_map_e["sans-italic"],
-        fontSize=12,
-        leading=16,
+        fontSize=10,
+        leading=14,
         textColor=get_color("#d4af37"),
         alignment=TA_CENTER,
     )
     p_titulo = Paragraph("Codigo da Sabedoria", titulo_style)
-    tw, th = p_titulo.wrap(text_w, 60)
-    titulo_y = div_y - 14 - th
+    tw, th = p_titulo.wrap(text_w, 40)
+    titulo_y = div_y - 10 - th
     p_titulo.drawOn(canvas, margin, titulo_y)
 
-    p_sub = Paragraph("Metodo de Vendas + Copiloto de IA 24/7", subtitulo_style)
-    sw, sh = p_sub.wrap(text_w, 30)
-    sub_y = titulo_y - 8 - sh
+    p_sub = Paragraph("Uma descoberta nos bastidores para quem chegou ate o final", subtitulo_style)
+    sw, sh = p_sub.wrap(text_w, 20)
+    sub_y = titulo_y - 4 - sh
     p_sub.drawOn(canvas, margin, sub_y)
 
-    # 5. Card de beneficios
+    # 5. Texto de Contexto Sutil
+    intro_style = ParagraphStyle(
+        name="oferta_intro",
+        fontName=font_map_e["sans"],
+        fontSize=8.5,
+        leading=11.5,
+        textColor=get_color("#d1d5db"),
+        alignment=TA_CENTER,
+    )
+    intro_texto = (
+        "Se voce chegou ate aqui, provavelmente procura mais do que apenas informacao. "
+        "Existe um metodo que reune <b>estrategia + inteligencia artificial</b> criado para ajudar voce a pensar "
+        "melhor em cada abordagem, mesmo que nunca tenha vendido nada pela internet. Nada teorico: tudo pratico, "
+        "replicavel e guiado por um copiloto inteligente."
+    )
+    p_intro = Paragraph(intro_texto, intro_style)
+    iw, ih = p_intro.wrap(text_w, 60)
+    intro_y = sub_y - 8 - ih
+    p_intro.drawOn(canvas, margin, intro_y)
+
+    # 6. Card de Oportunidade / Beneficios
     benef_x = margin
-    benef_h = 84
-    benef_y = sub_y - 16 - benef_h
+    benef_h = 138
+    benef_y = intro_y - 8 - benef_h
     benef_w = text_w
 
     canvas.saveState()
-    canvas.setFillColor(get_color("rgba(255,255,255,0.05)"))
-    canvas.setStrokeColor(get_color("rgba(255,255,255,0.12)"))
+    canvas.setFillColor(get_color("rgba(255,255,255,0.03)"))
+    canvas.setStrokeColor(get_color("rgba(212,175,55,0.25)"))
     canvas.setLineWidth(0.8)
-    canvas.roundRect(benef_x, benef_y, benef_w, benef_h, 10, stroke=1, fill=1)
+    canvas.roundRect(benef_x, benef_y, benef_w, benef_h, 8, stroke=1, fill=1)
     canvas.restoreState()
 
-    benef_style = ParagraphStyle(
-        name="oferta_benef",
-        fontName=font_map_e["sans"],
-        fontSize=10.5,
-        leading=15,
-        textColor=get_color("#e8e4e0"),
+    benef_head_style = ParagraphStyle(
+        name="benef_head",
+        fontName=font_map_e["sans-bold"],
+        fontSize=9.5,
+        leading=13,
+        textColor=get_color("#fbbf24"),
     )
-    beneficios_lista = [
-        "[ OK ]  Metodo de Vendas testado em mais de 100.000 vendas reais",
-        "[ OK ]  Copiloto de Vendas IA 24/7 - cria scripts e valida abordagens",
-        "[ OK ]  Garantia de 7 dias - devolucao de 100% sem burocracia",
-    ]
-    pad = 14
-    cy_b = benef_y + benef_h - pad
-    for b_text in beneficios_lista:
-        pb_item = Paragraph(b_text, benef_style)
-        bw_i, bh_i = pb_item.wrap(benef_w - 2 * pad, 20)
-        cy_b -= bh_i
-        pb_item.drawOn(canvas, benef_x + pad, cy_b)
-        cy_b -= 6
+    benef_item_style = ParagraphStyle(
+        name="benef_item",
+        fontName=font_map_e["sans"],
+        fontSize=8.5,
+        leading=11.5,
+        textColor=get_color("#e5e7eb"),
+    )
 
-    # 6. Caixa do cupom - dourada
-    cup_h = 118
-    cup_y = benef_y - 14 - cup_h
+    p_bh = Paragraph("O que voce encontra la dentro:", benef_head_style)
+    bhw, bhh = p_bh.wrap(benef_w - 24, 20)
+    cy_b = benef_y + benef_h - 10 - bhh
+    p_bh.drawOn(canvas, benef_x + 12, cy_b)
+    cy_b -= 6
+
+    beneficios_lista = [
+        "✦ <b>Metodo estruturado</b> testado em mais de 100.000 vendas reais.",
+        "✦ <b>Copiloto de IA</b> para criacao, analise e validacao de abordagens.",
+        "✦ <b>Scripts e estrategias praticas</b> para diferentes situacoes do dia a dia.",
+        "✦ <b>Orientacao passo a passo</b> para testar e melhorar sua comunicacao.",
+        "✦ <b>7 dias para conhecer</b> o metodo por dentro sem nenhum risco.",
+    ]
+    for b_text in beneficios_lista:
+        pb_item = Paragraph(b_text, benef_item_style)
+        bw_i, bh_i = pb_item.wrap(benef_w - 24, 20)
+        cy_b -= bh_i
+        pb_item.drawOn(canvas, benef_x + 12, cy_b)
+        cy_b -= 3.5
+
+    # 7. Card do Cupom Exclusivo
+    cup_h = 92
+    cup_y = benef_y - 8 - cup_h
     cup_x = margin
     cup_w = text_w
 
-    draw_gradient_round_rect(canvas, cup_x, cup_y, cup_w, cup_h, 14, 14,
+    draw_gradient_round_rect(canvas, cup_x, cup_y, cup_w, cup_h, 10, 10,
                              "#1a1200", "#2d1f00", border_color="#d4af37")
     canvas.saveState()
     canvas.setStrokeColor(get_color("#fbbf24"))
-    canvas.setLineWidth(1.2)
-    canvas.roundRect(cup_x + 3, cup_y + 3, cup_w - 6, cup_h - 6, 12, stroke=1, fill=0)
+    canvas.setLineWidth(0.8)
+    canvas.roundRect(cup_x + 2, cup_y + 2, cup_w - 4, cup_h - 4, 8, stroke=1, fill=0)
     canvas.restoreState()
 
-    # Codigo do cupom em destaque maximo
     cupom_code_style = ParagraphStyle(
         name="cupom_code",
         fontName=font_map["display-bold"],
-        fontSize=24,
-        leading=28,
+        fontSize=20,
+        leading=24,
         textColor=get_color("#fbbf24"),
         alignment=TA_CENTER,
-        charSpace=5,
+        charSpace=4,
     )
     p_code = Paragraph("SABEDORIA30", cupom_code_style)
-    cw_c, ch_c = p_code.wrap(cup_w - 20, 40)
-    code_y = cup_y + cup_h - 16 - ch_c
+    cw_c, ch_c = p_code.wrap(cup_w - 20, 30)
+    code_y = cup_y + cup_h - 10 - ch_c
     p_code.drawOn(canvas, cup_x + 10, code_y)
 
-    # Sub-label do cupom
-    cupom_sublabel_style = ParagraphStyle(
-        name="cupom_sublabel",
-        fontName=font_map_e["sans-bold"],
-        fontSize=7,
-        leading=10,
-        textColor=get_color("#d4af37"),
-        alignment=TA_CENTER,
-        charSpace=2,
-    )
-    p_sublabel = Paragraph("CUPOM DE DESCONTO EXCLUSIVO - 30% OFF", cupom_sublabel_style)
-    slw, slh = p_sublabel.wrap(cup_w - 20, 15)
-    p_sublabel.drawOn(canvas, cup_x + 10, code_y - 4 - slh)
-
-    # Linha separadora dentro do card
-    sep_y = code_y - 4 - slh - 6
-    draw_thin_divider(canvas, sep_y,
-                      x_start=cup_x + 20, x_end=cup_x + cup_w - 20,
-                      color="#d4af37", alpha=0.3, thickness=0.5)
-
-    # Texto descritivo do cupom
-    cupom_desc_style = ParagraphStyle(
-        name="cupom_desc",
+    cupom_sub_style = ParagraphStyle(
+        name="cupom_sub",
         fontName=font_map_e["sans"],
-        fontSize=9,
-        leading=13,
+        fontSize=8.5,
+        leading=11.5,
         textColor=get_color("#e8d5a0"),
         alignment=TA_CENTER,
     )
-    desc_cupom = ("Este cupom concede 30% de desconto — exclusivo para voce que baixa "
-                  "o CODIGO DA SABEDORIA * EDICAO SEMANAL. "
-                  "Um beneficio para quem realmente quer crescer e evoluir "
-                  "seguindo uma metodologia comprovada.")
-    p_desc_cup = Paragraph(desc_cupom, cupom_desc_style)
-    dw_c, dh_c = p_desc_cup.wrap(cup_w - 30, 60)
-    p_desc_cup.drawOn(canvas, cup_x + 15, cup_y + 10)
+    desc_cupom = (
+        "Este cupom concede <b>30% de desconto</b> — exclusivo para voce que baixa o "
+        "<b>CODIGO DA SABEDORIA • EDICAO SEMANAL</b>. Uma condicao especial vinculada a esta edicao."
+    )
+    p_desc_cup = Paragraph(desc_cupom, cupom_sub_style)
+    dw_c, dh_c = p_desc_cup.wrap(cup_w - 24, 45)
+    p_desc_cup.drawOn(canvas, cup_x + 12, cup_y + 8)
 
-    # 7. Secao de preco
-    preco_block_y = cup_y - 12
-    preco_riscado_style = ParagraphStyle(
-        name="preco_riscado",
-        fontName=font_map_e["sans"],
-        fontSize=10,
+    # 8. CTA Chamativo e Botao de Acao
+    cta_chamada_style = ParagraphStyle(
+        name="cta_chamada_top",
+        fontName=font_map_e["sans-bold"],
+        fontSize=9.5,
         leading=13,
-        textColor=get_color("rgba(255,255,255,0.45)"),
+        textColor=get_color("#fbbf24"),
         alignment=TA_CENTER,
+        charSpace=1.5,
     )
-    preco_style = ParagraphStyle(
-        name="preco_atual",
-        fontName=font_map["display-bold"],
-        fontSize=30,
-        leading=35,
-        textColor=get_color("#ffffff"),
-        alignment=TA_CENTER,
-    )
-    desconto_style = ParagraphStyle(
-        name="desconto_badge",
-        fontName=font_map["sans-bold"],
-        fontSize=10,
-        leading=13,
-        textColor=get_color("#d4af37"),
-        alignment=TA_CENTER,
-    )
+    p_cta_top = Paragraph("✦ &nbsp; DESBLOQUEIE SEU ACESSO COM 30% OFF &nbsp; ✦", cta_chamada_style)
+    cw_top, ch_top = p_cta_top.wrap(text_w, 20)
+    cta_top_y = cup_y - 10 - ch_top
+    p_cta_top.drawOn(canvas, margin, cta_top_y)
 
-    p_riscado = Paragraph("De R$ 299,00 por apenas:", preco_riscado_style)
-    rw_p, rh_p = p_riscado.wrap(text_w, 20)
-    p_riscado.drawOn(canvas, margin, preco_block_y - rh_p)
-
-    p_preco = Paragraph("R$ 79,90", preco_style)
-    pw_p, ph_p = p_preco.wrap(text_w, 45)
-    preco_actual_y = preco_block_y - rh_p - 4 - ph_p
-    p_preco.drawOn(canvas, margin, preco_actual_y)
-
-    p_desconto = Paragraph("ECONOMIA DE R$ 219,10 - 73% OFF", desconto_style)
-    dw_p, dh_p = p_desconto.wrap(text_w, 20)
-    desconto_final_y = preco_actual_y - 4 - dh_p
-    p_desconto.drawOn(canvas, margin, desconto_final_y)
-
-    # 8. Botao de CTA clicavel
-    btn_margin_h = 50
+    btn_margin_h = 45
     btn_x = margin + btn_margin_h
     btn_w = text_w - 2 * btn_margin_h
-    btn_h = 44
-    btn_y = desconto_final_y - 16 - btn_h
+    btn_h = 38
+    btn_y = cta_top_y - 6 - btn_h
 
-    draw_gradient_round_rect(canvas, btn_x, btn_y, btn_w, btn_h, 10, 10,
+    draw_gradient_round_rect(canvas, btn_x, btn_y, btn_w, btn_h, 8, 8,
                              "#d97706", "#92400e", border_color="#fbbf24")
 
     btn_style = ParagraphStyle(
         name="btn_text",
         fontName=font_map["sans-bold"],
-        fontSize=13,
-        leading=16,
+        fontSize=12,
+        leading=15,
         textColor=get_color("#ffffff"),
         alignment=TA_CENTER,
     )
-    p_btn = Paragraph("GARANTIR MEU ACESSO AGORA", btn_style)
+    p_btn = Paragraph("VER OPORTUNIDADE", btn_style)
     bw_btn, bh_btn = p_btn.wrap(btn_w - 20, btn_h)
     btn_text_y = btn_y + (btn_h - bh_btn) / 2
     p_btn.drawOn(canvas, btn_x + 10, btn_text_y)
 
-    # Link clicavel na area do botao
+    # Link clicavel no PDF
     canvas.linkURL(
         "https://codigodasabedoria.onrender.com",
         (btn_x, btn_y, btn_x + btn_w, btn_y + btn_h),
         relative=0
     )
 
-    # URL visivel abaixo do botao
+    # URL e Acesso Imediato
     url_style = ParagraphStyle(
         name="url_label",
         fontName=font_map_e["sans"],
         fontSize=8,
         leading=11,
-        textColor=get_color("rgba(255,255,255,0.35)"),
-        alignment=TA_CENTER,
-    )
-    p_url = Paragraph("codigodasabedoria.onrender.com", url_style)
-    uw, uh = p_url.wrap(text_w, 15)
-    p_url.drawOn(canvas, margin, btn_y - 6 - uh)
-
-    # 9. Rodape com selos de confianca
-    selos_y = btn_y - 6 - uh - 14
-    selos_style = ParagraphStyle(
-        name="selos",
-        fontName=font_map_e["sans"],
-        fontSize=8.5,
-        leading=12,
         textColor=get_color("rgba(255,255,255,0.40)"),
         alignment=TA_CENTER,
     )
+    p_url = Paragraph("Acesso imediato apos a confirmacao • <u>codigodasabedoria.onrender.com</u>", url_style)
+    uw, uh = p_url.wrap(text_w, 15)
+    p_url.drawOn(canvas, margin, btn_y - 4 - uh)
+
+    # 9. Rodape
+    selos_y = btn_y - 4 - uh - 12
+    selos_style = ParagraphStyle(
+        name="selos",
+        fontName=font_map_e["sans"],
+        fontSize=8,
+        leading=11,
+        textColor=get_color("rgba(255,255,255,0.45)"),
+        alignment=TA_CENTER,
+    )
     p_selos = Paragraph(
-        "7 Dias de Garantia Total   *   Pagamento 100% Seguro   *   Acesso Imediato no E-mail",
+        "7 dias para experimentar &nbsp;•&nbsp; Garantia de reembolso &nbsp;•&nbsp; Pagamento 100% seguro",
         selos_style
     )
-    sw2, sh2 = p_selos.wrap(text_w, 20)
+    sw2, sh2 = p_selos.wrap(text_w, 15)
     p_selos.drawOn(canvas, margin, selos_y - sh2)
 
 # --- ConstruÃ§Ã£o Principal do Story do Documento ---

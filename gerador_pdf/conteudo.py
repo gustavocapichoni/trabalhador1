@@ -40,6 +40,16 @@ CONTEXTO DO MUNDO REAL NESTA SEMANA (TENDÊNCIAS / OLHOS DA REDE):
 SUA MISSÃO:
 Escreva um E-BOOK DE AÇÃO DIRETA E EXTREMAMENTE PRÁTICA. As pessoas estão saturadas de teoria vazia. O PDF deve entregar uma EXPERIÊNCIA guiada, estruturada em ensinamentos práticos e claros para o dia a dia.
 
+DIRETRIZES DE TÍTULOS E SUBTÍTULOS (MODERNOS E SEM CLICHÊS):
+- É TERMINANTEMENTE PROIBIDO usar clichês repetitivos como: "O Protocolo", "O Código de", "A Bússola", "O Mapa da", "O Salto Quântico", "Desbloqueando", "A Chave de".
+- Crie títulos provocativos, elegantes, contemporâneos e fortes. Exemplos do estilo desejado:
+  * "Como Parar de Ser Refém do Seu Próprio Cérebro"
+  * "A Arte Invisível de Vencer em Silêncio"
+  * "O Preço Oculto da Hesitação"
+  * "A Ciência da Mente Inabalável"
+  * "A Decisão que Separa Quem Tenta de Quem Conquista"
+- O subtítulo deve ser curto, moderno e focado em benefício prático imediato, sem enrolação.
+
 ESTRUTURA DA NARRATIVA (Obrigatório seguir em cada capítulo):
 - Emoção: Provoque uma emoção forte (desconforto com a inércia, desejo de mudança, clareza brutal).
 - História: Uma breve ilustração, metáfora ou fato (inspirado no livro base) que ancore a lição.
@@ -58,8 +68,9 @@ REGRAS DE FORMATAÇÃO DE TEXTO E JSON:
 ESTRUTURA OBRIGATÓRIA EM JSON (TUDO 100% DINÂMICO):
 
 {{
-  "titulo_pdf": "Título magnético inédito focando em método e clareza",
-  "subtitulo_pdf": "Subtítulo de benefício direto (ex: O método passo a passo para assumir o controle)",
+  "frase_topo_capa": "Uma frase inspiradora e impactante em no máximo 10 palavras para o topo da capa (Ex: A SABEDORIA QUE CONSTRÓI DESTINOS INABALÁVEIS)",
+  "titulo_pdf": "Título magnético, moderno e autêntico sem usar clichês",
+  "subtitulo_pdf": "Subtítulo direto e elegante de benefício prático",
   "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
   "capa_cards": [
     {{"titulo": "Crie um título curto e inédito para o card de diagnóstico", "texto": "Escreva aqui o diagnóstico da dor {dor_central} em até 30 palavras — direto e incisivo.", "pergunta_destaque": "Crie uma pergunta que cutuca a ferida do leitor em no máximo 10 palavras."}},

@@ -18,14 +18,14 @@ from datetime import datetime
 from loguru import logger
 
 # ============================================================
-# TOKENS HF (5 contas em rodizio)
+# TOKENS HF (5 contas em rodizio via variaveis de ambiente)
 # ============================================================
 HF_TOKENS = [
-    os.getenv("HF_TOKEN_1", "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"),   # conta 1
-    os.getenv("HF_TOKEN_2", "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"),   # conta 40
-    os.getenv("HF_TOKEN_3", "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"),   # conta 04
-    os.getenv("HF_TOKEN_4", "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"),   # conta 05
-    os.getenv("HF_TOKEN_5", "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"),   # conta 03
+    os.getenv("HF_TOKEN_1"),
+    os.getenv("HF_TOKEN_2"),
+    os.getenv("HF_TOKEN_3"),
+    os.getenv("HF_TOKEN_4"),
+    os.getenv("HF_TOKEN_5"),
 ]
 HF_TOKENS = [t for t in HF_TOKENS if t]
 
