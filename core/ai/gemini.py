@@ -625,6 +625,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
           "legenda": "Sua legenda completa aqui sem hashtags"
         }}
         """
+    elif tipo in ["reels", "reels_noite"]:
         num_slides_reels = 2 if dia_ano % 2 == 0 else 3
         prompt = f"""
         Você é a Máquina de Construção de Curiosidade. Seu objetivo é criar um roteiro em slides que faça o usuário PARAR de rolar o feed e assistir até o final.
