@@ -118,12 +118,65 @@ Este documento detalha o que acontecia antes das modificações e como o sistema
 ### ANTES ❌
 - **Capas Poluídas**: Textos e parágrafos longos ocupavam mais de 60% da tela do vídeo na capa, criando um "muro de texto" e dificultando a leitura rápida.
 - **Frases Abstratas**: Textos poéticos/filosóficos desconectados de problemas concretos do cotidiano, gerando baixo índice de comentários.
-- **Falta de Chamada Específica**: Não havia uma palavra-chave padronizada para induzir o público a comentar e receber materiais no Direct.
+---
+
+## 10. Reformulação da Página Final do E-book / PDF Semanal
+**Contexto**: A apresentação da oportunidade/método na última página do PDF gerado semanalmente (`gerador_pdf/gerar_pdf.py`).
+
+### ANTES ❌
+- **Venda Agressiva**: Continha selos promocionais chamativos como `"OFERTA EXCLUSIVA"`, `"De R$ 299 por R$ 79,90"` e `"ECONOMIA DE R$ 219,10"`, descaracterizando a elegância do e-book.
+- **Botão Pouco Atraente**: Usava textos com foco comercial direto.
 
 ### DEPOIS ✅
-- **Regra da Capa Limpa (Máximo 5 Palavras)**: A frase do primeiro slide/capa do vídeo foi limitada a no máximo 5 palavras curtas e cortantes. O visual fica limpo e o foco vai para o impacto do gancho.
-- **Dores Reais e Concretas**: Os prompts da IA foram instruídos a focar em conflitos práticos da rotina (dinheiro, foco, procrastinação, ansiedade, escolhas).
-- **Palavra-Chave 'SABEDORIA'**: Chamadas de ação padronizadas convidando o leitor a comentar "SABEDORIA" para desbloquear e-books e materiais diretamente no Direct.
-- **Perguntas Provocativas na Legenda**: Legendas terminando obrigatoriamente com perguntas de opinião para forçar interação ativa nos comentários.
+- **Abordagem Sutil e Furtiva**: Mantido apenas o cabeçalho nobre `LEITORES DO CÓDIGO DA SABEDORIA` e um subtítulo convidativo (*"Uma descoberta nos bastidores para quem chegou até o final"*).
+- **Texto Reflexivo e Empático**: Narrativa focada em pessoas e trabalhadores que buscam evoluir com método + inteligência artificial na prática.
+- **CTA Chamativo em Dourado**: Adicionado o destaque `✦ DESBLOQUEIE SEU ACESSO COM 30% OFF ✦` com o cupom exclusivo **`SABEDORIA30`**.
+- **Novo Botão**: Alterado com precisão para **`VER OPORTUNIDADE`** com link clicável direto.
+
+---
+
+## 11. Nova Paleta Oficial de Texto: Prata Metálico (`#D8DCE3`)
+**Contexto**: A cor padrão dos textos e tipografia renderizados sobre as imagens e vídeos de todas as postagens da agenda.
+
+### ANTES ❌
+- Os textos usavam o branco puro `RGB: (255, 255, 255)` / `#FFFFFF`, gerando contraste comum e genérico.
+
+### DEPOIS ✅
+- **Prata Metálico Clássico (`#D8DCE3` / RGB: 216, 220, 227)**: Padronizado como a nova cor principal de texto em todo o sistema (`templates.py`, `efeitos.py`, `motor_visual.py`).
+- **Harmonia nos Degradês**: A cor central/transição dos degradês do *Reels Leads* e *Story da Tarde* foi atualizada de branco para Prata Metálico, criando um visual sofisticado e premium.
+- **Prata Fosco Suave (`#BEC4CE` / RGB: 190, 196, 206)**: Definido para subtítulos e elementos secundários.
+
+---
+
+## 12. Vídeos de Alta Retenção (3 Slides Rápidos / 12 a 15 Segundos)
+**Contexto**: O tempo de duração total, ritmo de transição e quantidade de palavras nos formatos em vídeo (`pexels_story`, `pexels_story_noite`, `reels_conquistador` e `reels_leads`).
+
+### ANTES ❌
+- **Vídeos Longos e Lentos**: Os vídeos duravam entre 26 e 30 segundos (muito tempo para o padrão de consumo rápido do Instagram/Reels/Stories).
+- **Textos Excessivos**: A IA pedia entre 10 e 15 palavras por slide, gerando quebras de linhas pesadas e perda de retenção.
+- **Slides em Excesso**: Sequências com 4 a 6 slides que tornavam o vídeo arrastado.
+
+### DEPOIS ✅
+- **Exatamente 3 Slides Rápidos**: Fixado no prompt da IA (`gemini.py`) para gerar no máximo 3 frases cirúrgicas (*Slide 1: Gancho*, *Slide 2: Revelação/Ponte*, *Slide 3: Fechamento/CTA*).
+- **Frases Curtas (5 a 8 palavras)**: Leitura rápida e visual limpo com soco de retenção.
+- **Duração Otimizada (12s a 15s no máximo)**:
+  - *Slide 1 (Gancho)*: Exibido por apenas 3.0s a 3.5s para prender o scroll no primeiro segundo.
+  - *Slides 2 e 3*: Exibidos por ~4.0s a 4.5s cada.
+- **Loop Perfeito**: O vídeo encerra com rapidez, estimulando o usuário a assistir novamente (aumentando a taxa de repetição e engajamento pelo algoritmo).
+- *(O Story da Tarde foi preservado intacto).*
+
+---
+
+## 13. Desativação do TikTok e Proteção de Segredos
+**Contexto**: Manutenção de código, limpeza de integrações e segurança de repositório.
+
+### ANTES ❌
+- Arquivos de autenticação, dependências e webhooks do TikTok ocupavam espaço no projeto sem uso ativo.
+- Tokens de acesso estavam gravados com fallbacks no código.
+
+### DEPOIS ✅
+- **Remoção Limpa do TikTok**: Excluídos com segurança os arquivos `core/publisher/tiktok.py`, `autenticar_tiktok.py` e arquivos de verificação sem afetar nenhum outro módulo.
+- **Leitura 100% via Variáveis de Ambiente**: Os tokens do Hugging Face/FLUX agora são lidos exclusivamente do `.env` / GitHub Secrets, garantindo conformidade total com o *GitHub Push Protection*.
+
 
 
