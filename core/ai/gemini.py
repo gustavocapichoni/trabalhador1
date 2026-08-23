@@ -989,10 +989,16 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
 
         SLIDE 4 — CTA FINAL DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Chamada para ação simples e irresistível.
-        Parte 1 (ANTES da quebra de linha): no máximo 5 a 6 palavras. Ex: "Comente 'SABEDORIA' pra receber no Direct."
-        Parte 2 (DEPOIS da quebra de linha): no máximo 5 a 6 palavras. Ex: "Descubra o método prático da semana."
-        REGRA INEGOCIÁVEL: A soma de palavras da Parte 1 + Parte 2 NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
+        OBJETIVO: Chamada para ação simples, natural e irresistível.
+        A 4ª frase DEVE variar entre ganchos de convite para crescer e receber o material semanal no Direct.
+        Exemplos de variações (NÃO copie idêntico — crie uma variação equivalente no mesmo tom):
+        - Parte 1 (ANTES da quebra de linha): "Toda semana um conteúdo exclusivo."
+          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' pra crescer com a gente."
+        - Parte 1 (ANTES da quebra de linha): "Comente 'SABEDORIA' no Direct."
+          Parte 2 (DEPOIS da quebra de linha): "E receba o material inédito da semana."
+        - Parte 1 (ANTES da quebra de linha): "Quer evoluir na prática hoje?"
+          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' que te envio o guia."
+        REGRA INEGOCIÁVEL: A soma das duas partes NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
 
         ═══════════════════════════════════════════════════
         REGRAS ABSOLUTAS DE QUALIDADE:
@@ -1003,7 +1009,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - Proibido acusações que façam o usuário se sentir inferior, incapaz ou burro.
         - Fale com alguém inteligente que está prestes a perceber algo que ainda não enxergou.
         - Não use ponto de exclamação. Não use "..." mais de uma vez na sequência inteira.
-        - O PDF nunca é apresentado como "grátis", "bônus" ou "recompensa". Ele é a próxima etapa natural.
+        - O PDF nunca é apresentado como "grátis", "bônus" ou "recompensa". Ele é a próxima etapa natural de desenvolvimento.
 
         PEXELS QUERY — PILAR VISUAL OBRIGATÓRIO: "{pilar_nome}"
         A PRIMEIRA query do array pexels_queries DEVE ser: '{pilar_exemplo}'
@@ -1023,12 +1029,12 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
             "Gancho de alto impacto com {mecanismo_nome}.",
             "Identificação concreta da dor ou tensão.",
             "Virada de chave com {titulo_pdf_limpo}.",
-            "Comente 'SABEDORIA' pra receber no Direct. \\n Descubra o método prático da semana."
+            "Toda semana um conteúdo exclusivo. \\n Comente 'SABEDORIA' pra crescer com a gente."
           ],
           "pexels_queries": [
             "{pilar_exemplo}",
-            "successful confident person walking modern city golden light cinematic",
-            "leader standing high building looking horizon sunrise epic"
+            "exclusive luxury gala evening event elegant man in suit 4k",
+            "stylish couple walking city night golden lighting architecture"
           ],
           "legenda": "Legenda próxima e direta baseada no material desta semana. Comente 'SABEDORIA' que te envio no Direct 👇"
         }}

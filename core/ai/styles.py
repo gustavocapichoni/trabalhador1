@@ -29,40 +29,40 @@ GANCHOS_POR_CATEGORIA = {
         "Quando você entender isso, nada mais te abala.",
     ],
     "ironia": [
-        "Você flerta com a mudança, mas beija o passado.",
-        "É irônico como a gente se desgasta por quem nem se importa.",
-        "Você reclama do esgotamento, mas adia o que te salva.",
-        "Curioso como você cobra respeito e aceita migalhas.",
-        "Engraçado como o medo do erro te faz estagnar.",
-        "Você finge que superou, mas suas reações te entregam.",
-        "É fácil falar de maturidade sem olhar as próprias atitudes.",
-        "Você busca validação de quem nem se importa com você.",
-        "Quer paz, mas mantém por perto quem traz o caos.",
-        "Incrível como você defende a desculpa que te consome.",
+        "A mente que busca progresso não se prende ao passado.",
+        "É irônico como gastamos energia onde nada se constrói.",
+        "Reclamar do cansaço enquanto adia a disciplina é uma escolha.",
+        "Cobrar respeito do mundo começa no respeito aos seus princípios.",
+        "O medo de falhar paralisa apenas quem ignora o próprio valor.",
+        "As reações imaturas revelam onde o trabalho interno ainda falta.",
+        "Falar de maturidade é fácil; mantê-la sob pressão é o teste.",
+        "Buscar validação externa é assinar a dependência da sua paz.",
+        "Quem busca clareza não cultiva a bagunça mental.",
+        "Defender a desculpa que te atrasa é adiar a própria liberdade.",
     ],
     "sabedoria": [
-        "Quem cresceu na sobrevivência enxerga o mundo diferente de quem cresceu no amor.",
-        "Não importa quanto tempo você perdeu: salve o resto da sua vida.",
-        "Aquilo que você não pode controlar não devia atormentar sua mente.",
-        "A dor de mudar é temporária; a dor de continuar igual é vitalícia.",
-        "Seu tempo não sumiu — o medo apenas o escondeu.",
-        "O silêncio diante de uma ofensa é o maior teste de poder.",
-        "Ficar em paz custa caro, mas viver na bagunça mental custa sua alma.",
-        "Eu nunca tirei ninguém da minha vida. As atitudes se encarregaram.",
-        "Um lar em paz vale mais do que qualquer conquista no caos.",
-        "A lealdade em silêncio vale mais do que mil promessas em público.",
+        "Quem aprendeu na disciplina enxerga a vida com serenidade e clareza.",
+        "Não importa o tempo acumulado no erro: reconstrua o seu futuro agora.",
+        "Aquilo que foge do seu controle não deve consumir a sua paz.",
+        "A dor da disciplina é temporária; o peso da omissão é permanente.",
+        "Seu tempo não sumiu — foi diluído nas distrações sem propósito.",
+        "O silêncio diante da provocação é a expressão máxima de autocontrole.",
+        "Preservar a paz interna é o investimento mais valioso de um homem.",
+        "As atitudes constantes revelam quem merece estar na sua jornada.",
+        "Um lar estruturado e em paz vale mais do que o aplauso da multidão.",
+        "A lealdade silenciosa supera qualquer promessa ruidosa.",
     ],
-    "seducao": [
-        "Não ignore este aviso. O que vem depois vai mudar seu dia.",
-        "Existe uma verdade desconfortável que você precisa ouvir hoje.",
-        "Isso não é pra todo mundo — mas quem entende, muda de vida.",
-        "A sensação de paz real só chega quando você aceita isso.",
-        "Não é sobre trabalhar mais. É sobre parar de se sabotar.",
-        "Quando você perceber este padrão, nunca mais vai aceitar o básico.",
-        "Tem verdades que doem no início, mas libertam para sempre.",
-        "Isso aqui vai te poupar anos de frustração desnecessária.",
-        "Existe um divisor de águas entre quem sonha e quem realiza.",
-        "Se você chegou até aqui, esta mensagem era pra você.",
+    "magnetismo": [
+        "Preste atenção. O princípio a seguir pode mudar a sua perspectiva.",
+        "Existe uma verdade sutil que poucos têm a maturidade de aceitar.",
+        "Isso exige discernimento — e quem compreende, transforma sua realidade.",
+        "A verdadeira serenidade surge quando você domina a si mesmo.",
+        "Não é sobre esforço desordenado. É sobre direção e maestria.",
+        "Quando você enxerga este padrão, recusa imediatamente o medíocre.",
+        "Verdades fundamentais exigem coragem no início, mas libertam para sempre.",
+        "Este entendimento poupará anos de desgastes desnecessários.",
+        "Existe um abismo entre quem apenas deseja e quem executa com firmeza.",
+        "Se você busca evolução real, esta reflexão é para você.",
     ],
     "intriga": [
         "O maior erro do homem não é errar, é...",
@@ -401,28 +401,28 @@ def proximo_cta(indice_atual=0):
 # =====================================================================
 # CAIXA DE SENTIMENTOS (15 emoções)
 # Mapeia cada sentimento para diretrizes de copy, termos de busca de imagem,
-# e subpasta de áudio para criar sinestesia pura.
+# e subpasta de áudio para criar sinestesia pura de alta classe.
 # =====================================================================
 SENTIMENTOS_CONFIG = {
-    # ── Família 1: Desejo & Aspiração (Ideal para inspirar e gerar conexão de alta qualidade)
+    # ── Família 1: Desejo & Aspiração (Inspirador, nobre, alta classe)
     "poder": {
         "tom": "Transmita autoridade incansável, magnetismo e domínio. Use frases firmes. Fale de auto-maestria e de viver no topo.",
-        "busca_imagem": ["concert crowd cheering stadium lights glowing cinematic 35mm", "determined male leader walking fast city lights power", "luxury car driving fast night city neon blur", "powerful stance person standing on top of mountain sunrise"],
+        "busca_imagem": ["exclusive luxury gala evening event elegant man in suit 4k", "determined male leader walking night city lights power cinematic", "luxury sports car driving night city golden lighting", "confident leader standing modern skyscraper penthouse balcony city night view"],
         "pasta_audio": "desejo_poder"
     },
     "luxuria": {
         "tom": "Desperte o desejo pelo extraordinário, pelo acesso restrito e pela vida que a maioria apenas sonha em ter.",
-        "busca_imagem": ["luxury lifestyle elegant person night city lights golden bokeh", "high end party celebration champagne flashing lights 35mm", "stadium concert lasers smoke excitement crowd", "exclusive VIP event warm lighting luxury cinematic"],
+        "busca_imagem": ["luxury lifestyle elegant person night city lights golden bokeh", "high end luxury gala event chic woman in dress 35mm", "exclusive penthouse balcony city night view 4k", "exclusive VIP luxury event warm lighting cinematic"],
         "pasta_audio": "desejo_poder"
     },
     "sensualidade": {
         "tom": "Trabalhe com o magnetismo do mistério, da autoconfiança inabalável e da atração fatal que a clareza gera.",
-        "busca_imagem": ["charismatic speaker stage spotlight crowd watching 35mm", "confident person smiling bright city lights night glowing", "magnetic portrait warm stage lighting cinematic", "elegant confident walk night city street neon"],
+        "busca_imagem": ["charismatic leader speaking on stage golden lights 35mm", "confident elegant person smiling bright city lights night", "magnetic portrait warm evening lighting cinematic", "stylish couple walking city night golden lighting architecture"],
         "pasta_audio": "desejo_poder"
     },
     "prazer": {
-        "tom": "Conecte com a satisfação genuína da vitória, o êxtase de viver nos seus próprios termos. Celebração pura.",
-        "busca_imagem": ["joyful crowd concert hands up laser lights 35mm", "person celebrating victory arms raised sunrise mountain", "ecstatic group of friends laughing luxury rooftop night", "triumph celebration confetti lights cinematic"],
+        "tom": "Conecte com a satisfação genuína da vitória, o êxtase de viver nos seus próprios termos. Celebração nobre.",
+        "busca_imagem": ["stylish couple celebrating victory luxury penthouse night 35mm", "person celebrating victory looking at epic sunrise mountain", "exclusive group of friends laughing luxury rooftop night", "triumph celebration golden lights cinematic"],
         "pasta_audio": "desejo_poder"
     },
     "plenitude": {
@@ -431,57 +431,57 @@ SENTIMENTOS_CONFIG = {
         "pasta_audio": "conexao_lealdade"
     },
 
-    # ── Família 2: Tensão & Ação (Ganchos de velocidade, despertar, virada de jogo)
+    # ── Família 2: Tensão & Ação (Foco, despertar, virada de jogo)
     "escassez": {
         "tom": "Gere senso de urgência para a grandeza. O tempo não está acabando para sofrer, está passando enquanto o topo te espera.",
-        "busca_imagem": ["fast motion blur sports car night city lights cinematic", "sprinter running fast stadium lights track 35mm", "dynamic movement crowd concert jumping energy", "urgent action fast pace city life neon blur"],
+        "busca_imagem": ["luxury car driving night city golden lights cinematic", "stylish person walking fast city lights evening 35mm", "dynamic movement illuminated modern city architecture", "urgent action fast pace city life golden blur"],
         "pasta_audio": "tensao_acao"
     },
     "raiva": {
         "tom": "Manifeste uma indignação eletrizante contra a mediocridade. Uma energia de revolta que impulsiona para a ação extrema.",
-        "busca_imagem": ["intense rock concert guitarist stage lights 35mm", "athlete screaming victory intense stadium lights", "powerful dynamic sports action bright lights cinematic", "fierce determined look person running fast"],
+        "busca_imagem": ["determined leader walking fast night city lights 35mm", "focused person looking at city skyline intense lighting", "powerful dynamic stance modern architecture bright lights cinematic", "fierce determined look person walking evening city"],
         "pasta_audio": "tensao_acao"
     },
     "ousadia": {
         "tom": "Toque no perigo de viver uma vida morna e esquecível. Provoque a coragem e a fome de arriscar alto.",
-        "busca_imagem": ["person standing edge of cliff looking at sunrise cinematic", "base jumper jumping off mountain extreme wide angle 35mm", "daring action sports bright sky intense light", "fearless leader addressing massive crowd stadium"],
+        "busca_imagem": ["person standing edge of cliff looking at sunrise cinematic", "confident leader standing modern skyscraper penthouse balcony 35mm", "daring person walking golden hour city skyline", "fearless leader looking at city night lights"],
         "pasta_audio": "tensao_acao"
     },
     "desafio": {
         "tom": "Faça perguntas provocadoras de alto nível. Desafie o leitor a subir o próprio sarrafo e parar de aceitar o básico.",
-        "busca_imagem": ["athlete staring down opponent intense stadium lighting 35mm", "confident smile looking directly at camera bright light", "challenging confident posture city skyline background", "leader standing tall among crowd cinematic lighting"],
+        "busca_imagem": ["elegant man in suit staring direct camera cinematic lighting 35mm", "confident smile looking directly at camera golden light", "challenging confident posture city skyline background", "leader standing tall modern architecture cinematic"],
         "pasta_audio": "tensao_acao"
     },
     "curiosidade": {
         "tom": "Abra loops mentais com o 'segredo dos que chegam lá'. O magnetismo do que a elite sabe e a massa ignora.",
-        "busca_imagem": ["stage curtain opening bright light shining through 35mm", "mystery silhouette walking into bright glowing doorway", "illuminated book glowing magical light knowledge", "discover hidden treasure glowing golden light cinematic"],
+        "busca_imagem": ["exclusive luxury event doorway glowing golden light 35mm", "mystery silhouette walking night city golden lights", "illuminated book glowing magical light knowledge", "discover hidden luxury architecture glowing golden light cinematic"],
         "pasta_audio": "tensao_acao"
     },
 
-    # ── Família 3: Conexão & Lealdade (Ideal para Stories e aquecimento de base de seguidores)
+    # ── Família 3: Conexão & Lealdade (Elegância, valores e autoridade)
     "amor": {
         "tom": "Aborde a força imbatível de quem constrói algo para quem ama. A paixão que levanta impérios.",
-        "busca_imagem": ["passionate crowd singing together concert lights 35mm", "joyful family running on bright sunny beach cinematic", "warm powerful embrace golden hour sunlight", "loyal team celebrating victory trophy lights"],
+        "busca_imagem": ["stylish couple walking city night golden lighting 35mm", "joyful family walking golden hour beach cinematic", "warm powerful embrace golden hour sunlight", "loyal team celebrating luxury penthouse lights"],
         "pasta_audio": "conexao_lealdade"
     },
     "carinho": {
         "tom": "Fale com o magnetismo de um líder que cuida da sua tribo. Uma voz forte, mas que eleva quem está perto.",
-        "busca_imagem": ["leader shaking hands smiling crowd bright lights 35mm", "mentor clapping for student success bright stage", "warm genuine smile connection bright sunlight", "loyal fans reaching out to stage concert cinematic"],
+        "busca_imagem": ["leader shaking hands elegant event 35mm", "mentor talking with student bright stage", "warm genuine smile connection bright sunlight", "loyal team walking together city night cinematic"],
         "pasta_audio": "conexao_lealdade"
     },
     "afeto": {
         "tom": "Celebre a irmandade de quem corre pelo mesmo objetivo. A energia de um time imbatível.",
-        "busca_imagem": ["team huddle sports stadium bright lights intense 35mm", "friends laughing throwing hands in air sunset beach", "tribe celebrating around massive bonfire night", "loyal crew walking together confident slow motion"],
+        "busca_imagem": ["elegant team huddle modern architecture 35mm", "friends laughing sunset rooftop luxury event", "people celebrating around golden hour sunset", "loyal crew walking together confident slow motion"],
         "pasta_audio": "conexao_lealdade"
     },
     "alegria": {
-        "tom": "Celebre vitórias de forma barulhenta e eufórica. A felicidade extrema de viver no pico de performance.",
-        "busca_imagem": ["euphoric crowd jumping concert confetti lasers 35mm", "champagne pop celebration luxury yacht sunny day", "radiant laughter group of winners stadium lights", "pure joy dancing neon lights club cinematic"],
+        "tom": "Celebre vitórias de forma nobre e eufórica. A felicidade extrema de viver no pico de performance.",
+        "busca_imagem": ["exclusive luxury party celebrating golden lights 35mm", "champagne pop celebration luxury yacht sunny day", "radiant laughter group of winners penthouse lights", "pure joy celebrating elegant event cinematic"],
         "pasta_audio": "conexao_lealdade"
     },
     "esperanca": {
         "tom": "Mostre que a glória é inevitável para quem não para. Uma visão épica e grandiosa do futuro.",
-        "busca_imagem": ["epic sunrise over futuristic city bright golden light 35mm", "person raising flag on mountain peak sun shining", "triumphant orchestra playing bright stage lights", "soaring eagle flying into bright sun cinematic"],
+        "busca_imagem": ["epic sunrise over futuristic city bright golden light 35mm", "person looking at mountain peak sun shining", "triumphant leader on stage golden lights", "soaring eagle flying into bright sun cinematic"],
         "pasta_audio": "conexao_lealdade"
     }
 }
