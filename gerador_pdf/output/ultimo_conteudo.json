@@ -1,123 +1,114 @@
 {
-  "titulo_pdf": "O MAPA DA ALMA: Sua Bússola Interna para Reacender o Sentido da Vida",
-  "subtitulo_pdf": "Um Guia Prático e Incisivo para Recobrar a Conexão Espiritual e Transformar seu Destino.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
+  "frase_topo_capa": "A SABEDORIA QUE REVELA SEU PROPÓSITO INABALÁVEL",
+  "titulo_pdf": "A LÓGICA DA FÉ INDOMÁVEL",
+  "subtitulo_pdf": "Encontre a direção que sua alma clama e reconecte-se com o sentido da vida.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing ancient scroll wrapped around a rugged compass, surrounded by ethereal light, 8k, hyper-realistic.",
   "capa_cards": [
     {
-      "titulo": "A Desconexão Silenciosa",
-      "texto": "Você sente o vazio crescer, a vida em automático te roubando a essência e a fé se esvaindo sem perceber. O mundo grita, mas sua alma sussurra a dor da falta de propósito.",
-      "pergunta_destaque": "Sua vida virou uma rotina sem significado?"
+      "titulo": "A Falha Silenciosa",
+      "texto": "Você se sente à deriva, sem conexão real, preso numa rotina que suga o propósito da sua alma. A vida parece ter perdido o sentido.",
+      "pergunta_destaque": "Cansado de viver sem rumo?"
     },
     {
-      "titulo": "Ative A Sabedoria dos Evangelhos",
-      "texto": "Um método direto e profundo dos Evangelhos para restaurar sua bússola moral e espiritual.",
-      "pergunta_destaque": null
+      "titulo": "O Legado de Salomão",
+      "texto": "Desvende a sabedoria milenar de Provérbios para redefinir sua espiritualidade e fé.",
+      "pergunta_destaque": "N/A"
     },
     {
-      "titulo": "Recupere o Sentido e a Paz",
-      "texto": "Encontre clareza, propósito e a força para agir com fé, HOJE.",
-      "pergunta_destaque": null
+      "titulo": "Rumo Inabalável",
+      "texto": "Clareza imediata e um plano de ação para restaurar sua conexão interior HOJE.",
+      "pergunta_destaque": "N/A"
     },
     {
-      "titulo": "A Verdade Liberta",
-      "texto": "A verdade não é para ser lida, mas vivida.",
-      "citacao_destaque": "A verdade não é para ser lida, mas vivida. Código da Sabedoria."
+      "titulo": "A Mente Conectada",
+      "texto": "A fé não é cega, é a lente que revela o invisível. Sabedoria em ação.",
+      "citacao_destaque": "O temor do Senhor é o princípio da sabedoria. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Preço Invisível da Vida no Automático",
-      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, 8k",
+      "titulo": "A Perda Invisível do Sentido",
+      "prompt_imagem": "Cinematic dark moody photography of a person's reflection in a puddle, looking lost amidst a blurry cityscape, 8k, hyper-realistic.",
       "paragrafos": [
-        "É irônico como buscamos o sentido da vida nas manchetes do dia, nas oscilações da bolsa ou na fama alheia, enquanto a resposta pulsa em um lugar que raramente visitamos: dentro de nós. Você se sente como um navio à deriva, com o motor ligado mas sem rumo, navegando por um mar de informações e distrações, enquanto a bússola interna aponta para um vazio inquietante. Esse piloto automático é o verdadeiro ladrão da sua fé e propósito, operando silenciosamente e cobrando um preço que você só percebe quando a alma já está exausta.",
-        "Imagine um pastor que, tendo cem ovelhas, perde uma. A maioria diria: 'São 99 ainda, que se dane a uma'. Mas os Evangelhos nos mostram que o verdadeiro pastor deixa as 99 para ir atrás daquela única, perdida e sem rumo, até encontrá-la. Não é sobre o número, mas sobre o valor de cada vida, e a sua, que se sente perdida, é infinitamente valiosa.",
-        "O primeiro passo para reencontrar o sentido não é buscar um novo caminho, mas parar de andar no caminho errado. Identifique hoje uma única atividade que drena sua energia espiritual ou te afasta de sua essência, e decida minimizá-la ou eliminá-la. Comece pequeno: 15 minutos de silêncio intencional em vez de rolar o feed. Este é o seu primeiro 'volante' de volta ao controle."
+        "É fácil culpar o mundo lá fora por essa névoa que insiste em cobrir sua visão. Você acorda, faz, repete, mas a alma grita que algo está faltando. Essa desconexão não é um acidente, é o custo invisível de uma vida no automático, de uma mente que se recusa a olhar para dentro. Você sente que a vida perdeu o sentido e a conexão com algo maior, e essa sensação, meu caro, é um convite desesperado para despertar.",
+        "Salomão, o rei mais sábio, alertava sobre a insensatez de seguir cegamente o caminho que 'parece reto ao homem', mas no fim conduz à morte. Ele sabia que muitos se vangloriam de uma fé externa, enquanto o coração está vazio. Imagine um viajante que, com o mapa na mão, insiste em seguir o caminho errado por pura teimosia ou distração com futilidades. A sabedoria está em parar, recalcular, e admitir que o rumo precisa ser ajustado.",
+        "O primeiro passo é brutalmente honesto: admita que você está em piloto automático. Pegue um caderno e liste três áreas da sua vida onde você sente essa desconexão. Não julgue, apenas escreva. Hoje, pergunte-se: 'Se minha fé fosse um músculo, o que eu faria para fortalecê-lo HOJE, além do que já faço?' A resposta será seu ponto de partida para recalibrar o sentido."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_89ed9c.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_f264fb.jpg"
     },
     {
       "numero": 2,
-      "titulo": "Dominando a Mente: A Batalha Silenciosa Pelo Foco",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, 8k",
+      "titulo": "O Preço da Mente Vagueante",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing open book on a stone altar, with ethereal light shining on ancient symbols, 8k, hyper-realistic.",
       "paragrafos": [
-        "A verdade que ninguém quer ouvir: seu cérebro adora o sofrimento familiar. É mais fácil reclamar da falta de sentido do que construir um, porque construir exige disciplina, e disciplina dói. É o mesmo mecanismo que nos faz assistir a dramas repetitivos na TV quando poderíamos estar criando nossa própria saga. O caos externo, as notícias do mercado, a queda de aprovação de figuras públicas - tudo isso distrai e alimenta a inércia, enquanto a mudança real exige que você lute contra o inimigo mais astuto: sua própria mente.",
-        "Quando Jesus foi tentado no deserto, ele não negociou com a dúvida ou com a fome. Ele dominou seus impulsos com a Palavra, com uma convicção inabalável. Não foi fácil, mas foi um ato de soberania sobre si mesmo, um controle absoluto sobre as vozes internas e externas que tentavam desviá-lo de seu propósito.",
-        "Domine sua atenção. Escolha intencionalmente um 'Ponto de Ancoragem Diário' para sua mente. Pode ser uma frase dos Evangelhos, um breve momento de gratidão, ou uma respiração consciente. Ao sentir a mente divagar para o vazio ou o desânimo, retorne a este ponto. Repita isso cinco vezes ao dia. É como treinar um músculo, mas para a alma: fortaleça sua capacidade de redirecionar o foco para o que nutre sua fé e propósito."
+        "Você já percebeu como sua mente adora o sofrimento conhecido? É mais fácil alimentar a dúvida, a queixa, do que encarar a disciplina da mudança. O problema não é a falta de desejo, é a escravidão da sua atenção. Seu cérebro, essa máquina poderosa, prefere a segurança da dor familiar à incerteza da transformação. E essa é a mentira silenciosa que te mantém preso.",
+        "Provérbios nos ensina: 'Como cidade derrubada, sem muro, assim é o homem que não tem domínio sobre o seu espírito'. É como tentar proteger uma fortaleza com muralhas destruídas. Não importa o quão valioso seja o tesouro dentro, se não há controle sobre as defesas, tudo se perde. Salomão via o domínio próprio não como uma virtude opcional, mas como a própria fundação da segurança e da paz interior. Sem ele, somos reféns dos ventos da vida, das notícias e das distrações.",
+        "Domine sua atenção. Reserve 15 minutos HOJE. Desligue tudo. Sente-se em silêncio e preste atenção à sua respiração. Quando a mente divagar (e ela vai), gentilmente traga-a de volta. Não é sobre não pensar, é sobre escolher onde sua atenção reside. Reprogramar sua mentalidade começa com esse pequeno ato diário de 'repatriar' sua consciência. Anote no seu caderno: O que eu pensei quando tentei dominar minha mente? E o que eu escolhi redirecionar para?"
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_72a818.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_3a11a8.jpg"
     },
     {
       "numero": 3,
-      "titulo": "Construindo o Sentido: Plano de Ação à Prova de Desculpas",
-      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, 8k",
+      "titulo": "A Sabedoria Oculta do Propósito",
+      "prompt_imagem": "Cinematic dark moody photography of a lone figure standing at a crossroads, illuminated by a beam of light from above, with a mysterious path ahead, 8k, hyper-realistic.",
       "paragrafos": [
-        "É exaustivo, não é? Trabalhar como um condenado, ver o mundo girar em caos, e ainda assim sentir que sua vida está presa em um loop, sem avanço real. Você troca o tempo por dinheiro, e o dinheiro por distrações, mas o sentido continua em falta. Ninguém te preparou para a maratona da existência sem um mapa, e as promessas vazias do sucesso rápido, como as notícias sobre a fama, apenas amplificam a sensação de que você está perdendo algo essencial. O sentimento de 'estar perdido' não é falta de direção, mas falta de um plano de ação claro e intencional.",
-        "Jesus perguntou: 'Qual de vocês, se quiser construir uma torre, não se senta primeiro e calcula os custos, para ver se tem dinheiro suficiente para completá-la?' Parece óbvio, mas quantos de nós aplicam isso à própria vida e propósito? Quantos 'começam a construir' sem calcular o esforço, o tempo e a dedicação necessários para uma vida com sentido?",
-        "Desenhe seu 'Mapa da Intenção Semanal'. Escolha três ações espirituais ou de propósito que você quer realizar esta semana (ex: 15 minutos de leitura espiritual diária, um ato de serviço, uma conversa profunda). Bloqueie-as na sua agenda como se fossem reuniões inadiáveis. Não 'tentar fazer', mas 'fazer'. Calcule o custo da inação e o valor da ação. Seu destino não é algo que se espera, é algo que se constrói, um tijolo de intenção por vez."
+        "Você se sente trabalhando, correndo, mas a linha de chegada parece sempre distante, ou pior, invisível. A exaustão não vem do esforço, mas da falta de propósito claro. Você está construindo o quê, exatamente? A sensação de estar em uma esteira, suando sem sair do lugar, é o sintoma de um plano ausente. Não é falta de fé, é falta de um plano de fé.",
+        "Provérbios diz: 'Onde não há conselho, os projetos falham; mas na multidão de conselheiros há segurança'. Salomão não falava apenas de pessoas, mas de princípios e planejamento. Um arquiteto jamais começa uma construção sem um projeto detalhado, uma fundação sólida e uma visão clara do que será erguido. Da mesma forma, sua vida espiritual e seu propósito demandam um projeto, um 'plano de engenharia' divina. Não se trata de adivinhação, mas de discernimento e antecipação.",
+        "Desenhe seu 'plano de engenharia divina' HOJE. Defina UMA meta espiritual para os próximos 7 dias. Algo concreto: ler um capítulo de Provérbios por dia, meditar por 5 minutos, ou praticar a gratidão conscientemente. Não se sobrecarregue. Em seguida, divida essa meta em ações diárias específicas. Exemplo: 'Segunda: ler Provérbios 1, refletir sobre a sabedoria. Terça: ler Provérbios 2, praticar gratidão por 3 coisas'. Este plano à prova de desculpas é o seu mapa para a semana."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_40c5d4.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_30cb27.jpg"
     }
   ],
-  "citacao_destaque": "Não são os que ouvem a lei que são justos aos olhos de Deus, mas sim os que praticam a lei.",
-  "titulo_citacao": "A Regra de Ouro da Ação",
-  "verso_base": "A fé, por si só, se não for acompanhada de obras, está morta.",
-  "referencia_verso": "Tiago 2:17",
+  "citacao_destaque": "Em todos os teus caminhos, reconhece-o, e ele endireitará as tuas veredas.",
+  "titulo_citacao": "A Regra de Ouro da Conexão",
+  "verso_base": "O coração do homem planeja o seu caminho, mas o Senhor dirige os seus passos.",
+  "referencia_verso": "Provérbios 16:9",
   "plano_acao": {
-    "titulo_secao": "O Protocolo da Conexão Ativa: 7 Dias para Reacender a Chama Interior",
-    "prompt_imagem": "Cinematic dark moody photography of a man meditating in a serene ancient temple, rays of light piercing through, 8k",
-    "subtitulo": "Ative sua fé e propósito com este guia prático e diário baseado nos ensinamentos atemporais para uma vida com mais sentido.",
+    "titulo_secao": "O Eixo Inabalável: 5 Pilares para Recalibrar Sua Fé",
+    "prompt_imagem": "Cinematic dark moody photography of a lighthouse beam cutting through a dense fog, guiding a small boat, 8k, hyper-realistic.",
+    "subtitulo": "Descubra como ativar uma conexão profunda e direcionar sua vida em apenas 5 passos práticos, inspirados na sabedoria milenar de Provérbios.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Dia 1: A PAUSA REFLEXIVA",
-        "descricao": "Identifique uma distração que rouba sua paz. Minimiza-a por 30 minutos hoje para criar um espaço de clareza."
+        "titulo": "O Espelho da Alma",
+        "descricao": "Diariamente, reserve 5 minutos para olhar para dentro. Pergunte: 'Onde minha vida perdeu o sentido hoje?' e 'O que estou evitando encarar?'. Provérbios nos lembra que 'o caminho dos perversos é tenebroso, nem sabem em que tropeçam'. Seja brutalmente honesto com você."
       },
       {
         "numero": 2,
-        "titulo": "Dia 2: O FOCO SAGRADO",
-        "descricao": "Escolha uma frase inspiradora dos Evangelhos. Medite nela por 5 minutos, três vezes ao dia, para ancorar sua mente."
+        "titulo": "A Dieta da Atenção",
+        "descricao": "Por 7 dias, elimine uma distração que rouba sua paz (ex: redes sociais ao acordar). Em vez disso, dedique 10 minutos à meditação ou leitura de um provérbio. 'Sobre tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.' Proteja sua atenção como seu maior tesouro."
       },
       {
         "numero": 3,
-        "titulo": "Dia 3: AÇÃO CONSCIENTE",
-        "descricao": "Realize um pequeno ato de bondade, sem esperar reconhecimento. Deixe a fé se manifestar em obras concretas."
+        "titulo": "A Arquitetura do Propósito",
+        "descricao": "Escolha uma área da sua vida onde a conexão com algo maior parece ausente (trabalho, família, saúde). Defina uma ação diária minúscula para reconectá-la. 'Os planos do diligente tendem à abundância, mas a pressa de todo precipitado, tão-somente à pobreza.' Planeje e execute, sem pressa."
       },
       {
         "numero": 4,
-        "titulo": "Dia 4: O SILÊNCIO QUE REVELA",
-        "descricao": "Passe 15 minutos em silêncio absoluto, apenas observando seus pensamentos. Ouça a voz da sua intuição."
+        "titulo": "A Conexão Silenciosa",
+        "descricao": "Antes de tomar qualquer decisão importante, reserve 2 minutos para silenciar o ruído externo e ouvir sua intuição, sua 'voz da sabedoria'. 'Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.' A resposta muitas vezes já está em você."
       },
       {
         "numero": 5,
-        "titulo": "Dia 5: A GRATIDÃO ATIVA",
-        "descricao": "Escreva três coisas pelas quais você é grato e por que. Reconheça as bênçãos diárias em sua vida."
-      },
-      {
-        "numero": 6,
-        "titulo": "Dia 6: O COMPROMISSO REAL",
-        "descricao": "Defina uma única meta espiritual para a próxima semana e planeje como alcançá-la. Escreva os passos práticos."
-      },
-      {
-        "numero": 7,
-        "titulo": "Dia 7: A CONEXÃO RENOVADA",
-        "descricao": "Compartilhe sua jornada ou aprendizado com alguém de confiança. A fé cresce ao ser vivida e compartilhada."
+        "titulo": "O Movimento Que Alimenta",
+        "descricao": "Não espere a perfeição para agir. Faça o que pode, com o que tem, onde está. Cada pequeno passo consistente fortalece sua fé e sentido. 'Quem guarda a figueira comerá do seu fruto, e quem cuida do seu senhor será honrado.' A consistência é a chave da colheita."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_d3f2d3.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_a27533.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "7 DIAS PARA REACENDER A CHAMA DA FÉ E PROPÓSITO.",
+    "promessa_clara": "Sua Direção Espiritual Ativada em 7 Dias.",
     "beneficios": [
-      "Reencontre o sentido perdido na rotina exaustiva.",
-      "Domine sua atenção e foque no que realmente importa.",
-      "Crie um plano de ação espiritual à prova de desculpas.",
-      "Experimente a paz e clareza dos Evangelhos na prática.",
-      "Transforme sua fé em ação e seu destino em propósito."
+      "Elimine a sensação de vazio e encontre seu propósito.",
+      "Domine sua mente e a reconecte à sua fé.",
+      "Crie um plano de ação para uma vida com sentido.",
+      "Liberte-se do piloto automático e da inércia.",
+      "Desperte a sabedoria que transforma seu destino."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_445d1a.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_174394.jpg"
 }
