@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-08-24 11:42:58 UTC",
+    "atualizado_em": "2026-08-24 12:05:53 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -91,30 +91,30 @@
         "seguir": 0.0171,
         "compartilhamento": 0.018
     },
-    "vibe_da_semana": "Nesta semana, o tom deve ser ousado e provocativo, desafiando crenças e instigando reflexões profundas. A mensagem central deve transmitir uma sensação de urgência para que os seguidores reconsiderem suas rotinas e escolhas de vida.",
-    "padroes_campeoes": "Os posts virais utilizam ganchos impactantes que começam com uma afirmação ousada ou uma verdade chocante. Além disso, eles têm CTAs que incentivam comentários e compartilhamentos, criando um senso de comunidade e diálogo.",
+    "vibe_da_semana": "Esta semana, a energia deve ser de reflexão profunda e empoderamento. Buscaremos inspirar os seguidores a confrontar verdades incômodas e a descobrir seu verdadeiro potencial. O tom deve ser ousado e provocativo, incentivando a interação e a autodescoberta.",
+    "padroes_campeoes": "Os posts virais compartilham um forte senso de urgência e provocação, utilizando ganchos do tipo 'afirmação que choca' e 'quebrar crenças'. Eles também instigam a curiosidade e criam um conflito interno, fazendo os leitores se sentirem compelidos a interagir. O uso de CTAs que incentivam comentários tem se mostrado eficaz.",
     "temas_prioritarios": [
         "Pertencimento e Laços Afetivos",
         "Finanças",
         "Espiritualidade"
     ],
     "ganchos_exclusivos": [
-        "Você já parou para pensar no que realmente te retém? A resposta pode ser mais simples do que você imagina.",
-        "Seus maiores medos estão te segurando ou te impulsionando? Vamos descobrir juntos!",
-        "O que você diria se soubesse que está vivendo a vida de outra pessoa?"
+        "Você sabia que a verdadeira liberdade vem de dentro, não de fora?",
+        "A ilusão de controle pode ser sua maior prisão. O que você realmente controla?",
+        "Quantas vezes você já deixou o medo definir suas escolhas?"
     ],
     "ctas_testear": [
-        "Comente 'MUDANÇA' se você está pronto para uma transformação!",
-        "Compartilhe com alguém que precisa ouvir isso hoje!"
+        "Comente 'despertar' se você está pronto para confrontar suas limitações.",
+        "Compartilhe com alguém que precisa ouvir isso hoje."
     ],
     "ideias_de_narrativa": [
-        "Post 1: Tema - Pertencimento e Laços Afetivos. Gancho - 'Você já parou para pensar no que realmente te retém? A resposta pode ser mais simples do que você imagina.' Desenvolvimento - Discuta como as expectativas sociais podem nos aprisionar em um caminho que não é o nosso. Convide os seguidores a refletirem sobre suas próprias jornadas. CTA - 'Comente 'MUDANÇA' se você está pronto para uma transformação!'",
-        "Post 2: Tema - Finanças. Gancho - 'Seus maiores medos estão te segurando ou te impulsionando? Vamos descobrir juntos!' Desenvolvimento - Aborde como o medo do fracasso financeiro pode paralisar as pessoas e como superá-lo. Ofereça dicas práticas. CTA - 'Compartilhe com alguém que precisa ouvir isso hoje!'"
+        "Tema: Pertencimento e Laços Afetivos | Gancho: Você sabia que a verdadeira liberdade vem de dentro, não de fora? | Desenvolvimento: A liberdade que você busca não está em validações externas, mas na sua conexão com seu eu interior. Quando você se apropria de sua própria história, a vida se transforma. | CTA: Comente 'despertar' se você está pronto para confrontar suas limitações.",
+        "Tema: Finanças | Gancho: A ilusão de controle pode ser sua maior prisão. O que você realmente controla? | Desenvolvimento: Muitas pessoas acreditam que têm controle sobre suas finanças, mas, na realidade, são guiadas por hábitos inconscientes. Vamos explorar como mudar essa narrativa e retomar o controle. | CTA: Compartilhe com alguém que precisa ouvir isso hoje."
     ],
-    "aviso_estrategico": "Evitar postagens que não utilizem ganchos fortes ou que não desafiem as crenças do público. É crucial manter a ousadia e a provocação nas mensagens para garantir o engajamento.",
+    "aviso_estrategico": "É crítico evitar ganchos genéricos ou clichês que não ressoam com a experiência pessoal dos seguidores. O foco deve estar em verdades impactantes e em provocar reflexão genuína.",
     "posts_que_bombaram": 15,
     "top_10_consistentes": 10,
-    "contexto_para_gemini": "Nesta semana, a estratégia de conteúdo deve se concentrar em temas de pertencimento, finanças e espiritualidade. É imperativo usar ganchos que provoquem e desafiem a visão comum, utilizando CTAs que incentivem comentários e compartilhamentos. Posts devem explorar a luta interna dos seguidores e oferecer insights sobre como superar barreiras e medos. A voz deve ser ousada, provocando reflexões e uma verdadeira transformação. Lembre-se de manter a conexão emocional com o público, pois isso é fundamental para o crescimento sustentável do perfil.",
+    "contexto_para_gemini": "Nesta semana, o conteúdo deve enfatizar a importância do autoconhecimento e do empoderamento pessoal em temas como pertencimento, finanças e espiritualidade. Utilizaremos ganchos provocativos que desafiem crenças comuns e incentivem os seguidores a interagir e refletir sobre suas próprias vidas. A meta é criar um espaço de diálogo e transformação pessoal, onde cada post funcione como um convite à autodescoberta e à superação de limitações internas.",
     "analises_raw": {
         "semanal": {
             "periodo_dias": 7,
