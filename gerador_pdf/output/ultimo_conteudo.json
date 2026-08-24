@@ -1,110 +1,109 @@
 {
-  "frase_topo_capa": "A FÉ QUE MOVIMENTA MONTANHAS INTERIORES",
-  "titulo_pdf": "O Mito da Fé Passiva",
-  "subtitulo_pdf": "Ative sua conexão divina e transforme seu destino hoje.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a person standing at a crossroads in a desert, looking up at a faint light, 8k, hyper-realistic.",
+  "frase_topo_capa": "A SABEDORIA QUE REACENDE RELACIONAMENTOS ESQUECIDOS",
+  "titulo_pdf": "O Eco Que Ninguém Ouve",
+  "subtitulo_pdf": "Transforme a solidão a dois em conexão profunda e intencional.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of two figures silhouetted against a vast, empty room, their backs to each other, a faint glow emanating from between them, 8k, hyperrealistic",
   "capa_cards": [
     {
-      "titulo": "A Ausência Que Pesa",
-      "texto": "Sente a vida vazia, desconectada, como se o propósito evaporasse? A rotina engole o sagrado e a alma clama por algo maior.",
-      "pergunta_destaque": "Você ainda se reconhece na sua própria jornada?"
+      "titulo": "A Verdade Incômoda",
+      "texto": "Você sente uma distância invisível. Conversas superficiais escondem um abismo de silêncio e solidão no coração da sua relação.",
+      "pergunta_destaque": "Sua conexão é real ou só um hábito?"
     },
     {
-      "titulo": "O Resgate da Presença",
-      "texto": "Redescubra nos Evangelhos o poder da fé ativa para reconstruir seu propósito e conexão.",
-      "pergunta_destaque": ""
+      "titulo": "A Chave da Persuasão Genuína",
+      "texto": "Descubra como a influência sutil e empática reconstrói pontes e comunicações perdidas.",
+      "citacao_destaque": "Conectar é a arte de mover mentes. Código da Sabedoria."
     },
     {
-      "titulo": "Destino Reimaginado",
-      "texto": "Reacenda a paixão pela vida e alinhamento com seu propósito em poucas semanas.",
-      "pergunta_destaque": ""
+      "titulo": "O Ganho Imediato",
+      "texto": "Recupere o diálogo, a intimidade e o propósito compartilhado em tempo recorde.",
+      "citacao_destaque": "A escuta atenta é a maior eloquência. Código da Sabedoria."
     },
     {
-      "titulo": "A Fé Que Move",
-      "texto": "Sua fé é ação, não espera passiva.",
-      "pergunta_destaque": "",
-      "citacao_destaque": "A fé sem obras é morta. Código da Sabedoria."
+      "titulo": "O Princípio Inabalável",
+      "texto": "A verdade emocional é a moeda mais valiosa de qualquer relacionamento.",
+      "citacao_destaque": "Entenda primeiro, para depois ser entendido. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "Quando o Sentido Desaparece no Ruído Diário",
-      "prompt_imagem": "Cinematic dark moody photography of a person sitting alone in a bustling city, looking lost and disconnected, rain falling, 8k, hyper-realistic.",
+      "titulo": "O Vazio Entre Duas Presenças",
+      "prompt_imagem": "Cinematic dark moody photography of a person looking at their reflection in a still, dark pool, seeing another person's distant face, 8k, hyperrealistic",
       "paragrafos": [
-        "Você acorda e a pergunta 'Para que tudo isso?' ecoa no vazio. A vida se tornou uma lista de tarefas, um piloto automático que te arrasta para longe de qualquer significado profundo. A desconexão com algo maior não é falta de crença, mas uma erosão sutil da alma que te faz sentir um estranho na sua própria existência. O custo invisível? Uma apatia que te paralisa, enquanto o mundo grita por sua atenção, mas não pelo seu propósito.",
-        "Nos Evangelhos, vemos Jesus no deserto, resistindo à tentação de trocar seu propósito divino por atalhos mundanos. Ele poderia ter escolhido poder, conforto, reconhecimento instantâneo. Mas sabia que a verdadeira conexão e sentido viriam da fidelidade à sua essência, não das distrações externas. Muitos de nós, ao invés do deserto, nos perdemos na floresta de urgências insignificantes, esquecendo a voz interior.",
-        "O primeiro passo é silenciar o ruído externo e o barulho interno para ouvir. Pergunte-se: O que realmente me move? Onde perdi o rastro do que me faz sentir vivo? Pegue um caderno e liste três momentos na sua última semana em que você sentiu um vislumbre de 'conexão' ou 'sentido'. Não julgue, apenas registre. Essa é sua bússola inicial para desidentificar o que estava te segurando sem perceber."
+        "A verdade é que você não está sozinho, mas se sente. Você vive a contradição de compartilhar a vida com alguém, mas habitar um silêncio denso, onde as palavras se perderam e a intimidade é um fantasma. É o custo invisível de deixar a rotina engolir a clareza e a intenção, transformando laços vibrantes em meros acordos logísticos. Isso não é viver, é sobreviver lado a lado.",
+        "Existe uma história clássica, recontada em 'A Arte da Persuasão', sobre um diplomata que, em vez de bombardear um adversário com argumentos, passou semanas observando seus hábitos, suas paixões ocultas e seus medos. Ele não buscou atacar, mas compreender profundamente. Quando finalmente falou, suas palavras não foram de convencimento, mas de ressonância com o que já existia no outro. Ele não impôs sua visão; ele revelou a do outro para si mesmo, e a mudança foi inevitável.",
+        "A lição é brutalmente simples: a solidão em seu relacionamento não é falta de amor, mas falta de intenção consciente. Para identificar o que te prende, comece hoje a observar as micro-interações que você ignora. Preste atenção ao que NÃO é dito. Anote três momentos do seu dia onde a comunicação falhou ou foi superficial. Este ato de mapear o silêncio é o primeiro passo para rompê-lo."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_331b7c.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_1c37e5.jpg"
     },
     {
       "numero": 2,
-      "titulo": "A Mente Que Prefere o Abismo Conhecido",
-      "prompt_imagem": "Cinematic dark moody photography of a person wrestling with internal shadows, a faint light representing consciousness, 8k, hyper-realistic.",
+      "titulo": "A Coragem de Desvendar o Invisível",
+      "prompt_imagem": "Cinematic dark moody photography of a single flickering candle illuminating ancient texts and a magnifying glass, revealing hidden symbols, 8k, hyperrealistic",
       "paragrafos": [
-        "Admita: seu cérebro adora o sofrimento familiar. É mais fácil permanecer na zona de conforto da insatisfação do que enfrentar o desconforto inicial da mudança. A dificuldade de manter o foco não é preguiça, é seu sistema nervoso sabotando sua busca por algo maior, preferindo o ciclo vicioso de desculpas e a procrastinação da alma. Você anseia por uma conexão, mas sua mente te puxa para baixo com o peso de 'depois eu faço'.",
-        "Os Evangelhos narram a parábola do semeador. A semente (a palavra, o propósito) cai em diferentes solos. Alguns são pedregosos, outros cheios de espinhos, onde a semente não cria raízes ou é sufocada. Essa metáfora poderosa ilustra como nossa própria mente e ambiente podem ser esses 'solos' inférteis, impedindo que a semente do nosso propósito divino floresça, não por falta de semente, mas pela falta de preparo do terreno interno.",
-        "Para dominar sua atenção e reprogramar a mentalidade, comece com a 'Regra dos 5 Minutos de Silêncio Ativo'. Escolha um horário fixo (manhã ou noite) e, por exatos cinco minutos, sente-se em silêncio absoluto. Não medite, não pense, apenas observe seus pensamentos passarem como nuvens. Quando a mente tentar te puxar para o drama conhecido, diga 'Volto já' e gentilmente traga sua atenção de volta ao presente. Repita diariamente. Esta é sua técnica exata para preparar o solo."
+        "É tentador ceder à inércia. Nosso cérebro, mestre em economizar energia, prefere o sofrimento conhecido à incerteza da mudança. Ele sussurra: 'Deixe como está, é mais seguro'. Essa voz é a sabotagem interna que te impede de desvendar as camadas ocultas de insatisfação. Você se convence de que não há solução, quando na verdade, você apenas se recusa a olhar para dentro com honestidade.",
+        "O estrategista, conforme descrito em 'A Arte da Persuasão', entende que a verdadeira influência começa no domínio de si mesmo. Ele não reage impulsivamente, mas pausa para decifrar a dinâmica. Ele não se deixa levar pela emoção do momento, mas calibra sua resposta, como um maestro que controla cada instrumento da orquestra interna. É a arte de não ser refém dos próprios impulsos, mas sim o seu mestre.",
+        "A técnica exata para dominar sua atenção é o 'Foco no Eco'. Sempre que sentir uma emoção negativa em uma interação, em vez de reagir, pergunte: 'Qual é a real necessidade por trás dessa emoção? E qual a necessidade oculta do outro?' Reprograme sua mentalidade para ver além da superfície. Pratique a escuta ativa por cinco minutos diários, sem interromper, apenas para entender, não para responder. Anote as nuances que você teria perdido. Isso é dominar sua atenção e redefinir a conversação."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_33393b.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_5ab986.jpg"
     },
     {
       "numero": 3,
-      "titulo": "O Engano da Ação Sem Direção",
-      "prompt_imagem": "Cinematic dark moody photography of a person building a fragile structure in a vast, empty landscape, a storm brewing, 8k, hyper-realistic.",
+      "titulo": "Mapeando a Ponte, Não o Abismo",
+      "prompt_imagem": "Cinematic dark moody photography of a lone lighthouse beam cutting through thick fog towards a distant, barely visible bridge, 8k, hyperrealistic",
       "paragrafos": [
-        "Você trabalha exausto, corre contra o tempo, mas a sensação é de remar em círculos. A exaustão não vem do esforço, mas da falta de direção, da ausência de um plano que conecte sua energia à sua busca por sentido. É o paradoxo moderno: muita atividade, pouca realização. Você se sente um robô funcional, mas a alma grita por um propósito que justifique tanto movimento, e a desconexão se aprofunda.",
-        "Jesus, antes de iniciar seu ministério, passou um tempo de preparação e reflexão. Seus ensinamentos e milagres eram intercalados com momentos de recolhimento e oração, um claro exemplo de que a ação mais impactante nasce de um planejamento e alinhamento interno profundos. Ele não agia por impulso, mas com um propósito claro, antecipando desafios e escolhendo cada passo com sabedoria, diferentemente de quem apenas 'faz'.",
-        "Como desenhar um plano à prova de desculpas para sua semana? Use a 'Tríade da Prioridade Divina'. No domingo à noite, liste três 'ações de conexão' (meditação, leitura inspiradora, serviço voluntário, oração) que você vai realizar NAQUELE dia. Não para a semana toda. Apenas três para o dia seguinte. E um compromisso com você mesmo: serão feitas antes de qualquer outra tarefa. Anote-as fisicamente em um lugar visível. Esse é o seu plano de ação diário inegociável para resgatar o sentido."
+        "Você já sentiu que está trabalhando exaustivamente em um relacionamento, mas sem nunca chegar a um lugar real? Essa é a sensação de remar sem bússola, de construir sem um projeto claro. A energia se esvai em esforços desconexos, e a frustração cresce porque a cada tentativa, parece que o abismo entre vocês só aumenta. É a ineficiência do desejo sem direção.",
+        "Um insight poderoso de 'A Arte da Persuasão' é que a antecipação é o maior poder. Não se trata de adivinhar o futuro, mas de entender as motivações e reações prováveis, planejando seus movimentos com intenção. O mestre da persuasão não improvisa a cada diálogo; ele desenha um plano de engajamento, sabendo o que quer alcançar e como a outra pessoa provavelmente reagirá. Ele não espera a crise para agir; ele a previne com estratégia.",
+        "Para desenhar um plano à prova de desculpas, siga: defina um 'Propósito de Conexão' semanal claro (ex: 'Ter uma conversa sobre o futuro das finanças'). Em vez de esperar o momento 'perfeito', crie-o. Agende um horário específico. Antecipe três possíveis objeções ou desculpas do seu parceiro e formule uma resposta empática para cada uma. Prepare sua mente para ouvir mais do que falar. Este não é um debate, é uma construção. Este plano transforma o desejo vago em ação concreta."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_bcccd7.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_cfc67e.jpg"
     }
   ],
-  "citacao_destaque": "Não se pode servir a dois senhores. Escolha seu mestre e seu caminho. Código da Sabedoria.",
-  "titulo_citacao": "A Regra Inegociável",
-  "verso_base": "A vida abundante não é ausência de problemas, mas a presença constante de propósito.",
-  "referencia_verso": "João 10:10 (Adaptado)",
+  "citacao_destaque": "A verdadeira persuasão não manipula, ela revela a verdade que já existe. Código da Sabedoria.",
+  "titulo_citacao": "A Regra de Ouro da Conexão",
+  "verso_base": "Aquele que é lento para a ira tem grande entendimento, mas quem tem gênio impaciente mostra sua loucura.",
+  "referencia_verso": "Provérbios 14:29",
   "plano_acao": {
-    "titulo_secao": "O Protocolo da Conexão Inabalável",
-    "prompt_imagem": "Cinematic dark moody photography of a person with hands joined in contemplation, surrounded by a subtle aura of light, ancient texts and a modern compass on a table, 8k, hyper-realistic.",
-    "subtitulo": "Um método de 4 pilares para reativar sua fé e propósito em 7 dias.",
+    "titulo_secao": "O Campo de Força da Conexão Real",
+    "prompt_imagem": "Cinematic dark moody photography of a glowing, intricate web of light connecting two distant points in a vast, dark space, 8k, hyperrealistic",
+    "subtitulo": "Um método de 4 pilares para blindar seu relacionamento contra o silêncio e reconstruir a intimidade perdida.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Silêncio Inegociável",
-        "descricao": "Dedique 15 minutos diários, ao acordar, para silenciar a mente. Sem celular, sem tarefas, apenas você e a quietude. Use este tempo para refletir sobre a intenção do seu dia, não a lista de afazeres. Pratique a observação dos Evangelhos como um espelho para sua alma, buscando não respostas prontas, mas perguntas que te guiem à sua própria verdade."
+        "titulo": "O Espelho da Escuta Ativa",
+        "descricao": "Reserve 15 minutos diários para ouvir sem interrupções. Seu único objetivo é repetir o que o outro disse em suas próprias palavras para garantir que entendeu. Não julgue, não opine, apenas reflita. Isso valida a experiência do outro e abre a porta para a confiança."
       },
       {
         "numero": 2,
-        "titulo": "A Conexão Brutalmente Honesta",
-        "descricao": "Escolha um trecho dos Evangelhos que te desafie ou te conforte profundamente. Leia-o e escreva em um caderno: 'O que isso me revela sobre a minha desconexão atual?' e 'Qual a ação mais simples que posso fazer HOJE para mudar isso?'. Seja honesto, sem autoengano. A verdade liberta, mesmo que doa inicialmente."
+        "titulo": "A Ponte da Intenção Clara",
+        "descricao": "Antes de iniciar qualquer conversa importante, defina sua intenção em uma frase (Ex: 'Quero entender seu ponto de vista sobre X'). Comunique essa intenção no início do diálogo. Isso remove a ambiguidade e direciona a energia para a solução, não para o conflito. A transparência é uma forma sutil de persuasão."
       },
       {
         "numero": 3,
-        "titulo": "Ação Que Ressuscita",
-        "descricao": "Com base na lição do dia anterior, escolha UMA única ação prática e intencional. Pode ser perdoar alguém, fazer um gesto de bondade anônima, ou simplesmente dedicar 10 minutos a um projeto pessoal esquecido. Esta ação não precisa ser grandiosa, mas deve ser um movimento consciente em direção ao seu propósito. Jesus agia de forma direta; você também pode."
+        "titulo": "O Ritual do Reconhecimento Genuíno",
+        "descricao": "Diariamente, identifique e verbalize uma atitude ou característica positiva do seu parceiro que você realmente admira. Não é elogio vazio, mas reconhecimento sincero. Isso cria um campo de força positivo, onde a apreciação supera a crítica e fortalece os laços emocionais."
       },
       {
         "numero": 4,
-        "titulo": "A Reflexão Inversa",
-        "descricao": "Antes de dormir, revisite seu dia. Não para julgar, mas para aprender. Pergunte: 'Onde senti um vislumbre de sentido ou conexão hoje?' e 'Onde me deixei levar pela inércia e o que aprendi com isso?'. Anote. Esta prática de autoavaliação contínua dos seus 'frutos' te mantém alinhado e evita que a vida perca o sentido novamente."
+        "titulo": "O Convite à Vulnerabilidade Estratégica",
+        "descricao": "Escolha um momento de calma e compartilhe uma vulnerabilidade sua, um medo, uma preocupação ou um desejo, de forma concisa e sem culpa. Abrir-se primeiro, com intenção, convida o outro à reciprocidade, criando um espaço seguro para a intimidade e a comunicação profunda. É a arte de persuadir à conexão pela autenticidade."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_6643b8.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_11a624.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "ATIVE SUA FÉ EM AÇÃO E RECONSTRUA SEU SENTIDO DE VIDA.",
+    "promessa_clara": "Reacenda a conexão e elimine a solidão a dois.",
     "beneficios": [
-      "Cale o ruído e reconecte-se com sua essência divina.",
-      "Domine sua mente e pare de sabotar seu crescimento espiritual.",
-      "Transforme a fé passiva em um motor de transformação diária.",
-      "Desenhe um plano de ação espiritual à prova de desculpas.",
-      "Redescubra um propósito inabalável em cada passo da sua jornada."
+      "Quebre o ciclo de silêncio e superficialidade.",
+      "Compreenda as necessidades não ditas do seu parceiro.",
+      "Construa uma comunicação empática e poderosa.",
+      "Restaure a intimidade e a paixão no dia a dia.",
+      "Transforme seu relacionamento com sabedoria prática."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_b4817e.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_4dace3.jpg"
 }
