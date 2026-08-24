@@ -1,114 +1,114 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE REVELA SEU PROPÓSITO INABALÁVEL",
-  "titulo_pdf": "A LÓGICA DA FÉ INDOMÁVEL",
-  "subtitulo_pdf": "Encontre a direção que sua alma clama e reconecte-se com o sentido da vida.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing ancient scroll wrapped around a rugged compass, surrounded by ethereal light, 8k, hyper-realistic.",
+  "frase_topo_capa": "A SABEDORIA QUE REVELA SEU LEGADO REAL",
+  "titulo_pdf": "O Acerto de Contas Com Você Mesmo",
+  "subtitulo_pdf": "Encontre o propósito que o dinheiro não compra. Ação direta e implacável.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a man looking at a vast, empty luxurious room, a single ray of light revealing a hidden compass on the floor, 8k",
   "capa_cards": [
     {
-      "titulo": "A Falha Silenciosa",
-      "texto": "Você se sente à deriva, sem conexão real, preso numa rotina que suga o propósito da sua alma. A vida parece ter perdido o sentido.",
-      "pergunta_destaque": "Cansado de viver sem rumo?"
+      "titulo": "O Preço da Conquista Cega",
+      "texto": "Você conquistou o topo mas o vazio ecoa. A busca incessante por mais, sem um 'porquê' claro, é a armadilha do sucesso sem alma.",
+      "pergunta_destaque": "Seu sucesso tem um preço invisível?"
     },
     {
-      "titulo": "O Legado de Salomão",
-      "texto": "Desvende a sabedoria milenar de Provérbios para redefinir sua espiritualidade e fé.",
-      "pergunta_destaque": "N/A"
+      "titulo": "Desmascarando o Diabo Interno",
+      "texto": "Entenda as forças invisíveis que sabotam seu propósito e aprenda a dominá-las para viver com significado.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Rumo Inabalável",
-      "texto": "Clareza imediata e um plano de ação para restaurar sua conexão interior HOJE.",
-      "pergunta_destaque": "N/A"
+      "titulo": "O Legado Começa Hoje",
+      "texto": "Ative um plano prático para construir uma vida com propósito e impacto real.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "A Mente Conectada",
-      "texto": "A fé não é cega, é a lente que revela o invisível. Sabedoria em ação.",
-      "citacao_destaque": "O temor do Senhor é o princípio da sabedoria. Código da Sabedoria."
+      "titulo": "Sua Bússola Inabalável",
+      "texto": "O propósito não é achado, é construído com sabedoria e ação deliberada.",
+      "citacao_destaque": "A inércia é a arma mais potente do seu sabotador. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "A Perda Invisível do Sentido",
-      "prompt_imagem": "Cinematic dark moody photography of a person's reflection in a puddle, looking lost amidst a blurry cityscape, 8k, hyper-realistic.",
+      "titulo": "O Vazio no Palácio Dourado",
+      "prompt_imagem": "Cinematic moody dark photography of a man in a luxurious suit sitting alone in a vast, empty office, looking out a window at a city skyline, 8k",
       "paragrafos": [
-        "É fácil culpar o mundo lá fora por essa névoa que insiste em cobrir sua visão. Você acorda, faz, repete, mas a alma grita que algo está faltando. Essa desconexão não é um acidente, é o custo invisível de uma vida no automático, de uma mente que se recusa a olhar para dentro. Você sente que a vida perdeu o sentido e a conexão com algo maior, e essa sensação, meu caro, é um convite desesperado para despertar.",
-        "Salomão, o rei mais sábio, alertava sobre a insensatez de seguir cegamente o caminho que 'parece reto ao homem', mas no fim conduz à morte. Ele sabia que muitos se vangloriam de uma fé externa, enquanto o coração está vazio. Imagine um viajante que, com o mapa na mão, insiste em seguir o caminho errado por pura teimosia ou distração com futilidades. A sabedoria está em parar, recalcular, e admitir que o rumo precisa ser ajustado.",
-        "O primeiro passo é brutalmente honesto: admita que você está em piloto automático. Pegue um caderno e liste três áreas da sua vida onde você sente essa desconexão. Não julgue, apenas escreva. Hoje, pergunte-se: 'Se minha fé fosse um músculo, o que eu faria para fortalecê-lo HOJE, além do que já faço?' A resposta será seu ponto de partida para recalibrar o sentido."
+        "É uma piada cruel, não é? Você rala, conquista o mundo, ganha os troféus que todos invejam, e quando chega em casa, o silêncio é ensurdecedor. O tal 'sucesso' se parece mais com uma prisão dourada, onde a única coisa que cresce é o vazio dentro do peito. A verdade é que a vida no automático, sem questionar o 'porquê', transforma sua jornada numa esteira: você corre muito, mas não chega a lugar nenhum de verdade.",
+        "No clássico 'Mais Esperto que o Diabo', o autor narra como a maioria das pessoas se entrega à 'inércia', seguindo o fluxo da vida sem questionar, como rebanho. Elas buscam o material, a aprovação, o conforto imediato, mas esquecem que a maior batalha é interna. É como o milionário que coleciona carros de luxo, mas perdeu a capacidade de sentir alegria ao dirigir qualquer um deles.",
+        "O primeiro passo é brutalmente honesto: admita o vazio. Em vez de preenchê-lo com mais trabalho ou distrações, sente-se com ele. Hoje, reserve 15 minutos para listar três coisas que você faz 'porque tem que fazer' e três coisas que você 'realmente quer fazer'. O que te prende é o que você tolera. A clareza é o primeiro ato de rebelião contra a inércia."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_f264fb.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_e89559.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Preço da Mente Vagueante",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing open book on a stone altar, with ethereal light shining on ancient symbols, 8k, hyper-realistic.",
+      "titulo": "O Mestre da Sua Atenção",
+      "prompt_imagem": "Cinematic dark moody photography of a person meditating in a chaotic city, surrounded by glowing digital distractions, 8k",
       "paragrafos": [
-        "Você já percebeu como sua mente adora o sofrimento conhecido? É mais fácil alimentar a dúvida, a queixa, do que encarar a disciplina da mudança. O problema não é a falta de desejo, é a escravidão da sua atenção. Seu cérebro, essa máquina poderosa, prefere a segurança da dor familiar à incerteza da transformação. E essa é a mentira silenciosa que te mantém preso.",
-        "Provérbios nos ensina: 'Como cidade derrubada, sem muro, assim é o homem que não tem domínio sobre o seu espírito'. É como tentar proteger uma fortaleza com muralhas destruídas. Não importa o quão valioso seja o tesouro dentro, se não há controle sobre as defesas, tudo se perde. Salomão via o domínio próprio não como uma virtude opcional, mas como a própria fundação da segurança e da paz interior. Sem ele, somos reféns dos ventos da vida, das notícias e das distrações.",
-        "Domine sua atenção. Reserve 15 minutos HOJE. Desligue tudo. Sente-se em silêncio e preste atenção à sua respiração. Quando a mente divagar (e ela vai), gentilmente traga-a de volta. Não é sobre não pensar, é sobre escolher onde sua atenção reside. Reprogramar sua mentalidade começa com esse pequeno ato diário de 'repatriar' sua consciência. Anote no seu caderno: O que eu pensei quando tentei dominar minha mente? E o que eu escolhi redirecionar para?"
+        "Você tenta focar, mas a mente parece um circo desgovernado, com mil pensamentos pulando de um lado para o outro. E vamos ser sinceros: às vezes, o sofrimento conhecido da rotina vazia parece mais fácil de lidar do que a incerteza da mudança. Seu cérebro, espertinho, adora a zona de conforto, mesmo que ela esteja te asfixiando. É a sabotagem silenciosa do seu próprio eu.",
+        "Napoleão Hill, através de seu diálogo com o 'Diabo', revela que a mente humana é um campo de batalha. O 'Diabo' usa a 'deriva' - a falta de um propósito definido e o controle sobre os próprios pensamentos - para aprisionar as pessoas. Ele explica que quem não domina sua própria mente, será dominado por ela. É como tentar construir um castelo de areia enquanto o vento forte decide para onde a areia vai.",
+        "Dominar a atenção é dominar seu destino. Comece com a 'Regra dos 5 Minutos': quando sentir a deriva ou a procrastinação, comprometa-se a focar na tarefa por apenas 5 minutos. Depois, veja se consegue mais 5. Reprograme sua mentalidade forçando pequenos ciclos de foco. Para as distrações, crie um 'caderno de descarte': anote tudo que te tira do foco para lidar depois. É simples, mas exige disciplina brutal."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_3a11a8.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_f2dc04.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Sabedoria Oculta do Propósito",
-      "prompt_imagem": "Cinematic dark moody photography of a lone figure standing at a crossroads, illuminated by a beam of light from above, with a mysterious path ahead, 8k, hyper-realistic.",
+      "titulo": "O Plano Inegociável da Conquista",
+      "prompt_imagem": "Cinematic dark moody photography of a strategist planning on a large map, surrounded by old books and a flickering candle, 8k",
       "paragrafos": [
-        "Você se sente trabalhando, correndo, mas a linha de chegada parece sempre distante, ou pior, invisível. A exaustão não vem do esforço, mas da falta de propósito claro. Você está construindo o quê, exatamente? A sensação de estar em uma esteira, suando sem sair do lugar, é o sintoma de um plano ausente. Não é falta de fé, é falta de um plano de fé.",
-        "Provérbios diz: 'Onde não há conselho, os projetos falham; mas na multidão de conselheiros há segurança'. Salomão não falava apenas de pessoas, mas de princípios e planejamento. Um arquiteto jamais começa uma construção sem um projeto detalhado, uma fundação sólida e uma visão clara do que será erguido. Da mesma forma, sua vida espiritual e seu propósito demandam um projeto, um 'plano de engenharia' divina. Não se trata de adivinhação, mas de discernimento e antecipação.",
-        "Desenhe seu 'plano de engenharia divina' HOJE. Defina UMA meta espiritual para os próximos 7 dias. Algo concreto: ler um capítulo de Provérbios por dia, meditar por 5 minutos, ou praticar a gratidão conscientemente. Não se sobrecarregue. Em seguida, divida essa meta em ações diárias específicas. Exemplo: 'Segunda: ler Provérbios 1, refletir sobre a sabedoria. Terça: ler Provérbios 2, praticar gratidão por 3 coisas'. Este plano à prova de desculpas é o seu mapa para a semana."
+        "A vida moderna é uma corrida de ratos sem fim. Você trabalha exausto, entrega resultados, mas a sensação de que está sempre 'apagando incêndios' ou remando contra a maré é constante. O pior é a frustração de saber que você tem potencial para muito mais, mas a falta de um plano claro te impede de realmente avançar na direção do seu legado.",
+        "Uma das lições mais impactantes de 'Mais Esperto que o Diabo' é sobre a clareza de propósito e o plano definido. O 'Diabo' admite que não tem poder sobre aqueles que sabem exatamente o que querem e têm um plano concreto para alcançá-lo. Ele chama isso de 'mente disciplinada'. É a diferença entre um navio à deriva e um porta-aviões com rota e destino traçados.",
+        "Desenhe um plano à prova de desculpas. Use o 'Método das 3 Prioridades': Para a próxima semana, escolha APENAS 3 grandes prioridades que o aproximarão do seu propósito. Quebre-as em tarefas diárias específicas e inegociáveis. Bloqueie tempo na sua agenda para elas. Proteja esse tempo como se fosse ouro. E ao final do dia, responda: 'O que eu fiz hoje me aproximou ou me afastou do meu legado?'"
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_30cb27.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_1c93d0.jpg"
     }
   ],
-  "citacao_destaque": "Em todos os teus caminhos, reconhece-o, e ele endireitará as tuas veredas.",
-  "titulo_citacao": "A Regra de Ouro da Conexão",
-  "verso_base": "O coração do homem planeja o seu caminho, mas o Senhor dirige os seus passos.",
-  "referencia_verso": "Provérbios 16:9",
+  "citacao_destaque": "O Diabo não tem poder sobre aquele que sabe o que quer e tem um plano. Código da Sabedoria.",
+  "titulo_citacao": "A Regra de Ouro",
+  "verso_base": "Onde não há visão, o povo perece.",
+  "referencia_verso": "Provérbios 29:18",
   "plano_acao": {
-    "titulo_secao": "O Eixo Inabalável: 5 Pilares para Recalibrar Sua Fé",
-    "prompt_imagem": "Cinematic dark moody photography of a lighthouse beam cutting through a dense fog, guiding a small boat, 8k, hyper-realistic.",
-    "subtitulo": "Descubra como ativar uma conexão profunda e direcionar sua vida em apenas 5 passos práticos, inspirados na sabedoria milenar de Provérbios.",
+    "titulo_secao": "O Protocolo Antidrift - 7 Dias para Reclamar Sua Mente",
+    "prompt_imagem": "Cinematic dark moody photography of a person standing at a crossroads, holding a glowing compass, surrounded by ancient symbols and a swirling fog, 8k",
+    "subtitulo": "Um guia prático e implacável para romper a inércia e alinhar suas ações com seu verdadeiro propósito.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Espelho da Alma",
-        "descricao": "Diariamente, reserve 5 minutos para olhar para dentro. Pergunte: 'Onde minha vida perdeu o sentido hoje?' e 'O que estou evitando encarar?'. Provérbios nos lembra que 'o caminho dos perversos é tenebroso, nem sabem em que tropeçam'. Seja brutalmente honesto com você."
+        "titulo": "O Espelho da Realidade Brutal",
+        "descricao": "No Dia 1, liste 5 atividades diárias que você faz por puro hábito, sem propósito claro. Pergunte-se: 'Isso me aproxima ou me afasta do meu legado?' Elimine ou delegue pelo menos uma delas. Reconhecer o 'Diabo' da inércia é o primeiro passo para o domínio."
       },
       {
         "numero": 2,
-        "titulo": "A Dieta da Atenção",
-        "descricao": "Por 7 dias, elimine uma distração que rouba sua paz (ex: redes sociais ao acordar). Em vez disso, dedique 10 minutos à meditação ou leitura de um provérbio. 'Sobre tudo o que se deve guardar, guarda o teu coração, porque dele procedem as fontes da vida.' Proteja sua atenção como seu maior tesouro."
+        "titulo": "O Seu Grande 'Porquê'",
+        "descricao": "No Dia 2, escreva uma declaração de propósito de no máximo uma frase. O que você quer REALMENTE construir, deixar ou ser? Esta é sua bússola. Consulte-a a cada decisão. Sem propósito definido, você é presa fácil da deriva."
       },
       {
         "numero": 3,
-        "titulo": "A Arquitetura do Propósito",
-        "descricao": "Escolha uma área da sua vida onde a conexão com algo maior parece ausente (trabalho, família, saúde). Defina uma ação diária minúscula para reconectá-la. 'Os planos do diligente tendem à abundância, mas a pressa de todo precipitado, tão-somente à pobreza.' Planeje e execute, sem pressa."
+        "titulo": "O Escudo da Atenção",
+        "descricao": "Do Dia 3 ao Dia 7, comece seu dia com 15 minutos de silêncio focado no seu propósito. Sem celular, sem distrações. Apenas você e sua mente. Programe sua mente para o que importa. É o seu momento de controle total."
       },
       {
         "numero": 4,
-        "titulo": "A Conexão Silenciosa",
-        "descricao": "Antes de tomar qualquer decisão importante, reserve 2 minutos para silenciar o ruído externo e ouvir sua intuição, sua 'voz da sabedoria'. 'Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.' A resposta muitas vezes já está em você."
+        "titulo": "O Motor da Construção",
+        "descricao": "Do Dia 3 ao Dia 7, escolha a principal tarefa do dia que te aproxima do seu propósito. Faça-a primeiro. Antes de e-mails, antes de mensagens. Quebre a barreira da procrastinação com a ação mais importante. O 'Diabo' teme a ação consistente."
       },
       {
         "numero": 5,
-        "titulo": "O Movimento Que Alimenta",
-        "descricao": "Não espere a perfeição para agir. Faça o que pode, com o que tem, onde está. Cada pequeno passo consistente fortalece sua fé e sentido. 'Quem guarda a figueira comerá do seu fruto, e quem cuida do seu senhor será honrado.' A consistência é a chave da colheita."
+        "titulo": "O Ritual da Revisão",
+        "descricao": "No final de cada dia, do Dia 3 ao Dia 7, dedique 5 minutos para revisar: 'Eu fui mestre da minha mente hoje? Minhas ações se alinharam ao meu propósito?' Ajuste o curso para o dia seguinte. A autoconsciência é sua maior arma."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_a27533.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_9dd39d.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
-  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
+  "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "Sua Direção Espiritual Ativada em 7 Dias.",
+    "promessa_clara": "Desvende seu propósito. Construa seu legado. Domine sua mente.",
     "beneficios": [
-      "Elimine a sensação de vazio e encontre seu propósito.",
-      "Domine sua mente e a reconecte à sua fé.",
-      "Crie um plano de ação para uma vida com sentido.",
-      "Liberte-se do piloto automático e da inércia.",
-      "Desperte a sabedoria que transforma seu destino."
+      "Reclame sua mente do automático e da inércia.",
+      "Transforme o vazio em propósito inabalável.",
+      "Desenhe um plano de ação para seu legado.",
+      "Domine as forças que te sabotam silenciosamente.",
+      "Viva com significado, não apenas com conquistas."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_174394.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_b85800.jpg"
 }
