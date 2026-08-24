@@ -166,26 +166,8 @@ def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade
 
     y_inicial = by0 + padding_v + deslocamento_y
     
-    # ── CARD VITRINE: Painel escuro semitransparente com cantos arredondados ──
-    try:
-        max_lw = max(larguras) if larguras else 0
-        card_w = max_lw + (padding_h * 2)
-        card_h = total_h
-        card_x0 = (w - card_w) // 2
-        card_y0 = (by0 + deslocamento_y)
-        card_x1 = card_x0 + card_w
-        card_y1 = card_y0 + card_h
-
-        card_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        card_draw = ImageDraw.Draw(card_layer)
-        alpha_card = int(140 * fade_alpha)  # ~55% de opacidade para efeito vitrine vidro escuro
-        cor_card = (12, 12, 18, alpha_card)  # Tom dark premium
-        cor_borda = (235, 180, 50, int(60 * fade_alpha))  # Sutil borda dourada elegante
-        card_draw.rounded_rectangle([card_x0, card_y0, card_x1, card_y1], radius=20, fill=cor_card, outline=cor_borda, width=1)
-        img = Image.alpha_composite(img.convert("RGBA"), card_layer)
-    except Exception as e_card:
-        logger.debug(f"Erro ao desenhar card vitrine: {e_card}")
-
+    # ── CARD VITRINE: Removida a caixinha recortada atrás do texto para dar lugar à vitrine em tela cheia ──
+    # O filtro de degradê roxo neon escuro -> preto agora cobre todo o vídeo sem recortar caixas isoladas no texto.
     y = y_inicial
     chars_drawn = 0
     for linha, alt, lw in zip(linhas, alturas, larguras):
@@ -364,27 +346,8 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
     by0 = (h - total_h) // 2
     y_inicial_bloco = by0 + padding_v + deslocamento_y
 
-    # ── CARD VITRINE (CTA): Painel escuro semitransparente com cantos arredondados ──
-    try:
-        todas_larguras = larguras_topo + larguras_baixo
-        max_lw = max(todas_larguras) if todas_larguras else 0
-        padding_h = 36
-        card_w = max_lw + (padding_h * 2)
-        card_h = total_h
-        card_x0 = (w - card_w) // 2
-        card_y0 = (by0 + deslocamento_y)
-        card_x1 = card_x0 + card_w
-        card_y1 = card_y0 + card_h
-
-        card_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        card_draw = ImageDraw.Draw(card_layer)
-        alpha_card = int(140 * fade_alpha)
-        cor_card = (12, 12, 18, alpha_card)
-        cor_borda = (235, 180, 50, int(60 * fade_alpha))
-        card_draw.rounded_rectangle([card_x0, card_y0, card_x1, card_y1], radius=20, fill=cor_card, outline=cor_borda, width=1)
-        img = Image.alpha_composite(img.convert("RGBA"), card_layer)
-    except Exception as e_card:
-        logger.debug(f"Erro ao desenhar card vitrine CTA: {e_card}")
+    # ── CARD VITRINE: Removida a caixinha recortada atrás do texto para dar lugar à vitrine em tela cheia ──
+    pass
 
     if paleta_override:
         shadow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
@@ -558,17 +521,30 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
 
     return np.array(img)
 
-def _aplicar_efeito_cinematico(frame_array, efeito):
-    """Aplica filtro escuro noturno (Dark Overlay 45%) uniforme em todos os frames."""
+def _aplicar_efeito_cinematico(frame_array, efeito, is_reels_leads=False):
+    """Aplica filtro escuro noturno ou vitrine neon em todos os frames."""
     if frame_array.dtype != np.uint8:
         frame_array = np.clip(frame_array, 0, 255).astype(np.uint8)
         
     img = Image.fromarray(frame_array)
     w, h = img.size
     
-    # Camada de escurecimento noturno uniforme (Dark Aesthetic constante)
-    dark_overlay = Image.new("RGBA", (w, h), (0, 0, 0, 115)) # 45% opacidade preta
-    img = Image.alpha_composite(img.convert("RGBA"), dark_overlay).convert("RGB")
+    if is_reels_leads:
+        # Vitrine em tela cheia (1080x1920): Degradê vertical Roxo Neon Escuro -> Preto com opacidade vitrine
+        grad_arr = np.zeros((h, w, 4), dtype=np.uint8)
+        c_top = np.array([55, 10, 85, 130])   # Roxo Neon Escuro (~51% opacidade)
+        c_bot = np.array([12, 12, 18, 160])   # Preto Profundo (~63% opacidade)
+        
+        ys = np.linspace(0, 1, h)[:, None, None]
+        grad_arr[:, :, :] = c_top * (1 - ys) + c_bot * ys
+        
+        vitrine_overlay = Image.fromarray(grad_arr.astype(np.uint8), "RGBA")
+        img = Image.alpha_composite(img.convert("RGBA"), vitrine_overlay).convert("RGB")
+    else:
+        # Camada de escurecimento noturno uniforme padrão (45% opacidade preta)
+        dark_overlay = Image.new("RGBA", (w, h), (0, 0, 0, 115))
+        img = Image.alpha_composite(img.convert("RGBA"), dark_overlay).convert("RGB")
+        
     draw = ImageDraw.Draw(img)
     
     if efeito == "cinematic_bars":
@@ -593,36 +569,28 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
     # --- Normaliza e enriquece queries com alternância temática profunda ---
     QUERIES_VIDEO_VARIADAS = [
-        # Metrô / Transporte
-        "subway passenger sitting night window cinematic",
-        "london tube underground platform empty night",
-        "subway escalator long perspective night moody",
-        "metro train interior lonely passenger looking out",
-        "subway window reflection night motion dark",
+        # Arquitetura Noturna & Skylines Modernos
+        "modern skyscraper night golden illumination cinematic 4k",
+        "city skyline night moody dark aesthetic 35mm",
+        "urban architecture night perspective lights",
+        "luxury penthouse balcony city view night cinematic",
 
-        # Multidão / Chuva / Faixa de Pedestres
-        "london rain crowd street crosswalk night 35mm",
-        "top down crosswalk pedestrians umbrellas night rain",
-        "wet street reflections pedestrians walking night city",
-        "london red bus rain night crosswalk motion",
-        "crowded city intersection night rain street light",
+        # Contemplação Urbana & Liderança Elegante
+        "elegant person walking city street night golden lights",
+        "man in suit standing overlooking night city lights",
+        "person walking through modern glass building night",
+        "confident leader walking urban night street cinematic",
 
-        # Praças / Ruas Históricas (Paris/Londres)
-        "paris plaza night couple bench ambient light",
-        "london park bench night fog street lamp",
-        "paris river seine bridge night lights reflection",
-        "cobblestone street night alley walking warm lamp",
-        "paris cafe terrace night rain solitude",
+        # Atmosfera Noturna & Reflexos Clássicos
+        "paris street night warm street lamp reflections",
+        "london street night rain reflection modern elegance",
+        "rain drops on glass window city night lights bokeh",
+        "car driving city night headlights reflections dark aesthetic",
 
-        # Vidro / Chuva / Bokeh
-        "rain drops on window glass night city bokeh",
-        "taxi window rain night city lights motion blur",
-        "rainy window blurry lights dark aesthetic",
-        "car window rain night street lights reflection",
-
-        # Geral Urban Solitude
-        "night urban solitude city street golden light 35mm",
-        "person walking night city crowd moody",
+        # Espaços Modernos & Silêncio Noturno
+        "modern luxury library night warm lighting",
+        "subway modern architecture night empty perspective",
+        "marble hall night lights luxury architectural",
     ]
 
     if isinstance(query, str):
@@ -630,16 +598,17 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
     else:
         queries_lista = list(query) + [random.choice(QUERIES_VIDEO_VARIADAS)]
 
-    # --- HIGIENIZAÇÃO E PADRONIZAÇÃO DE QUERIES (Filtro Estrito: Solidão Urbana Contemporânea Noturna) ---
-    # Elimina vídeos claros, academias, natureza diurna, praias e escritórios iluminados.
+    # --- HIGIENIZAÇÃO E PADRONIZAÇÃO DE QUERIES (Filtro Estrito: Sofisticação, Foco & Maestria) ---
+    # Elimina vídeos claros, festas, bebidas, estádios, esportes diurnos e praias.
     TERMOS_PROIBIDOS_VIDEO = [
-        "study", "studying", "student", "library", "classroom", "school",
-        "sunlight", "daylight", "meadow", "park", "bright office", "white room",
+        "study", "studying", "student", "library bright", "classroom", "school",
+        "sunlight", "daylight", "meadow", "park daylight", "bright office", "white room",
         "field", "grass", "green grass", "farm", "hay", "beach", "ocean daylight",
         "flower", "flowers", "garden", "nature daylight", "sunny", "landscape green",
         "trees daylight", "mountain sunrise", "bright day", "sun",
         "gym", "boxing", "workout", "training", "fitness", "ring", "boxing ring", "athlete daylight",
-        "stadium", "soccer", "football", "crowd party", "drinking", "alcohol", "bar", "wine", "beer"
+        "stadium", "soccer", "football", "crowd party", "drinking", "alcohol", "bar", "wine", "beer",
+        "club", "nightclub", "disco", "drunk"
     ]
     queries_higienizadas = []
     for q in queries_lista:
@@ -648,8 +617,8 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
             q_clean = q_clean.replace(term, "").strip()
         if len(q_clean) < 4:
             q_clean = random.choice(QUERIES_VIDEO_VARIADAS)
-        if "night" not in q_clean:
-            q_clean += " night urban solitude 35mm cinematic"
+        if "night" not in q_clean and "luxury" not in q_clean and "cinematic" not in q_clean:
+            q_clean += " night cinematic aesthetic 4k"
         queries_higienizadas.append(q_clean)
     queries_lista = queries_higienizadas
 
@@ -1124,8 +1093,8 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
 
                 # ── Marca d'água permanente (foto_perfil.png em todos os slides) ──
                 path_logo_rodape = os.path.join(logo_dir, "foto_perfil.png")
-                largura_marca = max(140, int(280 * fator_escala))
-                y_offset_marca = int(55 * fator_escala)
+                largura_marca = max(100, int(160 * fator_escala))
+                y_offset_marca = int(60 * fator_escala)
 
                 marca_aplicada = _colar_logo(path_logo_rodape, largura_marca, y_offset_marca)
 
@@ -1195,7 +1164,7 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     # "static" mantém fade_alpha=1.0, deslocamento_y=0 e chars_to_show=None
                 
                 frame = clip.get_frame(t)
-                frame = _aplicar_efeito_cinematico(frame, efeito_escolhido)
+                frame = _aplicar_efeito_cinematico(frame, efeito_escolhido, is_reels_leads=is_reels_leads)
 
                 if idx == idx_cta and (is_reels_leads or is_story_tarde):
                     # Reels Leads & Story Tarde: Degradê colorido nas letras + SABEDORIA por cima

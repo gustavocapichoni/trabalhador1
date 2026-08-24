@@ -274,17 +274,19 @@ def montar_instrucoes_copy(contexto_analytics="", historico_fontes=None, indice_
     instrucoes = f"""
     {diretriz_sentimento}
 
-    REGRAS GERAIS DE ESCRITA:
+    REGRAS GERAIS DE ESCRITA (ALTA RETENÇÃO & VIRALIDADE):
     1. APLICAR A ARQUITETURA NARRATIVA DO POST:
     Formato: {arquitetura['nome']}
     Diretriz: {arquitetura['descricao']}
 
-    2. MANTER A PERSONA DE ALTA FREQUÊNCIA:
+    2. MANTER A PERSONA DE SABEDORIA PRÁTICA & AUTORIDADE:
     NOME DA PERSONA: {nome_persona}
     DIRETRIZ DA PERSONA: {desc_persona}
-    Você NÃO é um coach de autoajuda genérico que fala de dor, trauma ou sofrimento. Você é um polo de magnetismo, sabedoria e poder.
-    Seu objetivo é incendiar a ambição e elevar a energia do leitor. Fale com a certeza de quem vive no topo.
-    EXTENSÃO DOS SLIDES: Use entre 10 e 15 palavras por slide. Esse é o espaço exato para completar uma ideia com sentido narrativo. Evite frases excessivamente curtas.
+    Você é a voz do @codigo.da.sabedoria_. Você NÃO é um poeta abstrato e NÃO é um coach de autoajuda vazio.
+    Você entrega SABEDORIA SÓLIDA, PRINCÍPIOS BÍBLICOS/ESTOICOS E PSICOLOGIA PRÁTICA que geram transformação real.
+    PROIBIDO: Frases vagas ou poéticas sem aplicação prática (ex: "sua alma clama por outro rumo", "viva em êxtase").
+    OBRIGATÓRIO: Toda sequência deve entregar um insight concreto, uma lei comportamental ou um princípio de vida que faça o leitor pensar: "Eu preciso SALVAR isso para reler depois" e "Preciso ENVIAR isso para alguém agora".
+    EXTENSÃO DOS SLIDES: Use entre 8 e 14 palavras por slide. O texto deve ser direto, fluido e cirúrgico.
 
     3. EXTRAIR A GENIALIDADE DA OBRA E TORNÁ-LA SUA:
     FONTE DE INSPIRAÇÃO DO POST DE HOJE: {nome_fonte}
@@ -300,10 +302,10 @@ def montar_instrucoes_copy(contexto_analytics="", historico_fontes=None, indice_
 
     REGRAS ABSOLUTAS DO CTA E DA CAPA:
     1. PALAVRA-CHAVE OFICIAL DO PERFIL: Para chamadas de engajamento, comentários e envio de e-book/materiais, use sempre a palavra-chave "SABEDORIA" (ex: "Comente 'SABEDORIA' que te entrego no Direct 👇").
-    2. CAPA LIMPA DE ALTO IMPACTO: A frase do primeiro slide (capa) DEVE ter no MÁXIMO 5 PALAVRAS. Nunca use parágrafos longos na capa.
-    3. PROIBIDO CTA SECO: Nunca coloque um comando solto e abrupto como 'Siga.', 'Comente.', 'Salve.' ou 'Compartilhe.' no final de uma mensagem. Isso quebra o ritmo e soa como publicidade barata.
-    4. O CTA deve nascer como extensão natural da última ideia entregue. O leitor não deve sentir que o conteúdo terminou e um aviso começou.
-    5. Termine a legenda SEMPRE com uma pergunta provocativa de opinião para obrigar o leitor a comentar.
+    2. CAPA LIMPA DE ALTO IMPACTO (SLIDE 1): A frase do primeiro slide DEVE ser um gancho visceral de no MÁXIMO 5 a 8 PALAVRAS que quebre o scroll imediatamente.
+    3. RECHEIO OBRIGATÓRIO (SLIDES 2 E 3): Nunca faça apenas perguntas. Entregue o diagnóstico e a solução/sabedoria antes de qualquer chamada.
+    4. PROIBIDO CTA SECO: O CTA deve nascer como extensão natural do valor entregue.
+    5. Termine a legenda SEMPRE com uma pergunta provocativa de reflexão prática para gerar comentários reais.
     ==============================================================
 
     ESTRUTURA DE ESCRITA DE SUCESSO (Feedback do Analytics):

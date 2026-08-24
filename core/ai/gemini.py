@@ -416,25 +416,25 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - Ângulo de inspiração: "{sub_angulo}"
         - Tom emocional do dia: {sentimento_escolhido.upper() if sentimento_escolhido else 'REFLEXÃO'}
 
-        CRIE UMA SEQUÊNCIA DE EXATAMENTE {num_slides_story} FRASES CURTAS CONECTADAS (ENTRE 10 E 15 PALAVRAS POR FRASE):
-        - SLIDE 1 (GANCHO CURTO DE AUTORIDADE): Abra com uma frase curta, elegante e provocativa de liderança (entre 10 e 15 palavras). Deve despertar curiosidade e posicionar autoridade imediata.
-        - SLIDES INTERMEDIÁRIOS (ENTREGA DE VALOR PRÁTICO): Desenvolva uma pílula diária de sabedoria ou mentalidade baseada no ângulo acima. O conteúdo deve parecer um pensamento maduro e de alta lucidez, sem frases prontas.
-        - SLIDE FINAL (DIREÇÃO E AUTORIDADE): Feche com uma síntese de autoridade moral que dê direção clara, lucidez e posicionamento firme para o dia.
-        - PROIBIDO usar tom pesado, vitimista, cansado ou de autoajuda barata.
+        CRIE UMA SEQUÊNCIA DE EXATAMENTE {num_slides_story} FRASES CONECTADAS (ENTRE 10 E 15 PALAVRAS POR FRASE):
+        - SLIDE 1 (GANCHO MATINAL VISCERAL): Frase curta e cortante que rompe o piloto automático do leitor ao acordar (10 a 15 palavras). Baseada em um princípio bíblico, estoico ou psicológico prático — nunca clichê.
+        - SLIDES INTERMEDIÁRIOS (ENSINAMENTO PRÁTICO SÓLIDO): Entregue um princípio de sabedoria ou comportamento com aplicação IMEDIATA no dia do leitor. Deve gerar o impulso de salvar o story ou enviar para alguém.
+        - SLIDE FINAL (DIREÇÃO FIRME): Feche com uma sentença de autoridade que oriente claramente o leitor para o que fazer ou como pensar neste dia.
+        - PROIBIDO: Tom pesado, vitimista, poético sem aplicação prática, ou autoajuda vazia.
         - NÃO inclua CTA, convite para seguir ou qualquer chamada para ação.
         - Não use ponto de exclamação.
-        - Escolha se quer usar música de fundo ou não no story (true ou false) de acordo com o tom da conversa.
+        - Escolha se quer usar música de fundo ou não no story (true ou false) de acordo com o tom.
         
-        PERCEPÇÃO DE VALOR DO STORY:
-        - Cada slide deve ser formulado para entregar valor real para quem te segue (audiência quente).
-        - A autoridade do story deve vir exclusivamente da profundidade do raciocínio prático, gerando uma pequena mudança de perspectiva a quem consome.
+        PERCEPÇÃO DE VALOR DO STORY MATINAL:
+        - O seguidor deve sentir que recebeu um insight que valeu a pena acordar e ver. Não motivação vazia — sabedoria aplicável.
+        - A autoridade do story deve vir exclusivamente da profundidade do raciocínio prático.
         
         Responda APENAS em formato JSON válido assim (o array 'frase' DEVE ter EXATAMENTE {num_slides_story} itens):
         {{
           "frase": [
-            "Slide 1 (Gancho curto de autoridade)",
-            "Slide 2 (Pílula de valor prático)",
-            "Slide {num_slides_story} (Síntese e direção de liderança)"
+            "Slide 1 (Gancho matinal visceral - 10 a 15 palavras)",
+            "Slide 2 (Princípio prático de sabedoria - 10 a 15 palavras)",
+            "Slide {num_slides_story} (Direção firme para o dia - 10 a 15 palavras)"
           ],
           "usar_musica": true
         }}
@@ -477,7 +477,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         Esta NÃO é uma audiência fria. A pessoa já te acompanha.
         Portanto: menos contexto, mais profundidade. Menos apresentação, mais revelação.
         Fale como um mentor próximo que identificou algo específico e quer compartilhar.
-        A confiança já existe — use-a para ir direto ao ponto com elegância.
+        A confiança já existe — use-a para ir direto ao ponto com elegância e sabedoria real.
         ═══════════════════════════════════════════════════
 
         MATERIAL DA SEMANA (CENTRO DE TODA A NARRATIVA):
@@ -503,31 +503,34 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
 
         SLIDE 1 — GANCHO DE PARADA (MÁXIMO 5 a 8 palavras):
         OBJETIVO: Quebra de padrão visceral. Faz o seguidor parar o scroll no primeiro segundo.
-        Frase cirúrgica e impactante sobre o tema da semana.
+        Frase cirúrgica que toca diretamente no ponto de dor ou curiosidade do tema da semana.
+        PROIBIDO: Perguntas retóricas fracas ou clichês de autoajuda.
 
-        SLIDE 2 — O INSIGHT / PONTE (MÁXIMO 6 a 8 palavras):
-        OBJETIVO: Revelação do princípio de sabedoria que resolve a dor.
-        Exemplo: "O método prático para assumir o controle hoje."
+        SLIDE 2 — O PRINCÍPIO / ENSINAMENTO PRÁTICO (MÁXIMO 6 a 9 palavras):
+        OBJETIVO: Entregar sabedoria real e aplicável ANTES de pedir qualquer ação.
+        Compartilhe o princípio-chave ou insight mais valioso do material "{titulo_pdf_tarde}".
+        Esta frase deve fazer o seguidor pensar: "Eu PRECISO desse material completo."
+        Exemplo: "Controlar a atenção é controlar o destino da sua semana."
 
         SLIDE 3 — CTA DIRETO (MÁXIMO 8 a 10 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Ação imediata no Direct.
+        OBJETIVO: Ação imediata no Direct — natural, sem pressão artificial.
         Parte 1 (ANTES da quebra de linha): "Comente '{cta_do_dia}' no Direct."
-        Parte 2 (DEPOIS da quebra de linha): "Para receber o material completo da semana."
+        Parte 2 (DEPOIS da quebra de linha): "E receba o guia completo da semana."
 
         ═══════════════════════════════════════════════════
         REGRAS ABSOLUTAS:
         ═══════════════════════════════════════════════════
         - Tom: sereno, firme, próximo. Como um mentor que fala de igual para igual.
-        - Cada palavra deve contribuir para: reconhecimento, desejo ou ação. Se não faz nenhuma das 3, corte.
+        - O Slide 2 DEVE entregar valor real — um princípio que valha a pena salvar e compartilhar.
         - PROIBIDO: "acredite em você", "nunca desista", "foco e determinação", "você é capaz", exclamações.
         - Não use "..." mais de uma vez na sequência inteira.
 
         PEXELS/PIXABAY QUERY:
-        Crie queries cinemáticas no tema SOLIDÃO URBANA CONTEMPORÂNEA À NOITE.
-        Exemplos: "thoughtful person night city lights warm glow 35mm cinematic" ou "introspective figure rooftop urban night golden light film"
+        Crie queries de vídeo com estética DARK LUXURY CINEMATIC — liderança, contemplação e sofisticação urbana noturna.
+        Exemplos: "confident man overlooking city skyline night lights cinematic 4k" ou "elegant person walking golden lit street night architecture"
 
         LEGENDA (3 a 4 linhas):
-        - Benefício direto e concreto de receber o material.
+        - Benefício direto e concreto de receber o material — o que muda na prática.
         - Tom de mentor próximo — sem hype, sem urgência artificial.
         - Termine com variação natural do CTA. Exemplo: "Comente '{cta_do_dia}' que te envio no Direct 👇"
         - NÃO inclua hashtags.
@@ -536,14 +539,14 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         {{
           "cta_keyword": "{cta_do_dia}",
           "slides": [
-            "Slide 1 — Frase curta de gancho (5 a 8 palavras)",
-            "Slide 2 — Insight prático de valor (5 a 8 palavras)",
-            "Slide 3 — Comente '{cta_do_dia}' para receber no Direct. \\n Receba o material da semana."
+            "Slide 1 — Frase curta de gancho visceral (5 a 8 palavras)",
+            "Slide 2 — Princípio prático e valioso do material (6 a 9 palavras)",
+            "Comente '{cta_do_dia}' no Direct. \\n E receba o guia completo da semana."
           ],
           "pexels_queries": [
-            "thoughtful person night city lights warm glow 35mm cinematic"
+            "confident man overlooking city skyline night lights cinematic 4k"
           ],
-          "legenda": "Legenda próxima e direta sobre o que o material revela. Comente '{cta_do_dia}' que te envio no Direct 👇"
+          "legenda": "Legenda próxima descrevendo o benefício prático do material. Comente '{cta_do_dia}' que te envio no Direct 👇"
         }}
         """
     elif tipo == "carousel":
@@ -592,21 +595,17 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
           Frase reflexiva e poderosa para o leitor guardar mentalmente.
           Deve criar o desejo de salvar ou compartilhar. Feche com impacto, sem conclusão bonita e embalada.
 
-        VALOR PERCEBIDO DO CARROSSEL (OBRIGATÓRIO):
-        - Cada slide deve aumentar a sensação de que o leitor está entendendo um mecanismo oculto.
-        - Não explique apenas "o que fazer".
-        - Explique primeiro: por que isso acontece, qual é o erro invisível, qual princípio resolve esse erro.
-        - O conhecimento deve parecer difícil de encontrar, mas fácil de entender depois da explicação.
-
-        INSPIRAÇÃO LENDÁRIA DE NARRATIVA (Use como tempero de altíssimo impacto e epicidade):
-        Você pode canalizar esta energia épica e mitológica de grande jornada e legado para construir ganchos ou desfechos memoráveis:
-        "Riqueza, liberdade, poder. Os mestres e empreendedores que dominaram o mercado e conquistaram sua liberdade descobriram algo que mudou suas vidas para sempre. Antes de se retirarem dos holofotes, deixaram um único recado: 'Querem os resultados que conquistamos? Eles estão disponíveis para quem estiver disposto a aprender. Todo o conhecimento necessário foi deixado no mundo. Agora cabe a você encontrá-lo.' E assim começou a nova era dos que possuem sonhos inegociáveis."
-        Use esta aura de mistério, sabedoria e busca por maestria para dar densidade e peso ao texto.
+        VALOR PERCEBIDO DO CARROSSEL (OBRIGATÓRIO — LEI DO RECHEIO):
+        - Cada slide deve ENTREGAR valor crescente — o leitor deve sentir que está desvendando um mecanismo oculto sobre a mente, o comportamento ou a maestria pessoal.
+        - Os slides 4-5 DEVEM trazer sabedoria bíblica, estoica ou psicológica aplicável — não conselhos genéricos.
+        - Explique primeiro: por que isso acontece (causa), qual é o erro invisível (diagnóstico), qual princípio resolve (solução prática).
+        - O slide final deve ser tão forte que o leitor precise salvar ou enviar para alguém. Esse é o teste de qualidade.
+        - PROIBIDO encerrar com frases motivacionais genéricas. Feche com uma verdade que doa ou liberta.
 
         3. LEGENDA:
-        - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta e madura.
+        - Reforce a provocação do carrossel em 3-4 linhas usando linguagem direta, madura e próxima.
         - CTA OBRIGATÓRIO: A legenda DEVE terminar com a chamada para ação (CTA) adaptada conforme a 'DIRETRIZ OBRIGATÓRIA DE CTA' enviada nas instruções.
-        - NUNCA termine com uma conclusão fechada. O leitor deve ter algo a dizer.
+        - NUNCA termine com uma conclusão fechada. O leitor deve ter algo a dizer ou um passo a dar.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (slides deve ter entre 5 e 8 itens):
@@ -628,31 +627,31 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
     elif tipo in ["reels", "reels_noite"]:
         num_slides_reels = 2 if dia_ano % 2 == 0 else 3
         prompt = f"""
-        Você é a Máquina de Construção de Curiosidade. Seu objetivo é criar um roteiro em slides que faça o usuário PARAR de rolar o feed e assistir até o final.
+        Você é o mestre da sabedoria prática do perfil @codigo.da.sabedoria_. Seu objetivo é criar slides que façam o usuário PARAR o scroll e sentir que recebeu algo valioso.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA CURTA DE EXATAMENTE {num_slides_reels} SLIDES (ENTRE 10 E 15 PALAVRAS POR SLIDE, SEM QUALQUER CTA OU CONVITE PARA SEGUIR):
-        - Slide 1 (Gancho/Interrupção Mental): Frase cortante que faz parar o scroll (10 a 15 palavras).
-        - Slide 2 (Insight / Revelação): Aprofundamento da provocação (10 a 15 palavras).
-        {"- Slide 3 (Reflexão Memorável Xeque-Mate): Fechamento direto de alto impacto (10 a 15 palavras)." if num_slides_reels == 3 else ""}
+        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE {num_slides_reels} SLIDES (ENTRE 10 E 15 PALAVRAS POR SLIDE):
+        - Slide 1 (GANCHO VISCERAL): Frase cortante que quebra o padrão mental do leitor nos primeiros 2 segundos. Baseada em uma contradição, contraste ou declaração ousada de sabedoria.
+        - Slide 2 (ENSINAMENTO PRÁTICO): NÃO é outra pergunta — é a entrega de um princípio real, lei comportamental ou insight bíblico/estoico/psicológico que o leitor vai querer salvar e compartilhar.
+        {f'- Slide 3 (XEQUE-MATE / APLICAÇÃO): Fechamento que conecta o ensinamento à vida prática do leitor — a sentença que ele vai levar pro dia.' if num_slides_reels == 3 else ''}
 
-        REGRAS DE ESCRITA E RITMO VISUAL:
-        * Todas as frases devem ser curtas, cortantes e limpas.
+        REGRAS DE ALTA RETENÇÃO:
+        * Cada slide deve ser autossuficiente E conectado ao próximo — nenhum slide pode ser removido sem perder sentido.
+        * PROIBIDO frases poéticas abstratas que soem bonitas mas não ensinam nada.
         * NÃO use pontos de exclamação.
-        * PROIBIDO usar "..." de forma automática.
         * PROIBIDO qualquer chamada para ação (CTA), pedido para seguir ou convite.
 
         LEGENDA:
-        - Máximo 3 linhas. Foco em complementar a reflexão em tom direto.
+        - Máximo 3 linhas. Complementa o insight com uma reflexão prática direta.
         - NÃO inclua hashtags.
 
         Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter EXATAMENTE {num_slides_reels} itens):
         {{
           "slides": [
-            "Slide 1 (Gancho)",
-            "Slide 2 (Insight)"
+            "Slide 1 (Gancho visceral)",
+            "Slide 2 (Ensinamento prático real)"
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
@@ -727,104 +726,103 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
 
     elif tipo == "pexels_story":
         prompt = f"""
-        Você é a Máquina de Construção de Curiosidade adaptada para Stories com vídeo único e cinematográfico de fundo.
-        Sua missão é criar uma narrativa limpa, envolvente e de alto impacto em um vídeo de fundo contínuo.
+        Você é a voz do @codigo.da.sabedoria_ em formato Story matinal. Sua missão é criar uma sequência de 3 slides com sabedoria prática real em vídeo cinematográfico de fundo.
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE 3 SLIDES RÁPIDOS E IMPACTANTES:
+        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE 3 SLIDES RÁPIDOS E DE ALTO VALOR:
 
-        - Slide 1 (Gancho de Parada): Frase curta que prende imediatamente. (entre 5 e 8 palavras)
-        - Slide 2 (Quebra / Revelação): Desenvolva o insight com clareza e sem enrolação. (entre 5 e 8 palavras)
-        - Slide 3 (Fechamento Marcante): Sentença reflexiva que fixa na memória, sem CTA. (entre 5 e 8 palavras)
+        - Slide 1 (GANCHO DE PARADA): Frase visceral e cortante de 5 a 8 palavras que quebra o piloto automático do leitor. Baseada em contraste, declaração ousada ou princípio de sabedoria. PROIBIDO perguntas fracas.
+        - Slide 2 (PRINCÍPIO PRÁTICO): Entregue um ensinamento real e aplicável de 6 a 9 palavras — não outra pergunta. O leitor deve pensar: "Quero salvar isso."
+        - Slide 3 (FECHAMENTO FIRME): Sentença de 5 a 8 palavras que ancora o aprendizado e motiva a ação interna. SEM CTA.
 
-        PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO CONTÍNUO:
-        Crie UMA ÚNICA query em inglês de alta especificidade para encontrar o vídeo mais épico e cinematográfico:
-        - Iluminação brilhante, luzes urbanas noturnas, luxo moderno ou amanhecer épico (stadium lights, modern luxury, sunrise golden hour, city night reflections)
-        - Estilo visual de altíssima qualidade (4k cinematic, premium lifestyle, 35mm)
+        PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO CINEMATOGRÁFICO PREMIUM:
+        Crie UMA ÚNICA query em inglês evocando sofisticação, maestria e liderança noturna:
+        - Exemplos: "confident man standing city skyline night golden cinematic 4k", "modern architecture night golden light luxury 4k"
+        - PROIBIDO: cenas de festa, bebida, esportes ou natureza diurna.
 
         LEGENDA:
-        - Máximo 3 linhas. SEM HASHTAGS.
+        - Máximo 3 linhas. Tom de mentor próximo compartilhando sabedoria. SEM HASHTAGS.
 
         Responda APENAS em formato JSON válido assim (EXATAMENTE 3 SLIDES):
         {{
           "slides": [
-            "Slide 1 (Gancho rápido - 5 a 8 palavras)",
-            "Slide 2 (Revelação prática - 5 a 8 palavras)",
-            "Slide 3 (Fechamento marcante - 5 a 8 palavras)"
+            "Slide 1 (Gancho visceral - 5 a 8 palavras)",
+            "Slide 2 (Princípio prático real - 6 a 9 palavras)",
+            "Slide 3 (Fechamento firme - 5 a 8 palavras)"
           ],
           "pexels_queries": [
-            "city lights reflections wet street 4k cinematic"
+            "confident man standing city skyline night golden cinematic 4k"
           ],
-          "legenda": "Sua legenda aqui sem hashtags"
+          "legenda": "Sua legenda de mentor próximo aqui sem hashtags"
         }}
         """
     elif tipo == "reels_noite":
         prompt = f"""
-        Você é a Máquina de Construção de Curiosidade no horário noturno (18h). Seu objetivo é capturar a atenção de quem está exausto do dia.
+        Você é a voz do @codigo.da.sabedoria_ no horário noturno (18h). Seu objetivo é capturar a atenção de quem está exausto do dia e entregar sabedoria que mude a perspectiva do leitor antes de dormir.
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA EXATA DE 6 SLIDES seguindo rigorosamente a estrutura oficial de 6 Fases (Nicholas Boothman):
+        CRIE UMA SEQUÊNCIA NARRATIVA EXATA DE 6 SLIDES seguindo a estrutura de 6 Fases de Alta Retenção:
 
-        - Slide 1 / Fase 1 (Interrupção Mental - 0-2s): Gancho inicial noturno curioso (ex: "Existe uma mentira que te contaram sobre o cansaço..."). Comece com: "Você acredita que...", "Existe uma mentira...", "Ninguém percebe que...", "O maior erro...", "Quase todo mundo...". (entre 10 e 15 palavras)
-        - Slide 2 / Fase 2 (Identificação - 2-6s): Identificação imediata (ex: "Você chega em casa e sente que..."). Fale com "você". (entre 10 e 15 palavras)
-        - Slide 3 / Fase 3 (Desenvolvimento): Desenvolva o raciocínio. (entre 10 e 15 palavras)
-        - Slide 4 / Fase 4 (Explicação Lógica): Traga lucidez filosófica que responda ao conflito gerado. (entre 10 e 15 palavras)
-        - Slide 5 / Fase 5 (Reflexão - 25-35s): Frase marcante sobre governar a mente. (entre 10 e 15 palavras)
-        - Slide 6 / Fase 6 (Convite Invisível): Provocação silenciosa para a noite do leitor. (entre 10 e 15 palavras)
+        - Slide 1 / Fase 1 (GANCHO NOTURNO — 0-2s): Declaração ousada ou contraste que para o scroll. NÃO comece com perguntas fracas. Use afirmações que gerem choque de realidade. (entre 10 e 15 palavras)
+        - Slide 2 / Fase 2 (DIAGNÓSTICO — 2-6s): Identifique com precisão o estado emocional/mental real de quem chegou cansado em casa. Fale com "você" de forma íntima e verdadeira. (entre 10 e 15 palavras)
+        - Slide 3 / Fase 3 (A CAUSA OCULTA): Revele o mecanismo por trás do problema — a causa real que ninguém fala. (entre 10 e 15 palavras)
+        - Slide 4 / Fase 4 (PRINCÍPIO PRÁTICO DE SABEDORIA): Entregue o ensinamento bíblico, estoico ou psicológico que resolve o conflito. Esta é a fase do "UAU" — o leitor deve querer salvar o vídeo. (entre 10 e 15 palavras)
+        - Slide 5 / Fase 5 (APLICAÇÃO IMEDIATA): Frase marcante que conecta o princípio à noite do leitor — o que ele faz AGORA com essa sabedoria. (entre 10 e 15 palavras)
+        - Slide 6 / Fase 6 (FECHAMENTO NOTURNO): Sentença serena e firme para carregar antes de dormir. Sem CTA. (entre 10 e 15 palavras)
 
         LEGENDA:
-        - Máximo 3 linhas.
+        - Máximo 3 linhas. Complementa o ensinamento com um reflexo prático da sabedoria entregue.
         - SEM HASHTAGS.
 
         Responda APENAS em formato JSON válido assim:
         {{
           "slides": [
-            "Slide 1 (Gancho)",
-            "Slide 2 (Identificação)",
-            "Slide 3 (Quebra)",
-            "Slide 4 (Revelação)",
-            "Slide 5 (Reflexão)",
-            "Slide 6 (Convite)"
+            "Slide 1 (Gancho noturno ousado)",
+            "Slide 2 (Diagnóstico íntimo)",
+            "Slide 3 (Causa oculta)",
+            "Slide 4 (Princípio prático de sabedoria)",
+            "Slide 5 (Aplicação imediata)",
+            "Slide 6 (Fechamento sereno)"
           ],
-          "legenda": "Sua legenda aqui sem hashtags"
+          "legenda": "Sua legenda noturna aqui sem hashtags"
         }}
         """
     elif tipo == "pexels_story_noite":
         prompt = f"""
-        Você é a Máquina de Construção de Curiosidade noturna (19h-21h) para Stories com vídeo único de fundo.
-        Seu objetivo é criar um arco de descoberta mental e insight libertador em um vídeo de fundo elegante e contínuo.
+        Você é a voz do @codigo.da.sabedoria_ no fim do dia. Sua missão é entregar em 3 slides uma sabedoria que o leitor vai carregar para a noite e querer compartilhar antes de dormir.
         Estilo obrigatório: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE 3 SLIDES para a noite — tom sereno, denso e reflexivo:
+        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE 3 SLIDES NOTURNOS — tom sereno, denso e de alta profundidade:
 
-        - Slide 1 (Gancho Noturno): Frase curta que prende no fim do dia. (entre 5 e 8 palavras)
-        - Slide 2 (Identificação / Quebra): Foco em 'você', tom íntimo e verdadeiro. (entre 5 e 8 palavras)
-        - Slide 3 (Insight / Serenidade): Conclusão profunda para refletir antes de dormir, sem CTA. (entre 5 e 8 palavras)
+        - Slide 1 (GANCHO NOTURNO): Frase cortante de 5 a 8 palavras que captura o estado mental do fim do dia. Não uma pergunta genérica — uma declaração que toca diretamente no que o leitor viveu hoje.
+        - Slide 2 (ENSINAMENTO SERENO): Princípio prático de sabedoria de 6 a 9 palavras que reorienta a perspectiva do leitor para o descanso e o crescimento. Deve ter o valor de uma frase que o leitor quer salvar.
+        - Slide 3 (FECHAMENTO REFLEXIVO): Sentença de 5 a 8 palavras para fixar na memória antes de dormir. Profunda, firme, sem CTA.
 
-        PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO NOTURNO:
-        Crie UMA ÚNICA query em inglês de alta especificidade para o melhor vídeo noturno premium:
-        - Luzes de cidade moderna, ambiente noturno elegante, reflexos de chuva em néon (4k cinematic night, luxury city lights, urban night reflections)
+        PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO NOTURNO PREMIUM:
+        Crie UMA ÚNICA query em inglês evocando elegância e reflexão noturna de alto nível:
+        - Exemplos: "luxury penthouse interior night city view window cinematic", "person looking out window night city lights contemplation 4k"
+        - PROIBIDO: festas, bebidas, esportes ou ambientes diurnos.
 
         LEGENDA:
-        - Máximo 3 linhas. SEM HASHTAGS.
+        - Máximo 3 linhas. Tom de mentor próximo que fala de igual para igual. SEM HASHTAGS.
 
         Responda APENAS em formato JSON válido assim (EXATAMENTE 3 SLIDES):
         {{
           "slides": [
-            "Slide 1 (Gancho noturno - 5 a 8 palavras)",
-            "Slide 2 (Identificação íntima - 5 a 8 palavras)",
-            "Slide 3 (Insight sereno - 5 a 8 palavras)"
+            "Slide 1 (Gancho noturno visceral - 5 a 8 palavras)",
+            "Slide 2 (Ensinamento sereno e prático - 6 a 9 palavras)",
+            "Slide 3 (Fechamento reflexivo firme - 5 a 8 palavras)"
           ],
           "pexels_queries": [
-            "luxury city lights urban night reflections 4k"
+            "person looking out window night city lights contemplation 4k"
           ],
-          "legenda": "Sua legenda noturna sem hashtags"
+          "legenda": "Sua legenda noturna de mentor próximo sem hashtags"
         }}
         """
 
@@ -963,47 +961,41 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         3. Se a sequência toda conduz logicamente ao PDF como próxima peça natural da conversa.
 
         ═══════════════════════════════════════════════════
-        ESTRUTURA OBRIGATÓRIA DOS SLIDES (EXATAMENTE 4 SLIDES):
+        ESTRUTURA OBRIGATÓRIA DOS SLIDES (EXATAMENTE 4 SLIDES DE ALTA RETENÇÃO):
         ═══════════════════════════════════════════════════
 
-        SLIDE 1 — PARAR O SCROLL / GANCHO DE ALTO IMPACTO (MÁXIMO 8 a 10 palavras):
-        OBJETIVO: Fazer o polegar parar imediatamente.
-        Use o mecanismo {mecanismo_nome} desde a primeira palavra.
-        LIMITE ESTRITO: No máximo 8 a 10 palavras (DEVE caber em no máximo 3 linhas na tela).
-        PROIBIDO: frases motivacionais genéricas, clichês ou textos longos.
+        SLIDE 1 — GANCHO VISCERAL / QUEBRA DE PADRÃO (MÁXIMO 6 a 8 palavras):
+        OBJETIVO: Fazer o polegar travar no primeiro milissegundo.
+        Abra com uma declaração ousada, contraste ou segredo usando o mecanismo {mecanismo_nome}.
+        PROIBIDO: Perguntas retóricas fracas ("Você sabe a diferença?"), poesia abstrata ou clichês motivacionais.
+        Exemplo: "A regra de ouro que a maioria ignora:" ou "O erro silencioso que trava seus resultados:"
 
-        SLIDE 2 — IDENTIFICAÇÃO E REVELAÇÃO DA DOR (MÁXIMO 8 a 10 palavras):
-        OBJETIVO: Fazer a pessoa pensar "ele descreveu exatamente o que vivo".
-        Revele o conflito interno ou dor sem acusar ou diminuir o leitor.
-        LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
+        SLIDE 2 — O DIAGNÓSTICO / TENSÃO REAL (MÁXIMO 8 a 11 palavras):
+        OBJETIVO: Fazer a pessoa sentir "isso foi escrito exatamente para mim".
+        Aponte a causa real por trás da frustração/cansaço/falta de direção sem acusar o leitor.
+        Exemplo: "Você não está sobrecarregado pelo que faz, mas pelo que tolera em silêncio."
 
-        SLIDE 3 — VIRADA E PONTE COM O MATERIAL (MÁXIMO 8 a 10 palavras):
-        OBJETIVO: A nova percepção + conexão lógica com o conteúdo da semana.
-        Apresente a chave da virada citando ou introduzindo o tema do material: "{titulo_pdf_limpo}".
-        LIMITE ESTRITO: No máximo 8 a 10 palavras (no máximo 3 linhas na tela).
+        SLIDE 3 — O CÓDIGO DA SABEDORIA / INSIGHT PRÁTICO (MÁXIMO 8 a 11 palavras):
+        OBJETIVO: O momento "UAU" — Entregar sabedoria prática e concreta antes de pedir qualquer ação.
+        Entregue um princípio real de maestria/provérbios conectado com {titulo_pdf_limpo}.
+        Exemplo: "Provérbios ensina: domínio próprio não é força bruta, é saber filtrar o que entra."
 
-        SLIDE 4 — CTA FINAL DE BAIXO ATRITO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Chamada para ação simples, natural e irresistível.
-        A 4ª frase DEVE variar entre ganchos de convite para crescer e receber o material semanal no Direct.
-        Exemplos de variações (NÃO copie idêntico — crie uma variação equivalente no mesmo tom):
-        - Parte 1 (ANTES da quebra de linha): "Toda semana um conteúdo exclusivo."
-          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' pra crescer com a gente."
-        - Parte 1 (ANTES da quebra de linha): "Comente 'SABEDORIA' no Direct."
-          Parte 2 (DEPOIS da quebra de linha): "E receba o material inédito da semana."
-        - Parte 1 (ANTES da quebra de linha): "Quer evoluir na prática hoje?"
-          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' que te envio o guia."
+        SLIDE 4 — CTA MAGNÉTICO E ININTERRUPTO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
+        OBJETIVO: Conexão natural e irrecusável com o material semanal.
+        Exemplos de variações (crie uma variação original e irresistível):
+        - Parte 1 (ANTES da quebra de linha): "Quer o mapa completo de {titulo_pdf_limpo}?"
+          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' que te envio no Direct 👇"
+        - Parte 1 (ANTES da quebra de linha): "Para dominar esse método na prática:"
+          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' e receba o guia exclusivo."
         REGRA INEGOCIÁVEL: A soma das duas partes NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
 
         ═══════════════════════════════════════════════════
-        REGRAS ABSOLUTAS DE QUALIDADE:
+        REGRAS ABSOLUTAS DE QUALIDADE & RETENÇÃO:
         ═══════════════════════════════════════════════════
-        - Cada palavra deve contribuir para: parar, identificar, despertar desejo ou conduzir à ação. Se não faz nenhuma das 4 coisas, corte.
-        - Nunca escreva para parecer bonito ou profundo. Escreva para provocar um comportamento específico.
-        - Proibido frases motivacionais genéricas: "acredite em você", "nunca desista", "você é capaz", "foco e determinação".
-        - Proibido acusações que façam o usuário se sentir inferior, incapaz ou burro.
-        - Fale com alguém inteligente que está prestes a perceber algo que ainda não enxergou.
-        - Não use ponto de exclamação. Não use "..." mais de uma vez na sequência inteira.
-        - O PDF nunca é apresentado como "grátis", "bônus" ou "recompensa". Ele é a próxima etapa natural de desenvolvimento.
+        - A lei do recheio: O Slide 3 DEVE entregar um ensinamento que valha a pena ser salvo ou compartilhado.
+        - Elimine qualquer tom de coach clichê ("acredite em você", "lute sempre"). Fale com a autoridade de um mestre de sabedoria prática.
+        - Nunca use frases de efeito que soem vazias ou desconectadas da realidade.
+        - O material semanal ({titulo_pdf_limpo}) é a ferramenta de aplicação definitiva desse ensinamento.
 
         PEXELS QUERY — PILAR VISUAL OBRIGATÓRIO: "{pilar_nome}"
         A PRIMEIRA query do array pexels_queries DEVE ser: '{pilar_exemplo}'
@@ -1020,10 +1012,10 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         {{
           "cta_keyword": "SABEDORIA",
           "slides": [
-            "Gancho de alto impacto com {mecanismo_nome}.",
-            "Identificação concreta da dor ou tensão.",
-            "Virada de chave com {titulo_pdf_limpo}.",
-            "Toda semana um conteúdo exclusivo. \\n Comente 'SABEDORIA' pra crescer com a gente."
+            "Gancho visceral curto com {mecanismo_nome}.",
+            "Diagnóstico preciso da tensão ou conflito real.",
+            "Princípio de sabedoria prática conectado a {titulo_pdf_limpo}.",
+            "Quer o guia completo de {titulo_pdf_limpo}? \\n Comente 'SABEDORIA' que te envio no Direct 👇"
           ],
           "pexels_queries": [
             "{pilar_exemplo}",
