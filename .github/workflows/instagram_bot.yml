@@ -104,10 +104,6 @@ jobs:
           IG_ACCOUNT_ID_9: ${{ secrets.IG_ACCOUNT_ID_9 }}
           FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-          ELEVENLABS_API_KEY_2: ${{ secrets.ELEVENLABS_API_KEY_2 }}
-          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
-          ELEVENLABS_VOICE_ID_2: ${{ secrets.ELEVENLABS_VOICE_ID_2 }}
         run: python rodar_via_cron.py --manual ${{ github.event.inputs.tipo_post }}
 
       - name: Salvar Estado do Bot
