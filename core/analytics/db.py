@@ -1,8 +1,7 @@
 import os
 import json
 from loguru import logger
-import firebase_admin
-from firebase_admin import credentials, firestore
+from google.cloud import firestore
 from dotenv import load_dotenv
 
 # Carrega as variáveis de ambiente
@@ -29,13 +28,9 @@ def get_db():
             
         cred_dict = json.loads(firebase_creds_str)
         
-        # Inicializa o app do Firebase se ainda não foi inicializado
-        if not firebase_admin._apps:
-            cred = credentials.Certificate(cred_dict)
-            firebase_admin.initialize_app(cred)
-            logger.info("🔥 Firebase Admin inicializado com sucesso!")
-            
-        _db = firestore.client()
+        # Conecta diretamente via Google Cloud Firestore client nativo
+        _db = firestore.Client.from_service_account_info(cred_dict)
+        logger.info("🔥 Google Cloud Firestore inicializado com sucesso!")
         return _db
         
     except json.JSONDecodeError as e:
