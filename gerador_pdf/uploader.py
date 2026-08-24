@@ -15,36 +15,12 @@ sys.path.insert(0, BOT_PATH)
 from dotenv import load_dotenv
 load_dotenv(os.path.join(BOT_PATH, ".env"))
 
-import firebase_admin
-from firebase_admin import credentials, firestore
-
 import shutil
 import subprocess
+from core.analytics.db import get_db
 
 # Caminho para o repositório clonado localmente
 REPOSITORIO_PDFS = os.path.join(os.path.dirname(__file__), "repositorio_pdfs")
-
-
-def _inicializar_firebase():
-    """Inicializa o Firebase Admin SDK para usar apenas o Firestore."""
-    if not firebase_admin._apps:
-        firebase_creds_str = os.getenv("FIREBASE_CREDENTIALS")
-        
-        if firebase_creds_str:
-            # Se estiver rodando na nuvem (GitHub Actions)
-            import json
-            if firebase_creds_str.startswith("'") and firebase_creds_str.endswith("'"):
-                firebase_creds_str = firebase_creds_str[1:-1]
-            cred_dict = json.loads(firebase_creds_str)
-            cred = credentials.Certificate(cred_dict)
-            print("✅ [Uploader] Firebase Firestore inicializado via Secrets do GitHub.")
-        else:
-            # Se estiver rodando localmente
-            chave_path = os.getenv("FIREBASE_KEY_PATH", os.path.join(BOT_PATH, "firebase-key.json"))
-            cred = credentials.Certificate(chave_path)
-            print("✅ [Uploader] Firebase Firestore inicializado via arquivo local.")
-            
-        firebase_admin.initialize_app(cred)
 
 
 def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
@@ -91,9 +67,10 @@ def registrar_campanha_no_firestore(titulo: str, url_pdf: str, briefing: dict, l
     A Landing Page vai ler esse documento para exibir o nome certo do PDF
     e entregar o link correto no e-mail.
     """
-    _inicializar_firebase()
-
-    db = firestore.client()
+    db = get_db()
+    if not db:
+        print("⚠️ [Uploader] Firestore não disponível. Pulando registro de campanha no banco.")
+        return None
     semana_str = datetime.now().strftime("%Y-W%W")
 
     campanha = {
