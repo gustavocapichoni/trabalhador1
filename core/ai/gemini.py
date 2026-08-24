@@ -457,11 +457,16 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         sinonimo_modulo = random.choice(SINONIMOS_MODULO)
 
         VARIACOES_CTA_TARDE = [
-            f"Se você ainda não pegou o seu dessa semana, comenta 'SABEDORIA' que te envio o link direto no Direct. \\n Receba o seu {sinonimo_modulo} de crescimento e evolução.",
-            f"Essa semana tem um {sinonimo_modulo} novo disponível. Comenta 'SABEDORIA' e recebe no Direct. \\n Receba o material de direcionamento prático no seu bolso.",
-            f"Conhecimento deve ser compartilhado. Comenta 'SABEDORIA' e pega o seu {sinonimo_modulo} desta semana. \\n Comece hoje mesmo sua evolução prática.",
-            f"Toda semana um {sinonimo_modulo} novo para quem quer crescer. É só comentar 'SABEDORIA'. \\n Pegue seu material inédito direto no Direct.",
-            f"Se ainda não garantiu o {sinonimo_modulo} desta semana, é só comentar 'SABEDORIA'. \\n Receba o link do material completo agora.",
+            f"Se você ainda não garantiu o seu desta semana, comenta 'SABEDORIA' que te mando no Direct. \\n Baixe o seu {sinonimo_modulo} de evolução prática.",
+            f"Essa semana o {sinonimo_modulo} já está disponível. É só comentar 'SABEDORIA' para receber. \\n Tenha o direcionamento certo no bolso.",
+            f"Conhecimento de valor se aplica. Comenta 'SABEDORIA' e pega a edição desta semana. \\n Comece hoje seu avanço pessoal.",
+            f"Já liberamos a nova edição semanal. Comenta 'SABEDORIA' que te envio o link direto. \\n Receba o material completo no seu Direct.",
+            f"Se você quer aprofundar no tema de hoje, comenta 'SABEDORIA' no Direct. \\n Pega o seu {sinonimo_modulo} inédito agora.",
+            f"Toda semana um {sinonimo_modulo} novo pra quem busca maestria. Comenta 'SABEDORIA'. \\n O material completo já está no seu Direct.",
+            f"Não deixa pra depois: comenta 'SABEDORIA' e recebe o link imediatamente. \\n Seu guia de lucidez da semana.",
+            f"O material desta semana tá pronto. Comenta 'SABEDORIA' que te entrego no Direct. \\n Receba o passo a passo de aplicação.",
+            f"Quem te acompanha sabe do valor disso. Comenta 'SABEDORIA' e pega seu {sinonimo_modulo}. \\n Acesse o conteúdo completo no Direct.",
+            f"Se ainda não pegou seu {sinonimo_modulo} semanal, comenta 'SABEDORIA' agora mesmo. \\n O mapa da semana no seu bolso.",
         ]
         cta_tarde = random.choice(VARIACOES_CTA_TARDE)
         cta_do_dia = "SABEDORIA"
@@ -980,14 +985,20 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         Entregue um princípio real de maestria/provérbios conectado com {titulo_pdf_limpo}.
         Exemplo: "Provérbios ensina: domínio próprio não é força bruta, é saber filtrar o que entra."
 
-        SLIDE 4 — CTA MAGNÉTICO E ININTERRUPTO (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Conexão natural e irrecusável com o material semanal.
-        Exemplos de variações (crie uma variação original e irresistível):
-        - Parte 1 (ANTES da quebra de linha): "Quer o mapa completo de {titulo_pdf_limpo}?"
-          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' que te envio no Direct 👇"
-        - Parte 1 (ANTES da quebra de linha): "Para dominar esse método na prática:"
-          Parte 2 (DEPOIS da quebra de linha): "Comente 'SABEDORIA' e receba o guia exclusivo."
+        SLIDE 4 — CTA DINÂMICO PARA AUDIÊNCIA FRIA (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
+        OBJETIVO: Converter visitantes de fora do perfil em leads que comentam e recebem o material no Direct.
+        ATENÇÃO — REGRA ANTI-PAPAGAIO: NUNCA use frases batidas ou clichês engessados. Crie uma variação INÉDITA, contextualizada ao tema "{titulo_pdf_limpo}".
+
+        Estruturas de inspiração para a audiência fria do Feed (escolha 1 estrutura e personalize com o tema):
+        - Estrutura 1 (Valor Direto): Parte 1: "Quer o guia prático de {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' abaixo que te envio no Direct 👇"
+        - Estrutura 2 (Aplicação): Parte 1: "Para aplicar esse método na sua vida:" \n Parte 2: "Comente 'SABEDORIA' e receba o material no Direct 👇"
+        - Estrutura 3 (Acesso Exclusivo): Parte 1: "Liberamos o mapa completo desta semana:" \n Parte 2: "Comente 'SABEDORIA' para receber no Direct 👇"
+        - Estrutura 4 (Pergunta de Desejo): Parte 1: "Pronto para dominar {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' que te entrego no Direct 👇"
+        - Estrutura 5 (Transformação): Parte 1: "Baixe o guia de evolução da semana:" \n Parte 2: "Comente 'SABEDORIA' e receba agora no Direct 👇"
+        - Estrutura 6 (Solução): Parte 1: "Quer o passo a passo completo?" \n Parte 2: "Comente 'SABEDORIA' abaixo e receba no Direct 👇"
+
         REGRA INEGOCIÁVEL: A soma das duas partes NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
+        O tom deve ser CLARO, CONVIDATIVO e DIRETO para quem NUNCA te viu antes.
 
         ═══════════════════════════════════════════════════
         REGRAS ABSOLUTAS DE QUALIDADE & RETENÇÃO:
