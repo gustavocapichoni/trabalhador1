@@ -1,103 +1,109 @@
 {
-  "frase_topo_capa": "A VERDADE BRUTAL QUE LIBERTA VOCÊ",
-  "titulo_pdf": "O Preço da Sua Aprovação Alheia",
-  "subtitulo_pdf": "Recupere sua voz e seu destino em 3 atos.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
+  "frase_topo_capa": "A LUZ INTERIOR QUE REFAZ SEU CAMINHO",
+  "titulo_pdf": "A Grande Reinvenção do Sentido",
+  "subtitulo_pdf": "Recupere a direção e a conexão perdida em 7 dias.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing compass pointing towards a hidden light in a dense fog, 8k, hyperrealistic.",
   "capa_cards": [
     {
-      "titulo": "A Máscara do Consenso",
-      "texto": "Você se tornou um eco das expectativas alheias, perdendo a melodia da sua própria voz. A exaustão é a prova silenciosa disso.",
-      "pergunta_destaque": "De quem é a vida que você vive?"
+      "titulo": "O Fim da Navegação Cega",
+      "texto": "Você sente que a bússola da vida quebrou, que os dias se repetem vazios. Essa desconexão rouba sua essência e seu propósito real.",
+      "pergunta_destaque": "Onde sua alma se perdeu?"
     },
     {
-      "titulo": "Desperte. Questione. Conquiste.",
-      "texto": "Um método que usa a filosofia de O Vendedor de Sonhos para reconstruir sua identidade autêntica.",
-      "citacao_destaque": "null"
+      "titulo": "A Ciência da Fé Ativa",
+      "texto": "Um mergulho na mente mais brilhante da história para reacender sua chama interior e sua jornada.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Liberdade em 7 dias",
-      "texto": "Liberte-se da prisão invisível da validação e viva com propósito inabalável."
+      "titulo": "Sua Nova Rota",
+      "texto": "Desbloqueie clareza, propósito e uma conexão inabalável com o que realmente importa.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Sua voz é seu maior poder",
-      "texto": "Não há sabedoria em agradar o mundo e perder a si mesmo.",
-      "citacao_destaque": "O maior inimigo está dentro de você. Código da Sabedoria."
+      "titulo": "A Conexão Que Guia",
+      "texto": "Reconecte-se para redefinir seu destino.",
+      "citacao_destaque": "O amor é a maior sabedoria. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Espelho Que Mente",
-      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, 8k",
+      "titulo": "O Vazio Que Você Ignora",
+      "prompt_imagem": "Cinematic dark moody photography of a man standing in a vast empty landscape, a faint glow around his chest, 8k, hyperrealistic.",
       "paragrafos": [
-        "Parabéns, você se tornou um mestre na arte de agradar. O problema é que a plateia está vazia e o palco, seu coração, está desabando. A busca incessante por validação externa não é generosidade, é uma fuga de si mesmo, um vício silencioso que consome sua energia e dilui sua identidade, deixando um rastro de frustração invisível.",
-        "Como o Mestre Doutor ensinou, a sociedade é uma grande máquina de moldar. Muitos preferem a segurança da multidão, como aqueles que viviam em suas zonas de conforto, mesmo que fosse uma prisão. Eles temiam a liberdade que vinha com o questionamento, a mesma liberdade que o vendedor de sonhos oferecia ao despertar.",
-        "Olhe para seus compromissos da semana. Quais deles são realmente seus e quais são frutos do medo de dizer não? Hoje, escolha um compromisso que você assumiu por obrigação e não cumpra. Comece pequeno. A libertação começa com um \"não\" sussurrado para o mundo e um \"sim\" gritado para sua alma."
+        "Você acorda e, por um instante, a rotina esmaga. Uma sensação sutil de que algo crucial está faltando te envolve. A vida, antes vibrante, agora parece uma série de tarefas automáticas. É como se o mapa do seu propósito tivesse sumido, e cada passo, por mais rápido que seja, não te leva a lugar nenhum que realmente importe. Esse vazio silencioso é o custo da desconexão, e ele está sugando a cor dos seus dias sem que você perceba.",
+        "No livro 'O Homem Mais Inteligente da História', vemos como um mestre da psique humana desvendava a complexidade da alma. Ele observava a multidão correndo, exausta, muitas vezes sem um sentido claro para o seu esforço. Ele não oferecia respostas prontas, mas um espelho: 'Onde está sua sede? Onde está sua fome de algo maior?' Sua abordagem não era de condenação, mas de convite a uma autoanálise profunda, a sair da inércia que rouba a plenitude.",
+        "O primeiro passo é reconhecer o terreno árido. Pare de fugir do desconforto desse vazio. Hoje, reserve 10 minutos para sentar em silêncio e perguntar: 'O que realmente me move? O que me conecta ao transcendente?' Não busque respostas complexas, apenas sinta a ausência e anote a primeira palavra que surgir. Essa é a bússola que estava escondida."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_12fbee.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_359bdf.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Cérebro Viciado em Drama",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, 8k",
+      "titulo": "A Ilusão da Sua Própria Mente",
+      "prompt_imagem": "Cinematic dark moody photography of a person wrestling with their own shadow, a faint halo around their head in a dimly lit room, 8k, hyperrealistic.",
       "paragrafos": [
-        "Seu cérebro adora o drama do sofrimento conhecido. Ele prefere a previsibilidade da autossabotagem a dar um passo incerto rumo à sua liberdade. É por isso que você promete mudar na segunda-feira e na terça já está de volta ao velho roteiro, refém de impulsos que parecem incontroláveis. É um ciclo de autodestruição sutil, mas constante.",
-        "Lembre-se da lição do Mestre Doutor sobre a autocrítica doente. Ele dizia que o ser humano tem uma capacidade incrível de se julgar e se aprisionar. Assim como o caçador que, mesmo livre, continuava com a mentalidade de presa, muitos de nós carregamos correntes invisíveis, impostas por nós mesmos, acreditando que estamos nos protegendo, quando na verdade, estamos nos limitando.",
-        "Aprenda a técnica da \"Pausa do Observador\". Quando a voz interna da autossabotagem ou da busca por aprovação surgir, não lute contra ela. Apenas observe-a, como quem vê uma nuvem passageira. Pergunte: 'Quem está falando agora? É a minha essência ou o meu medo?' Essa pausa mínima te dá o controle para escolher a resposta, em vez de reagir automaticamente."
+        "É irritante como seu próprio cérebro sabota sua busca por algo maior. Você decide buscar uma conexão, meditar, orar, mas a mente divaga, prefere a distração, o sofrimento conhecido da rotina ao esforço da mudança. Essa é a sua mente jogando o jogo dela, te prendendo na zona de conforto, mesmo que ela seja um deserto disfarçado.",
+        "O 'Homem Mais Inteligente' era um mestre em dominar os próprios impulsos. Ele não se deixava levar pelas reações emocionais imediatas ou pela voz da multidão. Sua calma interior vinha de um controle profundo sobre seus pensamentos, uma capacidade de observar a tempestade mental sem ser arrastado por ela. Ele ensinava que a verdadeira liberdade não está em fazer o que quer, mas em não ser escravo do que sente.",
+        "A técnica é simples, mas exige disciplina: O Silêncio Ativo. Escolha um momento do dia - 5 minutos. Feche os olhos. Concentre-se na sua respiração. Quando um pensamento surgir - e ele vai surgir - apenas observe-o sem julgamento, como uma nuvem que passa no céu. Não lute, não se prenda. Apenas observe e retorne à respiração. Faça isso hoje e comece a reprogramar sua mente para o foco e a presença."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_862bfb.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_51e277.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Arquitetura da Sua Liberdade",
-      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, 8k",
+      "titulo": "O Segredo dos Caminhos Inevitáveis",
+      "prompt_imagem": "Cinematic dark moody photography of an ancient map unrolling under a single beam of light, revealing a clear path forward through a dense forest, 8k, hyperrealistic.",
       "paragrafos": [
-        "Você se sente como um hamster na roda, correndo sem parar, exausto, mas sem nunca ver a linha de chegada. A sensação de que o esforço não vale a pena é o veneno da alma, minando sua fé em qualquer mudança. É a paralisia do propósito, a confusão de quem trabalha muito, mas não para o que realmente importa.",
-        "O Mestre Doutor ensinou que um barco sem rumo é jogado por qualquer tempestade. Ele não tem destino. Assim como o vendedor de sonhos que transformou vidas ao mostrar que o 'onde' é menos importante que o 'porquê', o verdadeiro poder está em construir a rota da sua vida, não apenas reagir aos ventos alheios. É sobre escolher o seu horizonte, não ser levado por ele.",
-        "Desenhe o 'Mapa da Sua Semana Essencial'. Pegue um papel e divida seus dias. Anote apenas três coisas CRUCIAIS que você fará por VOCÊ, pela sua verdadeira essência, a cada dia. Não são tarefas para os outros, mas para o seu crescimento. Isso cria uma âncora de propósito, um compromisso inegociável com sua própria liberdade, blindando sua agenda contra a invasão externa."
+        "Você se sente um rato na roda, correndo sem parar, esgotado, mas com a sensação persistente de que não está construindo nada duradouro, nada que realmente valha a pena. Essa exaustão sem propósito é um sinal claro de que você está perdendo o jogo da vida para a aleatoriedade.",
+        "O 'Homem Mais Inteligente' não agia por impulso. Seus passos eram calculados, suas palavras, precisas. Ele sabia que a verdadeira transformação não acontece de repente, mas através de um planejamento intencional, da antecipação dos obstáculos e da escolha de metas que ressoassem com um propósito maior. Ele construía pontes, não apenas por onde passar, mas para guiar outros por um caminho de significado.",
+        "Desenhe hoje o seu Mapa da Intenção. Pegue um papel. No centro, escreva: 'Minha Conexão Essencial'. Ao redor, liste 3 ações diárias (simples, mas poderosas) que te aproximam dessa conexão. Pode ser: '5 minutos de Silêncio Ativo', 'Ler um verso inspirador', 'Ajudar alguém'. Comprometa-se a fazer essas 3 ações todos os dias desta semana. Sem desculpas. Sem negociações. Apenas ação consciente."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_2b94fc.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_9703bc.jpg"
     }
   ],
-  "citacao_destaque": "Mude sua história. Mude sua vida. Código da Sabedoria.",
+  "citacao_destaque": "O maior erro é não se questionar. A verdadeira sabedoria reside na humildade de aprender.",
   "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "Não se amoldem ao padrão deste mundo, mas transformem-se pela renovação da sua mente.",
-  "referencia_verso": "Romanos 12:2",
+  "verso_base": "A fé sem obras é morta. A verdadeira fé se manifesta na ação.",
+  "referencia_verso": "Tiago 2:17",
   "plano_acao": {
-    "titulo_secao": "O Despertar do Anti-Herói: Seu Plano em 3 Atos",
-    "prompt_imagem": "Cinematic hyperrealistic dark photography of a lone figure standing on a mountain peak, witnessing a sunrise, focus on determination and clarity, 8k",
-    "subtitulo": "Um roteiro prático para desvendar sua voz interior e blindar seu destino contra a busca incessante por aprovação.",
+    "titulo_secao": "A Arquitetura da Alma Reconectada",
+    "prompt_imagem": "Cinematic dark moody photography of ancient ruins being revitalized by a glowing energy, a person meditating in the foreground amidst mystical light, 8k, hyperrealistic.",
+    "subtitulo": "Um método de 7 dias para reconstruir seu propósito e sentir a presença do que te move, passo a passo, sem distrações.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Diário da Sua Inautenticidade",
-        "descricao": "Por 7 dias, anote toda vez que você disser \"sim\" querendo dizer \"não\". Registre a emoção por trás e o custo real da sua complacência. Isso revela os padrões de autoabandono, como o Mestre Doutor ensinava sobre a honestidade brutal consigo mesmo."
+        "titulo": "O Despertar do Silêncio",
+        "descricao": "Nos primeiros 3 dias, dedique 10 minutos pela manhã ao Silêncio Ativo (Capítulo 2). Sente-se, respire, observe os pensamentos sem apego. Não busque nada, apenas esteja. Este é o alicerce."
       },
       {
         "numero": 2,
-        "titulo": "O Teste do Silêncio Interno",
-        "descricao": "Diariamente, reserve 10 minutos para o silêncio absoluto. Apenas observe seus pensamentos e a voz que insiste em te agradar. Qual a origem dela? Essa prática afia sua percepção, distinguindo a sua voz da multidão, um pilar da sabedoria que transforma destinos."
+        "titulo": "A Carta ao Seu Eu Futuro",
+        "descricao": "No quarto dia, escreva uma carta para você mesmo daqui a um ano. Descreva a pessoa que você deseja ser, a conexão que sente e o propósito que vive. Seja brutalmente honesto. Guarde-a."
       },
       {
         "numero": 3,
-        "titulo": "A Decisão do Rejeitado",
-        "descricao": "Escolha uma área da sua vida onde você constantemente busca aprovação. Faça uma escolha consciente que priorize sua verdade, mesmo que isso signifique desagradar alguém. Sinta o desconforto e perceba a liberdade que vem depois, exatamente como o Mestre Doutor provocava seus ouvintes a serem 'loucos' por si mesmos."
+        "titulo": "A Ação de Servir",
+        "descricao": "Nos dias 5 e 6, escolha uma pequena ação de serviço ou generosidade. Ajude um vizinho, doe algo, ouça alguém sem julgamento. O 'Homem Mais Inteligente' ensinou que o propósito se revela no serviço."
+      },
+      {
+        "numero": 4,
+        "titulo": "O Ancoramento Diário",
+        "descricao": "No sétimo dia, e a partir de então, escolha uma citação ou verso inspirador para ser sua 'âncora' do dia. Leia pela manhã e reflita sobre ela em 3 momentos ao longo do dia. Deixe-a guiar suas escolhas e reações."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_458c2a.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_4e2833.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "LIBERTE SUA VOZ. REESCREVA SEU DESTINO.",
+    "promessa_clara": "Sua nova bússola para uma vida de propósito.",
     "beneficios": [
-      "Identifique e quebre o ciclo da aprovação externa que te aprisiona.",
-      "Aprenda a dizer \"não\" ao que não te serve, sem culpa.",
-      "Reconecte-se com sua verdadeira essência e propósito.",
-      "Desenvolva uma mente inabalável contra as pressões sociais.",
-      "Transforme sua vida com atitudes que refletem sua identidade autêntica."
+      "Reacenda sua conexão espiritual em apenas 7 dias.",
+      "Domine a mente para focar no que realmente importa.",
+      "Crie um plano de ação para um propósito inabalável.",
+      "Descubra a sabedoria oculta na sua rotina diária.",
+      "Transforme o vazio em significado e direção clara."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_23984c.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_7c16fd.jpg"
 }
