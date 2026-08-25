@@ -29,11 +29,17 @@ def get_db():
         return None
         
     try:
-        # Se a string veio com aspas simples extras nas pontas, nós limpamos
-        if firebase_creds_str.startswith("'") and firebase_creds_str.endswith("'"):
-            firebase_creds_str = firebase_creds_str[1:-1]
+        firebase_creds_str = firebase_creds_str.strip()
+        if (firebase_creds_str.startswith("'") and firebase_creds_str.endswith("'")) or \
+           (firebase_creds_str.startswith('"') and firebase_creds_str.endswith('"')):
+            firebase_creds_str = firebase_creds_str[1:-1].strip()
             
-        cred_dict = json.loads(firebase_creds_str)
+        try:
+            cred_dict = json.loads(firebase_creds_str)
+        except json.JSONDecodeError:
+            # Caso a Secret injetada venha com quebras de linha reais na chave RSA
+            cleaned_str = firebase_creds_str.replace('\r\n', '\\n').replace('\n', '\\n').replace('\r', '')
+            cred_dict = json.loads(cleaned_str)
         
         # Conecta via Firebase Admin SDK
         if not firebase_admin._apps:
