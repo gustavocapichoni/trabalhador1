@@ -67,6 +67,33 @@ def buscar_imagem_fundo(tipo, tema_escolhido, prompt_imagem=None):
     # Para buscas em APIs de fotos reais: começa pelos fallbacks temáticos coloridos (NÃO usa o prompt cinematográfico da IA)
     queries_a_tentar = queries_fallback + [QUERY_CORINGA]
 
+    # --- NÍVEL -1: IMAGENS LOCAIS DA PASTA img_carrocel (Prioridade Máxima para Carrossel) ---
+    if tipo == "carousel":
+        pasta_carrocel = os.path.join("biblioteca_local", "img_carrocel")
+        extensoes_validas = (".png", ".jpg", ".jpeg", ".webp")
+        if os.path.isdir(pasta_carrocel):
+            imagens_disponiveis = [
+                f for f in os.listdir(pasta_carrocel)
+                if os.path.splitext(f)[1].lower() in extensoes_validas
+            ]
+            if imagens_disponiveis:
+                try:
+                    from core.config.state import carregar_estado, salvar_estado
+                    estado_local = carregar_estado()
+                    ultima_usada = estado_local.get("ultima_img_carrocel", "")
+                    opcoes = [f for f in imagens_disponiveis if f != ultima_usada]
+                    if not opcoes:
+                        opcoes = imagens_disponiveis  # Reinicia o rodízio se só tiver 1
+                    img_escolhida = random.choice(opcoes)
+                    estado_local["ultima_img_carrocel"] = img_escolhida
+                    salvar_estado(estado_local)
+                    caminho_local = os.path.join(pasta_carrocel, img_escolhida)
+                    img = Image.open(caminho_local).convert("RGBA")
+                    print(f"[NIVEL -1] Imagem local do carrossel carregada: {img_escolhida}")
+                    return img.resize((W, H), Image.Resampling.LANCZOS), W, H
+                except Exception as e_local:
+                    print(f"[NIVEL -1] Erro ao carregar imagem local do carrossel: {e_local}. Continuando para FLUX...")
+
     # --- NÍVEL 0: FLUX.1 via Hugging Face (IA Geradora - Prioridade Máxima) ---
     # Apenas para os tipos de post que dependem de imagem como base do slideshow/arte
     _TIPOS_COM_FLUX = ["reels", "reels_noite", "story_manha", "carousel"]
@@ -391,15 +418,25 @@ def _gerar_carrossel(img, W_full, H, dados):
             linhas = textwrap.wrap(texto, width=18)
             texto_unificado = "\n".join(linhas)
         elif texto == "CTA":  # Slide Final
+            titulo_pdf_cta = "Material da Semana"
+            try:
+                caminho_pdf_cta = os.path.join("gerador_pdf", "output", "ultimo_conteudo.json")
+                if os.path.exists(caminho_pdf_cta):
+                    import json as _json_cta
+                    with open(caminho_pdf_cta, "r", encoding="utf-8") as _f_cta:
+                        _dados_cta = _json_cta.load(_f_cta)
+                    titulo_pdf_cta = _dados_cta.get("titulo_pdf", "Material da Semana")
+            except Exception:
+                pass
             ctas_disponiveis = [
-                ["Gostou deste conteúdo?", "", "Salva para não perder", "e segue a página para mais!"],
-                ["A mente precisa de", "constante evolução.", "", "Siga para não estagnar!"],
-                ["O conhecimento inútil", "sem a prática.", "", "Salva esse post agora."],
-                ["Se você leu até aqui,", "você já está na frente.", "", "Siga para continuar crescendo."],
-                ["Não perca mais tempo", "com conteúdos vazios.", "", "Acompanhe nossa jornada!"]
+                f"Quer o guia completo sobre isso? Comenta SABEDORIA abaixo que te envio no Direct 👇",
+                f"Esse conteúdo tem um material completo. Comenta SABEDORIA e recebe o ebook '{titulo_pdf_cta}' no Direct.",
+                f"Aprofunde esse conhecimento. Comenta SABEDORIA abaixo e receba o material da semana no Direct.",
+                f"Quer aplicar isso na prática? Comenta SABEDORIA que te envio o guia completo agora 👇",
+                f"O ebook '{titulo_pdf_cta}' está gratuito. Comenta SABEDORIA e receba no Direct."
             ]
             linhas_cta = random.choice(ctas_disponiveis)
-            texto_unificado = " ".join(l for l in linhas_cta if l.strip())
+            texto_unificado = linhas_cta
         else:  # Slides internos
             texto_unificado = texto
 
