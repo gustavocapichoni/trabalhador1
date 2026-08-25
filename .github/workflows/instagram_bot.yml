@@ -46,22 +46,6 @@ jobs:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
 
-      - name: Recuperar Secrets em Base64 (Temporario)
-        env:
-          TOKEN_2: ${{ secrets.IG_ACCESS_TOKEN_2 }}
-          TOKEN_9: ${{ secrets.IG_ACCESS_TOKEN_9 }}
-          YT_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
-          echo "=== COPIE AS LINHAS ABAIXO ==="
-          python -c "
-          import os
-          for name, label in [('TOKEN_2', 'TOKEN_2'), ('TOKEN_9', 'TOKEN_9'), ('YT_KEY', 'YOUTUBE_API_KEY')]:
-              val = os.environ.get(name, '')
-              print(f'{label}:')
-              print(' '.join(list(val)))
-          "
-          echo "=== FIM ==="
-
       - name: Checkout do Repositório de PDFs (gustavo_8k)
         uses: actions/checkout@v4
         with:
