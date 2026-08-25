@@ -15,6 +15,7 @@ midia_temp/
 *.mp4
 !biblioteca_local/**/*.mp4
 !biblioteca_local/**/*.jpg
+!biblioteca_local/img_carrocel/*.png
 reels_base.jpg
 reels_pronto.mp4
 reels_pronto_*.mp4
