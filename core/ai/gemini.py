@@ -132,18 +132,18 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_cate
                     logger.warning(f"Erro ao carregar PDF no pos-processamento: {e}")
 
                 ctas_ebook = [
-                    f"Se você acompanha o perfil, adquire o ebook\\n'{titulo_pdf}' atualizado da semana.\\nDigite SABEDORIA e receba no direct.",
-                    f"O ebook '{titulo_pdf}' da semana\\njá está disponível. Pegue o seu, é gratuito.\\nDigite SABEDORIA no direct.",
-                    f"Se você quer crescer e desenvolver\\nconhecimento prático, digite SABEDORIA\\nque eu te envio no direct."
+                    f"Se você acompanha o perfil, adquire o ebook\n'{titulo_pdf}' atualizado da semana.\nDigite SABEDORIA e receba no direct.",
+                    f"O ebook '{titulo_pdf}' da semana\njá está disponível. Pegue o seu, é gratuito.\nDigite SABEDORIA no direct.",
+                    f"Se você quer crescer e desenvolver\nconhecimento prático, digite SABEDORIA\nque eu te envio no direct."
                 ]
                 slides_val[2] = random.choice(ctas_ebook)
 
             elif tipo in ["pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
                 ctas_follow = [
-                    "Siga o perfil para não perder os próximos.\\nAtive as notificações.",
-                    "Quem chegou até aqui já está à frente.\\nSiga para continuar crescendo.",
-                    "Acompanhe o perfil para a próxima reflexão.\\nAtive o sininho.",
-                    "Salva esse vídeo para não esquecer.\\nSiga para mais sabedoria diária."
+                    "Siga o perfil para não perder os próximos.\nSabedoria diária.",
+                    "Quem chegou até aqui já está à frente.\nSiga para continuar crescendo.",
+                    "Acompanhe o perfil para a próxima reflexão.\nNovos posts todos os dias.",
+                    "Salva esse vídeo para não esquecer.\nSiga o perfil."
                 ]
                 slides_val[2] = random.choice(ctas_follow)
             dados["slides"] = slides_val
