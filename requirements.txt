@@ -5,7 +5,8 @@ google-genai
 python-dotenv
 moviepy<2.0.0
 edge-tts
-firebase-admin
+firebase-admin>=6.6.0
+google-cloud-firestore>=2.19.0
 loguru
 feedparser==6.0.11
 google-api-python-client
