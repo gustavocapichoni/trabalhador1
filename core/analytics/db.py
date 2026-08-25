@@ -1,9 +1,15 @@
 import os
 import json
+import urllib.parse
 from loguru import logger
 import firebase_admin
 from firebase_admin import credentials, firestore
 from dotenv import load_dotenv
+
+# Proteção cirúrgica contra o bug do Firestore REST client no Linux:
+# Impede a conversão de '(default)' para '%28default%29' nas requisições HTTP do Google Cloud API
+_orig_quote = urllib.parse.quote
+urllib.parse.quote = lambda string, safe='', encoding=None, errors=None: '(default)' if string == '(default)' else _orig_quote(string, safe=safe, encoding=encoding, errors=errors)
 
 # Carrega as variáveis de ambiente
 load_dotenv()
