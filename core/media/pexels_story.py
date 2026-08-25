@@ -710,15 +710,15 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
         num_videos_necessarios = 1
         logger.info(f"📊 [REELS_LEADS] {num_slides_estimado} slides × 5s = {duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     elif (not is_noite) and (not is_conquistador):
-        # pexels_story da Manhã: 1 único vídeo de fundo contínuo de ~12s a 14s (3 slides)
+        # pexels_story da Manhã: 1 único vídeo de fundo contínuo de ~16s (3 slides × 5.5s)
         num_slides_estimado = len(slides) if slides else 3
-        duracao_necessaria_reels = min(14.0, num_slides_estimado * 4.0)  # ~12s a 14s
+        duracao_necessaria_reels = num_slides_estimado * 5.5  # 5.5s por slide
         num_videos_necessarios = 1
         logger.info(f"📊 [PEXELS_STORY MANHÃ] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     elif is_noite and (not is_conquistador):
-        # pexels_story_noite: 1 único vídeo de fundo contínuo de ~13s a 15s (3 slides)
+        # pexels_story_noite: 1 único vídeo de fundo contínuo de ~16s (3 slides × 5.5s)
         num_slides_estimado = len(slides) if slides else 3
-        duracao_necessaria_reels = min(15.0, num_slides_estimado * 4.5)  # ~13.5s a 15s
+        duracao_necessaria_reels = num_slides_estimado * 5.5  # 5.5s por slide
         num_videos_necessarios = 1
         logger.info(f"📊 [PEXELS_STORY NOITE] {num_slides_estimado} slides → ~{duracao_necessaria_reels:.1f}s necessários | 1 vídeo de fundo contínuo")
     else:
@@ -1032,8 +1032,8 @@ def gerar_pexels_story(query, slides, caminho_saida="pexels_story.mp4", tema=Non
                     slide_start_times[i] = t_atual
                     t_atual += tempo_por_slide
             else:
-                # Formatos padrão rápidos (Pexels Story Manhã, Noite, Conquistador): Gancho ágil de 3.5s
-                duracao_gancho = min(3.5, duracao / max(1, total_slides))
+                # Formatos padrão (Pexels Story Manhã, Noite, Conquistador): Gancho de 5s para leitura confortável
+                duracao_gancho = min(5.0, duracao / max(1, total_slides))
                 if total_slides > 1:
                     tempo_slide_normal = (duracao - duracao_gancho) / (total_slides - 1)
                 else:
