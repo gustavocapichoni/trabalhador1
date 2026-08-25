@@ -19,6 +19,66 @@ load_dotenv()
 
 _db = None
 
+def _parse_credentials_universal(raw_str):
+    """
+    Parser universal extremamente resiliente para FIREBASE_CREDENTIALS.
+    Cobre: JSON direto, JSON com double-quote, Base64, multilinhas e chave RSA com Enters reais.
+    """
+    if not raw_str:
+        return None
+    raw_str = raw_str.strip()
+    if (raw_str.startswith("'") and raw_str.endswith("'")) or \
+       (raw_str.startswith('"') and raw_str.endswith('"')):
+        raw_str = raw_str[1:-1].strip()
+
+    # 1. Tenta JSON direct ou double-encoded JSON
+    try:
+        data = json.loads(raw_str)
+        if isinstance(data, str):
+            data = json.loads(data)
+        if isinstance(data, dict) and "project_id" in data:
+            return data
+    except Exception:
+        pass
+
+    # 2. Tenta Base64 decode
+    try:
+        import base64
+        decoded = base64.b64decode(raw_str).decode('utf-8')
+        data = json.loads(decoded)
+        if isinstance(data, str):
+            data = json.loads(data)
+        if isinstance(data, dict) and "project_id" in data:
+            return data
+    except Exception:
+        pass
+
+    # 3. Tenta sanitizar multilinhas com substituição de quebras reais em private_key
+    try:
+        import re
+        def fix_key(match):
+            key_content = match.group(1).replace('\r\n', '\\n').replace('\n', '\\n').replace('\r', '')
+            return f'"private_key": "{key_content}"'
+        
+        fixed_str = re.sub(r'"private_key"\s*:\s*"(.*?)"', fix_key, raw_str, flags=re.DOTALL)
+        data = json.loads(fixed_str)
+        if isinstance(data, dict) and "project_id" in data:
+            return data
+    except Exception:
+        pass
+
+    # 4. Tenta substituição global simples de Enters
+    try:
+        cleaned_str = raw_str.replace('\r\n', '\\n').replace('\n', '\\n').replace('\r', '')
+        data = json.loads(cleaned_str)
+        if isinstance(data, dict) and "project_id" in data:
+            return data
+    except Exception:
+        pass
+
+    return None
+
+
 def get_db():
     global _db
     
@@ -29,47 +89,25 @@ def get_db():
     # 2. Tenta a credencial do .env
     firebase_creds_str = _direct_env_creds or os.getenv("FIREBASE_CREDENTIALS")
     
-    # 3. Fallback: tenta buscar arquivos locais de credenciais
-    if not firebase_creds_str or len(firebase_creds_str.strip()) < 20:
+    cred_dict = _parse_credentials_universal(firebase_creds_str)
+
+    # 3. Fallback: tenta buscar arquivos locais de credenciais se não conseguiu pelo ambiente
+    if not cred_dict:
         for p in ["codigo da sabedoria/firebase-credentials.json", "firebase-credentials.json"]:
             if os.path.exists(p):
                 try:
                     with open(p, "r", encoding="utf-8") as f:
-                        firebase_creds_str = f.read()
-                    break
+                        cred_dict = json.load(f)
+                    if cred_dict:
+                        break
                 except Exception:
                     pass
 
-    if not firebase_creds_str:
-        logger.warning("FIREBASE_CREDENTIALS não encontrado no .env. O Analytics funcionará apenas localmente com avisos se chamado.")
+    if not cred_dict:
+        logger.warning("FIREBASE_CREDENTIALS não pôde ser decodificado do ambiente nem dos arquivos locais.")
         return None
         
     try:
-        firebase_creds_str = firebase_creds_str.strip()
-        if (firebase_creds_str.startswith("'") and firebase_creds_str.endswith("'")) or \
-           (firebase_creds_str.startswith('"') and firebase_creds_str.endswith('"')):
-            firebase_creds_str = firebase_creds_str[1:-1].strip()
-            
-        cred_dict = None
-        try:
-            cred_dict = json.loads(firebase_creds_str)
-        except json.JSONDecodeError:
-            # Caso venha com quebras de linha reais na chave RSA
-            cleaned_str = firebase_creds_str.replace('\r\n', '\\n').replace('\n', '\\n').replace('\r', '')
-            try:
-                cred_dict = json.loads(cleaned_str)
-            except json.JSONDecodeError:
-                # Tenta fallback de arquivo local caso a string da secret tenha sido truncada no .env
-                for p in ["codigo da sabedoria/firebase-credentials.json", "firebase-credentials.json"]:
-                    if os.path.exists(p):
-                        with open(p, "r", encoding="utf-8") as f:
-                            cred_dict = json.load(f)
-                        break
-
-        if not cred_dict:
-            logger.error("❌ Não foi possível decodificar as credenciais do Firebase.")
-            return None
-        
         # Conecta via Firebase Admin SDK
         if not firebase_admin._apps:
             cred = credentials.Certificate(cred_dict)
@@ -79,9 +117,6 @@ def get_db():
         logger.info("🔥 Google Cloud Firestore inicializado com sucesso!")
         return _db
         
-    except json.JSONDecodeError as e:
-        logger.error(f"❌ Erro ao decodificar FIREBASE_CREDENTIALS: {e}")
-        return None
     except Exception as e:
         logger.error(f"❌ Erro ao conectar com o Firebase: {e}")
         return None
