@@ -1,104 +1,114 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE REVELA O JOGO DO SEU CÉREBRO",
-  "titulo_pdf": "O Algoritmo da Próxima Escolha",
-  "subtitulo_pdf": "Domine sua mente, decida melhor, transforme seu destino agora.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
+  "frase_topo_capa": "A SABEDORIA QUE REESCREVE SEU DESTINO",
+  "titulo_pdf": "O Vício Secreto de Desistir",
+  "subtitulo_pdf": "Quebre o ciclo da autossabotagem e construa hábitos indestrutíveis.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a person's hand reaching out to a faint, glowing light in a swirling vortex of shadows, symbolizing overcoming inertia, 8k",
   "capa_cards": [
     {
-      "titulo": "A Armadilha do Conforto",
-      "texto": "Seu cérebro ama o sofrimento que conhece mais que a glória desconhecida, mantendo-o refém de padrões limitantes e decisões automáticas.",
-      "pergunta_destaque": "Você aceita o que já não serve?"
+      "titulo": "A Voz Que Mente",
+      "texto": "Aquela voz interna que manda desistir não é sua aliada. Ela é o eco de hábitos antigos disfarçados de 'bom senso'.",
+      "pergunta_destaque": "Você ainda aceita as desculpas?"
     },
     {
-      "titulo": "Ative a Inteligência Instantânea",
-      "texto": "Desbloqueie o poder da decisão rápida e assertiva, treinando sua mente para ver o invisível.",
-      "pergunta_destaque": ""
+      "titulo": "O Loop da Maestria",
+      "texto": "Desvende o gatilho, a rotina e a recompensa para reprogramar qualquer comportamento.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Ritmo de Acertos Inesperados",
-      "texto": "Ganhe clareza e velocidade para agir, convertendo hesitação em avanço diário.",
-      "pergunta_destaque": ""
+      "titulo": "Resultados Inevitáveis",
+      "texto": "Transforme sua vida com mudanças pequenas, mas de impacto duradouro.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Decida com Força e Clareza",
-      "texto": "Sua primeira impressão pode ser a mais sábia.",
-      "citacao_destaque": "Confie na sua intuição treinada. Código da Sabedoria."
+      "titulo": "Seja Inabalável",
+      "texto": "Sua identidade é a soma dos seus hábitos. Escolha quem você será.",
+      "citacao_destaque": "Pequenas escolhas geram grandes destinos. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Custo Inesperado de Viver no Piloto Automático",
-      "prompt_imagem": "Cinematic moody dark photography of a tired man looking at a mirror, 8k",
+      "titulo": "A Autossabotagem Disfarçada de Prudência",
+      "prompt_imagem": "Cinematic moody dark photography of a person standing at a crossroads, hesitant, with shadows stretching behind them, 8k",
       "paragrafos": [
-        "É fácil culpar o mundo lá fora, as circunstâncias, a sorte. Mas a verdade é que, muitas vezes, o maior sabotador está sentado na poltrona mais confortável da sua mente, sussurrando: 'melhor o diabo conhecido do que o anjo que você não entende'. Essa voz, essa preferência pelo sofrimento familiar, é o que drena sua energia e amarra seu potencial em uma rotina que você detesta mas não consegue largar. O irônico é que acreditamos estar no controle, quando na verdade, somos apenas passageiros de um roteiro mental velho e exaustivo.",
-        "Gladwell, em 'Blink', nos mostra como decisões rápidas e intuitivas, as chamadas 'fatias finas' de experiência, podem ser mais precisas do que análises exaustivas. Ele narra o caso de um especialista em arte que, apenas com um olhar, identificou uma estátua falsa que demorou anos para ser desmascarada por cientistas. A inércia da análise excessiva e o medo de errar nos paralisam, enquanto a intuição treinada avança.",
-        "Comece identificando uma pequena decisão que você adia há dias. Pergunte-se: qual a primeira resposta que me vem à mente? Confie nela por cinco segundos. O primeiro passo hoje é agir sobre essa 'primeira resposta', não sobre a 'segunda' cheia de 'e se...'. Isso quebra o ciclo da inércia e realinha sua mente para a ação."
+        "Sabe aquela sensação de começar algo com toda a energia, mas, no primeiro sinal de desconforto, uma voz interna grita 'desista, não vale a pena'? É a sua mente, mestra em te manter na zona de conforto, mesmo que ela seja um purgatório. Você promete mudar, sente o ímpeto, e então, um puxão invisível te arrasta de volta para o sofá, para a procrastinação, para a velha rotina, custando-lhe um destino maior.",
+        "Charles Duhigg, em O Poder do Hábito, nos mostra o caso de Eugene Pauly, um homem que perdeu a memória, mas ainda conseguia seguir rotinas complexas. Ele não se lembrava de onde estava, mas seu cérebro automaticamente o guiava pela casa, preparando o café. Isso revela que nossos hábitos operam num nível mais profundo, além da nossa consciência. A voz que te faz desistir não é um pensamento racional, é um programa antigo rodando em segundo plano.",
+        "Para desativar esse programa, você precisa primeiro reconhecê-lo. Anote agora: Qual é a desculpa imediata que surge quando você pensa em fazer o que precisa ser feito? Essa é a sua 'deixa' oculta. O primeiro passo é tornar o inconsciente consciente. Quando a voz surgir, não lute contra ela. Apenas observe-a e nomeie-a: 'Ah, é a minha voz da desistência, querendo me proteger do novo'. Isso tira o poder dela, transformando a inércia em observação."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_0bdfe1.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_c0edf7.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Mito da Análise Paralisante",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing book and a sharp sword, 8k",
+      "titulo": "O Preço Oculto da Zona de Conforto",
+      "prompt_imagem": "Cinematic dark moody photography of a person in a dimly lit room, intensely focused on a single glowing screen, surrounded by distractions fading into shadow, 8k",
       "paragrafos": [
-        "Você já se sentiu preso em um ciclo vicioso de 'e se'? O cérebro, em sua busca por segurança, muitas vezes nos convence de que analisar demais é sinônimo de sabedoria. Mas é a desculpa perfeita para a inação, para manter o sofrimento conhecido e evitar a glória desconhecida. É a armadilha do conforto, travestida de prudência, onde a ironia é que a 'segurança' que você busca te rouba a chance de realmente viver.",
-        "Pense nos bombeiros que, em segundos, decidem se um prédio vai desabar, ou nos treinadores de tênis que sabem onde a bola vai cair antes mesmo do saque. 'Blink' revela que esses 'milagres' não são mágica, mas sim a capacidade de um cérebro treinado em reconhecer padrões sutis, descartando o ruído e focando na informação essencial. A intuição não é aleatória, é um cálculo ultrarrápido, uma sabedoria que se manifesta em um piscar de olhos.",
-        "Adote a 'Regra dos 3 Segundos': Para qualquer decisão que te cause hesitação, dê a si mesmo três segundos para tomar uma atitude. Conte um, dois, três e aja. Este curto lapso de tempo força seu cérebro a usar o processamento rápido e intuitivo, impedindo a sabotagem da superanálise. Treine sua mente para confiar no seu primeiro insight, pois ele carrega a essência da sua experiência."
+        "É quase cômico. Você sabe o que precisa fazer, o que te faria avançar. Mas seu cérebro, essa máquina espetacular, prefere o sofrimento conhecido à incerteza da mudança. Ele te sabota com pensamentos como 'isso é muito difícil', 'você não vai conseguir', 'comece amanhã'. E assim, você se vê preso num loop, observando a si mesmo falhar, prometendo recomeçar, mas nunca realmente começando, aceitando uma vida no automático que não te serve mais.",
+        "Pense no exemplo da escovação dental. Antes do século XX, era um hábito raro. A Pepsodent, ao invés de focar na saúde, focou na 'recompensa imediata': a sensação de limpeza. O 'gatilho' era a sujeira na boca, a 'rotina' a escovação, e a 'recompensa' o frescor e a sensação de dentes lisos. Não é sobre a complexidade da tarefa, mas sobre a recompensa que a sustenta, um insight poderoso de O Poder do Hábito. Seu cérebro busca ativamente essa recompensa, seja ela qual for.",
+        "Para dominar sua atenção e reprogramar a mente, você precisa identificar a recompensa real que você busca ao 'desistir' (geralmente, alívio de um desconforto) e substituí-la por uma recompensa mais potente associada ao novo hábito. Técnica: 'O Plano Se-Então'. Se sentir a vontade de desistir, então farei X por apenas 5 minutos. Apenas 5 minutos. Isso engana seu cérebro, que associa a dor da mudança a um tempo limitado, e a recompensa de 'ter começado' é liberada, construindo um novo padrão de ação HOJE."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_8532ec.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_f06178.jpg"
     },
     {
       "numero": 3,
-      "titulo": "Desvendando o Fio Invisível da Inação",
-      "prompt_imagem": "Cinematic dark moody photography of a compass guiding the way in a storm, 8k",
+      "titulo": "A Decisão que Separa o Tentar do Conquistar",
+      "prompt_imagem": "Cinematic dark moody photography of a lone figure standing firmly on a mountain peak, looking at a distant, clear horizon, symbolizing unwavering resolve, 8k",
       "paragrafos": [
-        "A sensação de estar sempre ocupado, mas raramente produtivo, é o sintoma de um cérebro que prefere a atividade sem propósito à ação direcionada. Você trabalha exausto, mas a linha de chegada parece sempre se afastar. É como correr em círculos, enquanto a vida que você deseja espera na linha reta ao lado. A contradição é que sua 'ocupação' é, na verdade, uma forma sofisticada de evitar o que realmente importa.",
-        "Gladwell nos mostra que a expertise não é apenas conhecimento, mas a capacidade de extrair o essencial de um cenário complexo em um instante. Um médico experiente não precisa de todos os exames para ter uma 'sensação' sobre o diagnóstico mais provável. Da mesma forma, um planejamento eficaz não exige uma década de estudo, mas a capacidade de identificar os poucos elementos cruciais que realmente movem a agulha, eliminando o excesso.",
-        "O 'Plano de 15 Minutos': No início de cada semana, reserve 15 minutos para mapear as 3 tarefas mais críticas que, se realizadas, farão a maior diferença. Não mais que 3. Para cada uma, defina uma 'primeira ação' que leve menos de 5 minutos. Isso ativa o modo 'ação imediata' e dribla a paralisia do planejamento perfeito. Comece com o mínimo invencível e veja o progresso real acontecer."
+        "A vida moderna é uma corrida de ratos onde você se sente exausto, mas nunca no controle. Você trabalha, se ocupa, mas a sensação é de estar correndo em uma esteira, sem nunca chegar a lugar nenhum relevante. A energia se esvai, a motivação diminui, e a voz da desistência parece mais sensata do que nunca. É a armadilha do 'fazer por fazer' sem um mapa claro, aprisionando você na mediocridade do 'quase'.",
+        "Em 'O Poder do Hábito', Duhigg explora como a Starbucks transformou funcionários com baixa resiliência em profissionais de alta performance através de um 'plano de contingência' mental. Eles treinavam para identificar 'momentos de virada' – situações estressantes onde a maioria desistiria – e tinham um script exato para seguir. Não era sobre força de vontade, mas sobre antecipação e um plano de ação predefinido que mudava seus destinos.",
+        "Pare de esperar a motivação. Crie um 'Plano de Contingência de Desistência'. Identifique 3 situações em que você costuma desistir (ex: 'quando estou cansado', 'quando algo dá errado', 'quando sinto tédio'). Para cada uma, crie um micro-hábito de 2 minutos que você *irá* fazer, sem exceção. Ex: 'Se eu me sentir cansado e quiser desistir do treino, então farei apenas 2 minutos de polichinelos'. A meta não é o resultado final, mas a consistência de não quebrar a corrente. A vitória está em não ceder, desenhando um plano à prova de desculpas para a sua semana HOJE."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_c367ea.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_c04164.jpg"
     }
   ],
-  "citacao_destaque": "A verdadeira sabedoria não é pensar mais, é pensar melhor. Código da Sabedoria.",
+  "citacao_destaque": "Mudar um hábito não é sobre força de vontade, mas sobre estratégia e entendimento.",
   "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O homem sábio vê o perigo e se esconde, mas o tolo segue em frente e é punido.",
-  "referencia_verso": "Provérbios 22:3",
+  "verso_base": "Aquele que é lento para a ira é melhor que o guerreiro, e aquele que domina o seu espírito é melhor que o que toma uma cidade.",
+  "referencia_verso": "Provérbios 16:32",
   "plano_acao": {
-    "titulo_secao": "O Protocolo da Decisão Instintiva Desbloqueada",
-    "prompt_imagem": "Cinematic dark moody photography of a person's brain with glowing neural pathways, indicating quick decisions and clarity, 8k",
-    "subtitulo": "Ative seu poder de decisão em 72 horas, cortando a hesitação e agindo com clareza brutal.",
+    "titulo_secao": "O Protocolo da Persistência Inegociável",
+    "prompt_imagem": "Cinematic dark moody photography of a single, powerful lighthouse beam cutting through a stormy, dark sea, guiding a resilient ship, 8k",
+    "subtitulo": "Um método de 5 passos para construir hábitos à prova de 'voz interna' e alcançar a maestria pessoal.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Dia 1: O Teste do Primeiro Impulso",
-        "descricao": "Ao se deparar com uma escolha trivial (o que comer, qual roupa vestir, qual e-mail responder primeiro), force-se a decidir em 3 segundos. Não pense, apenas sinta e aja. Registre a sensação. Isso treina seu cérebro a confiar na sua intuição inicial, desarmando o hábito de superanálise e quebrando a preferência pelo conhecido."
+        "titulo": "Mapeie Sua 'Voz'",
+        "descricao": "Identifique as 3 principais desculpas ou sentimentos que surgem quando você pensa em desistir. Anote-as. Isso torna o inimigo visível, o primeiro passo para o controle."
       },
       {
         "numero": 2,
-        "titulo": "Dia 2: A Auditoria da Inação",
-        "descricao": "Escolha uma área da sua vida onde você se sente estagnado. Liste 3 decisões importantes que você vem adiando. Para cada uma, identifique o 'medo oculto' por trás da procrastinação. Agora, force-se a identificar a 'próxima menor ação' que você pode fazer em menos de 5 minutos para cada uma. Faça-a imediatamente, confrontando o 'sofrimento conhecido'."
+        "titulo": "O Gatilho Oculto",
+        "descricao": "Para cada desculpa mapeada, pergunte: Qual é o gatilho externo ou interno que a precede? (Ex: estresse, cansaço, notificação do celular). Conhecer o gatilho é poder."
       },
       {
         "numero": 3,
-        "titulo": "Dia 3: O Filtro Essencial",
-        "descricao": "Antes de qualquer nova tarefa ou projeto, pergunte a si mesmo: 'Qual é a ÚNICA coisa que realmente importa aqui?' e 'Qual é o caminho mais rápido e direto para alcançá-la?'. Elimine 80% do que parece importante e concentre-se nos 20% essenciais. Isso é 'thin-slicing' aplicado à produtividade, evitando a sobrecarga e a paralisia da análise excessiva."
+        "titulo": "A Rotina de 2 Minutos",
+        "descricao": "Substitua a rotina de desistência por uma nova rotina de 2 minutos no máximo. Não foque no resultado, mas em *não quebrar a corrente*. (Ex: Se o gatilho é estresse antes do treino, a rotina é calçar os tênis e fazer 2 flexões)."
+      },
+      {
+        "numero": 4,
+        "titulo": "A Recompensa Imediata",
+        "descricao": "Associe uma pequena, mas prazerosa, recompensa imediata ao completar a rotina de 2 minutos. Pode ser um copo de água gelada, ouvir uma música, ou a sensação de ter cumprido. Seu cérebro precisa de um 'porquê'."
+      },
+      {
+        "numero": 5,
+        "titulo": "O Contrato Inegociável",
+        "descricao": "Escreva um 'contrato' consigo mesmo, comprometendo-se a seguir o Protocolo da Persistência por 21 dias. Assine. Cole em um lugar visível. Sua palavra é seu destino."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_2a6fe4.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_6d27ce.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "3 DIAS PARA REPROGRAMAR SUAS DECISÕES E DOMINAR SEU CÉREBRO.",
+    "promessa_clara": "CALAR A VOZ QUE TE FAZ DESISTIR EM 5 PASSOS.",
     "beneficios": [
-      "Identifique e quebre os padrões de autossabotagem mental.",
-      "Tome decisões rápidas e assertivas sem o peso da dúvida.",
-      "Transforme a inércia em ação direcionada e produtiva.",
-      "Desenvolva uma intuição afiada para o sucesso diário.",
-      "Libere seu potencial, superando o sofrimento conhecido."
+      "Identifique o gatilho secreto da sua procrastinação.",
+      "Construa hábitos indestrutíveis com o método de 2 minutos.",
+      "Transforme a autossabotagem em motivação consistente.",
+      "Desvende a ciência por trás da persistência inabalável.",
+      "Reescreva seu destino com ações diárias e intencionais."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_e68725.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_b259dc.jpg"
 }
