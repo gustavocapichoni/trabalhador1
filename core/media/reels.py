@@ -165,9 +165,9 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
     try:
         audio_clip = AudioFileClip(caminho_audio)
         if tipo in ["story_manha", "reels", "reels_noite"]:
-            duracao_por_slide = 5.0
-            DURACAO_ULTIMO_SLIDE = 5.0
-            DURACAO_GANCHO_COMUM = 5.0
+            duracao_por_slide = 6.5    # Slides internos
+            DURACAO_ULTIMO_SLIDE = 6.5  # CTA final
+            DURACAO_GANCHO_COMUM = 5.0  # Primeiro slide (gancho)
         else:
             duracao_por_slide = 9.0
             DURACAO_ULTIMO_SLIDE = 11.0  # Último slide (CTA) tem mais tempo para leitura
@@ -207,8 +207,11 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
 
         # Duração do áudio = slides + vídeo final (música cobre tudo)
         is_reels_comum = (tipo in ["reels", "reels_noite"])
-        if tipo in ["story_manha", "reels", "reels_noite"]:
-            duracao_slides = n_slides * 5.0
+        is_simples = (tipo in ["story_manha", "reels", "reels_noite"])
+        if is_simples and n_slides >= 2:
+            duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
+        elif is_simples:
+            duracao_slides = n_slides * DURACAO_GANCHO_COMUM
         elif is_reels_comum and n_slides >= 2:
             duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
         else:
@@ -221,7 +224,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             duracao_por_slide = duracao_por_slide * ratio
             DURACAO_ULTIMO_SLIDE = max(duracao_por_slide, DURACAO_ULTIMO_SLIDE * ratio)
             DURACAO_GANCHO_COMUM = DURACAO_GANCHO_COMUM * ratio
-            if is_reels_comum and n_slides >= 2:
+            if (is_simples or is_reels_comum) and n_slides >= 2:
                 duracao_slides = DURACAO_GANCHO_COMUM + (n_slides - 2) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
             else:
                 duracao_slides = (n_slides - 1) * duracao_por_slide + DURACAO_ULTIMO_SLIDE
@@ -319,17 +322,16 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
             )
 
         # --- Função: gera todos os frames de um slide (imagem + texto animado) ---
-        def gerar_frames_slide(caminho_img, texto, duracao, dia, eh_primeiro_slide, W, H, fps, eh_ultimo_slide=False):  # noqa
+        def gerar_frames_slide(caminho_img, texto, duracao, dia, eh_primeiro_slide, W, H, fps, eh_ultimo_slide=False, animar_imagem=True):  # noqa
             total_frames = int(duracao * fps)
             fade_frames  = int(0.5 * fps)
 
             img_pil = PILImage.open(caminho_img).convert("RGB").resize((W, H), PILImage.Resampling.LANCZOS)
             img_np  = np.array(img_pil)
 
-            # Pré-redimensiona uma única vez se a animação do dia envolver Zoom (dias 2 e 5)
-            # Evita chamar resize() pesados 24 vezes por segundo a cada frame!
+            # Pré-redimensiona para Zoom apenas se animação de imagem estiver ativa (dias 2 e 5)
             img_zoomed_np = None
-            if dia in [2, 5]:
+            if animar_imagem and dia in [2, 5]:
                 scale_max = 1.12
                 w_zoom, h_zoom = int(W * scale_max), int(H * scale_max)
                 img_zoomed_pil = img_pil.resize((w_zoom, h_zoom), PILImage.Resampling.LANCZOS)
@@ -342,7 +344,7 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 frame = img_np.copy()
 
                 # --- Transição de entrada da IMAGEM (slides 2+) com curva suave (Ease-Out) ---
-                if not eh_primeiro_slide and t < 0.5:
+                if animar_imagem and not eh_primeiro_slide and t < 0.5:
                     p_linear = t / 0.5
                     # Curva Ease-Out: movimento começa rápido e freia suavemente (sem tranco)
                     p = 1.0 - (1.0 - p_linear) ** 2
@@ -429,15 +431,16 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 dur_slide = duracoes_sincronizadas[idx]
             elif eh_ultimo:
                 dur_slide = DURACAO_ULTIMO_SLIDE
-            elif idx == 0 and is_reels_comum:
+            elif idx == 0 and (is_simples or is_reels_comum):
                 dur_slide = DURACAO_GANCHO_COMUM
             else:
                 dur_slide = duracao_por_slide
+            _animar_img = not is_simples
             try:
                 frames_lista = gerar_frames_slide(
-
                     caminho, texto_slide, dur_slide,
-                    dia_semana, idx == 0, W, H, FPS, eh_ultimo
+                    dia_semana, idx == 0, W, H, FPS, eh_ultimo,
+                    animar_imagem=_animar_img
                 )
 
                 def make_frame_fn(fl=frames_lista, ds=dur_slide):

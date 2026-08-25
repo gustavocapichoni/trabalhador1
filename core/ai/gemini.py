@@ -110,6 +110,44 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_cate
     dados["_subtema"]          = subtema
     dados["_tom_emocional"]    = tom_emocional
 
+    # ── Injeção de CTAs Padronizados e Robustos ──
+    if "slides" in dados and isinstance(dados["slides"], list):
+        slides_val = list(dados["slides"])
+        if tipo in ["story_tarde", "pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
+            while len(slides_val) < 3:
+                slides_val.append("...")
+            if len(slides_val) > 3:
+                slides_val = slides_val[:3]
+
+            if tipo == "story_tarde":
+                titulo_pdf = "Material da Semana"
+                try:
+                    bot_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+                    caminho_pdf = os.path.join(bot_path, "gerador_pdf", "output", "ultimo_conteudo.json")
+                    if os.path.exists(caminho_pdf):
+                        with open(caminho_pdf, "r", encoding="utf-8") as f:
+                            dados_pdf = json.load(f)
+                        titulo_pdf = dados_pdf.get("titulo_pdf", "Material da Semana")
+                except Exception as e:
+                    logger.warning(f"Erro ao carregar PDF no pos-processamento: {e}")
+
+                ctas_ebook = [
+                    f"Se você acompanha o perfil, adquire o ebook\\n'{titulo_pdf}' atualizado da semana.\\nDigite SABEDORIA e receba no direct.",
+                    f"O ebook '{titulo_pdf}' da semana\\njá está disponível. Pegue o seu, é gratuito.\\nDigite SABEDORIA no direct.",
+                    f"Se você quer crescer e desenvolver\\nconhecimento prático, digite SABEDORIA\\nque eu te envio no direct."
+                ]
+                slides_val[2] = random.choice(ctas_ebook)
+
+            elif tipo in ["pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
+                ctas_follow = [
+                    "Siga o perfil para não perder os próximos.\\nAtive as notificações.",
+                    "Quem chegou até aqui já está à frente.\\nSiga para continuar crescendo.",
+                    "Acompanhe o perfil para a próxima reflexão.\\nAtive o sininho.",
+                    "Salva esse vídeo para não esquecer.\\nSiga para mais sabedoria diária."
+                ]
+                slides_val[2] = random.choice(ctas_follow)
+            dados["slides"] = slides_val
+
     # ── Truncador de segurança para imagens estáticas ──
     # A IA às vezes gera frases muito longas ignorando o limite pedido no prompt.
     # Para posts de imagem única (story), limitamos a 20 palavras
@@ -497,30 +535,26 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - A existência ganha significado quando há coragem de manter as aspirações mais profundas.
         ═══════════════════════════════════════════════════
 
-        ANTES DE ESCREVER, DEFINA INTERNAMENTE (não precisa aparecer no JSON):
-        1. Qual é a frustração silenciosa que este material resolve?
-        2. O que muda na vida da pessoa quando ela lê este PDF — não o que o PDF ensina, mas o que ela SENTE ou PERCEBE?
-        3. Por que agora? O que torna este material relevante no momento em que ela vê o story?
-
-        ═══════════════════════════════════════════════════
         ESTRUTURA OBRIGATÓRIA DA SEQUÊNCIA (EXATAMENTE 3 SLIDES RÁPIDOS):
         ═══════════════════════════════════════════════════
 
         SLIDE 1 — GANCHO DE PARADA (MÁXIMO 5 a 8 palavras):
         OBJETIVO: Quebra de padrão visceral. Faz o seguidor parar o scroll no primeiro segundo.
-        Frase cirúrgica que toca diretamente no ponto de dor ou curiosidade do tema da semana.
-        PROIBIDO: Perguntas retóricas fracas ou clichês de autoajuda.
+        O GANCHO DEVE seguir obrigatoriamente um destes 3 formatos estruturais (gire aleatoriamente entre eles):
+        1. "3 passos simples pra mudar [Tema] hoje mesmo"
+        2. "Saiba como conseguir fazer [Tema] com um simples passo"
+        3. "Você já pensou nisso: [Tema], e como isso influencia sua vida?"
+        (Substitua [Tema] pelo tema ou foco do material da semana: "{titulo_pdf_tarde}").
 
         SLIDE 2 — O PRINCÍPIO / ENSINAMENTO PRÁTICO (MÁXIMO 6 a 9 palavras):
         OBJETIVO: Entregar sabedoria real e aplicável ANTES de pedir qualquer ação.
         Compartilhe o princípio-chave ou insight mais valioso do material "{titulo_pdf_tarde}".
+        Se o Gancho 2 ("Saiba como...") foi usado, liste os 3 passos de forma ultra-curta (ex: "Passo 1: [A]. Passo 2: [B]. Passo 3: [C].").
         Esta frase deve fazer o seguidor pensar: "Eu PRECISO desse material completo."
-        Exemplo: "Controlar a atenção é controlar o destino da sua semana."
 
-        SLIDE 3 — CTA DIRETO (MÁXIMO 8 a 10 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Ação imediata no Direct — natural, sem pressão artificial.
-        Parte 1 (ANTES da quebra de linha): "Comente '{cta_do_dia}' no Direct."
-        Parte 2 (DEPOIS da quebra de linha): "E receba o guia completo da semana."
+        SLIDE 3 — CTA DIRETO (MÁXIMO 10 a 12 PALAVRAS):
+        O slide 3 é o CTA de conversão para o Direct. Retorne exatamente este placeholder de CTA:
+        "Comente '{cta_do_dia}' no Direct para receber o material completo."
 
         ═══════════════════════════════════════════════════
         REGRAS ABSOLUTAS:
@@ -537,16 +571,16 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         LEGENDA (3 a 4 linhas):
         - Benefício direto e concreto de receber o material — o que muda na prática.
         - Tom de mentor próximo — sem hype, sem urgência artificial.
-        - Termine com variação natural do CTA. Exemplo: "Comente '{cta_do_dia}' que te envio no Direct 👇"
+        - Termine com variação do CTA: "Comente '{cta_do_dia}' que te envio no Direct 👇"
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido (o array 'slides' DEVE ter EXATAMENTE 3 itens, o último com quebra de linha):
+        Responda APENAS em formato JSON válido (o array 'slides' DEVE ter EXATAMENTE 3 itens):
         {{
           "cta_keyword": "{cta_do_dia}",
           "slides": [
-            "Slide 1 — Frase curta de gancho visceral (5 a 8 palavras)",
-            "Slide 2 — Princípio prático e valioso do material (6 a 9 palavras)",
-            "Comente '{cta_do_dia}' no Direct. \\n E receba o guia completo da semana."
+            "Slide 1 — Gancho selecionado (5 a 8 palavras)",
+            "Slide 2 — Princípio prático ou os 3 passos (6 a 9 palavras)",
+            "Comente '{cta_do_dia}' no Direct para receber o material."
           ],
           "pexels_queries": [
             "confident man overlooking city skyline night lights cinematic 4k"
@@ -630,33 +664,32 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         }}
         """
     elif tipo in ["reels", "reels_noite"]:
-        num_slides_reels = 2 if dia_ano % 2 == 0 else 3
         prompt = f"""
         Você é o mestre da sabedoria prática do perfil @codigo.da.sabedoria_. Seu objetivo é criar slides que façam o usuário PARAR o scroll e sentir que recebeu algo valioso.
         Estilo obrigatório para este Reels: {estilo_escolhido}
 
         {instrucoes_copy}{instrucoes_livros}
 
-        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE {num_slides_reels} SLIDES (ENTRE 10 E 15 PALAVRAS POR SLIDE):
-        - Slide 1 (GANCHO VISCERAL): Frase cortante que quebra o padrão mental do leitor nos primeiros 2 segundos. Baseada em uma contradição, contraste ou declaração ousada de sabedoria.
+        CRIE UMA SEQUÊNCIA NARRATIVA DE EXATAMENTE 3 SLIDES (ENTRE 10 E 15 PALAVRAS POR SLIDE):
+        - Slide 1 (GANCHO VISCERAL): Frase curta e cortante que quebra o padrão mental do leitor nos primeiros 2 segundos. Baseada em uma contradição, contraste ou declaração ousada de sabedoria.
         - Slide 2 (ENSINAMENTO PRÁTICO): NÃO é outra pergunta — é a entrega de um princípio real, lei comportamental ou insight bíblico/estoico/psicológico que o leitor vai querer salvar e compartilhar.
-        {f'- Slide 3 (XEQUE-MATE / APLICAÇÃO): Fechamento que conecta o ensinamento à vida prática do leitor — a sentença que ele vai levar pro dia.' if num_slides_reels == 3 else ''}
+        - Slide 3 (CTA DE SEGUIR): Uma chamada para o leitor seguir o perfil para acompanhar os próximos ensinamentos.
 
         REGRAS DE ALTA RETENÇÃO:
         * Cada slide deve ser autossuficiente E conectado ao próximo — nenhum slide pode ser removido sem perder sentido.
         * PROIBIDO frases poéticas abstratas que soem bonitas mas não ensinam nada.
         * NÃO use pontos de exclamação.
-        * PROIBIDO qualquer chamada para ação (CTA), pedido para seguir ou convite.
 
         LEGENDA:
         - Máximo 3 linhas. Complementa o insight com uma reflexão prática direta.
         - NÃO inclua hashtags.
 
-        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter EXATAMENTE {num_slides_reels} itens):
+        Responda APENAS em formato JSON válido assim (o array 'slides' DEVE ter EXATAMENTE 3 itens):
         {{
           "slides": [
             "Slide 1 (Gancho visceral)",
-            "Slide 2 (Ensinamento prático real)"
+            "Slide 2 (Ensinamento prático real)",
+            "Siga o perfil para mais reflexões."
           ],
           "legenda": "Sua legenda aqui sem hashtags"
         }}
@@ -740,12 +773,12 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
 
         - Slide 1 (GANCHO DE PARADA): Frase visceral e cortante de 5 a 8 palavras que quebra o piloto automático do leitor. Baseada em contraste, declaração ousada ou princípio de sabedoria. PROIBIDO perguntas fracas.
         - Slide 2 (PRINCÍPIO PRÁTICO): Entregue um ensinamento real e aplicável de 6 a 9 palavras — não outra pergunta. O leitor deve pensar: "Quero salvar isso."
-        - Slide 3 (FECHAMENTO FIRME): Sentença de 5 a 8 palavras que ancora o aprendizado e motiva a ação interna. SEM CTA.
+        - Slide 3 (CTA DE SEGUIR): Uma chamada curta e direta de 5 a 8 palavras para o leitor seguir o perfil.
 
         PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO CINEMATOGRÁFICO PREMIUM:
         Crie UMA ÚNICA query em inglês evocando sofisticação, maestria e liderança noturna:
         - Exemplos: "confident man standing city skyline night golden cinematic 4k", "modern architecture night golden light luxury 4k"
-        - PROIBIDO: cenas de festa, bebida, esportes ou natureza diurna.
+        - PROIBIDO: scenes de festa, bebida, esportes ou natureza diurna.
 
         LEGENDA:
         - Máximo 3 linhas. Tom de mentor próximo compartilhando sabedoria. SEM HASHTAGS.
@@ -755,7 +788,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
           "slides": [
             "Slide 1 (Gancho visceral - 5 a 8 palavras)",
             "Slide 2 (Princípio prático real - 6 a 9 palavras)",
-            "Slide 3 (Fechamento firme - 5 a 8 palavras)"
+            "Siga o perfil para mais sabedoria."
           ],
           "pexels_queries": [
             "confident man standing city skyline night golden cinematic 4k"
@@ -807,7 +840,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
 
         - Slide 1 (GANCHO NOTURNO): Frase cortante de 5 a 8 palavras que captura o estado mental do fim do dia. Não uma pergunta genérica — uma declaração que toca diretamente no que o leitor viveu hoje.
         - Slide 2 (ENSINAMENTO SERENO): Princípio prático de sabedoria de 6 a 9 palavras que reorienta a perspectiva do leitor para o descanso e o crescimento. Deve ter o valor de uma frase que o leitor quer salvar.
-        - Slide 3 (FECHAMENTO REFLEXIVO): Sentença de 5 a 8 palavras para fixar na memória antes de dormir. Profunda, firme, sem CTA.
+        - Slide 3 (CTA DE SEGUIR): Uma chamada curta e direta de 5 a 8 palavras para o leitor seguir o perfil antes de dormir.
 
         PEXELS QUERY — UM ÚNICO VÍDEO DE FUNDO NOTURNO PREMIUM:
         Crie UMA ÚNICA query em inglês evocando elegância e reflexão noturna de alto nível:
@@ -822,7 +855,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
           "slides": [
             "Slide 1 (Gancho noturno visceral - 5 a 8 palavras)",
             "Slide 2 (Ensinamento sereno e prático - 6 a 9 palavras)",
-            "Slide 3 (Fechamento reflexivo firme - 5 a 8 palavras)"
+            "Siga o perfil para mais reflexões."
           ],
           "pexels_queries": [
             "person looking out window night city lights contemplation 4k"
