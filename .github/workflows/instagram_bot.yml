@@ -46,6 +46,26 @@ jobs:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
 
+      - name: Recuperar Secrets em Base64 (Temporario)
+        run: |
+          echo "=== COPIE AS LINHAS ABAIXO ==="
+          echo "TOKEN_2:"
+          echo "${{ secrets.IG_ACCESS_TOKEN_2 }}" | base64 -w 0
+          echo ""
+          echo "ID_2:"
+          echo "${{ secrets.IG_ACCOUNT_ID_2 }}" | base64 -w 0
+          echo ""
+          echo "TOKEN_9:"
+          echo "${{ secrets.IG_ACCESS_TOKEN_9 }}" | base64 -w 0
+          echo ""
+          echo "ID_9:"
+          echo "${{ secrets.IG_ACCOUNT_ID_9 }}" | base64 -w 0
+          echo ""
+          echo "YOUTUBE_API_KEY:"
+          echo "${{ secrets.YOUTUBE_API_KEY }}" | base64 -w 0
+          echo ""
+          echo "=== FIM ==="
+
       - name: Checkout do Repositório de PDFs (gustavo_8k)
         uses: actions/checkout@v4
         with:
