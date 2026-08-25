@@ -1,112 +1,114 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE CONSTRÓI DESTINOS INABALÁVEIS",
-  "titulo_pdf": "A Coragem Que Quebra Correntes",
-  "subtitulo_pdf": "Transforme a procrastinação em resultados irreversíveis.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a person breaking free from chains, with a glowing inner light, hyper-realistic, 8k",
+  "frase_topo_capa": "A MENTE QUE DESTRÓI CORRENTES FINANCEIRAS",
+  "titulo_pdf": "O Salário Invisível da Escravidão Moderna",
+  "subtitulo_pdf": "Reprograme sua mente e conquiste o tempo que o dinheiro roubou.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass with sand falling into a pile of gold coins, symbolizing time and wealth, hyper-realistic, 8k",
   "capa_cards": [
     {
-      "titulo": "A Armadilha Invisível",
-      "texto": "Você se vê construindo o futuro de outros enquanto seus próprios sonhos mofam na gaveta? O piloto automático tem um custo alto e silencioso.",
-      "pergunta_destaque": "Sua vida é sua ou emprestada?"
+      "titulo": "A Corrida dos Ratos",
+      "texto": "Você trabalha dobrado, mas a conta não fecha. A vida te consome, e a linha de chegada parece sempre recuar.",
+      "pergunta_destaque": "Você se sente preso?"
     },
     {
-      "titulo": "O Impacto Imediato",
-      "texto": "Método direto para ativar a ação e direcionar sua energia para o que realmente importa, HOJE."
+      "titulo": "O Jogo do Dinheiro",
+      "texto": "Aprenda a fazer seu dinheiro trabalhar por você, não o contrário. Liberte-se da mentalidade de assalariado.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "Destino Reescrito",
-      "texto": "Ganhe clareza, tempo e a liberdade de viver seus próprios termos, sem desculpas."
+      "titulo": "Tempo e Liberdade",
+      "texto": "Recupere o controle da sua vida e do seu futuro financeiro. Saia do automático.",
+      "pergunta_destaque": null
     },
     {
-      "titulo": "A Maestria do Agora",
-      "texto": "Sua vida acontece na decisão que você toma em cada instante.",
-      "citacao_destaque": "Aja como se fosse impossível falhar. Código da Sabedoria."
+      "titulo": "Ativo ou Passivo?",
+      "texto": "Seja um ativo na sua própria vida, não um passivo.",
+      "citacao_destaque": "Ricos adquirem ativos. Pobres adquirem passivos. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Conforto Que Rouba Seu Futuro",
-      "prompt_imagem": "Cinematic moody dark photography of a person trapped in a mundane office cubicle, looking out a window at a vibrant, free landscape, hyper-realistic, 8k",
+      "titulo": "O Custo Silencioso da Inércia",
+      "prompt_imagem": "Cinematic moody dark photography of a person trapped in a golden cage, looking out with longing, hyper-realistic, 8k",
       "paragrafos": [
-        "É fácil se perder na rotina, preenchendo as lacunas da vida de terceiros enquanto a sua própria se esvai. Você acorda exausto, não por excesso de trabalho, mas por falta de propósito próprio. A ironia é que a zona de conforto é o lugar mais perigoso para quem sonha grande, um pântano morno que suga sua coragem gota a gota.",
-        "No livro O Poder da Ação, somos confrontados com a história de tantos que, apenas ao questionar 'Por que estou fazendo isso?', descobriram que a inércia era uma escolha, não um destino. Havia um homem que por anos trabalhou em um projeto que odiava, justificando-se com a 'segurança'. Sua epifania veio ao perceber que a única coisa segura era a infelicidade que ele construía metodicamente para si.",
-        "O primeiro passo é brutal: pare de mentir para si mesmo. Pergunte-se sem filtro: 'Onde estou hoje, e para quem estou construindo isso?'. Anote a resposta. Em seguida, escolha uma pequena área da sua vida onde você está adiando um sonho e defina uma micro-ação para hoje. Algo que leve menos de 5 minutos, mas que represente um 'chega' à inércia. É no mínimo que a coragem começa a respirar."
+        "Você já se pegou trabalhando exausto, sentindo que cada esforço é uma gota no oceano? A ironia é que a maioria aceita essa rotina como normal. O que custa não é o tempo investido, mas o tempo roubado da sua própria vida, das suas paixões, dos seus sonhos. É o custo invisível de não parar para pensar.",
+        "Pai Rico ensinava que a maioria das pessoas passa a vida inteira presa na 'corrida dos ratos', correndo mais rápido, mas sem nunca sair do mesmo lugar. Eles compram uma casa que consideram um ativo, mas que na verdade é um passivo que os prende a dívidas e a um emprego. Romper com isso exige primeiro enxergar a armadilha.",
+        "Identifique hoje os três maiores 'passivos mentais' que sugam sua energia sem retorno. Pode ser a crença de que 'dinheiro é difícil', o hábito de procrastinar investimentos ou a ilusão de que 'um dia tudo se resolve'. Escreva-os. Reconhecer o inimigo invisível é o primeiro passo para a libertação."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_93fa10.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_06d632.jpg"
     },
     {
       "numero": 2,
-      "titulo": "A Guerra Invisível Pela Sua Mente",
-      "prompt_imagem": "Cinematic dark moody photography of a person meditating amidst chaos, a glowing brain symbol, hyper-realistic, 8k",
+      "titulo": "A Batalha Pela Sua Atenção",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing brain surrounded by chaotic digital noise, hyper-realistic, 8k",
       "paragrafos": [
-        "Seu cérebro é um mestre em sabotagem, preferindo a miséria familiar de uma vida não vivida ao risco de uma mudança significativa. Ele adora a previsibilidade, mesmo que essa previsibilidade seja o tédio. A verdade inconveniente é que você não luta contra o mundo, mas contra sua própria programação, contra o medo da liberdade que surge quando você ousa dizer 'não' ao automático.",
-        "O Poder da Ação nos lembra que somos arquitetos de nossa realidade interna. Um dos grandes insights é que a repetição de padrões mentais cria trilhas neurais tão profundas quanto um cânion. Um CEO relatou que, por anos, se convenceu de que não tinha tempo para seus hobbies. Ao aplicar os princípios de 'foco no que importa', ele descobriu que o tempo não era o problema, mas a prioridade que ele dava à autopiedade.",
-        "Domine a técnica do 'Diga Não'. Sempre que uma distração ou desculpa surgir, visualize-a como um ladrão de tempo e diga 'Não' em voz alta. Depois, substitua imediatamente por uma afirmação positiva ligada ao seu sonho. Ex: 'Não, não vou rolar o feed. Sim, vou pesquisar sobre meu projeto por 15 minutos'. Repita isso por 21 dias. Você não está apenas pensando diferente, está reestruturando seu cérebro."
+        "O cérebro é um mestre em autossabotagem. Ele prefere o sofrimento familiar à incerteza da mudança. É por isso que você promete começar amanhã, e amanhã a mesma desculpa aparece. A dificuldade não é o plano, é a disciplina de manter o foco quando tudo ao redor grita por distração.",
+        "O pai pobre dizia 'estude muito para conseguir um bom emprego'. O pai rico ensinava 'estude para entender como o dinheiro funciona'. A diferença não era a inteligência, mas a direção da atenção. Um focava na segurança, outro na liberdade. Um aceitava o controle externo, o outro buscava o controle interno.",
+        "Implemente a 'Regra dos 5 Minutos': quando a procrastinação bater, comprometa-se a trabalhar na sua meta financeira por apenas 5 minutos. Muitas vezes, esse pequeno impulso é suficiente para quebrar a inércia e reprogramar seu cérebro para a ação. Repita diariamente."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_94b79f.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_779e25.jpg"
     },
     {
       "numero": 3,
-      "titulo": "O Mapa Que Ousa Ser Seu",
-      "prompt_imagem": "Cinematic dark moody photography of a lone explorer holding a glowing map in a dense forest, hyper-realistic, 8k",
+      "titulo": "O Mapa Que Você Não Recebeu",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing map unfolding in a dimly lit room, with financial symbols, hyper-realistic, 8k",
       "paragrafos": [
-        "O cansaço que você sente não é de esforço, mas de esforço sem direção. É o martírio de empurrar uma rocha ladeira acima sem saber se o topo leva para algum lugar. A maior tragédia é trabalhar duro para um destino que não é seu, enquanto o seu próprio se desfaz por falta de um plano, de uma rota, de uma bússola interna.",
-        "Um dos pilares de O Poder da Ação é a clareza brutal na definição de metas e, mais importante, na micro-ação diária. Não basta sonhar alto, é preciso agir pequeno, mas consistentemente. Uma empreendedora que antes se sentia sobrecarregada com a visão de construir uma empresa, começou a planejar apenas os 'próximos três passos' a cada manhã. Em um ano, a empresa estava de pé, tijolo por tijolo.",
-        "Crie o 'Plano da Três Ações'. Ao final de cada dia, antes de dormir, identifique as três ações mais importantes e não negociáveis para o dia seguinte que te aproximam do seu sonho. Anote-as. Ao acordar, execute-as primeiro, antes de qualquer e-mail, rede social ou pedido alheio. Isso não é uma lista de tarefas, é uma declaração de intenções que reprograma sua rotina e sua mente. Comece hoje, com as três ações para amanhã."
+        "A sensação de trabalhar exausto sem chegar a lugar algum é um sintoma claro: você está construindo sem um projeto. É como tentar atravessar um labirinto sem um mapa, confiando apenas na sorte. A exaustão não vem do esforço, mas da falta de direção clara.",
+        "Um dos grandes segredos do Pai Rico era o planejamento antecipado. Ele não esperava o dinheiro sobrar para investir, ele planejava os investimentos primeiro, e o resto se ajustava. A maioria das pessoas planeja as despesas e espera que o investimento apareça, uma inversão fatal da prioridade.",
+        "Desenhe seu 'Mapa de 90 Dias'. Escolha uma meta financeira específica (ex: 'economizar X para investir em Y'). Divida-a em micro-metas semanais. No início de cada semana, defina 3 ações irrefutáveis que você fará para avançar. Revise seu mapa e suas ações todo domingo. A clareza mata a desculpa."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_61e3c1.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_7024cd.jpg"
     }
   ],
-  "citacao_destaque": "Não espere pelas condições ideais. Aja agora e crie suas condições. Código da Sabedoria.",
-  "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "Onde não há visão, o povo perece, mas bem-aventurado é aquele que guarda a instrução.",
+  "citacao_destaque": "Dinheiro é apenas uma ideia. Se você quer mais dinheiro, mude sua ideia sobre dinheiro.",
+  "titulo_citacao": "A Regra da Realidade",
+  "verso_base": "Sem visão, o povo perece, mas quem guarda a instrução será feliz.",
   "referencia_verso": "Provérbios 29:18",
   "plano_acao": {
-    "titulo_secao": "O Protocolo da Coragem Inadiável",
-    "prompt_imagem": "Cinematic dark moody photography of a person standing on a mountain peak at dawn, a roadmap unfurling before them, hyper-realistic, 8k",
-    "subtitulo": "Um método de 5 passos para construir a liberdade que você merece, dia após dia.",
+    "titulo_secao": "O Protocolo da Virada Financeira: 5 Dias para Reconstruir Seu Jogo",
+    "prompt_imagem": "Cinematic dark moody photography of a minimalist workspace with a single glowing monitor displaying financial charts, a notebook, and a pen, hyper-realistic, 8k",
+    "subtitulo": "Um guia prático para desprogramar a mente de pobre e instalar o software da abundância, aplicando os princípios do Pai Rico, HOJE.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Despertar Brutal",
-        "descricao": "Reserve 15 minutos em silêncio para listar todos os sonhos que você adiou. Para cada um, anote o 'custo invisível' de não realizá-lo. Olhe para a lista e sinta o desconforto. Essa é a gasolina da mudança."
+        "titulo": "Desmascare Seu Devedor Interno",
+        "descricao": "Dia 1: Faça um inventário brutalmente honesto de todas as suas 'dívidas invisíveis' — aquelas crenças limitantes sobre dinheiro, os hábitos de consumo impulsivo e as desculpas que você conta a si mesmo. Escreva-os sem julgamento. Não é sobre o que você tem, mas o que você pensa."
       },
       {
         "numero": 2,
-        "titulo": "O 'Não' Libertador",
-        "descricao": "Identifique uma única atividade diária que consome seu tempo e não contribui para seus sonhos (ex: rolagem infinita de redes sociais, reuniões desnecessárias). Decida dizer 'não' a ela por 24 horas. Sinta o poder de retomar o controle."
+        "titulo": "Ativo vs. Passivo - A Nova Lente",
+        "descricao": "Dia 2: Reclassifique cada despesa e bem que você possui como 'ativo' ou 'passivo' segundo a definição do Pai Rico (Ativo coloca dinheiro no seu bolso, passivo tira). Você vai se surpreender com o que realmente é um passivo. Use essa nova lente para todas as decisões futuras."
       },
       {
         "numero": 3,
-        "titulo": "A Micro-Ação Magnética",
-        "descricao": "Escolha um dos sonhos da sua lista e defina a menor ação possível que você pode realizar AGORA. Quebre-a em algo que leve 5 minutos. Faça. Não pense. Apenas faça. Repita amanhã com outra micro-ação."
+        "titulo": "O Primeiro Ativo Que Você Vai Criar",
+        "descricao": "Dia 3: Defina uma micro-meta de investimento ou geração de renda extra para esta semana. Pode ser vender algo que não usa, aprender uma nova habilidade monetizável ou iniciar um pequeno aporte. O tamanho não importa, a ação sim. Comece com 50 reais se for preciso. Apenas comece."
       },
       {
         "numero": 4,
-        "titulo": "O Escudo do Foco",
-        "descricao": "Bloqueie 30 minutos em sua agenda diária para trabalhar EXCLUSIVAMENTE em um de seus projetos pessoais. Sem interrupções, sem desculpas. Use um timer. Este é o seu tempo sagrado de construção."
+        "titulo": "Proteja Seu Tempo, Seu Verdadeiro Capital",
+        "descricao": "Dia 4: Identifique as 3 maiores distrações que roubam seu tempo e, consequentemente, seu potencial financeiro. Pode ser redes sociais, TV em excesso, ou atividades sem propósito. Crie um 'horário de bloqueio' de 1 hora por dia para focar apenas em educação financeira ou na construção do seu ativo. Proteja esse tempo como ouro."
       },
       {
         "numero": 5,
-        "titulo": "A Celebração do Progresso",
-        "descricao": "Ao final de cada semana, reveja suas micro-ações e seu tempo de foco. Celebre cada pequeno avanço. O reconhecimento do progresso é o combustível que sustenta a coragem a longo prazo."
+        "titulo": "O Ritual da Revisão e Reinvenção",
+        "descricao": "Dia 5: Revise o que você aprendeu e aplicou esta semana. Celebre as pequenas vitórias e ajuste o curso para a próxima. Crie um ritual semanal de 'cheque financeiro' (mental e prático) para consolidar novos hábitos e evitar o retorno à 'corrida dos ratos'. A consistência é a chave da liberdade."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_9370c0.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_78f013.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "Desperte a Coragem. Liberte Seu Destino em 5 Dias.",
+    "promessa_clara": "5 DIAS PARA DESTRUIR SUA CADEIA FINANCEIRA",
     "beneficios": [
-      "Diga adeus à vida no automático e construa seu próprio futuro.",
-      "Conquiste a clareza mental para focar no que realmente importa.",
-      "Transforme sonhos adiados em um plano de ação inadiável.",
-      "Domine a arte de tomar decisões que impulsionam sua vida.",
-      "Viva com a liberdade e coragem de quem segue seus próprios termos."
+      "Reconheça a escravidão invisível que te prende ao salário.",
+      "Domine a arte de fazer o dinheiro trabalhar para você.",
+      "Crie um plano financeiro à prova de desculpas e procrastinação.",
+      "Descubra as contradições que separam ricos de pobres.",
+      "Transforme sua mente e resgate o controle da sua vida."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_d22e64.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_c41e03.jpg"
 }
