@@ -93,7 +93,11 @@ def get_db():
 
     # 3. Fallback: tenta buscar arquivos locais de credenciais se não conseguiu pelo ambiente
     if not cred_dict:
-        for p in ["codigo da sabedoria/firebase-credentials.json", "firebase-credentials.json"]:
+        for p in [
+            "sistema-op-marketing-firebase-adminsdk-fbsvc-0fabd9a6bc.json",
+            "codigo da sabedoria/firebase-credentials.json",
+            "firebase-credentials.json"
+        ]:
             if os.path.exists(p):
                 try:
                     with open(p, "r", encoding="utf-8") as f:

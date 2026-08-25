@@ -93,6 +93,7 @@ jobs:
           IG_ACCOUNT_ID_2: ${{ secrets.IG_ACCOUNT_ID_2 }}
           IG_ACCESS_TOKEN_9: ${{ secrets.IG_ACCESS_TOKEN_9 }}
           IG_ACCOUNT_ID_9: ${{ secrets.IG_ACCOUNT_ID_9 }}
+          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
         run: python rodar_via_cron.py
 
       - name: Executar Bot (Manual)
