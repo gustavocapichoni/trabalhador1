@@ -70,14 +70,14 @@
         "prefedida.mp3"
     ],
     "historico_angulos": [
-        "Trabalho Focado (Cal Newport)"
+        "Trabalho Focado (Cal Newport)",
+        "Preconceito e os Ciclos de Ódio"
     ],
-    "indice_arquitetura": 2,
+    "indice_arquitetura": 3,
     "tema_do_dia": "O Poder do Hábito (Charles Duhigg)",
-    "indice_gancho": 53,
-    "indice_cta": 15,
+    "indice_gancho": 54,
+    "indice_cta": 16,
     "historico_estilos": [
-        "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')",
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
@@ -101,17 +101,17 @@
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
-        "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')"
+        "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
+        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')"
     ],
     "index_cta_dia": 1,
-    "sentimento_do_dia": "luxuria",
+    "sentimento_do_dia": "poder",
     "index_conquistador": 19,
     "index_pilar_reels_leads": 3,
     "ultimo_hf_token_idx": 4,
     "index_plataforma_conquistador": 1,
     "ultimo_carousel": 3,
     "historico_sentimentos": [
-        "sensualidade",
         "curiosidade",
         "afeto",
         "ousadia",
@@ -120,7 +120,8 @@
         "prazer",
         "plenitude",
         "alegria",
-        "luxuria"
+        "luxuria",
+        "poder"
     ],
     "index_mecanismo_reels_leads": 1,
     "data_sentimento_do_dia": "2026-08-02",
@@ -153,6 +154,7 @@
     ],
     "ultimos_temas": [],
     "historico_midia": [
+        "unsplash_zJ_1brH8Wug",
         "8862328",
         "250395",
         "5124616",
@@ -651,7 +653,6 @@
         "unsplash_-F-o6W4oMgY",
         "unsplash_3PfN02nehvI",
         "25401764",
-        "35555591",
-        "unsplash_rLdJcPw_B1Y"
+        "35555591"
     ]
 }
