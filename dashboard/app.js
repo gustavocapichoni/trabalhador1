@@ -600,12 +600,14 @@ async function carregarCientista() {
         }
     } catch (e) { console.warn('Hipóteses:', e); }
 
-    // Heatmap de dias da semana (lê histórico de postagens do Firebase)
+    // Heatmap de dias da semana (utiliza posts e métricas carregados da conta)
     try {
-        const snapPosts = await db.collection('historico_postagens').orderBy('data', 'desc').limit(120).get();
-        const postsArr = [];
-        snapPosts.forEach(doc => postsArr.push(doc.data()));
-        renderHeatmapDias(postsArr);
+        const postsComMetricas = (postsData || []).map(p => ({
+            ...p,
+            growth_score: (metricasIG && metricasIG[p.post_id]?.growth_score) || p.growth_score || p.metricas?.growth_score || 0,
+            metricas: (metricasIG && metricasIG[p.post_id]) || p.metricas || {}
+        }));
+        renderHeatmapDias(postsComMetricas);
     } catch (e) {
         console.warn('Heatmap dias:', e);
         renderHeatmapDias([]);
@@ -677,14 +679,30 @@ function renderOlhosDaRede(d) {
     const el = document.getElementById('olhos-rede-grid');
     if (!el) return;
 
-    // Pega dados de tendências salvos nas recomendações do motor estratégico
+    // Pega dados de tendências e contexto salvos nas recomendações do motor estratégico
     const trends = d?.tendencias_semana || d?.trends_semana || [];
     const manchetes = d?.manchetes_semana || d?.noticias_semana || [];
-    const vibeTexto = d?.vibe_foco_semana || d?.vibe_semana || '';
+    const vibeTexto = d?.vibe_foco_semana || d?.vibe_semana || d?.vibe_da_semana || '';
     const tudo = [];
 
     if (vibeTexto) {
         tudo.push({ tipo: '🧭 Vibe da Semana', texto: vibeTexto, cor: '#7c4dff' });
+    }
+    if (d?.aviso_estrategico) {
+        tudo.push({ tipo: '⚠️ Alerta da Rede', texto: d.aviso_estrategico, cor: '#ff6464' });
+    }
+    if (d?.padroes_campeoes) {
+        tudo.push({ tipo: '🏆 Padrão Campeão', texto: d.padroes_campeoes, cor: '#00e676' });
+    }
+    if (Array.isArray(d?.ideias_de_narrativa)) {
+        d.ideias_de_narrativa.forEach(ideia => {
+            tudo.push({ tipo: '💡 Ideia de Roteiro', texto: ideia, cor: '#ffd600' });
+        });
+    }
+    if (Array.isArray(d?.temas_prioritarios)) {
+        d.temas_prioritarios.forEach(tema => {
+            tudo.push({ tipo: '🎯 Tema em Alta', texto: tema, cor: '#00e5ff' });
+        });
     }
     manchetes.forEach(m => tudo.push({ tipo: '📰 Notícia', texto: m, cor: '#ff6464' }));
     trends.forEach(t => tudo.push({ tipo: '🔥 Google Trends', texto: t, cor: '#ffd600' }));
