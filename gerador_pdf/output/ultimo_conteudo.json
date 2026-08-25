@@ -1,114 +1,112 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE REESCREVE SEU DESTINO",
-  "titulo_pdf": "O Vício Secreto de Desistir",
-  "subtitulo_pdf": "Quebre o ciclo da autossabotagem e construa hábitos indestrutíveis.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a person's hand reaching out to a faint, glowing light in a swirling vortex of shadows, symbolizing overcoming inertia, 8k",
+  "frase_topo_capa": "A SABEDORIA QUE CONSTRÓI DESTINOS INABALÁVEIS",
+  "titulo_pdf": "A Coragem Que Quebra Correntes",
+  "subtitulo_pdf": "Transforme a procrastinação em resultados irreversíveis.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a person breaking free from chains, with a glowing inner light, hyper-realistic, 8k",
   "capa_cards": [
     {
-      "titulo": "A Voz Que Mente",
-      "texto": "Aquela voz interna que manda desistir não é sua aliada. Ela é o eco de hábitos antigos disfarçados de 'bom senso'.",
-      "pergunta_destaque": "Você ainda aceita as desculpas?"
+      "titulo": "A Armadilha Invisível",
+      "texto": "Você se vê construindo o futuro de outros enquanto seus próprios sonhos mofam na gaveta? O piloto automático tem um custo alto e silencioso.",
+      "pergunta_destaque": "Sua vida é sua ou emprestada?"
     },
     {
-      "titulo": "O Loop da Maestria",
-      "texto": "Desvende o gatilho, a rotina e a recompensa para reprogramar qualquer comportamento.",
-      "pergunta_destaque": null
+      "titulo": "O Impacto Imediato",
+      "texto": "Método direto para ativar a ação e direcionar sua energia para o que realmente importa, HOJE."
     },
     {
-      "titulo": "Resultados Inevitáveis",
-      "texto": "Transforme sua vida com mudanças pequenas, mas de impacto duradouro.",
-      "pergunta_destaque": null
+      "titulo": "Destino Reescrito",
+      "texto": "Ganhe clareza, tempo e a liberdade de viver seus próprios termos, sem desculpas."
     },
     {
-      "titulo": "Seja Inabalável",
-      "texto": "Sua identidade é a soma dos seus hábitos. Escolha quem você será.",
-      "citacao_destaque": "Pequenas escolhas geram grandes destinos. Código da Sabedoria."
+      "titulo": "A Maestria do Agora",
+      "texto": "Sua vida acontece na decisão que você toma em cada instante.",
+      "citacao_destaque": "Aja como se fosse impossível falhar. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "A Autossabotagem Disfarçada de Prudência",
-      "prompt_imagem": "Cinematic moody dark photography of a person standing at a crossroads, hesitant, with shadows stretching behind them, 8k",
+      "titulo": "O Conforto Que Rouba Seu Futuro",
+      "prompt_imagem": "Cinematic moody dark photography of a person trapped in a mundane office cubicle, looking out a window at a vibrant, free landscape, hyper-realistic, 8k",
       "paragrafos": [
-        "Sabe aquela sensação de começar algo com toda a energia, mas, no primeiro sinal de desconforto, uma voz interna grita 'desista, não vale a pena'? É a sua mente, mestra em te manter na zona de conforto, mesmo que ela seja um purgatório. Você promete mudar, sente o ímpeto, e então, um puxão invisível te arrasta de volta para o sofá, para a procrastinação, para a velha rotina, custando-lhe um destino maior.",
-        "Charles Duhigg, em O Poder do Hábito, nos mostra o caso de Eugene Pauly, um homem que perdeu a memória, mas ainda conseguia seguir rotinas complexas. Ele não se lembrava de onde estava, mas seu cérebro automaticamente o guiava pela casa, preparando o café. Isso revela que nossos hábitos operam num nível mais profundo, além da nossa consciência. A voz que te faz desistir não é um pensamento racional, é um programa antigo rodando em segundo plano.",
-        "Para desativar esse programa, você precisa primeiro reconhecê-lo. Anote agora: Qual é a desculpa imediata que surge quando você pensa em fazer o que precisa ser feito? Essa é a sua 'deixa' oculta. O primeiro passo é tornar o inconsciente consciente. Quando a voz surgir, não lute contra ela. Apenas observe-a e nomeie-a: 'Ah, é a minha voz da desistência, querendo me proteger do novo'. Isso tira o poder dela, transformando a inércia em observação."
+        "É fácil se perder na rotina, preenchendo as lacunas da vida de terceiros enquanto a sua própria se esvai. Você acorda exausto, não por excesso de trabalho, mas por falta de propósito próprio. A ironia é que a zona de conforto é o lugar mais perigoso para quem sonha grande, um pântano morno que suga sua coragem gota a gota.",
+        "No livro O Poder da Ação, somos confrontados com a história de tantos que, apenas ao questionar 'Por que estou fazendo isso?', descobriram que a inércia era uma escolha, não um destino. Havia um homem que por anos trabalhou em um projeto que odiava, justificando-se com a 'segurança'. Sua epifania veio ao perceber que a única coisa segura era a infelicidade que ele construía metodicamente para si.",
+        "O primeiro passo é brutal: pare de mentir para si mesmo. Pergunte-se sem filtro: 'Onde estou hoje, e para quem estou construindo isso?'. Anote a resposta. Em seguida, escolha uma pequena área da sua vida onde você está adiando um sonho e defina uma micro-ação para hoje. Algo que leve menos de 5 minutos, mas que represente um 'chega' à inércia. É no mínimo que a coragem começa a respirar."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_c0edf7.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_93fa10.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Preço Oculto da Zona de Conforto",
-      "prompt_imagem": "Cinematic dark moody photography of a person in a dimly lit room, intensely focused on a single glowing screen, surrounded by distractions fading into shadow, 8k",
+      "titulo": "A Guerra Invisível Pela Sua Mente",
+      "prompt_imagem": "Cinematic dark moody photography of a person meditating amidst chaos, a glowing brain symbol, hyper-realistic, 8k",
       "paragrafos": [
-        "É quase cômico. Você sabe o que precisa fazer, o que te faria avançar. Mas seu cérebro, essa máquina espetacular, prefere o sofrimento conhecido à incerteza da mudança. Ele te sabota com pensamentos como 'isso é muito difícil', 'você não vai conseguir', 'comece amanhã'. E assim, você se vê preso num loop, observando a si mesmo falhar, prometendo recomeçar, mas nunca realmente começando, aceitando uma vida no automático que não te serve mais.",
-        "Pense no exemplo da escovação dental. Antes do século XX, era um hábito raro. A Pepsodent, ao invés de focar na saúde, focou na 'recompensa imediata': a sensação de limpeza. O 'gatilho' era a sujeira na boca, a 'rotina' a escovação, e a 'recompensa' o frescor e a sensação de dentes lisos. Não é sobre a complexidade da tarefa, mas sobre a recompensa que a sustenta, um insight poderoso de O Poder do Hábito. Seu cérebro busca ativamente essa recompensa, seja ela qual for.",
-        "Para dominar sua atenção e reprogramar a mente, você precisa identificar a recompensa real que você busca ao 'desistir' (geralmente, alívio de um desconforto) e substituí-la por uma recompensa mais potente associada ao novo hábito. Técnica: 'O Plano Se-Então'. Se sentir a vontade de desistir, então farei X por apenas 5 minutos. Apenas 5 minutos. Isso engana seu cérebro, que associa a dor da mudança a um tempo limitado, e a recompensa de 'ter começado' é liberada, construindo um novo padrão de ação HOJE."
+        "Seu cérebro é um mestre em sabotagem, preferindo a miséria familiar de uma vida não vivida ao risco de uma mudança significativa. Ele adora a previsibilidade, mesmo que essa previsibilidade seja o tédio. A verdade inconveniente é que você não luta contra o mundo, mas contra sua própria programação, contra o medo da liberdade que surge quando você ousa dizer 'não' ao automático.",
+        "O Poder da Ação nos lembra que somos arquitetos de nossa realidade interna. Um dos grandes insights é que a repetição de padrões mentais cria trilhas neurais tão profundas quanto um cânion. Um CEO relatou que, por anos, se convenceu de que não tinha tempo para seus hobbies. Ao aplicar os princípios de 'foco no que importa', ele descobriu que o tempo não era o problema, mas a prioridade que ele dava à autopiedade.",
+        "Domine a técnica do 'Diga Não'. Sempre que uma distração ou desculpa surgir, visualize-a como um ladrão de tempo e diga 'Não' em voz alta. Depois, substitua imediatamente por uma afirmação positiva ligada ao seu sonho. Ex: 'Não, não vou rolar o feed. Sim, vou pesquisar sobre meu projeto por 15 minutos'. Repita isso por 21 dias. Você não está apenas pensando diferente, está reestruturando seu cérebro."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_f06178.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_94b79f.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Decisão que Separa o Tentar do Conquistar",
-      "prompt_imagem": "Cinematic dark moody photography of a lone figure standing firmly on a mountain peak, looking at a distant, clear horizon, symbolizing unwavering resolve, 8k",
+      "titulo": "O Mapa Que Ousa Ser Seu",
+      "prompt_imagem": "Cinematic dark moody photography of a lone explorer holding a glowing map in a dense forest, hyper-realistic, 8k",
       "paragrafos": [
-        "A vida moderna é uma corrida de ratos onde você se sente exausto, mas nunca no controle. Você trabalha, se ocupa, mas a sensação é de estar correndo em uma esteira, sem nunca chegar a lugar nenhum relevante. A energia se esvai, a motivação diminui, e a voz da desistência parece mais sensata do que nunca. É a armadilha do 'fazer por fazer' sem um mapa claro, aprisionando você na mediocridade do 'quase'.",
-        "Em 'O Poder do Hábito', Duhigg explora como a Starbucks transformou funcionários com baixa resiliência em profissionais de alta performance através de um 'plano de contingência' mental. Eles treinavam para identificar 'momentos de virada' – situações estressantes onde a maioria desistiria – e tinham um script exato para seguir. Não era sobre força de vontade, mas sobre antecipação e um plano de ação predefinido que mudava seus destinos.",
-        "Pare de esperar a motivação. Crie um 'Plano de Contingência de Desistência'. Identifique 3 situações em que você costuma desistir (ex: 'quando estou cansado', 'quando algo dá errado', 'quando sinto tédio'). Para cada uma, crie um micro-hábito de 2 minutos que você *irá* fazer, sem exceção. Ex: 'Se eu me sentir cansado e quiser desistir do treino, então farei apenas 2 minutos de polichinelos'. A meta não é o resultado final, mas a consistência de não quebrar a corrente. A vitória está em não ceder, desenhando um plano à prova de desculpas para a sua semana HOJE."
+        "O cansaço que você sente não é de esforço, mas de esforço sem direção. É o martírio de empurrar uma rocha ladeira acima sem saber se o topo leva para algum lugar. A maior tragédia é trabalhar duro para um destino que não é seu, enquanto o seu próprio se desfaz por falta de um plano, de uma rota, de uma bússola interna.",
+        "Um dos pilares de O Poder da Ação é a clareza brutal na definição de metas e, mais importante, na micro-ação diária. Não basta sonhar alto, é preciso agir pequeno, mas consistentemente. Uma empreendedora que antes se sentia sobrecarregada com a visão de construir uma empresa, começou a planejar apenas os 'próximos três passos' a cada manhã. Em um ano, a empresa estava de pé, tijolo por tijolo.",
+        "Crie o 'Plano da Três Ações'. Ao final de cada dia, antes de dormir, identifique as três ações mais importantes e não negociáveis para o dia seguinte que te aproximam do seu sonho. Anote-as. Ao acordar, execute-as primeiro, antes de qualquer e-mail, rede social ou pedido alheio. Isso não é uma lista de tarefas, é uma declaração de intenções que reprograma sua rotina e sua mente. Comece hoje, com as três ações para amanhã."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_c04164.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_61e3c1.jpg"
     }
   ],
-  "citacao_destaque": "Mudar um hábito não é sobre força de vontade, mas sobre estratégia e entendimento.",
+  "citacao_destaque": "Não espere pelas condições ideais. Aja agora e crie suas condições. Código da Sabedoria.",
   "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "Aquele que é lento para a ira é melhor que o guerreiro, e aquele que domina o seu espírito é melhor que o que toma uma cidade.",
-  "referencia_verso": "Provérbios 16:32",
+  "verso_base": "Onde não há visão, o povo perece, mas bem-aventurado é aquele que guarda a instrução.",
+  "referencia_verso": "Provérbios 29:18",
   "plano_acao": {
-    "titulo_secao": "O Protocolo da Persistência Inegociável",
-    "prompt_imagem": "Cinematic dark moody photography of a single, powerful lighthouse beam cutting through a stormy, dark sea, guiding a resilient ship, 8k",
-    "subtitulo": "Um método de 5 passos para construir hábitos à prova de 'voz interna' e alcançar a maestria pessoal.",
+    "titulo_secao": "O Protocolo da Coragem Inadiável",
+    "prompt_imagem": "Cinematic dark moody photography of a person standing on a mountain peak at dawn, a roadmap unfurling before them, hyper-realistic, 8k",
+    "subtitulo": "Um método de 5 passos para construir a liberdade que você merece, dia após dia.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Mapeie Sua 'Voz'",
-        "descricao": "Identifique as 3 principais desculpas ou sentimentos que surgem quando você pensa em desistir. Anote-as. Isso torna o inimigo visível, o primeiro passo para o controle."
+        "titulo": "O Despertar Brutal",
+        "descricao": "Reserve 15 minutos em silêncio para listar todos os sonhos que você adiou. Para cada um, anote o 'custo invisível' de não realizá-lo. Olhe para a lista e sinta o desconforto. Essa é a gasolina da mudança."
       },
       {
         "numero": 2,
-        "titulo": "O Gatilho Oculto",
-        "descricao": "Para cada desculpa mapeada, pergunte: Qual é o gatilho externo ou interno que a precede? (Ex: estresse, cansaço, notificação do celular). Conhecer o gatilho é poder."
+        "titulo": "O 'Não' Libertador",
+        "descricao": "Identifique uma única atividade diária que consome seu tempo e não contribui para seus sonhos (ex: rolagem infinita de redes sociais, reuniões desnecessárias). Decida dizer 'não' a ela por 24 horas. Sinta o poder de retomar o controle."
       },
       {
         "numero": 3,
-        "titulo": "A Rotina de 2 Minutos",
-        "descricao": "Substitua a rotina de desistência por uma nova rotina de 2 minutos no máximo. Não foque no resultado, mas em *não quebrar a corrente*. (Ex: Se o gatilho é estresse antes do treino, a rotina é calçar os tênis e fazer 2 flexões)."
+        "titulo": "A Micro-Ação Magnética",
+        "descricao": "Escolha um dos sonhos da sua lista e defina a menor ação possível que você pode realizar AGORA. Quebre-a em algo que leve 5 minutos. Faça. Não pense. Apenas faça. Repita amanhã com outra micro-ação."
       },
       {
         "numero": 4,
-        "titulo": "A Recompensa Imediata",
-        "descricao": "Associe uma pequena, mas prazerosa, recompensa imediata ao completar a rotina de 2 minutos. Pode ser um copo de água gelada, ouvir uma música, ou a sensação de ter cumprido. Seu cérebro precisa de um 'porquê'."
+        "titulo": "O Escudo do Foco",
+        "descricao": "Bloqueie 30 minutos em sua agenda diária para trabalhar EXCLUSIVAMENTE em um de seus projetos pessoais. Sem interrupções, sem desculpas. Use um timer. Este é o seu tempo sagrado de construção."
       },
       {
         "numero": 5,
-        "titulo": "O Contrato Inegociável",
-        "descricao": "Escreva um 'contrato' consigo mesmo, comprometendo-se a seguir o Protocolo da Persistência por 21 dias. Assine. Cole em um lugar visível. Sua palavra é seu destino."
+        "titulo": "A Celebração do Progresso",
+        "descricao": "Ao final de cada semana, reveja suas micro-ações e seu tempo de foco. Celebre cada pequeno avanço. O reconhecimento do progresso é o combustível que sustenta a coragem a longo prazo."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_6d27ce.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_9370c0.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
-  "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
+  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "CALAR A VOZ QUE TE FAZ DESISTIR EM 5 PASSOS.",
+    "promessa_clara": "Desperte a Coragem. Liberte Seu Destino em 5 Dias.",
     "beneficios": [
-      "Identifique o gatilho secreto da sua procrastinação.",
-      "Construa hábitos indestrutíveis com o método de 2 minutos.",
-      "Transforme a autossabotagem em motivação consistente.",
-      "Desvende a ciência por trás da persistência inabalável.",
-      "Reescreva seu destino com ações diárias e intencionais."
+      "Diga adeus à vida no automático e construa seu próprio futuro.",
+      "Conquiste a clareza mental para focar no que realmente importa.",
+      "Transforme sonhos adiados em um plano de ação inadiável.",
+      "Domine a arte de tomar decisões que impulsionam sua vida.",
+      "Viva com a liberdade e coragem de quem segue seus próprios termos."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_b259dc.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_d22e64.jpg"
 }
