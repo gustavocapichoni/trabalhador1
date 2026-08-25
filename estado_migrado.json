@@ -2,7 +2,6 @@
     "index_palette_conquistador": 1,
     "index_palette_leads": 0,
     "fila_musicas_musicas": [
-        "Can We Kiss Forever - Kina ft. Adriana Proenza.mp3",
         "Alicia_Keys_-_Empire_State_of_Mind_NY_OST_Seks_V_Bolshom_Gorode_2._(mp3.pm).mp3",
         "0.MP3",
         "8.MP3",
@@ -67,19 +66,20 @@
         "absolutesound-tense-suspense-music-561869.mp3",
         "ronaldoreyz-legends-will-rise-cinematic-background-series-541179.mp3",
         "kontraa-no-sleep-hiphop-music-473847.mp3",
-        "prefedida.mp3"
+        "prefedida.mp3",
+        "the_mountain-background-music-159125 (1).mp3"
     ],
     "historico_angulos": [
         "Trabalho Focado (Cal Newport)",
-        "Preconceito e os Ciclos de Ódio"
+        "Preconceito e os Ciclos de Ódio",
+        "A Arte da Guerra (Sun Tzu)"
     ],
     "indice_arquitetura": 3,
     "tema_do_dia": "O Poder do Hábito (Charles Duhigg)",
-    "indice_gancho": 54,
+    "indice_gancho": 55,
     "indice_cta": 16,
     "historico_estilos": [
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
-        "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
@@ -102,17 +102,17 @@
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
-        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')"
+        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
+        "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')"
     ],
     "index_cta_dia": 1,
-    "sentimento_do_dia": "poder",
+    "sentimento_do_dia": "desafio",
     "index_conquistador": 19,
     "index_pilar_reels_leads": 3,
-    "ultimo_hf_token_idx": 4,
+    "ultimo_hf_token_idx": 0,
     "index_plataforma_conquistador": 1,
     "ultimo_carousel": 3,
     "historico_sentimentos": [
-        "curiosidade",
         "afeto",
         "ousadia",
         "amor",
@@ -121,7 +121,8 @@
         "plenitude",
         "alegria",
         "luxuria",
-        "poder"
+        "poder",
+        "desafio"
     ],
     "index_mecanismo_reels_leads": 1,
     "data_sentimento_do_dia": "2026-08-02",
