@@ -5,7 +5,7 @@ import random
 import uuid
 import urllib.parse
 from io import BytesIO
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 from .efeitos import aplicar_mesh_gradient, draw_text_with_shadow, desenhar_elementos_premium
 from .templates import carregar_fontes, obter_fonte_do_dia, CORES
@@ -351,6 +351,189 @@ def desenhar_marca_dagua_ouro(draw, posicao, texto, fonte):
     cor_ouro = (250, 185, 55)
     draw.text((x, y), texto, font=fonte, fill=cor_ouro, anchor="ms")
 
+def _gerar_slide_cta_carrossel(slide_img, texto_cta, estilo_sorteado):
+    """Renderiza o slide final de CTA exclusivo do Carrossel (1080x1080)
+    sem sobreposições entre eBook, texto e logo."""
+    import re as _re
+    import numpy as _np
+    from core.media.pexels_story import _quebrar_texto_por_pixels, _desenhar_linha_sem_keyword, PALETA_PADRAO_MARCA
+
+    slide_W, slide_H = 1080, 1080
+    draw = ImageDraw.Draw(slide_img)
+
+    # 1. Elementos de Agência Premium
+    desenhar_elementos_premium(draw, slide_W, slide_H)
+
+    # 2. Mockup 3D do Ebook no Topo
+    ebook_path = os.path.join("biblioteca_local", "logo", "ebook.png")
+    y_limite_topo = 60
+    if os.path.exists(ebook_path):
+        try:
+            ebook_img = Image.open(ebook_path).convert("RGBA")
+            target_w = 260
+            aspect_ratio = ebook_img.height / ebook_img.width
+            target_h = int(target_w * aspect_ratio)
+            ebook_img = ebook_img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+            x_ebook = (slide_W - target_w) // 2
+            y_ebook = 40
+            slide_rgba = slide_img.convert("RGBA")
+            slide_rgba.paste(ebook_img, (x_ebook, y_ebook), ebook_img)
+            slide_img = slide_rgba.convert("RGB")
+            draw = ImageDraw.Draw(slide_img)
+            y_limite_topo = y_ebook + target_h + 20
+        except Exception as e:
+            print(f"⚠️ Erro ao inserir mockup do ebook no carrossel: {e}")
+
+    # 3. Logo da marca no Rodapé
+    logo_dir = os.path.join("biblioteca_local", "logo")
+    path_logo = os.path.join(logo_dir, "foto_perfil.png")
+    y_limite_base = slide_H - 80
+    logo_aplicado = False
+    if os.path.exists(path_logo):
+        try:
+            logo_img = Image.open(path_logo)
+            largura_logo = 180
+            aspect_ratio = logo_img.height / logo_img.width
+            altura_logo = int(largura_logo * aspect_ratio)
+            logo_redimensionado = logo_img.resize((largura_logo, altura_logo), Image.Resampling.LANCZOS).convert("RGBA")
+            x_logo = (slide_W - largura_logo) // 2
+            y_logo = slide_H - altura_logo - 35
+            slide_rgba = slide_img.convert("RGBA")
+            slide_rgba.paste(logo_redimensionado, (x_logo, y_logo), logo_redimensionado)
+            slide_img = slide_rgba.convert("RGB")
+            draw = ImageDraw.Draw(slide_img)
+            y_limite_base = y_logo - 20
+            logo_aplicado = True
+        except Exception as e:
+            print(f"⚠️ Erro ao aplicar logo no slide CTA do carrossel: {e}")
+
+    if not logo_aplicado:
+        font_marca_serif, _, _ = carregar_fontes(45, 72, 26, estilo="BebasNeue")
+        desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 70), "GUSTAVO_8K_", font_marca_serif)
+        y_limite_base = slide_H - 120
+
+    # 4. Texto de CTA no espaço central livre entre eBook e Logo
+    font_cta = carregar_fontes(tamanho_display=48, tamanho_body=48, tamanho_detalhe=24, estilo=estilo_sorteado)[0]
+    
+    # Detecta keyword de destaque (SABEDORIA prioritária)
+    if "SABEDORIA" in texto_cta.upper():
+        keyword_destaque = "SABEDORIA"
+    else:
+        match_keyword = _re.search(r"['\u2018\u2019\"]([^'\u2018\u2019\"]+)['\u2018\u2019\"]", texto_cta)
+        keyword_destaque = match_keyword.group(1).upper().strip() if match_keyword else None
+    
+    tamanho_base = getattr(font_cta, 'size', 48)
+    tamanho_kw = int(tamanho_base * 1.15)
+    caminho_f = getattr(font_cta, 'path', None)
+    try:
+        font_kw = ImageFont.truetype(caminho_f, tamanho_kw) if caminho_f and os.path.exists(caminho_f) else font_cta
+    except Exception:
+        font_kw = font_cta
+
+    margem_px = int(slide_W * 0.08)
+    largura_max = slide_W - (margem_px * 2)
+    linhas = _quebrar_texto_por_pixels(draw, texto_cta, font_cta, largura_max)
+
+    alturas = []
+    larguras = []
+    for l in linhas:
+        bb = draw.textbbox((0, 0), l, font=font_cta)
+        alturas.append(bb[3] - bb[1])
+        larguras.append(bb[2] - bb[0])
+
+    espaco_entre = 12
+    total_h = sum(alturas) + espaco_entre * (len(linhas) - 1) if linhas else 0
+
+    # Ajuste dinâmico se ultrapassar o espaço disponível
+    espaco_disponivel = y_limite_base - y_limite_topo
+    if total_h > espaco_disponivel and len(linhas) > 0:
+        font_cta = carregar_fontes(tamanho_display=40, tamanho_body=40, tamanho_detalhe=22, estilo=estilo_sorteado)[0]
+        linhas = _quebrar_texto_por_pixels(draw, texto_cta, font_cta, largura_max)
+        alturas = [draw.textbbox((0, 0), l, font=font_cta)[3] - draw.textbbox((0, 0), l, font=font_cta)[1] for l in linhas]
+        larguras = [draw.textbbox((0, 0), l, font=font_cta)[2] - draw.textbbox((0, 0), l, font=font_cta)[0] for l in linhas]
+        total_h = sum(alturas) + espaco_entre * (len(linhas) - 1)
+
+    y_inicial = y_limite_topo + max(0, (espaco_disponivel - total_h) // 2)
+
+    # Renderiza o texto com degradê da marca e keyword dourada
+    shadow_layer = Image.new("RGBA", (slide_W, slide_H), (0, 0, 0, 0))
+    shadow_draw = ImageDraw.Draw(shadow_layer)
+    txt_mask_layer = Image.new("RGBA", (slide_W, slide_H), (0, 0, 0, 0))
+    mask_draw = ImageDraw.Draw(txt_mask_layer)
+
+    y = y_inicial
+    posicoes_linhas = []
+    for linha, alt, lw in zip(linhas, alturas, larguras):
+        x = (slide_W - lw) // 2
+        _desenhar_linha_sem_keyword(shadow_draw, linha, x + 3, y + 3, font_cta, font_kw,
+                                    keyword_destaque, 1.0, slide_W, cor_preenchimento=(0, 0, 0, 180))
+        _desenhar_linha_sem_keyword(shadow_draw, linha, x, y, font_cta, font_kw,
+                                    keyword_destaque, 1.0, slide_W, cor_preenchimento=(0, 0, 0, 0),
+                                    stroke_w=2, stroke_c=(0, 0, 0, 255))
+        _desenhar_linha_sem_keyword(mask_draw, linha, x, y, font_cta, font_kw,
+                                    keyword_destaque, 1.0, slide_W)
+        posicoes_linhas.append((linha, x, y, alt, lw))
+        y += alt + espaco_entre
+
+    # Gradiente metálico para o texto base
+    color_top = _np.array(PALETA_PADRAO_MARCA[0])
+    color_mid = _np.array(PALETA_PADRAO_MARCA[1])
+    color_bot = _np.array(PALETA_PADRAO_MARCA[2])
+    grad_arr = _np.zeros((slide_H, slide_W, 3), dtype=_np.uint8)
+    for row in range(slide_H):
+        if row < y_inicial:
+            c = color_top
+        elif row > y_inicial + max(1, total_h):
+            c = color_bot
+        else:
+            ratio = (row - y_inicial) / max(1, float(total_h))
+            c = color_top * (1 - ratio) + color_bot * ratio
+        grad_arr[row, :, :] = c.astype(_np.uint8)
+    grad_img = Image.fromarray(grad_arr, 'RGB')
+
+    mask = txt_mask_layer.split()[3]
+    final_txt_layer = Image.new("RGBA", (slide_W, slide_H), (0, 0, 0, 0))
+    final_txt_layer.paste(grad_img, (0, 0), mask=mask)
+
+    slide_img = Image.alpha_composite(slide_img.convert("RGBA"), shadow_layer)
+    slide_img = Image.alpha_composite(slide_img, final_txt_layer).convert("RGB")
+
+    # Renderiza a keyword destacada em Dourado
+    if keyword_destaque:
+        sabedoria_layer = Image.new("RGBA", (slide_W, slide_H), (0, 0, 0, 0))
+        sabedoria_draw = ImageDraw.Draw(sabedoria_layer)
+        espaco_w = sabedoria_draw.textbbox((0, 0), " ", font=font_cta)[2] - sabedoria_draw.textbbox((0, 0), " ", font=font_cta)[0]
+
+        for (linha, x_linha, y_linha, alt_linha, lw_linha) in posicoes_linhas:
+            linha_upper = linha.upper()
+            if keyword_destaque not in linha_upper:
+                continue
+            palavras = linha.split(" ")
+            larguras_palavras = []
+            for p in palavras:
+                p_clean = p.upper().replace("'", "").replace("\u2018", "").replace("\u2019", "").replace('"', '').replace(',', '').replace('.', '').replace('!', '').strip()
+                f_usar = font_kw if p_clean == keyword_destaque else font_cta
+                pw = sabedoria_draw.textbbox((0, 0), p, font=f_usar)[2] - sabedoria_draw.textbbox((0, 0), p, font=f_usar)[0]
+                larguras_palavras.append((pw, f_usar, p_clean))
+
+            largura_total_linha = sum(pw for pw, _, _ in larguras_palavras) + espaco_w * (len(palavras) - 1)
+            cur_x = (slide_W - largura_total_linha) // 2
+
+            for p, (pw, f_usar, p_clean) in zip(palavras, larguras_palavras):
+                if p_clean == keyword_destaque:
+                    cor_destaque_rgba = (250, 185, 55, 255)
+                    bb_k = sabedoria_draw.textbbox((0, 0), p, font=f_usar)
+                    alt_k = bb_k[3] - bb_k[1]
+                    y_offset = (alt_linha - alt_k) // 2
+                    sabedoria_draw.text((cur_x + 3, y_linha + y_offset + 3), p, font=f_usar, fill=(0, 0, 0, 180))
+                    sabedoria_draw.text((cur_x, y_linha + y_offset), p, font=f_usar, fill=cor_destaque_rgba,
+                                        stroke_width=3, stroke_fill=(0, 0, 0, 255))
+                cur_x += pw + espaco_w
+
+        slide_img = Image.alpha_composite(slide_img.convert("RGBA"), sabedoria_layer).convert("RGB")
+
+    return slide_img
+
 def _gerar_carrossel(img, W_full, H, dados):
     caminhos_arquivos = []
     slides_conteudo = [dados["titulo"]] + dados["slides"] + ["CTA"]
@@ -377,47 +560,7 @@ def _gerar_carrossel(img, W_full, H, dados):
         # Recorta a porção do fundo exata para este slide (Rampa de Deslizamento)
         slide_bg = img.crop((x_offset, 0, x_offset + slide_W, slide_H))
         
-        slide_img = slide_bg.convert("RGB")
-        draw = ImageDraw.Draw(slide_img)
-        
-        # Elementos de Agência Premium
-        desenhar_elementos_premium(draw, slide_W, slide_H)
-        
-        # 2. Marca d'água / Logo no rodapé
-        logo_aplicado = False
-        logo_dir = os.path.join("biblioteca_local", "logo")
-        path_logo = os.path.join(logo_dir, "foto_perfil.png")
-        if os.path.exists(path_logo):
-            try:
-                logo_img = Image.open(path_logo)
-                largura_desejada = 250
-                aspect_ratio = logo_img.height / logo_img.width
-                altura_desejada = int(largura_desejada * aspect_ratio)
-                logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
-
-                x_pos = int((slide_W - largura_desejada) / 2)
-                y_pos = int(slide_H - altura_desejada - 70)
-
-                slide_rgba = slide_img.convert("RGBA")
-                slide_rgba.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
-                slide_img = slide_rgba.convert("RGB")
-                draw = ImageDraw.Draw(slide_img)
-                logo_aplicado = True
-            except Exception as e:
-                print(f"⚠️ Erro ao aplicar logo no carrossel: {e}")
-
-        if not logo_aplicado:
-            font_marca_serif, _, _ = carregar_fontes(50, 72, 26, estilo="BebasNeue")
-            desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 80), "GUSTAVO_8K_", font_marca_serif)
-
-        # Texto com degradê completo da marca via _adicionar_texto_degrade
-        from core.media.pexels_story import PALETA_PADRAO_MARCA, _adicionar_texto_degrade
-        import numpy as _np
-
-        if idx == 0:  # Capa
-            linhas = textwrap.wrap(texto, width=18)
-            texto_unificado = "\n".join(linhas)
-        elif texto == "CTA":  # Slide Final
+        if texto == "CTA":
             titulo_pdf_cta = "Material da Semana"
             try:
                 caminho_pdf_cta = os.path.join("gerador_pdf", "output", "ultimo_conteudo.json")
@@ -436,29 +579,62 @@ def _gerar_carrossel(img, W_full, H, dados):
                 f"O ebook '{titulo_pdf_cta}' está gratuito. Comenta SABEDORIA e receba no Direct."
             ]
             linhas_cta = random.choice(ctas_disponiveis)
-            texto_unificado = linhas_cta
-        else:  # Slides internos
-            texto_unificado = texto
-
-        if texto_unificado.strip():
-            fonte_slide = font_capa if idx == 0 else font_slides
-            frame_np = _np.array(slide_img)
+            slide_img = _gerar_slide_cta_carrossel(slide_bg.convert("RGB"), linhas_cta, estilo_sorteado)
+        else:
+            slide_img = slide_bg.convert("RGB")
+            draw = ImageDraw.Draw(slide_img)
             
-            if texto == "CTA":
-                from core.media.pexels_story import _adicionar_texto_cta
-                frame_np = _adicionar_texto_cta(
-                    frame_np, texto_unificado, fonte_slide, paleta_override=PALETA_PADRAO_MARCA
-                )
-            else:
+            # Elementos de Agência Premium
+            desenhar_elementos_premium(draw, slide_W, slide_H)
+            
+            # Marca d'água / Logo no rodapé
+            logo_aplicado = False
+            logo_dir = os.path.join("biblioteca_local", "logo")
+            path_logo = os.path.join(logo_dir, "foto_perfil.png")
+            if os.path.exists(path_logo):
+                try:
+                    logo_img = Image.open(path_logo)
+                    largura_desejada = 250
+                    aspect_ratio = logo_img.height / logo_img.width
+                    altura_desejada = int(largura_desejada * aspect_ratio)
+                    logo_redimensionado = logo_img.resize((largura_desejada, altura_desejada), Image.Resampling.LANCZOS).convert("RGBA")
+
+                    x_pos = int((slide_W - largura_desejada) / 2)
+                    y_pos = int(slide_H - altura_desejada - 70)
+
+                    slide_rgba = slide_img.convert("RGBA")
+                    slide_rgba.paste(logo_redimensionado, (x_pos, y_pos), logo_redimensionado)
+                    slide_img = slide_rgba.convert("RGB")
+                    draw = ImageDraw.Draw(slide_img)
+                    logo_aplicado = True
+                except Exception as e:
+                    print(f"⚠️ Erro ao aplicar logo no carrossel: {e}")
+
+            if not logo_aplicado:
+                font_marca_serif, _, _ = carregar_fontes(50, 72, 26, estilo="BebasNeue")
+                desenhar_marca_dagua_ouro(draw, (slide_W/2, slide_H - 80), "GUSTAVO_8K_", font_marca_serif)
+
+            # Texto com degradê completo da marca via _adicionar_texto_degrade
+            from core.media.pexels_story import PALETA_PADRAO_MARCA, _adicionar_texto_degrade
+            import numpy as _np
+
+            if idx == 0:  # Capa
+                linhas = textwrap.wrap(texto, width=18)
+                texto_unificado = "\n".join(linhas)
+            else:  # Slides internos
+                texto_unificado = texto
+
+            if texto_unificado.strip():
+                fonte_slide = font_capa if idx == 0 else font_slides
+                frame_np = _np.array(slide_img)
                 frame_np = _adicionar_texto_degrade(
                     frame_np, texto_unificado, fonte_slide, paleta=PALETA_PADRAO_MARCA
                 )
-                
-            slide_img = Image.fromarray(frame_np)
-            draw = ImageDraw.Draw(slide_img)
-        
-        if idx == 0:
-            draw_text_with_shadow(draw, (slide_W/2, slide_H - 55), "Arrasta para o lado ->", font_sub, fill=CORES["destaque"], anchor="ms")
+                slide_img = Image.fromarray(frame_np)
+                draw = ImageDraw.Draw(slide_img)
+            
+            if idx == 0:
+                draw_text_with_shadow(draw, (slide_W/2, slide_H - 55), "Arrasta para o lado ->", font_sub, fill=CORES["destaque"], anchor="ms")
             
         caminho = f"carousel_{uuid.uuid4().hex}_{idx}.jpg"
         slide_img.save(caminho, "JPEG", quality=95)
