@@ -1040,6 +1040,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         - Elimine qualquer tom de coach clichê ("acredite em você", "lute sempre"). Fale com a autoridade de um mestre de sabedoria prática.
         - Nunca use frases de efeito que soem vazias ou desconectadas da realidade.
         - O material semanal ({titulo_pdf_limpo}) é a ferramenta de aplicação definitiva desse ensinamento.
+        - PROIBIDO incluir emojis nos slides (emojis são permitidos apenas na legenda).
 
         PEXELS QUERY — PILAR VISUAL OBRIGATÓRIO: "{pilar_nome}"
         A PRIMEIRA query do array pexels_queries DEVE ser: '{pilar_exemplo}'
@@ -1059,7 +1060,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
             "Gancho visceral curto com {mecanismo_nome}.",
             "Diagnóstico preciso da tensão ou conflito real.",
             "Princípio de sabedoria prática conectado a {titulo_pdf_limpo}.",
-            "Quer o guia completo de {titulo_pdf_limpo}? \\n Comente 'SABEDORIA' que te envio no Direct 👇"
+            "Quer o guia completo de {titulo_pdf_limpo}? \\n Comente 'SABEDORIA' que te envio no Direct"
           ],
           "pexels_queries": [
             "{pilar_exemplo}",

@@ -65,8 +65,21 @@ def _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_px):
             
     return linhas
 
+def _sanitizar_texto_slide(texto):
+    """Remove emojis e caracteres especiais não suportados pelas fontes dos slides."""
+    import re
+    if not texto:
+        return ""
+    texto_str = str(texto)
+    # Remove faixas de emojis Unicode e caracteres especiais que geram missing glyph (tofu)
+    texto_limpo = re.sub(r'[\U00010000-\U0010ffff\u2600-\u27bf\ud83c-\ud83e\u2300-\u23ff\u2b50\u2b55\u200d\ufe0f\u25a0-\u25ff\u2700-\u27bf\u2190-\u21ff]', '', texto_str)
+    # Limpa múltiplos espaços
+    texto_limpo = re.sub(r'[ \t]+', ' ', texto_limpo).strip()
+    return texto_limpo
+
 def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0):
     """Desenha texto centralizado com sombra/fundo em um frame. Destaca 'SABEDORIA' em Dourado."""
+    texto = _sanitizar_texto_slide(texto)
     if frame_array.dtype != np.uint8:
         frame_array = np.clip(frame_array, 0, 255).astype(np.uint8)
     img = Image.fromarray(frame_array)
@@ -137,6 +150,7 @@ def obter_paleta_do_dia():
     return PALETA_PADRAO_MARCA
 
 def _adicionar_texto_degrade(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0, paleta=None):
+    texto = _sanitizar_texto_slide(texto)
     if frame_array.dtype != np.uint8:
         frame_array = np.clip(frame_array, 0, 255).astype(np.uint8)
     img = Image.fromarray(frame_array)
@@ -277,6 +291,7 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
     """Desenha o CTA final. Se paleta_override for fornecida (Reels Leads / Story Tarde), aplica degradê colorido nas letras.
     Caso contrário, usa o comportamento padrão: texto em branco com destaque na palavra-chave."""
     import re as _re
+    texto = _sanitizar_texto_slide(texto)
     if frame_array.dtype != np.uint8:
         frame_array = np.clip(frame_array, 0, 255).astype(np.uint8)
     img = Image.fromarray(frame_array)

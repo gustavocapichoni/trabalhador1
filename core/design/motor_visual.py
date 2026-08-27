@@ -356,8 +356,9 @@ def _gerar_slide_cta_carrossel(slide_img, texto_cta, estilo_sorteado):
     sem sobreposições entre eBook, texto e logo."""
     import re as _re
     import numpy as _np
-    from core.media.pexels_story import _quebrar_texto_por_pixels, _desenhar_linha_sem_keyword, PALETA_PADRAO_MARCA
+    from core.media.pexels_story import _quebrar_texto_por_pixels, _desenhar_linha_sem_keyword, PALETA_PADRAO_MARCA, _sanitizar_texto_slide
 
+    texto_cta = _sanitizar_texto_slide(texto_cta)
     slide_W, slide_H = 1080, 1080
     draw = ImageDraw.Draw(slide_img)
 
