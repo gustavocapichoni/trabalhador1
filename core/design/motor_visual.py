@@ -429,10 +429,10 @@ def _gerar_carrossel(img, W_full, H, dados):
             except Exception:
                 pass
             ctas_disponiveis = [
-                f"Quer o guia completo sobre isso? Comenta SABEDORIA abaixo que te envio no Direct 👇",
+                f"Quer o guia completo sobre isso? Comenta SABEDORIA abaixo que te envio no Direct",
                 f"Esse conteúdo tem um material completo. Comenta SABEDORIA e recebe o ebook '{titulo_pdf_cta}' no Direct.",
                 f"Aprofunde esse conhecimento. Comenta SABEDORIA abaixo e receba o material da semana no Direct.",
-                f"Quer aplicar isso na prática? Comenta SABEDORIA que te envio o guia completo agora 👇",
+                f"Quer aplicar isso na prática? Comenta SABEDORIA que te envio o guia completo agora",
                 f"O ebook '{titulo_pdf_cta}' está gratuito. Comenta SABEDORIA e receba no Direct."
             ]
             linhas_cta = random.choice(ctas_disponiveis)
@@ -443,9 +443,17 @@ def _gerar_carrossel(img, W_full, H, dados):
         if texto_unificado.strip():
             fonte_slide = font_capa if idx == 0 else font_slides
             frame_np = _np.array(slide_img)
-            frame_np = _adicionar_texto_degrade(
-                frame_np, texto_unificado, fonte_slide, paleta=PALETA_PADRAO_MARCA
-            )
+            
+            if texto == "CTA":
+                from core.media.pexels_story import _adicionar_texto_cta
+                frame_np = _adicionar_texto_cta(
+                    frame_np, texto_unificado, fonte_slide, paleta_override=PALETA_PADRAO_MARCA
+                )
+            else:
+                frame_np = _adicionar_texto_degrade(
+                    frame_np, texto_unificado, fonte_slide, paleta=PALETA_PADRAO_MARCA
+                )
+                
             slide_img = Image.fromarray(frame_np)
             draw = ImageDraw.Draw(slide_img)
         

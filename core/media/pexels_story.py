@@ -40,22 +40,29 @@ def _carregar_fonte(tamanho=50, estilo=None):
 
 def _quebrar_texto_por_pixels(draw, texto, fonte, largura_max_px):
     """Quebra o texto em linhas que cabem dentro de largura_max_px."""
-    palavras = texto.split()
     linhas = []
-    linha_atual = ""
-
-    for palavra in palavras:
-        candidata = (linha_atual + " " + palavra).strip()
-        bbox = draw.textbbox((0, 0), candidata, font=fonte)
-        lw = bbox[2] - bbox[0]
-        if lw <= largura_max_px:
-            linha_atual = candidata
-        else:
-            if linha_atual:
-                linhas.append(linha_atual)
-            linha_atual = palavra
-    if linha_atual:
-        linhas.append(linha_atual)
+    blocos = texto.split("\n")
+    
+    for bloco in blocos:
+        if not bloco.strip():
+            linhas.append("")
+            continue
+            
+        palavras = bloco.split()
+        linha_atual = ""
+        for palavra in palavras:
+            candidata = (linha_atual + " " + palavra).strip()
+            bbox = draw.textbbox((0, 0), candidata, font=fonte)
+            lw = bbox[2] - bbox[0]
+            if lw <= largura_max_px:
+                linha_atual = candidata
+            else:
+                if linha_atual:
+                    linhas.append(linha_atual)
+                linha_atual = palavra
+        if linha_atual:
+            linhas.append(linha_atual)
+            
     return linhas
 
 def _adicionar_texto_frame(frame_array, texto, fonte, chars_to_show=None, fade_alpha=1.0, deslocamento_y=0):
@@ -458,6 +465,27 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
 
             img = Image.alpha_composite(img.convert("RGBA"), sabedoria_layer).convert("RGB")
 
+        import os
+        ebook_path = os.path.join("biblioteca_local", "logo", "ebook.png")
+        if os.path.exists(ebook_path):
+            try:
+                ebook_img = Image.open(ebook_path).convert("RGBA")
+                target_w = int(w * 0.30)
+                aspect_ratio = ebook_img.height / ebook_img.width
+                target_h = int(target_w * aspect_ratio)
+                ebook_img = ebook_img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+                if fade_alpha < 1.0:
+                    alpha = ebook_img.split()[3]
+                    alpha = alpha.point(lambda p: int(p * fade_alpha))
+                    ebook_img.putalpha(alpha)
+                x_ebook = (w - target_w) // 2
+                y_ebook = int(h * 0.05)  # Topo do frame, 5% de margem
+                img_rgba = img.convert("RGBA")
+                img_rgba.paste(ebook_img, (x_ebook, y_ebook), ebook_img)
+                img = img_rgba.convert("RGB")
+            except Exception as e:
+                print(f"⚠️ Erro ao colar ebook.png: {e}")
+
         return np.array(img)
 
     # --- Modo Padrão (branco + destaque dourado na keyword) ---
@@ -519,31 +547,50 @@ def _adicionar_texto_cta(frame_array, texto, fonte_cta, chars_to_show=None, fade
     # Sem escurecimento extra — o overlay da marca já cobre o vídeo inteiro
     img = Image.alpha_composite(img.convert("RGBA"), txt_layer).convert("RGB")
 
+    import os
+    ebook_path = os.path.join("biblioteca_local", "logo", "ebook.png")
+    if os.path.exists(ebook_path):
+        try:
+            ebook_img = Image.open(ebook_path).convert("RGBA")
+            target_w = int(w * 0.30)
+            aspect_ratio = ebook_img.height / ebook_img.width
+            target_h = int(target_w * aspect_ratio)
+            ebook_img = ebook_img.resize((target_w, target_h), Image.Resampling.LANCZOS)
+            if fade_alpha < 1.0:
+                alpha = ebook_img.split()[3]
+                alpha = alpha.point(lambda p: int(p * fade_alpha))
+                ebook_img.putalpha(alpha)
+            x_ebook = (w - target_w) // 2
+            y_ebook = int(h * 0.05)  # Topo do frame, 5% de margem
+            img_rgba = img.convert("RGBA")
+            img_rgba.paste(ebook_img, (x_ebook, y_ebook), ebook_img)
+            img = img_rgba.convert("RGB")
+        except Exception as e:
+            print(f"⚠️ Erro ao colar ebook.png: {e}")
+
+    return np.array(img)
+
     return np.array(img)
 
 def _aplicar_efeito_cinematico(frame_array, efeito, is_reels_leads=False):
-    """Aplica filtro escuro noturno ou vitrine neon em todos os frames."""
+    """Aplica filtro de vitrine em tela cheia em todos os frames."""
     if frame_array.dtype != np.uint8:
         frame_array = np.clip(frame_array, 0, 255).astype(np.uint8)
         
     img = Image.fromarray(frame_array)
     w, h = img.size
     
-    if is_reels_leads:
-        # Vitrine em tela cheia (1080x1920): Degradê vertical Roxo Neon Escuro -> Preto com opacidade vitrine
-        grad_arr = np.zeros((h, w, 4), dtype=np.uint8)
-        c_top = np.array([55, 10, 85, 130])   # Roxo Neon Escuro (~51% opacidade)
-        c_bot = np.array([12, 12, 18, 160])   # Preto Profundo (~63% opacidade)
-        
-        ys = np.linspace(0, 1, h)[:, None, None]
-        grad_arr[:, :, :] = c_top * (1 - ys) + c_bot * ys
-        
-        vitrine_overlay = Image.fromarray(grad_arr.astype(np.uint8), "RGBA")
-        img = Image.alpha_composite(img.convert("RGBA"), vitrine_overlay).convert("RGB")
-    else:
-        # Camada de escurecimento noturno uniforme padrão (45% opacidade preta)
-        dark_overlay = Image.new("RGBA", (w, h), (0, 0, 0, 115))
-        img = Image.alpha_composite(img.convert("RGBA"), dark_overlay).convert("RGB")
+    # Vitrine em tela cheia (1080x1920): Degradê vertical Roxo Neon Escuro -> Preto com opacidade vitrine
+    # Aplicado a TODOS os vídeos (exceto carrossel, que usa motor_visual.py)
+    grad_arr = np.zeros((h, w, 4), dtype=np.uint8)
+    c_top = np.array([55, 10, 85, 130])   # Roxo Neon Escuro (~51% opacidade)
+    c_bot = np.array([12, 12, 18, 160])   # Preto Profundo (~63% opacidade)
+    
+    ys = np.linspace(0, 1, h)[:, None, None]
+    grad_arr[:, :, :] = c_top * (1 - ys) + c_bot * ys
+    
+    vitrine_overlay = Image.fromarray(grad_arr.astype(np.uint8), "RGBA")
+    img = Image.alpha_composite(img.convert("RGBA"), vitrine_overlay).convert("RGB")
         
     draw = ImageDraw.Draw(img)
     

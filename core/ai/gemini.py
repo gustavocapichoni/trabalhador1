@@ -1023,12 +1023,12 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         ATENÇÃO — REGRA ANTI-PAPAGAIO: NUNCA use frases batidas ou clichês engessados. Crie uma variação INÉDITA, contextualizada ao tema "{titulo_pdf_limpo}".
 
         Estruturas de inspiração para a audiência fria do Feed (escolha 1 estrutura e personalize com o tema):
-        - Estrutura 1 (Valor Direto): Parte 1: "Quer o guia prático de {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' abaixo que te envio no Direct 👇"
-        - Estrutura 2 (Aplicação): Parte 1: "Para aplicar esse método na sua vida:" \n Parte 2: "Comente 'SABEDORIA' e receba o material no Direct 👇"
-        - Estrutura 3 (Acesso Exclusivo): Parte 1: "Liberamos o mapa completo desta semana:" \n Parte 2: "Comente 'SABEDORIA' para receber no Direct 👇"
-        - Estrutura 4 (Pergunta de Desejo): Parte 1: "Pronto para dominar {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' que te entrego no Direct 👇"
-        - Estrutura 5 (Transformação): Parte 1: "Baixe o guia de evolução da semana:" \n Parte 2: "Comente 'SABEDORIA' e receba agora no Direct 👇"
-        - Estrutura 6 (Solução): Parte 1: "Quer o passo a passo completo?" \n Parte 2: "Comente 'SABEDORIA' abaixo e receba no Direct 👇"
+        - Estrutura 1 (Valor Direto): Parte 1: "Quer o guia prático de {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' abaixo que te envio no Direct"
+        - Estrutura 2 (Aplicação): Parte 1: "Para aplicar esse método na sua vida:" \n Parte 2: "Comente 'SABEDORIA' e receba o material no Direct"
+        - Estrutura 3 (Acesso Exclusivo): Parte 1: "Liberamos o mapa completo desta semana:" \n Parte 2: "Comente 'SABEDORIA' para receber no Direct"
+        - Estrutura 4 (Pergunta de Desejo): Parte 1: "Pronto para dominar {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' que te entrego no Direct"
+        - Estrutura 5 (Transformação): Parte 1: "Baixe o guia de evolução da semana:" \n Parte 2: "Comente 'SABEDORIA' e receba agora no Direct"
+        - Estrutura 6 (Solução): Parte 1: "Quer o passo a passo completo?" \n Parte 2: "Comente 'SABEDORIA' abaixo e receba no Direct"
 
         REGRA INEGOCIÁVEL: A soma das duas partes NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
         O tom deve ser CLARO, CONVIDATIVO e DIRETO para quem NUNCA te viu antes.
@@ -1103,7 +1103,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         
         for tentativa in range(max_tentativas_por_chave):
             try:
-                resposta = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
+                resposta = client.models.generate_content(model="gemini-3.6-flash", contents=prompt)
                 
                 # Extração e parse robusto
                 try:

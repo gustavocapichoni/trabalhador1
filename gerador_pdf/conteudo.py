@@ -168,7 +168,7 @@ def gerar_conteudo_pdf(briefing: dict) -> dict:
             client_atual = genai.Client(api_key=chave_atual)
             
             response = client_atual.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-3.6-flash",
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     temperature=0.85,
