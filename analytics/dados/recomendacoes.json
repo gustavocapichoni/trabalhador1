@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-08-26 07:03:19 UTC",
+    "atualizado_em": "2026-08-27 07:03:00 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -29,7 +29,7 @@
         "semanal": {
             "periodo_dias": 7,
             "total_posts_analisados": 25,
-            "alcance_medio": 23.32,
+            "alcance_medio": 14.4,
             "saves_medio": 0.0,
             "distribuicao_temas": {},
             "distribuicao_formatos": {},
@@ -37,8 +37,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 104.7084,
-                    "ctr_feed": 1.1418,
+                    "engagement_score": 121.2,
+                    "ctr_feed": 1.0497,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -49,23 +49,23 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0,
-                    "engagement_score": 109.0483,
-                    "ctr_feed": 1.1894,
+                    "engagement_score": 131.65,
+                    "ctr_feed": 1.1409,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 24
+                    "count": 23
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.55,
+                    "engagement_score": 1.025,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 2
                 }
             },
             "estilos_stats": {},
@@ -81,7 +81,7 @@
         "mensal": {
             "periodo_dias": 30,
             "total_posts_analisados": 25,
-            "alcance_medio": 23.32,
+            "alcance_medio": 14.4,
             "saves_medio": 0.0,
             "distribuicao_temas": {},
             "distribuicao_formatos": {},
@@ -89,8 +89,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 104.7084,
-                    "ctr_feed": 1.1418,
+                    "engagement_score": 121.2,
+                    "ctr_feed": 1.0497,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -101,23 +101,23 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0,
-                    "engagement_score": 109.0483,
-                    "ctr_feed": 1.1894,
+                    "engagement_score": 131.65,
+                    "ctr_feed": 1.1409,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 24
+                    "count": 23
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.55,
+                    "engagement_score": 1.025,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 2
                 }
             },
             "estilos_stats": {},
@@ -133,7 +133,7 @@
         "trimestral": {
             "periodo_dias": 90,
             "total_posts_analisados": 25,
-            "alcance_medio": 23.32,
+            "alcance_medio": 14.4,
             "saves_medio": 0.0,
             "distribuicao_temas": {},
             "distribuicao_formatos": {},
@@ -141,8 +141,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 104.7084,
-                    "ctr_feed": 1.1418,
+                    "engagement_score": 121.2,
+                    "ctr_feed": 1.0497,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -153,23 +153,23 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0,
-                    "engagement_score": 109.0483,
-                    "ctr_feed": 1.1894,
+                    "engagement_score": 131.65,
+                    "ctr_feed": 1.1409,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 24
+                    "count": 23
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.55,
+                    "engagement_score": 1.025,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 2
                 }
             },
             "estilos_stats": {},
@@ -185,7 +185,7 @@
         "semestral": {
             "periodo_dias": 180,
             "total_posts_analisados": 25,
-            "alcance_medio": 23.32,
+            "alcance_medio": 14.4,
             "saves_medio": 0.0,
             "distribuicao_temas": {},
             "distribuicao_formatos": {},
@@ -193,8 +193,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 104.7084,
-                    "ctr_feed": 1.1418,
+                    "engagement_score": 121.2,
+                    "ctr_feed": 1.0497,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -205,23 +205,23 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0,
-                    "engagement_score": 109.0483,
-                    "ctr_feed": 1.1894,
+                    "engagement_score": 131.65,
+                    "ctr_feed": 1.1409,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 24
+                    "count": 23
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.55,
+                    "engagement_score": 1.025,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 2
                 }
             },
             "estilos_stats": {},
@@ -237,7 +237,7 @@
         "anual": {
             "periodo_dias": 365,
             "total_posts_analisados": 25,
-            "alcance_medio": 23.32,
+            "alcance_medio": 14.4,
             "saves_medio": 0.0,
             "distribuicao_temas": {},
             "distribuicao_formatos": {},
@@ -245,8 +245,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 104.7084,
-                    "ctr_feed": 1.1418,
+                    "engagement_score": 121.2,
+                    "ctr_feed": 1.0497,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -257,23 +257,23 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0,
-                    "engagement_score": 109.0483,
-                    "ctr_feed": 1.1894,
+                    "engagement_score": 131.65,
+                    "ctr_feed": 1.1409,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 24
+                    "count": 23
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.55,
+                    "engagement_score": 1.025,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 2
                 }
             },
             "estilos_stats": {},
