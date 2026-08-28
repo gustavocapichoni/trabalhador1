@@ -696,7 +696,13 @@ function renderOlhosDaRede(d) {
     }
     if (Array.isArray(d?.ideias_de_narrativa)) {
         d.ideias_de_narrativa.forEach(ideia => {
-            tudo.push({ tipo: '💡 Ideia de Roteiro', texto: ideia, cor: '#ffd600' });
+            let textoIdeia = '';
+            if (typeof ideia === 'string') {
+                textoIdeia = ideia;
+            } else if (typeof ideia === 'object' && ideia !== null) {
+                textoIdeia = [ideia.tema, ideia.gancho, ideia.desenvolvimento, ideia.cta].filter(Boolean).join(' → ');
+            }
+            if (textoIdeia) tudo.push({ tipo: '💡 Ideia de Roteiro', texto: textoIdeia, cor: '#ffd600' });
         });
     }
     if (Array.isArray(d?.temas_prioritarios)) {
@@ -912,7 +918,15 @@ function renderRecomendacoes(d) {
 
     // 5. IDEIAS DE NARRATIVA
     if (d.ideias_de_narrativa && d.ideias_de_narrativa.length) {
-        const listNarrativas = d.ideias_de_narrativa.map(n => `<li style="margin-bottom: 0.3rem;">${n}</li>`).join('');
+        const listNarrativas = d.ideias_de_narrativa.map(n => {
+            let txt = '';
+            if (typeof n === 'string') {
+                txt = n;
+            } else if (typeof n === 'object' && n !== null) {
+                txt = [n.tema, n.gancho, n.desenvolvimento, n.cta].filter(Boolean).join(' → ');
+            }
+            return `<li style="margin-bottom: 0.5rem;">${txt}</li>`;
+        }).join('');
         html += recHtml('💡 Ideias de Narrativa para Explorar', `<ul style="margin: 0; padding-left: 1.1rem; font-size: 0.83rem;">${listNarrativas}</ul>`, 'ideias');
     }
 

@@ -244,7 +244,7 @@ def _chamar_ia_estrategista(prompt):
     for idx, key in enumerate(GEMINI_KEYS):
         try:
             print(f"  🤖 Tentando Gemini (chave {idx + 1}/{len(GEMINI_KEYS)})...")
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={key}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={key}"
             payload = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"temperature": 0.7, "maxOutputTokens": 2048}}
             resp = requests.post(url, json=payload, timeout=60)
             if resp.status_code == 200:
@@ -256,6 +256,8 @@ def _chamar_ia_estrategista(prompt):
             elif resp.status_code == 429:
                 print(f"  ⚠️ Gemini chave {idx + 1}: cota esgotada.")
                 time.sleep(2)
+            else:
+                print(f"  ⚠️ Gemini chave {idx + 1}: erro {resp.status_code} — {resp.text[:120]}")
         except Exception as e:
             print(f"  ⚠️ Gemini chave {idx + 1} falhou: {str(e)[:80]}")
 
@@ -407,7 +409,7 @@ def gerar_recomendacoes_cruzadas(analises_por_periodo, metricas=None):
         if db:
             # Omitimos 'analises_raw' para evitar estourar o limite de 1MB de documento do Firestore
             doc_firestore = {k: v for k, v in recomendacoes.items() if k != "analises_raw"}
-            db.collection("memoria_estrategica").doc("recomendacoes").set(doc_firestore)
+            db.collection("memoria_estrategica").document("recomendacoes").set(doc_firestore)
             print("🚀 Recomendações estratégicas enviadas com sucesso para o Firestore!")
         else:
             print("⚠️ Conexão com Firestore indisponível para salvar as recomendações.")
