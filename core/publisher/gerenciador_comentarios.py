@@ -230,7 +230,42 @@ def monitorar_e_responder_comentarios(palavras_chave: list[str] | None = None, l
     Monitora posts recentes e responde automaticamente nas DUAS contas do Instagram.
     Evita responder duas vezes o mesmo comentário usando um histórico compartilhado.
     """
-    palavras = [p.upper() for p in (palavras_chave or PALAVRAS_CHAVE_PADRAO)]
+    base_palavras = list(palavras_chave) if palavras_chave else list(PALAVRAS_CHAVE_PADRAO)
+    
+    # Tenta carregar a palavra-chave dinâmica do direct a partir do último PDF da semana
+    try:
+        dir_atual = os.path.dirname(os.path.abspath(__file__))
+        caminho_pdf = os.path.abspath(os.path.join(dir_atual, "..", "..", "gerador_pdf", "output", "ultimo_conteudo.json"))
+        if os.path.exists(caminho_pdf):
+            with open(caminho_pdf, "r", encoding="utf-8") as f:
+                dados_pdf = json.load(f)
+            titulo_pdf = dados_pdf.get("titulo_pdf", "").lower()
+            if titulo_pdf:
+                tema_pdf = "sabedoria"
+                if any(x in titulo_pdf for x in ["finance", "salário", "dinheiro", "riqueza", "economia", "riquezas", "pobre", "rico"]):
+                    tema_pdf = "liberdade"
+                elif any(x in titulo_pdf for x in ["hábito", "rotina", "disciplina", "ação", "foco", "atômicos"]):
+                    tema_pdf = "foco"
+                elif any(x in titulo_pdf for x in ["mente", "cérebro", "psicologia", "pensar", "mental", "pensamento"]):
+                    tema_pdf = "clareza"
+                elif any(x in titulo_pdf for x in ["relacionamento", "família", "amor", "laços", "pertencimento", "amizade"]):
+                    tema_pdf = "lacos"
+                
+                mapa_palavras = {
+                    "liberdade": "MAPA",
+                    "foco": "ROTINA",
+                    "clareza": "MENTE",
+                    "lacos": "CONEXAO",
+                    "sabedoria": "SABEDORIA"
+                }
+                palavra_dinamica = mapa_palavras.get(tema_pdf, "SABEDORIA")
+                if palavra_dinamica not in base_palavras:
+                    base_palavras.append(palavra_dinamica)
+                    logger.info(f"✨ Palavra-chave dinâmica da semana detectada e adicionada: {palavra_dinamica}")
+    except Exception as e:
+        logger.warning(f"⚠️ Erro leve ao ler último PDF no gerenciador de comentários: {e}")
+
+    palavras = [p.upper() for p in base_palavras]
     logger.info(f"🔎 Iniciando monitoramento nas 2 contas com palavras-chave: {palavras}")
 
     historico_respondidos = carregar_historico_respondidos()

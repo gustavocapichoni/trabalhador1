@@ -109,43 +109,22 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_cate
     dados["_duracao_video"]    = duracao_video
     dados["_subtema"]          = subtema
     dados["_tom_emocional"]    = tom_emocional
-
     # ── Injeção de CTAs Padronizados e Robustos ──
     if "slides" in dados and isinstance(dados["slides"], list):
         slides_val = list(dados["slides"])
-        if tipo in ["story_tarde", "pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
+        if tipo in ["pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
             while len(slides_val) < 3:
                 slides_val.append("...")
             if len(slides_val) > 3:
                 slides_val = slides_val[:3]
 
-            if tipo == "story_tarde":
-                titulo_pdf = "Material da Semana"
-                try:
-                    bot_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-                    caminho_pdf = os.path.join(bot_path, "gerador_pdf", "output", "ultimo_conteudo.json")
-                    if os.path.exists(caminho_pdf):
-                        with open(caminho_pdf, "r", encoding="utf-8") as f:
-                            dados_pdf = json.load(f)
-                        titulo_pdf = dados_pdf.get("titulo_pdf", "Material da Semana")
-                except Exception as e:
-                    logger.warning(f"Erro ao carregar PDF no pos-processamento: {e}")
-
-                ctas_ebook = [
-                    f"Se você acompanha o perfil, adquire o ebook\n'{titulo_pdf}' atualizado da semana.\nDigite SABEDORIA e receba no direct.",
-                    f"O ebook '{titulo_pdf}' da semana\njá está disponível. Pegue o seu, é gratuito.\nDigite SABEDORIA no direct.",
-                    f"Se você quer crescer e desenvolver\nconhecimento prático, digite SABEDORIA\nque eu te envio no direct."
-                ]
-                slides_val[2] = random.choice(ctas_ebook)
-
-            elif tipo in ["pexels_story", "pexels_story_noite", "reels", "reels_noite"]:
-                ctas_follow = [
-                    "Siga o perfil para não perder os próximos.\nSabedoria diária.",
-                    "Quem chegou até aqui já está à frente.\nSiga para continuar crescendo.",
-                    "Acompanhe o perfil para a próxima reflexão.\nNovos posts todos os dias.",
-                    "Salva esse vídeo para não esquecer.\nSiga o perfil."
-                ]
-                slides_val[2] = random.choice(ctas_follow)
+            ctas_follow = [
+                "Siga o perfil para não perder os próximos.\nSabedoria diária.",
+                "Quem chegou até aqui já está à frente.\nSiga para continuar crescendo.",
+                "Acompanhe o perfil para a próxima reflexão.\nNovos posts todos os dias.",
+                "Salva esse vídeo para não esquecer.\nSiga o perfil."
+            ]
+            slides_val[2] = random.choice(ctas_follow)
             dados["slides"] = slides_val
 
     # ── Truncador de segurança para imagens estáticas ──
@@ -205,6 +184,29 @@ def _pos_processar_dados(dados, tipo, tema_escolhido, detalhes_tema, gancho_cate
                     logger.warning(f"⚠️ [IA] Slide do reels_leads com {len(palavras)} palavras. AVISO: Ultrapassou o limite de 10 palavras.")
                 slides_normalizados.append(s_norm)
             dados["slides"] = slides_normalizados
+
+    # ── Proteção: garante aspas simples na keyword do CTA (reels_leads / story_tarde) ──
+    # Se a IA não colocar aspas simples ao redor da keyword no slide de CTA, o motor visual
+    # (pexels_story.py) não consegue detectar via regex e a cor dourada/esmeralda não é aplicada.
+    # Esta proteção injeta as aspas automaticamente no último slide quando necessário.
+    if tipo in ["reels_leads", "story_tarde"] and "slides" in dados and dados.get("cta_keyword"):
+        import re as _re_kw
+        kw = str(dados["cta_keyword"]).strip().upper()
+        slides_val = dados.get("slides", [])
+        if isinstance(slides_val, list) and slides_val:
+            ultimo = str(slides_val[-1])
+            # Verifica se a keyword existe no texto mas NÃO está entre aspas simples ou duplas
+            tem_kw    = _re_kw.search(r'(?i)\b' + _re_kw.escape(kw) + r'\b', ultimo)
+            tem_aspas = _re_kw.search(r"['\u2018\u2019\"]" + _re_kw.escape(kw) + r"['\u2018\u2019\"]", ultimo.upper())
+            if tem_kw and not tem_aspas:
+                ultimo_corrigido = _re_kw.sub(
+                    r'(?i)\b' + _re_kw.escape(kw) + r'\b',
+                    f"'{kw}'",
+                    ultimo
+                )
+                slides_val[-1] = ultimo_corrigido
+                dados["slides"] = slides_val
+                logger.info(f"🔧 [_pos_processar] Aspas simples injetadas na keyword '{kw}' do slide CTA.")
 
     return dados
 
@@ -491,101 +493,106 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
             except Exception as _e:
                 logger.warning(f"Erro ao carregar PDF para story_tarde: {_e}")
 
-        SINONIMOS_MODULO = ["guia", "material", "conteúdo", "edição", "acervo", "manual", "recurso", "kit"]
-        sinonimo_modulo = random.choice(SINONIMOS_MODULO)
+        # Deduz palavra-chave de CTA dinamicamente baseada no tema do PDF ou título
+        tema_pdf = "sabedoria"
+        if os.path.exists(caminho_pdf_tarde):
+            try:
+                import json as _json
+                with open(caminho_pdf_tarde, "r", encoding="utf-8") as _f:
+                    _dados_pdf_tarde = _json.load(_f)
+                titulo_pdf_tarde = _dados_pdf_tarde.get("titulo_pdf", "Material da Semana")
+                tit_lower = titulo_pdf_tarde.lower()
+                if any(x in tit_lower for x in ["finance", "salário", "dinheiro", "riqueza", "economia", "riquezas", "pobre", "rico"]):
+                    tema_pdf = "liberdade"
+                elif any(x in tit_lower for x in ["hábito", "rotina", "disciplina", "ação", "foco", "atômicos"]):
+                    tema_pdf = "foco"
+                elif any(x in tit_lower for x in ["mente", "cérebro", "psicologia", "pensar", "mental", "pensamento"]):
+                    tema_pdf = "clareza"
+                elif any(x in tit_lower for x in ["relacionamento", "família", "amor", "laços", "pertencimento", "amizade"]):
+                    tema_pdf = "lacos"
+            except Exception as _e:
+                logger.warning(f"Erro ao deduzir palavra-chave do PDF para story_tarde: {_e}")
 
-        VARIACOES_CTA_TARDE = [
-            f"Se você ainda não garantiu o seu desta semana, comenta 'SABEDORIA' que te mando no Direct. \\n Baixe o seu {sinonimo_modulo} de evolução prática.",
-            f"Essa semana o {sinonimo_modulo} já está disponível. É só comentar 'SABEDORIA' para receber. \\n Tenha o direcionamento certo no bolso.",
-            f"Conhecimento de valor se aplica. Comenta 'SABEDORIA' e pega a edição desta semana. \\n Comece hoje seu avanço pessoal.",
-            f"Já liberamos a nova edição semanal. Comenta 'SABEDORIA' que te envio o link direto. \\n Receba o material completo no seu Direct.",
-            f"Se você quer aprofundar no tema de hoje, comenta 'SABEDORIA' no Direct. \\n Pega o seu {sinonimo_modulo} inédito agora.",
-            f"Toda semana um {sinonimo_modulo} novo pra quem busca maestria. Comenta 'SABEDORIA'. \\n O material completo já está no seu Direct.",
-            f"Não deixa pra depois: comenta 'SABEDORIA' e recebe o link imediatamente. \\n Seu guia de lucidez da semana.",
-            f"O material desta semana tá pronto. Comenta 'SABEDORIA' que te entrego no Direct. \\n Receba o passo a passo de aplicação.",
-            f"Quem te acompanha sabe do valor disso. Comenta 'SABEDORIA' e pega seu {sinonimo_modulo}. \\n Acesse o conteúdo completo no Direct.",
-            f"Se ainda não pegou seu {sinonimo_modulo} semanal, comenta 'SABEDORIA' agora mesmo. \\n O mapa da semana no seu bolso.",
-        ]
-        cta_tarde = random.choice(VARIACOES_CTA_TARDE)
-        cta_do_dia = "SABEDORIA"
+        mapa_palavras = {
+            "liberdade": "MAPA",
+            "foco": "ROTINA",
+            "clareza": "MENTE",
+            "lacos": "CONEXAO",
+            "sabedoria": "SABEDORIA"
+        }
+        cta_do_dia = mapa_palavras.get(tema_pdf, "SABEDORIA")
 
         prompt = f"""
-        Você é um estrategista de conversão, especialista em comportamento humano e copywriting de alta performance.
-        Sua função é criar uma sequência de STORIES em vídeo para AUDIÊNCIA QUENTE — pessoas que JÁ SEGUEM o perfil @codigo.da.sabedoria_.
-        Elas te conhecem. Confiam em você. Mas ainda não pediram o PDF desta semana.
-        Seu trabalho é criar a mensagem que vai fazer elas reconhecerem que precisam desse material agora.
+        Você é um estrategista de conversão e comportamento humano, especialista em copywriting e funis no Instagram.
+        Sua função é criar uma sequência de STORIES em vídeo direcionados estritamente para AUDIÊNCIA QUENTE — pessoas que já seguem o perfil.
+        Elas te conhecem, confiam em você, mas ainda não baixaram o material gratuito desta semana.
+        Seu trabalho é fazer elas reconhecerem que precisam desse material agora.
 
         ═══════════════════════════════════════════════════
-        DIFERENÇA FUNDAMENTAL DE AUDIÊNCIA:
-        Esta NÃO é uma audiência fria. A pessoa já te acompanha.
-        Portanto: menos contexto, mais profundidade. Menos apresentação, mais revelação.
-        Fale como um mentor próximo que identificou algo específico e quer compartilhar.
-        A confiança já existe — use-a para ir direto ao ponto com elegância e sabedoria real.
+        DIFERENÇA DE AUDIÊNCIA (Stories vs Reels):
+        Esta NÃO é uma audiência fria. Fale de igual para igual, como um mentor próximo que compartilha uma percepção de fim de expediente.
+        Evite ganchos de anúncio como "3 passos simples...", "Saiba como..." ou exclamações.
         ═══════════════════════════════════════════════════
 
-        MATERIAL DA SEMANA (CENTRO DE TODA A NARRATIVA):
+        MATERIAL DA SEMANA:
         - Título: "{titulo_pdf_tarde}"
-        - Conteúdo resumido: {resumo_pdf_tarde[:350]}
+        - Contexto do PDF: {resumo_pdf_tarde[:350]}
 
         ═══════════════════════════════════════════════════
-        FILOSOFIA BASE (injete de forma invisível — nunca cite diretamente):
-        - Liberdade real vem de viver de forma autêntica, recusando padrões que nunca foram seus.
-        - A ausência de propósito é a única forma de morte em vida.
-        - O conhecimento compartilhado é o que mantém vivos os ideais além do tempo.
-        - A existência ganha significado quando há coragem de manter as aspirações mais profundas.
+        CATEGORIAS DE CONTEÚDO PARA ROTACIONAR (Escolha UMA e construa o roteiro ao redor dela):
+        1. O BALANÇO DO EXPEDIENTE: Conectar com a exaustão física/mental de fim de dia (trabalhou muito mas não avançou no que importava).
+        2. A PERGUNTA DE AUTOAVALIAÇÃO: Uma provocação sobre onde o usuário estará daqui a 5 anos se continuar no mesmo roteiro de hoje.
+        3. A ANÁLISE DE CASO / CONTRASTE: Dois caminhos diante de um mesmo problema corporativo ou de hábitos.
+        4. O ERRO DE EXECUÇÃO: Desmistificar uma verdade de produtividade rasa (ex: excesso de planejamento sem ação).
         ═══════════════════════════════════════════════════
 
-        ESTRUTURA OBRIGATÓRIA DA SEQUÊNCIA (EXATAMENTE 3 SLIDES RÁPIDOS):
-        ═══════════════════════════════════════════════════
-
-        SLIDE 1 — GANCHO DE PARADA (MÁXIMO 5 a 8 palavras):
-        OBJETIVO: Quebra de padrão visceral. Faz o seguidor parar o scroll no primeiro segundo.
-        O GANCHO DEVE seguir obrigatoriamente um destes 3 formatos estruturais (gire aleatoriamente entre eles):
-        1. "3 passos simples pra mudar [Tema] hoje mesmo"
-        2. "Saiba como conseguir fazer [Tema] com um simples passo"
-        3. "Você já pensou nisso: [Tema], e como isso influencia sua vida?"
-        (Substitua [Tema] pelo tema ou foco do material da semana: "{titulo_pdf_tarde}").
-
-        SLIDE 2 — O PRINCÍPIO / ENSINAMENTO PRÁTICO (MÁXIMO 6 a 9 palavras):
-        OBJETIVO: Entregar sabedoria real e aplicável ANTES de pedir qualquer ação.
-        Compartilhe o princípio-chave ou insight mais valioso do material "{titulo_pdf_tarde}".
-        Se o Gancho 2 ("Saiba como...") foi usado, liste os 3 passos de forma ultra-curta (ex: "Passo 1: [A]. Passo 2: [B]. Passo 3: [C].").
-        Esta frase deve fazer o seguidor pensar: "Eu PRECISO desse material completo."
-
-        SLIDE 3 — CTA DIRETO (MÁXIMO 10 a 12 PALAVRAS):
-        O slide 3 é o CTA de conversão para o Direct. Retorne exatamente este placeholder de CTA:
-        "Comente '{cta_do_dia}' no Direct para receber o material completo."
+        ESTRUTURA MODULAR DO STORY (ENTRE 4 E 5 SLIDES RÁPIDOS):
+        
+        - Slide 1 — PONTO DE CONTATO / GANCHO (MÁXIMO 8 a 10 palavras):
+          Conecte com o estado mental do fim do dia ou de transição do trabalho de forma natural. 
+        
+        - Slide 2 — O PROBLEMA / RECONHECIMENTO (MÁXIMO 10 a 12 palavras):
+          Descreva um comportamento ou conflito real específico do leitor. Ele deve pensar: "Isso acontece comigo".
+        
+        - Slide 3 — QUEBRA DE PERCEPÇÃO / INSIGHT (MÁXIMO 10 a 12 palavras):
+          Apresente a perspectiva sábia ou estoica que muda a interpretação do problema.
+        
+        - Slide 4 — A PONTE PARA O MATERIAL (MÁXIMO 12 a 15 palavras):
+          Mostre que o material da semana "{titulo_pdf_tarde}" aprofunda e resolve exatamente essa questão de forma prática.
+        
+        - Slide 5 — CTA DIRETO CONTEXTUALIZADO (MÁXIMO 10 a 12 palavras):
+          Crie uma chamada final convidativa para direct usando a palavra-chave oficial do tema: '{cta_do_dia}' (em aspas simples).
+          O CTA deve ser: "Comente '{cta_do_dia}' no Direct para receber o material." ou equivalente de direct.
 
         ═══════════════════════════════════════════════════
-        REGRAS ABSOLUTAS:
-        ═══════════════════════════════════════════════════
-        - Tom: sereno, firme, próximo. Como um mentor que fala de igual para igual.
-        - O Slide 2 DEVE entregar valor real — um princípio que valha a pena salvar e compartilhar.
-        - PROIBIDO: "acredite em você", "nunca desista", "foco e determinação", "você é capaz", exclamações.
-        - Não use "..." mais de uma vez na sequência inteira.
+        REGRAS ABSOLUTAS DE ESCRITA:
+        - Use entre 6 e 12 palavras por slide de corpo (Slides 1 a 4). 
+        - PROIBIDO: Emojis, clichês como "acredite em você", "lute sempre", exclamações.
+        - Para que o motor visual pinte e destaque a palavra-chave em verde esmeralda na tela, ela DEVE estar entre aspas simples (ex: '{cta_do_dia}').
+        - O roteiro inteiro deve parecer um pensamento natural escrito no momento certo do dia.
 
         PEXELS/PIXABAY QUERY:
-        Crie queries de vídeo com estética DARK LUXURY CINEMATIC — liderança, contemplação e sofisticação urbana noturna.
-        Exemplos: "confident man overlooking city skyline night lights cinematic 4k" ou "elegant person walking golden lit street night architecture"
+        Crie queries de vídeo com estética DARK LUXURY CINEMATIC — liderança, contemplação, silêncio e sofisticação urbana noturna.
+        Exemplo: "confident man overlooking city skyline night lights cinematic 4k"
 
         LEGENDA (3 a 4 linhas):
-        - Benefício direto e concreto de receber o material — o que muda na prática.
-        - Tom de mentor próximo — sem hype, sem urgência artificial.
-        - Termine com variação do CTA: "Comente '{cta_do_dia}' que te envio no Direct 👇"
-        - NÃO inclua hashtags.
+        - Fale de forma próxima sobre a transformação prática do material.
+        - Termine com: "Comente '{cta_do_dia}' no direct que te envio o link direto 👇"
 
-        Responda APENAS em formato JSON válido (o array 'slides' DEVE ter EXATAMENTE 3 itens):
+        Responda APENAS em formato JSON válido (o array 'slides' DEVE ter entre 4 e 5 itens):
         {{
           "cta_keyword": "{cta_do_dia}",
           "slides": [
-            "Slide 1 — Gancho selecionado (5 a 8 palavras)",
-            "Slide 2 — Princípio prático ou os 3 passos (6 a 9 palavras)",
+            "Texto do Slide 1 (Ponto de contato)",
+            "Texto do Slide 2 (Problema/Dor)",
+            "Texto do Slide 3 (Quebra/Insight)",
+            "Texto do Slide 4 (Ponte para o material)",
             "Comente '{cta_do_dia}' no Direct para receber o material."
           ],
           "pexels_queries": [
             "confident man overlooking city skyline night lights cinematic 4k"
           ],
-          "legenda": "Legenda próxima descrevendo o benefício prático do material. Comente '{cta_do_dia}' que te envio no Direct 👇"
+          "legenda": "Legenda próxima descrevendo o benefício prático. Comente '{cta_do_dia}' que te envio no Direct 👇"
         }}
         """
     elif tipo == "carousel":
@@ -885,6 +892,35 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
             except Exception as e:
                 logger.warning(f"Erro ao obter titulo e solucao do PDF: {e}")
 
+        # Deduz palavra-chave de CTA dinamicamente baseada no tema do PDF ou título para reels_leads
+        tema_pdf = "sabedoria"
+        if os.path.exists(caminho_arquivo):
+            try:
+                import json as _json
+                with open(caminho_arquivo, "r", encoding="utf-8") as _f:
+                    _dados_pdf = _json.load(_f)
+                titulo_pdf_limpo = _dados_pdf.get("titulo_pdf", "Material Exclusivo")
+                tit_lower = titulo_pdf_limpo.lower()
+                if any(x in tit_lower for x in ["finance", "salário", "dinheiro", "riqueza", "economia", "riquezas", "pobre", "rico"]):
+                    tema_pdf = "liberdade"
+                elif any(x in tit_lower for x in ["hábito", "rotina", "disciplina", "ação", "foco", "atômicos"]):
+                    tema_pdf = "foco"
+                elif any(x in tit_lower for x in ["mente", "cérebro", "psicologia", "pensar", "mental", "pensamento"]):
+                    tema_pdf = "clareza"
+                elif any(x in tit_lower for x in ["relacionamento", "família", "amor", "laços", "pertencimento", "amizade"]):
+                    tema_pdf = "lacos"
+            except Exception as _e:
+                logger.warning(f"Erro ao deduzir palavra-chave do PDF para reels_leads: {_e}")
+
+        mapa_palavras = {
+            "liberdade": "MAPA",
+            "foco": "ROTINA",
+            "clareza": "MENTE",
+            "lacos": "CONEXAO",
+            "sabedoria": "SABEDORIA"
+        }
+        cta_do_dia = mapa_palavras.get(tema_pdf, "SABEDORIA")
+
         # ── Rotação sequencial dos 5 pilares visuais de alta classe ───────────
         PILARES_VISUAIS_LEADS = [
             {
@@ -968,106 +1004,107 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         # ─────────────────────────────────────────────────────────────────────
 
         prompt = f"""
-        Você é um estrategista de conversão de elite, especialista em comportamento humano, funis de decisão e copywriting de alta performance.
-        Sua função é criar um REEL de slides de texto para o perfil @codigo.da.sabedoria_ voltado a PÚBLICO FRIO — pessoas que ainda não seguem o perfil e estão consumindo conteúdo rapidamente.
+        Voce e um estrategista de conversao de elite, especialista em comportamento humano, funis de decisao e copywriting de alta performance.
+        Sua funcao e criar um REEL de slides de texto para o perfil voltado a PUBLICO FRIO - pessoas que ainda nao te seguem.
 
-        ═══════════════════════════════════════════════════
-        MECANISMO PERSUASIVO DESTA GERAÇÃO: {mecanismo_nome}
+        ===================================================
+        MECANISMO PERSUASIVO DESTA GERACAO: {mecanismo_nome}
         {mecanismo_descricao}
-        Exemplo de gancho para este mecanismo: "{mecanismo_gancho}"
-        VOCÊ DEVE CONSTRUIR TODA A SEQUÊNCIA USANDO EXCLUSIVAMENTE ESTE MECANISMO.
-        ═══════════════════════════════════════════════════
+        Exemplo de gancho de referencia: "{mecanismo_gancho}"
+        ===================================================
 
-        MATERIAL DA SEMANA (ENTREGA AO FINAL DO FUNIL):
-        - Título: "{titulo_pdf_limpo}"
-        - Solução Prática: "{solucao_pdf_limpo}"
+        MATERIAL DA SEMANA:
+        - Titulo: "{titulo_pdf_limpo}"
+        - Solucao Pratica: "{solucao_pdf_limpo}"
         - Contexto: {resumo_pdf[:300]}
 
         {evitar_repeticao_leads}
 
-        ═══════════════════════════════════════════════════
-        FILOSOFIA DO CONTEÚDO (injete de forma invisível — nunca cite diretamente):
-        - Liberdade real vem de viver de forma autêntica, recusando padrões que nunca foram seus.
-        - A ausência de propósito é a única forma de morte em vida.
-        - Trabalhar muito na direção errada é a forma mais sofisticada de ficar parado.
-        - A mudança não exige mais esforço. Exige uma percepção que você ainda não teve.
-        ═══════════════════════════════════════════════════
+        ===================================================
+        FILOSOFIA DO CONTEUDO (injete de forma invisivel - nunca cite diretamente):
+        - Liberdade real vem de viver de forma autentica, recusando padroes que nunca foram seus.
+        - A ausente de proposito e a unica forma de morte em vida.
+        - Trabalhar muito na direcao errada e a forma mais sofisticada de ficar parado.
+        - A mudanca nao exige mais esforco. Exige uma percepcao que voce ainda nao teve.
+        ===================================================
 
-        ANTES DE ESCREVER, DEFINA INTERNAMENTE (não precisa aparecer no JSON):
-        1. A única ideia que este Reel vai comunicar (uma frase).
-        2. O comportamento específico que cada slide precisa provocar.
-        3. Se a sequência toda conduz logicamente ao PDF como próxima peça natural da conversa.
+        FILTRO DE QUALIDADE DO HOOK (OBRIGATORIO PREENCHER NO RETORNO):
+        Antes de formular os slides, voce deve responder internamente e preencher no JSON de saida:
+        1. Que situacao concreta esta sendo apresentada?
+        2. Quem exatamente pode se reconhecer nessa situacao?
+        3. Qual comportamento ou problema esta sendo exposto?
+        4. O usuario consegue visualizar a situacao?
+        5. Existe uma pergunta ou tensao que permanece sem resposta?
+        6. Existe alguma informacao nova ou quebra de percepcao?
+        7. Existe uma razao plausivel para continuar lendo?
 
-        ═══════════════════════════════════════════════════
-        ESTRUTURA OBRIGATÓRIA DOS SLIDES (EXATAMENTE 4 SLIDES DE ALTA RETENÇÃO):
-        ═══════════════════════════════════════════════════
+        ===================================================
+        ESTRUTURA DOS SLIDES (ENTRE 4 E 7 SLIDES DE ALTA RETENCAO):
+        ===================================================
 
-        SLIDE 1 — GANCHO VISCERAL / QUEBRA DE PADRÃO (MÁXIMO 6 a 8 palavras):
-        OBJETIVO: Fazer o polegar travar no primeiro milissegundo.
-        Abra com uma declaração ousada, contraste ou segredo usando o mecanismo {mecanismo_nome}.
-        PROIBIDO: Perguntas retóricas fracas ("Você sabe a diferença?"), poesia abstrata ou clichês motivacionais.
-        Exemplo: "A regra de ouro que a maioria ignora:" ou "O erro silencioso que trava seus resultados:"
+        SLIDE 1 - INTERRUPCAO (MAXIMO 5 a 8 palavras):
+        Fazer o scroll parar. Abra com uma cena de situacao real, contradicao ou padrao invisivel usando o mecanismo {mecanismo_nome}.
+        PROIBIDO: Perguntas retoricas fracas ("Voce sabe a diferenca?"), poesia ou cliches.
 
-        SLIDE 2 — O DIAGNÓSTICO / TENSÃO REAL (MÁXIMO 8 a 11 palavras):
-        OBJETIVO: Fazer a pessoa sentir "isso foi escrito exatamente para mim".
-        Aponte a causa real por trás da frustração/cansaço/falta de direção sem acusar o leitor.
-        Exemplo: "Você não está sobrecarregado pelo que faz, mas pelo que tolera em silêncio."
+        SLIDE 2 - RECONHECIMENTO (MAXIMO 8 a 11 palavras):
+        Fazer a pessoa sentir "isso foi escrito para mim". Detalhe a dor da situacao sem culpar o leitor.
 
-        SLIDE 3 — O CÓDIGO DA SABEDORIA / INSIGHT PRÁTICO (MÁXIMO 8 a 11 palavras):
-        OBJETIVO: O momento "UAU" — Entregar sabedoria prática e concreta antes de pedir qualquer ação.
-        Entregue um princípio real de maestria/provérbios conectado com {titulo_pdf_limpo}.
-        Exemplo: "Provérbios ensina: domínio próprio não é força bruta, é saber filtrar o que entra."
+        SLIDE 3 - TENSAO (MAXIMO 8 a 11 palavras):
+        Apresente as consequencias reais ou o custo invisivel de manter esse comportamento.
 
-        SLIDE 4 — CTA DINÂMICO PARA AUDIÊNCIA FRIA (MÁXIMO 10 a 12 PALAVRAS NO TOTAL, dividido por quebra de linha):
-        OBJETIVO: Converter visitantes de fora do perfil em leads que comentam e recebem o material no Direct.
-        ATENÇÃO — REGRA ANTI-PAPAGAIO: NUNCA use frases batidas ou clichês engessados. Crie uma variação INÉDITA, contextualizada ao tema "{titulo_pdf_limpo}".
+        SLIDE 4 - QUEBRA DE PERCEPCAO (MAXIMO 10 a 12 palavras):
+        Mostre que a causa real do problema e diferente daquela que o leitor imagina.
 
-        Estruturas de inspiração para a audiência fria do Feed (escolha 1 estrutura e personalize com o tema):
-        - Estrutura 1 (Valor Direto): Parte 1: "Quer o guia prático de {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' abaixo que te envio no Direct"
-        - Estrutura 2 (Aplicação): Parte 1: "Para aplicar esse método na sua vida:" \n Parte 2: "Comente 'SABEDORIA' e receba o material no Direct"
-        - Estrutura 3 (Acesso Exclusivo): Parte 1: "Liberamos o mapa completo desta semana:" \n Parte 2: "Comente 'SABEDORIA' para receber no Direct"
-        - Estrutura 4 (Pergunta de Desejo): Parte 1: "Pronto para dominar {titulo_pdf_limpo}?" \n Parte 2: "Comente 'SABEDORIA' que te entrego no Direct"
-        - Estrutura 5 (Transformação): Parte 1: "Baixe o guia de evolução da semana:" \n Parte 2: "Comente 'SABEDORIA' e receba agora no Direct"
-        - Estrutura 6 (Solução): Parte 1: "Quer o passo a passo completo?" \n Parte 2: "Comente 'SABEDORIA' abaixo e receba no Direct"
+        SLIDE 5 - INSIGHT (MAXIMO 8 a 11 palavras):
+        Entregue um principio de sabedoria pratica e concreto que responda a quebra do slide 4.
 
-        REGRA INEGOCIÁVEL: A soma das duas partes NÃO PODE ultrapassar 12 palavras no total (máximo 3 linhas na tela).
-        O tom deve ser CLARO, CONVIDATIVO e DIRETO para quem NUNCA te viu antes.
+        SLIDE 6 - PONTE PARA O MATERIAL (MAXIMO 10 a 12 palavras):
+        Introduza o material da semana "{titulo_pdf_limpo}" como a continuacao natural do raciocinio.
 
-        ═══════════════════════════════════════════════════
-        REGRAS ABSOLUTAS DE QUALIDADE & RETENÇÃO:
-        ═══════════════════════════════════════════════════
-        - A lei do recheio: O Slide 3 DEVE entregar um ensinamento que valha a pena ser salvo ou compartilhado.
-        - Elimine qualquer tom de coach clichê ("acredite em você", "lute sempre"). Fale com a autoridade de um mestre de sabedoria prática.
-        - Nunca use frases de efeito que soem vazias ou desconectadas da realidade.
-        - O material semanal ({titulo_pdf_limpo}) é a ferramenta de aplicação definitiva desse ensinamento.
-        - PROIBIDO incluir emojis nos slides (emojis são permitidos apenas na legenda).
+        SLIDE 7 - CTA DIRETAMENTE CONECTADO (MAXIMO 10 a 12 palavras):
+        Chamada de acao para Direct usando a palavra-chave: '{cta_do_dia}' (sempre em aspas simples).
+        O CTA deve ser: "Se quer o mapa completo, comente '{cta_do_dia}'" ou equivalente.
 
-        PEXELS QUERY — PILAR VISUAL OBRIGATÓRIO: "{pilar_nome}"
+        ===================================================
+        REGRAS ABSOLUTAS:
+        - Para que o motor de midia destaque a palavra-chave em ouro na tela, ela DEVE estar entre aspas simples (ex: '{cta_do_dia}').
+        - Banido cliches motivacionais ("Nao desista", "Acredite em si", "Seja sua melhor versao").
+        - PROIBIDO incluir emojis nos slides (emojis sao permitidos apenas na legenda).
+
+        PEXELS QUERY - PILAR VISUAL OBRIGATORIO: "{pilar_nome}"
         A PRIMEIRA query do array pexels_queries DEVE ser: '{pilar_exemplo}'
         As demais complementam o mesmo universo visual: {pilar_descricao}.
-        PROIBIDO: vídeos de dor, chuva, depressão, isolamento, escuridão. Toda query DEVE evocar poder, luz, movimento, liderança ou conquista.
 
         LEGENDA (3 a 4 linhas):
-        - Benefício direto e concreto, sem jargões, sem hype.
-        - Tom de conversa próxima, como alguém que descobriu algo e está compartilhando.
-        - DEVE terminar com variação natural do CTA. Exemplo: "Comente 'SABEDORIA' que te envio no Direct 👇"
-        - NÃO inclua hashtags.
+        - Fale de forma proxima e madura sobre o beneficio do material.
+        - Termine com variacao do CTA: "Comente '{cta_do_dia}' que te envio no Direct"
+        - NAO inclua hashtags.
 
-        Responda APENAS em formato JSON válido (o array 'slides' DEVE conter EXATAMENTE 4 frases, a 4ª com quebra de linha):
+        Responda APENAS em formato JSON valido:
         {{
-          "cta_keyword": "SABEDORIA",
+          "cta_keyword": "{cta_do_dia}",
           "slides": [
-            "Gancho visceral curto com {mecanismo_nome}.",
-            "Diagnóstico preciso da tensão ou conflito real.",
-            "Princípio de sabedoria prática conectado a {titulo_pdf_limpo}.",
-            "Quer o guia completo de {titulo_pdf_limpo}? \\n Comente 'SABEDORIA' que te envio no Direct"
+            "Texto do Slide 1 (Interrupcao)",
+            "Texto do Slide 2 (Reconhecimento)",
+            "Texto do Slide 3 (Tensao)",
+            "Texto do Slide 4 (Quebra de percepcao)",
+            "Texto do Slide 5 (Insight)",
+            "Texto do Slide 6 (Ponte para o material)",
+            "Comente '{cta_do_dia}' no Direct para receber o material."
           ],
           "pexels_queries": [
-            "{pilar_exemplo}",
-            "exclusive luxury gala evening event elegant man in suit 4k",
-            "stylish couple walking city night golden lighting architecture"
+            "{pilar_exemplo}"
           ],
-          "legenda": "Legenda próxima e direta baseada no material desta semana. Comente 'SABEDORIA' que te envio no Direct 👇"
+          "legenda": "Sua legenda de mentor proximo aqui sem hashtags",
+          "---_filtro_qualidade_internal_---": {{
+            "situacao_concreta": "Responda a pergunta 1",
+            "leitor_alvo": "Responda a pergunta 2",
+            "comportamento_exposto": "Responda a pergunta 3",
+            "visualizacao_cena": "Responda a pergunta 4",
+            "pergunta_tensao": "Responda a pergunta 5",
+            "quebra_percepcao": "Responda a pergunta 6",
+            "razao_continuidade": "Responda a pergunta 7"
+          }}
         }}
         """
     else:

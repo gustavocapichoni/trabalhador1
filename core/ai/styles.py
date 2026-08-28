@@ -257,8 +257,8 @@ REGRAS ABSOLUTAS DE COPY (violá-las é inaceitável):
 🔥 DORES REAIS E CONCRETAS (CHEGA DE ABSTRAÇÃO):
 - Proibido usar frases poéticas abstratas e vazias que não dizem nada ao leitor. Foque em conflitos e dores reais da rotina: dinheiro, procrastinação, falta de foco, ansiedade com o futuro, decisões difíceis, acordar sem propósito.
 
-💬 PALAVRA-CHAVE DE ENGAJAMENTO (SABEDORIA):
-- Para posts de atração, conversão e entrega de e-books/materiais, a palavra-chave oficial do perfil é "SABEDORIA". Instrua o leitor a comentar "SABEDORIA" para receber o acesso/material direto no Direct.
+💬 PALAVRA-CHAVE DE ENGAJAMENTO DINÂMICA:
+- Para posts de atração, conversão e entrega de e-books/materiais, utilize a palavra-chave fornecida associada ao tema do PDF. Instrua o leitor a comentar essa palavra-chave (destacada em aspas simples) para receber o material.
 
 ❌ PROIBIDO — NUNCA use estas frases de autoajuda vazia:
 - "Acredite em você", "Você é capaz", "Nunca desista", "Foco e determinação"

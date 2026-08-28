@@ -301,7 +301,7 @@ def montar_instrucoes_copy(contexto_analytics="", historico_fontes=None, indice_
     Referência: "{referencia_cta}"
 
     REGRAS ABSOLUTAS DO CTA E DA CAPA:
-    1. PALAVRA-CHAVE OFICIAL DO PERFIL: Para chamadas de engajamento, comentários e envio de e-book/materiais, use sempre a palavra-chave "SABEDORIA" (ex: "Comente 'SABEDORIA' que te entrego no Direct 👇").
+    1. PALAVRA-CHAVE OFICIAL DO PERFIL: Para chamadas de engajamento, comentários e envio de e-book/materiais, use a palavra-chave contextualizada e associada ao tema do material, fornecida nas diretrizes de CTA da execução (ex: "Comente 'FOCO' que te entrego no Direct 👇").
     2. CAPA LIMPA DE ALTO IMPACTO (SLIDE 1): A frase do primeiro slide DEVE ser um gancho visceral de no MÁXIMO 5 a 8 PALAVRAS que quebre o scroll imediatamente.
     3. RECHEIO OBRIGATÓRIO (SLIDES 2 E 3): Nunca faça apenas perguntas. Entregue o diagnóstico e a solução/sabedoria antes de qualquer chamada.
     4. PROIBIDO CTA SECO: O CTA deve nascer como extensão natural do valor entregue.
