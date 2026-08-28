@@ -46,3 +46,6 @@ gerador_pdf/output/*.pdf
 # Dados de métricas gerados em runtime
 analytics/dados/metricas.json
 analytics/dados/metricas_youtube.json
+analytics/dados/memoria_estrategica.json
+analytics/dados/recomendacoes.json
+analytics/dados/recomendacoes_semanais.json
