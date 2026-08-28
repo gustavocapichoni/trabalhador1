@@ -112,7 +112,10 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add gerador_pdf/output/ultimo_conteudo.json estado_migrado.json analytics/dados/recomendacoes.json analytics/dados/memoria_estrategica.json || true
+          git add gerador_pdf/output/ultimo_conteudo.json estado_migrado.json analytics/dados/memoria_estrategica.json || true
+          # Só commita recomendacoes.json se tiver dados reais (growth_score > 0)
+          # Evita sobrescrever o fallback de emergência com dados vazios do --only-collect
+          python -c "import json,sys; d=json.load(open('analytics/dados/recomendacoes.json')); sys.exit(0 if d.get('growth_score_referencia',0)>0 else 1)" && git add analytics/dados/recomendacoes.json || true
           git diff --staged --quiet || git commit -m "chore: atualizar estado [skip ci]"
           git pull --rebase -X theirs origin main || true
           git push
