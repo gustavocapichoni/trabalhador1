@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-08-31 07:04:58 UTC",
+    "atualizado_em": "2026-08-31 11:04:21 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -19,35 +19,35 @@
     "peso_final_estilos": {},
     "ganchos_growth_score": {},
     "ctas_growth_score": {},
-    "vibe_da_semana": "Provocativa, visceral e confrontadora. A semana exige uma postura firme que conecte a disciplina espiritual com o crescimento financeiro, sem desculpas ou conciliações com a mediocridade.",
-    "padroes_campeoes": "Apesar do volume baixo de alcance, os dados validados mostram que o engajamento e conversão acontecem via ganchos de alto impacto emocional (Afirmação que Choca / Conflito) combinados com CTAs focadas em comentários para forçar a entrega do algoritmo.",
+    "vibe_da_semana": "Esta semana, a energia deve ser intensa e provocativa, com um foco em desafiar percepções e incentivar reflexões profundas. É o momento de instigar a curiosidade e promover discussões significativas sobre desenvolvimento pessoal e mentalidade financeira.",
+    "padroes_campeoes": "Os posts que tiveram melhor desempenho apresentaram ganchos impactantes que chocam ou provocam reflexão, além de um tom ousado que gera identificação. A inclusão de chamadas para ação que incentivam comentários é crucial para fomentar o engajamento e a conversão de seguidores.",
     "temas_prioritarios": [
-        "Mentalidade Financeira & Espiritualidade: O conflito entre pobreza de espírito e riqueza com propósito",
-        "Disciplina Inegociável: Por que motivação é a ilusão dos fracos",
-        "Propósito de Vida: Como parar de aceitar uma vida morna e construir um patrimônio real"
+        "Mentalidade Financeira",
+        "Propósito de Vida",
+        "Disciplina"
     ],
     "ganchos_exclusivos": [
-        "Deus não honra a sua preguiça disfarçada de 'esperar o tempo certo'.",
-        "Você continua pobre porque se orgulha de ser 'humilde', mas na verdade só tem medo do trabalho.",
-        "A maioria das pessoas que você segue está te treinando para aceitar a mediocridade."
+        "Você está sabotando seu próprio sucesso sem perceber! Descubra como.",
+        "A verdade que ninguém te contou sobre disciplina: ela não é o que parece.",
+        "Se você não está frustrado, não está crescendo. Vamos falar sobre isso."
     ],
     "ctas_testear": [
-        "Comente 'DISCIPLINA' se você aceita o desafio de mudar sua rotina hoje.",
-        "Digite 'FOGO' nos comentários se você recusa viver uma vida mediana em 2024."
+        "Comente sua maior frustração neste caminho de desenvolvimento!",
+        "Qual é a sua verdade impopular sobre disciplina? Compartilhe nos comentários!"
     ],
     "ideias_de_narrativa": [
-        "Tema: Mentalidade Financeira + Espiritualidade | Gancho: 'Deus não honra a sua preguiça disfarçada de esperar o tempo certo.' | Desenvolvimento: Quebre o mito de que prosperidade é ganância. Mostre que a verdadeira espiritualidade exige excelência no mundo físico e gestão financeira responsável. | CTA: Comente 'PROSPERIDADE' para receber o plano de 3 passos no direct.",
-        "Tema: Disciplina Inegociável | Gancho: 'Sua falta de disciplina é um desrespeito direto ao seu propósito de vida.' | Desenvolvimento: Confronte a rotina do seguidor. Mostre como pequenos desvios diários matam visões grandiosas. Entregue um framework de 3 hábitos inegociáveis para a manhã. | CTA: Digite 'MUDANÇA' se você vai aplicar isso a partir de amanhã."
+        "Post 1: Tema: Mentalidade Financeira | Gancho: 'Você está sabotando seu próprio sucesso sem perceber! Descubra como.' | Desenvolvimento: Aborde como crenças limitantes sobre dinheiro podem afetar nossas decisões diárias. | CTA: 'Comente sua maior frustração neste caminho de desenvolvimento!'",
+        "Post 2: Tema: Disciplina | Gancho: 'A verdade que ninguém te contou sobre disciplina: ela não é o que parece.' | Desenvolvimento: Explique a diferença entre disciplina e motivação, e como construir hábitos sustentáveis. | CTA: 'Qual é a sua verdade impopular sobre disciplina? Compartilhe nos comentários!'"
     ],
-    "aviso_estrategico": "ALERTA CRÍTICO: O alcance absoluto está extremamente baixo (61 views no topo). É proibido criar posts mornos ou educativos genéricos. TODA postagem da semana precisa obrigatoriamente usar ganchos de Conflito ou Afirmação que Choca (validados com 86% e 66% de confiança) e CTA de COMENTÁRIO para reativar o algoritmo.",
+    "aviso_estrategico": "É crítico evitar posts genéricos ou sem uma posição clara, pois isso pode resultar em baixo engajamento. Foque em ganchos que provoquem reações emocionais e que desafiem a audiência.",
     "posts_que_bombaram": 0,
     "top_10_consistentes": 1,
-    "contexto_para_gemini": "Você é o Estrategista de Conteúdo do @gustavo_8k_. O perfil foca em desenvolvimento pessoal, mentalidade financeira, disciplina e espiritualidade com tom visceral e provocativo. DIRETRIZES DA SEMANA: 1) OBRIGATÓRIO usar ganchos de 'Afirmação que Choca' ou 'Conflito' na primeira frase/slide. 2) OBRIGATÓRIO usar CTA focada em COMENTÁRIOS ('Comente X', 'Digite Y') para alavancar a conversão. 3) Tom de voz: líder confrontador, espiritualista prático, focado em riqueza com propósito e disciplina brutal. Evite rodeios, autoajuda clichê e tons passivos.",
+    "contexto_para_gemini": "Esta semana, o foco deve ser em provocar discussões e reflexões profundas sobre temas centrais como mentalidade financeira, propósito de vida e disciplina. Utilize ganchos chocantes e provocações que incentivem a audiência a interagir e comentar, aumentando assim o engajamento e a conversão de seguidores. Priorize um tom ousado e direto, que desafie as percepções comuns e conecte os seguidores com a jornada de desenvolvimento pessoal.",
     "analises_raw": {
         "semanal": {
             "periodo_dias": 7,
             "total_posts_analisados": 25,
-            "alcance_medio": 22.04,
+            "alcance_medio": 21.72,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
@@ -59,8 +59,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0001,
-                    "engagement_score": 35.2388,
-                    "ctr_feed": 1.0278,
+                    "engagement_score": 34.7536,
+                    "ctr_feed": 1.0612,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -71,8 +71,8 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0001,
-                    "engagement_score": 39.8032,
-                    "ctr_feed": 1.1679,
+                    "engagement_score": 39.2518,
+                    "ctr_feed": 1.2059,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -103,7 +103,7 @@
         "mensal": {
             "periodo_dias": 30,
             "total_posts_analisados": 25,
-            "alcance_medio": 22.04,
+            "alcance_medio": 21.72,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
@@ -115,8 +115,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0001,
-                    "engagement_score": 35.2388,
-                    "ctr_feed": 1.0278,
+                    "engagement_score": 34.7536,
+                    "ctr_feed": 1.0612,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -127,8 +127,8 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0001,
-                    "engagement_score": 39.8032,
-                    "ctr_feed": 1.1679,
+                    "engagement_score": 39.2518,
+                    "ctr_feed": 1.2059,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -159,7 +159,7 @@
         "trimestral": {
             "periodo_dias": 90,
             "total_posts_analisados": 25,
-            "alcance_medio": 22.04,
+            "alcance_medio": 21.72,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
@@ -171,8 +171,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0001,
-                    "engagement_score": 35.2388,
-                    "ctr_feed": 1.0278,
+                    "engagement_score": 34.7536,
+                    "ctr_feed": 1.0612,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -183,8 +183,8 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0001,
-                    "engagement_score": 39.8032,
-                    "ctr_feed": 1.1679,
+                    "engagement_score": 39.2518,
+                    "ctr_feed": 1.2059,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -215,7 +215,7 @@
         "semestral": {
             "periodo_dias": 180,
             "total_posts_analisados": 25,
-            "alcance_medio": 22.04,
+            "alcance_medio": 21.72,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
@@ -227,8 +227,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0001,
-                    "engagement_score": 35.2388,
-                    "ctr_feed": 1.0278,
+                    "engagement_score": 34.7536,
+                    "ctr_feed": 1.0612,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -239,8 +239,8 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0001,
-                    "engagement_score": 39.8032,
-                    "ctr_feed": 1.1679,
+                    "engagement_score": 39.2518,
+                    "ctr_feed": 1.2059,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -271,7 +271,7 @@
         "anual": {
             "periodo_dias": 365,
             "total_posts_analisados": 25,
-            "alcance_medio": 22.04,
+            "alcance_medio": 21.72,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "Descoberto Automaticamente": 1.0
@@ -283,8 +283,8 @@
             "temas_stats": {
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0001,
-                    "engagement_score": 35.2388,
-                    "ctr_feed": 1.0278,
+                    "engagement_score": 34.7536,
+                    "ctr_feed": 1.0612,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -295,8 +295,8 @@
             "formatos_stats": {
                 "reels": {
                     "growth_score": 0.0001,
-                    "engagement_score": 39.8032,
-                    "ctr_feed": 1.1679,
+                    "engagement_score": 39.2518,
+                    "ctr_feed": 1.2059,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
