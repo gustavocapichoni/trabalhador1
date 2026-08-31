@@ -1,112 +1,107 @@
 {
-  "frase_topo_capa": "A SABEDORIA ESTRATÉGICA PARA QUEM CANCOU DE CEDER",
-  "titulo_pdf": "O Fim da Rendição Silenciosa",
-  "subtitulo_pdf": "Como parar de agradar ao mundo e assumir a soberania da sua vida",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing hourglass in the dark, 8k",
+  "frase_topo_capa": "A SABEDORIA QUE LIBERTA A SUA VERDADEIRA VIDA",
+  "titulo_pdf": "A Ilusão da Vida Confortável",
+  "subtitulo_pdf": "Como quebrar a rotina que constrói o império dos outros e assumir o controle do seu destino",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a broken wooden cage opening towards a sharp golden light, 8k",
   "capa_cards": [
     {
-      "titulo": "Diagnóstico de Ruína",
-      "texto": "Tentando agradar a todos voce entrega seu território sem lutar e se torna um refém exausto das expectativas alheias.",
-      "pergunta_destaque": "Quem governa sua vida quando voce diz sim por medo?"
+      "titulo": "O Diagnóstico Oculto",
+      "texto": "Você gasta sua melhor energia fabricando o sucesso de terceiros enquanto seus projetos pessoais morrem silenciosamente no fundo de uma gaveta esquecida.",
+      "pergunta_destaque": "De quem é o sonho que você realiza hoje?"
     },
     {
-      "titulo": "Soberania Pessoal",
-      "texto": "Sun Tzu ensina que o verdadeiro mestre vence sem travar batalhas desnecessárias impostas pelos outros."
+      "titulo": "A Virada de Chave",
+      "texto": "Ação consciente e alinhada substitui a mera ocupação diária, transformando intenção paralisa em execução imediata."
     },
     {
-      "titulo": "Liberdade Real",
-      "texto": "Recupere sua energia e foco eliminando demandas que nao sao suas."
+      "titulo": "Sua Liberdade Real",
+      "texto": "Sair da inércia para construir sua independência financeira e tomar decisões soberanas."
     },
     {
-      "titulo": "O Princípio Soberano",
-      "texto": "Aquele que conhece a si mesmo jamais se rende à aprovação alheia.",
-      "citacao_destaque": "Conhece a ti mesmo e vencerás. Código da Sabedoria."
+      "titulo": "O Princípio Inabalável",
+      "texto": "Tem poder quem age, e mais poder ainda quem age certo.",
+      "citacao_destaque": "Tem poder quem age no momento presente. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Custo Incalculável da Rendição Automática",
-      "prompt_imagem": "Cinematic moody dark photography of a tired person standing alone in a fog filled arena, 8k",
+      "titulo": "A Anatomia da Escravidão Voluntária",
+      "prompt_imagem": "Cinematic dark moody photography of a shadow walking away from a crowded office desk, 8k",
       "paragrafos": [
-        "Toda vez que voce diz sim para evitar um confronto ou agradar alguem, voce declara guerra contra a sua propria paz. Essa busca incessante por aprovação drena sua energia, corrói sua identidade e transforma seus dias em uma reação exaustiva aos desejos dos outros.",
-        "Sun Tzu alertava que um exército que tenta defender todos os pontos ao mesmo tempo se torna fraco em todos eles. Quando voce tenta ser tudo para todos, abre brechas na sua propria mente e perde o controle da sua jornada.",
-        "Para interromper essa sangria hoje, identifique as três maiores concessões que voce fez esta semana apenas para agradar. Escreva cada uma delas e defina um limite claro que voce nao ultrapassará a partir de agora."
+        "Existe um cansaço que o sono não cura, e ele nasce da certeza dolorosa de estar dedicando quarenta horas semanais para erguer a fortaleza de outra pessoa enquanto sua própria casa permanece em ruínas. A rotina automática funciona como uma anestesia lenta que faz você trocar sua coragem por uma falsa sensação de segurança. O custo invisível dessa hesitação diária é a perda gradual da sua identidade e da sua capacidade de sonhar alto.",
+        "No livro O Poder da Ação, observa-se que a diferença entre a frustração crônica e a realização não está no talento, mas na decisão de romper a inércia imediatamente. Um homem preso em uma rotina medíocre só percebe a gravidade de sua situação quando contabiliza os anos perdidos em metas que nunca foram suas. Ao encarar os fatos com honestidade brutal, ele entende que a hesitação foi a maior vilã de sua trajetória.",
+        "Sua libertação exige que você faça um inventário sincero das suas horas hoje e identifique exatamente onde está entregando seu melhor potencial a terceiros. Pare de justificar a passividade como paciência quando na verdade é apenas medo do confronto. Assuma o compromisso de reservar a primeira hora do seu dia para construir o seu próprio projeto antes de responder a qualquer exigência externa."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_630b07.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_d8e158.jpg"
     },
     {
       "numero": 2,
-      "titulo": "A Estratégia do Terreno Inviolável",
-      "prompt_imagem": "Cinematic dark moody photography of a sharp sword rested on a stone map, glowing softly in the dark, 8k",
+      "titulo": "A Arquitetura da Mente Soberana",
+      "prompt_imagem": "Cinematic dark moody photography of a man standing firmly on a cliff overlooking a stormy sea, 8k",
       "paragrafos": [
-        "Sua mente prefere o desconforto familiar de agradar aos outros do que o desconforto temporário de impor um limite. Essa armadilha psicológica faz com que voce trate prioridades alheias como urgências pessoais, vivendo em constante estado de alerta.",
-        "Na arte da guerra, a vitória pertence àquele que escolhe com precisao onde e quando lutar. O general sábio recua de batalhas irrelevantes para preservar suas forças para as conquistas decisivas.",
-        "Assuma o comando da sua atencao adotando a regra da pausa estratégica. Antes de aceitar qualquer pedido, estabeleca um intervalo obrigatório de dez minutos para avaliar se aquilo serve aos seus objetivos ou apenas ao ego alheio."
+        "Seu cérebro foi projetado para economizar energia e buscar o conforto imediato, mesmo que esse conforto signifique viver uma vida inteira de submissão. A mente não treinada prefere a dor conhecida da estagnação ao desconforto temporário do crescimento real. Quando você cede ao impulso de adiar suas ações mais importantes, está voluntariamente entregando o volante da sua vida para as circunstâncias e para a vontade alheia.",
+        "Conforme os ensinamentos centrais sobre autorresponsabilidade, ninguém muda suas circunstâncias enquanto continuar culpando o sistema, a economia ou a família. A metáfora do condutor e do passageiro ilustra essa verdade: enquanto você estiver no banco do passageiro reclamando do caminho, o motorista continuará te levando para onde ele quer ir. Assumir o controle do veículo significa aceitar que cada resultado atual é fruto direto de escolhas pessoais.",
+        "Para reprogramar sua atenção e dominar seus impulsos, aplique a regra do foco inegociável todas as manhãs. Elimine todas as distrações nos primeiros noventa minutos de trabalho e foque exclusivamente na tarefa de maior impacto para o seu futuro. Quando você treina seu cérebro para agir antes que o medo argumente, a coragem se torna um hábito diário."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_46d927.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_280d26.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Execução da Vontade Soberana",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing compass pointing forward through dark mist, 8k",
+      "titulo": "O Preço Oculto da Hesitação",
+      "prompt_imagem": "Cinematic dark moody photography of a vintage pocket watch ticking under a beam of dark light, 8k",
       "paragrafos": [
-        "Trabalhar até a exaustao para satisfazer expectativas externas cria uma ilusao de produtividade enquanto destrói seu destino. Voce se sente cansado mas com a amarga sensação de nao ter avançado um único passo rumo ao que realmente importa.",
-        "O comandante eficaz calcula cada movimento antes de entrar no campo de batalha e antecipa as perdas com clareza brutal. Ele nao busca aplausos, busca o cumprimento rigoroso do plano traçado.",
-        "Crie hoje o seu mapa de prioridades inegociáveis para a semana. Selecione apenas duas metas essenciais e proteja seu tempo contra qualquer interrupçao com a firmeza de quem defende a propria vida."
+        "Chegar ao final do dia exausto não significa que você produziu algo de valor, mas sim que você gastou sua vida resolvendo as urgências de outras pessoas. Essa exaustão sem propósito gera um ressentimento silencioso e afasta você da verdadeira liberdade financeira e geográfica. Trabalhar duro na direção errada apenas acelera sua distância em relação aos seus objetivos reais.",
+        "O Poder da Ação enfatiza que uma visão sem execução é apenas uma ilusão infantil que produz decepção. O indivíduo que alcança grandes feitos não possui mais tempo do que você, mas possui uma capacidade implacável de selecionar prioridades e dizer não para tudo o que descarrila sua visão de futuro. Ele entende que cada sim dito a uma tarefa irrelevante é um não dito à sua própria liberdade.",
+        "Desenhe hoje um plano estruturado para a sua semana com metas claras e mensuráveis que respondam diretamente aos seus desejos mais profundos. Estabeleça limites rígidos para interrupções externas e meça seu progresso diário não pelo número de tarefas concluídas, mas pelo avanço real em direção à sua independência."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_85516a.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_d92cc8.jpg"
     }
   ],
-  "citacao_destaque": "A suprema arte da guerra é derrotar o inimigo sem lutar.",
-  "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O receio do homem lhe serve de laço, mas o que confia no Senhor está em seguro.",
-  "referencia_verso": "Provérbios 29:25",
+  "citacao_destaque": "Tem poder quem age, e mais poder ainda quem age certo e no momento certo.",
+  "titulo_citacao": "A Regra Imutável",
+  "verso_base": "O preguiçoso deseja e nada tem, mas o desejo dos que agem com diligência será plenamente satisfeito.",
+  "referencia_verso": "Provérbios 13:4",
   "plano_acao": {
-    "titulo_secao": "O Método dos Cinco Movimentos Estratégicos",
-    "prompt_imagem": "Cinematic dark moody photography of five glowing stones lined up on a dark wooden table, 8k",
-    "subtitulo": "Um plano de ação em cinco passos para eliminar a necessidade de aprovação e tomar posse da sua vida.",
+    "titulo_secao": "Método da Execução Libertadora",
+    "prompt_imagem": "Cinematic dark moody photography of a strategic game board with chess pieces in dark surroundings, 8k",
+    "subtitulo": "Quatro passos práticos para sair do ciclo da servidão e assumir a construção do seu destino.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Mapeamento das Invasões",
-        "descricao": "Liste todas as tarefas e compromissos da sua semana que você aceitou apenas para agradar aos outros e elimine dois deles imediatamente."
+        "titulo": "Mapeamento do Custo Invisível",
+        "descricao": "Anote todas as atividades da sua semana e identifique quais servem apenas aos objetivos de outros e quais constroem os seus próprios sonhos."
       },
       {
         "numero": 2,
-        "titulo": "Estabelecimento de Fronteiras",
-        "descricao": "Defina claramente seus três valores inegociáveis e comunique seus limites de forma direta sem pedir desculpas."
+        "titulo": "Declaração de Autorresponsabilidade",
+        "descricao": "Assuma total responsabilidade pelo seu estado atual e elimine qualquer tipo de desculpa, reclamação ou vitimização das suas conversas diárias."
       },
       {
         "numero": 3,
-        "titulo": "O Filtro da Pausa",
-        "descricao": "Aplique a regra dos dez minutos antes de responder a qualquer solicitação que exija seu tempo ou energia."
+        "titulo": "Ação Focada Sem Hesitação",
+        "descricao": "Defina a principal meta pessoal do mês e dedique noventa minutos ininterruptos todas as manhãs para trabalhar exclusivamente nela."
       },
       {
         "numero": 4,
-        "titulo": "Concentração de Forças",
-        "descricao": "Dedique as primeiras duas horas do seu dia exclusivamente às suas metas prioritárias antes de responder a mensagens externas."
-      },
-      {
-        "numero": 5,
-        "titulo": "Avaliação do Terreno",
-        "descricao": "Revise diariamente suas vitórias silenciosas e celebre cada recusa estratégica que preservou sua energia e soberania."
+        "titulo": "Auditoria de Resultados Diária",
+        "descricao": "Avalie todas as noites se as suas ações do dia te aproximaram da sua liberdade ou se mantiveram você preso ao plano de outra pessoa."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_7cd872.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_f62fa2.jpg"
   },
-  "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
+  "fechamento": "Sua liberdade começa no exato momento em que você decide agir em defesa dos seus próprios sonhos. Faça hoje o que o seu futuro exige.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "5 PASSOS PARA RETOMAR A SOBERANIA DA SUA VIDA",
+    "promessa_clara": "DOMINE SUA VIDA E CONSTRUA SEU PRÓPRIO IMPÉRIO AGORA",
     "beneficios": [
-      "Identifique as concessões invisíveis que minam sua energia e foco diariamente.",
-      "Aprenda a dizer nao com firmeza e elegância sem sentir culpa.",
-      "Elimine batalhas desgastantes que nao pertencem ao seu destino.",
-      "Retome a clareza mental e a soberania sobre o seu tempo.",
-      "Construa uma rotina alinhada aos seus propósitos e livre de expectativas alheias."
+      "Identifique e elimine os hábitos que amarram você aos objetivos de terceiros.",
+      "Desenvolva uma mentalidade focada e imune às distrações da rotina diária.",
+      "Assuma o controle total do seu tempo e das suas decisões diárias.",
+      "Crie um plano prático para alcançar sua independência financeira e pessoal.",
+      "Transforme intenções estagnadas em resultados concretos e mensuráveis."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_ecf3fa.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_b85b80.jpg"
 }
