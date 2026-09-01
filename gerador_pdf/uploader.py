@@ -35,6 +35,7 @@ def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
     print(f"☁️  [Uploader] Copiando '{os.path.basename(caminho_local)}' para a pasta repositorio_pdfs...")
     
     # 1. Copia o PDF para o repositório clonado
+    os.makedirs(REPOSITORIO_PDFS, exist_ok=True)
     caminho_destino = os.path.join(REPOSITORIO_PDFS, nome_no_git)
     shutil.copy2(caminho_local, caminho_destino)
 
@@ -44,7 +45,7 @@ def fazer_upload_pdf(caminho_local: str, titulo_pdf: str) -> str:
         # 2. Executa os comandos do git dentro da pasta repositorio_pdfs
         subprocess.run(["git", "config", "--local", "user.email", "github-actions[bot]@users.noreply.github.com"], cwd=REPOSITORIO_PDFS, check=True)
         subprocess.run(["git", "config", "--local", "user.name", "github-actions[bot]"], cwd=REPOSITORIO_PDFS, check=True)
-        subprocess.run(["git", "add", nome_no_git], cwd=REPOSITORIO_PDFS, check=True)
+        subprocess.run(["git", "add", "-f", nome_no_git], cwd=REPOSITORIO_PDFS, check=True)
         subprocess.run(["git", "commit", "-m", f"Adiciona PDF da semana {semana_str}: {titulo_pdf}"], cwd=REPOSITORIO_PDFS, check=True)
         # Tenta criar a branch main e dar push (importante se for repositório vazio)
         subprocess.run(["git", "branch", "-M", "main"], cwd=REPOSITORIO_PDFS, check=False)

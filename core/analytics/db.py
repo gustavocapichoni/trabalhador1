@@ -114,7 +114,12 @@ def get_db():
     try:
         # Garante que as quebras de linha literais '\\n' na private_key sejam convertidas em '\n' real do PEM
         if isinstance(cred_dict, dict) and "private_key" in cred_dict and isinstance(cred_dict["private_key"], str):
-            cred_dict["private_key"] = cred_dict["private_key"].replace("\\n", "\n")
+            pk = cred_dict["private_key"].replace("\\\\n", "\n").replace("\\n", "\n").replace("\r", "")
+            # Se a chave foi colada compactada sem quebras após o cabeçalho/rodapé PEM
+            if "-----BEGIN PRIVATE KEY-----" in pk and "\n" not in pk.replace("-----BEGIN PRIVATE KEY-----", "").replace("-----END PRIVATE KEY-----", ""):
+                pk = pk.replace("-----BEGIN PRIVATE KEY-----", "-----BEGIN PRIVATE KEY-----\n")
+                pk = pk.replace("-----END PRIVATE KEY-----", "\n-----END PRIVATE KEY-----\n")
+            cred_dict["private_key"] = pk
 
         # Conecta via Firebase Admin SDK
         if not firebase_admin._apps:
