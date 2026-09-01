@@ -112,6 +112,10 @@ def get_db():
         return None
         
     try:
+        # Garante que as quebras de linha literais '\\n' na private_key sejam convertidas em '\n' real do PEM
+        if isinstance(cred_dict, dict) and "private_key" in cred_dict and isinstance(cred_dict["private_key"], str):
+            cred_dict["private_key"] = cred_dict["private_key"].replace("\\n", "\n")
+
         # Conecta via Firebase Admin SDK
         if not firebase_admin._apps:
             cred = credentials.Certificate(cred_dict)
