@@ -1,24 +1,7 @@
 {
-    "indice_gancho": 19,
-    "sentimento_do_dia": "esperanca",
-    "ultimo_carousel": 3,
-    "historico_sentimentos": [
-        "curiosidade",
-        "alegria",
-        "amor",
-        "sensualidade",
-        "afeto",
-        "ousadia",
-        "plenitude",
-        "desafio",
-        "carinho",
-        "esperanca"
-    ],
     "index_mecanismo_reels_leads": 0,
-    "index_tema_diario": 11,
-    "index_palette_conquistador": 1,
+    "index_conquistador": 8,
     "historico_estilos": [
-        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
         "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')",
@@ -42,10 +25,13 @@
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')",
-        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')"
+        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
+        "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')"
     ],
+    "sentimento_do_dia": "esperanca",
+    "index_cta_dia": 1,
+    "indice_cta": 37,
     "fila_musicas_musicas-youtube": [
-        "Two Things - Anno Domini Beats.mp3",
         "Fearless - The Soundlings (feat. Ruby Jay).mp3",
         "Hold Yourself Tight (feat. Splitshine) - Splitshine feat. Sybil Rose.mp3",
         "13 Cocktails - Dan Bodan.mp3",
@@ -64,10 +50,23 @@
         "A Flute's Mourning - Aakash Gandhi.mp3",
         "A Face in a Cloud - Nathan Moore.mp3",
         "Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming.mp3",
-        "Paradise - Anno Domini Beats.mp3"
+        "Paradise - Anno Domini Beats.mp3",
+        "Town This Small - Anno Domini Beats.mp3"
     ],
+    "index_tema_diario": 11,
+    "data_tema_do_dia": "2026-09-04",
+    "ultimos_temas": [],
+    "index_palette_conquistador": 1,
+    "ultimo_hf_token_idx": 2,
+    "ultimo_carousel": 3,
+    "ultimo_dia_cta": "2026-08-23",
+    "data_sentimento_do_dia": "2026-08-02",
+    "index_animacao_conquistador": 2,
+    "indice_gancho": 19,
+    "tema_do_dia": "Hábitos Atômicos (James Clear)",
+    "index_pilar_reels_leads": 4,
+    "index_plataforma_conquistador": 0,
     "fila_musicas_musicas": [
-        "verclub_music-summer-future-bass-550888.mp3",
         "absolutesound-epic-cinematic-trailer-music-562026.mp3",
         "Serhat-Durmus-Hislerim-_feat.-Zerrin_-__.mp3",
         "good_b_music-ambient-piano-and-strings-10711.mp3",
@@ -132,21 +131,27 @@
         "absolutesound-sad-piano-music-3-528953.mp3",
         "46851258-cordes-de-piano-cinema-337464.mp3",
         "299.MP3",
-        "jumpingbunny-infinity-revolution-280912.mp3"
+        "jumpingbunny-infinity-revolution-280912.mp3",
+        "solarflex-hype-background-music-558271.mp3"
     ],
-    "index_animacao_conquistador": 1,
-    "index_palette_leads": 1,
-    "tema_do_dia": "Hábitos Atômicos (James Clear)",
-    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 17_52_44.png",
-    "indice_arquitetura": 3,
-    "index_pilar_reels_leads": 4,
-    "data_tema_do_dia": "2026-09-04",
-    "index_conquistador": 7,
-    "indice_gancho_conquistador": 4,
-    "ultimo_dia_cta": "2026-08-23",
-    "index_plataforma_conquistador": 1,
-    "ultimo_hf_token_idx": 2,
+    "indice_arquitetura": 4,
+    "indice_gancho_conquistador": 5,
+    "historico_sentimentos": [
+        "curiosidade",
+        "alegria",
+        "amor",
+        "sensualidade",
+        "afeto",
+        "ousadia",
+        "plenitude",
+        "desafio",
+        "carinho",
+        "esperanca"
+    ],
     "historico_midia": [
+        "35759066",
+        "36064039",
+        "34955961",
         "37422640",
         "135587",
         "32181477",
@@ -643,18 +648,14 @@
         "unsplash_mmLcGeVMw1U",
         "unsplash_wa1bM6Fzvsw",
         "unsplash_3SeeCq1NBv0",
-        "unsplash_BIS8xarOY0o",
-        "unsplash_-uKQLD0P2wY",
-        "unsplash_RUyddf9XJr0",
-        "unsplash_TvniVa2tVuI"
+        "unsplash_BIS8xarOY0o"
     ],
-    "ultimos_temas": [],
-    "data_sentimento_do_dia": "2026-08-02",
-    "indice_cta": 36,
+    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 17_52_44.png",
+    "index_palette_leads": 1,
     "historico_angulos": [
         "O Poder do Hábito (Charles Duhigg)",
         "Blink (Malcolm Gladwell)",
-        "Hábitos Atômicos (James Clear)"
-    ],
-    "index_cta_dia": 1
+        "Hábitos Atômicos (James Clear)",
+        "Meditações (Marco Aurélio)"
+    ]
 }
