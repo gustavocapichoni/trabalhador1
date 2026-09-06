@@ -1,107 +1,112 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE RECONECTA SUA ALMA AO PROPOSITODIVINO",
-  "titulo_pdf": "Como Parar de Viver no Vazio Emocional",
-  "subtitulo_pdf": "Um guia direto para recuperar a fe a clareza e o sentido da existencia",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a solitary man standing on a cliff gazing at a distant light in the fog hyper-realistic 8k",
+  "frase_topo_capa": "SABEDORIA PRÁTICA PARA QUEM RECUSA A VIDA AUTOMÁTICA",
+  "titulo_pdf": "Como Reconectar Sua Mente com o Imutável",
+  "subtitulo_pdf": "Um guia prático de Provérbios para resgatar o sentido e a sabedoria no dia a dia",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a man standing before an ancient stone altar under a single beam of dramatic light, 8k",
   "capa_cards": [
     {
-      "titulo": "O Sintoma Silencioso",
-      "texto": "Voce cumpre tarefas no automatico enquanto a alma perde o sentido. A desconexao com algo maior consome sua energia diariamente sem voce notar.",
-      "pergunta_destaque": "Ate quando voce aceitara viver sem proposito real?"
+      "titulo": "A Ferida Silenciosa",
+      "texto": "Você preenche seus dias com barulho e metas vazias, mas sente um abismo interno. O problema não é falta de sucesso, é falta de ancoragem espiritual.",
+      "pergunta_destaque": "Até quando você vai fingir que a rotina basta?"
     },
     {
-      "titulo": "A Mente Mestra",
-      "texto": "O estudo da mente de Jesus revela a habilidade de transformar dor em sabedoria e caos em fe inabalavel."
+      "titulo": "O Ensino Salomônico",
+      "texto": "Transformar a sabedoria milenar de Provérbios em regras diárias de discernimento, disciplina e conexão com o Divino."
     },
     {
-      "titulo": "O Ganho Imediato",
-      "texto": "Domine seus pensamentos resgate a paz interior e reconecte sua rotina ao seu proposito divino."
+      "titulo": "Clareza Absoluta",
+      "texto": "Recuperar o sentido de existência e agir com intenção diária e paz mental."
     },
     {
-      "titulo": "O Principio de Ouro",
-      "texto": "Quem nao domina a propria mente se torna prisioneiro das proprias emocoes.",
-      "citacao_destaque": "A maior vitoria e governar os proprios pensamentos. Código da Sabedoria."
+      "titulo": "O Princípio Vital",
+      "texto": "Uma vida sem reverência é apenas um passeio sem rumo.",
+      "citacao_destaque": "O temor ao Divino é o princípio do saber. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Diagnostico da Desconexao Espiritual",
-      "prompt_imagem": "Cinematic dark moody photography of a man sitting alone in a shadow filled room staring at his hands 8k",
+      "titulo": "A Mentira da Auto-Suficiência",
+      "prompt_imagem": "Cinematic dark moody photography of a solitary man sitting on a chair in an empty dark hall, 8k",
       "paragrafos": [
-        "O maior perigo da vida moderna nao e a falta de tempo mas a perda de significado. Voce acorda cumpre metas atende expectativas externas mas sente que a chama interna se apagou. Esse vazio e o sinal claro de que voce se tornou um espectador da sua propria existencia vivendo no piloto automatico e perdendo a conexao com a espiritualidade divina.",
-        "No estudo sobre o Homem Mais Inteligente da Historia compreendemos como Jesus jamais permitiu que o barulho das multidoes ou a pressao dos opositores ditassem sua paz. Mesmo sob cobrancas desumanas Ele mantinha o foco no invisivel na oracao e na contemplacao profunda mostrando que a verdadeira força espiritual começa na recusa em ser escravo do ambiente.",
-        "Para quebrar esse ciclo de desespero silencioso voce precisa fazer uma pausa consciente hoje. O primeiro passo e identificar quais tarefas e distracoes estao roubando sua atencao espiritual. Elimine o excesso de informacao inutil e dedique quinze minutos do seu dia para ficar em silencio absoluto reconhecendo onde sua alma perdeu a rota."
+        "Achamos que sentir-se perdido é apenas estresse ou falta de organização. A verdade desconfortável é que você perdeu o sentido porque colocou seu ego no centro de tudo. Quando você se torna seu próprio deus, qualquer oscilação no mundo externo destrói sua paz. O custo invisível dessa postura é a ansiedade constante e o vazio ao deitar a cabeça no travesseiro.",
+        "Salomão registrou que há caminhos que parecem perfeitos ao homem, mas o fim deles é a ruína espiritual. Um jovem governante que tinha acesso a todos os luxos do mundo percebeu que acumular sem conexão superior era apenas perseguir o vento. A virada ocorreu quando ele parou de confiar no próprio entendimento e se curvou a uma ordem maior.",
+        "Pare de tentar resolver o vazio existencial com mais entretenimento ou consumo. Hoje mesmo, faça um silêncio absoluto de vinte minutos e liste as áreas da sua vida em que você recusou conselho e agiu com soberba. Reconhecer sua limitação humana é o primeiro passo para reestabelecer o canal com o Transcendente."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_f4214c.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_d3b366.jpg"
     },
     {
       "numero": 2,
-      "titulo": "A Gestao da Emocao no Meio da Tempestade",
-      "prompt_imagem": "Cinematic dark moody lighting of a calm figure standing resilient against a raging storm high contrast 8k",
+      "titulo": "Dominando os Impulsos da Mente Reativa",
+      "prompt_imagem": "Cinematic dark moody photography of a sword resting on an old book on a dark wooden desk, 8k",
       "paragrafos": [
-        "Quando o sofrimento e a ansiedade batem a porta o cerebro humano tende a se fechar no vitimismo. Voce reage por impulso perde a paciencia e sente que nao tem controle sobre nada. Essa reacao automatica e o motivo pelo qual tantas pessoas vivem desanimadas sem conseguir sentir a presenca de Deus.",
-        "Analises da inteligencia de Jesus revelam que diante do julgamento e da injustica Ele exercia o silencio proativo. Ele nao respondia a ofensas na mesma moeda porque governava a propria mente antes de tomar qualquer atitude. Sua sabedoria estava em nao permitir que o mal alheio contaminasse sua nobreza espiritual.",
-        "Assuma o controle da sua mente treinando o filtro dos pensamentos. Toda vez que um sentimento de desesperanca surgir nao o aceite como verdade absoluta. Questiona essa emocao imediatamente retome a respiracao e escolha conscientemente uma resposta fundamentada na fe e na serenidade."
+        "O mundo moderno está desenhado para sequestrar sua atenção e manter sua alma entorpecida. Você reage a cada notificação, a cada polêmica e a cada desejo fútil, transformando sua mente em uma casa sem portas nem janelas. O sofrimento que você sente não é acaso, é o resultado de uma vida sem governo interno.",
+        "Em Provérbios, Salomão afirma que o homem que não sabe dominar o próprio espírito é como uma cidade arruinada e sem muralhas. Antigos sábios usavam a disciplina de impulsos não por punição, mas para provar que a mente deve servir ao propósito divino, e não o contrário.",
+        "Assuma a guarda da sua mente hoje. Escolha uma distração habitual e corte-a categoricamente pelas próximas doze horas. Sempre que o impulso de fuga surgir, substitua-o por uma oração curta ou reflexão sobre as suas verdadeiras prioridades de vida."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_ee6ac2.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_aafbc5.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Construcao de um Destino com Proposito",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing pathway cutting through a dense dark forest 8k",
+      "titulo": "A Arquitetura de uma Rotina Consagrada",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing lantern lighting a dark stone path, 8k",
       "paragrafos": [
-        "Trabalhar exausto sem ver sentido no futuro e o caminho mais curto para o esgotamento da alma. Muitas pessoas constroem rotinas pesadas baseadas apenas no ter esquecendo por completo o ser. O resultado e um cansaco existencial que nenhuma ferias consegue curar.",
-        "O mestre dos mestres jamais planejou sua vida focado em aplausos passageiros ou riquezas materiais. Cada passo de sua jornada tinha um proposito eterno claro e inegociavel. Ele sabia exatamente quem era e para onde estava indo o que o tornava inabalavel diante de qualquer adversidade.",
-        "Desenhe um plano espiritual para os proximos dias escolhendo metas praticas de contemplacao fe e acao. Estabeleca momentos inegociaveis de oracao leitura profunda e servico ao proximo. Quando sua rotina serve a algo maior que seu ego a vida recupera o sentido instantaneamente."
+        "É exaustivo correr o dia todo e sentir que não saiu do lugar. Você acorda cansado, cumpre tarefas no automático e dorme com a perturbadora sensação de que sua vida está sendo desperdiçada. Essa é a punição por viver sem intencionalidade espiritual.",
+        "Provérbios ensina que os projetos do diligente resultam em abundância, mas o apressado colhe apenas a penúria. Salomão não construiu uma vida próspera por impulso, mas alinhando cada decisão aos princípios da sabedoria superior e ao trabalho constante.",
+        "Desenhe uma rotina que honre sua espiritualidade antes de servir às urgências externas. Defina três compromissos inegociáveis para amanhã que conectem seus atos ao seu propósito maior, e recuse qualquer tarefa banal que ameace essa ordem."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_7aa67b.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_9a73b1.jpg"
     }
   ],
-  "citacao_destaque": "Conquistar o mundo e perder a gestao da propria mente e a maior das tragedias.",
-  "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "Pois que aproveitara ao homem ganhar o mundo inteiro e perder a sua alma",
-  "referencia_verso": "Marcos 8:36",
+  "citacao_destaque": "Como a cidade derribada, que não tem muro, assim é o homem que não pode conter o seu espírito.",
+  "titulo_citacao": "A Regra do Domínio Próprio",
+  "verso_base": "Confie no Senhor de todo o seu coração e não se apoie no seu próprio entendimento.",
+  "referencia_verso": "Provérbios 3:5",
   "plano_acao": {
-    "titulo_secao": "Protocolo de Quatro Passos para a Reconstrucao Espiritual",
-    "prompt_imagem": "Cinematic dark moody image of an ancient hourglass and a journal lit by a faint candle flame 8k",
-    "subtitulo": "Um metodo diario e pratico baseado na inteligencia de Jesus para recuperar a fe e a clareza mental",
+    "titulo_secao": "A Rotina de Sete Dias de Alinhamento Espiritual",
+    "prompt_imagem": "Cinematic dark moody photography of a notebook and ink pen illuminated by candle light, 8k",
+    "subtitulo": "Um método prático para resgatar sua conexão com o Divino e agir com propósito diário.",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Jejum de Ruido",
-        "descricao": "Desconecte-se de redes sociais e noticias na primeira hora do dia. Use esse tempo para o silencio a oracao e a meditação na palavra."
+        "titulo": "O Silêncio da Manhã",
+        "descricao": "Dedique os primeiros quinze minutos do seu dia sem telas, praticando oração sincera e leitura meditativa de Provérbios."
       },
       {
         "numero": 2,
-        "titulo": "A Impugnacao de Pensamentos",
-        "descricao": "Ao sentir ansiedade ou vazio duvide imediatamente desse pensamento e afirme verdades sobre seu proposito divino."
+        "titulo": "Filtro das Intenções",
+        "descricao": "Antes de tomar qualquer decisão importante, pergunte se ela serve ao seu ego ou a um bem maior."
       },
       {
         "numero": 3,
-        "titulo": "A Contemplacao Consciente",
-        "descricao": "Reserve dez minutos para desacelerar admirar a criacao e agradecer por tres coisas concretas da sua vida."
+        "titulo": "Jejum de Distrações",
+        "descricao": "Desative notificações desnecessárias e elimine conversas fúteis que drenam sua energia espiritual."
       },
       {
         "numero": 4,
-        "titulo": "A Acao Semeadora",
-        "descricao": "Pratique um ato intencional de bondade ou servico sem esperar nada em troca alinhando sua rotina ao proposito de servir."
+        "titulo": "Prática do Serviço",
+        "descricao": "Realize uma ação concreta de ajuda ou incentivo a alguém sem esperar nada em troca, fortalecendo sua virtude."
+      },
+      {
+        "numero": 5,
+        "titulo": "Exame de Consciência",
+        "descricao": "Ao final do dia, anote onde você agiu com sabedoria e onde permitiu que a impulsividade dominasse."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_046e94.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_251fbe.jpg"
   },
-  "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
+  "fechamento": "A sabedoria não é um conceito abstrato, é uma postura diária diante da vida. A conexão que você procura com algo maior começa no exato momento em que você decide agir com intenção e fé.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "RECONECTE SUA VIDA AO PROPOSITO EM 4 PASSOS SIMPLES",
+    "promessa_clara": "7 DIAS PARA RESGATAR A CONEXÃO COM O DIVINO",
     "beneficios": [
-      "Identifique os gatilhos invisiveis que estavam roubando sua paz e sua fe.",
-      "Desenvolva o autocontrole emocional baseado na inteligencia de Jesus.",
-      "Elimine a sensação de vazio existencial atraves da gestao da mente.",
-      "Estabeleca uma rotina espiritual consistente e inabalavel sem cansaco.",
-      "Recupere a clareza para tomar decisoes com sabedoria e coragem."
+      "Elimine a sensação de vazio existencial através de regras práticas de Provérbios.",
+      "Aprenda a dominar impulsos mentais e manter a paz em meio ao caos.",
+      "Construa uma rotina alinhada ao seu propósito espiritual com intencionalidade.",
+      "Desenvolva discernimento afiado para tomar decisões sem hesitar.",
+      "Recupere a clareza mental e a presença do Divino no seu dia a dia."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_f1d009.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_9d0573.jpg"
 }
