@@ -1,112 +1,107 @@
 {
-  "frase_topo_capa": "SABEDORIA PRÁTICA PARA QUEM RECUSA A VIDA AUTOMÁTICA",
-  "titulo_pdf": "Como Reconectar Sua Mente com o Imutável",
-  "subtitulo_pdf": "Um guia prático de Provérbios para resgatar o sentido e a sabedoria no dia a dia",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a man standing before an ancient stone altar under a single beam of dramatic light, 8k",
+  "frase_topo_capa": "A SABEDORIA QUE LIBERTA VOCÊ DA SERVIDÃO FINANCEIRA SILENCIOSA",
+  "titulo_pdf": "A Ilusão do Esforço Exaustivo",
+  "subtitulo_pdf": "Como quebrar a armadilha do trabalho sem fim e assumir o controle definitivo do seu dinheiro",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing golden compass sitting on dark granite surrounded by shadows, 8k",
   "capa_cards": [
     {
-      "titulo": "A Ferida Silenciosa",
-      "texto": "Você preenche seus dias com barulho e metas vazias, mas sente um abismo interno. O problema não é falta de sucesso, é falta de ancoragem espiritual.",
-      "pergunta_destaque": "Até quando você vai fingir que a rotina basta?"
+      "titulo": "A Engrenagem Invisível",
+      "texto": "Você trabalha até o esgotamento físico e mental mas a sua conta bancária continua presa exatamente no mesmo lugar.",
+      "pergunta_destaque": "Você acredita que controla sua própria vida financeira hoje?"
     },
     {
-      "titulo": "O Ensino Salomônico",
-      "texto": "Transformar a sabedoria milenar de Provérbios em regras diárias de discernimento, disciplina e conexão com o Divino."
+      "titulo": "O Mecanismo da Alienação",
+      "texto": "A alienação mental faz a maioria das pessoas gastar energia vital em coisas que não geram riqueza real."
     },
     {
-      "titulo": "Clareza Absoluta",
-      "texto": "Recuperar o sentido de existência e agir com intenção diária e paz mental."
+      "titulo": "Domínio do Destino",
+      "texto": "Assumir a direção consciente dos seus recursos e interromper o ciclo contínuo de exaustão."
     },
     {
-      "titulo": "O Princípio Vital",
-      "texto": "Uma vida sem reverência é apenas um passeio sem rumo.",
-      "citacao_destaque": "O temor ao Divino é o princípio do saber. Código da Sabedoria."
+      "titulo": "Autonomia Absoluta",
+      "texto": "Quem não define seus alvos financeiros vira escravo dos planos alheios.",
+      "citacao_destaque": "A indecisão sobre o dinheiro destrói o futuro. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "A Mentira da Auto-Suficiência",
-      "prompt_imagem": "Cinematic dark moody photography of a solitary man sitting on a chair in an empty dark hall, 8k",
+      "titulo": "A Mentira Silenciosa do Esforço Sem Direção",
+      "prompt_imagem": "Cinematic dark moody photography of an exhausted worker sitting alone in a dimly lit minimalist office, 8k",
       "paragrafos": [
-        "Achamos que sentir-se perdido é apenas estresse ou falta de organização. A verdade desconfortável é que você perdeu o sentido porque colocou seu ego no centro de tudo. Quando você se torna seu próprio deus, qualquer oscilação no mundo externo destrói sua paz. O custo invisível dessa postura é a ansiedade constante e o vazio ao deitar a cabeça no travesseiro.",
-        "Salomão registrou que há caminhos que parecem perfeitos ao homem, mas o fim deles é a ruína espiritual. Um jovem governante que tinha acesso a todos os luxos do mundo percebeu que acumular sem conexão superior era apenas perseguir o vento. A virada ocorreu quando ele parou de confiar no próprio entendimento e se curvou a uma ordem maior.",
-        "Pare de tentar resolver o vazio existencial com mais entretenimento ou consumo. Hoje mesmo, faça um silêncio absoluto de vinte minutos e liste as áreas da sua vida em que você recusou conselho e agiu com soberba. Reconhecer sua limitação humana é o primeiro passo para reestabelecer o canal com o Transcendente."
+        "Existe uma mentira silenciosa que foi inculcada em sua mente desde a infância: a ideia de que quanto mais você se esgota fisicamente, mais rápido alcançará a independência financeira. A realidade brutal é que você está trabalhando exausto, sacrificando sua saúde e seu tempo com a família, sem nunca sentir que está saindo do lugar. Essa exaustão contínua não é um selo de honra, é a prova cabal de que você caiu na armadilha de produzir riqueza para terceiros enquanto mantém sua própria mente escravizada pela incerteza.",
+        "No clássico sobre como suplantar as forças da alienação, revela-se que a imensa maioria das pessoas vive sob o ritmo automático da alienação financeira. Elas aceitam obrigações que detestam, compram coisas que não precisam com recursos que não possuem e nunca param para refletir com clareza. Elas apenas fluem com a corrente do mercado, acumulando dívidas e fadiga diária, acreditando falsamente que o próximo mês trará alívio por simples sorte.",
+        "Para quebrar esse ciclo hoje mesmo, você precisa declarar guerra contra a passividade mental. O primeiro passo prático é auditar cada hora da sua rotina e cada centavo que sai do seu bolso. Pare imediatamente de financiar um estilo de vida desenhado apenas para impressionar quem nem sequer se importa com você. Assuma uma postura firme contra seus próprios impulsos de consumo e decida que o seu trabalho deve construir a sua autonomia."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_d3b366.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_8f51c9.jpg"
     },
     {
       "numero": 2,
-      "titulo": "Dominando os Impulsos da Mente Reativa",
-      "prompt_imagem": "Cinematic dark moody photography of a sword resting on an old book on a dark wooden desk, 8k",
+      "titulo": "O Preço Oculto da Indecisão Financeira",
+      "prompt_imagem": "Cinematic dark moody photography of a sharp steel sword piercing a glowing dark hourglass, 8k",
       "paragrafos": [
-        "O mundo moderno está desenhado para sequestrar sua atenção e manter sua alma entorpecida. Você reage a cada notificação, a cada polêmica e a cada desejo fútil, transformando sua mente em uma casa sem portas nem janelas. O sofrimento que você sente não é acaso, é o resultado de uma vida sem governo interno.",
-        "Em Provérbios, Salomão afirma que o homem que não sabe dominar o próprio espírito é como uma cidade arruinada e sem muralhas. Antigos sábios usavam a disciplina de impulsos não por punição, mas para provar que a mente deve servir ao propósito divino, e não o contrário.",
-        "Assuma a guarda da sua mente hoje. Escolha uma distração habitual e corte-a categoricamente pelas próximas doze horas. Sempre que o impulso de fuga surgir, substitua-o por uma oração curta ou reflexão sobre as suas verdadeiras prioridades de vida."
+        "Sua mente é sua maior arma, mas quando você não assume o comando absoluto dela, a pressão externa assume o controle. A hesitação em tomar decisões financeiras difíceis cria uma fresta por onde a ansiedade e o medo vazam diariamente. Viver permanentemente no limite, torcendo para que nenhuma emergência aconteça, é a forma mais refinada de tortura psicológica que você impõe a si mesmo ao recusar a disciplina de cortar o supérfluo.",
+        "O princípio do ritmo hipnótico mostra que qualquer hábito praticado de forma contínua torna-se um padrão consolidado. Se você tolera a falta de planejamento financeiro durante anos, sua mente estabelece que a falta de recursos é a sua condição normal. Aqueles que dominam sua trajetória não possuem mais tempo no dia, eles simplesmente aplicam o poder do silêncio interior, rejeitam distrações efêmeras e mantêm uma meta financeira clara sem desviar o foco.",
+        "Você deve reprogramar suas prioridades sem pedir permissão a ninguém. A regra imediata é parar de reagir passivamente ao ambiente e começar a agir de forma intencional. Crie o hábito inegociável de separar uma parcela fixa de tudo o que arrecada antes de pagar qualquer compromisso. Ao assumir a liderança absoluta do seu fluxo financeiro, você encerra a vulnerabilidade e constrói uma base inabalável."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_aafbc5.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_07886e.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Arquitetura de uma Rotina Consagrada",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing lantern lighting a dark stone path, 8k",
+      "titulo": "A Decisão que Separa os Escravos dos Livres",
+      "prompt_imagem": "Cinematic dark moody photography of a mysterious figure standing on a dark cliff looking at a distant light, 8k",
       "paragrafos": [
-        "É exaustivo correr o dia todo e sentir que não saiu do lugar. Você acorda cansado, cumpre tarefas no automático e dorme com a perturbadora sensação de que sua vida está sendo desperdiçada. Essa é a punição por viver sem intencionalidade espiritual.",
-        "Provérbios ensina que os projetos do diligente resultam em abundância, mas o apressado colhe apenas a penúria. Salomão não construiu uma vida próspera por impulso, mas alinhando cada decisão aos princípios da sabedoria superior e ao trabalho constante.",
-        "Desenhe uma rotina que honre sua espiritualidade antes de servir às urgências externas. Defina três compromissos inegociáveis para amanhã que conectem seus atos ao seu propósito maior, e recuse qualquer tarefa banal que ameace essa ordem."
+        "Continuar trabalhando exausto sem ver o seu patrimônio crescer é uma escolha implícita que você faz todas as manhãs ao aceitar a inércia. A exaustão sem propósito destrói a visão de longo prazo e reduz a existência a uma simples corrida pela sobrevivência. Se você não sente indignação ao examinar seu saldo no fim do mês, você já foi anestesiado pelo ritmo da rotina habitual.",
+        "A verdadeira sabedoria financeira não consiste em acumular itens estéreis, mas na capacidade de construir ativos reais que geram valor de forma consistente. Quando o indivíduo substitui a intenção vaga pela determinação inabalável de ter um objetivo definido, ele deixa de flutuar sem rumo. Ele antecipa as adversidades antes que elas ocorram e usa a discrição para planejar movimentos precisos.",
+        "O seu planejamento para a semana deve ser executado com rigor e clareza. Estabeleça uma meta financeira específica para os próximos noventa dias e elimine impiedosamente todas as tarefas e custos que não convergem para essa meta central. Pare de ser acessível para quem consome o seu tempo e direcione sua energia vital para a consolidação do seu próprio projeto."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_9a73b1.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3de851.jpg"
     }
   ],
-  "citacao_destaque": "Como a cidade derribada, que não tem muro, assim é o homem que não pode conter o seu espírito.",
-  "titulo_citacao": "A Regra do Domínio Próprio",
-  "verso_base": "Confie no Senhor de todo o seu coração e não se apoie no seu próprio entendimento.",
-  "referencia_verso": "Provérbios 3:5",
+  "citacao_destaque": "Nenhum homem é verdadeiramente livre enquanto não se tornar senhor absoluto da sua própria mente e dos seus recursos.",
+  "titulo_citacao": "A Regra de Ouro",
+  "verso_base": "O pródigo dissipa os seus bens com precipitação, mas o homem prudente preserva o fruto do seu trabalho com firmeza.",
+  "referencia_verso": "Sabedoria Milenar",
   "plano_acao": {
-    "titulo_secao": "A Rotina de Sete Dias de Alinhamento Espiritual",
-    "prompt_imagem": "Cinematic dark moody photography of a notebook and ink pen illuminated by candle light, 8k",
-    "subtitulo": "Um método prático para resgatar sua conexão com o Divino e agir com propósito diário.",
+    "titulo_secao": "As Quatro Leis da Autonomia Financeira",
+    "prompt_imagem": "Cinematic dark moody photography of a dark stone tablet engraved with golden illuminated lines, 8k",
+    "subtitulo": "Um método prático e direto para erradicar a alienação e assumir a gestão absoluta do seu capital em trinta dias",
     "passos": [
       {
         "numero": 1,
-        "titulo": "O Silêncio da Manhã",
-        "descricao": "Dedique os primeiros quinze minutos do seu dia sem telas, praticando oração sincera e leitura meditativa de Provérbios."
+        "titulo": "Corte da Alienação de Consumo",
+        "descricao": "Identifique e elimine imediatamente todos os gastos recorrentes que não agregam valor real à sua vida ou à sua liberdade financeira."
       },
       {
         "numero": 2,
-        "titulo": "Filtro das Intenções",
-        "descricao": "Antes de tomar qualquer decisão importante, pergunte se ela serve ao seu ego ou a um bem maior."
+        "titulo": "Reserva de Liberdade Primeiro",
+        "descricao": "Separe vinte por cento de todo o dinheiro que receber antes de pagar qualquer conta, tratando o seu futuro como despesa primária."
       },
       {
         "numero": 3,
-        "titulo": "Jejum de Distrações",
-        "descricao": "Desative notificações desnecessárias e elimine conversas fúteis que drenam sua energia espiritual."
+        "titulo": "Definição do Alvo Absoluto",
+        "descricao": "Escreva em um papel o valor exato que você pretende acumular no ano e estabeleça três ações diárias inegociáveis para alcançar esse número."
       },
       {
         "numero": 4,
-        "titulo": "Prática do Serviço",
-        "descricao": "Realize uma ação concreta de ajuda ou incentivo a alguém sem esperar nada em troca, fortalecendo sua virtude."
-      },
-      {
-        "numero": 5,
-        "titulo": "Exame de Consciência",
-        "descricao": "Ao final do dia, anote onde você agiu com sabedoria e onde permitiu que a impulsividade dominasse."
+        "titulo": "Blindagem de Foco e Silêncio",
+        "descricao": "Elimine distrações diárias, pare de expor seus planos financeiros para terceiros e trabalhe em silêncio absoluto até ver os resultados."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_251fbe.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_13a71d.jpg"
   },
-  "fechamento": "A sabedoria não é um conceito abstrato, é uma postura diária diante da vida. A conexão que você procura com algo maior começa no exato momento em que você decide agir com intenção e fé.",
+  "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
-  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
+  "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "7 DIAS PARA RESGATAR A CONEXÃO COM O DIVINO",
+    "promessa_clara": "30 DIAS PARA ERRADICAR SUA EXAUSTÃO E RECONSTRUIR SUAS FINANÇAS",
     "beneficios": [
-      "Elimine a sensação de vazio existencial através de regras práticas de Provérbios.",
-      "Aprenda a dominar impulsos mentais e manter a paz em meio ao caos.",
-      "Construa uma rotina alinhada ao seu propósito espiritual com intencionalidade.",
-      "Desenvolva discernimento afiado para tomar decisões sem hesitar.",
-      "Recupere a clareza mental e a presença do Divino no seu dia a dia."
+      "Entenda exatamente por que você trabalha exausto sem ver a conta bancária crescer.",
+      "Aprenda a aplicar o silêncio estratégico para eliminar gastos e distrações desnecessárias.",
+      "Descubra o mecanismo oculto para dominar sua mente e romper com a alienação diária.",
+      "Desenvolva a disciplina inabalável para colocar o seu dinheiro para trabalhar por você.",
+      "Execute um plano de ação claro e prático para alcançar a total autonomia financeira."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_9d0573.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_3b6b0c.jpg"
 }
