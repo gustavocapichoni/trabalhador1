@@ -1,5 +1,5 @@
 {
-    "atualizado_em": "2026-09-14 14:01:38 UTC",
+    "atualizado_em": "2026-09-15 07:20:29 UTC",
     "ciclos_utilizados": [
         "anual",
         "semestral",
@@ -7,55 +7,55 @@
         "mensal",
         "semanal"
     ],
-    "growth_score_referencia": 0.0335,
+    "growth_score_referencia": 0.0333,
     "icc_por_tema": {},
     "tema_maior_icc": null,
     "peso_final_temas": {
-        "Resumo Filosófico (Princípio da Existência)": 0.1578,
-        "Pertencimento e Laços Afetivos": 0.0842,
-        "Princípios (Ray Dalio)": 0.0539,
-        "Blink (Malcolm Gladwell)": 0.0467,
-        "Preconceito e os Ciclos de Ódio": 0.0409,
-        "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.0365,
-        "O Poder da Ação (Paulo Vieira)": 0.0354,
-        "O Conceito de Liberdade Existencial": 0.0346,
-        "Os Segredos da Mente Milionária (T. Harv Eker)": 0.0329,
-        "Essencialismo (Greg McKeown)": 0.0304,
-        "Marianne Williamson": 0.03,
+        "Resumo Filosófico (Princípio da Existência)": 0.1604,
+        "Pertencimento e Laços Afetivos": 0.0704,
+        "Princípios (Ray Dalio)": 0.055,
+        "Blink (Malcolm Gladwell)": 0.0468,
+        "Preconceito e os Ciclos de Ódio": 0.0418,
+        "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.0367,
+        "O Poder da Ação (Paulo Vieira)": 0.0355,
+        "O Conceito de Liberdade Existencial": 0.0347,
+        "Os Segredos da Mente Milionária (T. Harv Eker)": 0.0338,
+        "Essencialismo (Greg McKeown)": 0.0334,
+        "Marianne Williamson": 0.0308,
+        "financas": 0.0296,
         "A Vontade Herdada e a Imortalidade": 0.0292,
-        "financas": 0.0288,
+        "Hábitos Atômicos (James Clear)": 0.0286,
         "Provérbios de Salomão": 0.0284,
-        "Hábitos Atômicos (James Clear)": 0.0274,
+        "Trabalho Focado (Cal Newport)": 0.0256,
         "Pai Rico, Pai Pobre (Robert Kiyosaki)": 0.0256,
-        "Meditações (Marco Aurélio)": 0.0252,
+        "Malcolm X / Nelson Mandela": 0.0251,
         "espiritualidade": 0.0248,
-        "Trabalho Focado (Cal Newport)": 0.0245,
-        "Malcolm X / Nelson Mandela": 0.0241,
+        "Os Sonhos e a Ambição como Sentido da Vida": 0.024,
+        "A Arte da Guerra (Sun Tzu)": 0.0228,
         "psicologia": 0.0224,
-        "A Arte da Guerra (Sun Tzu)": 0.022,
-        "Mais Esperto que o Diabo (Napoleon Hill)": 0.0215,
-        "Os Sonhos e a Ambição como Sentido da Vida": 0.0196,
-        "O Poder do Hábito (Charles Duhigg)": 0.0192,
-        "filosofia": 0.0184,
-        "superacao": 0.016,
+        "Mais Esperto que o Diabo (Napoleon Hill)": 0.0216,
+        "Meditações (Marco Aurélio)": 0.0198,
+        "O Poder do Hábito (Charles Duhigg)": 0.0193,
+        "filosofia": 0.0192,
+        "superacao": 0.0168,
         "conexoes": 0.0136,
         "liberdade": 0.012,
         "proposito": 0.012,
         "Descoberto Automaticamente": 0.0
     },
     "peso_final_formatos": {
-        "reels_leads": 0.2203,
-        "reels_conquistador": 0.2064,
-        "reels_noite": 0.2019,
-        "pexels_story_noite": 0.1612,
-        "pexels_story": 0.1596,
-        "reels": 0.0514
+        "reels_leads": 0.2157,
+        "reels_conquistador": 0.2088,
+        "reels_noite": 0.2007,
+        "pexels_story_noite": 0.1658,
+        "pexels_story": 0.1573,
+        "reels": 0.0525
     },
     "peso_final_estilos": {
-        "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.1123,
-        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.1109,
-        "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.103,
-        "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.1016,
+        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.113,
+        "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.1096,
+        "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.1052,
+        "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.1008,
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.1001,
         "Tom de humor e autoironia: ria com leveza de um padrão humano ridículo que afeta a todos, incluindo você mesmo. Sem apontar o dedo para ninguém (ex: 'A gente faz isso, fica frustrado, jura que não vai repetir, e repete amanhã mesmo.')": 0.0664,
         "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": 0.0488,
@@ -73,8 +73,8 @@
         "Tom de observação humana e postura: linguagem direta e elegante sobre impor limites em silêncio (ex: 'A temporada de dar satisfação pra quem não merece já passou.')": 0.0112
     },
     "ganchos_growth_score": {
-        "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": 0.0491,
-        "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": 0.0304,
+        "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": 0.0502,
+        "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": 0.0306,
         "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.": 0.027,
         "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": 0.0209,
         "AFIRMAÇÃO — Abra com uma verdade impopular e ousada.": 0.018,
@@ -87,68 +87,77 @@
         "CONTRADIÇÃO — Apresente uma verdade que contraria o senso comum. O leitor espera uma coisa e recebe o oposto exato.": 0.022
     },
     "ctas_growth_score": {
-        "salvamento": 0.0292,
-        "compartilhamento": 0.0336,
-        "comentario": 0.0318,
-        "seguir": 0.0265
+        "salvamento": 0.029,
+        "compartilhamento": 0.0345,
+        "comentario": 0.032,
+        "seguir": 0.0268
     },
-    "vibe_da_semana": "Esta semana, o tom deve ser desafiador e provocativo, incentivando a reflexão profunda sobre a vida e as escolhas pessoais. Vamos instigar a audiência a questionar suas crenças e a buscar um propósito mais autêntico, mantendo um sentimento de esperança e empoderamento.",
-    "padroes_campeoes": "Os posts virais têm em comum ganchos que provocam curiosidade e revelam verdades impactantes, geralmente através de afirmações ousadas ou conflitos emocionais. Além disso, utilizam CTAs que incentivam a interação, como comentários e compartilhamentos, criando uma conexão direta com o público.",
+    "vibe_da_semana": "A semana deve ser marcada por uma sensação de autoconfiança e empoderamento. Os posts devem inspirar os seguidores a desafiar suas crenças limitantes e abraçar o seu verdadeiro potencial. O tom deve ser ousado e provocativo, instigando a reflexão e a ação.",
+    "padroes_campeoes": "Os posts virais têm em comum ganchos provocativos que geram curiosidade, como afirmações impactantes e conflitos emocionais. Eles geralmente abrem com uma visão ousada que desafia a norma e terminam com CTAs que incentivam interação ativa, como comentários e compartilhamentos.",
     "temas_prioritarios": [
         "Pertencimento e Laços Afetivos",
         "Princípios (Ray Dalio)",
-        "A Vontade Herdada e a Imortalidade"
+        "Resumo Filosófico (Princípio da Existência)"
     ],
     "ganchos_exclusivos": [
-        "Você realmente acredita que suas escolhas são suas, ou está seguindo um script invisível?",
-        "O que você está disposto a sacrificar para viver a vida que realmente deseja?",
-        "A verdade que pode libertar sua mente e transformar seu destino está mais próxima do que você imagina."
+        "Você realmente acredita que está vivendo a vida que deseja? O que te impede de avançar?",
+        "A escolha mais difícil é muitas vezes a mais necessária. O que você tem evitado confrontar?",
+        "A verdade que você não quer ouvir pode ser a chave para sua liberdade. Está preparado para escutá-la?"
     ],
     "ctas_testear": [
-        "Comente 'DESPERTAR' se você está pronto para mudar sua narrativa.",
-        "Salve este post para lembrar que a verdadeira liberdade vem de dentro."
+        "Comente 'LIBERDADE' se você está pronto para quebrar suas correntes!",
+        "Compartilhe esse post com alguém que precisa ouvir isso hoje!"
     ],
     "ideias_de_narrativa": [
-        "Tema: Pertencimento e Laços Afetivos. Gancho: 'Você realmente acredita que suas escolhas são suas, ou está seguindo um script invisível?' Desenvolvimento: Explore como muitas vezes seguimos expectativas externas, perdendo nossa essência. Conclua com um convite para que os seguidores revejam suas prioridades e se libertem dessas amarras. CTA: 'Comente 'DESPERTAR' se você está pronto para mudar sua narrativa.'",
-        "Tema: Princípios (Ray Dalio). Gancho: 'O que você está disposto a sacrificar para viver a vida que realmente deseja?' Desenvolvimento: Discuta a importância de se manter fiel aos próprios princípios e como isso pode exigir sacrifícios. Encoraje uma reflexão sobre o que é realmente importante na vida. CTA: 'Salve este post para lembrar que a verdadeira liberdade vem de dentro.'"
+        {
+            "tema": "Pertencimento e Laços Afetivos",
+            "gancho": "Você realmente acredita que está vivendo a vida que deseja? O que te impede de avançar?",
+            "desenvolvimento": "Muitas vezes, o que nos paralisam são as expectativas dos outros. É hora de olhar para dentro e desafiar essas normas. Pergunte-se: o que realmente importa para você?",
+            "cta": "Comente 'LIBERDADE' se você está pronto para quebrar suas correntes!"
+        },
+        {
+            "tema": "Princípios (Ray Dalio)",
+            "gancho": "A escolha mais difícil é muitas vezes a mais necessária. O que você tem evitado confrontar?",
+            "desenvolvimento": "Enfrentar verdades desconfortáveis pode ser o primeiro passo para a verdadeira transformação. Não deixe que o medo do desconhecido impeça seu crescimento.",
+            "cta": "Compartilhe esse post com alguém que precisa ouvir isso hoje!"
+        }
     ],
-    "aviso_estrategico": "Evitar conteúdos que não gerem interação e não provoquem reflexão. É crucial focar em ganchos poderosos que criem conflitos internos e desafios, pois esses têm mostrado melhor desempenho.",
-    "posts_que_bombaram": 38,
+    "aviso_estrategico": "Evitar ganchos genéricos e clichês que não geram engajamento. Priorizar a criação de conteúdo que realmente desafie a visão de mundo dos seguidores e que incentive a interação.",
+    "posts_que_bombaram": 40,
     "top_10_consistentes": 10,
-    "contexto_para_gemini": "Esta semana, o foco será em temas que desafiam as normas e incentivam a reflexão sobre pertencimento, princípios e a herança emocional que carregamos. Os posts devem provocar a audiência a questionar suas escolhas e buscar uma vida mais autêntica, utilizando ganchos impactantes e CTAs que incentivam a interação e o compartilhamento. A estratégia é se manter alinhado com a voz firme e provocativa que ressoa com o público, reforçando a ideia de que a verdadeira liberdade e sucesso vêm de dentro.",
+    "contexto_para_gemini": "Nesta semana, o foco deve ser em desafiar as crenças limitantes dos seguidores e incentivar a ação através de conteúdos provocativos e inspiradores. Os temas devem girar em torno de pertencimento, princípios e reflexões filosóficas. Ganchos e CTAs devem ser ousados e instigantes, gerando um alto nível de engajamento e reflexão. A abordagem deve ser de autoconfiança, promovendo um ambiente onde os seguidores sintam que podem assumir o controle de suas vidas e destinos.",
     "analises_raw": {
         "semanal": {
             "periodo_dias": 7,
             "total_posts_analisados": 79,
-            "alcance_medio": 8.89,
+            "alcance_medio": 8.67,
             "saves_medio": 0.0,
             "distribuicao_temas": {
-                "O Conceito de Liberdade Existencial": 0.095,
-                "Princípios (Ray Dalio)": 0.121,
-                "Os Sonhos e a Ambição como Sentido da Vida": 0.054,
-                "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.11,
-                "Essencialismo (Greg McKeown)": 0.078,
-                "A Vontade Herdada e a Imortalidade": 0.072,
-                "Preconceito e os Ciclos de Ódio": 0.08,
-                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.085,
-                "Pertencimento e Laços Afetivos": 0.049,
-                "Trabalho Focado (Cal Newport)": 0.066,
-                "Meditações (Marco Aurélio)": 0.077,
-                "Hábitos Atômicos (James Clear)": 0.113
+                "O Conceito de Liberdade Existencial": 0.097,
+                "Princípios (Ray Dalio)": 0.123,
+                "Os Sonhos e a Ambição como Sentido da Vida": 0.066,
+                "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.112,
+                "A Vontade Herdada e a Imortalidade": 0.071,
+                "Preconceito e os Ciclos de Ódio": 0.081,
+                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.086,
+                "Pertencimento e Laços Afetivos": 0.066,
+                "Trabalho Focado (Cal Newport)": 0.068,
+                "Essencialismo (Greg McKeown)": 0.116,
+                "Hábitos Atômicos (James Clear)": 0.115
             },
             "distribuicao_formatos": {
-                "reels_noite": 0.23,
-                "pexels_story": 0.142,
-                "reels_leads": 0.203,
+                "reels_noite": 0.227,
+                "pexels_story": 0.139,
+                "reels_leads": 0.197,
                 "reels": 0.136,
-                "pexels_story_noite": 0.125,
-                "reels_conquistador": 0.163
+                "pexels_story_noite": 0.128,
+                "reels_conquistador": 0.173
             },
             "distribuicao_estilos": {
-                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.207,
-                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.362,
-                "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.19,
-                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.24
+                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.216,
+                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.343,
+                "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.194,
+                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.247
             },
             "temas_stats": {
                 "O Conceito de Liberdade Existencial": {
@@ -172,14 +181,14 @@
                     "count": 10
                 },
                 "Os Sonhos e a Ambição como Sentido da Vida": {
-                    "growth_score": 0.0245,
-                    "engagement_score": 21.5922,
-                    "ctr_feed": 0.8,
+                    "growth_score": 0.0298,
+                    "engagement_score": 25.612,
+                    "ctr_feed": 0.9131,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 9
+                    "count": 10
                 },
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": {
                     "growth_score": 0.0503,
@@ -191,20 +200,10 @@
                     "conversao_perfil": 0.0,
                     "count": 8
                 },
-                "Essencialismo (Greg McKeown)": {
-                    "growth_score": 0.0358,
-                    "engagement_score": 25.8567,
-                    "ctr_feed": 1.2337,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 6
-                },
                 "A Vontade Herdada e a Imortalidade": {
-                    "growth_score": 0.0327,
-                    "engagement_score": 25.809,
-                    "ctr_feed": 1.0475,
+                    "growth_score": 0.0319,
+                    "engagement_score": 25.148,
+                    "ctr_feed": 1.0308,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -213,8 +212,8 @@
                 },
                 "Preconceito e os Ciclos de Ódio": {
                     "growth_score": 0.0363,
-                    "engagement_score": 28.0078,
-                    "ctr_feed": 1.0367,
+                    "engagement_score": 28.1522,
+                    "ctr_feed": 1.012,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -232,14 +231,14 @@
                     "count": 10
                 },
                 "Pertencimento e Laços Afetivos": {
-                    "growth_score": 0.0224,
-                    "engagement_score": 10.5375,
-                    "ctr_feed": 0.5625,
+                    "growth_score": 0.0295,
+                    "engagement_score": 16.6444,
+                    "ctr_feed": 0.7097,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 4
+                    "count": 9
                 },
                 "Trabalho Focado (Cal Newport)": {
                     "growth_score": 0.0303,
@@ -251,10 +250,10 @@
                     "conversao_perfil": 0.0,
                     "count": 1
                 },
-                "Meditações (Marco Aurélio)": {
-                    "growth_score": 0.0352,
-                    "engagement_score": 25.18,
-                    "ctr_feed": 1.1818,
+                "Essencialismo (Greg McKeown)": {
+                    "growth_score": 0.052,
+                    "engagement_score": 36.75,
+                    "ctr_feed": 1.7143,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -275,8 +274,8 @@
             "formatos_stats": {
                 "reels_noite": {
                     "growth_score": 0.0789,
-                    "engagement_score": 80.5413,
-                    "ctr_feed": 1.6894,
+                    "engagement_score": 80.0725,
+                    "ctr_feed": 1.6935,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -284,9 +283,9 @@
                     "count": 8
                 },
                 "pexels_story": {
-                    "growth_score": 0.0487,
-                    "engagement_score": 0.375,
-                    "ctr_feed": 1.2874,
+                    "growth_score": 0.0485,
+                    "engagement_score": 0.8188,
+                    "ctr_feed": 1.2453,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -294,19 +293,9 @@
                     "count": 8
                 },
                 "reels_leads": {
-                    "growth_score": 0.0696,
-                    "engagement_score": 129.3738,
-                    "ctr_feed": 1.801,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 8
-                },
-                "story_tarde": {
-                    "growth_score": 0.0,
-                    "engagement_score": 0.0,
-                    "ctr_feed": 0.0,
+                    "growth_score": 0.0687,
+                    "engagement_score": 127.55,
+                    "ctr_feed": 1.7028,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -315,7 +304,7 @@
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 0.3812,
+                    "engagement_score": 0.4437,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
@@ -333,10 +322,20 @@
                     "conversao_perfil": 0.0,
                     "count": 8
                 },
+                "story_tarde": {
+                    "growth_score": 0.0,
+                    "engagement_score": 0.0,
+                    "ctr_feed": 0.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 8
+                },
                 "reels": {
-                    "growth_score": 0.0466,
-                    "engagement_score": 47.2238,
-                    "ctr_feed": 1.4501,
+                    "growth_score": 0.0472,
+                    "engagement_score": 47.825,
+                    "ctr_feed": 1.4986,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -344,9 +343,9 @@
                     "count": 16
                 },
                 "pexels_story_noite": {
-                    "growth_score": 0.0429,
-                    "engagement_score": 0.4857,
-                    "ctr_feed": 1.3452,
+                    "growth_score": 0.0447,
+                    "engagement_score": 0.4286,
+                    "ctr_feed": 1.2452,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -354,9 +353,9 @@
                     "count": 7
                 },
                 "reels_conquistador": {
-                    "growth_score": 0.0558,
-                    "engagement_score": 39.6463,
-                    "ctr_feed": 1.5458,
+                    "growth_score": 0.0601,
+                    "engagement_score": 42.85,
+                    "ctr_feed": 1.5235,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -366,51 +365,51 @@
             },
             "estilos_stats": {
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0316,
-                    "engagement_score": 29.6204,
-                    "ctr_feed": 0.9926,
+                    "growth_score": 0.0334,
+                    "engagement_score": 30.2352,
+                    "ctr_feed": 0.9851,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 28
+                    "count": 27
                 },
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0551,
-                    "engagement_score": 54.1983,
-                    "ctr_feed": 1.0983,
+                    "growth_score": 0.053,
+                    "engagement_score": 52.4825,
+                    "ctr_feed": 1.0928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 23
+                    "count": 24
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.029,
-                    "engagement_score": 24.1257,
-                    "ctr_feed": 1.1099,
+                    "growth_score": 0.0299,
+                    "engagement_score": 25.4273,
+                    "ctr_feed": 1.075,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 14
+                    "count": 15
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0366,
-                    "engagement_score": 24.845,
-                    "ctr_feed": 1.0439,
+                    "growth_score": 0.0382,
+                    "engagement_score": 24.98,
+                    "ctr_feed": 1.0051,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 14
+                    "count": 13
                 }
             },
             "ganchos_stats": {
                 "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": {
-                    "growth_score": 0.0393,
-                    "engagement_score": 36.4782,
-                    "ctr_feed": 0.9948,
+                    "growth_score": 0.0395,
+                    "engagement_score": 36.3262,
+                    "ctr_feed": 0.9746,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -419,8 +418,8 @@
                 },
                 "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": {
                     "growth_score": 0.0241,
-                    "engagement_score": 23.2418,
-                    "ctr_feed": 1.0139,
+                    "engagement_score": 23.61,
+                    "ctr_feed": 1.0318,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -428,9 +427,9 @@
                     "count": 11
                 },
                 "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": {
-                    "growth_score": 0.0558,
-                    "engagement_score": 39.6463,
-                    "ctr_feed": 1.5458,
+                    "growth_score": 0.0601,
+                    "engagement_score": 42.85,
+                    "ctr_feed": 1.5235,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -440,29 +439,29 @@
             },
             "ctas_stats": {
                 "comentario": {
-                    "growth_score": 0.0444,
-                    "engagement_score": 47.5476,
-                    "ctr_feed": 1.0897,
+                    "growth_score": 0.0429,
+                    "engagement_score": 45.5141,
+                    "ctr_feed": 0.9934,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 21
+                    "count": 22
                 },
                 "seguir": {
-                    "growth_score": 0.0289,
-                    "engagement_score": 23.3489,
-                    "ctr_feed": 0.9424,
+                    "growth_score": 0.0305,
+                    "engagement_score": 24.5133,
+                    "ctr_feed": 1.0095,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 19
+                    "count": 18
                 },
                 "salvamento": {
-                    "growth_score": 0.0379,
-                    "engagement_score": 35.41,
-                    "ctr_feed": 1.109,
+                    "growth_score": 0.0375,
+                    "engagement_score": 34.4916,
+                    "ctr_feed": 1.055,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -470,9 +469,9 @@
                     "count": 19
                 },
                 "compartilhamento": {
-                    "growth_score": 0.0434,
-                    "engagement_score": 32.33,
-                    "ctr_feed": 1.0673,
+                    "growth_score": 0.0455,
+                    "engagement_score": 34.2095,
+                    "ctr_feed": 1.0972,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -482,34 +481,24 @@
             },
             "imagens_stats": {
                 "Minimalista": {
-                    "growth_score": 0.0378,
-                    "engagement_score": 34.9512,
-                    "ctr_feed": 1.0477,
+                    "growth_score": 0.038,
+                    "engagement_score": 35.2473,
+                    "ctr_feed": 1.0525,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 51
+                    "count": 52
                 },
                 "B-roll": {
-                    "growth_score": 0.0598,
-                    "engagement_score": 46.2888,
-                    "ctr_feed": 1.2939,
+                    "growth_score": 0.0592,
+                    "engagement_score": 43.6981,
+                    "ctr_feed": 1.1377,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 16
-                },
-                "Dark Luxury Cinematic": {
-                    "growth_score": 0.0,
-                    "engagement_score": 0.0,
-                    "ctr_feed": 0.0,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 2
                 },
                 "Texto Dinâmico": {
                     "growth_score": 0.0416,
@@ -520,6 +509,16 @@
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
                     "count": 2
+                },
+                "Dark Luxury Cinematic": {
+                    "growth_score": 0.0,
+                    "engagement_score": 0.0,
+                    "ctr_feed": 0.0,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 1
                 },
                 "Minimalista de Alto Impacto": {
                     "growth_score": 0.0,
@@ -542,9 +541,9 @@
                     "count": 1
                 },
                 "Cinematográfico de Luxo": {
-                    "growth_score": 0.0145,
-                    "engagement_score": 27.21,
-                    "ctr_feed": 1.375,
+                    "growth_score": 0.0196,
+                    "engagement_score": 36.72,
+                    "ctr_feed": 1.5556,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -582,9 +581,9 @@
                     "count": 1
                 },
                 "Cinematográfico / Luxo": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -594,24 +593,14 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0429,
-                    "engagement_score": 38.8897,
-                    "ctr_feed": 1.1538,
+                    "growth_score": 0.043,
+                    "engagement_score": 38.6351,
+                    "ctr_feed": 1.1212,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 71
-                },
-                "Minimalista": {
-                    "growth_score": 0.0,
-                    "engagement_score": 0.0,
-                    "ctr_feed": 0.0,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 1
+                    "count": 72
                 },
                 "Lofi": {
                     "growth_score": 0.0079,
@@ -656,51 +645,51 @@
             },
             "tons_stats": {
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0316,
-                    "engagement_score": 29.6204,
-                    "ctr_feed": 0.9926,
+                    "growth_score": 0.0334,
+                    "engagement_score": 30.2352,
+                    "ctr_feed": 0.9851,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 28
+                    "count": 27
                 },
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0551,
-                    "engagement_score": 54.1983,
-                    "ctr_feed": 1.0983,
+                    "growth_score": 0.053,
+                    "engagement_score": 52.4825,
+                    "ctr_feed": 1.0928,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 23
+                    "count": 24
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.029,
-                    "engagement_score": 24.1257,
-                    "ctr_feed": 1.1099,
+                    "growth_score": 0.0299,
+                    "engagement_score": 25.4273,
+                    "ctr_feed": 1.075,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 14
+                    "count": 15
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0366,
-                    "engagement_score": 24.845,
-                    "ctr_feed": 1.0439,
+                    "growth_score": 0.0382,
+                    "engagement_score": 24.98,
+                    "ctr_feed": 1.0051,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 14
+                    "count": 13
                 }
             },
             "estruturas_stats": {
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0331,
-                    "engagement_score": 31.0755,
-                    "ctr_feed": 1.0404,
+                    "growth_score": 0.0352,
+                    "engagement_score": 28.5535,
+                    "ctr_feed": 1.0077,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -708,9 +697,9 @@
                     "count": 20
                 },
                 "Problema-Solução": {
-                    "growth_score": 0.0392,
-                    "engagement_score": 35.6784,
-                    "ctr_feed": 0.962,
+                    "growth_score": 0.0385,
+                    "engagement_score": 36.6389,
+                    "ctr_feed": 0.9577,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -728,9 +717,9 @@
                     "count": 1
                 },
                 "Storytelling": {
-                    "growth_score": 0.0519,
-                    "engagement_score": 37.6163,
-                    "ctr_feed": 1.5306,
+                    "growth_score": 0.0563,
+                    "engagement_score": 40.82,
+                    "ctr_feed": 1.5083,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -778,9 +767,9 @@
                     "count": 1
                 },
                 "Quebra de Expectativa": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -790,9 +779,9 @@
             },
             "complexidades_stats": {
                 "Média": {
-                    "growth_score": 0.0389,
-                    "engagement_score": 36.0566,
-                    "ctr_feed": 1.0368,
+                    "growth_score": 0.0391,
+                    "engagement_score": 35.839,
+                    "ctr_feed": 1.019,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -800,9 +789,9 @@
                     "count": 67
                 },
                 "Alta": {
-                    "growth_score": 0.0384,
-                    "engagement_score": 28.8108,
-                    "ctr_feed": 1.1451,
+                    "growth_score": 0.0417,
+                    "engagement_score": 31.7392,
+                    "ctr_feed": 1.1453,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -814,46 +803,46 @@
         },
         "mensal": {
             "periodo_dias": 30,
-            "total_posts_analisados": 311,
-            "alcance_medio": 19.23,
+            "total_posts_analisados": 306,
+            "alcance_medio": 18.3,
             "saves_medio": 0.02,
             "distribuicao_temas": {
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.031,
                 "Provérbios de Salomão": 0.034,
                 "O Conceito de Liberdade Existencial": 0.03,
-                "Trabalho Focado (Cal Newport)": 0.024,
-                "Os Sonhos e a Ambição como Sentido da Vida": 0.017,
-                "Princípios (Ray Dalio)": 0.048,
-                "Malcolm X / Nelson Mandela": 0.038,
+                "Os Sonhos e a Ambição como Sentido da Vida": 0.02,
+                "Princípios (Ray Dalio)": 0.049,
+                "Malcolm X / Nelson Mandela": 0.039,
                 "A Arte da Guerra (Sun Tzu)": 0.028,
-                "Hábitos Atômicos (James Clear)": 0.027,
-                "Essencialismo (Greg McKeown)": 0.026,
+                "Hábitos Atômicos (James Clear)": 0.029,
+                "Essencialismo (Greg McKeown)": 0.028,
+                "Trabalho Focado (Cal Newport)": 0.031,
                 "Marianne Williamson": 0.046,
                 "Os Segredos da Mente Milionária (T. Harv Eker)": 0.029,
                 "A Vontade Herdada e a Imortalidade": 0.026,
-                "O Poder do Hábito (Charles Duhigg)": 0.037,
+                "O Poder do Hábito (Charles Duhigg)": 0.038,
                 "Preconceito e os Ciclos de Ódio": 0.038,
-                "Pertencimento e Laços Afetivos": 0.086,
+                "Pertencimento e Laços Afetivos": 0.069,
                 "Meditações (Marco Aurélio)": 0.029,
-                "O Poder da Ação (Paulo Vieira)": 0.057,
-                "Mais Esperto que o Diabo (Napoleon Hill)": 0.036,
+                "O Poder da Ação (Paulo Vieira)": 0.058,
+                "Mais Esperto que o Diabo (Napoleon Hill)": 0.037,
                 "Pai Rico, Pai Pobre (Robert Kiyosaki)": 0.037,
-                "Blink (Malcolm Gladwell)": 0.107,
-                "Resumo Filosófico (Princípio da Existência)": 0.168
+                "Blink (Malcolm Gladwell)": 0.108,
+                "Resumo Filosófico (Princípio da Existência)": 0.169
             },
             "distribuicao_formatos": {
-                "reels_conquistador": 0.226,
-                "reels_noite": 0.223,
-                "reels": 0.07,
-                "pexels_story": 0.142,
-                "reels_leads": 0.225,
-                "pexels_story_noite": 0.114
+                "reels_conquistador": 0.227,
+                "reels_noite": 0.222,
+                "reels": 0.072,
+                "pexels_story": 0.138,
+                "reels_leads": 0.218,
+                "pexels_story_noite": 0.123
             },
             "distribuicao_estilos": {
-                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.238,
-                "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.237,
-                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.262,
-                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.263
+                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.234,
+                "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.235,
+                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.267,
+                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.264
             },
             "temas_stats": {
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": {
@@ -888,33 +877,23 @@
                 },
                 "Descoberto Automaticamente": {
                     "growth_score": 0.0,
-                    "engagement_score": 34.8379,
-                    "ctr_feed": 1.2962,
+                    "engagement_score": 34.9825,
+                    "ctr_feed": 1.3014,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 66
-                },
-                "Trabalho Focado (Cal Newport)": {
-                    "growth_score": 0.0235,
-                    "engagement_score": 20.928,
-                    "ctr_feed": 0.899,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 15
+                    "count": 61
                 },
                 "Os Sonhos e a Ambição como Sentido da Vida": {
-                    "growth_score": 0.0169,
-                    "engagement_score": 20.4233,
-                    "ctr_feed": 0.8362,
+                    "growth_score": 0.0201,
+                    "engagement_score": 22.6005,
+                    "ctr_feed": 0.8938,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 18
+                    "count": 19
                 },
                 "Princípios (Ray Dalio)": {
                     "growth_score": 0.0478,
@@ -947,9 +926,9 @@
                     "count": 10
                 },
                 "Hábitos Atômicos (James Clear)": {
-                    "growth_score": 0.0271,
-                    "engagement_score": 15.052,
-                    "ctr_feed": 0.999,
+                    "growth_score": 0.0285,
+                    "engagement_score": 16.537,
+                    "ctr_feed": 0.9955,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -957,14 +936,24 @@
                     "count": 10
                 },
                 "Essencialismo (Greg McKeown)": {
-                    "growth_score": 0.026,
-                    "engagement_score": 24.8254,
-                    "ctr_feed": 1.0388,
+                    "growth_score": 0.0272,
+                    "engagement_score": 23.6375,
+                    "ctr_feed": 0.9912,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 13
+                    "count": 12
+                },
+                "Trabalho Focado (Cal Newport)": {
+                    "growth_score": 0.0302,
+                    "engagement_score": 20.166,
+                    "ctr_feed": 0.9108,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 10
                 },
                 "Marianne Williamson": {
                     "growth_score": 0.0454,
@@ -987,9 +976,9 @@
                     "count": 19
                 },
                 "A Vontade Herdada e a Imortalidade": {
-                    "growth_score": 0.0257,
-                    "engagement_score": 24.9794,
-                    "ctr_feed": 0.9612,
+                    "growth_score": 0.0252,
+                    "engagement_score": 24.5663,
+                    "ctr_feed": 0.9508,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1008,8 +997,8 @@
                 },
                 "Preconceito e os Ciclos de Ódio": {
                     "growth_score": 0.0373,
-                    "engagement_score": 60.6111,
-                    "ctr_feed": 1.0129,
+                    "engagement_score": 60.6833,
+                    "ctr_feed": 1.0005,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1017,14 +1006,14 @@
                     "count": 18
                 },
                 "Pertencimento e Laços Afetivos": {
-                    "growth_score": 0.0846,
-                    "engagement_score": 76.789,
-                    "ctr_feed": 0.7175,
+                    "growth_score": 0.0681,
+                    "engagement_score": 58.3693,
+                    "ctr_feed": 0.7542,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 10
+                    "count": 15
                 },
                 "Meditações (Marco Aurélio)": {
                     "growth_score": 0.0283,
@@ -1089,9 +1078,9 @@
             },
             "formatos_stats": {
                 "reels_conquistador": {
-                    "growth_score": 0.0631,
-                    "engagement_score": 53.4685,
-                    "ctr_feed": 1.3936,
+                    "growth_score": 0.0652,
+                    "engagement_score": 53.8489,
+                    "ctr_feed": 1.3891,
                     "taxa_salvamento": 0.0019,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
@@ -1099,9 +1088,9 @@
                     "count": 27
                 },
                 "reels_noite": {
-                    "growth_score": 0.0623,
-                    "engagement_score": 87.8523,
-                    "ctr_feed": 1.4812,
+                    "growth_score": 0.0636,
+                    "engagement_score": 88.635,
+                    "ctr_feed": 1.481,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1109,14 +1098,34 @@
                     "count": 26
                 },
                 "reels": {
-                    "growth_score": 0.0194,
-                    "engagement_score": 42.5364,
-                    "ctr_feed": 1.3466,
+                    "growth_score": 0.0207,
+                    "engagement_score": 43.0624,
+                    "ctr_feed": 1.3584,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 116
+                    "count": 111
+                },
+                "pexels_story": {
+                    "growth_score": 0.0395,
+                    "engagement_score": 1.1409,
+                    "ctr_feed": 1.2113,
+                    "taxa_salvamento": 0.0016,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 22
+                },
+                "reels_leads": {
+                    "growth_score": 0.0625,
+                    "engagement_score": 88.8403,
+                    "ctr_feed": 1.4811,
+                    "taxa_salvamento": 0.0,
+                    "taxa_compartilhamento": 0.0,
+                    "taxa_visita_perfil": 0.0,
+                    "conversao_perfil": 0.0,
+                    "count": 32
                 },
                 "story_tarde": {
                     "growth_score": 0.0,
@@ -1128,29 +1137,9 @@
                     "conversao_perfil": 0.0,
                     "count": 23
                 },
-                "pexels_story": {
-                    "growth_score": 0.0396,
-                    "engagement_score": 0.9795,
-                    "ctr_feed": 1.2266,
-                    "taxa_salvamento": 0.0016,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 22
-                },
-                "reels_leads": {
-                    "growth_score": 0.0627,
-                    "engagement_score": 89.3375,
-                    "ctr_feed": 1.4837,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 32
-                },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 1.0548,
+                    "engagement_score": 1.0786,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
@@ -1179,9 +1168,9 @@
                     "count": 1
                 },
                 "pexels_story_noite": {
-                    "growth_score": 0.0319,
-                    "engagement_score": 1.085,
-                    "ctr_feed": 1.1647,
+                    "growth_score": 0.0354,
+                    "engagement_score": 0.975,
+                    "ctr_feed": 1.1375,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1191,9 +1180,9 @@
             },
             "estilos_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0353,
-                    "engagement_score": 37.25,
-                    "ctr_feed": 0.9189,
+                    "growth_score": 0.0354,
+                    "engagement_score": 37.46,
+                    "ctr_feed": 0.9345,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1201,9 +1190,9 @@
                     "count": 62
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0352,
-                    "engagement_score": 39.3282,
-                    "ctr_feed": 1.1055,
+                    "growth_score": 0.0356,
+                    "engagement_score": 39.6428,
+                    "ctr_feed": 1.0791,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
@@ -1211,31 +1200,31 @@
                     "count": 61
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0389,
-                    "engagement_score": 37.9345,
-                    "ctr_feed": 1.0045,
+                    "growth_score": 0.0405,
+                    "engagement_score": 38.2421,
+                    "ctr_feed": 1.0094,
                     "taxa_salvamento": 0.0008,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 75
+                    "count": 73
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.039,
-                    "engagement_score": 36.8791,
-                    "ctr_feed": 0.9534,
+                    "growth_score": 0.04,
+                    "engagement_score": 36.3708,
+                    "ctr_feed": 0.9541,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 47
+                    "count": 49
                 }
             },
             "ganchos_stats": {
                 "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": {
-                    "growth_score": 0.0631,
-                    "engagement_score": 53.4685,
-                    "ctr_feed": 1.3936,
+                    "growth_score": 0.0652,
+                    "engagement_score": 53.8489,
+                    "ctr_feed": 1.3891,
                     "taxa_salvamento": 0.0019,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
@@ -1243,9 +1232,9 @@
                     "count": 27
                 },
                 "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": {
-                    "growth_score": 0.0357,
-                    "engagement_score": 38.2225,
-                    "ctr_feed": 0.9414,
+                    "growth_score": 0.0364,
+                    "engagement_score": 38.2945,
+                    "ctr_feed": 0.9392,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1254,8 +1243,8 @@
                 },
                 "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": {
                     "growth_score": 0.0238,
-                    "engagement_score": 23.3973,
-                    "ctr_feed": 0.9927,
+                    "engagement_score": 23.52,
+                    "ctr_feed": 0.9987,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1265,19 +1254,19 @@
             },
             "ctas_stats": {
                 "salvamento": {
-                    "growth_score": 0.0384,
-                    "engagement_score": 43.2015,
-                    "ctr_feed": 0.9548,
+                    "growth_score": 0.0383,
+                    "engagement_score": 42.7821,
+                    "ctr_feed": 0.9516,
                     "taxa_salvamento": 0.0008,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 66
+                    "count": 67
                 },
                 "compartilhamento": {
-                    "growth_score": 0.0416,
-                    "engagement_score": 38.6803,
-                    "ctr_feed": 1.0938,
+                    "growth_score": 0.043,
+                    "engagement_score": 39.9569,
+                    "ctr_feed": 1.1057,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1285,9 +1274,9 @@
                     "count": 59
                 },
                 "comentario": {
-                    "growth_score": 0.0376,
-                    "engagement_score": 38.7577,
-                    "ctr_feed": 0.9756,
+                    "growth_score": 0.0388,
+                    "engagement_score": 38.4537,
+                    "ctr_feed": 0.9598,
                     "taxa_salvamento": 0.0001,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
@@ -1295,14 +1284,14 @@
                     "count": 62
                 },
                 "seguir": {
-                    "growth_score": 0.0305,
-                    "engagement_score": 30.1812,
-                    "ctr_feed": 0.9743,
+                    "growth_score": 0.0311,
+                    "engagement_score": 29.94,
+                    "ctr_feed": 0.9772,
                     "taxa_salvamento": 0.001,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 58
+                    "count": 57
                 }
             },
             "imagens_stats": {
@@ -1327,19 +1316,19 @@
                     "count": 1
                 },
                 "Minimalista": {
-                    "growth_score": 0.0381,
-                    "engagement_score": 35.4516,
-                    "ctr_feed": 1.0135,
+                    "growth_score": 0.0385,
+                    "engagement_score": 35.7978,
+                    "ctr_feed": 1.0174,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 113
+                    "count": 116
                 },
                 "B-roll": {
-                    "growth_score": 0.0368,
-                    "engagement_score": 23.1161,
-                    "ctr_feed": 0.9812,
+                    "growth_score": 0.0381,
+                    "engagement_score": 23.0768,
+                    "ctr_feed": 0.9715,
                     "taxa_salvamento": 0.0009,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1367,14 +1356,14 @@
                     "count": 1
                 },
                 "Texto Dinâmico": {
-                    "growth_score": 0.0386,
-                    "engagement_score": 82.3937,
-                    "ctr_feed": 1.1823,
+                    "growth_score": 0.04,
+                    "engagement_score": 84.4472,
+                    "ctr_feed": 1.1876,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 19
+                    "count": 18
                 },
                 "Minimalista com Texto Focado": {
                     "growth_score": 0.0,
@@ -1457,14 +1446,14 @@
                     "count": 1
                 },
                 "Cores Quentes": {
-                    "growth_score": 0.057,
-                    "engagement_score": 53.016,
-                    "ctr_feed": 1.2565,
+                    "growth_score": 0.0665,
+                    "engagement_score": 55.6775,
+                    "ctr_feed": 1.2964,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 5
+                    "count": 4
                 },
                 "Palco e Liderança": {
                     "growth_score": 0.014,
@@ -1547,9 +1536,9 @@
                     "count": 1
                 },
                 "Cinematográfico de Luxo": {
-                    "growth_score": 0.0211,
-                    "engagement_score": 39.445,
-                    "ctr_feed": 1.6161,
+                    "growth_score": 0.0236,
+                    "engagement_score": 44.2,
+                    "ctr_feed": 1.7063,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1570,16 +1559,6 @@
                     "growth_score": 0.0,
                     "engagement_score": 0.0,
                     "ctr_feed": 0.0,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 1
-                },
-                "Estética Noturna Urbana": {
-                    "growth_score": 0.0138,
-                    "engagement_score": 40.54,
-                    "ctr_feed": 1.125,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1717,9 +1696,9 @@
                     "count": 1
                 },
                 "Cinematográfico / Luxo": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -1749,14 +1728,14 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0385,
-                    "engagement_score": 35.8616,
-                    "ctr_feed": 1.0788,
+                    "growth_score": 0.0394,
+                    "engagement_score": 35.9576,
+                    "ctr_feed": 1.0774,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 181
+                    "count": 182
                 },
                 "Neoclássica": {
                     "growth_score": 0.0456,
@@ -1869,9 +1848,9 @@
                     "count": 7
                 },
                 "Phonk": {
-                    "growth_score": 0.0084,
-                    "engagement_score": 17.09,
-                    "ctr_feed": 0.7835,
+                    "growth_score": 0.0133,
+                    "engagement_score": 22.04,
+                    "ctr_feed": 0.7716,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2048,16 +2027,6 @@
                     "conversao_perfil": 0.0,
                     "count": 1
                 },
-                "Ambiental Introspectivo": {
-                    "growth_score": 0.0138,
-                    "engagement_score": 40.54,
-                    "ctr_feed": 1.125,
-                    "taxa_salvamento": 0.0,
-                    "taxa_compartilhamento": 0.0,
-                    "taxa_visita_perfil": 0.0,
-                    "conversao_perfil": 0.0,
-                    "count": 1
-                },
                 "Inspirador e Confiante": {
                     "growth_score": 0.0788,
                     "engagement_score": 87.35,
@@ -2151,9 +2120,9 @@
             },
             "tons_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0353,
-                    "engagement_score": 37.25,
-                    "ctr_feed": 0.9189,
+                    "growth_score": 0.0354,
+                    "engagement_score": 37.46,
+                    "ctr_feed": 0.9345,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2161,9 +2130,9 @@
                     "count": 62
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0352,
-                    "engagement_score": 39.3282,
-                    "ctr_feed": 1.1055,
+                    "growth_score": 0.0356,
+                    "engagement_score": 39.6428,
+                    "ctr_feed": 1.0791,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
@@ -2171,36 +2140,36 @@
                     "count": 61
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0389,
-                    "engagement_score": 37.9345,
-                    "ctr_feed": 1.0045,
+                    "growth_score": 0.0405,
+                    "engagement_score": 38.2421,
+                    "ctr_feed": 1.0094,
                     "taxa_salvamento": 0.0008,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 75
+                    "count": 73
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.039,
-                    "engagement_score": 36.8791,
-                    "ctr_feed": 0.9534,
+                    "growth_score": 0.04,
+                    "engagement_score": 36.3708,
+                    "ctr_feed": 0.9541,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 47
+                    "count": 49
                 }
             },
             "estruturas_stats": {
                 "Manifesto de Identidade": {
                     "growth_score": 0.014,
-                    "engagement_score": 40.4925,
-                    "ctr_feed": 1.1177,
-                    "taxa_salvamento": 0.0011,
-                    "taxa_compartilhamento": 0.0011,
+                    "engagement_score": 40.4767,
+                    "ctr_feed": 1.1152,
+                    "taxa_salvamento": 0.0015,
+                    "taxa_compartilhamento": 0.0015,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 4
+                    "count": 3
                 },
                 "Manifesto": {
                     "growth_score": 0.0273,
@@ -2213,9 +2182,9 @@
                     "count": 5
                 },
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0304,
-                    "engagement_score": 32.6773,
-                    "ctr_feed": 1.0062,
+                    "growth_score": 0.0316,
+                    "engagement_score": 31.4244,
+                    "ctr_feed": 1.0072,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2223,19 +2192,19 @@
                     "count": 52
                 },
                 "Problema-Solução": {
-                    "growth_score": 0.0319,
-                    "engagement_score": 28.7591,
-                    "ctr_feed": 0.913,
+                    "growth_score": 0.0322,
+                    "engagement_score": 29.1376,
+                    "ctr_feed": 0.915,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 123
+                    "count": 125
                 },
                 "Storytelling": {
-                    "growth_score": 0.0692,
-                    "engagement_score": 52.3445,
-                    "ctr_feed": 1.3834,
+                    "growth_score": 0.0721,
+                    "engagement_score": 54.77,
+                    "ctr_feed": 1.3814,
                     "taxa_salvamento": 0.0023,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2283,14 +2252,14 @@
                     "count": 1
                 },
                 "Confronto de Autoridade": {
-                    "growth_score": 0.0544,
-                    "engagement_score": 46.1433,
-                    "ctr_feed": 1.3481,
+                    "growth_score": 0.0641,
+                    "engagement_score": 50.94,
+                    "ctr_feed": 1.3876,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 6
+                    "count": 5
                 },
                 "Quebra de Crença": {
                     "growth_score": 0.0117,
@@ -2483,9 +2452,9 @@
                     "count": 1
                 },
                 "Quebra de Expectativa": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2515,32 +2484,32 @@
             },
             "complexidades_stats": {
                 "Alta": {
-                    "growth_score": 0.0367,
-                    "engagement_score": 36.5366,
-                    "ctr_feed": 1.0361,
-                    "taxa_salvamento": 0.0009,
+                    "growth_score": 0.0391,
+                    "engagement_score": 37.8752,
+                    "ctr_feed": 1.0531,
+                    "taxa_salvamento": 0.001,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 64
+                    "count": 61
                 },
                 "Média": {
-                    "growth_score": 0.0374,
-                    "engagement_score": 38.6033,
-                    "ctr_feed": 0.9902,
+                    "growth_score": 0.0377,
+                    "engagement_score": 38.2742,
+                    "ctr_feed": 0.9834,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 180
+                    "count": 183
                 }
             },
             "icc_por_tema": {}
         },
         "trimestral": {
             "periodo_dias": 90,
-            "total_posts_analisados": 713,
-            "alcance_medio": 44.46,
+            "total_posts_analisados": 719,
+            "alcance_medio": 44.26,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.031,
@@ -2548,53 +2517,53 @@
                 "Provérbios de Salomão": 0.03,
                 "O Conceito de Liberdade Existencial": 0.03,
                 "Trabalho Focado (Cal Newport)": 0.021,
-                "Os Sonhos e a Ambição como Sentido da Vida": 0.017,
-                "Princípios (Ray Dalio)": 0.049,
-                "Malcolm X / Nelson Mandela": 0.024,
+                "Os Sonhos e a Ambição como Sentido da Vida": 0.021,
+                "Princípios (Ray Dalio)": 0.05,
+                "Malcolm X / Nelson Mandela": 0.025,
                 "espiritualidade": 0.031,
                 "Pai Rico, Pai Pobre (Robert Kiyosaki)": 0.026,
                 "O Poder do Hábito (Charles Duhigg)": 0.018,
-                "Marianne Williamson": 0.03,
-                "A Arte da Guerra (Sun Tzu)": 0.023,
-                "Hábitos Atômicos (James Clear)": 0.02,
+                "Marianne Williamson": 0.031,
+                "A Arte da Guerra (Sun Tzu)": 0.024,
+                "Hábitos Atômicos (James Clear)": 0.021,
                 "Essencialismo (Greg McKeown)": 0.027,
                 "liberdade": 0.015,
                 "Blink (Malcolm Gladwell)": 0.041,
-                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.029,
+                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.03,
                 "A Vontade Herdada e a Imortalidade": 0.026,
                 "proposito": 0.015,
                 "O Poder da Ação (Paulo Vieira)": 0.035,
-                "Preconceito e os Ciclos de Ódio": 0.038,
-                "Pertencimento e Laços Afetivos": 0.087,
+                "Preconceito e os Ciclos de Ódio": 0.039,
+                "Pertencimento e Laços Afetivos": 0.071,
                 "Meditações (Marco Aurélio)": 0.02,
                 "psicologia": 0.028,
-                "financas": 0.036,
-                "superacao": 0.02,
+                "financas": 0.037,
+                "superacao": 0.021,
                 "conexoes": 0.017,
                 "Mais Esperto que o Diabo (Napoleon Hill)": 0.021,
-                "Resumo Filosófico (Princípio da Existência)": 0.17,
-                "filosofia": 0.023
+                "Resumo Filosófico (Princípio da Existência)": 0.173,
+                "filosofia": 0.024
             },
             "distribuicao_formatos": {
-                "reels_conquistador": 0.207,
-                "reels": 0.041,
-                "reels_noite": 0.196,
-                "pexels_story": 0.164,
-                "reels_leads": 0.221,
-                "pexels_story_noite": 0.172
+                "reels_conquistador": 0.209,
+                "reels": 0.042,
+                "reels_noite": 0.195,
+                "pexels_story": 0.162,
+                "reels_leads": 0.217,
+                "pexels_story_noite": 0.176
             },
             "distribuicao_estilos": {
-                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.07,
+                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.069,
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.07,
-                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.078,
+                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.079,
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": 0.061,
-                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.065,
+                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.067,
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.018,
                 "Tom de lealdade e princípios: exaltar a honra, o respeito e o valor de quem permanece de verdade (ex: 'Valiosas são as pessoas que te dão coisas caras: tempo, lealdade e respeito.')": 0.017,
                 "Tom de storytelling puro: narre uma cena real e específica com personagem, ambiente e tensão. Não entregue a moral explicitamente — deixe o leitor tirar sua própria conclusão (ex: 'Às 22h ele olhou para o celular, para a janela, para o teto. Escolheu o celular.')": 0.057,
                 "Tom de observação humana e postura: linguagem direta e elegante sobre impor limites em silêncio (ex: 'A temporada de dar satisfação pra quem não merece já passou.')": 0.014,
                 "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.038,
-                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.127,
+                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.126,
                 "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.036,
                 "Tom de conselho sereno como ordem: instrução curta e inegociável para a vida (ex: 'Delete os contatos de quem só te procura quando precisa. Pousa esse peso.')": 0.055,
                 "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.025,
@@ -2656,14 +2625,14 @@
                     "count": 18
                 },
                 "Os Sonhos e a Ambição como Sentido da Vida": {
-                    "growth_score": 0.0169,
-                    "engagement_score": 20.4233,
-                    "ctr_feed": 0.8362,
+                    "growth_score": 0.0201,
+                    "engagement_score": 22.6005,
+                    "ctr_feed": 0.8938,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 18
+                    "count": 19
                 },
                 "Princípios (Ray Dalio)": {
                     "growth_score": 0.0478,
@@ -2736,9 +2705,9 @@
                     "count": 23
                 },
                 "Hábitos Atômicos (James Clear)": {
-                    "growth_score": 0.0198,
-                    "engagement_score": 17.1905,
-                    "ctr_feed": 0.945,
+                    "growth_score": 0.0206,
+                    "engagement_score": 17.9721,
+                    "ctr_feed": 0.9431,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2746,9 +2715,9 @@
                     "count": 19
                 },
                 "Essencialismo (Greg McKeown)": {
-                    "growth_score": 0.026,
-                    "engagement_score": 24.8254,
-                    "ctr_feed": 1.0388,
+                    "growth_score": 0.0262,
+                    "engagement_score": 24.9377,
+                    "ctr_feed": 1.0015,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2786,9 +2755,9 @@
                     "count": 19
                 },
                 "A Vontade Herdada e a Imortalidade": {
-                    "growth_score": 0.0257,
-                    "engagement_score": 24.9794,
-                    "ctr_feed": 0.9612,
+                    "growth_score": 0.0252,
+                    "engagement_score": 24.5663,
+                    "ctr_feed": 0.9508,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2817,8 +2786,8 @@
                 },
                 "Preconceito e os Ciclos de Ódio": {
                     "growth_score": 0.0373,
-                    "engagement_score": 60.6111,
-                    "ctr_feed": 1.0129,
+                    "engagement_score": 60.6833,
+                    "ctr_feed": 1.0005,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -2826,14 +2795,14 @@
                     "count": 18
                 },
                 "Pertencimento e Laços Afetivos": {
-                    "growth_score": 0.0846,
-                    "engagement_score": 76.789,
-                    "ctr_feed": 0.7175,
+                    "growth_score": 0.0681,
+                    "engagement_score": 58.3693,
+                    "ctr_feed": 0.7542,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 10
+                    "count": 15
                 },
                 "Meditações (Marco Aurélio)": {
                     "growth_score": 0.0197,
@@ -2918,34 +2887,34 @@
             },
             "formatos_stats": {
                 "reels_conquistador": {
-                    "growth_score": 0.0416,
-                    "engagement_score": 49.8653,
-                    "ctr_feed": 1.2636,
+                    "growth_score": 0.0422,
+                    "engagement_score": 49.8842,
+                    "ctr_feed": 1.2584,
                     "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "reels": {
-                    "growth_score": 0.0083,
-                    "engagement_score": 52.4124,
-                    "ctr_feed": 1.2552,
+                    "growth_score": 0.0084,
+                    "engagement_score": 52.4239,
+                    "ctr_feed": 1.2568,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 355
+                    "count": 356
                 },
                 "reels_noite": {
-                    "growth_score": 0.0393,
-                    "engagement_score": 67.5033,
-                    "ctr_feed": 1.3091,
+                    "growth_score": 0.0394,
+                    "engagement_score": 67.0034,
+                    "ctr_feed": 1.3058,
                     "taxa_salvamento": 0.0001,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "story_tarde": {
                     "growth_score": 0.0,
@@ -2955,12 +2924,12 @@
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 33
+                    "count": 34
                 },
                 "pexels_story": {
-                    "growth_score": 0.0329,
-                    "engagement_score": 5.333,
-                    "ctr_feed": 1.1575,
+                    "growth_score": 0.0328,
+                    "engagement_score": 5.4136,
+                    "ctr_feed": 1.1498,
                     "taxa_salvamento": 0.0011,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
@@ -2968,14 +2937,14 @@
                     "count": 44
                 },
                 "reels_leads": {
-                    "growth_score": 0.0443,
-                    "engagement_score": 73.1488,
-                    "ctr_feed": 1.314,
+                    "growth_score": 0.0438,
+                    "engagement_score": 72.4414,
+                    "ctr_feed": 1.3094,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 65
+                    "count": 66
                 },
                 "story_manha": {
                     "growth_score": 0.0,
@@ -2989,7 +2958,7 @@
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 1.079,
+                    "engagement_score": 1.0952,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
@@ -2998,14 +2967,14 @@
                     "count": 31
                 },
                 "pexels_story_noite": {
-                    "growth_score": 0.0345,
-                    "engagement_score": 5.572,
-                    "ctr_feed": 1.1557,
+                    "growth_score": 0.0356,
+                    "engagement_score": 5.4417,
+                    "ctr_feed": 1.1401,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "story": {
                     "growth_score": 0.0,
@@ -3020,34 +2989,34 @@
             },
             "estilos_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -3060,14 +3029,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -3212,24 +3181,24 @@
             },
             "ganchos_stats": {
                 "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": {
-                    "growth_score": 0.0463,
-                    "engagement_score": 49.338,
-                    "ctr_feed": 1.2907,
-                    "taxa_salvamento": 0.0014,
+                    "growth_score": 0.0469,
+                    "engagement_score": 49.3731,
+                    "ctr_feed": 1.2838,
+                    "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": {
-                    "growth_score": 0.0288,
-                    "engagement_score": 34.6045,
-                    "ctr_feed": 0.9145,
+                    "growth_score": 0.0289,
+                    "engagement_score": 34.4392,
+                    "ctr_feed": 0.9123,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 282
+                    "count": 287
                 },
                 "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.": {
                     "growth_score": 0.0338,
@@ -3243,8 +3212,8 @@
                 },
                 "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": {
                     "growth_score": 0.0201,
-                    "engagement_score": 19.1654,
-                    "ctr_feed": 0.8678,
+                    "engagement_score": 19.2498,
+                    "ctr_feed": 0.8719,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -3334,44 +3303,44 @@
             },
             "ctas_stats": {
                 "salvamento": {
-                    "growth_score": 0.0269,
-                    "engagement_score": 37.6989,
-                    "ctr_feed": 0.902,
+                    "growth_score": 0.0268,
+                    "engagement_score": 37.5515,
+                    "ctr_feed": 0.9024,
                     "taxa_salvamento": 0.0009,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 132
+                    "count": 134
                 },
                 "compartilhamento": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 32.6839,
-                    "ctr_feed": 0.9878,
+                    "growth_score": 0.0321,
+                    "engagement_score": 33.0924,
+                    "ctr_feed": 0.9947,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 110
                 },
                 "comentario": {
-                    "growth_score": 0.0297,
-                    "engagement_score": 36.7551,
-                    "ctr_feed": 0.9517,
+                    "growth_score": 0.0299,
+                    "engagement_score": 36.0801,
+                    "ctr_feed": 0.935,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 104
                 },
                 "seguir": {
-                    "growth_score": 0.0256,
-                    "engagement_score": 33.5006,
-                    "ctr_feed": 1.0146,
+                    "growth_score": 0.0258,
+                    "engagement_score": 33.6013,
+                    "ctr_feed": 1.0181,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 }
             },
             "imagens_stats": {
@@ -3396,24 +3365,24 @@
                     "count": 1
                 },
                 "Minimalista": {
-                    "growth_score": 0.0321,
-                    "engagement_score": 33.7686,
-                    "ctr_feed": 0.9258,
+                    "growth_score": 0.0324,
+                    "engagement_score": 33.9988,
+                    "ctr_feed": 0.9323,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 142
+                    "count": 146
                 },
                 "B-roll": {
-                    "growth_score": 0.032,
-                    "engagement_score": 20.8989,
-                    "ctr_feed": 1.0193,
+                    "growth_score": 0.0321,
+                    "engagement_score": 20.5056,
+                    "ctr_feed": 1.0048,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 104
+                    "count": 106
                 },
                 "Luxo Dinâmico": {
                     "growth_score": 0.0,
@@ -4046,9 +4015,9 @@
                     "count": 1
                 },
                 "Cinematográfico de Luxo": {
-                    "growth_score": 0.0211,
-                    "engagement_score": 39.445,
-                    "ctr_feed": 1.6161,
+                    "growth_score": 0.0236,
+                    "engagement_score": 44.2,
+                    "ctr_feed": 1.7063,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4276,9 +4245,9 @@
                     "count": 1
                 },
                 "Cinematográfico / Luxo": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -4378,14 +4347,14 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0325,
-                    "engagement_score": 36.1372,
-                    "ctr_feed": 1.0556,
+                    "growth_score": 0.0327,
+                    "engagement_score": 35.9509,
+                    "ctr_feed": 1.0515,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 269
+                    "count": 275
                 },
                 "Neoclássica": {
                     "growth_score": 0.0456,
@@ -4468,9 +4437,9 @@
                     "count": 3
                 },
                 "Phonk": {
-                    "growth_score": 0.0127,
-                    "engagement_score": 36.5979,
-                    "ctr_feed": 1.0422,
+                    "growth_score": 0.0137,
+                    "engagement_score": 37.6586,
+                    "ctr_feed": 1.0396,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -5310,34 +5279,34 @@
             },
             "tons_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -5350,14 +5319,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -5522,24 +5491,24 @@
                     "count": 7
                 },
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 32.7655,
-                    "ctr_feed": 1.0091,
+                    "growth_score": 0.0258,
+                    "engagement_score": 32.2669,
+                    "ctr_feed": 1.0117,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 84
+                    "count": 86
                 },
                 "Problema-Solução": {
-                    "growth_score": 0.0281,
-                    "engagement_score": 28.7948,
-                    "ctr_feed": 0.8718,
+                    "growth_score": 0.0282,
+                    "engagement_score": 28.9053,
+                    "ctr_feed": 0.8686,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 164
+                    "count": 167
                 },
                 "Problema-Solução Clássico": {
                     "growth_score": 0.0213,
@@ -5572,14 +5541,14 @@
                     "count": 2
                 },
                 "Storytelling": {
-                    "growth_score": 0.0553,
-                    "engagement_score": 47.8313,
-                    "ctr_feed": 1.2571,
-                    "taxa_salvamento": 0.0019,
+                    "growth_score": 0.0558,
+                    "engagement_score": 47.9274,
+                    "ctr_feed": 1.2489,
+                    "taxa_salvamento": 0.0018,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 30
+                    "count": 31
                 },
                 "Pergunta-Insight": {
                     "growth_score": 0.0263,
@@ -6232,9 +6201,9 @@
                     "count": 1
                 },
                 "Quebra de Expectativa": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -6324,24 +6293,24 @@
             },
             "complexidades_stats": {
                 "Alta": {
-                    "growth_score": 0.0249,
-                    "engagement_score": 31.3649,
-                    "ctr_feed": 0.8834,
+                    "growth_score": 0.0253,
+                    "engagement_score": 31.5732,
+                    "ctr_feed": 0.8855,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 138
+                    "count": 139
                 },
                 "Média": {
-                    "growth_score": 0.0305,
-                    "engagement_score": 37.3761,
-                    "ctr_feed": 1.0057,
+                    "growth_score": 0.0307,
+                    "engagement_score": 37.1558,
+                    "ctr_feed": 1.0022,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 298
+                    "count": 303
                 },
                 "Média-Alta": {
                     "growth_score": 0.0,
@@ -6368,8 +6337,8 @@
         },
         "semestral": {
             "periodo_dias": 180,
-            "total_posts_analisados": 713,
-            "alcance_medio": 44.46,
+            "total_posts_analisados": 719,
+            "alcance_medio": 44.26,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.031,
@@ -6377,53 +6346,53 @@
                 "Provérbios de Salomão": 0.03,
                 "O Conceito de Liberdade Existencial": 0.03,
                 "Trabalho Focado (Cal Newport)": 0.021,
-                "Os Sonhos e a Ambição como Sentido da Vida": 0.017,
-                "Princípios (Ray Dalio)": 0.049,
-                "Malcolm X / Nelson Mandela": 0.024,
+                "Os Sonhos e a Ambição como Sentido da Vida": 0.021,
+                "Princípios (Ray Dalio)": 0.05,
+                "Malcolm X / Nelson Mandela": 0.025,
                 "espiritualidade": 0.031,
                 "Pai Rico, Pai Pobre (Robert Kiyosaki)": 0.026,
                 "O Poder do Hábito (Charles Duhigg)": 0.018,
-                "Marianne Williamson": 0.03,
-                "A Arte da Guerra (Sun Tzu)": 0.023,
-                "Hábitos Atômicos (James Clear)": 0.02,
+                "Marianne Williamson": 0.031,
+                "A Arte da Guerra (Sun Tzu)": 0.024,
+                "Hábitos Atômicos (James Clear)": 0.021,
                 "Essencialismo (Greg McKeown)": 0.027,
                 "liberdade": 0.015,
                 "Blink (Malcolm Gladwell)": 0.041,
-                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.029,
+                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.03,
                 "A Vontade Herdada e a Imortalidade": 0.026,
                 "proposito": 0.015,
                 "O Poder da Ação (Paulo Vieira)": 0.035,
-                "Preconceito e os Ciclos de Ódio": 0.038,
-                "Pertencimento e Laços Afetivos": 0.087,
+                "Preconceito e os Ciclos de Ódio": 0.039,
+                "Pertencimento e Laços Afetivos": 0.071,
                 "Meditações (Marco Aurélio)": 0.02,
                 "psicologia": 0.028,
-                "financas": 0.036,
-                "superacao": 0.02,
+                "financas": 0.037,
+                "superacao": 0.021,
                 "conexoes": 0.017,
                 "Mais Esperto que o Diabo (Napoleon Hill)": 0.021,
-                "Resumo Filosófico (Princípio da Existência)": 0.17,
-                "filosofia": 0.023
+                "Resumo Filosófico (Princípio da Existência)": 0.173,
+                "filosofia": 0.024
             },
             "distribuicao_formatos": {
-                "reels_conquistador": 0.207,
-                "reels": 0.041,
-                "reels_noite": 0.196,
-                "pexels_story": 0.164,
-                "reels_leads": 0.221,
-                "pexels_story_noite": 0.172
+                "reels_conquistador": 0.209,
+                "reels": 0.042,
+                "reels_noite": 0.195,
+                "pexels_story": 0.162,
+                "reels_leads": 0.217,
+                "pexels_story_noite": 0.176
             },
             "distribuicao_estilos": {
-                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.07,
+                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.069,
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.07,
-                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.078,
+                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.079,
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": 0.061,
-                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.065,
+                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.067,
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.018,
                 "Tom de lealdade e princípios: exaltar a honra, o respeito e o valor de quem permanece de verdade (ex: 'Valiosas são as pessoas que te dão coisas caras: tempo, lealdade e respeito.')": 0.017,
                 "Tom de storytelling puro: narre uma cena real e específica com personagem, ambiente e tensão. Não entregue a moral explicitamente — deixe o leitor tirar sua própria conclusão (ex: 'Às 22h ele olhou para o celular, para a janela, para o teto. Escolheu o celular.')": 0.057,
                 "Tom de observação humana e postura: linguagem direta e elegante sobre impor limites em silêncio (ex: 'A temporada de dar satisfação pra quem não merece já passou.')": 0.014,
                 "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.038,
-                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.127,
+                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.126,
                 "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.036,
                 "Tom de conselho sereno como ordem: instrução curta e inegociável para a vida (ex: 'Delete os contatos de quem só te procura quando precisa. Pousa esse peso.')": 0.055,
                 "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.025,
@@ -6485,14 +6454,14 @@
                     "count": 18
                 },
                 "Os Sonhos e a Ambição como Sentido da Vida": {
-                    "growth_score": 0.0169,
-                    "engagement_score": 20.4233,
-                    "ctr_feed": 0.8362,
+                    "growth_score": 0.0201,
+                    "engagement_score": 22.6005,
+                    "ctr_feed": 0.8938,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 18
+                    "count": 19
                 },
                 "Princípios (Ray Dalio)": {
                     "growth_score": 0.0478,
@@ -6565,9 +6534,9 @@
                     "count": 23
                 },
                 "Hábitos Atômicos (James Clear)": {
-                    "growth_score": 0.0198,
-                    "engagement_score": 17.1905,
-                    "ctr_feed": 0.945,
+                    "growth_score": 0.0206,
+                    "engagement_score": 17.9721,
+                    "ctr_feed": 0.9431,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -6575,9 +6544,9 @@
                     "count": 19
                 },
                 "Essencialismo (Greg McKeown)": {
-                    "growth_score": 0.026,
-                    "engagement_score": 24.8254,
-                    "ctr_feed": 1.0388,
+                    "growth_score": 0.0262,
+                    "engagement_score": 24.9377,
+                    "ctr_feed": 1.0015,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -6615,9 +6584,9 @@
                     "count": 19
                 },
                 "A Vontade Herdada e a Imortalidade": {
-                    "growth_score": 0.0257,
-                    "engagement_score": 24.9794,
-                    "ctr_feed": 0.9612,
+                    "growth_score": 0.0252,
+                    "engagement_score": 24.5663,
+                    "ctr_feed": 0.9508,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -6646,8 +6615,8 @@
                 },
                 "Preconceito e os Ciclos de Ódio": {
                     "growth_score": 0.0373,
-                    "engagement_score": 60.6111,
-                    "ctr_feed": 1.0129,
+                    "engagement_score": 60.6833,
+                    "ctr_feed": 1.0005,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -6655,14 +6624,14 @@
                     "count": 18
                 },
                 "Pertencimento e Laços Afetivos": {
-                    "growth_score": 0.0846,
-                    "engagement_score": 76.789,
-                    "ctr_feed": 0.7175,
+                    "growth_score": 0.0681,
+                    "engagement_score": 58.3693,
+                    "ctr_feed": 0.7542,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 10
+                    "count": 15
                 },
                 "Meditações (Marco Aurélio)": {
                     "growth_score": 0.0197,
@@ -6747,34 +6716,34 @@
             },
             "formatos_stats": {
                 "reels_conquistador": {
-                    "growth_score": 0.0416,
-                    "engagement_score": 49.8653,
-                    "ctr_feed": 1.2636,
+                    "growth_score": 0.0422,
+                    "engagement_score": 49.8842,
+                    "ctr_feed": 1.2584,
                     "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "reels": {
-                    "growth_score": 0.0083,
-                    "engagement_score": 52.4124,
-                    "ctr_feed": 1.2552,
+                    "growth_score": 0.0084,
+                    "engagement_score": 52.4239,
+                    "ctr_feed": 1.2568,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 355
+                    "count": 356
                 },
                 "reels_noite": {
-                    "growth_score": 0.0393,
-                    "engagement_score": 67.5033,
-                    "ctr_feed": 1.3091,
+                    "growth_score": 0.0394,
+                    "engagement_score": 67.0034,
+                    "ctr_feed": 1.3058,
                     "taxa_salvamento": 0.0001,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "story_tarde": {
                     "growth_score": 0.0,
@@ -6784,12 +6753,12 @@
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 33
+                    "count": 34
                 },
                 "pexels_story": {
-                    "growth_score": 0.0329,
-                    "engagement_score": 5.333,
-                    "ctr_feed": 1.1575,
+                    "growth_score": 0.0328,
+                    "engagement_score": 5.4136,
+                    "ctr_feed": 1.1498,
                     "taxa_salvamento": 0.0011,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
@@ -6797,14 +6766,14 @@
                     "count": 44
                 },
                 "reels_leads": {
-                    "growth_score": 0.0443,
-                    "engagement_score": 73.1488,
-                    "ctr_feed": 1.314,
+                    "growth_score": 0.0438,
+                    "engagement_score": 72.4414,
+                    "ctr_feed": 1.3094,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 65
+                    "count": 66
                 },
                 "story_manha": {
                     "growth_score": 0.0,
@@ -6818,7 +6787,7 @@
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 1.079,
+                    "engagement_score": 1.0952,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
@@ -6827,14 +6796,14 @@
                     "count": 31
                 },
                 "pexels_story_noite": {
-                    "growth_score": 0.0345,
-                    "engagement_score": 5.572,
-                    "ctr_feed": 1.1557,
+                    "growth_score": 0.0356,
+                    "engagement_score": 5.4417,
+                    "ctr_feed": 1.1401,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "story": {
                     "growth_score": 0.0,
@@ -6849,34 +6818,34 @@
             },
             "estilos_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -6889,14 +6858,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -7041,24 +7010,24 @@
             },
             "ganchos_stats": {
                 "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": {
-                    "growth_score": 0.0463,
-                    "engagement_score": 49.338,
-                    "ctr_feed": 1.2907,
-                    "taxa_salvamento": 0.0014,
+                    "growth_score": 0.0469,
+                    "engagement_score": 49.3731,
+                    "ctr_feed": 1.2838,
+                    "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": {
-                    "growth_score": 0.0288,
-                    "engagement_score": 34.6045,
-                    "ctr_feed": 0.9145,
+                    "growth_score": 0.0289,
+                    "engagement_score": 34.4392,
+                    "ctr_feed": 0.9123,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 282
+                    "count": 287
                 },
                 "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.": {
                     "growth_score": 0.0338,
@@ -7072,8 +7041,8 @@
                 },
                 "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": {
                     "growth_score": 0.0201,
-                    "engagement_score": 19.1654,
-                    "ctr_feed": 0.8678,
+                    "engagement_score": 19.2498,
+                    "ctr_feed": 0.8719,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -7163,44 +7132,44 @@
             },
             "ctas_stats": {
                 "salvamento": {
-                    "growth_score": 0.0269,
-                    "engagement_score": 37.6989,
-                    "ctr_feed": 0.902,
+                    "growth_score": 0.0268,
+                    "engagement_score": 37.5515,
+                    "ctr_feed": 0.9024,
                     "taxa_salvamento": 0.0009,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 132
+                    "count": 134
                 },
                 "compartilhamento": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 32.6839,
-                    "ctr_feed": 0.9878,
+                    "growth_score": 0.0321,
+                    "engagement_score": 33.0924,
+                    "ctr_feed": 0.9947,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 110
                 },
                 "comentario": {
-                    "growth_score": 0.0297,
-                    "engagement_score": 36.7551,
-                    "ctr_feed": 0.9517,
+                    "growth_score": 0.0299,
+                    "engagement_score": 36.0801,
+                    "ctr_feed": 0.935,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 104
                 },
                 "seguir": {
-                    "growth_score": 0.0256,
-                    "engagement_score": 33.5006,
-                    "ctr_feed": 1.0146,
+                    "growth_score": 0.0258,
+                    "engagement_score": 33.6013,
+                    "ctr_feed": 1.0181,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 }
             },
             "imagens_stats": {
@@ -7225,24 +7194,24 @@
                     "count": 1
                 },
                 "Minimalista": {
-                    "growth_score": 0.0321,
-                    "engagement_score": 33.7686,
-                    "ctr_feed": 0.9258,
+                    "growth_score": 0.0324,
+                    "engagement_score": 33.9988,
+                    "ctr_feed": 0.9323,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 142
+                    "count": 146
                 },
                 "B-roll": {
-                    "growth_score": 0.032,
-                    "engagement_score": 20.8989,
-                    "ctr_feed": 1.0193,
+                    "growth_score": 0.0321,
+                    "engagement_score": 20.5056,
+                    "ctr_feed": 1.0048,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 104
+                    "count": 106
                 },
                 "Luxo Dinâmico": {
                     "growth_score": 0.0,
@@ -7875,9 +7844,9 @@
                     "count": 1
                 },
                 "Cinematográfico de Luxo": {
-                    "growth_score": 0.0211,
-                    "engagement_score": 39.445,
-                    "ctr_feed": 1.6161,
+                    "growth_score": 0.0236,
+                    "engagement_score": 44.2,
+                    "ctr_feed": 1.7063,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -8105,9 +8074,9 @@
                     "count": 1
                 },
                 "Cinematográfico / Luxo": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -8207,14 +8176,14 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0325,
-                    "engagement_score": 36.1372,
-                    "ctr_feed": 1.0556,
+                    "growth_score": 0.0327,
+                    "engagement_score": 35.9509,
+                    "ctr_feed": 1.0515,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 269
+                    "count": 275
                 },
                 "Neoclássica": {
                     "growth_score": 0.0456,
@@ -8297,9 +8266,9 @@
                     "count": 3
                 },
                 "Phonk": {
-                    "growth_score": 0.0127,
-                    "engagement_score": 36.5979,
-                    "ctr_feed": 1.0422,
+                    "growth_score": 0.0137,
+                    "engagement_score": 37.6586,
+                    "ctr_feed": 1.0396,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -9139,34 +9108,34 @@
             },
             "tons_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -9179,14 +9148,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -9351,24 +9320,24 @@
                     "count": 7
                 },
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 32.7655,
-                    "ctr_feed": 1.0091,
+                    "growth_score": 0.0258,
+                    "engagement_score": 32.2669,
+                    "ctr_feed": 1.0117,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 84
+                    "count": 86
                 },
                 "Problema-Solução": {
-                    "growth_score": 0.0281,
-                    "engagement_score": 28.7948,
-                    "ctr_feed": 0.8718,
+                    "growth_score": 0.0282,
+                    "engagement_score": 28.9053,
+                    "ctr_feed": 0.8686,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 164
+                    "count": 167
                 },
                 "Problema-Solução Clássico": {
                     "growth_score": 0.0213,
@@ -9401,14 +9370,14 @@
                     "count": 2
                 },
                 "Storytelling": {
-                    "growth_score": 0.0553,
-                    "engagement_score": 47.8313,
-                    "ctr_feed": 1.2571,
-                    "taxa_salvamento": 0.0019,
+                    "growth_score": 0.0558,
+                    "engagement_score": 47.9274,
+                    "ctr_feed": 1.2489,
+                    "taxa_salvamento": 0.0018,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 30
+                    "count": 31
                 },
                 "Pergunta-Insight": {
                     "growth_score": 0.0263,
@@ -10061,9 +10030,9 @@
                     "count": 1
                 },
                 "Quebra de Expectativa": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10153,24 +10122,24 @@
             },
             "complexidades_stats": {
                 "Alta": {
-                    "growth_score": 0.0249,
-                    "engagement_score": 31.3649,
-                    "ctr_feed": 0.8834,
+                    "growth_score": 0.0253,
+                    "engagement_score": 31.5732,
+                    "ctr_feed": 0.8855,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 138
+                    "count": 139
                 },
                 "Média": {
-                    "growth_score": 0.0305,
-                    "engagement_score": 37.3761,
-                    "ctr_feed": 1.0057,
+                    "growth_score": 0.0307,
+                    "engagement_score": 37.1558,
+                    "ctr_feed": 1.0022,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 298
+                    "count": 303
                 },
                 "Média-Alta": {
                     "growth_score": 0.0,
@@ -10197,8 +10166,8 @@
         },
         "anual": {
             "periodo_dias": 365,
-            "total_posts_analisados": 713,
-            "alcance_medio": 44.46,
+            "total_posts_analisados": 719,
+            "alcance_medio": 44.26,
             "saves_medio": 0.04,
             "distribuicao_temas": {
                 "A Relatividade da Justiça e a Crítica ao Autoritarismo": 0.031,
@@ -10206,53 +10175,53 @@
                 "Provérbios de Salomão": 0.03,
                 "O Conceito de Liberdade Existencial": 0.03,
                 "Trabalho Focado (Cal Newport)": 0.021,
-                "Os Sonhos e a Ambição como Sentido da Vida": 0.017,
-                "Princípios (Ray Dalio)": 0.049,
-                "Malcolm X / Nelson Mandela": 0.024,
+                "Os Sonhos e a Ambição como Sentido da Vida": 0.021,
+                "Princípios (Ray Dalio)": 0.05,
+                "Malcolm X / Nelson Mandela": 0.025,
                 "espiritualidade": 0.031,
                 "Pai Rico, Pai Pobre (Robert Kiyosaki)": 0.026,
                 "O Poder do Hábito (Charles Duhigg)": 0.018,
-                "Marianne Williamson": 0.03,
-                "A Arte da Guerra (Sun Tzu)": 0.023,
-                "Hábitos Atômicos (James Clear)": 0.02,
+                "Marianne Williamson": 0.031,
+                "A Arte da Guerra (Sun Tzu)": 0.024,
+                "Hábitos Atômicos (James Clear)": 0.021,
                 "Essencialismo (Greg McKeown)": 0.027,
                 "liberdade": 0.015,
                 "Blink (Malcolm Gladwell)": 0.041,
-                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.029,
+                "Os Segredos da Mente Milionária (T. Harv Eker)": 0.03,
                 "A Vontade Herdada e a Imortalidade": 0.026,
                 "proposito": 0.015,
                 "O Poder da Ação (Paulo Vieira)": 0.035,
-                "Preconceito e os Ciclos de Ódio": 0.038,
-                "Pertencimento e Laços Afetivos": 0.087,
+                "Preconceito e os Ciclos de Ódio": 0.039,
+                "Pertencimento e Laços Afetivos": 0.071,
                 "Meditações (Marco Aurélio)": 0.02,
                 "psicologia": 0.028,
-                "financas": 0.036,
-                "superacao": 0.02,
+                "financas": 0.037,
+                "superacao": 0.021,
                 "conexoes": 0.017,
                 "Mais Esperto que o Diabo (Napoleon Hill)": 0.021,
-                "Resumo Filosófico (Princípio da Existência)": 0.17,
-                "filosofia": 0.023
+                "Resumo Filosófico (Princípio da Existência)": 0.173,
+                "filosofia": 0.024
             },
             "distribuicao_formatos": {
-                "reels_conquistador": 0.207,
-                "reels": 0.041,
-                "reels_noite": 0.196,
-                "pexels_story": 0.164,
-                "reels_leads": 0.221,
-                "pexels_story_noite": 0.172
+                "reels_conquistador": 0.209,
+                "reels": 0.042,
+                "reels_noite": 0.195,
+                "pexels_story": 0.162,
+                "reels_leads": 0.217,
+                "pexels_story_noite": 0.176
             },
             "distribuicao_estilos": {
-                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.07,
+                "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": 0.069,
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": 0.07,
-                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.078,
+                "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": 0.079,
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": 0.061,
-                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.065,
+                "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": 0.067,
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": 0.018,
                 "Tom de lealdade e princípios: exaltar a honra, o respeito e o valor de quem permanece de verdade (ex: 'Valiosas são as pessoas que te dão coisas caras: tempo, lealdade e respeito.')": 0.017,
                 "Tom de storytelling puro: narre uma cena real e específica com personagem, ambiente e tensão. Não entregue a moral explicitamente — deixe o leitor tirar sua própria conclusão (ex: 'Às 22h ele olhou para o celular, para a janela, para o teto. Escolheu o celular.')": 0.057,
                 "Tom de observação humana e postura: linguagem direta e elegante sobre impor limites em silêncio (ex: 'A temporada de dar satisfação pra quem não merece já passou.')": 0.014,
                 "Tom científico e analítico: explique as coisas como um neurologista ou psicólogo, usando fatos para destruir ilusões (ex: 'A dopamina que você busca no celular é a mesma que...')": 0.038,
-                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.127,
+                "Tom de ironia leve e verdade cotidiana: exponha contradições humanas com leveza e um toque de humor sutil (ex: 'Fofocam sobre mim, mas continuam assistindo cada passo. Engraçado como a inveja é silenciosa.')": 0.126,
                 "Tom de revelação científica ou histórica: comece citando um estudo, estatística ou fato histórico desconhecido (ex: 'Estudaram X por 11 anos e concluíram que...')": 0.036,
                 "Tom de conselho sereno como ordem: instrução curta e inegociável para a vida (ex: 'Delete os contatos de quem só te procura quando precisa. Pousa esse peso.')": 0.055,
                 "Tom acolhedor e poético: demonstre empatia e fale de alma para alma, criando um ambiente seguro (ex: 'Eu sei como a noite parece mais longa quando...')": 0.025,
@@ -10314,14 +10283,14 @@
                     "count": 18
                 },
                 "Os Sonhos e a Ambição como Sentido da Vida": {
-                    "growth_score": 0.0169,
-                    "engagement_score": 20.4233,
-                    "ctr_feed": 0.8362,
+                    "growth_score": 0.0201,
+                    "engagement_score": 22.6005,
+                    "ctr_feed": 0.8938,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 18
+                    "count": 19
                 },
                 "Princípios (Ray Dalio)": {
                     "growth_score": 0.0478,
@@ -10394,9 +10363,9 @@
                     "count": 23
                 },
                 "Hábitos Atômicos (James Clear)": {
-                    "growth_score": 0.0198,
-                    "engagement_score": 17.1905,
-                    "ctr_feed": 0.945,
+                    "growth_score": 0.0206,
+                    "engagement_score": 17.9721,
+                    "ctr_feed": 0.9431,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10404,9 +10373,9 @@
                     "count": 19
                 },
                 "Essencialismo (Greg McKeown)": {
-                    "growth_score": 0.026,
-                    "engagement_score": 24.8254,
-                    "ctr_feed": 1.0388,
+                    "growth_score": 0.0262,
+                    "engagement_score": 24.9377,
+                    "ctr_feed": 1.0015,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10444,9 +10413,9 @@
                     "count": 19
                 },
                 "A Vontade Herdada e a Imortalidade": {
-                    "growth_score": 0.0257,
-                    "engagement_score": 24.9794,
-                    "ctr_feed": 0.9612,
+                    "growth_score": 0.0252,
+                    "engagement_score": 24.5663,
+                    "ctr_feed": 0.9508,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10475,8 +10444,8 @@
                 },
                 "Preconceito e os Ciclos de Ódio": {
                     "growth_score": 0.0373,
-                    "engagement_score": 60.6111,
-                    "ctr_feed": 1.0129,
+                    "engagement_score": 60.6833,
+                    "ctr_feed": 1.0005,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10484,14 +10453,14 @@
                     "count": 18
                 },
                 "Pertencimento e Laços Afetivos": {
-                    "growth_score": 0.0846,
-                    "engagement_score": 76.789,
-                    "ctr_feed": 0.7175,
+                    "growth_score": 0.0681,
+                    "engagement_score": 58.3693,
+                    "ctr_feed": 0.7542,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 10
+                    "count": 15
                 },
                 "Meditações (Marco Aurélio)": {
                     "growth_score": 0.0197,
@@ -10576,34 +10545,34 @@
             },
             "formatos_stats": {
                 "reels_conquistador": {
-                    "growth_score": 0.0416,
-                    "engagement_score": 49.8653,
-                    "ctr_feed": 1.2636,
+                    "growth_score": 0.0422,
+                    "engagement_score": 49.8842,
+                    "ctr_feed": 1.2584,
                     "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "reels": {
-                    "growth_score": 0.0083,
-                    "engagement_score": 52.4124,
-                    "ctr_feed": 1.2552,
+                    "growth_score": 0.0084,
+                    "engagement_score": 52.4239,
+                    "ctr_feed": 1.2568,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 355
+                    "count": 356
                 },
                 "reels_noite": {
-                    "growth_score": 0.0393,
-                    "engagement_score": 67.5033,
-                    "ctr_feed": 1.3091,
+                    "growth_score": 0.0394,
+                    "engagement_score": 67.0034,
+                    "ctr_feed": 1.3058,
                     "taxa_salvamento": 0.0001,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 49
+                    "count": 50
                 },
                 "story_tarde": {
                     "growth_score": 0.0,
@@ -10613,12 +10582,12 @@
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 33
+                    "count": 34
                 },
                 "pexels_story": {
-                    "growth_score": 0.0329,
-                    "engagement_score": 5.333,
-                    "ctr_feed": 1.1575,
+                    "growth_score": 0.0328,
+                    "engagement_score": 5.4136,
+                    "ctr_feed": 1.1498,
                     "taxa_salvamento": 0.0011,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
@@ -10626,14 +10595,14 @@
                     "count": 44
                 },
                 "reels_leads": {
-                    "growth_score": 0.0443,
-                    "engagement_score": 73.1488,
-                    "ctr_feed": 1.314,
+                    "growth_score": 0.0438,
+                    "engagement_score": 72.4414,
+                    "ctr_feed": 1.3094,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 65
+                    "count": 66
                 },
                 "story_manha": {
                     "growth_score": 0.0,
@@ -10647,7 +10616,7 @@
                 },
                 "carousel": {
                     "growth_score": 0.0,
-                    "engagement_score": 1.079,
+                    "engagement_score": 1.0952,
                     "ctr_feed": 0.0,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
@@ -10656,14 +10625,14 @@
                     "count": 31
                 },
                 "pexels_story_noite": {
-                    "growth_score": 0.0345,
-                    "engagement_score": 5.572,
-                    "ctr_feed": 1.1557,
+                    "growth_score": 0.0356,
+                    "engagement_score": 5.4417,
+                    "ctr_feed": 1.1401,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "story": {
                     "growth_score": 0.0,
@@ -10678,34 +10647,34 @@
             },
             "estilos_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -10718,14 +10687,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -10870,24 +10839,24 @@
             },
             "ganchos_stats": {
                 "CONFLITO — Tome uma posição ousada e polarizadora. Provoque reacão magnética.": {
-                    "growth_score": 0.0463,
-                    "engagement_score": 49.338,
-                    "ctr_feed": 1.2907,
-                    "taxa_salvamento": 0.0014,
+                    "growth_score": 0.0469,
+                    "engagement_score": 49.3731,
+                    "ctr_feed": 1.2838,
+                    "taxa_salvamento": 0.0013,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 41
+                    "count": 42
                 },
                 "AFIRMAÇÃO — Abra com uma visão grandiosa e ousada.": {
-                    "growth_score": 0.0288,
-                    "engagement_score": 34.6045,
-                    "ctr_feed": 0.9145,
+                    "growth_score": 0.0289,
+                    "engagement_score": 34.4392,
+                    "ctr_feed": 0.9123,
                     "taxa_salvamento": 0.0003,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 282
+                    "count": 287
                 },
                 "AFIRMAÇÃO QUE CHOCA — Abra com uma verdade impopular e ousada.": {
                     "growth_score": 0.0338,
@@ -10901,8 +10870,8 @@
                 },
                 "CURIOSIDADE — Crie uma lacuna irresistível de informação. O leitor deve sentir que está prestes a descobrir algo que a elite sabe.": {
                     "growth_score": 0.0201,
-                    "engagement_score": 19.1654,
-                    "ctr_feed": 0.8678,
+                    "engagement_score": 19.2498,
+                    "ctr_feed": 0.8719,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -10992,44 +10961,44 @@
             },
             "ctas_stats": {
                 "salvamento": {
-                    "growth_score": 0.0269,
-                    "engagement_score": 37.6989,
-                    "ctr_feed": 0.902,
+                    "growth_score": 0.0268,
+                    "engagement_score": 37.5515,
+                    "ctr_feed": 0.9024,
                     "taxa_salvamento": 0.0009,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 132
+                    "count": 134
                 },
                 "compartilhamento": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 32.6839,
-                    "ctr_feed": 0.9878,
+                    "growth_score": 0.0321,
+                    "engagement_score": 33.0924,
+                    "ctr_feed": 0.9947,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 110
                 },
                 "comentario": {
-                    "growth_score": 0.0297,
-                    "engagement_score": 36.7551,
-                    "ctr_feed": 0.9517,
+                    "growth_score": 0.0299,
+                    "engagement_score": 36.0801,
+                    "ctr_feed": 0.935,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 104
                 },
                 "seguir": {
-                    "growth_score": 0.0256,
-                    "engagement_score": 33.5006,
-                    "ctr_feed": 1.0146,
+                    "growth_score": 0.0258,
+                    "engagement_score": 33.6013,
+                    "ctr_feed": 1.0181,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 }
             },
             "imagens_stats": {
@@ -11054,24 +11023,24 @@
                     "count": 1
                 },
                 "Minimalista": {
-                    "growth_score": 0.0321,
-                    "engagement_score": 33.7686,
-                    "ctr_feed": 0.9258,
+                    "growth_score": 0.0324,
+                    "engagement_score": 33.9988,
+                    "ctr_feed": 0.9323,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 142
+                    "count": 146
                 },
                 "B-roll": {
-                    "growth_score": 0.032,
-                    "engagement_score": 20.8989,
-                    "ctr_feed": 1.0193,
+                    "growth_score": 0.0321,
+                    "engagement_score": 20.5056,
+                    "ctr_feed": 1.0048,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 104
+                    "count": 106
                 },
                 "Luxo Dinâmico": {
                     "growth_score": 0.0,
@@ -11704,9 +11673,9 @@
                     "count": 1
                 },
                 "Cinematográfico de Luxo": {
-                    "growth_score": 0.0211,
-                    "engagement_score": 39.445,
-                    "ctr_feed": 1.6161,
+                    "growth_score": 0.0236,
+                    "engagement_score": 44.2,
+                    "ctr_feed": 1.7063,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -11934,9 +11903,9 @@
                     "count": 1
                 },
                 "Cinematográfico / Luxo": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -12036,14 +12005,14 @@
             },
             "musicas_stats": {
                 "Misterioso": {
-                    "growth_score": 0.0325,
-                    "engagement_score": 36.1372,
-                    "ctr_feed": 1.0556,
+                    "growth_score": 0.0327,
+                    "engagement_score": 35.9509,
+                    "ctr_feed": 1.0515,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 269
+                    "count": 275
                 },
                 "Neoclássica": {
                     "growth_score": 0.0456,
@@ -12126,9 +12095,9 @@
                     "count": 3
                 },
                 "Phonk": {
-                    "growth_score": 0.0127,
-                    "engagement_score": 36.5979,
-                    "ctr_feed": 1.0422,
+                    "growth_score": 0.0137,
+                    "engagement_score": 37.6586,
+                    "ctr_feed": 1.0396,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -12968,34 +12937,34 @@
             },
             "tons_stats": {
                 "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')": {
-                    "growth_score": 0.0282,
-                    "engagement_score": 35.0444,
-                    "ctr_feed": 0.9432,
+                    "growth_score": 0.0279,
+                    "engagement_score": 34.8306,
+                    "ctr_feed": 0.9435,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 102
+                    "count": 103
                 },
                 "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')": {
-                    "growth_score": 0.0284,
-                    "engagement_score": 36.5831,
-                    "ctr_feed": 1.0176,
+                    "growth_score": 0.0282,
+                    "engagement_score": 36.3172,
+                    "ctr_feed": 1.0046,
                     "taxa_salvamento": 0.0004,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 109
+                    "count": 111
                 },
                 "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')": {
-                    "growth_score": 0.0315,
-                    "engagement_score": 35.025,
-                    "ctr_feed": 0.9545,
+                    "growth_score": 0.0319,
+                    "engagement_score": 35.3719,
+                    "ctr_feed": 0.9606,
                     "taxa_salvamento": 0.0007,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 114
+                    "count": 115
                 },
                 "Tom de acolhimento e paz mental: reconheça a luta silenciosa do leitor sem vitimismo (ex: 'Teve dias em que sua única opção era aguentar. E você aguentou. Lembre-se disso.')": {
                     "growth_score": 0.0246,
@@ -13008,14 +12977,14 @@
                     "count": 6
                 },
                 "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')": {
-                    "growth_score": 0.0264,
-                    "engagement_score": 31.1727,
-                    "ctr_feed": 0.9041,
+                    "growth_score": 0.0272,
+                    "engagement_score": 31.0291,
+                    "ctr_feed": 0.9056,
                     "taxa_salvamento": 0.0002,
                     "taxa_compartilhamento": 0.0003,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 92
+                    "count": 94
                 },
                 "Tom misterioso e confidencial: fale como se estivesse revelando um segredo que ninguém mais sabe (ex: 'Feche a porta. O que vou te contar agora é apenas para...')": {
                     "growth_score": 0.0073,
@@ -13180,24 +13149,24 @@
                     "count": 7
                 },
                 "Ameaça-Alívio": {
-                    "growth_score": 0.0253,
-                    "engagement_score": 32.7655,
-                    "ctr_feed": 1.0091,
+                    "growth_score": 0.0258,
+                    "engagement_score": 32.2669,
+                    "ctr_feed": 1.0117,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 84
+                    "count": 86
                 },
                 "Problema-Solução": {
-                    "growth_score": 0.0281,
-                    "engagement_score": 28.7948,
-                    "ctr_feed": 0.8718,
+                    "growth_score": 0.0282,
+                    "engagement_score": 28.9053,
+                    "ctr_feed": 0.8686,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 164
+                    "count": 167
                 },
                 "Problema-Solução Clássico": {
                     "growth_score": 0.0213,
@@ -13230,14 +13199,14 @@
                     "count": 2
                 },
                 "Storytelling": {
-                    "growth_score": 0.0553,
-                    "engagement_score": 47.8313,
-                    "ctr_feed": 1.2571,
-                    "taxa_salvamento": 0.0019,
+                    "growth_score": 0.0558,
+                    "engagement_score": 47.9274,
+                    "ctr_feed": 1.2489,
+                    "taxa_salvamento": 0.0018,
                     "taxa_compartilhamento": 0.0002,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 30
+                    "count": 31
                 },
                 "Pergunta-Insight": {
                     "growth_score": 0.0263,
@@ -13890,9 +13859,9 @@
                     "count": 1
                 },
                 "Quebra de Expectativa": {
-                    "growth_score": 0.0158,
-                    "engagement_score": 30.57,
-                    "ctr_feed": 2.0,
+                    "growth_score": 0.017,
+                    "engagement_score": 32.72,
+                    "ctr_feed": 1.8333,
                     "taxa_salvamento": 0.0,
                     "taxa_compartilhamento": 0.0,
                     "taxa_visita_perfil": 0.0,
@@ -13982,24 +13951,24 @@
             },
             "complexidades_stats": {
                 "Alta": {
-                    "growth_score": 0.0249,
-                    "engagement_score": 31.3649,
-                    "ctr_feed": 0.8834,
+                    "growth_score": 0.0253,
+                    "engagement_score": 31.5732,
+                    "ctr_feed": 0.8855,
                     "taxa_salvamento": 0.0006,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 138
+                    "count": 139
                 },
                 "Média": {
-                    "growth_score": 0.0305,
-                    "engagement_score": 37.3761,
-                    "ctr_feed": 1.0057,
+                    "growth_score": 0.0307,
+                    "engagement_score": 37.1558,
+                    "ctr_feed": 1.0022,
                     "taxa_salvamento": 0.0005,
                     "taxa_compartilhamento": 0.0001,
                     "taxa_visita_perfil": 0.0,
                     "conversao_perfil": 0.0,
-                    "count": 298
+                    "count": 303
                 },
                 "Média-Alta": {
                     "growth_score": 0.0,
