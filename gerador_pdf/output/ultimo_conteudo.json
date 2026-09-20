@@ -1,107 +1,122 @@
 {
-  "frase_topo_capa": "A SABEDORIA QUE LIBERTA VOCÊ DA SERVIDÃO FINANCEIRA SILENCIOSA",
-  "titulo_pdf": "A Ilusão do Esforço Exaustivo",
-  "subtitulo_pdf": "Como quebrar a armadilha do trabalho sem fim e assumir o controle definitivo do seu dinheiro",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing golden compass sitting on dark granite surrounded by shadows, 8k",
+  "frase_topo_capa": "SABEDORIA PRÁTICA PARA QUEM VENCEU MAS CONTINUA VAZIO",
+  "titulo_pdf": "O Silêncio Após Conquistar Tudo",
+  "subtitulo_pdf": "Como transformar realizações materiais em legado duradouro e significado real",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a successful man sitting alone at a massive marble desk surrounded by wealth, looking at his hands, dramatically lit, 8k",
   "capa_cards": [
     {
-      "titulo": "A Engrenagem Invisível",
-      "texto": "Você trabalha até o esgotamento físico e mental mas a sua conta bancária continua presa exatamente no mesmo lugar.",
-      "pergunta_destaque": "Você acredita que controla sua própria vida financeira hoje?"
+      "titulo": "A Ilusão do Acúmulo",
+      "texto": "Você bateu metas e comprou o que desejava, mas sente um abismo gelado no peito. A prosperidade sem propósito e sem legado torna-se uma prisão dourada estéril.",
+      "pergunta_destaque": "Do que adianta conquistar o mundo e viver vazio?"
     },
     {
-      "titulo": "O Mecanismo da Alienação",
-      "texto": "A alienação mental faz a maioria das pessoas gastar energia vital em coisas que não geram riqueza real."
+      "titulo": "A Ciência do Tempo Presente",
+      "texto": "Decifre a sabedoria secular de Eclesiastes para alinhar cada conquista diária com um propósito verdadeiramente eterno."
     },
     {
-      "titulo": "Domínio do Destino",
-      "texto": "Assumir a direção consciente dos seus recursos e interromper o ciclo contínuo de exaustão."
+      "titulo": "Legado Inabalável",
+      "texto": "Substitua a busca frenética por status por uma vida com significado real e paz."
     },
     {
-      "titulo": "Autonomia Absoluta",
-      "texto": "Quem não define seus alvos financeiros vira escravo dos planos alheios.",
-      "citacao_destaque": "A indecisão sobre o dinheiro destrói o futuro. Código da Sabedoria."
+      "titulo": "Propósito Vivo",
+      "texto": "Riqueza sem sentido e sem desfrute é apenas ilusão temporária.",
+      "citacao_destaque": "A vida ganha valor quando o legado supera o consumo. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "A Mentira Silenciosa do Esforço Sem Direção",
-      "prompt_imagem": "Cinematic dark moody photography of an exhausted worker sitting alone in a dimly lit minimalist office, 8k",
+      "titulo": "O Custo Invisível de Viver no Automático",
+      "prompt_imagem": "Cinematic moody dark photography of a man in a sharp suit standing in a penthouse overlooking a dark city skyline, feeling empty, 8k",
       "paragrafos": [
-        "Existe uma mentira silenciosa que foi inculcada em sua mente desde a infância: a ideia de que quanto mais você se esgota fisicamente, mais rápido alcançará a independência financeira. A realidade brutal é que você está trabalhando exausto, sacrificando sua saúde e seu tempo com a família, sem nunca sentir que está saindo do lugar. Essa exaustão contínua não é um selo de honra, é a prova cabal de que você caiu na armadilha de produzir riqueza para terceiros enquanto mantém sua própria mente escravizada pela incerteza.",
-        "No clássico sobre como suplantar as forças da alienação, revela-se que a imensa maioria das pessoas vive sob o ritmo automático da alienação financeira. Elas aceitam obrigações que detestam, compram coisas que não precisam com recursos que não possuem e nunca param para refletir com clareza. Elas apenas fluem com a corrente do mercado, acumulando dívidas e fadiga diária, acreditando falsamente que o próximo mês trará alívio por simples sorte.",
-        "Para quebrar esse ciclo hoje mesmo, você precisa declarar guerra contra a passividade mental. O primeiro passo prático é auditar cada hora da sua rotina e cada centavo que sai do seu bolso. Pare imediatamente de financiar um estilo de vida desenhado apenas para impressionar quem nem sequer se importa com você. Assuma uma postura firme contra seus próprios impulsos de consumo e decida que o seu trabalho deve construir a sua autonomia."
+        "Existe uma mentira silenciosa que a sociedade te vendeu: a ideia de que a próxima meta zeraria sua ansiedade interior. Você trabalhou sem parar, acumulou patrimônio e bateu metas, mas a conta bancária no verde não impediu a sensação sufocante de inutilidade ao deitar a cabeça no travesseiro. O custo invisível de priorizar apenas a conquista material é ver o tempo escorrer pelos dedos em uma rotina insípida.",
+        "No antigo texto de Eclesiastes, o homem mais rico e sábio do seu tempo testou todas as formas de acúmulo, arquitetura, riqueza e prazeres terrenos. A sua conclusão foi brutal ao constatar que tudo debaixo do sol sem uma intenção transcendente é apenas correr atrás do vento. Ele percebeu que acumular bens sem desfrutar com sabedoria gera apenas uma alma miserável revestida de ouro.",
+        "Para sair dessa armadilha hoje, pare de buscar validação na próxima compra ou na aprovação social. Faça um inventário honesto das suas intenções e identifique o momento exato em que você trocou o propósito do trabalho pelo simples medo do silêncio. Escolha hoje direcionar uma hora da sua rotina para um projeto que sirva às pessoas, e não apenas ao seu ego."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_8f51c9.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_703e07.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Preço Oculto da Indecisão Financeira",
-      "prompt_imagem": "Cinematic dark moody photography of a sharp steel sword piercing a glowing dark hourglass, 8k",
+      "titulo": "A Troca do Efêmero pelo Permanente",
+      "prompt_imagem": "Cinematic dark moody photography of glowing hourglass with sand flowing upward, illuminated by a single beam of dark light, 8k",
       "paragrafos": [
-        "Sua mente é sua maior arma, mas quando você não assume o comando absoluto dela, a pressão externa assume o controle. A hesitação em tomar decisões financeiras difíceis cria uma fresta por onde a ansiedade e o medo vazam diariamente. Viver permanentemente no limite, torcendo para que nenhuma emergência aconteça, é a forma mais refinada de tortura psicológica que você impõe a si mesmo ao recusar a disciplina de cortar o supérfluo.",
-        "O princípio do ritmo hipnótico mostra que qualquer hábito praticado de forma contínua torna-se um padrão consolidado. Se você tolera a falta de planejamento financeiro durante anos, sua mente estabelece que a falta de recursos é a sua condição normal. Aqueles que dominam sua trajetória não possuem mais tempo no dia, eles simplesmente aplicam o poder do silêncio interior, rejeitam distrações efêmeras e mantêm uma meta financeira clara sem desviar o foco.",
-        "Você deve reprogramar suas prioridades sem pedir permissão a ninguém. A regra imediata é parar de reagir passivamente ao ambiente e começar a agir de forma intencional. Crie o hábito inegociável de separar uma parcela fixa de tudo o que arrecada antes de pagar qualquer compromisso. Ao assumir a liderança absoluta do seu fluxo financeiro, você encerra a vulnerabilidade e constrói uma base inabalável."
+        "Seu cérebro prefere o conforto de metas rasas porque elas entregam dopamina rápida sem exigir vulnerabilidade emocional. Você quer mudar o rumo da sua história, mas repete os mesmos comportamentos de consumo e correria porque tem medo de encarar a falta de sentido no que faz. Essa hesitação constante consome sua energia vital e mantém sua melhor versão adormecida.",
+        "Eclesiastes ensina que há um tempo determinado para cada propósito debaixo do céu e que a ganância cega o homem para o valor das estações. Enquanto o tolo consome a própria vida em busca de mais, o sábio entende os limites do tempo e canaliza seus esforços no que realmente permanece no coração das pessoas.",
+        "A técnica para recuperar o controle é estabelecer limites claros entre a ambição produtiva e o desfrute com propósito. A partir de hoje, pratique o encerramento deliberado das tarefas no horário correto sem culpa e dedique atenção total ao cultivo de relacionamentos profundos e ao aprendizado que constrói caráter."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_07886e.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_cdd7ae.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Decisão que Separa os Escravos dos Livres",
-      "prompt_imagem": "Cinematic dark moody photography of a mysterious figure standing on a dark cliff looking at a distant light, 8k",
+      "titulo": "O Desenho do Legado Real",
+      "prompt_imagem": "Cinematic dark moody photography of hands crafting an ancient wooden anchor on an old table, mysterious warm side light, 8k",
       "paragrafos": [
-        "Continuar trabalhando exausto sem ver o seu patrimônio crescer é uma escolha implícita que você faz todas as manhãs ao aceitar a inércia. A exaustão sem propósito destrói a visão de longo prazo e reduz a existência a uma simples corrida pela sobrevivência. Se você não sente indignação ao examinar seu saldo no fim do mês, você já foi anestesiado pelo ritmo da rotina habitual.",
-        "A verdadeira sabedoria financeira não consiste em acumular itens estéreis, mas na capacidade de construir ativos reais que geram valor de forma consistente. Quando o indivíduo substitui a intenção vaga pela determinação inabalável de ter um objetivo definido, ele deixa de flutuar sem rumo. Ele antecipa as adversidades antes que elas ocorram e usa a discrição para planejar movimentos precisos.",
-        "O seu planejamento para a semana deve ser executado com rigor e clareza. Estabeleça uma meta financeira específica para os próximos noventa dias e elimine impiedosamente todas as tarefas e custos que não convergem para essa meta central. Pare de ser acessível para quem consome o seu tempo e direcione sua energia vital para a consolidação do seu próprio projeto."
+        "Trabalhar exausto sem ver impacto real na vida de quem você ama é o caminho mais rápido para o esgotamento existencial. Não adianta acumular títulos e vitórias se a sua presença não transforma o ambiente em que você vive. A dor de olhar para trás e ver uma vida vazia é imensamente maior do que o esforço necessário para recalibrar sua rota neste exato instante.",
+        "A sabedoria de Eclesiastes destaca que dois são melhores do que um e que o trabalho compartilhado traz frutos duradouros. O verdadeiro planejamento de vida antecipa o valor do serviço ao próximo e da construção coletiva, reconhecendo que a verdadeira riqueza é a marca positiva deixada na história das pessoas.",
+        "Desenhe o seu plano semanal com foco em ações de valor permanente. Defina três prioridades que sirvam para fortalecer sua família, impactar sua comunidade e garantir a integridade do seu trabalho. Elimine tarefas inúteis que alimentam apenas a vaidade e concentre sua energia no que gera fruto maduro."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3de851.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_72a84f.jpg"
     }
   ],
-  "citacao_destaque": "Nenhum homem é verdadeiramente livre enquanto não se tornar senhor absoluto da sua própria mente e dos seus recursos.",
-  "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O pródigo dissipa os seus bens com precipitação, mas o homem prudente preserva o fruto do seu trabalho com firmeza.",
-  "referencia_verso": "Sabedoria Milenar",
+  "citacao_destaque": "Melhor é o fim das coisas do que o princípio delas, e a sabedoria protege o coração.",
+  "titulo_citacao": "A Regra do Legado Duradouro",
+  "verso_base": "Atenta para a obra superior e desfruta do trabalho com o coração limpo de vaidades.",
+  "referencia_verso": "Eclesiastes",
   "plano_acao": {
-    "titulo_secao": "As Quatro Leis da Autonomia Financeira",
-    "prompt_imagem": "Cinematic dark moody photography of a dark stone tablet engraved with golden illuminated lines, 8k",
-    "subtitulo": "Um método prático e direto para erradicar a alienação e assumir a gestão absoluta do seu capital em trinta dias",
+    "titulo_secao": "Jornada de Sete Dias de Alinhamento e Legado",
+    "prompt_imagem": "Cinematic dark moody photography of a stone pathway lit by small torches in a dark forest, 8k",
+    "subtitulo": "Um plano prático de uma semana para desmantelar a vaidade e construir significado",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Corte da Alienação de Consumo",
-        "descricao": "Identifique e elimine imediatamente todos os gastos recorrentes que não agregam valor real à sua vida ou à sua liberdade financeira."
+        "titulo": "Diagnóstico do Vazio",
+        "descricao": "Anote suas realizações recentes e identifique quais foram feitas apenas por vaidade ou validação alheia."
       },
       {
         "numero": 2,
-        "titulo": "Reserva de Liberdade Primeiro",
-        "descricao": "Separe vinte por cento de todo o dinheiro que receber antes de pagar qualquer conta, tratando o seu futuro como despesa primária."
+        "titulo": "Corte do Ruído",
+        "descricao": "Elimine durante vinte e quatro horas a exposição a compras impulsivas para reativar sua percepção do presente."
       },
       {
         "numero": 3,
-        "titulo": "Definição do Alvo Absoluto",
-        "descricao": "Escreva em um papel o valor exato que você pretende acumular no ano e estabeleça três ações diárias inegociáveis para alcançar esse número."
+        "titulo": "Alinhamento de Intenção",
+        "descricao": "Reescreva seus objetivos profissionais incluindo quem será beneficiado pelo seu trabalho além de você."
       },
       {
         "numero": 4,
-        "titulo": "Blindagem de Foco e Silêncio",
-        "descricao": "Elimine distrações diárias, pare de expor seus planos financeiros para terceiros e trabalhe em silêncio absoluto até ver os resultados."
+        "titulo": "Prática do Desfrute Consciente",
+        "descricao": "Dedique uma refeição inteira sem telas, celebrando o fruto do seu trabalho com gratidão e presença."
+      },
+      {
+        "numero": 5,
+        "titulo": "Pacto de Serviço",
+        "descricao": "Realize uma ação secreta de generosidade sem esperar qualquer retorno, reconhecimento ou divulgação."
+      },
+      {
+        "numero": 6,
+        "titulo": "Construção de Alianças",
+        "descricao": "Fortaleça uma conexão importante alinhando planos e projetos conjuntos com valores duradouros."
+      },
+      {
+        "numero": 7,
+        "titulo": "Consolidação da Rotina",
+        "descricao": "Estabeleça um compromisso semanal fixo focado em mentoria, serviço ou criação de valor de longo prazo."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_13a71d.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_320ab8.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
-  "rodape": "Código da Sabedoria — Conhecimento que Transforma Destinos.",
+  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "30 DIAS PARA ERRADICAR SUA EXAUSTÃO E RECONSTRUIR SUAS FINANÇAS",
+    "promessa_clara": "7 DIAS PARA TRANSFORMAR ACÚMULO EM PROPÓSITO E LEGADO",
     "beneficios": [
-      "Entenda exatamente por que você trabalha exausto sem ver a conta bancária crescer.",
-      "Aprenda a aplicar o silêncio estratégico para eliminar gastos e distrações desnecessárias.",
-      "Descubra o mecanismo oculto para dominar sua mente e romper com a alienação diária.",
-      "Desenvolva a disciplina inabalável para colocar o seu dinheiro para trabalhar por você.",
-      "Execute um plano de ação claro e prático para alcançar a total autonomia financeira."
+      "Em 7 dias você identifica a causa oculta da sensação de vazio interior.",
+      "Aprenda a desfrutar genuinamente das suas conquistas materiais sem culpa.",
+      "Elimine a necessidade sufocante de aprovação e validação de terceiros.",
+      "Construa um planejamento diário focado em significado e impacto permanente.",
+      "Desenvolva clareza brutal para priorizar o que realmente importa na vida."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_3b6b0c.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_7a75ca.jpg"
 }
