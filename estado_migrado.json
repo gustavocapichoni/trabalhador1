@@ -1,13 +1,7 @@
 {
-    "indice_gancho": 41,
-    "historico_angulos": [
-        "Marianne Williamson",
-        "Provérbios de Salomão",
-        "Pai Rico, Pai Pobre (Robert Kiyosaki)"
-    ],
-    "ultimo_hf_token_idx": 0,
-    "ultimo_dia_cta": "2026-08-23",
-    "index_palette_conquistador": 1,
+    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 18_02_06.png",
+    "index_mecanismo_reels_leads": 0,
+    "index_cta_dia": 1,
     "historico_midia": [
         "32410697",
         "4694602",
@@ -510,9 +504,37 @@
         "unsplash_mNh4VPVg9jU",
         "unsplash_fzMKvKTNdiY"
     ],
+    "data_tema_do_dia": "2026-09-22",
+    "index_animacao_conquistador": 3,
+    "indice_cta": 5,
+    "fila_musicas_musicas-youtube": [
+        "Town This Small - Anno Domini Beats.mp3",
+        "Two Things - Anno Domini Beats.mp3",
+        "Fearless - The Soundlings (feat. Ruby Jay).mp3",
+        "Hold Yourself Tight (feat. Splitshine) - Splitshine feat. Sybil Rose.mp3",
+        "13 Cocktails - Dan Bodan.mp3",
+        "In The Morning - Blue Beat Review.mp3",
+        "Wildfire - Jessie Villa.mp3",
+        "Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming (1).mp3",
+        "Shining (feat. Leon Albertson & Adryon de León) - Leon Albertson feat. Adryon de León.mp3",
+        "Halfway In - Anno Domini Beats.mp3",
+        "A Free Night in Bushwick - William Rosati.mp3",
+        "Never Coming Down - The Soundlings.mp3",
+        "A Kiss For Amanda - DJ Williams.mp3",
+        "I Got You - Anno Domini Beats.mp3",
+        "No One Here Gets In Alive - National Sweetheart.mp3",
+        "Everything (feat. Rodina & Alfie Tito) - Rodina feat. Alfie Tito.mp3",
+        "Lost Myself - Lalanne.mp3",
+        "A Flute's Mourning - Aakash Gandhi.mp3",
+        "A Face in a Cloud - Nathan Moore.mp3",
+        "Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming.mp3"
+    ],
+    "indice_gancho": 41,
+    "index_plataforma_conquistador": 1,
     "ultimo_carousel": 3,
-    "index_tema_diario": 7,
+    "ultimo_dia_cta": "2026-08-23",
     "index_pilar_reels_leads": 2,
+    "data_sentimento_do_dia": "2026-08-02",
     "historico_sentimentos": [
         "raiva",
         "alegria",
@@ -525,8 +547,19 @@
         "poder",
         "desafio"
     ],
+    "index_palette_leads": 1,
+    "index_tema_diario": 7,
+    "sentimento_do_dia": "desafio",
+    "index_conquistador": 3,
     "indice_gancho_conquistador": 22,
+    "historico_angulos": [
+        "Marianne Williamson",
+        "Provérbios de Salomão",
+        "Pai Rico, Pai Pobre (Robert Kiyosaki)"
+    ],
+    "tema_do_dia": "Malcolm X / Nelson Mandela",
     "fila_musicas_musicas": [
+        "alex-morgan-background-music-545525.mp3",
         "21.MP3",
         "Billie Ellish, Khaild- Lovely.mp3",
         "alex-morgan-islamic-islamic-music-545510.mp3",
@@ -591,14 +624,9 @@
         "5.MP3",
         "tunetank-inspiring-cinematic-music-409347.mp3",
         "7.MP3",
-        "sonican-background-music-new-age-nature-465069.mp3",
-        "Música-tema-principal-da-série-La-casa-de-papel-_-NETFLIX-_.mp3"
+        "sonican-background-music-new-age-nature-465069.mp3"
     ],
-    "index_mecanismo_reels_leads": 0,
-    "index_conquistador": 3,
-    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 18_02_06.png",
-    "data_tema_do_dia": "2026-09-22",
-    "data_sentimento_do_dia": "2026-08-02",
+    "indice_arquitetura": 2,
     "historico_estilos": [
         "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
@@ -626,35 +654,7 @@
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')"
     ],
-    "index_cta_dia": 1,
+    "index_palette_conquistador": 1,
     "ultimos_temas": [],
-    "index_palette_leads": 1,
-    "sentimento_do_dia": "desafio",
-    "tema_do_dia": "Malcolm X / Nelson Mandela",
-    "index_animacao_conquistador": 3,
-    "indice_cta": 5,
-    "indice_arquitetura": 2,
-    "fila_musicas_musicas-youtube": [
-        "Two Things - Anno Domini Beats.mp3",
-        "Fearless - The Soundlings (feat. Ruby Jay).mp3",
-        "Hold Yourself Tight (feat. Splitshine) - Splitshine feat. Sybil Rose.mp3",
-        "13 Cocktails - Dan Bodan.mp3",
-        "In The Morning - Blue Beat Review.mp3",
-        "Wildfire - Jessie Villa.mp3",
-        "Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming (1).mp3",
-        "Shining (feat. Leon Albertson & Adryon de León) - Leon Albertson feat. Adryon de León.mp3",
-        "Halfway In - Anno Domini Beats.mp3",
-        "A Free Night in Bushwick - William Rosati.mp3",
-        "Never Coming Down - The Soundlings.mp3",
-        "A Kiss For Amanda - DJ Williams.mp3",
-        "I Got You - Anno Domini Beats.mp3",
-        "No One Here Gets In Alive - National Sweetheart.mp3",
-        "Everything (feat. Rodina & Alfie Tito) - Rodina feat. Alfie Tito.mp3",
-        "Lost Myself - Lalanne.mp3",
-        "A Flute's Mourning - Aakash Gandhi.mp3",
-        "A Face in a Cloud - Nathan Moore.mp3",
-        "Always Yours (feat. The Parrisian & Parris Fleming) - The Parrisian feat. Parris Fleming.mp3",
-        "Paradise - Anno Domini Beats.mp3"
-    ],
-    "index_plataforma_conquistador": 1
+    "ultimo_hf_token_idx": 4
 }
