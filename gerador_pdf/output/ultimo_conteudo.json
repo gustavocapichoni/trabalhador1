@@ -1,114 +1,112 @@
 {
-  "titulo_pdf": "O Domínio da Mente",
-  "subtitulo_pdf": "O método para silenciar a autossabotagem e assumir o controle.",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a glowing brain structure in deep shadows, highly detailed, 8k",
+  "frase_topo_capa": "SABEDORIA ESTRATÉGICA PARA DOMINAR SEU PRÓPRIO TERRENO",
+  "titulo_pdf": "A Guerra Invisível do Respeito Próprio",
+  "subtitulo_pdf": "Como parar de entregar suas armas para quem nunca lutou por você",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a solitary chess king standing firm on a dark reflective surface, cinematic lighting, ultra detailed, 8k",
   "capa_cards": [
     {
-      "titulo": "A Névoa",
-      "texto": "A autossabotagem não chega gritando. Ela sussurra que 'amanhã é um dia melhor'. Ela te convence de que o conforto de hoje vale mais que o orgulho de amanhã. É a prisão mais invisível que existe.",
-      "pergunta_destaque": "Você sente que sua vida está travada nas desculpas de sempre?"
+      "titulo": "O Custo do Aplauso",
+      "texto": "Você gasta sua energia tentando manter a paz com os outros enquanto trava uma guerra silenciosa contra suas próprias vontades.",
+      "pergunta_destaque": "Quem é você quando ninguém está olhando?"
     },
     {
-      "titulo": "A Solução",
-      "texto": "O domínio não nasce da motivação, mas da clareza inegociável. Quando você decide que a dor da disciplina é menor que a dor do arrependimento, o jogo vira. O método é implacável."
+      "titulo": "Estratégia de Terreno",
+      "texto": "Sun Tzu ensina que tentar defender todos os lados significa ser fraco em absolutamente todos os pontos."
     },
     {
-      "titulo": "O Propósito",
-      "texto": "Recuperar o poder sobre suas próprias decisões e destruir a procrastinação."
+      "titulo": "Foco Inabalável",
+      "texto": "Recupere o controle da sua vida e pare de desgastar sua mente com expectativas alheias."
     },
     {
-      "titulo": "A Verdade",
-      "texto": "Você não tem um problema de tempo. Você tem um problema de prioridade.",
-      "citacao_destaque": "\"Onde colocamos nossa energia, ali floresce o nosso destino.\""
+      "titulo": "Soberania Pessoal",
+      "texto": "Quem tenta agradar a todos torna-se escravo de qualquer um.",
+      "citacao_destaque": "Conhece a ti mesmo e vencerás. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Peso Invisível",
-      "prompt_imagem": "Cinematic dark moody photography of a man carrying a heavy stone in the shadows, 8k",
+      "titulo": "O Colapso de Quem Tenta Salvar o Mundo",
+      "prompt_imagem": "Cinematic moody dark photography of a tired warrior looking at his own reflection in dark water, 8k",
       "paragrafos": [
-        "Existe uma guerra silenciosa acontecendo dentro de você todos os dias. Ela não usa armas de fogo, mas desculpas muito bem articuladas. Quando o despertador toca, quando o projeto exige atenção, quando a mudança precisa acontecer, uma voz interna entra em ação. Ela é persuasiva. Ela conhece suas fraquezas melhor do que ninguém, porque ela é você. E na maioria das vezes, ela vence sem você nem perceber que estava em uma batalha.",
-        "Essa voz prospera no conforto. Ela te convence de que não há problema em adiar, de que você merece um descanso, de que amanhã você estará mais preparado. E assim, os dias viram semanas, e as semanas viram anos. O potencial não realizado começa a pesar nos ombros como chumbo. A frustração de saber do que você é capaz, mas ver-se paralisado pela própria mente, é a dor mais silenciosa que existe.",
-        "Mas entenda isso: você não está sozinho nessa trincheira. A humanidade inteira luta contra a inércia. Nossos cérebros foram programados evolutivamente para economizar energia e evitar o desconforto. Cada vez que você tenta romper o padrão, seu sistema de defesa entra em alerta máximo. Reconhecer que isso não é uma falha de caráter, mas um mecanismo primitivo, é o primeiro passo para a verdadeira libertação."
+        "Você acorda exausto porque passa o dia inteiro servindo como escudo para expectativas alheias. É a ironia moderna: fofocam sobre quem se posiciona, mas escravizam silenciosamente quem diz sim para tudo. Esse desejo visceral de ser aceito faz você gastar rios de energia em campanhas que não são suas, construindo alianças falsas enquanto seu próprio território desmorona na escuridão.",
+        "Na obra A Arte da Guerra, Sun Tzu adverte que o general que tenta defender todas as fronteiras ao mesmo tempo acaba fraco em todos os frentes. Um exército disperso para agradar cada província é facilmente destruído por um único ataque concentrado. Quando você tenta abraçar todas as causas dos outros, você simplesmente zera sua defesa pessoal.",
+        "O primeiro passo para a soberania é identificar imediatamente onde você está sangrando autoridade. Hoje mesmo, faça um inventário das suas concessões diárias e identifique o primeiro nao que você precisa dizer para recuperar o respeito por si mesmo."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_361f76.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_e96b9b.jpg"
     },
     {
       "numero": 2,
-      "titulo": "O Ponto de Ruptura",
-      "prompt_imagem": "Cinematic dark moody photography of a cracked mirror reflecting a serious face in the dark, 8k",
+      "titulo": "A Ilusão de Controlar a Opinião Alheia",
+      "prompt_imagem": "Cinematic dark moody photography of a glowing chessboard in a foggy dark room, cinematic lighting, 8k",
       "paragrafos": [
-        "A mudança raramente acontece por inspiração; ela costuma nascer do puro e absoluto desconforto. Chega um momento em que a dor de permanecer exatamente onde você está se torna insuportável. É o instante em que você olha no espelho e não reconhece mais a pessoa acomodada do outro lado. Esse é o momento sagrado. O atrito. A faísca que pode incendiar a floresta das suas velhas desculpas.",
-        "Nesse momento de clareza, a bifurcação aparece. De um lado, a estrada familiar do 'depois eu faço', pavimentada com justificativas confortáveis. Do outro, o caminho íngreme da disciplina, onde não há aplausos, apenas o som da sua própria respiração ofegante. É a escolha entre a dor momentânea do esforço ou a dor crônica do arrependimento.",
-        "E então, você decide. Não com um grito, mas com um sussurro inegociável para si mesmo: 'Chega'. Essa decisão não é motivacional, é estrutural. É o exato segundo em que você para de negociar com a voz da preguiça. Você demite o gerente incompetente da sua mente e assume a diretoria da sua própria vida. A partir daqui, as regras mudam."
+        "Existe uma mentira silenciosa que o seu cérebro adora contar: a ideia de que se você for bonzinho o suficiente, ninguém vai te criticar. Essa busca por aprovação é uma armadilha biológica que prefere a prisão confortável da concordância ao risco saudável da autonomia. Você se esgota tentando controlar o incontrolável: o que os outros pensam de você.",
+        "Sun Tzu afirmava que a vitória surge da capacidade de adaptar suas táticas ao terreno e não de tentar mudar o clima. Os generais mais vitoriosos não pediam permissão ao inimigo para agir, nem esperavam que o terreno fosse plano e acolhedor. Eles dominavam a si mesmos e manipulavam as circunstâncias com inteligência e silêncio.",
+        "Reprograme sua mente para entender que a reprovação alheia muitas vezes é o sinal claro de que você finalmente assumiu o comando da sua caminhada. Foque 100 por cento da sua atenção naquilo que está sob seu controle direto."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_4714d9.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_f49024.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Disciplina como Espada",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing sword being forged in dark shadows, 8k",
+      "titulo": "A Arquitetura de uma Posição Inabalável",
+      "prompt_imagem": "Cinematic dark moody photography of a stone fortress on a cliff facing a stormy ocean, 8k",
       "paragrafos": [
-        "Motivação é um combustível adulterado. Ela te leva até a esquina e te abandona no primeiro obstáculo. A disciplina, por outro lado, é um motor a diesel: pesado para ligar, mas impossível de parar depois que ganha tração. A disciplina não pergunta como você está se sentindo. Ela não se importa se chove lá fora ou se você dormiu mal. Ela simplesmente exige execução.",
-        "A grande chave é entender que a disciplina não é uma prisão, é a própria definição de liberdade. Quem não domina a si mesmo será eternamente escravo de seus impulsos e das circunstâncias. Ao forjar hábitos de ferro, você automatiza o sucesso. Você retira o peso da decisão diária e coloca sua mente no piloto automático para o crescimento constante.",
-        "Imagine a disciplina como uma espada forjada no fogo do desconforto. Cada vez que você faz o que precisa ser feito, mesmo sem vontade, você dá uma marretada no aço quente, tornando-o mais forte, mais afiado. Com o tempo, essa espada se torna capaz de cortar qualquer adversidade, qualquer desculpa, com a precisão de um mestre."
+        "Trabalhar até a exaustão para no fim do dia sentir que não saiu do lugar é o sintoma clássico da falta de estratégia. Você corre em círculos porque suas ações são reativas e não intencionais. Enquanto você não estabelecer seus próprios limites, o mundo continuará usando seu tempo como combustível para os projetos dos outros.",
+        "Antes de enviar um único soldado ao campo de batalha, os estrategistas da antiguidade calculavam os custos, os suprimentos e a posição exata de vantagem. Eles sabiam que vitórias duradouras são decididas muito antes de a luta começar, através de um planejamento silencioso, frio e cirúrgico.",
+        "Desenhe um plano semanal blindado contra distrações e pedidos alheios. Defina suas três prioridades inegociáveis e trate qualquer outra demanda externa como uma invasão ao seu território soberano."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_944a8f.jpg"
-    },
-    {
-      "numero": 4,
-      "titulo": "A Forja do Hábito",
-      "prompt_imagem": "Cinematic dark moody photography of an anvil and hammer in the dark with sparks, 8k",
-      "paragrafos": [
-        "Não subestime o poder repulsivo da sua velha rotina. Quando você começa a implementar a nova ordem, o sistema reage com força total. Os primeiros dias são marcados por um entusiasmo ingênuo, mas logo o atrito se apresenta. A cama parece mais macia, as distrações parecem mais urgentes. Esse é o vale da sombra da morte da mudança de hábito. É aqui que 99% das pessoas desistem e voltam para o começo.",
-        "Mas você não. Você sabe que o atrito é apenas o som da fraqueza abandonando seu corpo. Você se concentra na execução do micro-hábito. Não importa o quão pequeno seja o passo, importa que ele seja dado. A consistência é muito mais poderosa do que a intensidade. Uma gota d'água cavando uma rocha não precisa de força, precisa apenas de tempo e de uma direção imutável.",
-        "E então, acontece. A primeira pequena vitória. Aquele dia em que você fez sem precisar se forçar tanto. O circuito neural começa a se fortalecer, o caminho de terra vira asfalto. A identidade começa a mudar. Você deixa de ser alguém que 'está tentando ser disciplinado' e passa a ser, intrinsecamente, uma pessoa inegociável com seus próprios padrões."
-      ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_4_ebc586.jpg"
-    },
-    {
-      "numero": 5,
-      "titulo": "O Horizonte Silencioso",
-      "prompt_imagem": "Cinematic dark moody photography of a man looking out of a window at a dark vast ocean, 8k",
-      "paragrafos": [
-        "Os anos passam. A guerra diária já não é mais exaustiva; tornou-se o seu habitat natural. A voz que antes gritava desculpas, agora apenas sussurra de vez em quando, sendo rapidamente silenciada pela autoridade das suas ações. O novo padrão não é mais algo que você faz, é quem você é. A estrutura de hábitos de ferro sustenta a sua vida como as fundações de um arranha-céu.",
-        "Existe uma paz profunda que nasce do dever cumprido. Quando você encosta a cabeça no travesseiro à noite, não há sussurros de arrependimento, apenas o silêncio confortável de quem deixou tudo no campo de batalha. O contraste entre a sua versão antiga e a atual é tão abismal que você tem dificuldade de reconhecer quem costumava ser.",
-        "A verdadeira transformação não está no destino final, mas em quem você se tornou durante a jornada. A disciplina te entregou a chave mestra da sua própria existência. E agora, com a mente silenciosa e o controle absoluto das suas ações, não há meta distante demais, nem objetivo grande demais. O jogo apenas começou."
-      ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_5_c87260.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3fd8de.jpg"
     }
   ],
-  "citacao_destaque": "Sofra a dor da disciplina ou sofra a dor do arrependimento. A diferença é que a disciplina pesa gramas, enquanto o arrependimento pesa toneladas.",
+  "citacao_destaque": "Aquele que conhece a si mesmo e ao inimigo não correrá perigo em cem batalhas.",
+  "titulo_citacao": "A Regra de Ouro",
+  "verso_base": "O temor do homem arma laços, mas o que confia no Senhor está seguro.",
+  "referencia_verso": "Provérbios 29:25",
   "plano_acao": {
-    "titulo_secao": "Plano de Ação",
-    "prompt_imagem": "Cinematic dark moody photography of a glowing notebook and pen on a dark desk, 8k",
-    "subtitulo": "Domínio Prático.",
+    "titulo_secao": "As Cinco Regras do Terreno Unilateral",
+    "prompt_imagem": "Cinematic dark moody photography of an antique parchment with strategic war maps, golden light, 8k",
+    "subtitulo": "Um método estratégico em cinco etapas para retomar sua autonomia imediata",
     "passos": [
       {
         "numero": 1,
-        "titulo": "A Regra dos 5 Minutos",
-        "descricao": "Comprometa-se a fazer a tarefa difícil por apenas 5 minutos. Após começar, o atrito inicial some e a inércia joga a seu favor."
+        "titulo": "Mapeamento das Fronteiras",
+        "descricao": "Liste três situações diárias em que você cede apenas para evitar conflitos. Decida hoje qual delas você vai encerrar categoricamente."
       },
       {
         "numero": 2,
-        "titulo": "Corte as Negociações",
-        "descricao": "Nunca dialogue com a voz da preguiça. Decidiu algo na noite anterior? Execute sem pensar pela manhã."
+        "titulo": "Recuo Estratégico",
+        "descricao": "Silencie sua reação imediata diante de pedidos impostos. Dê a si mesmo o tempo de avaliar se a batalha pertence a você antes de responder."
       },
       {
         "numero": 3,
-        "titulo": "Micro-Vitórias",
-        "descricao": "Não tente mudar a vida inteira num dia. Foque em ganhar a primeira hora do seu dia."
+        "titulo": "Fortalecimento do Núcleo",
+        "descricao": "Bloqueie a primeira hora do seu dia exclusivamente para suas metas prioritárias antes de abrir mensagens ou atender demandas alheias."
       },
       {
         "numero": 4,
-        "titulo": "Documente o Progresso",
-        "descricao": "Anote suas vitórias diárias. Ver seu próprio avanço cria o impulso psicológico para não quebrar a corrente."
+        "titulo": "Guerra de Atrito Mental",
+        "descricao": "Acostume-se com o desconforto de dizer nao sem dar explicações excessivas ou justificativas defensivas."
+      },
+      {
+        "numero": 5,
+        "titulo": "Consolidação da Vitória",
+        "descricao": "Avalie no final de cada dia a quantidade de energia preservada e reinvestida nos seus verdadeiros objetivos."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_3e0426.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_559b16.jpg"
   },
-  "fechamento": "A decisão é sua e apenas sua. O mundo não vai parar para esperar você se organizar. Tome as rédeas da sua mente hoje, ou deixe que as circunstâncias continuem escrevendo a sua história.",
-  "rodape": "Produzido com foco, método e propósito.",
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_1a62fb.jpg"
+  "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
+  "titulo_fechamento": "SABEDORIA EM AÇÃO",
+  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
+  "landing_page": {
+    "promessa_clara": "7 DIAS PARA RECUPERAR SEU RESPEITO E SOBERANIA",
+    "beneficios": [
+      "Identifique os drenos invisíveis de energia que destroem sua produtividade diária.",
+      "Aprenda a dizer não com firmeza sem carregar culpa ou medo da rejeição.",
+      "Aplique táticas de posicionamento pessoal para ser respeitado em qualquer ambiente.",
+      "Desenvolva um plano semanal focado exclusivamente nas suas metas reais.",
+      "Elimine a necessidade de aprovação constante e recupere sua clareza mental."
+    ]
+  },
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_43043a.jpg"
 }
