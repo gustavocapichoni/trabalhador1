@@ -1,112 +1,109 @@
 {
-  "frase_topo_capa": "SABEDORIA ESTRATÉGICA PARA DOMINAR SEU PRÓPRIO TERRENO",
-  "titulo_pdf": "A Guerra Invisível do Respeito Próprio",
-  "subtitulo_pdf": "Como parar de entregar suas armas para quem nunca lutou por você",
-  "prompt_imagem_capa": "Cinematic dark moody photography of a solitary chess king standing firm on a dark reflective surface, cinematic lighting, ultra detailed, 8k",
+  "frase_topo_capa": "SABEDORIA PRÁTICA PARA QUEM CANÇOU DE ADIAR A VIDA",
+  "titulo_pdf": "O Preço Oculto da Hesitação",
+  "subtitulo_pdf": "Um guia prático para calar a voz da desistência e agir com consistência",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a sleek glowing hourglass on a dark stone table, dramatic side lighting, high contrast, hyper-realistic, 8k",
   "capa_cards": [
     {
-      "titulo": "O Custo do Aplauso",
-      "texto": "Você gasta sua energia tentando manter a paz com os outros enquanto trava uma guerra silenciosa contra suas próprias vontades.",
-      "pergunta_destaque": "Quem é você quando ninguém está olhando?"
+      "titulo": "O Diagnóstico do Pavor",
+      "texto": "Toda vez que a dor do crescimento surge, sua mente inventa uma desculpa perfeita para recuar. Você prefere a estagnação confortável ao desconforto que te liberta.",
+      "pergunta_destaque": "Até quando você aceitará suas próprias mentiras?"
     },
     {
-      "titulo": "Estratégia de Terreno",
-      "texto": "Sun Tzu ensina que tentar defender todos os lados significa ser fraco em absolutamente todos os pontos."
+      "titulo": "A Mecânica da Ação",
+      "texto": "Substitua a intenção vaga por comandos claros e imediatos, eliminando a hesitação antes que ela ganhe força.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Foco Inabalável",
-      "texto": "Recupere o controle da sua vida e pare de desgastar sua mente com expectativas alheias."
+      "titulo": "O Ganho Imediato",
+      "texto": "Foco absoluto, fim do ciclo de procrastinação e resultados visíveis em poucos dias.",
+      "pergunta_destaque": ""
     },
     {
-      "titulo": "Soberania Pessoal",
-      "texto": "Quem tenta agradar a todos torna-se escravo de qualquer um.",
-      "citacao_destaque": "Conhece a ti mesmo e vencerás. Código da Sabedoria."
+      "titulo": "A Verdade Fundamental",
+      "texto": "Tem poder quem age, e mais poder ainda quem age certo.",
+      "citacao_destaque": "Tem poder quem age no momento presente. Código da Sabedoria."
     }
   ],
   "capitulos": [
     {
       "numero": 1,
-      "titulo": "O Colapso de Quem Tenta Salvar o Mundo",
-      "prompt_imagem": "Cinematic moody dark photography of a tired warrior looking at his own reflection in dark water, 8k",
+      "titulo": "A Ilusão do Conforto Seguro",
+      "prompt_imagem": "Cinematic moody dark photography of a tired man staring into a dimly lit mirror, sharp shadow, warm key light, hyper-realistic, 8k",
       "paragrafos": [
-        "Você acorda exausto porque passa o dia inteiro servindo como escudo para expectativas alheias. É a ironia moderna: fofocam sobre quem se posiciona, mas escravizam silenciosamente quem diz sim para tudo. Esse desejo visceral de ser aceito faz você gastar rios de energia em campanhas que não são suas, construindo alianças falsas enquanto seu próprio território desmorona na escuridão.",
-        "Na obra A Arte da Guerra, Sun Tzu adverte que o general que tenta defender todas as fronteiras ao mesmo tempo acaba fraco em todos os frentes. Um exército disperso para agradar cada província é facilmente destruído por um único ataque concentrado. Quando você tenta abraçar todas as causas dos outros, você simplesmente zera sua defesa pessoal.",
-        "O primeiro passo para a soberania é identificar imediatamente onde você está sangrando autoridade. Hoje mesmo, faça um inventário das suas concessões diárias e identifique o primeiro nao que você precisa dizer para recuperar o respeito por si mesmo."
+        "Parágrafo 1 - EMOÇÃO: Existe um momento exato em que a mudança começa a doer e a sua mente liga o alarme. É uma voz macia que diz para deixar para amanhã, prometendo descanso mas entregando frustração. Você finge que está descansando, mas no fundo sabe que está apenas fugindo do confronto necessário.",
+        "Parágrafo 2 - HISTÓRIA: O livro O Poder da Ação revela que o cérebro humano prefere a dor familiar da estagnação ao risco do desconhecido. Quando Paulo Vieira analisa pessoas estagnadas, nota que todas possuem justificativas impecáveis para a própria inércia, confundindo explicações lógicas com resultados reais.",
+        "Parágrafo 3 - LIÇÃO: Para quebrar esse ciclo hoje, você precisa parar de negociar com o seu cansaço. Identifique a desculpa exata que você repete todos os dias e tome uma decisão contrária a ela no segundo em que ela surgir."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_e96b9b.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_8a21a4.jpg"
     },
     {
       "numero": 2,
-      "titulo": "A Ilusão de Controlar a Opinião Alheia",
-      "prompt_imagem": "Cinematic dark moody photography of a glowing chessboard in a foggy dark room, cinematic lighting, 8k",
+      "titulo": "A Tirania dos Impulsos Desgovernar",
+      "prompt_imagem": "Cinematic dark moody photography of a sharp steel sword resting on an ancient mahogany desk, soft dark lighting, dramatic depth of field, 8k",
       "paragrafos": [
-        "Existe uma mentira silenciosa que o seu cérebro adora contar: a ideia de que se você for bonzinho o suficiente, ninguém vai te criticar. Essa busca por aprovação é uma armadilha biológica que prefere a prisão confortável da concordância ao risco saudável da autonomia. Você se esgota tentando controlar o incontrolável: o que os outros pensam de você.",
-        "Sun Tzu afirmava que a vitória surge da capacidade de adaptar suas táticas ao terreno e não de tentar mudar o clima. Os generais mais vitoriosos não pediam permissão ao inimigo para agir, nem esperavam que o terreno fosse plano e acolhedor. Eles dominavam a si mesmos e manipulavam as circunstâncias com inteligência e silêncio.",
-        "Reprograme sua mente para entender que a reprovação alheia muitas vezes é o sinal claro de que você finalmente assumiu o comando da sua caminhada. Foque 100 por cento da sua atenção naquilo que está sob seu controle direto."
+        "Parágrafo 1 - EMOÇÃO: Gozar de liberdade não é fazer o que dá vontade, mas ter controle sobre o que você faz quando a vontade recusa colaborar. A mente não treinada busca atalhos fáceis e dopamina barata enquanto a sua vida de verdade permanece pausada.",
+        "Parágrafo 2 - HISTÓRIA: Em O Poder da Ação, a autorresponsabilidade é apresentada como a ferramenta suprema de comando. Quem assume noventa e nove por cento da culpa ainda deixa um por cento para o destino, e é exatamente por essa brecha que a procrastinação escapa.",
+        "Parágrafo 3 - LIÇÃO: Reprograme sua perspectiva imediatamente assumindo cem por cento da responsabilidade por cada silêncio, adiamento e fracasso recente. Quando você para de culpar o cenário, assume as rédeas da própria trajetória."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_f49024.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_d108cd.jpg"
     },
     {
       "numero": 3,
-      "titulo": "A Arquitetura de uma Posição Inabalável",
-      "prompt_imagem": "Cinematic dark moody photography of a stone fortress on a cliff facing a stormy ocean, 8k",
+      "titulo": "O Desenho da Execução Sem Desculpas",
+      "prompt_imagem": "Cinematic dark moody photography of an old metallic compass lit by a single candle in a dark room, warm contrast, detailed texture, 8k",
       "paragrafos": [
-        "Trabalhar até a exaustão para no fim do dia sentir que não saiu do lugar é o sintoma clássico da falta de estratégia. Você corre em círculos porque suas ações são reativas e não intencionais. Enquanto você não estabelecer seus próprios limites, o mundo continuará usando seu tempo como combustível para os projetos dos outros.",
-        "Antes de enviar um único soldado ao campo de batalha, os estrategistas da antiguidade calculavam os custos, os suprimentos e a posição exata de vantagem. Eles sabiam que vitórias duradouras são decididas muito antes de a luta começar, através de um planejamento silencioso, frio e cirúrgico.",
-        "Desenhe um plano semanal blindado contra distrações e pedidos alheios. Defina suas três prioridades inegociáveis e trate qualquer outra demanda externa como uma invasão ao seu território soberano."
+        "Parágrafo 1 - EMOÇÃO: A exaustão de quem trabalha duro sem sair do lugar é o sintoma clássico de esforço desalinhado. Correr em uma esteira consome a mesma energia de correr uma maratona, mas te deixa exatamente no mesmo ponto de partida.",
+        "Parágrafo 2 - HISTÓRIA: A antecipação e a clareza de metas são os pilares que transformam intenções puras em marcos concretos. Como ensina O Poder da Ação, objetivos sem prazo e sem indicadores diários são apenas desejos infantis disfarçados de planejamento adulto.",
+        "Parágrafo 3 - LIÇÃO: Para desenhar sua semana à prova de falhas, estabeleça metas diárias pequenas e inegociáveis. Reduza o tamanho do desafio até que a recusa seja matematicamente ridícula e execute antes de pensar."
       ],
-      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_3fd8de.jpg"
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_145a7a.jpg"
     }
   ],
-  "citacao_destaque": "Aquele que conhece a si mesmo e ao inimigo não correrá perigo em cem batalhas.",
+  "citacao_destaque": "Tem poder quem age, mais poder ainda quem age certo, e superpoderes quem age, age certo e na hora certa.",
   "titulo_citacao": "A Regra de Ouro",
-  "verso_base": "O temor do homem arma laços, mas o que confia no Senhor está seguro.",
-  "referencia_verso": "Provérbios 29:25",
+  "verso_base": "O preguiçoso deseja e nada consegue, mas os desejos dos que trabalham arduamente serão plenamente satisfeitos.",
+  "referencia_verso": "Provérbios 13:4",
   "plano_acao": {
-    "titulo_secao": "As Cinco Regras do Terreno Unilateral",
-    "prompt_imagem": "Cinematic dark moody photography of an antique parchment with strategic war maps, golden light, 8k",
-    "subtitulo": "Um método estratégico em cinco etapas para retomar sua autonomia imediata",
+    "titulo_secao": "Método de Recondicionamento da Vontade",
+    "prompt_imagem": "Cinematic dark moody photography of a leather notebook and an antique pen under dramatic warm light, black background, 8k",
+    "subtitulo": "Quatro passos práticos para eliminar a hesitação e agir sem negociar com o cérebro",
     "passos": [
       {
         "numero": 1,
-        "titulo": "Mapeamento das Fronteiras",
-        "descricao": "Liste três situações diárias em que você cede apenas para evitar conflitos. Decida hoje qual delas você vai encerrar categoricamente."
+        "titulo": "Corte da Negociação",
+        "descricao": "Assim que o pensamento de adiar surgir, conte até três e execute a tarefa sem permitir qualquer debate interno."
       },
       {
         "numero": 2,
-        "titulo": "Recuo Estratégico",
-        "descricao": "Silencie sua reação imediata diante de pedidos impostos. Dê a si mesmo o tempo de avaliar se a batalha pertence a você antes de responder."
+        "titulo": "Mapeamento da Vítima",
+        "descricao": "Escreva em um papel as três principais desculpas que você usou esta semana e elimine cada uma com uma ação direta."
       },
       {
         "numero": 3,
-        "titulo": "Fortalecimento do Núcleo",
-        "descricao": "Bloqueie a primeira hora do seu dia exclusivamente para suas metas prioritárias antes de abrir mensagens ou atender demandas alheias."
+        "titulo": "Microvitórias Certas",
+        "descricao": "Defina duas tarefas simples para concluir nas primeiras duas horas do seu dia e cumpra sem exceção."
       },
       {
         "numero": 4,
-        "titulo": "Guerra de Atrito Mental",
-        "descricao": "Acostume-se com o desconforto de dizer nao sem dar explicações excessivas ou justificativas defensivas."
-      },
-      {
-        "numero": 5,
-        "titulo": "Consolidação da Vitória",
-        "descricao": "Avalie no final de cada dia a quantidade de energia preservada e reinvestida nos seus verdadeiros objetivos."
+        "titulo": "Prestação de Contas",
+        "descricao": "Revise todas as noites o que foi feito de fato, medindo apenas ações concretas e ignorando boas intenções."
       }
     ],
-    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_559b16.jpg"
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_0d1b2a.jpg"
   },
   "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
   "titulo_fechamento": "SABEDORIA EM AÇÃO",
   "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
   "landing_page": {
-    "promessa_clara": "7 DIAS PARA RECUPERAR SEU RESPEITO E SOBERANIA",
+    "promessa_clara": "DOMINE SUA MENTE E ELIMINE A PROCRASTINAÇÃO EM SETE DIAS",
     "beneficios": [
-      "Identifique os drenos invisíveis de energia que destroem sua produtividade diária.",
-      "Aprenda a dizer não com firmeza sem carregar culpa ou medo da rejeição.",
-      "Aplique táticas de posicionamento pessoal para ser respeitado em qualquer ambiente.",
-      "Desenvolva um plano semanal focado exclusivamente nas suas metas reais.",
-      "Elimine a necessidade de aprovação constante e recupere sua clareza mental."
+      "Identifique com precisão as vozes que mandam você desistir no meio do caminho.",
+      "Instale o hábito da ação imediata sem depender de motivação passageira.",
+      "Assuma autorresponsabilidade total e elimine velhas desculpas do seu vocabulário.",
+      "Construa uma rotina blindada contra distrações e interrupções externas.",
+      "Alcance resultados concretos ao focar no que realmente gera impacto diário."
     ]
   },
-  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_43043a.jpg"
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_50ee5d.jpg"
 }
