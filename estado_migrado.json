@@ -1,13 +1,32 @@
 {
     "ultimo_dia_cta": "2026-08-23",
-    "index_palette_leads": 0,
+    "sentimento_do_dia": "carinho",
+    "index_animacao_conquistador": 3,
+    "historico_sentimentos": [
+        "raiva",
+        "desafio",
+        "plenitude",
+        "amor",
+        "sensualidade",
+        "esperanca",
+        "alegria",
+        "escassez",
+        "prazer",
+        "carinho"
+    ],
+    "index_cta_dia": 1,
+    "indice_gancho": 43,
+    "index_conquistador": 5,
+    "index_tema_diario": 9,
+    "data_sentimento_do_dia": "2026-08-02",
     "data_tema_do_dia": "2026-10-16",
-    "ultimo_hf_token_idx": 4,
-    "ultimo_carousel": 3,
+    "ultimos_temas": [],
     "index_mecanismo_reels_leads": 5,
-    "indice_gancho_conquistador": 46,
+    "index_pilar_reels_leads": 0,
     "index_plataforma_conquistador": 1,
+    "ultimo_hf_token_idx": 4,
     "historico_midia": [
+        "6279825",
         "7230313",
         "10706436",
         "5905283",
@@ -506,25 +525,9 @@
         "38838171",
         "unsplash_2h7GcyVMvUo",
         "unsplash_ISzLXtZu35o",
-        "unsplash_WY0UOE5KK_s",
-        "unsplash_9N0_xjnUrCI"
+        "unsplash_WY0UOE5KK_s"
     ],
-    "indice_gancho": 42,
-    "sentimento_do_dia": "prazer",
-    "indice_arquitetura": 2,
-    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 17_40_32.png",
-    "historico_sentimentos": [
-        "poder",
-        "raiva",
-        "desafio",
-        "plenitude",
-        "amor",
-        "sensualidade",
-        "esperanca",
-        "alegria",
-        "escassez",
-        "prazer"
-    ],
+    "indice_gancho_conquistador": 46,
     "fila_musicas_musicas-youtube": [
         "A Kiss For Amanda - DJ Williams.mp3",
         "I Got You - Anno Domini Beats.mp3",
@@ -547,10 +550,27 @@
         "Halfway In - Anno Domini Beats.mp3",
         "A Free Night in Bushwick - William Rosati.mp3"
     ],
-    "tema_do_dia": "A Arte da Guerra (Sun Tzu)",
+    "ultimo_carousel": 3,
     "index_palette_conquistador": 1,
+    "index_palette_leads": 0,
+    "historico_angulos": [
+        "O Conceito de Liberdade Existencial",
+        "Provérbios de Salomão",
+        "Blink (Malcolm Gladwell)",
+        "A Arte da Guerra (Sun Tzu)",
+        "Malcolm X / Nelson Mandela",
+        "O Poder do Hábito (Charles Duhigg)",
+        "Pai Rico, Pai Pobre (Robert Kiyosaki)",
+        "Preconceito e os Ciclos de Ódio",
+        "Mais Esperto que o Diabo (Napoleon Hill)",
+        "Essencialismo (Greg McKeown)",
+        "Trabalho Focado (Cal Newport)",
+        "Pertencimento e Laços Afetivos",
+        "Meditações (Marco Aurélio)"
+    ],
+    "tema_do_dia": "A Arte da Guerra (Sun Tzu)",
+    "indice_cta": 12,
     "fila_musicas_musicas": [
-        "Radioactive.mp3",
         "bfcmusic-background-opener-552029.mp3",
         "atlasaudio-background-inspiring-519617.mp3",
         "2.mp3",
@@ -615,27 +635,12 @@
         "alex-morgan-background-music-545525.mp3",
         "21.MP3",
         "Billie Ellish, Khaild- Lovely.mp3",
-        "alex-morgan-islamic-islamic-music-545510.mp3"
+        "alex-morgan-islamic-islamic-music-545510.mp3",
+        "اغنية-اجنبية-من-الخيال-عالم-ثاني-2019-جديد-اسمعها-و-انسى-العالم.mp3"
     ],
-    "index_conquistador": 5,
-    "ultimos_temas": [],
-    "historico_angulos": [
-        "O Conceito de Liberdade Existencial",
-        "Provérbios de Salomão",
-        "Blink (Malcolm Gladwell)",
-        "A Arte da Guerra (Sun Tzu)",
-        "Malcolm X / Nelson Mandela",
-        "O Poder do Hábito (Charles Duhigg)",
-        "Pai Rico, Pai Pobre (Robert Kiyosaki)",
-        "Preconceito e os Ciclos de Ódio",
-        "Mais Esperto que o Diabo (Napoleon Hill)",
-        "Essencialismo (Greg McKeown)",
-        "Trabalho Focado (Cal Newport)",
-        "Pertencimento e Laços Afetivos"
-    ],
-    "indice_cta": 11,
+    "indice_arquitetura": 3,
+    "ultima_img_carrocel": "ChatGPT Image 25 de ago. de 2026, 17_40_32.png",
     "historico_estilos": [
-        "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
@@ -659,11 +664,7 @@
         "Fazer uma pergunta: crie curiosidade abrindo uma lacuna na mente do leitor (ex: 'Você acredita que controla sua própria mente?')",
         "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
         "Quebrar uma crença: vá contra o senso comum imediatamente (ex: 'O maior erro é achar que falta tempo.')",
-        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')"
-    ],
-    "data_sentimento_do_dia": "2026-08-02",
-    "index_pilar_reels_leads": 0,
-    "index_tema_diario": 9,
-    "index_animacao_conquistador": 3,
-    "index_cta_dia": 1
+        "Prometer revelar algo: instigue o leitor com um segredo ou mecânica oculta (ex: 'Existe uma mentira silenciosa que está destruindo sua paz.')",
+        "Criar um conflito interno: exponha uma contradição de comportamento cotidiana (ex: 'Você quer mudar de vida, mas repete os mesmos hábitos.')"
+    ]
 }
