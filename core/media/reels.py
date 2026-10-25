@@ -325,6 +325,87 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
                 paleta=PALETA_PADRAO_MARCA
             )
 
+        # --- Função: gera todos os frames da CENA ÚNICA com Slow Zoom e 3 camadas cronometradas ---
+        def gerar_frames_cena_unica(caminho_fundo, caminho_topo, caminho_problema, caminho_solucao, duracao, W, H, fps):
+            """
+            Renderiza a cena única animada:
+              - Fundo: Slow Zoom In suave e contínuo (Ken Burns: 1.00x a 1.06x)
+              - Bloco Topo (Gancho) + Logo oficial: Abre no segundo 0 com fade de 0.4s
+              - Bloco Central (Problema): Surge no segundo 2.0 com fade de 0.5s
+              - Bloco Base (Solução): Surge no segundo 4.5 com fade de 0.5s
+            """
+            total_frames = int(duracao * fps)
+            fade_frames = int(0.5 * fps)
+
+            # 1. Prepara fundo para Slow Zoom
+            img_bg_pil = PILImage.open(caminho_fundo).convert("RGB")
+            scale_max = 1.06
+            w_zoom, h_zoom = int(W * scale_max), int(H * scale_max)
+            bg_zoomed_pil = img_bg_pil.resize((w_zoom, h_zoom), PILImage.Resampling.LANCZOS)
+            zw, zh = bg_zoomed_pil.width, bg_zoomed_pil.height
+
+            # 2. Carrega as camadas transparentes
+            def _carregar_camada(caminho):
+                if caminho and os.path.exists(caminho):
+                    try:
+                        arr = np.array(PILImage.open(caminho).convert("RGBA"))
+                        rgb = arr[:, :, :3].astype(np.float32)
+                        alpha = (arr[:, :, 3].astype(np.float32) / 255.0)[:, :, None]
+                        return rgb, alpha
+                    except Exception as e_c:
+                        logger.warning(f"⚠️ Erro ao carregar camada {caminho}: {e_c}")
+                return None, None
+
+            topo_rgb, topo_a = _carregar_camada(caminho_topo)
+            prob_rgb, prob_a = _carregar_camada(caminho_problema)
+            sol_rgb, sol_a   = _carregar_camada(caminho_solucao)
+
+            frames = []
+            for f in range(total_frames):
+                t = f / fps
+                progresso = t / duracao
+
+                # Ken Burns (Slow Zoom In contínuo)
+                scale_atual = 1.0 + (scale_max - 1.0) * progresso
+                cur_w = int(W * scale_atual)
+                cur_h = int(H * scale_atual)
+                cx = (zw - cur_w) // 2
+                cy = (zh - cur_h) // 2
+                frame_pil = bg_zoomed_pil.crop((cx, cy, cx + cur_w, cy + cur_h)).resize((W, H), PILImage.Resampling.BILINEAR)
+                frame = np.array(frame_pil, dtype=np.float32)
+
+                # 1. Bloco Topo + Logo: Abre logo no início (0.0s a 0.4s)
+                if topo_rgb is not None and topo_a is not None:
+                    a_topo = min(1.0, t / 0.4)
+                    if a_topo > 0:
+                        eff_a = topo_a * a_topo
+                        frame = frame * (1.0 - eff_a) + topo_rgb * eff_a
+
+                # 2. Bloco Central (Problema): Surge aos 2.0s com fade de 0.5s
+                if prob_rgb is not None and prob_a is not None and t >= 2.0:
+                    a_prob = min(1.0, (t - 2.0) / 0.5)
+                    if a_prob > 0:
+                        eff_a = prob_a * a_prob
+                        frame = frame * (1.0 - eff_a) + prob_rgb * eff_a
+
+                # 3. Bloco Base (Solução): Surge aos 4.5s com fade de 0.5s
+                if sol_rgb is not None and sol_a is not None and t >= 4.5:
+                    a_sol = min(1.0, (t - 4.5) / 0.5)
+                    if a_sol > 0:
+                        eff_a = sol_a * a_sol
+                        frame = frame * (1.0 - eff_a) + sol_rgb * eff_a
+
+                # Fade out suave no final do vídeo
+                frames_restantes = total_frames - f
+                if frames_restantes <= fade_frames and fade_frames > 0:
+                    alpha_linear = frames_restantes / fade_frames
+                    alpha = alpha_linear ** 2
+                    frame = frame * alpha
+
+                frames.append(frame.astype(np.uint8))
+
+            return frames
+
         # --- Função: gera todos os frames de um slide (imagem + texto animado) ---
         def gerar_frames_slide(caminho_img, texto, duracao, dia, eh_primeiro_slide, W, H, fps, eh_ultimo_slide=False, animar_imagem=True):  # noqa
             total_frames = int(duracao * fps)
@@ -421,30 +502,30 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
 
         # --- Gera os clipes ---
         clips = []
-        for idx, caminho in enumerate(caminhos_imagens):
-            _raw_texto = textos[idx] if idx < len(textos) else ""
-            # Garante que cada texto de slide é sempre string
-            if isinstance(_raw_texto, list):
-                texto_slide = " ".join(str(x) for x in _raw_texto)
-            else:
-                texto_slide = str(_raw_texto).strip()
-            eh_ultimo = (idx == n_slides - 1)
 
-            # Duração adaptável: se houver narração sincronizada, usa a duração exata da voz daquele slide!
-            if duracoes_sincronizadas and idx < len(duracoes_sincronizadas):
-                dur_slide = duracoes_sincronizadas[idx]
-            elif eh_ultimo:
-                dur_slide = DURACAO_ULTIMO_SLIDE
-            elif idx == 0 and (is_simples or is_reels_comum):
-                dur_slide = DURACAO_GANCHO_COMUM
-            else:
-                dur_slide = duracao_por_slide
-            _animar_img = not is_simples
+        # Detecta se é o formato de Cena Única Animada (Reels com camadas separadas)
+        is_cena_unica_animada = (
+            is_reels_comum and
+            len(caminhos_imagens) == 1 and
+            len(textos) >= 3 and
+            isinstance(textos[0], str) and
+            textos[0].endswith(".png") and
+            os.path.exists(textos[0])
+        )
+
+        if is_cena_unica_animada:
+            caminho_fundo = caminhos_imagens[0]
+            caminho_topo = textos[0]
+            caminho_prob = textos[1]
+            caminho_sol  = textos[2]
+            caminho_estatico = textos[3] if len(textos) > 3 else caminho_fundo
+            dur_slide = DURACAO_GANCHO_COMUM
+
+            logger.info("🎬 [Reels Cena Única] Animando Ken Burns contínuo + Entrada sequencial dos 3 blocos...")
             try:
-                frames_lista = gerar_frames_slide(
-                    caminho, texto_slide, dur_slide,
-                    dia_semana, idx == 0, W, H, FPS, eh_ultimo,
-                    animar_imagem=_animar_img
+                frames_lista = gerar_frames_cena_unica(
+                    caminho_fundo, caminho_topo, caminho_prob, caminho_sol,
+                    dur_slide, W, H, FPS
                 )
 
                 def make_frame_fn(fl=frames_lista, ds=dur_slide):
@@ -455,13 +536,56 @@ def gerar_video_reels(caminhos_imagens, caminho_audio, caminho_saida="reels_pron
 
                 clip = VideoClip(make_frame_fn(), duration=dur_slide)
             except Exception as e:
-                logger.warning(f"⚠️ Falha no slide {idx} animado: {e}. Usando ImageClip.")
+                logger.warning(f"⚠️ Falha ao renderizar cena única animada: {e}. Usando imagem estática como fallback.")
+                img_fallback = caminho_estatico if os.path.exists(caminho_estatico) else caminho_fundo
                 try:
-                    clip = ImageClip(caminho).with_duration(dur_slide)
+                    clip = ImageClip(img_fallback).with_duration(dur_slide)
                 except:
-                    clip = ImageClip(caminho).set_duration(dur_slide)
+                    clip = ImageClip(img_fallback).set_duration(dur_slide)
 
             clips.append(clip)
+        else:
+            for idx, caminho in enumerate(caminhos_imagens):
+                _raw_texto = textos[idx] if idx < len(textos) else ""
+                # Garante que cada texto de slide é sempre string
+                if isinstance(_raw_texto, list):
+                    texto_slide = " ".join(str(x) for x in _raw_texto)
+                else:
+                    texto_slide = str(_raw_texto).strip()
+                eh_ultimo = (idx == n_slides - 1)
+
+                # Duração adaptável: se houver narração sincronizada, usa a duração exata da voz daquele slide!
+                if duracoes_sincronizadas and idx < len(duracoes_sincronizadas):
+                    dur_slide = duracoes_sincronizadas[idx]
+                elif eh_ultimo:
+                    dur_slide = DURACAO_ULTIMO_SLIDE
+                elif idx == 0 and (is_simples or is_reels_comum):
+                    dur_slide = DURACAO_GANCHO_COMUM
+                else:
+                    dur_slide = duracao_por_slide
+                _animar_img = not is_simples
+                try:
+                    frames_lista = gerar_frames_slide(
+                        caminho, texto_slide, dur_slide,
+                        dia_semana, idx == 0, W, H, FPS, eh_ultimo,
+                        animar_imagem=_animar_img
+                    )
+
+                    def make_frame_fn(fl=frames_lista, ds=dur_slide):
+                        def frame_fn(t):
+                            fi = min(int(t * FPS), len(fl) - 1)
+                            return fl[fi]
+                        return frame_fn
+
+                    clip = VideoClip(make_frame_fn(), duration=dur_slide)
+                except Exception as e:
+                    logger.warning(f"⚠️ Falha no slide {idx} animado: {e}. Usando ImageClip.")
+                    try:
+                        clip = ImageClip(caminho).with_duration(dur_slide)
+                    except:
+                        clip = ImageClip(caminho).set_duration(dur_slide)
+
+                clips.append(clip)
 
         # Concatena todos os slides (sem áudio ainda)
         video_clip = concatenate_videoclips(clips, method="compose")

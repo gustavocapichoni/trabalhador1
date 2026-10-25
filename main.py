@@ -207,7 +207,10 @@ def main():
             midia = criar_arte(args.type, conteudo, tema_escolhido)
             if isinstance(midia, list): arquivos_gerados.extend(midia)
             elif isinstance(midia, str): arquivos_gerados.append(midia)
-            elif isinstance(midia, tuple): arquivos_gerados.extend(midia[0])
+            elif isinstance(midia, tuple):
+                arquivos_gerados.extend(midia[0])
+                if len(midia) > 1 and isinstance(midia[1], list):
+                    arquivos_gerados.extend([x for x in midia[1] if isinstance(x, str) and (x.endswith(".png") or x.endswith(".jpg"))])
         
         # Passo 3: Se for Reels (ou story_manha animado), gera o vídeo MP4
         if args.type in ["reels", "reels_noite", "story_manha"]:

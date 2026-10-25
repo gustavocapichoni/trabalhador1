@@ -645,19 +645,30 @@ def _gerar_carrossel(img, W_full, H, dados):
 
 def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold"):
     """
-    Renderiza uma CENA ÚNICA de altíssimo impacto para Reels (1080x1920)
-    composta por 3 blocos hierárquicos:
-      1. Bloco Topo: Gancho provocativo (Branco + Destaque Dourado/Amarelo)
-      2. Bloco Centro: O Problema/Diagnóstico (Amarelo Ouro com Contorno Forte)
-      3. Bloco Base: A Solução/Chave (Caixa com cantos arredondados e ícone)
+    Renderiza os elementos da CENA ÚNICA de alto impacto para Reels (1080x1920)
+    divididos em camadas transparentes (RGBA) para permitir animação sincronizada:
+      - Fundo base (cinematográfico)
+      - Camada Topo: Gancho provocativo + Logo oficial no rodapé
+      - Camada Centro: O Problema/Diagnóstico
+      - Camada Base: A Solução/Chave (Box pílula)
+      - Imagem Estática Completa (fallback de segurança)
     """
     from core.media.pexels_story import _quebrar_texto_por_pixels, _sanitizar_texto_slide
 
-    slide = img.copy().convert("RGBA")
-    draw = ImageDraw.Draw(slide)
+    # 1. FUNDO BASE CINEMATOGRÁFICO
+    fundo = img.copy().convert("RGBA")
+    draw_fundo = ImageDraw.Draw(fundo)
+    desenhar_elementos_premium(draw_fundo, W, H)
 
-    # Elementos de agência premium de fundo
-    desenhar_elementos_premium(draw, W, H)
+    # Prepara as 3 camadas transparentes
+    camada_topo = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    draw_topo = ImageDraw.Draw(camada_topo)
+
+    camada_problema = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    draw_problema = ImageDraw.Draw(camada_problema)
+
+    camada_solucao = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    draw_solucao = ImageDraw.Draw(camada_solucao)
 
     # Carrega fontes nos tamanhos adequados
     font_gancho, _, _ = carregar_fontes(tamanho_display=84, tamanho_body=48, tamanho_detalhe=28, estilo=estilo_sorteado)
@@ -672,9 +683,9 @@ def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold
     solucao_txt = _sanitizar_texto_slide(dados.get("solucao") or "EXISTE UMA SOLUÇÃO.").upper()
 
     # ─────────────────────────────────────────────────────────────────
-    # 1. BLOCO SUPERIOR — GANCHO
+    # 1. BLOCO SUPERIOR — GANCHO (NA CAMADA_TOPO)
     # ─────────────────────────────────────────────────────────────────
-    linhas_gancho = _quebrar_texto_por_pixels(draw, gancho_txt, font_gancho, largura_max)
+    linhas_gancho = _quebrar_texto_por_pixels(draw_topo, gancho_txt, font_gancho, largura_max)
     if not linhas_gancho:
         linhas_gancho = [gancho_txt]
 
@@ -682,93 +693,23 @@ def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold
     espaco_linhas_gancho = 16
 
     for idx_linha, linha in enumerate(linhas_gancho):
-        bb = draw.textbbox((0, 0), linha, font=font_gancho)
+        bb = draw_topo.textbbox((0, 0), linha, font=font_gancho)
         lw = bb[2] - bb[0]
         lh = bb[3] - bb[1]
         x = (W - lw) // 2
 
-        # Se for a última linha do gancho ou tiver palavras de destaque, colore em Amarelo Dourado
         eh_destaque = (idx_linha == len(linhas_gancho) - 1 and len(linhas_gancho) > 1)
         cor_fill = (250, 185, 55, 255) if eh_destaque else (255, 255, 255, 255)
 
         # Sombra espessa
-        draw.text((x + 4, y_gancho + 4), linha, font=font_gancho, fill=(0, 0, 0, 200))
+        draw_topo.text((x + 4, y_gancho + 4), linha, font=font_gancho, fill=(0, 0, 0, 200))
         # Contorno rígido
-        draw.text((x, y_gancho), linha, font=font_gancho, fill=cor_fill, stroke_width=4, stroke_fill=(0, 0, 0, 255))
+        draw_topo.text((x, y_gancho), linha, font=font_gancho, fill=cor_fill, stroke_width=4, stroke_fill=(0, 0, 0, 255))
 
         y_gancho += lh + espaco_linhas_gancho
 
     # ─────────────────────────────────────────────────────────────────
-    # 2. BLOCO CENTRAL — PROBLEMA / DIAGNÓSTICO
-    # ─────────────────────────────────────────────────────────────────
-    linhas_problema = _quebrar_texto_por_pixels(draw, problema_txt, font_problema, largura_max)
-    if not linhas_problema:
-        linhas_problema = [problema_txt]
-
-    alturas_prob = []
-    larguras_prob = []
-    for l in linhas_problema:
-        bb = draw.textbbox((0, 0), l, font=font_problema)
-        alturas_prob.append(bb[3] - bb[1])
-        larguras_prob.append(bb[2] - bb[0])
-
-    espaco_prob = 14
-    total_h_prob = sum(alturas_prob) + espaco_prob * (len(linhas_problema) - 1)
-    y_problema = 880 - (total_h_prob // 2)
-
-    for linha, alt, lw in zip(linhas_problema, alturas_prob, larguras_prob):
-        x = (W - lw) // 2
-        # Sombra macia preta
-        draw.text((x + 5, y_problema + 5), linha, font=font_problema, fill=(0, 0, 0, 220))
-        # Contorno e preenchimento Amarelo Dourado chamativo
-        draw.text((x, y_problema), linha, font=font_problema, fill=(255, 210, 50, 255),
-                  stroke_width=5, stroke_fill=(0, 0, 0, 255))
-        y_problema += alt + espaco_prob
-
-    # ─────────────────────────────────────────────────────────────────
-    # 3. BLOCO INFERIOR — SOLUÇÃO / CHAVE (Box Estilo Pílula)
-    # ─────────────────────────────────────────────────────────────────
-    texto_solucao_final = solucao_txt.strip()
-    bb_sol = draw.textbbox((0, 0), texto_solucao_final, font=font_solucao)
-    w_sol = bb_sol[2] - bb_sol[0]
-    h_sol = bb_sol[3] - bb_sol[1]
-
-    pad_h = 44
-    pad_v = 22
-    box_w = w_sol + (pad_h * 2)
-    box_h = h_sol + (pad_v * 2)
-
-    # Limita tamanho máximo do box se a frase for longa
-    if box_w > largura_max:
-        box_w = largura_max
-        pad_h = 24
-
-    x_box = (W - box_w) // 2
-    y_box = 1480
-
-    # Cria camada translúcida para a pílula
-    box_layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    box_draw = ImageDraw.Draw(box_layer)
-
-    # Fundo do box escuro semitransparente + borda dourada
-    box_draw.rounded_rectangle(
-        [x_box, y_box, x_box + box_w, y_box + box_h],
-        radius=28,
-        fill=(10, 10, 10, 210),
-        outline=(250, 185, 55, 255),
-        width=3
-    )
-    slide = Image.alpha_composite(slide, box_layer)
-    draw = ImageDraw.Draw(slide)
-
-    # Texto centralizado dentro do box
-    x_txt_sol = (W - w_sol) // 2
-    y_txt_sol = y_box + pad_v - 2
-    draw.text((x_txt_sol + 2, y_txt_sol + 2), texto_solucao_final, font=font_solucao, fill=(0, 0, 0, 180))
-    draw.text((x_txt_sol, y_txt_sol), texto_solucao_final, font=font_solucao, fill=(250, 185, 55, 255), stroke_width=2, stroke_fill=(0, 0, 0, 255))
-
-    # ─────────────────────────────────────────────────────────────────
-    # 4. MARCA D'ÁGUA NO RODAPÉ (IMAGEM OFICIAL COM FALLBACK)
+    # LOGO OFICIAL NO RODAPÉ (NA CAMADA_TOPO)
     # ─────────────────────────────────────────────────────────────────
     logo_dir = os.path.join("biblioteca_local", "logo")
     path_logo = os.path.join(logo_dir, "foto_perfil.png")
@@ -785,35 +726,120 @@ def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold
             x_logo = int((W - largura_logo) / 2)
             y_logo = int(H - altura_logo - 110)
 
-            slide_rgba = slide.convert("RGBA")
-            slide_rgba.paste(logo_redimensionado, (x_logo, y_logo), logo_redimensionado)
-            slide = slide_rgba.convert("RGB")
-            draw = ImageDraw.Draw(slide)
+            camada_topo.paste(logo_redimensionado, (x_logo, y_logo), logo_redimensionado)
             logo_aplicado = True
         except Exception as e:
             print(f"⚠️ Erro ao aplicar marca d'água de imagem no Reels ({e}). Usando fallback.")
 
     if not logo_aplicado:
         font_marca, _, _ = carregar_fontes(44, 22, 22, estilo="BebasNeue")
-        desenhar_marca_dagua_ouro(draw, (W // 2, H - 120), "GUSTAVO_8K_", font_marca)
+        desenhar_marca_dagua_ouro(draw_topo, (W // 2, H - 120), "GUSTAVO_8K_", font_marca)
 
-    return slide.convert("RGB")
+    # ─────────────────────────────────────────────────────────────────
+    # 2. BLOCO CENTRAL — PROBLEMA / DIAGNÓSTICO (NA CAMADA_PROBLEMA)
+    # ─────────────────────────────────────────────────────────────────
+    linhas_problema = _quebrar_texto_por_pixels(draw_problema, problema_txt, font_problema, largura_max)
+    if not linhas_problema:
+        linhas_problema = [problema_txt]
+
+    alturas_prob = []
+    larguras_prob = []
+    for l in linhas_problema:
+        bb = draw_problema.textbbox((0, 0), l, font=font_problema)
+        alturas_prob.append(bb[3] - bb[1])
+        larguras_prob.append(bb[2] - bb[0])
+
+    espaco_prob = 14
+    total_h_prob = sum(alturas_prob) + espaco_prob * (len(linhas_problema) - 1)
+    y_problema = 880 - (total_h_prob // 2)
+
+    for linha, alt, lw in zip(linhas_problema, alturas_prob, larguras_prob):
+        x = (W - lw) // 2
+        # Sombra macia preta
+        draw_problema.text((x + 5, y_problema + 5), linha, font=font_problema, fill=(0, 0, 0, 220))
+        # Contorno e preenchimento Amarelo Dourado chamativo
+        draw_problema.text((x, y_problema), linha, font=font_problema, fill=(255, 210, 50, 255),
+                           stroke_width=5, stroke_fill=(0, 0, 0, 255))
+        y_problema += alt + espaco_prob
+
+    # ─────────────────────────────────────────────────────────────────
+    # 3. BLOCO INFERIOR — SOLUÇÃO / CHAVE (NA CAMADA_SOLUCAO)
+    # ─────────────────────────────────────────────────────────────────
+    texto_solucao_final = solucao_txt.strip()
+    bb_sol = draw_solucao.textbbox((0, 0), texto_solucao_final, font=font_solucao)
+    w_sol = bb_sol[2] - bb_sol[0]
+    h_sol = bb_sol[3] - bb_sol[1]
+
+    pad_h = 44
+    pad_v = 22
+    box_w = w_sol + (pad_h * 2)
+    box_h = h_sol + (pad_v * 2)
+
+    if box_w > largura_max:
+        box_w = largura_max
+        pad_h = 24
+
+    x_box = (W - box_w) // 2
+    y_box = 1480
+
+    # Fundo do box escuro semitransparente + borda dourada
+    draw_solucao.rounded_rectangle(
+        [x_box, y_box, x_box + box_w, y_box + box_h],
+        radius=28,
+        fill=(10, 10, 10, 210),
+        outline=(250, 185, 55, 255),
+        width=3
+    )
+
+    x_txt_sol = (W - w_sol) // 2
+    y_txt_sol = y_box + pad_v - 2
+    draw_solucao.text((x_txt_sol + 2, y_txt_sol + 2), texto_solucao_final, font=font_solucao, fill=(0, 0, 0, 180))
+    draw_solucao.text((x_txt_sol, y_txt_sol), texto_solucao_final, font=font_solucao, fill=(250, 185, 55, 255), stroke_width=2, stroke_fill=(0, 0, 0, 255))
+
+    # Imagem estática completa mesclada (para fallback ou preview)
+    slide_estatico = Image.alpha_composite(fundo, camada_topo)
+    slide_estatico = Image.alpha_composite(slide_estatico, camada_problema)
+    slide_estatico = Image.alpha_composite(slide_estatico, camada_solucao)
+
+    uid = uuid.uuid4().hex
+    caminho_fundo = f"reels_bg_{uid}.jpg"
+    caminho_topo = f"reels_topo_{uid}.png"
+    caminho_prob = f"reels_prob_{uid}.png"
+    caminho_sol = f"reels_sol_{uid}.png"
+    caminho_estatico = f"reels_cena_unica_{uid}.jpg"
+
+    fundo.convert("RGB").save(caminho_fundo, "JPEG", quality=95)
+    camada_topo.save(caminho_topo, "PNG")
+    camada_problema.save(caminho_prob, "PNG")
+    camada_solucao.save(caminho_sol, "PNG")
+    slide_estatico.convert("RGB").save(caminho_estatico, "JPEG", quality=95)
+
+    return {
+        "fundo": caminho_fundo,
+        "camada_topo": caminho_topo,
+        "camada_problema": caminho_prob,
+        "camada_solucao": caminho_sol,
+        "estatico": caminho_estatico
+    }
 
 def _gerar_reels(img, W, H, dados, tema_escolhido=None, tipo="reels"):
     """Gera os fundos dos slides do Reels (sem texto baked) e retorna as frases separadas para animação."""
     import random as _random
     caminhos_fundos = []
 
-    # NOVO: Se for Reels comum (reels matinal, almoço ou reels_noite), usa CENA ÚNICA de alto impacto
+    # NOVO: Se for Reels comum (reels matinal, almoço ou reels_noite), usa CENA ÚNICA animada
     if tipo in ["reels", "reels_noite"]:
         estilo_sorteado = obter_fonte_do_dia(tipo=tipo)
-        print(f"🎬 [Reels Cena Única] Gerando arte de alto impacto com fonte: {estilo_sorteado}")
-        slide_pronto = _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado)
-        caminho = f"reels_cena_unica_{uuid.uuid4().hex}.jpg"
-        slide_pronto.save(caminho, "JPEG", quality=95)
-        caminhos_fundos.append(caminho)
-        # Passa frase vazia para o reels.py não desenhar texto animado sobreposto
-        return (caminhos_fundos, [""], None, 86)
+        print(f"🎬 [Reels Cena Única] Gerando arte de alto impacto com camadas animadas (fonte: {estilo_sorteado})")
+        elementos = _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado)
+        caminhos_fundos.append(elementos["fundo"])
+        camadas_animacao = [
+            elementos["camada_topo"],
+            elementos["camada_problema"],
+            elementos["camada_solucao"],
+            elementos["estatico"]
+        ]
+        return (caminhos_fundos, camadas_animacao, None, 86)
 
     # Para story_manha: 'frase' é uma lista de strings (4-8 frases)
     # Para reels normais: 'slides' é uma lista de strings
