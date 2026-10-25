@@ -1,0 +1,109 @@
+{
+  "frase_topo_capa": "A REVOLUÇÃO SILENCIOSA DE QUEM DEIXA DE AGRADAR TODOS",
+  "titulo_pdf": "Como Parar de Ser Refém da Aprovação Alheia",
+  "subtitulo_pdf": "O caminho prático para recuperar sua identidade e assumir o controle da sua própria vida.",
+  "prompt_imagem_capa": "Cinematic dark moody photography of a solitary man walking away from a crowded theater stage into darkness, dramatic lighting, 8k",
+  "capa_cards": [
+    {
+      "titulo": "O Custo Oculto da Aceitação",
+      "texto": "Existe uma mentira silenciosa: você acredita que agradar a todos é virtude, mas é apenas o medo de ser rejeitado destruindo sua identidade.",
+      "pergunta_destaque": "Quem é você quando ninguém está olhando?"
+    },
+    {
+      "titulo": "A Pedagogia da Provocação",
+      "texto": "Aprenda a vender sonhos para si mesmo antes de comprar o pesadelo da expectativa alheia.",
+      "pergunta_destaque": "Até quando viverá de aparências?"
+    },
+    {
+      "titulo": "Soberania Emocional",
+      "texto": "Recupere o comando do seu tempo e pare de pedir permissão para existir.",
+      "pergunta_destaque": "Qual o preço da sua paz?"
+    },
+    {
+      "titulo": "O Resgate da Sanidade",
+      "texto": "Seu maior compromisso é com a sua própria verdade.",
+      "citacao_destaque": "Não seja um escravo no teatro da existência. Código da Sabedoria."
+    }
+  ],
+  "capitulos": [
+    {
+      "numero": 1,
+      "titulo": "O Preço Invisível da Sua Cordialidade",
+      "prompt_imagem": "Cinematic moody dark photography of a man wearing multiple wooden masks in a shadow filled room, 8k",
+      "paragrafos": [
+        "Você acorda todos os dias para interpretar um papel que não escolheu. Tentar agradar a todos é o atalho mais rápido para se tornar um estranho para si mesmo, exausto, sem rumo e refém do julgamento externo.",
+        "Em O Vendedor de Sonhos, o personagem Mestre choca a sociedade ao expor a loucura dos executivos que venderam a alma pela aprovação social e pelo sucesso vazio, esquecendo de viver a própria vida.",
+        "Identifique hoje as decisões que você toma apenas para evitar reprovação. Diga um não claro para algo que consome sua energia e resgate sua autonomia imediatamente."
+      ],
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_1_5f1538.jpg"
+    },
+    {
+      "numero": 2,
+      "titulo": "A Anatomia da Escravidão Mental",
+      "prompt_imagem": "Cinematic dark moody photography of broken iron chains lying on an old stone floor, dramatic spotlight, 8k",
+      "paragrafos": [
+        "Seu cérebro busca a aprovação dos outros como um vício silencioso, preferindo o desconforto familiar da anulação ao risco de ser mal interpretado ou rejeitado pelo grupo.",
+        "O Vendedor de Sonhos ensina que o maior cemitério do mundo está cheio de projetos assassinados pela opinião alheia e pelo medo de incomodar quem nunca construiu nada.",
+        "Assuma o controle da sua atenção. Quando sentir a urgência de agradar alguém a custa de si mesmo, faça uma pausa de dez segundos e escolha a sua verdade em vez do aplauso fácil."
+      ],
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_2_9bd9e9.jpg"
+    },
+    {
+      "numero": 3,
+      "titulo": "A Construção do Seu Próprio Destino",
+      "prompt_imagem": "Cinematic dark moody photography of a man standing on a high cliff looking at the horizon during sunset, 8k",
+      "paragrafos": [
+        "Trabalhar até o esgotamento para cumprir expectativas alheias é a garantia de uma vida frustrada. Enquanto você tenta ser tudo para todos, você se torna nada para si mesmo.",
+        "Quando o Vendedor de Sonhos convida pessoas comuns a se tornarem caminhantes do próprio destino, ele demonstra que a mudança exige a coragem de abandonar velhas ilusões e padrões falidos.",
+        "Desenhe hoje o seu plano de limites. Defina suas três prioridades inegociáveis da semana e elimine qualquer tarefa que sirva apenas para validar seu ego diante dos outros."
+      ],
+      "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capitulo_3_94acba.jpg"
+    }
+  ],
+  "citacao_destaque": "A sociedade está cheia de normoses, pessoas normais que vivem uma vida doentia para agradar aos outros.",
+  "titulo_citacao": "A Regra de Ouro",
+  "verso_base": "O receio do homem lhe serve de laço, mas o que confia na verdade está seguro.",
+  "referencia_verso": "Provérbios 29:25",
+  "plano_acao": {
+    "titulo_secao": "As Quatro Leis da Recuperação da Identidade",
+    "prompt_imagem": "Cinematic dark moody photography of an old leather journal with a fountain pen on a dark wooden table, warm dim light, 8k",
+    "subtitulo": "Um método prático e imediato para libertar sua mente da necessidade de agradar a todos.",
+    "passos": [
+      {
+        "numero": 1,
+        "titulo": "Mapeamento do Servilismo",
+        "descricao": "Anote três momentos do seu dia em que você disse sim querendo dizer não apenas para evitar conflito."
+      },
+      {
+        "numero": 2,
+        "titulo": "Filtro da Expectativa",
+        "descricao": "Antes de aceitar um compromisso, pergunte se isso alinha com sua missão ou apenas evita o julgamento alheio."
+      },
+      {
+        "numero": 3,
+        "titulo": "A Prática do Não Elegante",
+        "descricao": "Recuse um pedido irrelevante hoje com clareza, firmeza e sem dar desculpas excessivas."
+      },
+      {
+        "numero": 4,
+        "titulo": "Blindagem de Prioridades",
+        "descricao": "Reserve a primeira hora do seu dia exclusivamente para seus projetos pessoais antes de responder a qualquer pessoa."
+      }
+    ],
+    "img_local": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/plano_acao_b7fdae.jpg"
+  },
+  "fechamento": "Seus resultados mudam quando suas atitudes mudam. O primeiro passo começa agora.",
+  "titulo_fechamento": "SABEDORIA EM AÇÃO",
+  "rodape": "Código da Sabedoria - Conhecimento que Transforma Destinos.",
+  "landing_page": {
+    "promessa_clara": "4 PASSSOS PARA RETOMAR O CONTROLE DA SUA VIDA HOJE",
+    "beneficios": [
+      "Identifique a mentira silenciosa que faz você agradar aos outros.",
+      "Elimine o medo da rejeição e assuma postura de autoridade.",
+      "Aprenda a dizer não sem culpa nem necessidade de justificativa.",
+      "Recupere sua energia mental para focar no que realmente importa.",
+      "Construa uma rotina alinhada com sua verdade e valores pessoais."
+    ]
+  },
+  "img_local_capa": "/home/runner/work/trabalhador1/trabalhador1/gerador_pdf/output/imagens_temp/capa_98d825.jpg"
+}

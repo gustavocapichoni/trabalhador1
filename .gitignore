@@ -1,0 +1,51 @@
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Local generated media
+midia_temp/
+*.jpg
+*.mp4
+!biblioteca_local/**/*.mp4
+!biblioteca_local/**/*.jpg
+!biblioteca_local/img_carrocel/*.png
+reels_base.jpg
+reels_pronto.mp4
+reels_pronto_*.mp4
+story_pronto.jpg
+post_pronto.jpg
+carousel_*.jpg
+carousel_*.png
+post_teste.jpg
+
+# Credenciais sensíveis - NUNCA subir para o GitHub
+firebase-key.json
+client_secrets.json
+token.json
+token_youtube.json
+
+# Repositório clonado localmente do gustavo_8k (tem .git próprio)
+gerador_pdf/repositorio_pdfs/
+
+# PDF gerado localmente (sobe via git push do uploader.py para o gustavo_8k)
+gerador_pdf/output/*.pdf
+
+# Backups temporários gerados em manutenções locais
+*.bkp.json
+
+# Estado local do bot (gerado em runtime, permitida a persistência no git)
+# estado_migrado.json
+
+# Dados de métricas gerados em runtime
+analytics/dados/metricas.json
+analytics/dados/metricas_youtube.json
+analytics/dados/memoria_estrategica.json
+analytics/dados/recomendacoes.json
+analytics/dados/recomendacoes_semanais.json

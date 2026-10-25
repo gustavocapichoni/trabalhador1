@@ -1,0 +1,305 @@
+import requests
+import time
+import os
+from loguru import logger
+
+from core.config.settings import IG_ACCESS_TOKEN, IG_ACCOUNT_ID, IG_ACCESS_TOKEN_2, IG_ACCOUNT_ID_2
+from core.publisher.uploader import upload_temporario, obter_urls_temporarias
+
+# ============================================================
+# MAPA DE ERROS CONHECIDOS
+# Cada código tem uma ação definida: retry, skip ou fatal
+# ============================================================
+ERROS_CONHECIDOS = {
+    2207027: {"acao": "retry", "espera": 20, "msg": "Mídia não pronta. Aguardando processamento do Instagram..."},
+    9007:    {"acao": "skip",  "espera": 0,  "msg": "Story expirado. Pulando silenciosamente."},
+    190:     {"acao": "fatal", "espera": 0,  "msg": "Token do Instagram INVÁLIDO ou EXPIRADO! Ação urgente necessária."},
+}
+
+def _publicar_com_retry(url_publish, payload_publish, descricao="mídia", max_tentativas=5):
+    """Tenta publicar no Instagram com retry inteligente baseado no tipo de erro."""
+    for tentativa in range(1, max_tentativas + 1):
+        res = requests.post(url_publish, data=payload_publish, timeout=30)
+        res_json = res.json()
+
+        if 'id' in res_json:
+            return res_json
+
+        erro = res_json.get('error', {})
+        codigo = erro.get('code')
+        subcod  = erro.get('error_subcode')
+
+        # Verifica no mapa de erros conhecidos (sub-código tem prioridade)
+        config_erro = ERROS_CONHECIDOS.get(subcod) or ERROS_CONHECIDOS.get(codigo)
+
+        if config_erro:
+            acao = config_erro["acao"]
+            logger.warning(f"⚠️ [{descricao}] Tentativa {tentativa}/{max_tentativas} — {config_erro['msg']}")
+
+            if acao == "skip":
+                return None  # sinaliza para ignorar sem falha crítica
+
+            if acao == "fatal":
+                raise Exception(f"🚨 ERRO FATAL: {config_erro['msg']} Resposta: {res_json}")
+
+            if acao == "retry":
+                if tentativa < max_tentativas:
+                    espera = config_erro["espera"] * tentativa  # backoff crescente
+                    logger.info(f"⏳ Aguardando {espera}s antes da próxima tentativa...")
+                    time.sleep(espera)
+                    continue
+
+        # Erro desconhecido — backoff exponencial padrão
+        logger.warning(f"⚠️ [{descricao}] Tentativa {tentativa}/{max_tentativas} — Erro desconhecido: {res_json}")
+        if tentativa < max_tentativas:
+            espera = 5 * (2 ** (tentativa - 1))  # 5s, 10s, 20s, 40s...
+            logger.info(f"⏳ Aguardando {espera}s (backoff exponencial)...")
+            time.sleep(espera)
+
+    raise Exception(f"❌ Falha ao publicar {descricao} após {max_tentativas} tentativas. Última resposta: {res_json}")
+
+
+def _criar_container_com_retry(caminho_arquivo, extra_payload, url_key='image_url', account_id=None):
+    """
+    Tenta criar um container no Instagram utilizando as URLs geradas pelos serviços disponíveis.
+    Se o Instagram falhar ao baixar a mídia (erros de URI/OAuthException/transient),
+    tenta com a próxima URL gerada por outro uploader.
+    """
+    acc = account_id or IG_ACCOUNT_ID
+    url_container = f"https://graph.facebook.com/v19.0/{acc}/media"
+    
+    erros = []
+    # Itera pelas URLs disponíveis geradas pelos uploaders
+    for url_publica in obter_urls_temporarias(caminho_arquivo):
+        payload = extra_payload.copy()
+        payload[url_key] = url_publica
+        
+        logger.info(f"📤 Tentando criar container com URL: {url_publica}...")
+        try:
+            res_container = requests.post(url_container, data=payload, timeout=25)
+            res_json = res_container.json()
+            
+            if 'id' in res_json:
+                return res_json['id']
+                
+            erro = res_json.get('error', {})
+            msg = erro.get('message', '')
+            codigo = erro.get('code')
+            subcod = erro.get('error_subcode')
+            
+            logger.warning(f"⚠️ Resposta da API ao criar container: {res_json}")
+            
+            # Se for um erro conhecido que indica problema de download ou instabilidade:
+            # - Código 2: Erro inesperado / transient
+            # - Código 9004 / subcod 2207052: URI inválido / falha ao baixar mídia
+            # - Ou qualquer erro do tipo OAuthException
+            if codigo in [2, 9004] or subcod == 2207052 or erro.get('type') == 'OAuthException':
+                logger.warning("🔄 Possível bloqueio de download ou instabilidade no Instagram. Tentando próximo uploader...")
+                erros.append(f"URL {url_publica} falhou: {res_json}")
+                continue
+            else:
+                # Se for outro erro (ex: token inválido), não adianta tentar outro uploader
+                raise Exception(f"Erro na API do Instagram: {res_json}")
+                
+        except Exception as e:
+            logger.warning(f"⚠️ Falha na tentativa de criação de container: {e}")
+            erros.append(str(e))
+            
+    raise Exception(f"Falha ao criar container com todos os serviços de upload tentados. Detalhes: {erros}")
+
+
+def aguardar_processamento_container(container_id, max_tentativas=15, intervalo=8, access_token=None):
+    """Aguarda o Instagram processar um container de mídia antes de publicar."""
+    url = f"https://graph.facebook.com/v19.0/{container_id}"
+    params = {'fields': 'status_code', 'access_token': access_token or IG_ACCESS_TOKEN}
+
+    for tentativa in range(1, max_tentativas + 1):
+        try:
+            res = requests.get(url, params=params, timeout=15)
+            status = res.json().get('status_code', '')
+            if status == 'FINISHED':
+                logger.info(f"✅ Container {container_id} pronto!")
+                return True
+            elif status == 'ERROR':
+                raise Exception(f"Container {container_id} falhou com status ERROR.")
+            else:
+                logger.info(f"⏳ Container {container_id} — status: {status} (tentativa {tentativa}/{max_tentativas})")
+                time.sleep(intervalo)
+        except Exception as e:
+            logger.warning(f"⚠️ Erro ao consultar status do container: {e}")
+            time.sleep(intervalo)
+
+    raise Exception(f"Container {container_id} não ficou pronto após {max_tentativas} tentativas.")
+
+
+def postar_no_instagram(tipo, midia, legenda, dry_run=False, access_token=None, account_id=None):
+    # Se não informar credenciais, usa as da conta 1 (padrão)
+    token = access_token or IG_ACCESS_TOKEN
+    acc_id = account_id or IG_ACCOUNT_ID
+
+    logger.info(f"🚀 Iniciando postagem no Instagram ({tipo.upper()}) — Conta: {acc_id}...")
+
+    if not token or not acc_id:
+        logger.warning("⚠️ IG_ACCESS_TOKEN ou IG_ACCOUNT_ID ausente. Postagem pulada.")
+        return "ID_TESTE_LOCAL"
+
+    # Apelidos locais para compatibilidade com o restante da função
+    IG_ACCESS_TOKEN_LOCAL = token
+    IG_ACCOUNT_ID_LOCAL = acc_id
+
+    # -------------------------------------------------------
+    # 1. Story único / Teste
+    # -------------------------------------------------------
+    if tipo in ["story", "test"]:
+        if dry_run:
+            logger.info(f"[DRY-RUN] Enviaria imagem {midia} e criaria o container.")
+            return "DRY_RUN_ID"
+
+        payload = {'access_token': IG_ACCESS_TOKEN_LOCAL}
+        if tipo == "test" and legenda:
+            payload['caption'] = legenda
+        if tipo in ["story", "test"]:
+            payload['media_type'] = 'STORIES'
+
+        creation_id = _criar_container_com_retry(midia, payload, url_key='image_url', account_id=IG_ACCOUNT_ID_LOCAL)
+        logger.info(f"✅ Container de mídia criado! ID: {creation_id}")
+        time.sleep(10)
+
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
+        res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Story")
+
+        if res_publish_json is None:
+            logger.info("⏭️ Story pulado por ser expirado.")
+            return None
+
+        logger.success(f"🎉 PUBLICADO COM SUCESSO! ID: {res_publish_json['id']}")
+        return res_publish_json['id']
+
+    # -------------------------------------------------------
+    # 1.5. Stories Sequenciais (manhã ou tarde)
+    # -------------------------------------------------------
+    elif tipo in ["story_manha", "story_tarde"]:
+        if dry_run:
+            midias = midia if isinstance(midia, list) else [midia]
+            logger.info(f"[DRY-RUN] Enviaria {len(midias)} story(s) em sequência.")
+            return "DRY_RUN_SEQ_STORY_ID"
+
+        midias = midia if isinstance(midia, list) else [midia]
+        ultimo_id = None
+
+        for idx, caminho_story in enumerate(midias):
+            logger.info(f"📤 Publicando story {idx+1}/{len(midias)}...")
+
+            payload = {'media_type': 'STORIES', 'access_token': IG_ACCESS_TOKEN_LOCAL}
+            url_key = 'video_url' if caminho_story.lower().endswith('.mp4') else 'image_url'
+
+            creation_id = _criar_container_com_retry(caminho_story, payload, url_key=url_key, account_id=IG_ACCOUNT_ID_LOCAL)
+            logger.info(f"✅ Container story {idx+1} criado! ID: {creation_id}. Aguardando processamento...")
+
+            # Aguarda o Instagram processar o vídeo antes de publicar
+            if caminho_story.lower().endswith('.mp4'):
+                aguardar_processamento_container(creation_id, max_tentativas=15, intervalo=8, access_token=IG_ACCESS_TOKEN_LOCAL)
+            else:
+                time.sleep(10)
+
+            url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+            payload_publish = {'creation_id': creation_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
+            res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao=f"Story {idx+1}")
+
+            if res_publish_json is None:
+                logger.info(f"⏭️ Story {idx+1} pulado (expirado).")
+                continue
+
+            ultimo_id = res_publish_json['id']
+            logger.success(f"✅ Story {idx+1}/{len(midias)} publicado! ID: {ultimo_id}")
+
+            if idx < len(midias) - 1:
+                logger.info("⏳ Aguardando 15s antes do próximo story...")
+                time.sleep(15)
+
+        logger.success(f"🎉 SEQUÊNCIA DE STORIES PUBLICADA COM SUCESSO!")
+        return ultimo_id
+
+    # -------------------------------------------------------
+    # 2. Carrossel
+    # -------------------------------------------------------
+    elif tipo == "carousel":
+        if dry_run:
+            logger.info(f"[DRY-RUN] Criaria containers filhos para {len(midia)} imagens.")
+            return "DRY_RUN_CAROUSEL_ID"
+
+        child_ids = []
+        for idx, caminho_slide in enumerate(midia):
+            logger.info(f"📸 Carregando slide {idx+1}/{len(midia)}...")
+
+            payload = {'is_carousel_item': 'true', 'access_token': IG_ACCESS_TOKEN_LOCAL}
+            url_key = 'video_url' if caminho_slide.lower().endswith('.mp4') else 'image_url'
+            
+            cid = _criar_container_com_retry(caminho_slide, payload, url_key=url_key, account_id=IG_ACCOUNT_ID_LOCAL)
+            child_ids.append(cid)
+            logger.info(f"✅ Slide filho {idx+1} criado. ID: {cid}")
+
+        for cid in child_ids:
+            aguardar_processamento_container(cid, access_token=IG_ACCESS_TOKEN_LOCAL)
+
+        logger.info("🎠 Criando container pai para o Carrossel...")
+        children_str = ",".join(child_ids)
+        url_parent = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media"
+        payload_parent = {
+            'media_type': 'CAROUSEL', 'children': children_str,
+            'caption': legenda, 'access_token': IG_ACCESS_TOKEN_LOCAL
+        }
+        res_parent = requests.post(url_parent, data=payload_parent, timeout=25)
+        res_parent_json = res_parent.json()
+
+        if 'id' not in res_parent_json:
+            raise Exception(f"Falha ao criar pai do carrossel. Resposta: {res_parent_json}")
+
+        parent_id = res_parent_json['id']
+        aguardar_processamento_container(parent_id, access_token=IG_ACCESS_TOKEN_LOCAL)
+
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': parent_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
+        res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Carrossel")
+
+        if res_publish_json is None:
+            logger.warning("⏭️ Carrossel pulado (falha não fatal ignorada).")
+            return None
+
+        logger.success(f"🎉 CARROSSEL PUBLICADO! ID: {res_publish_json['id']}")
+        return res_publish_json['id']
+
+    # -------------------------------------------------------
+    # 3. Reels / Pexels Stories (vídeo)
+    # -------------------------------------------------------
+    elif tipo in ["reels", "pexels_story", "reels_noite", "pexels_story_noite", "reels_conquistador", "reels_leads"]:
+        if dry_run:
+            logger.info(f"[DRY-RUN] Enviaria vídeo Reels {midia} e publicaria.")
+            return "DRY_RUN_REELS_ID"
+
+        logger.info("🎬 Criando contêiner de Reels...")
+        payload = {
+            'media_type': 'REELS',
+            'caption': legenda, 'share_to_feed': 'true',
+            'thumb_offset': '2000', 'access_token': IG_ACCESS_TOKEN_LOCAL
+        }
+        
+        reels_id = _criar_container_com_retry(midia, payload, url_key='video_url', account_id=IG_ACCOUNT_ID_LOCAL)
+        logger.info(f"✅ Container Reels criado! ID: {reels_id}")
+        aguardar_processamento_container(reels_id, max_tentativas=25, access_token=IG_ACCESS_TOKEN_LOCAL)
+
+        url_publish = f"https://graph.facebook.com/v19.0/{IG_ACCOUNT_ID_LOCAL}/media_publish"
+        payload_publish = {'creation_id': reels_id, 'access_token': IG_ACCESS_TOKEN_LOCAL}
+        res_publish_json = _publicar_com_retry(url_publish, payload_publish, descricao="Reels")
+
+        if res_publish_json is None:
+            logger.info("⏭️ Reels pulado (falha não fatal ignorada).")
+            return None
+
+        published_id = res_publish_json['id']
+        logger.success(f"🎉 REELS PUBLICADO! ID: {published_id}")
+        
+
+
+        return published_id

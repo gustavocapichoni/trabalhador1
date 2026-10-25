@@ -1,0 +1,31 @@
+{
+    "atualizado_em": "2026-07-11 01:34:46 UTC",
+    "periodo_analisado": "7 dias",
+    "total_posts_analisados": 1,
+    "contexto_para_gemini": "ANÁLISE ESTRATÉGICA DA SEMANA (1 posts analisados):\n- Alcance médio: 158 contas | Salvamentos médios: 0 | Comentários médios: 0\n- Os 3 temas que mais engajaram esta semana: 'superacao'.\n- Formato com maior retenção de audiência: 'reels'.\n- Horário de pico de engajamento: 22h.\n- Melhor dia da semana para engajamento: Domingo.\n\nINSTRUÇÃO ESTRATÉGICA: Com base nesses 7 dias de dados reais, priorize os temas e estilos que estão funcionando. Inove nos ângulos dos temas de alta performance para evitar repetição. Evite replicar abordagens dos temas de baixa performance.",
+    "tema_recomendado": "superacao",
+    "pior_tema": null,
+    "formato_recomendado": "reels",
+    "estilo_recomendado": null,
+    "melhor_horario": 22,
+    "metricas_resumo": {
+        "alcance_medio": 158,
+        "saves_medio": 0,
+        "comments_medio": 0
+    },
+    "rankings": {
+        "temas": [
+            [
+                "superacao",
+                10.9
+            ]
+        ],
+        "formatos": [
+            [
+                "reels",
+                10.9
+            ]
+        ],
+        "estilos": []
+    }
+}

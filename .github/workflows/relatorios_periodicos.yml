@@ -1,0 +1,109 @@
+name: Relatorios Periodicos
+
+on:
+  # Disparo manual (para testar qualquer relatório a qualquer hora)
+  workflow_dispatch:
+    inputs:
+      tipo_relatorio:
+        description: 'Tipo de relatorio a gerar'
+        required: true
+        type: choice
+        options:
+          - mensal
+          - trimestral
+          - semestral
+          - anual
+
+  schedule:
+    # Mensal: todo dia 1 de cada mes as 11:30 UTC (08:30 BRT)
+    - cron: '30 11 1 * *'
+
+    # Trimestral: dia 1 de janeiro, abril, julho e outubro as 11:35 UTC (08:35 BRT)
+    - cron: '35 11 1 1,4,7,10 *'
+
+    # Semestral: dia 1 de janeiro e julho as 11:40 UTC (08:40 BRT)
+    - cron: '40 11 1 1,7 *'
+
+    # Anual: dia 1 de janeiro as 11:45 UTC (08:45 BRT)
+    - cron: '45 11 1 1 *'
+
+permissions:
+  contents: read
+
+jobs:
+  relatorio-periodico:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Instalar Dependencias
+        run: pip install -r requirements.txt
+
+      - name: Criar arquivo .env
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" > .env
+
+      # -------------------------------------------------------
+      # Disparo via cron automatico:
+      # O GitHub nao passa o mes diretamente, entao o script
+      # Python detecta qual relatorio rodar com base na data.
+      # -------------------------------------------------------
+      - name: Determinar e Executar Relatorio (Cron Automatico)
+        if: github.event_name == 'schedule'
+        run: |
+          python - <<'EOF'
+          import subprocess, datetime
+
+          now   = datetime.datetime.utcnow()
+          mes   = now.month
+          dia   = now.day
+          hora  = now.hour
+
+          if dia != 1:
+              print(f"Hoje nao e dia 1 (dia={dia}). Nenhum relatorio necessario.")
+              exit(0)
+
+          # Anual: janeiro, hora 11 UTC
+          if mes == 1 and hora == 11:
+              print("Rodando: ANUAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "anual"], check=True)
+              subprocess.run(["python", "core/reports/periodic.py", "anual"], check=True)
+
+          # Semestral: janeiro e julho, hora 11 UTC
+          if mes in (1, 7) and hora == 11:
+              print("Rodando: SEMESTRAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "semestral"], check=True)
+              subprocess.run(["python", "core/reports/periodic.py", "semestral"], check=True)
+
+          # Trimestral: jan, abr, jul, out, hora 11 UTC
+          if mes in (1, 4, 7, 10) and hora == 11:
+              print("Rodando: TRIMESTRAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "trimestral"], check=True)
+              subprocess.run(["python", "core/reports/periodic.py", "trimestral"], check=True)
+
+          # Mensal: todo dia 1, hora 11 UTC
+          if hora == 11:
+              print("Rodando: MENSAL")
+              subprocess.run(["python", "core/analytics/rodar_analytics.py", "--ciclo", "mensal"], check=True)
+              subprocess.run(["python", "core/reports/periodic.py", "mensal"], check=True)
+
+          EOF
+
+      # -------------------------------------------------------
+      # Disparo manual: usa o tipo escolhido no menu
+      # -------------------------------------------------------
+      - name: Executar Relatorio (Manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          python core/analytics/rodar_analytics.py --ciclo ${{ github.event.inputs.tipo_relatorio }}
+          python core/reports/periodic.py ${{ github.event.inputs.tipo_relatorio }}
