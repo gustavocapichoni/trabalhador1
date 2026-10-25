@@ -357,7 +357,7 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         salvar_estado(estado)
         logger.info(f"🧠 Sentimento da postagem: {sentimento_escolhido.upper()} (varia a cada post)")
         
-    detalhes_tema = {"nome": tema_escolhido}
+    detalhes_tema = next((f for f in FONTES_SABEDORIA if f["nome"] == tema_escolhido), {"nome": tema_escolhido, "essencia": ""})
     logger.info(f"✨ Tema que guiará o bot hoje: {detalhes_tema['nome']}")
     
     # ---------------- CICLO SEQUENCIAL DE GANCHOS E CTAs ----------------
