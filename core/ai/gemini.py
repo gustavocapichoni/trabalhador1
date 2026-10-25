@@ -723,6 +723,8 @@ def gerar_conteudo_gemini(tipo, custom_tema=None, custom_mensagem=None):
         REGRAS INQUEBRÁVEIS DE ESCRITA:
         ══════════════════════════════════════════════════════════════════════
         - LINGUAGEM 100% NO SINGULAR ABSOLUTO: Fale diretamente com UMA pessoa ("você", "sua mente", "seu dia"). PROIBIDO usar plural ("nós", "vocês", "as pessoas").
+        - PORTUGUÊS IMPECÁVEL E CORRETO: Verifique a gramática e a conjugação verbal estrita de cada palavra. NUNCA use palavras inexistentes, neologismos, erros de digitação ou conjugações inventadas (como 'destrou' - use 'destruiu' ou 'adestrou').
+        - SEM EMOJIS: NUNCA inclua emojis no gancho, no problema ou na solução.
         - Fale de igual para igual, como um irmão ou amigo leal que não passa a mão na cabeça.
         - FOCAR ESTRITAMENTE NO TEMA DO DIA: Extraia a sabedoria de {detalhes_tema['nome']} sem citar nome de livro ou autor.
         - NÃO use pontos de exclamação no texto da tela.

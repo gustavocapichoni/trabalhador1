@@ -728,7 +728,7 @@ def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold
     # ─────────────────────────────────────────────────────────────────
     # 3. BLOCO INFERIOR — SOLUÇÃO / CHAVE (Box Estilo Pílula)
     # ─────────────────────────────────────────────────────────────────
-    texto_solucao_final = f"💡 {solucao_txt}"
+    texto_solucao_final = solucao_txt.strip()
     bb_sol = draw.textbbox((0, 0), texto_solucao_final, font=font_solucao)
     w_sol = bb_sol[2] - bb_sol[0]
     h_sol = bb_sol[3] - bb_sol[1]
@@ -768,10 +768,34 @@ def _desenhar_reels_cena_unica(img, W, H, dados, estilo_sorteado="MontserratBold
     draw.text((x_txt_sol, y_txt_sol), texto_solucao_final, font=font_solucao, fill=(250, 185, 55, 255), stroke_width=2, stroke_fill=(0, 0, 0, 255))
 
     # ─────────────────────────────────────────────────────────────────
-    # 4. MARCA D'ÁGUA NO RODAPÉ
+    # 4. MARCA D'ÁGUA NO RODAPÉ (IMAGEM OFICIAL COM FALLBACK)
     # ─────────────────────────────────────────────────────────────────
-    font_marca, _, _ = carregar_fontes(44, 22, 22, estilo="BebasNeue")
-    desenhar_marca_dagua_ouro(draw, (W // 2, H - 120), "GUSTAVO_8K_", font_marca)
+    logo_dir = os.path.join("biblioteca_local", "logo")
+    path_logo = os.path.join(logo_dir, "foto_perfil.png")
+    logo_aplicado = False
+
+    if os.path.exists(path_logo):
+        try:
+            logo_img = Image.open(path_logo)
+            largura_logo = 200
+            aspect_ratio = logo_img.height / logo_img.width
+            altura_logo = int(largura_logo * aspect_ratio)
+            logo_redimensionado = logo_img.resize((largura_logo, altura_logo), Image.Resampling.LANCZOS).convert("RGBA")
+
+            x_logo = int((W - largura_logo) / 2)
+            y_logo = int(H - altura_logo - 110)
+
+            slide_rgba = slide.convert("RGBA")
+            slide_rgba.paste(logo_redimensionado, (x_logo, y_logo), logo_redimensionado)
+            slide = slide_rgba.convert("RGB")
+            draw = ImageDraw.Draw(slide)
+            logo_aplicado = True
+        except Exception as e:
+            print(f"⚠️ Erro ao aplicar marca d'água de imagem no Reels ({e}). Usando fallback.")
+
+    if not logo_aplicado:
+        font_marca, _, _ = carregar_fontes(44, 22, 22, estilo="BebasNeue")
+        desenhar_marca_dagua_ouro(draw, (W // 2, H - 120), "GUSTAVO_8K_", font_marca)
 
     return slide.convert("RGB")
 

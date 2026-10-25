@@ -13,9 +13,7 @@ __pycache__/
 midia_temp/
 *.jpg
 *.mp4
-!biblioteca_local/**/*.mp4
-!biblioteca_local/**/*.jpg
-!biblioteca_local/img_carrocel/*.png
+!biblioteca_local/**
 reels_base.jpg
 reels_pronto.mp4
 reels_pronto_*.mp4
